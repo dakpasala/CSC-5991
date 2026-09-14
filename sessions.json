@@ -1,0 +1,7 @@
+[
+  {"domain":"wikipedia.org","activity":"web_browsing","url":"https://en.wikipedia.org/wiki/Computer_network","content_selector":"#mw-content-text","links":["https://en.wikipedia.org/wiki/Network_packet"]},
+  {"domain":"youtube.com","activity":"video_streaming","url":"https://www.youtube.com/watch?v=aqz-KE-bpKQ","video_selector":"video"},
+  {"domain":"nginx.org","activity":"web_browsing","url":"https://nginx.org/en/","content_selector":"body","links":["https://nginx.org/en/docs/"]},
+  {"domain":"vimeo.com","activity":"video_streaming","url":"https://player.vimeo.com/video/76979871","video_selector":"video"},
+  {"domain":"zoom.us","activity":"video_conferencing","controlled_test":false,"participants_ready":false,"meeting_url_env":"COLLECTOR_MEETING_URL"}
+]
