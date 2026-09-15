@@ -1,0 +1,278 @@
+{
+  "session_id": "20260915T173523266725Z_13494c56",
+  "domain": "x.com",
+  "rank": 49,
+  "requested_activity": "social_media_browsing",
+  "started_at": "2026-09-15T17:35:23.266938+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1789493724.772614,
+      "browser_version": "152.0.7977.84",
+      "headed": true
+    },
+    {
+      "event": "session_cookies_injected",
+      "time": 1789493724.9562619,
+      "count": 14
+    },
+    {
+      "event": "navigate",
+      "time": 1789493726.681611,
+      "url": "https://x.com/NASA"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1789493726.681652,
+      "selector": "article"
+    },
+    {
+      "event": "content_sample",
+      "time": 1789493727.338109,
+      "content": true,
+      "matching_elements": 2,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789493727.339668
+    },
+    {
+      "event": "content_sample",
+      "time": 1789493729.3541389,
+      "content": true,
+      "matching_elements": 2,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789493729.358659
+    },
+    {
+      "event": "content_sample",
+      "time": 1789493731.370831,
+      "content": true,
+      "matching_elements": 2,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789493731.3750222
+    },
+    {
+      "event": "content_sample",
+      "time": 1789493733.392042,
+      "content": true,
+      "matching_elements": 3,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789493733.396589
+    },
+    {
+      "event": "content_sample",
+      "time": 1789493735.4122949,
+      "content": true,
+      "matching_elements": 2,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789493735.417147
+    },
+    {
+      "event": "content_sample",
+      "time": 1789493737.44241,
+      "content": true,
+      "matching_elements": 2,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789493737.4464152
+    },
+    {
+      "event": "content_sample",
+      "time": 1789493739.458952,
+      "content": true,
+      "matching_elements": 2,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789493739.462676
+    },
+    {
+      "event": "content_sample",
+      "time": 1789493741.4878132,
+      "content": true,
+      "matching_elements": 3,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789493741.491721
+    },
+    {
+      "event": "content_sample",
+      "time": 1789493743.519723,
+      "content": true,
+      "matching_elements": 3,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789493743.523088
+    },
+    {
+      "event": "content_sample",
+      "time": 1789493745.5445619,
+      "content": true,
+      "matching_elements": 3,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789493745.548359
+    },
+    {
+      "event": "content_sample",
+      "time": 1789493747.5691452,
+      "content": true,
+      "matching_elements": 3,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789493747.573332
+    },
+    {
+      "event": "content_sample",
+      "time": 1789493749.592615,
+      "content": true,
+      "matching_elements": 3,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789493749.597229
+    },
+    {
+      "event": "content_sample",
+      "time": 1789493751.6153789,
+      "content": true,
+      "matching_elements": 3,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789493751.621435
+    },
+    {
+      "event": "content_sample",
+      "time": 1789493753.641153,
+      "content": true,
+      "matching_elements": 3,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789493753.645878
+    },
+    {
+      "event": "content_sample",
+      "time": 1789493755.661661,
+      "content": true,
+      "matching_elements": 2,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789493755.663679
+    },
+    {
+      "event": "content_sample",
+      "time": 1789493757.679261,
+      "content": true,
+      "matching_elements": 2,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789493757.682635
+    },
+    {
+      "event": "content_sample",
+      "time": 1789493759.7037098,
+      "content": true,
+      "matching_elements": 3,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789493759.708013
+    },
+    {
+      "event": "content_sample",
+      "time": 1789493761.7273889,
+      "content": true,
+      "matching_elements": 3,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789493761.7324958
+    },
+    {
+      "event": "content_sample",
+      "time": 1789493761.7916338,
+      "content": false,
+      "matching_elements": 0,
+      "playing_media": false
+    },
+    {
+      "event": "browser_diagnostic",
+      "time": 1789493761.799385,
+      "phase": "browsing",
+      "access_denied": false,
+      "article_elements": 9,
+      "audio_elements": 0,
+      "login_prompt": false,
+      "post_links": 0,
+      "video_elements": 4,
+      "window_count": 1
+    },
+    {
+      "event": "done",
+      "success": false,
+      "reason": "Readable browsing content absent or media playing",
+      "error_type": "RuntimeError"
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 40.0,
+  "source_scope": "top100_public_profile_access_unverified",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "02baf1a7ccba62b793c6302f8251951be3ab7d94f258113044f521bc9cfe3edb",
+  "profile_mode": "persistent",
+  "browser_version": "152.0.7977.84",
+  "capture_started_at": "2026-09-15T17:35:24.849497+00:00",
+  "browser_success": false,
+  "reason": "Readable browsing content absent or media playing",
+  "error_type": "RuntimeError",
+  "capture_ended_at": "2026-09-15T17:36:01.803814+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 104628,
+  "capture_duration_seconds": 36.954317,
+  "duration_seconds": 38.852,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-15T17:36:02.118499+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260915T173523266725Z_13494c56_x.com_social_media_browsing.pcap"
+}
