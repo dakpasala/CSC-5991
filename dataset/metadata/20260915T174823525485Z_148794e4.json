@@ -1,0 +1,179 @@
+{
+  "session_id": "20260915T174823525485Z_148794e4",
+  "domain": "instagram.com",
+  "rank": 11,
+  "requested_activity": "video_streaming",
+  "started_at": "2026-09-15T17:48:23.525799+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1789494505.063254,
+      "browser_version": "152.0.7977.84",
+      "headed": true
+    },
+    {
+      "event": "session_cookies_injected",
+      "time": 1789494505.654788,
+      "count": 10
+    },
+    {
+      "event": "navigate",
+      "time": 1789494507.444281,
+      "url": "https://www.instagram.com/reels/DaH5kXtTJl5/"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1789494507.444337,
+      "selector": "video"
+    },
+    {
+      "event": "play_requested",
+      "time": 1789494507.463181,
+      "media": "video"
+    },
+    {
+      "event": "media_sample",
+      "time": 1789494508.4847,
+      "progressing": true,
+      "media_time": 0.929329
+    },
+    {
+      "event": "media_sample",
+      "time": 1789494509.494824,
+      "progressing": true,
+      "media_time": 1.938163
+    },
+    {
+      "event": "media_sample",
+      "time": 1789494510.505323,
+      "progressing": true,
+      "media_time": 2.948249
+    },
+    {
+      "event": "media_sample",
+      "time": 1789494511.511521,
+      "progressing": true,
+      "media_time": 3.954574
+    },
+    {
+      "event": "media_sample",
+      "time": 1789494512.961141,
+      "progressing": false,
+      "media_time": 0.095376
+    },
+    {
+      "event": "media_sample",
+      "time": 1789494514.0002618,
+      "progressing": true,
+      "media_time": 1.132149
+    },
+    {
+      "event": "media_sample",
+      "time": 1789494515.0440261,
+      "progressing": true,
+      "media_time": 2.176011
+    },
+    {
+      "event": "media_sample",
+      "time": 1789494516.0628722,
+      "progressing": true,
+      "media_time": 3.195952
+    },
+    {
+      "event": "media_sample",
+      "time": 1789494517.0781271,
+      "progressing": true,
+      "media_time": 4.21225
+    },
+    {
+      "event": "media_sample",
+      "time": 1789494518.0909388,
+      "progressing": true,
+      "media_time": 5.224408
+    },
+    {
+      "event": "media_sample",
+      "time": 1789494519.108808,
+      "progressing": true,
+      "media_time": 6.240093
+    },
+    {
+      "event": "media_sample",
+      "time": 1789494520.1205812,
+      "progressing": true,
+      "media_time": 7.250097
+    },
+    {
+      "event": "media_sample",
+      "time": 1789494521.128869,
+      "progressing": true,
+      "media_time": 8.261546
+    },
+    {
+      "event": "media_sample",
+      "time": 1789494522.137791,
+      "progressing": true,
+      "media_time": 9.27033
+    },
+    {
+      "event": "media_sample",
+      "time": 1789494523.144706,
+      "progressing": true,
+      "media_time": 10.27564
+    },
+    {
+      "event": "media_sample",
+      "time": 1789494524.152701,
+      "progressing": true,
+      "media_time": 11.285548
+    },
+    {
+      "event": "media_sample",
+      "time": 1789494525.1623218,
+      "progressing": true,
+      "media_time": 12.294929
+    },
+    {
+      "event": "media_sample",
+      "time": 1789494526.166357,
+      "progressing": false,
+      "media_time": 0.172262
+    },
+    {
+      "event": "media_sample",
+      "time": 1789494527.034697,
+      "progressing": true,
+      "media_time": 1.040521
+    },
+    {
+      "event": "done",
+      "time": 1789494527.034771,
+      "success": true,
+      "verified_seconds": 17.111
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 25.0,
+  "source_scope": "login_required_reels_player_short_clip_looped",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "3901484afffaa3048cb566bfc80fec1e4e2a3851abf78f752f2bc3aab1c3daf6",
+  "profile_mode": "persistent",
+  "browser_version": "152.0.7977.84",
+  "capture_started_at": "2026-09-15T17:48:25.142987+00:00",
+  "browser_success": true,
+  "verified_seconds": 17.111,
+  "capture_ended_at": "2026-09-15T17:48:47.038754+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 160963,
+  "capture_duration_seconds": 21.895767,
+  "duration_seconds": 23.862,
+  "success": true,
+  "actual_activity": "video_streaming",
+  "parent_activity": "video_streaming",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-15T17:48:47.388014+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/video_streaming/20260915T174823525485Z_148794e4_instagram.com_video_streaming.pcap"
+}
