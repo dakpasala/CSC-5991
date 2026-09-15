@@ -17,3 +17,14 @@ Additional primary references:
 - [Google Domains migration](https://domains.google/): migrated to Squarespace.
 
 The source CSV was untracked when inspected; it is preserved without alteration. There were no project source files or AGENTS.md instructions in the project or its ancestor directories.
+
+## Top-10K login-requirement pass (2026-09-15)
+
+`top10k_login_requirements.csv` covers ranks 1-10,000 from the same `tranco_GQNVK.csv` (SHA-256 `0abee43326c3e67f410e15537db48310e055ffc2d2ee2315350b1d2a07eec6fc`, unchanged from above). Purpose: flag, ahead of a future larger collection run, which domains are known to gate meaningful browsing behind login — the X/Instagram class of problem worked through during collector development — so those sessions can be planned with `--use-login-profile` and cookie-transfer in advance instead of failing mid-run.
+
+This is a **knowledge-based heuristic pass, not a live-tested assessment.** No browser or HTTP request was made against any of the 10,000 domains for this file. Each row's `login_required` column is one of:
+- `hard` — the site's core content (feed, inbox, streaming playback) is not reachable without login, based on general knowledge of the platform.
+- `partial` — a meaningful public surface exists (marketing pages, public repos, some articles), but the deeper feature is login-gated.
+- `unknown` — not evaluated; this is the overwhelming majority (9,946 of 10,000) and must not be read as "no login required." At this rank range most domains are infrastructure, CDN, ad-tech, or API endpoints rather than browsable consumer sites at all, consistent with the top-100 findings above — but that has not been checked domain-by-domain here.
+
+Only 54 of the 10,000 domains were matched against a curated list of recognizable major platforms (34 `hard`, 20 `partial`). Verifying the remaining ~9,946 would require an actual bounded `assess_domains.py`-style pass or live Selenium checks, which was explicitly out of scope for this pass per the project's own scale guidance (no large live-capture runs just to build a classification list). Treat every `hard`/`partial` flag as a planning aid to try first, and every `unknown` as literally unassessed, not cleared.
