@@ -2,6 +2,7 @@
 
 from contextlib import contextmanager
 import fcntl
+import json
 import tempfile
 from pathlib import Path
 
@@ -9,6 +10,9 @@ from config import ROOT
 
 LOGIN_PROFILE = ROOT / ".browser-profiles" / "collection"
 CHROME_BINARY = "/Applications/Google Chrome 2.app/Contents/MacOS/Google Chrome"
+LOGIN_DEBUG_PORT = 9223
+SESSION_COOKIES = ROOT / ".browser-profiles" / "session_cookies.json"
+SESSION_COOKIE_DOMAINS = ("x.com", "instagram.com", "google.com")
 
 
 @contextmanager
@@ -37,3 +41,22 @@ def browser_profile(persistent=False, path=LOGIN_PROFILE):
     else:
         with tempfile.TemporaryDirectory(prefix="collector-chrome-") as profile:
             yield profile
+
+
+def save_session_cookies(cookies_by_domain):
+    """Persist cookies extracted in-memory from an already-authenticated session.
+
+    Written only to this gitignored profile directory, mode 0600, never logged.
+    """
+    SESSION_COOKIES.parent.mkdir(parents=True, exist_ok=True)
+    SESSION_COOKIES.write_text(json.dumps(cookies_by_domain))
+    SESSION_COOKIES.chmod(0o600)
+
+
+def load_session_cookies(domain):
+    if not SESSION_COOKIES.exists():
+        return []
+    try:
+        return json.loads(SESSION_COOKIES.read_text()).get(domain, [])
+    except (OSError, ValueError):
+        return []
