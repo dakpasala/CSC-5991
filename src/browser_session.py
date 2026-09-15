@@ -209,8 +209,20 @@ def worker(pipe, item, settings, deadline, profile):
             if activity == "social_media_browsing":
                 driver.execute_script("document.querySelector(arguments[0]).scrollIntoView({block:'center'})",
                                       item["content_selector"])
-                time.sleep(min(1, remaining()))
-            browsing_evidence()
+                # Network.setCacheDisabled forces every post image to fetch fresh each
+                # run, and page_load_strategy="none" returns before they start loading;
+                # poll rather than a single fixed sleep before treating it as a failure.
+                settle_deadline = min(time.monotonic() + 10, deadline - 1.5)
+                while True:
+                    try:
+                        browsing_evidence()
+                        break
+                    except RuntimeError:
+                        if time.monotonic() >= settle_deadline:
+                            raise
+                        time.sleep(min(1.5, max(0, settle_deadline - time.monotonic())))
+            else:
+                browsing_evidence()
             post_index = 0
             link_index = 0
             link_time = time.monotonic()
