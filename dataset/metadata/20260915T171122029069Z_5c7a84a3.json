@@ -1,0 +1,254 @@
+{
+  "session_id": "20260915T171122029069Z_5c7a84a3",
+  "domain": "x.com",
+  "rank": 49,
+  "requested_activity": "social_media_browsing",
+  "started_at": "2026-09-15T17:11:22.029482+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1789492283.7431118,
+      "browser_version": "152.0.7977.84",
+      "headed": true
+    },
+    {
+      "event": "session_cookies_injected",
+      "time": 1789492284.27909,
+      "count": 14
+    },
+    {
+      "event": "navigate",
+      "time": 1789492286.4112031,
+      "url": "https://x.com/NASA"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1789492286.4112818,
+      "selector": "article"
+    },
+    {
+      "event": "content_sample",
+      "time": 1789492287.45401,
+      "content": true,
+      "matching_elements": 2,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789492287.457769
+    },
+    {
+      "event": "content_sample",
+      "time": 1789492289.471318,
+      "content": true,
+      "matching_elements": 2,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789492289.4749491
+    },
+    {
+      "event": "content_sample",
+      "time": 1789492291.490295,
+      "content": true,
+      "matching_elements": 2,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789492291.495115
+    },
+    {
+      "event": "content_sample",
+      "time": 1789492293.509983,
+      "content": true,
+      "matching_elements": 3,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789492293.514057
+    },
+    {
+      "event": "content_sample",
+      "time": 1789492295.523318,
+      "content": true,
+      "matching_elements": 2,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789492295.525702
+    },
+    {
+      "event": "content_sample",
+      "time": 1789492297.5499341,
+      "content": true,
+      "matching_elements": 2,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789492297.554028
+    },
+    {
+      "event": "content_sample",
+      "time": 1789492299.568099,
+      "content": true,
+      "matching_elements": 2,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789492299.573344
+    },
+    {
+      "event": "content_sample",
+      "time": 1789492301.594733,
+      "content": true,
+      "matching_elements": 3,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789492301.5989828
+    },
+    {
+      "event": "content_sample",
+      "time": 1789492303.6220531,
+      "content": true,
+      "matching_elements": 3,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789492303.624915
+    },
+    {
+      "event": "content_sample",
+      "time": 1789492305.647787,
+      "content": true,
+      "matching_elements": 3,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789492305.6527512
+    },
+    {
+      "event": "content_sample",
+      "time": 1789492307.671607,
+      "content": true,
+      "matching_elements": 3,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789492307.675672
+    },
+    {
+      "event": "content_sample",
+      "time": 1789492309.6986098,
+      "content": true,
+      "matching_elements": 3,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789492309.703253
+    },
+    {
+      "event": "content_sample",
+      "time": 1789492311.7199569,
+      "content": true,
+      "matching_elements": 3,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789492311.725013
+    },
+    {
+      "event": "content_sample",
+      "time": 1789492313.742673,
+      "content": true,
+      "matching_elements": 3,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789492313.746563
+    },
+    {
+      "event": "content_sample",
+      "time": 1789492315.767939,
+      "content": true,
+      "matching_elements": 2,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789492315.77182
+    },
+    {
+      "event": "content_sample",
+      "time": 1789492317.7896059,
+      "content": true,
+      "matching_elements": 2,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789492317.796067
+    },
+    {
+      "event": "content_sample",
+      "time": 1789492319.8140469,
+      "content": true,
+      "matching_elements": 3,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789492319.817801
+    },
+    {
+      "event": "content_sample",
+      "time": 1789492320.53982,
+      "content": true,
+      "matching_elements": 3,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1789492320.539904,
+      "success": true,
+      "verified_seconds": 33.014
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 40.0,
+  "source_scope": "top100_public_profile_access_unverified",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "6291aa3c675b3a3db3080d13d2d43c8853c1f46e68a5f071db98d54c357f9236",
+  "profile_mode": "persistent",
+  "browser_version": "152.0.7977.84",
+  "capture_started_at": "2026-09-15T17:11:23.816588+00:00",
+  "browser_success": true,
+  "verified_seconds": 33.014,
+  "capture_ended_at": "2026-09-15T17:12:00.541483+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 102090,
+  "capture_duration_seconds": 36.724895,
+  "duration_seconds": 38.91,
+  "success": true,
+  "actual_activity": "social_media_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": "social_media",
+  "status": "success",
+  "ended_at": "2026-09-15T17:12:00.939807+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/social_media_browsing/20260915T171122029069Z_5c7a84a3_x.com_social_media_browsing.pcap"
+}

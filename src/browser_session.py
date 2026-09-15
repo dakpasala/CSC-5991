@@ -6,6 +6,7 @@ import signal
 import time
 from urllib.parse import urlsplit, urlunsplit
 
+from browser_profiles import load_session_cookies
 from config import BROWSING
 from evidence import BROWSING_STATE, MEDIA_STATE, NO_MEDIA, RTC_HOOK, RTC_STATS
 from evidence import media_progress, rtc_progress
@@ -176,6 +177,17 @@ def worker(pipe, item, settings, deadline, profile):
         emit("ready", browser_version=driver.capabilities.get("browserVersion"), headed=headed)
         if pipe.recv() != "go":
             return
+        if settings.get("use_login_profile"):
+            cookies = load_session_cookies(item["domain"])
+            if cookies:
+                phase = "session_cookie_injection"
+                driver.get(f"https://{item['domain']}/")
+                for cookie in cookies:
+                    try:
+                        driver.add_cookie(cookie)
+                    except Exception:
+                        pass
+                emit("session_cookies_injected", count=len(cookies))
         url = item.get("url") or os.environ[item["meeting_url_env"]]
         navigate(url)
         for step in item.get("steps", []):
