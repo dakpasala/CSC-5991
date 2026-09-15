@@ -1,0 +1,129 @@
+{
+  "session_id": "20260915T172131577244Z_1b215e3c",
+  "domain": "instagram.com",
+  "rank": 11,
+  "requested_activity": "social_media_browsing",
+  "started_at": "2026-09-15T17:21:31.577966+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1789492893.008516,
+      "browser_version": "152.0.7977.84",
+      "headed": true
+    },
+    {
+      "event": "session_cookies_injected",
+      "time": 1789492893.9845572,
+      "count": 10
+    },
+    {
+      "event": "navigate",
+      "time": 1789492895.39069,
+      "url": "https://www.instagram.com/nasa/"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1789492895.3907351,
+      "selector": "a[href*=\"/p/\"]:has(img), a[href*=\"/reel/\"]:has(img)"
+    },
+    {
+      "event": "content_sample",
+      "time": 1789492895.8351748,
+      "content": false,
+      "matching_elements": 6,
+      "playing_media": false
+    },
+    {
+      "event": "content_sample",
+      "time": 1789492897.366025,
+      "content": false,
+      "matching_elements": 6,
+      "playing_media": false
+    },
+    {
+      "event": "content_sample",
+      "time": 1789492898.888191,
+      "content": false,
+      "matching_elements": 6,
+      "playing_media": false
+    },
+    {
+      "event": "content_sample",
+      "time": 1789492900.402668,
+      "content": false,
+      "matching_elements": 6,
+      "playing_media": false
+    },
+    {
+      "event": "content_sample",
+      "time": 1789492901.923834,
+      "content": false,
+      "matching_elements": 6,
+      "playing_media": false
+    },
+    {
+      "event": "content_sample",
+      "time": 1789492903.447665,
+      "content": false,
+      "matching_elements": 6,
+      "playing_media": false
+    },
+    {
+      "event": "content_sample",
+      "time": 1789492904.9748712,
+      "content": false,
+      "matching_elements": 6,
+      "playing_media": false
+    },
+    {
+      "event": "content_sample",
+      "time": 1789492905.838381,
+      "content": false,
+      "matching_elements": 6,
+      "playing_media": false
+    },
+    {
+      "event": "browser_diagnostic",
+      "time": 1789492905.843495,
+      "phase": "browsing",
+      "access_denied": false,
+      "article_elements": 0,
+      "audio_elements": 0,
+      "login_prompt": false,
+      "post_links": 12,
+      "video_elements": 0,
+      "window_count": 1
+    },
+    {
+      "event": "done",
+      "success": false,
+      "reason": "Readable browsing content absent or media playing",
+      "error_type": "RuntimeError"
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 40.0,
+  "source_scope": "top100_public_profile_access_unverified",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "6291aa3c675b3a3db3080d13d2d43c8853c1f46e68a5f071db98d54c357f9236",
+  "profile_mode": "persistent",
+  "browser_version": "152.0.7977.84",
+  "capture_started_at": "2026-09-15T17:21:33.072050+00:00",
+  "browser_success": false,
+  "reason": "Readable browsing content absent or media playing",
+  "error_type": "RuntimeError",
+  "capture_ended_at": "2026-09-15T17:21:45.847654+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 15946,
+  "capture_duration_seconds": 12.775604,
+  "duration_seconds": 14.509,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-15T17:21:46.086013+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260915T172131577244Z_1b215e3c_instagram.com_social_media_browsing.pcap"
+}

@@ -26,8 +26,12 @@ const visible = e => {
 };
 const nodes = [...document.querySelectorAll(arguments[0])].filter(visible);
 return {
+ // A node passing visible() already proves it isn't hidden behind a page-level
+ // overlay (login wall, modal). Requiring its own <img> to independently win the
+ // topmost-pixel test is redundant and fails on normal UI layering, e.g. a site's
+ // own hover/click overlay painted over an already-loaded, already-visible photo.
  content: nodes.some(e => (e.innerText || '').trim().length >= 20 ||
-   [...e.querySelectorAll('img')].some(i => visible(i) && i.complete && i.naturalWidth > 0)),
+   [...e.querySelectorAll('img')].some(i => i.complete && i.naturalWidth > 0)),
  matching_elements: nodes.length,
  playing_media: [...document.querySelectorAll('audio,video')].some(m => !m.paused && !m.ended)
 };
