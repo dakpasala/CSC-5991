@@ -1,0 +1,9 @@
+[
+  {
+    "domain": "w3.org",
+    "url": "https://www.w3.org/",
+    "download_url": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+    "source_scope": "external_demo_small_pdf_not_representative_bulk_download",
+    "activity": "file_download"
+  }
+]

@@ -1,0 +1,12 @@
+[
+  {
+    "domain": "zoom.us",
+    "enabled": false,
+    "controlled_test": false,
+    "participants_ready": false,
+    "meeting_url_env": "COLLECTOR_MEETING_URL",
+    "joined_selector": "REPLACE_WITH_VERIFIED_SELECTOR",
+    "unavailable_reason": "Optional: generic call adapter requires controlled setup; Zoom-specific join/login automation is not integrated.",
+    "activity": "video_conferencing"
+  }
+]

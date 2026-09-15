@@ -1,67 +1,72 @@
-# Labeled traffic collector (macOS proof of concept)
+# CSC-5991 traffic collection
 
-Collect separate PCAPs for observed browsing, video playback, and controlled video calls. No ML training or packet-content inspection. Read `analysis/top100_assessment.csv` first: all 100 Tranco ranks are assessed, including excluded infrastructure, uncertain domains, access barriers, actions, and sources.
+Six activity collectors share Selenium Chrome, tcpdump, verification, and metadata logging. No ML training is implemented. Persistent project goals are in [AGENTS.md](AGENTS.md), following [Codex's project-instruction convention](https://developers.openai.com/codex/guides/agents-md).
 
-## Setup
+## Setup on your Mac
 
-Use Python 3.10+ and Google Chrome. In this project directory:
+From this project directory:
 
 ```sh
 python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install -r requirements.txt
-/usr/sbin/tcpdump -D
 ```
 
-[Selenium Manager](https://www.selenium.dev/documentation/selenium_manager/) obtains a matching driver on first launch (Internet access required). Warm it up **before** a timed experiment so download time does not consume the experiment budget:
+Chrome and macOS tcpdump are required. This Mac's `Google Chrome 2.app` is detected automatically; override with `--chrome-binary` if needed. Selenium obtains ChromeDriver on first launch; startup/download time consumes the run budget. `--chromedriver` can supply an existing matching driver.
+
+Your normal user needs BPF capture access (already worked on this Mac outside the Codex sandbox). Check `/usr/sbin/tcpdump -D`. On a new Mac, install Wireshark's ChmodBPF component if needed. Do not run the collector as root. Choose the correct interface; `en0` is the default, and VPNs may change the appropriate interface.
+
+## Run one category at a time
+
+Each command below uses a **10-minute total budget**, with sessions lasting **at most 30 seconds**. Running all five sequentially takes about 50 minutes, not 10 minutes overall. Stop with Ctrl+C.
 
 ```sh
-python -c 'from selenium import webdriver; o=webdriver.ChromeOptions(); o.add_argument("--headless=new"); d=webdriver.Chrome(options=o); print(d.capabilities["browserVersion"]); d.quit()'
+python src/collect_browsing.py
+python src/collect_social.py
+python src/collect_video.py
+python src/collect_audio.py
+python src/collect_downloads.py
 ```
 
-If Chrome has a nonstandard name, add `--chrome-binary '/Applications/Google Chrome 2.app/Contents/MacOS/Google Chrome'`. If automatic driver management is unavailable, provide `--chromedriver /absolute/path/to/chromedriver`. The browser and driver must match. The same binary path must be set on `o.binary_location` for the warmup command.
-
-### Packet-capture permission
-
-macOS includes `/usr/sbin/tcpdump`, but your normal user needs BPF-device access. A normal-user probe is:
+Optional, after configuring an actual controlled call:
 
 ```sh
-/usr/sbin/tcpdump -i lo0 -n -p -c 1 'tcp port 18765'
-# Ctrl+C if no fixture traffic is running.
+python src/collect_conferencing.py
 ```
 
-If it reports permission denied, use the **ChmodBPF** component provided with [Wireshark for macOS](https://www.wireshark.org/download.html), then log out/in if group membership changed. For a temporary, administrator-approved setup on a personal test Mac, grant your current user access to existing capture devices:
+First try a short test, or show Chrome to troubleshoot a blocked player/feed:
 
 ```sh
-sudo chown "$USER" /dev/bpf*
+python src/collect_video.py --total-seconds 45 --session-seconds 30 --once
+python src/collect_social.py --total-seconds 45 --once --headed
+python src/collect_audio.py --dry-run
 ```
 
-This changes ownership of existing BPF devices until reset/reboot; it is broader than one interface. Prefer the managed ChmodBPF setup on shared machines. Do not run the Python collector or Chrome as root. This collector never invokes sudo, changes device permissions, or silently bypasses capture errors. In the validation environment, the user already had capture access; the Codex execution sandbox required a separate approval.
+Edit the corresponding JSON in `plans/`, or pass `--plan /path/to/custom.json`. `--once` visits each entry once; otherwise eligible entries repeat until the total deadline. Capturing begins after Chrome starts, before navigation. The terminal prints the active capture filename and final status. A project-wide lock prevents overlapping collectors.
 
-## Run a short experiment
+## Output
+
+Successful PCAPs go into the matching `dataset/<activity>/` folder. In-progress files initially sit in `dataset/failed/`; failed attempts stay there with no actual-activity label. `dataset/metadata/` contains per-session JSON and tcpdump logs; `dataset/sessions.jsonl` is the combined index. Files include UTC timestamps, domain, and activity.
+
+Social browsing also records parent `web_browsing` and subtype `social_media`. PCAPs are session-labeled; unrelated interface traffic may be included. Close other network-heavy apps. Default snapshots retain the first 128 bytes and original packet length; use `--snaplen 0` for full packets. Snapshotting is not a guarantee of payload-free data.
+
+## Assess Tranco domains
 
 ```sh
-python collector.py --dry-run
-python collector.py --total-seconds 720 --session-seconds 90 --interface en0
-# 12 minutes TOTAL, at most 90 seconds per session (including startup/navigation).
-# Use 600 for 10 minutes or 900 for 15 minutes TOTAL.
+python src/assess_domains.py --limit 100 --dry-run
+python src/assess_domains.py --limit 100
 ```
 
-The four available sessions repeat in plan order until the total deadline. The missing meeting is logged once as unavailable. `--once` visits each plan entry only once. A small first run:
+DNS resolution and bounded HTTP GET checks are saved in `assessment/domains.sqlite3`. Re-running skips completed domains; `--retry-failed` retries unsuccessful HTTP checks. Defaults: four workers, at least 0.5 seconds between starts, 15-second overall domain deadline, at most 64 KiB of sampled HTTP body. ICMP ping is not used because blocked ping does not imply a website is unavailable. Browser usability is explicitly not tested by this cheap assessment.
 
-```sh
-python collector.py --total-seconds 45 --session-seconds 30 --once --interface en0
-python -m unittest discover -s tests -v
-```
+The existing 100-domain research supplies proposals, not verified labels. Other domains remain unclassified. **This does not automatically classify 100K sites or generate media actions.** Reviewed activity plans remain necessary.
 
-The total deadline includes Chrome startup, navigation, actions, and capture. Capture stops at the deadline; bounded cleanup may add several seconds. The final session may be shorter; a session without enough evidence fails. Unvisited entries after budget exhaustion are not counted as attempted captures. Exit code 0 means at least one successful session, 1 means none, 130 means interrupted; inspect per-session metadata for partial failures.
+## What is ready and what needs setup
 
-Choose the correct interface using `tcpdump -D`; `en0` is usually Wi-Fi, not a universal guarantee. VPN traffic may require an appropriate `utun` interface or a dedicated test environment. Do not change networking during a run. Optionally restrict to this machine's IPv4 **and IPv6** addresses, for example with `--bpf-filter 'host 192.0.2.10 or host 2001:db8::10'` after substituting real addresses. A host filter still includes other apps on that host. The default `ip or ip6` preserves DNS, UDP/QUIC, TCP, STUN/TURN, and WebRTC. Filtering only by the site's resolved IPs would lose CDN/media traffic.
+All six commands and validators are implemented. Public social pages may be login-blocked; the collector must actually find post/feed content to pass. YouTube previously succeeded in 30-second sessions, but playback is not guaranteed. Vimeo is omitted from the default video plan because its earlier playback attempts failed.
 
-## Configuration and results
+Audio and download defaults are external demonstrations, explicitly tagged in metadata. The audio is a short loop, not representative music streaming. The download is a small PDF transferred into browser memory then discarded, not a bulk download or saved document. Replace these with reviewed, representative sources before thesis evaluation.
 
-See [USAGE.md](USAGE.md) for browser actions, playback/call verification, controlled meeting setup, output metadata, and capture limitations. See [VALIDATION.md](VALIDATION.md) for the actual smoke-test results.
+Conferencing stays disabled until a controlled link, participant setup, join actions, and verified selector are supplied. The generic adapter requires bidirectional video. **The unfinished dedicated-profile/Zoom camera-off work is not integrated**, and there is no automatic Zoom login claim.
 
-Successful captures go under the matching `dataset/` category. Failed/unverified captures stay in `dataset/failed/`, which is not a class. Session evidence is in `dataset/metadata/` and `dataset/sessions.jsonl`. A homepage is browsing; streaming requires observed playback, and conferencing requires a controlled call with bidirectional video evidence. No meeting is configured by default.
-
-Close other network-heavy apps during collection: interface capture also records unrelated host traffic. This initial dataset is not isolated research ground truth. No ML is implemented.
+See [docs/VALIDATION.md](docs/VALIDATION.md) for test evidence and [docs/PLANS.md](docs/PLANS.md) for plan fields. Source under `src/` is still visible if your repository is public. Generated data and local credentials are ignored by Git.
