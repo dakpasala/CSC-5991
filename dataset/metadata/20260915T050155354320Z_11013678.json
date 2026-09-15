@@ -1,0 +1,61 @@
+{
+  "session_id": "20260915T050155354320Z_11013678",
+  "domain": "x.com",
+  "rank": 49,
+  "requested_activity": "social_media_browsing",
+  "started_at": "2026-09-15T05:01:55.354876+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1789448518.084113,
+      "browser_version": "152.0.7977.84",
+      "headed": true
+    },
+    {
+      "event": "navigate",
+      "time": 1789448521.48317,
+      "url": "https://x.com/NASA"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1789448521.483256,
+      "selector": "article"
+    },
+    {
+      "event": "content_sample",
+      "time": 1789448522.5046709,
+      "content": true,
+      "matching_elements": 2,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789448522.5069382
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 40.0,
+  "source_scope": "top100_public_profile_access_unverified",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "6291aa3c675b3a3db3080d13d2d43c8853c1f46e68a5f071db98d54c357f9236",
+  "profile_mode": "persistent",
+  "browser_version": "152.0.7977.84",
+  "capture_started_at": "2026-09-15T05:01:58.149422+00:00",
+  "browser_success": false,
+  "reason": "Interrupted",
+  "error_type": "RuntimeError",
+  "tcpdump_exit_code": 0,
+  "packet_count": 4585,
+  "capture_ended_at": "2026-09-15T05:02:02.711547+00:00",
+  "capture_duration_seconds": 4.562125,
+  "duration_seconds": 8.364,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-15T05:02:03.733532+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260915T050155354320Z_11013678_x.com_social_media_browsing.pcap"
+}

@@ -1,0 +1,21 @@
+[
+  {
+    "rank": 30,
+    "domain": "wikipedia.org",
+    "url": "https://en.wikipedia.org/wiki/Computer_network",
+    "content_selector": "#mw-content-text",
+    "links": [
+      "https://en.wikipedia.org/wiki/Network_packet"
+    ],
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 73,
+    "domain": "nginx.org",
+    "url": "https://nginx.org/en/",
+    "links": [
+      "https://nginx.org/en/docs/"
+    ],
+    "activity": "web_browsing"
+  }
+]

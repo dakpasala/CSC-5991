@@ -1,0 +1,80 @@
+{
+  "session_id": "20260915T061035065237Z_3ac04d84",
+  "domain": "instagram.com",
+  "rank": 11,
+  "requested_activity": "social_media_browsing",
+  "started_at": "2026-09-15T06:10:35.065424+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1789452636.579036,
+      "browser_version": "152.0.7977.84",
+      "headed": true
+    },
+    {
+      "event": "navigate",
+      "time": 1789452637.923188,
+      "url": "https://www.instagram.com/nasa/"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1789452637.923233,
+      "selector": "a[href*=\"/p/\"]:has(img), a[href*=\"/reel/\"]:has(img)"
+    },
+    {
+      "event": "dismiss_prompt",
+      "time": 1789452638.998441,
+      "selector": "[aria-label=\"Close\"]"
+    },
+    {
+      "event": "content_sample",
+      "time": 1789452639.3061068,
+      "content": false,
+      "matching_elements": 3,
+      "playing_media": false
+    },
+    {
+      "event": "browser_diagnostic",
+      "time": 1789452639.311753,
+      "phase": "browsing",
+      "access_denied": false,
+      "article_elements": 0,
+      "audio_elements": 0,
+      "login_prompt": true,
+      "post_links": 12,
+      "video_elements": 0,
+      "window_count": 1
+    },
+    {
+      "event": "done",
+      "success": false,
+      "reason": "Readable browsing content absent or media playing",
+      "error_type": "RuntimeError"
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 40.0,
+  "source_scope": "top100_public_profile_access_unverified",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "6291aa3c675b3a3db3080d13d2d43c8853c1f46e68a5f071db98d54c357f9236",
+  "profile_mode": "persistent",
+  "browser_version": "152.0.7977.84",
+  "capture_started_at": "2026-09-15T06:10:36.709827+00:00",
+  "browser_success": false,
+  "reason": "Readable browsing content absent or media playing",
+  "error_type": "RuntimeError",
+  "capture_ended_at": "2026-09-15T06:10:39.316052+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 4559,
+  "capture_duration_seconds": 2.606225,
+  "duration_seconds": 4.531,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-15T06:10:39.596276+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260915T061035065237Z_3ac04d84_instagram.com_social_media_browsing.pcap"
+}

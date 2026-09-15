@@ -1,0 +1,118 @@
+{
+  "session_id": "20260915T035904451177Z_3ef79ea1",
+  "domain": "x.com",
+  "rank": 49,
+  "requested_activity": "social_media_browsing",
+  "started_at": "2026-09-15T03:59:04.451589+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1789444749.460903,
+      "browser_version": "152.0.7977.84",
+      "headed": true
+    },
+    {
+      "event": "navigate",
+      "time": 1789444752.9395561,
+      "url": "https://x.com/NASA"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1789444752.939719,
+      "selector": "article"
+    },
+    {
+      "event": "content_sample",
+      "time": 1789444753.967378,
+      "content": true,
+      "matching_elements": 2,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789444753.9692988
+    },
+    {
+      "event": "content_sample",
+      "time": 1789444755.977134,
+      "content": true,
+      "matching_elements": 2,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789444755.983404
+    },
+    {
+      "event": "content_sample",
+      "time": 1789444757.9930182,
+      "content": true,
+      "matching_elements": 2,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789444757.995691
+    },
+    {
+      "event": "content_sample",
+      "time": 1789444760.014066,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789444760.0177228
+    },
+    {
+      "event": "content_sample",
+      "time": 1789444762.034428,
+      "content": false,
+      "matching_elements": 0,
+      "playing_media": false
+    },
+    {
+      "event": "browser_diagnostic",
+      "time": 1789444762.041515,
+      "phase": "browsing",
+      "access_denied": false,
+      "article_elements": 5,
+      "audio_elements": 0,
+      "login_prompt": true,
+      "post_links": 0,
+      "video_elements": 0,
+      "window_count": 1
+    },
+    {
+      "event": "done",
+      "success": false,
+      "reason": "Readable browsing content absent or media playing",
+      "error_type": "RuntimeError"
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 30.0,
+  "source_scope": "top100_public_profile_access_unverified",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "6291aa3c675b3a3db3080d13d2d43c8853c1f46e68a5f071db98d54c357f9236",
+  "browser_version": "152.0.7977.84",
+  "capture_started_at": "2026-09-15T03:59:09.620087+00:00",
+  "browser_success": false,
+  "reason": "Readable browsing content absent or media playing",
+  "error_type": "RuntimeError",
+  "capture_ended_at": "2026-09-15T03:59:22.045968+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 46310,
+  "capture_duration_seconds": 12.425881,
+  "duration_seconds": 18.144,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-15T03:59:22.594958+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260915T035904451177Z_3ef79ea1_x.com_social_media_browsing.pcap"
+}

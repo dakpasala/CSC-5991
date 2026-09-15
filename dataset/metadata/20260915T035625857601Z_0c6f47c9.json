@@ -1,0 +1,56 @@
+{
+  "session_id": "20260915T035625857601Z_0c6f47c9",
+  "domain": "w3.org",
+  "rank": null,
+  "requested_activity": "file_download",
+  "started_at": "2026-09-15T03:56:25.857836+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1789444587.273886,
+      "browser_version": "152.0.7977.84"
+    },
+    {
+      "event": "navigate",
+      "time": 1789444588.517323,
+      "url": "https://www.w3.org/"
+    },
+    {
+      "event": "download_result",
+      "time": 1789444588.615268,
+      "bytes": 13264,
+      "content_type": "application/pdf; qs=0.001",
+      "ok": true,
+      "status": 200
+    },
+    {
+      "event": "done",
+      "time": 1789444588.615485,
+      "success": true,
+      "downloaded_bytes": 13264
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 30.0,
+  "source_scope": "external_demo_small_pdf_not_representative_bulk_download",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "8aa835123ba951a775b84a2c78572e617fdf0d35683f17891f7df84cafe20af9",
+  "browser_version": "152.0.7977.84",
+  "capture_started_at": "2026-09-15T03:56:27.332015+00:00",
+  "browser_success": true,
+  "downloaded_bytes": 13264,
+  "capture_ended_at": "2026-09-15T03:56:28.619382+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 6102,
+  "capture_duration_seconds": 1.287367,
+  "duration_seconds": 3.378,
+  "success": true,
+  "actual_activity": "file_download",
+  "parent_activity": "file_download",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-15T03:56:29.235363+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/file_download/20260915T035625857601Z_0c6f47c9_w3.org_file_download.pcap"
+}

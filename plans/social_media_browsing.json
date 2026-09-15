@@ -1,0 +1,21 @@
+[
+  {
+    "rank": 49,
+    "domain": "x.com",
+    "url": "https://x.com/NASA",
+    "content_selector": "article",
+    "source_scope": "top100_public_profile_access_unverified",
+    "activity": "social_media_browsing",
+    "headed": true
+  },
+  {
+    "rank": 11,
+    "domain": "instagram.com",
+    "url": "https://www.instagram.com/nasa/",
+    "content_selector": "a[href*=\"/p/\"]:has(img), a[href*=\"/reel/\"]:has(img)",
+    "source_scope": "top100_public_profile_access_unverified",
+    "activity": "social_media_browsing",
+    "headed": true,
+    "dismiss_selector": "[aria-label=\"Close\"]"
+  }
+]

@@ -1,0 +1,101 @@
+{
+  "session_id": "20260915T031619866599Z_cca8e76c",
+  "domain": "wikipedia.org",
+  "rank": 30,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-15T03:16:19.867028+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1789442182.054135,
+      "browser_version": "152.0.7977.84"
+    },
+    {
+      "event": "navigate",
+      "time": 1789442184.2361019,
+      "url": "https://en.wikipedia.org/wiki/Computer_network"
+    },
+    {
+      "event": "scroll",
+      "time": 1789442184.3264902
+    },
+    {
+      "event": "scroll",
+      "time": 1789442186.351338
+    },
+    {
+      "event": "scroll",
+      "time": 1789442188.362379
+    },
+    {
+      "event": "scroll",
+      "time": 1789442190.3722649
+    },
+    {
+      "event": "navigate",
+      "time": 1789442192.788901,
+      "url": "https://en.wikipedia.org/wiki/Network_packet"
+    },
+    {
+      "event": "scroll",
+      "time": 1789442192.797377
+    },
+    {
+      "event": "scroll",
+      "time": 1789442194.817528
+    },
+    {
+      "event": "scroll",
+      "time": 1789442196.82598
+    },
+    {
+      "event": "scroll",
+      "time": 1789442198.838251
+    },
+    {
+      "event": "scroll",
+      "time": 1789442200.849719
+    },
+    {
+      "event": "scroll",
+      "time": 1789442202.8617978
+    },
+    {
+      "event": "scroll",
+      "time": 1789442204.873182
+    },
+    {
+      "event": "scroll",
+      "time": 1789442206.885329
+    },
+    {
+      "event": "done",
+      "time": 1789442208.3719811,
+      "success": true,
+      "verified_seconds": 23.549
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 30.0,
+  "source_scope": "user_plan",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "bd9b45f291d5a5c83f4595eb2ad13db946e4247f7bcdd0c1485d59d22f6bc9c2",
+  "browser_version": "152.0.7977.84",
+  "capture_started_at": "2026-09-15T03:16:22.110723+00:00",
+  "browser_success": true,
+  "verified_seconds": 23.549,
+  "capture_ended_at": "2026-09-15T03:16:48.382837+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 41925,
+  "capture_duration_seconds": 26.272114,
+  "duration_seconds": 28.75,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-15T03:16:48.617269+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260915T031619866599Z_cca8e76c_wikipedia.org_web_browsing.pcap"
+}

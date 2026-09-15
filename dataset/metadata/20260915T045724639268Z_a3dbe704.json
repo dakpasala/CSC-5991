@@ -1,0 +1,62 @@
+{
+  "session_id": "20260915T045724639268Z_a3dbe704",
+  "domain": "instagram.com",
+  "rank": 11,
+  "requested_activity": "social_media_browsing",
+  "started_at": "2026-09-15T04:57:24.639653+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1789448246.4035351,
+      "browser_version": "152.0.7977.84",
+      "headed": true
+    },
+    {
+      "event": "navigate",
+      "time": 1789448247.965534,
+      "url": "https://www.instagram.com/nasa/"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1789448247.965615,
+      "selector": "a[href*=\"/p/\"]:has(img), a[href*=\"/reel/\"]:has(img)"
+    },
+    {
+      "event": "browser_diagnostic",
+      "time": 1789448248.996481,
+      "phase": "browsing",
+      "diagnostic_error": "NoSuchWindowException"
+    },
+    {
+      "event": "done",
+      "success": false,
+      "reason": "Browser action failed during browsing; inspect access or selectors",
+      "error_type": "TypeError"
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 40.0,
+  "source_scope": "top100_public_profile_access_unverified",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "6291aa3c675b3a3db3080d13d2d43c8853c1f46e68a5f071db98d54c357f9236",
+  "profile_mode": "persistent",
+  "browser_version": "152.0.7977.84",
+  "capture_started_at": "2026-09-15T04:57:26.468507+00:00",
+  "browser_success": false,
+  "reason": "Browser action failed during browsing; inspect access or selectors",
+  "error_type": "TypeError",
+  "capture_ended_at": "2026-09-15T04:57:29.000519+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 4727,
+  "capture_duration_seconds": 2.532012,
+  "duration_seconds": 4.67,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-15T04:57:29.309163+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260915T045724639268Z_a3dbe704_instagram.com_social_media_browsing.pcap"
+}

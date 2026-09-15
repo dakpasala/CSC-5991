@@ -1,0 +1,56 @@
+{
+  "session_id": "20260915T035444216428Z_25b19a0d",
+  "domain": "x.com",
+  "rank": 49,
+  "requested_activity": "social_media_browsing",
+  "started_at": "2026-09-15T03:54:44.216628+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1789444485.429229,
+      "browser_version": "152.0.7977.84"
+    },
+    {
+      "event": "browser_diagnostic",
+      "time": 1789444486.11343,
+      "phase": "navigation",
+      "access_denied": true,
+      "article_elements": 0,
+      "audio_elements": 0,
+      "login_prompt": false,
+      "post_links": 0,
+      "video_elements": 0,
+      "window_count": 1
+    },
+    {
+      "event": "done",
+      "success": false,
+      "reason": "Chrome network/access error page",
+      "error_type": "RuntimeError"
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 30.0,
+  "source_scope": "top100_public_profile_access_unverified",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "5afa58cf6c963991f768579e67c0a95c8782f250723f86b702bc276eac0552bf",
+  "browser_version": "152.0.7977.84",
+  "capture_started_at": "2026-09-15T03:54:45.489903+00:00",
+  "browser_success": false,
+  "reason": "Chrome network/access error page",
+  "error_type": "RuntimeError",
+  "capture_ended_at": "2026-09-15T03:54:46.114909+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 362,
+  "capture_duration_seconds": 0.625006,
+  "duration_seconds": 2.129,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-15T03:54:46.345632+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260915T035444216428Z_25b19a0d_x.com_social_media_browsing.pcap"
+}

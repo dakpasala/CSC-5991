@@ -1,0 +1,68 @@
+{
+  "session_id": "20260915T035250058837Z_4dec50bb",
+  "domain": "w3schools.com",
+  "rank": null,
+  "requested_activity": "audio_streaming",
+  "started_at": "2026-09-15T03:52:50.059018+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1789444372.395958,
+      "browser_version": "152.0.7977.84"
+    },
+    {
+      "event": "navigate",
+      "time": 1789444373.11181,
+      "url": "https://www.w3schools.com/html/tryit.asp"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1789444373.1119208,
+      "selector": "#iframeResult"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1789444373.224096,
+      "selector": "audio"
+    },
+    {
+      "event": "play_requested",
+      "time": 1789444373.235704,
+      "media": "audio"
+    },
+    {
+      "event": "media_sample",
+      "time": 1789444374.268824,
+      "progressing": true,
+      "media_time": 0.759103
+    },
+    {
+      "event": "media_sample",
+      "time": 1789444375.333157,
+      "progressing": true,
+      "media_time": 0.204923
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 29.99999708298128,
+  "source_scope": "external_demo_short_loop_not_representative_music_streaming",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "19abc5c9e8493763d345e50daccc5f1028512685201b3e9c1b99cc4aa5f92c9b",
+  "browser_version": "152.0.7977.84",
+  "capture_started_at": "2026-09-15T03:52:52.455933+00:00",
+  "browser_success": false,
+  "reason": "Session deadline exceeded",
+  "error_type": "RuntimeError",
+  "capture_ended_at": "2026-09-15T03:53:20.068512+00:00",
+  "capture_duration_seconds": 27.612579,
+  "duration_seconds": 31.676,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-15T03:53:21.735009+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260915T035250058837Z_4dec50bb_w3schools.com_audio_streaming.pcap"
+}

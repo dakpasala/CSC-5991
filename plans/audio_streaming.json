@@ -1,0 +1,10 @@
+[
+  {
+    "domain": "w3schools.com",
+    "url": "https://www.w3schools.com/html/horse.ogg",
+    "media_selector": "audio, video",
+    "loop": true,
+    "source_scope": "external_demo_short_loop_not_representative_music_streaming",
+    "activity": "audio_streaming"
+  }
+]

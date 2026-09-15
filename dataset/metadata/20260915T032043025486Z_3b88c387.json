@@ -1,0 +1,49 @@
+{
+  "session_id": "20260915T032043025486Z_3b88c387",
+  "domain": "instagram.com",
+  "rank": 11,
+  "requested_activity": "social_media_browsing",
+  "started_at": "2026-09-15T03:20:43.025663+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1789442444.9461288,
+      "browser_version": "152.0.7977.84"
+    },
+    {
+      "event": "navigate",
+      "time": 1789442446.482219,
+      "url": "https://www.instagram.com/nasa/"
+    },
+    {
+      "event": "done",
+      "success": false,
+      "reason": "Browser action failed; inspect access or selectors using --headed",
+      "error_type": "TimeoutException"
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 40.0,
+  "source_scope": "top100_public_profile_access_unverified",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "d63ae313e32705510f3c47c33dd458d0d6ca239f20448b950a5c9b2f7742b3e4",
+  "browser_version": "152.0.7977.84",
+  "capture_started_at": "2026-09-15T03:20:45.005143+00:00",
+  "browser_success": false,
+  "reason": "Browser action failed; inspect access or selectors using --headed",
+  "error_type": "TimeoutException",
+  "capture_ended_at": "2026-09-15T03:21:06.545803+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 45677,
+  "capture_duration_seconds": 21.54066,
+  "duration_seconds": 23.832,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-15T03:21:06.857742+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260915T032043025486Z_3b88c387_instagram.com_social_media_browsing.pcap"
+}
