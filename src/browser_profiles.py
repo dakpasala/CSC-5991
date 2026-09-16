@@ -12,7 +12,16 @@ LOGIN_PROFILE = ROOT / ".browser-profiles" / "collection"
 CHROME_BINARY = "/Applications/Google Chrome 2.app/Contents/MacOS/Google Chrome"
 LOGIN_DEBUG_PORT = 9223
 SESSION_COOKIES = ROOT / ".browser-profiles" / "session_cookies.json"
-SESSION_COOKIE_DOMAINS = ("x.com", "instagram.com", "google.com")
+SESSION_COOKIE_DOMAINS = (
+    "x.com",
+    "instagram.com",
+    "google.com",
+    "facebook.com",
+    "linkedin.com",
+    "pinterest.com",
+    "tiktok.com",
+    "spotify.com",
+)
 
 
 @contextmanager

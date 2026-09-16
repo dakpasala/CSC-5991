@@ -70,6 +70,11 @@ def main():
                     "https://accounts.google.com/",
                     "https://www.instagram.com/accounts/login/",
                     "https://x.com/i/flow/login",
+                    "https://www.facebook.com/login/",
+                    "https://www.linkedin.com/login",
+                    "https://www.pinterest.com/login/",
+                    "https://www.tiktok.com/login",
+                    "https://accounts.spotify.com/login",
                 ],
                 stdout=subprocess.DEVNULL,
                 stderr=subprocess.DEVNULL,
@@ -77,7 +82,8 @@ def main():
             try:
                 print("Login setup is open. Packet capture is OFF.", flush=True)
                 print(
-                    "Sign into the three sites yourself. No credentials or page content are read.",
+                    "Sign into whichever of these you need, then come back here. "
+                    "No credentials or page content are read.",
                     flush=True,
                 )
                 input(
