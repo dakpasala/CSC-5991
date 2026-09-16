@@ -68,6 +68,7 @@ def main():
                     "--disable-sync",
                     "--new-window",
                     "https://accounts.google.com/",
+                    "https://www.youtube.com/",
                     "https://www.instagram.com/accounts/login/",
                     "https://x.com/i/flow/login",
                     "https://www.facebook.com/login/",

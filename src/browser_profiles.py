@@ -16,6 +16,7 @@ SESSION_COOKIE_DOMAINS = (
     "x.com",
     "instagram.com",
     "google.com",
+    "youtube.com",
     "facebook.com",
     "linkedin.com",
     "pinterest.com",
