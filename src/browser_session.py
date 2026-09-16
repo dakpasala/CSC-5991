@@ -209,20 +209,19 @@ def worker(pipe, item, settings, deadline, profile):
             if activity == "social_media_browsing":
                 driver.execute_script("document.querySelector(arguments[0]).scrollIntoView({block:'center'})",
                                       item["content_selector"])
-                # Network.setCacheDisabled forces every post image to fetch fresh each
-                # run, and page_load_strategy="none" returns before they start loading;
-                # poll rather than a single fixed sleep before treating it as a failure.
-                settle_deadline = min(time.monotonic() + 10, deadline - 1.5)
-                while True:
-                    try:
-                        browsing_evidence()
-                        break
-                    except RuntimeError:
-                        if time.monotonic() >= settle_deadline:
-                            raise
-                        time.sleep(min(1.5, max(0, settle_deadline - time.monotonic())))
-            else:
-                browsing_evidence()
+            # Network.setCacheDisabled forces resources to fetch fresh each run, and
+            # page_load_strategy="none" can return before a heavy/SPA page finishes its
+            # first real paint (or briefly clears content mid-hydration); poll rather
+            # than a single fixed check before treating it as a failure.
+            settle_deadline = min(time.monotonic() + 10, deadline - 1.5)
+            while True:
+                try:
+                    browsing_evidence()
+                    break
+                except RuntimeError:
+                    if time.monotonic() >= settle_deadline:
+                        raise
+                    time.sleep(min(1.5, max(0, settle_deadline - time.monotonic())))
             post_index = 0
             link_index = 0
             link_time = time.monotonic()
@@ -297,8 +296,16 @@ def worker(pipe, item, settings, deadline, profile):
                 emit("media_sample", progressing=progressing, **details)
                 previous, sampled = current, now
                 if now - last_progress > settings["stall_seconds"]:
+                    # Once genuine playback already cleared the bar, a late stall
+                    # (ad, bot-check wall, natural end) ends the session gracefully
+                    # instead of discarding an already-verified capture.
+                    if verified >= settings["min_verified_seconds"]:
+                        break
                     raise RuntimeError("Playback/call absent or stalled")
-            if time.monotonic() - last_progress > 3:
+            if (
+                time.monotonic() - last_progress > 3
+                and verified < settings["min_verified_seconds"]
+            ):
                 raise RuntimeError("Media was not progressing at session end")
         if verified < settings["min_verified_seconds"]:
             raise RuntimeError("Insufficient verified activity duration")

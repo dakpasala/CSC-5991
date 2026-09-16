@@ -1,0 +1,384 @@
+{
+  "session_id": "20260916T215113937375Z_eaa5d6d0",
+  "domain": "youtube.com",
+  "rank": 9,
+  "requested_activity": "video_streaming",
+  "started_at": "2026-09-16T21:51:13.937593+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1789595475.620876,
+      "browser_version": "152.0.7977.84",
+      "headed": true
+    },
+    {
+      "event": "navigate",
+      "time": 1789595478.1971169,
+      "url": "https://www.youtube.com/watch"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1789595478.1971672,
+      "selector": "video"
+    },
+    {
+      "event": "play_requested",
+      "time": 1789595478.214464,
+      "media": "video"
+    },
+    {
+      "event": "media_sample",
+      "time": 1789595479.227337,
+      "progressing": true,
+      "media_time": 1.630651
+    },
+    {
+      "event": "media_sample",
+      "time": 1789595480.230289,
+      "progressing": true,
+      "media_time": 2.632374
+    },
+    {
+      "event": "media_sample",
+      "time": 1789595481.235778,
+      "progressing": true,
+      "media_time": 3.638027
+    },
+    {
+      "event": "media_sample",
+      "time": 1789595482.245352,
+      "progressing": true,
+      "media_time": 4.646224
+    },
+    {
+      "event": "media_sample",
+      "time": 1789595483.2584279,
+      "progressing": true,
+      "media_time": 5.661342
+    },
+    {
+      "event": "media_sample",
+      "time": 1789595484.274436,
+      "progressing": true,
+      "media_time": 6.676429
+    },
+    {
+      "event": "media_sample",
+      "time": 1789595485.279816,
+      "progressing": true,
+      "media_time": 7.681846
+    },
+    {
+      "event": "media_sample",
+      "time": 1789595486.29047,
+      "progressing": true,
+      "media_time": 8.692453
+    },
+    {
+      "event": "media_sample",
+      "time": 1789595487.301482,
+      "progressing": true,
+      "media_time": 9.704763
+    },
+    {
+      "event": "media_sample",
+      "time": 1789595488.310604,
+      "progressing": true,
+      "media_time": 10.712362
+    },
+    {
+      "event": "media_sample",
+      "time": 1789595489.3182569,
+      "progressing": true,
+      "media_time": 11.717291
+    },
+    {
+      "event": "media_sample",
+      "time": 1789595490.32992,
+      "progressing": true,
+      "media_time": 12.728298
+    },
+    {
+      "event": "media_sample",
+      "time": 1789595491.34044,
+      "progressing": true,
+      "media_time": 13.742582
+    },
+    {
+      "event": "media_sample",
+      "time": 1789595492.34849,
+      "progressing": true,
+      "media_time": 14.747974
+    },
+    {
+      "event": "media_sample",
+      "time": 1789595493.359235,
+      "progressing": true,
+      "media_time": 15.761869
+    },
+    {
+      "event": "media_sample",
+      "time": 1789595494.374897,
+      "progressing": true,
+      "media_time": 16.776849
+    },
+    {
+      "event": "media_sample",
+      "time": 1789595495.382265,
+      "progressing": true,
+      "media_time": 17.784373
+    },
+    {
+      "event": "media_sample",
+      "time": 1789595496.397366,
+      "progressing": true,
+      "media_time": 18.798621
+    },
+    {
+      "event": "media_sample",
+      "time": 1789595497.411021,
+      "progressing": true,
+      "media_time": 19.810696
+    },
+    {
+      "event": "media_sample",
+      "time": 1789595498.417377,
+      "progressing": true,
+      "media_time": 20.818945
+    },
+    {
+      "event": "media_sample",
+      "time": 1789595499.4294841,
+      "progressing": true,
+      "media_time": 21.830996
+    },
+    {
+      "event": "media_sample",
+      "time": 1789595500.439594,
+      "progressing": true,
+      "media_time": 22.840508
+    },
+    {
+      "event": "media_sample",
+      "time": 1789595501.45542,
+      "progressing": true,
+      "media_time": 23.855477
+    },
+    {
+      "event": "media_sample",
+      "time": 1789595502.46663,
+      "progressing": true,
+      "media_time": 24.868907
+    },
+    {
+      "event": "media_sample",
+      "time": 1789595503.4807591,
+      "progressing": true,
+      "media_time": 25.879298
+    },
+    {
+      "event": "media_sample",
+      "time": 1789595504.491559,
+      "progressing": true,
+      "media_time": 26.894083
+    },
+    {
+      "event": "media_sample",
+      "time": 1789595505.50401,
+      "progressing": true,
+      "media_time": 27.904189
+    },
+    {
+      "event": "media_sample",
+      "time": 1789595506.512602,
+      "progressing": true,
+      "media_time": 28.913863
+    },
+    {
+      "event": "media_sample",
+      "time": 1789595507.5239522,
+      "progressing": true,
+      "media_time": 29.92567
+    },
+    {
+      "event": "media_sample",
+      "time": 1789595508.534997,
+      "progressing": true,
+      "media_time": 30.935833
+    },
+    {
+      "event": "media_sample",
+      "time": 1789595509.547759,
+      "progressing": true,
+      "media_time": 31.945787
+    },
+    {
+      "event": "media_sample",
+      "time": 1789595510.552798,
+      "progressing": true,
+      "media_time": 32.952345
+    },
+    {
+      "event": "media_sample",
+      "time": 1789595511.564196,
+      "progressing": true,
+      "media_time": 33.966496
+    },
+    {
+      "event": "media_sample",
+      "time": 1789595512.577342,
+      "progressing": true,
+      "media_time": 34.978942
+    },
+    {
+      "event": "media_sample",
+      "time": 1789595513.5879622,
+      "progressing": true,
+      "media_time": 35.988257
+    },
+    {
+      "event": "media_sample",
+      "time": 1789595514.600202,
+      "progressing": true,
+      "media_time": 37.002284
+    },
+    {
+      "event": "media_sample",
+      "time": 1789595515.6115232,
+      "progressing": true,
+      "media_time": 38.014288
+    },
+    {
+      "event": "media_sample",
+      "time": 1789595516.625077,
+      "progressing": true,
+      "media_time": 39.026552
+    },
+    {
+      "event": "media_sample",
+      "time": 1789595517.637543,
+      "progressing": true,
+      "media_time": 40.040293
+    },
+    {
+      "event": "media_sample",
+      "time": 1789595518.649584,
+      "progressing": true,
+      "media_time": 41.05031
+    },
+    {
+      "event": "media_sample",
+      "time": 1789595519.661134,
+      "progressing": true,
+      "media_time": 42.058432
+    },
+    {
+      "event": "media_sample",
+      "time": 1789595520.67184,
+      "progressing": true,
+      "media_time": 43.072214
+    },
+    {
+      "event": "media_sample",
+      "time": 1789595521.685109,
+      "progressing": true,
+      "media_time": 44.085446
+    },
+    {
+      "event": "media_sample",
+      "time": 1789595522.7002082,
+      "progressing": true,
+      "media_time": 45.100423
+    },
+    {
+      "event": "media_sample",
+      "time": 1789595523.710836,
+      "progressing": true,
+      "media_time": 46.111769
+    },
+    {
+      "event": "media_sample",
+      "time": 1789595524.723681,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1789595525.736801,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1789595526.752137,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1789595527.7655349,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1789595528.77937,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1789595529.789251,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1789595530.802464,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1789595531.816639,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1789595532.450725,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "done",
+      "time": 1789595532.4508538,
+      "success": true,
+      "verified_seconds": 45.491
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 60.0,
+  "source_scope": "top100_previous_30_second_success_not_guaranteed",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "776ac888db04e1d4633fe2f39b50984de366a263376bbe02ddd9b3a281fa3046",
+  "profile_mode": "persistent",
+  "browser_version": "152.0.7977.84",
+  "capture_started_at": "2026-09-16T21:51:15.698923+00:00",
+  "browser_success": true,
+  "verified_seconds": 45.491,
+  "capture_ended_at": "2026-09-16T21:52:12.460164+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 8797,
+  "capture_duration_seconds": 56.761241,
+  "duration_seconds": 58.809,
+  "success": true,
+  "actual_activity": "video_streaming",
+  "parent_activity": "video_streaming",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-16T21:52:12.747115+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/video_streaming/20260916T215113937375Z_eaa5d6d0_youtube.com_video_streaming.pcap"
+}
