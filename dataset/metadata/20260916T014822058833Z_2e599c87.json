@@ -1,0 +1,365 @@
+{
+  "session_id": "20260916T014822058833Z_2e599c87",
+  "domain": "openai.com",
+  "rank": 84,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-16T01:48:22.059649+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1789523303.665845,
+      "browser_version": "152.0.7977.84",
+      "headed": true
+    },
+    {
+      "event": "navigate",
+      "time": 1789523305.195803,
+      "url": "https://openai.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523305.1979442,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523305.199772
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523307.2145522,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523307.216219
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523309.225587,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523309.227256
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523311.2357912,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523311.2387588
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523313.259783,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523313.263537
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523315.2785149,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523315.281038
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523317.2926478,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523317.294589
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523319.31083,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523319.3150148
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523321.323603,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523321.325815
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523323.338515,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523323.340209
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523325.353634,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523325.355711
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523327.3664892,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523327.368719
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523329.3814669,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523329.3843431
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523331.39841,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523331.4024699
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523333.416414,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523333.42034
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523335.4300601,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523335.433455
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523337.443562,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523337.447753
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523339.462197,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523339.465817
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523341.477709,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523341.481483
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523343.4943721,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523343.498378
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523345.5095081,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523345.512319
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523347.520117,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523347.5219631
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523349.536086,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523349.539466
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523351.553847,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523351.557408
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523353.5676,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523353.5690691
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523355.583255,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523355.586645
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523357.6010811,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523357.604671
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523359.618963,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523359.6225338
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523360.5724978,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1789523360.572934,
+      "success": true,
+      "verified_seconds": 55.293
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 60.0,
+  "source_scope": "top100_batch_2026-09-15",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "8f3686dc6920d00c589e766d1180ffb5cd5d60e82d42be00c90e3fc9c23060a5",
+  "profile_mode": "persistent",
+  "browser_version": "152.0.7977.84",
+  "capture_started_at": "2026-09-16T01:48:23.733785+00:00",
+  "browser_success": true,
+  "verified_seconds": 55.293,
+  "capture_ended_at": "2026-09-16T01:49:20.577373+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 51729,
+  "capture_duration_seconds": 56.843588,
+  "duration_seconds": 58.744,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-16T01:49:20.804009+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260916T014822058833Z_2e599c87_openai.com_web_browsing.pcap"
+}

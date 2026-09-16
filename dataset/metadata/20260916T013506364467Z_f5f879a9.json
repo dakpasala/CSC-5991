@@ -1,0 +1,359 @@
+{
+  "session_id": "20260916T013506364467Z_f5f879a9",
+  "domain": "pinterest.com",
+  "rank": 56,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-16T01:35:06.365051+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1789522507.881686,
+      "browser_version": "152.0.7977.84",
+      "headed": true
+    },
+    {
+      "event": "session_cookies_injected",
+      "time": 1789522508.740254,
+      "count": 10
+    },
+    {
+      "event": "navigate",
+      "time": 1789522512.094136,
+      "url": "https://www.pinterest.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522512.09621,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522512.098569
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522514.127896,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522514.129951
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522516.173861,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522516.176091
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522518.202546,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522518.2054558
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522520.238337,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522520.241177
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522522.2549381,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522522.2571342
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522524.267329,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522524.2695522
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522526.277916,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522526.279575
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522528.292673,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522528.2947268
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522530.309128,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522530.312505
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522532.336538,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522532.3397682
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522534.3520849,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522534.354944
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522536.372454,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522536.37599
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522538.39142,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522538.394918
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522540.412738,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522540.415154
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522542.439232,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522542.4417222
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522544.455128,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522544.457451
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522546.474802,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522546.478443
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522548.492908,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522548.496928
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522550.522892,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522550.525992
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522552.543287,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522552.547007
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522554.563349,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522554.566447
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522556.593832,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522556.597198
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522558.613657,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522558.617095
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522560.628066,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522560.631735
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522562.652669,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522562.656447
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522564.686409,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522564.68978
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522564.8779032,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1789522564.877988,
+      "success": true,
+      "verified_seconds": 52.703
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 60.0,
+  "source_scope": "top100_batch_2026-09-15",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "8f3686dc6920d00c589e766d1180ffb5cd5d60e82d42be00c90e3fc9c23060a5",
+  "profile_mode": "persistent",
+  "browser_version": "152.0.7977.84",
+  "capture_started_at": "2026-09-16T01:35:07.954315+00:00",
+  "browser_success": true,
+  "verified_seconds": 52.703,
+  "capture_ended_at": "2026-09-16T01:36:04.882704+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 34961,
+  "capture_duration_seconds": 56.928389,
+  "duration_seconds": 58.774,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-16T01:36:05.139027+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260916T013506364467Z_f5f879a9_pinterest.com_web_browsing.pcap"
+}

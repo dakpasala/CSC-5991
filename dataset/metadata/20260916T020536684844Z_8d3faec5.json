@@ -1,0 +1,396 @@
+{
+  "session_id": "20260916T020536684844Z_8d3faec5",
+  "domain": "w3schools.com",
+  "rank": null,
+  "requested_activity": "audio_streaming",
+  "started_at": "2026-09-16T02:05:36.685025+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1789524338.200309,
+      "browser_version": "152.0.7977.84",
+      "headed": true
+    },
+    {
+      "event": "navigate",
+      "time": 1789524338.7002728,
+      "url": "https://www.w3schools.com/html/horse.ogg"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1789524338.700319,
+      "selector": "audio, video"
+    },
+    {
+      "event": "play_requested",
+      "time": 1789524338.71029,
+      "media": "audio"
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524339.725937,
+      "progressing": true,
+      "media_time": 0.748886
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524340.7398028,
+      "progressing": true,
+      "media_time": 0.201173
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524341.7530398,
+      "progressing": true,
+      "media_time": 1.213835
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524342.766459,
+      "progressing": true,
+      "media_time": 0.672649
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524343.773259,
+      "progressing": true,
+      "media_time": 0.110516
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524344.78705,
+      "progressing": true,
+      "media_time": 1.127158
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524345.800193,
+      "progressing": true,
+      "media_time": 0.574846
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524346.808693,
+      "progressing": true,
+      "media_time": 0.015599
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524347.816106,
+      "progressing": true,
+      "media_time": 1.021948
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524348.828532,
+      "progressing": true,
+      "media_time": 0.471432
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524349.841707,
+      "progressing": true,
+      "media_time": 1.48627
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524350.855443,
+      "progressing": true,
+      "media_time": 0.939408
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524351.868889,
+      "progressing": true,
+      "media_time": 0.38918
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524352.881851,
+      "progressing": true,
+      "media_time": 1.403566
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524353.895583,
+      "progressing": true,
+      "media_time": 0.853332
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524354.905314,
+      "progressing": true,
+      "media_time": 0.299847
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524355.918731,
+      "progressing": true,
+      "media_time": 1.315241
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524356.928192,
+      "progressing": true,
+      "media_time": 0.762233
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524357.9414332,
+      "progressing": true,
+      "media_time": 0.213034
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524358.953582,
+      "progressing": true,
+      "media_time": 1.224883
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524359.966717,
+      "progressing": true,
+      "media_time": 0.677862
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524360.975374,
+      "progressing": true,
+      "media_time": 0.12597
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524361.988676,
+      "progressing": true,
+      "media_time": 1.142136
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524363.0014641,
+      "progressing": true,
+      "media_time": 0.594715
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524364.011977,
+      "progressing": true,
+      "media_time": 0.041137
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524365.0229099,
+      "progressing": true,
+      "media_time": 1.053139
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524366.034507,
+      "progressing": true,
+      "media_time": 0.502358
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524367.051069,
+      "progressing": true,
+      "media_time": 0.003765
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524368.0641952,
+      "progressing": true,
+      "media_time": 0.966313
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524369.071866,
+      "progressing": true,
+      "media_time": 0.413914
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524370.084946,
+      "progressing": true,
+      "media_time": 1.426765
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524371.097743,
+      "progressing": true,
+      "media_time": 0.880604
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524372.110753,
+      "progressing": true,
+      "media_time": 0.332314
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524373.124592,
+      "progressing": true,
+      "media_time": 1.345947
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524374.1380281,
+      "progressing": true,
+      "media_time": 0.798217
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524375.151443,
+      "progressing": true,
+      "media_time": 0.247136
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524376.1641972,
+      "progressing": true,
+      "media_time": 1.257286
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524377.178488,
+      "progressing": true,
+      "media_time": 0.71588
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524378.191266,
+      "progressing": true,
+      "media_time": 0.164043
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524379.201708,
+      "progressing": true,
+      "media_time": 1.17586
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524380.2115772,
+      "progressing": true,
+      "media_time": 0.621842
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524381.223168,
+      "progressing": true,
+      "media_time": 0.07336
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524382.2363222,
+      "progressing": true,
+      "media_time": 1.083884
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524383.2494311,
+      "progressing": true,
+      "media_time": 0.533693
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524384.2623,
+      "progressing": true,
+      "media_time": 0.005797
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524385.2740219,
+      "progressing": true,
+      "media_time": 0.998481
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524386.287649,
+      "progressing": true,
+      "media_time": 0.445851
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524387.300969,
+      "progressing": true,
+      "media_time": 1.458953
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524388.3139892,
+      "progressing": true,
+      "media_time": 0.911632
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524389.328178,
+      "progressing": true,
+      "media_time": 0.360235
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524390.341253,
+      "progressing": true,
+      "media_time": 1.37629
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524391.354497,
+      "progressing": true,
+      "media_time": 0.825456
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524392.3676999,
+      "progressing": true,
+      "media_time": 0.276469
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524393.378339,
+      "progressing": true,
+      "media_time": 1.28279
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524394.391953,
+      "progressing": true,
+      "media_time": 0.740386
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524395.1927319,
+      "progressing": true,
+      "media_time": 0.02322
+    },
+    {
+      "event": "done",
+      "time": 1789524395.192826,
+      "success": true,
+      "verified_seconds": 56.48
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 60.0,
+  "source_scope": "external_demo_short_loop_not_representative_music_streaming",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "d1d641b9b585cc7c7241ec14efa2fa4ab3c7180654600bee656c1ef64405d23a",
+  "profile_mode": "persistent",
+  "browser_version": "152.0.7977.84",
+  "capture_started_at": "2026-09-16T02:05:38.279637+00:00",
+  "browser_success": true,
+  "verified_seconds": 56.48,
+  "capture_ended_at": "2026-09-16T02:06:35.196986+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 3002,
+  "capture_duration_seconds": 56.917349,
+  "duration_seconds": 58.728,
+  "success": true,
+  "actual_activity": "audio_streaming",
+  "parent_activity": "audio_streaming",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-16T02:06:35.414121+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/audio_streaming/20260916T020536684844Z_8d3faec5_w3schools.com_audio_streaming.pcap"
+}

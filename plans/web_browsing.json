@@ -17,5 +17,355 @@
       "https://nginx.org/en/docs/"
     ],
     "activity": "web_browsing"
+  },
+  {
+    "rank": 1,
+    "domain": "google.com",
+    "url": "https://google.com/",
+    "source_scope": "top100_batch_2026-09-15",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 2,
+    "domain": "cloudflare.com",
+    "url": "https://cloudflare.com/",
+    "source_scope": "top100_batch_2026-09-15",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 3,
+    "domain": "facebook.com",
+    "url": "https://facebook.com/",
+    "source_scope": "top100_batch_2026-09-15",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 6,
+    "domain": "microsoft.com",
+    "url": "https://microsoft.com/",
+    "source_scope": "top100_batch_2026-09-15",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 8,
+    "domain": "amazonaws.com",
+    "url": "https://amazonaws.com/",
+    "source_scope": "top100_batch_2026-09-15",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 10,
+    "domain": "apple.com",
+    "url": "https://apple.com/",
+    "source_scope": "top100_batch_2026-09-15",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 12,
+    "domain": "mail.ru",
+    "url": "https://mail.ru/",
+    "source_scope": "top100_batch_2026-09-15",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 17,
+    "domain": "linkedin.com",
+    "url": "https://linkedin.com/",
+    "source_scope": "top100_batch_2026-09-15",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 21,
+    "domain": "office.com",
+    "url": "https://office.com/",
+    "source_scope": "top100_batch_2026-09-15",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 22,
+    "domain": "live.com",
+    "url": "https://live.com/",
+    "source_scope": "top100_batch_2026-09-15",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 25,
+    "domain": "amazon.com",
+    "url": "https://amazon.com/",
+    "source_scope": "top100_batch_2026-09-15",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 28,
+    "domain": "azure.com",
+    "url": "https://azure.com/",
+    "source_scope": "top100_batch_2026-09-15",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 29,
+    "domain": "github.com",
+    "url": "https://github.com/",
+    "source_scope": "top100_batch_2026-09-15",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 31,
+    "domain": "bing.com",
+    "url": "https://bing.com/",
+    "source_scope": "top100_batch_2026-09-15",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 36,
+    "domain": "fastly.net",
+    "url": "https://fastly.net/",
+    "source_scope": "top100_batch_2026-09-15",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 37,
+    "domain": "doubleclick.net",
+    "url": "https://doubleclick.net/",
+    "source_scope": "top100_batch_2026-09-15",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 43,
+    "domain": "sharepoint.com",
+    "url": "https://sharepoint.com/",
+    "source_scope": "top100_batch_2026-09-15",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 44,
+    "domain": "cloud.microsoft",
+    "url": "https://cloud.microsoft/",
+    "source_scope": "top100_batch_2026-09-15",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 45,
+    "domain": "gandi.net",
+    "url": "https://gandi.net/",
+    "source_scope": "top100_batch_2026-09-15",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 47,
+    "domain": "digicert.com",
+    "url": "https://digicert.com/",
+    "source_scope": "top100_batch_2026-09-15",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 48,
+    "domain": "wordpress.org",
+    "url": "https://wordpress.org/",
+    "source_scope": "top100_batch_2026-09-15",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 51,
+    "domain": "icloud.com",
+    "url": "https://icloud.com/",
+    "source_scope": "top100_batch_2026-09-15",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 54,
+    "domain": "tiktok.com",
+    "url": "https://tiktok.com/",
+    "source_scope": "top100_batch_2026-09-15",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 56,
+    "domain": "pinterest.com",
+    "url": "https://pinterest.com/",
+    "source_scope": "top100_batch_2026-09-15",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 57,
+    "domain": "googledomains.com",
+    "url": "https://googledomains.com/",
+    "source_scope": "top100_batch_2026-09-15",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 59,
+    "domain": "roblox.com",
+    "url": "https://roblox.com/",
+    "source_scope": "top100_batch_2026-09-15",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 60,
+    "domain": "yahoo.com",
+    "url": "https://yahoo.com/",
+    "source_scope": "top100_batch_2026-09-15",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 65,
+    "domain": "spotify.com",
+    "url": "https://spotify.com/",
+    "source_scope": "top100_batch_2026-09-15",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 67,
+    "domain": "ntp.org",
+    "url": "https://ntp.org/",
+    "source_scope": "top100_batch_2026-09-15",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 68,
+    "domain": "adobe.com",
+    "url": "https://adobe.com/",
+    "source_scope": "top100_batch_2026-09-15",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 69,
+    "domain": "wa.me",
+    "url": "https://wa.me/",
+    "source_scope": "top100_batch_2026-09-15",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 70,
+    "domain": "msn.com",
+    "url": "https://msn.com/",
+    "source_scope": "top100_batch_2026-09-15",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 71,
+    "domain": "myfritz.net",
+    "url": "https://myfritz.net/",
+    "source_scope": "top100_batch_2026-09-15",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 72,
+    "domain": "cloudflare-dns.com",
+    "url": "https://cloudflare-dns.com/",
+    "source_scope": "top100_batch_2026-09-15",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 74,
+    "domain": "qq.com",
+    "url": "https://qq.com/",
+    "source_scope": "top100_batch_2026-09-15",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 75,
+    "domain": "chatgpt.com",
+    "url": "https://chatgpt.com/",
+    "source_scope": "top100_batch_2026-09-15",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 80,
+    "domain": "workers.dev",
+    "url": "https://workers.dev/",
+    "source_scope": "top100_batch_2026-09-15",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 84,
+    "domain": "openai.com",
+    "url": "https://openai.com/",
+    "source_scope": "top100_batch_2026-09-15",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 86,
+    "domain": "baidu.com",
+    "url": "https://baidu.com/",
+    "source_scope": "top100_batch_2026-09-15",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 87,
+    "domain": "yandex.net",
+    "url": "https://yandex.net/",
+    "source_scope": "top100_batch_2026-09-15",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 88,
+    "domain": "vimeo.com",
+    "url": "https://vimeo.com/",
+    "source_scope": "top100_batch_2026-09-15",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 90,
+    "domain": "windows.com",
+    "url": "https://windows.com/",
+    "source_scope": "top100_batch_2026-09-15",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 92,
+    "domain": "opera.com",
+    "url": "https://opera.com/",
+    "source_scope": "top100_batch_2026-09-15",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 93,
+    "domain": "samsung.com",
+    "url": "https://samsung.com/",
+    "source_scope": "top100_batch_2026-09-15",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 94,
+    "domain": "sentry.io",
+    "url": "https://sentry.io/",
+    "source_scope": "top100_batch_2026-09-15",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 95,
+    "domain": "nginx.com",
+    "url": "https://nginx.com/",
+    "source_scope": "top100_batch_2026-09-15",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 96,
+    "domain": "blogspot.com",
+    "url": "https://blogspot.com/",
+    "source_scope": "top100_batch_2026-09-15",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 97,
+    "domain": "f5.com",
+    "url": "https://f5.com/",
+    "source_scope": "top100_batch_2026-09-15",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 99,
+    "domain": "yandex.ru",
+    "url": "https://yandex.ru/",
+    "source_scope": "top100_batch_2026-09-15",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 100,
+    "domain": "capgemini.com",
+    "url": "https://capgemini.com/",
+    "source_scope": "top100_batch_2026-09-15",
+    "activity": "web_browsing"
   }
 ]

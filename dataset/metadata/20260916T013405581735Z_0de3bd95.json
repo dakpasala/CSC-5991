@@ -1,0 +1,348 @@
+{
+  "session_id": "20260916T013405581735Z_0de3bd95",
+  "domain": "tiktok.com",
+  "rank": 54,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-16T01:34:05.582596+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1789522447.100811,
+      "browser_version": "152.0.7977.84",
+      "headed": true
+    },
+    {
+      "event": "session_cookies_injected",
+      "time": 1789522448.461914,
+      "count": 34
+    },
+    {
+      "event": "navigate",
+      "time": 1789522452.0344372,
+      "url": "https://www.tiktok.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522452.036698,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522452.0384798
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522454.054016,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522454.0556428
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522456.0662348,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522456.068367
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522458.081176,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522458.0833302
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522460.0998862,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522460.1021068
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522462.113516,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522462.115496
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522464.124301,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522464.1273038
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522466.1372778,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522466.139625
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522468.153446,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522468.156044
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522470.169697,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522470.172139
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522472.185241,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522472.188993
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522474.198638,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522474.203465
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522476.212847,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522476.215041
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522478.220897,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522478.222662
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522480.23612,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522480.238593
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522482.256222,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522482.2594619
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522484.279888,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522484.283093
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522486.291758,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522486.294858
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522488.309611,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522488.313041
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522490.32778,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522490.331477
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522492.342796,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522492.3446221
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522494.359572,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522494.362056
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522496.376512,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522496.3802829
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522498.3916109,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522498.395088
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522500.409634,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522500.413355
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522502.4279869,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522502.431957
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522504.0934348,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1789522504.0934908,
+      "success": true,
+      "verified_seconds": 51.984
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 60.0,
+  "source_scope": "top100_batch_2026-09-15",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "8f3686dc6920d00c589e766d1180ffb5cd5d60e82d42be00c90e3fc9c23060a5",
+  "profile_mode": "persistent",
+  "browser_version": "152.0.7977.84",
+  "capture_started_at": "2026-09-16T01:34:07.162549+00:00",
+  "browser_success": true,
+  "verified_seconds": 51.984,
+  "capture_ended_at": "2026-09-16T01:35:04.095026+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 18058,
+  "capture_duration_seconds": 56.932477,
+  "duration_seconds": 58.774,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-16T01:35:04.356487+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260916T013405581735Z_0de3bd95_tiktok.com_web_browsing.pcap"
+}
