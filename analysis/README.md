@@ -28,3 +28,15 @@ This is a **knowledge-based heuristic pass, not a live-tested assessment.** No b
 - `unknown` — not evaluated; this is the overwhelming majority (9,946 of 10,000) and must not be read as "no login required." At this rank range most domains are infrastructure, CDN, ad-tech, or API endpoints rather than browsable consumer sites at all, consistent with the top-100 findings above — but that has not been checked domain-by-domain here.
 
 Only 54 of the 10,000 domains were matched against a curated list of recognizable major platforms (34 `hard`, 20 `partial`). Verifying the remaining ~9,946 would require an actual bounded `assess_domains.py`-style pass or live Selenium checks, which was explicitly out of scope for this pass per the project's own scale guidance (no large live-capture runs just to build a classification list). Treat every `hard`/`partial` flag as a planning aid to try first, and every `unknown` as literally unassessed, not cleared.
+
+### Category column (2026-09-17)
+
+`top10k_login_requirements.csv` now also has a `category` column: one of the six collector activity folders (`web_browsing`, `social_media_browsing`, `video_streaming`, `audio_streaming`, `file_download`), or `excluded_conferencing`, or `unknown`. Same heuristic-pass rules as `login_required` above apply — this is knowledge-based, not live-tested, and only 56 of 10,000 domains were confidently categorized:
+
+- `social_media_browsing` (13) — platforms with a personalized scroll feed (facebook.com, instagram.com, x.com, linkedin.com, pinterest.com, etc.), matching how `social_media_browsing` sessions are actually driven in this project (`content_selector` + suppressed media + scroll loop).
+- `video_streaming` (11) — dedicated video/streaming platforms, including short-video apps like tiktok.com — grouped here rather than under `social_media_browsing` to match how Instagram Reels ended up categorized during collector development (video playback verification, not feed scrolling).
+- `web_browsing` (24) — landing pages, articles, marketing sites, webmail portals — anything read-only rather than a scrollable feed or active media session.
+- `audio_streaming` (1) — spotify.com only; no other top-10K domain was confidently recognizable as an audio-streaming service.
+- `file_download` (0) — no confident matches. None of the recognizable top-ranked consumer platforms map cleanly onto the project's `file_download` activity (a direct browser-driven file transfer, not a general "has downloadable content somewhere" site).
+- `excluded_conferencing` (7) — zoom.us, skype.com, whatsapp.com/whatsapp.net/web.whatsapp.com, messenger.com, discord.com, telegram.org/web.telegram.org. These are deliberately **not** categorized into one of the five active folders, per the project decision to skip video-conferencing collection entirely right now — distinct from `unknown`, which means "not assessed," these mean "assessed and out of scope."
+- `unknown` (9,944) — the overwhelming majority, same caveat as the login-requirement pass: mostly infrastructure/CDN/ad-tech at this rank range, not verified domain-by-domain.
