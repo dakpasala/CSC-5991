@@ -17,5 +17,157 @@
     "activity": "social_media_browsing",
     "headed": true,
     "dismiss_selector": "[aria-label=\"Close\"]"
+  },
+  {
+    "rank": 3,
+    "domain": "facebook.com",
+    "url": "https://facebook.com/",
+    "content_selector": "article",
+    "source_scope": "top10k_category_pass_2026-09-17",
+    "activity": "social_media_browsing"
+  },
+  {
+    "rank": 15,
+    "domain": "twitter.com",
+    "url": "https://twitter.com/",
+    "content_selector": "article",
+    "source_scope": "top10k_category_pass_2026-09-17",
+    "activity": "social_media_browsing"
+  },
+  {
+    "rank": 17,
+    "domain": "linkedin.com",
+    "url": "https://linkedin.com/",
+    "content_selector": "article",
+    "source_scope": "top10k_category_pass_2026-09-17",
+    "activity": "social_media_browsing"
+  },
+  {
+    "rank": 56,
+    "domain": "pinterest.com",
+    "url": "https://pinterest.com/",
+    "content_selector": "article",
+    "source_scope": "top10k_category_pass_2026-09-17",
+    "activity": "social_media_browsing"
+  },
+  {
+    "rank": 127,
+    "domain": "vk.com",
+    "url": "https://vk.com/",
+    "content_selector": "article",
+    "source_scope": "top10k_category_pass_2026-09-17",
+    "activity": "social_media_browsing"
+  },
+  {
+    "rank": 131,
+    "domain": "snapchat.com",
+    "url": "https://snapchat.com/",
+    "content_selector": "article",
+    "source_scope": "top10k_category_pass_2026-09-17",
+    "activity": "social_media_browsing"
+  },
+  {
+    "rank": 162,
+    "domain": "tumblr.com",
+    "url": "https://tumblr.com/",
+    "content_selector": "article",
+    "source_scope": "top10k_category_pass_2026-09-17",
+    "activity": "social_media_browsing"
+  },
+  {
+    "rank": 304,
+    "domain": "weibo.com",
+    "url": "https://weibo.com/",
+    "content_selector": "article",
+    "source_scope": "top10k_category_pass_2026-09-17",
+    "activity": "social_media_browsing"
+  },
+  {
+    "rank": 317,
+    "domain": "ok.ru",
+    "url": "https://ok.ru/",
+    "content_selector": "article",
+    "source_scope": "top10k_category_pass_2026-09-17",
+    "activity": "social_media_browsing"
+  },
+  {
+    "rank": 1132,
+    "domain": "xiaohongshu.com",
+    "url": "https://xiaohongshu.com/",
+    "content_selector": "article",
+    "source_scope": "top10k_category_pass_2026-09-17",
+    "activity": "social_media_browsing"
+  },
+  {
+    "rank": 1783,
+    "domain": "threads.net",
+    "url": "https://threads.net/",
+    "content_selector": "article",
+    "source_scope": "top10k_category_pass_2026-09-17",
+    "activity": "social_media_browsing"
+  },
+  {
+    "rank": 682,
+    "domain": "imgur.com",
+    "url": "https://imgur.com/",
+    "content_selector": "article",
+    "source_scope": "top10k_category_pass_2026-09-17",
+    "activity": "social_media_browsing"
+  },
+  {
+    "rank": 1249,
+    "domain": "fetlife.com",
+    "url": "https://fetlife.com/",
+    "content_selector": "article",
+    "source_scope": "top10k_category_pass_2026-09-17",
+    "activity": "social_media_browsing"
+  },
+  {
+    "rank": 1437,
+    "domain": "fapello.com",
+    "url": "https://fapello.com/",
+    "content_selector": "article",
+    "source_scope": "top10k_category_pass_2026-09-17",
+    "activity": "social_media_browsing"
+  },
+  {
+    "rank": 5963,
+    "domain": "9gag.com",
+    "url": "https://9gag.com/",
+    "content_selector": "article",
+    "source_scope": "top10k_category_pass_2026-09-17",
+    "activity": "social_media_browsing"
+  },
+  {
+    "rank": 5991,
+    "domain": "truthsocial.com",
+    "url": "https://truthsocial.com/",
+    "content_selector": "article",
+    "source_scope": "top10k_category_pass_2026-09-17",
+    "activity": "social_media_browsing"
+  },
+  {
+    "rank": 6539,
+    "domain": "joinmastodon.org",
+    "url": "https://joinmastodon.org/",
+    "content_selector": "article",
+    "source_scope": "top10k_category_pass_2026-09-17",
+    "activity": "social_media_browsing"
+  },
+  {
+    "rank": 6761,
+    "domain": "gaiaonline.com",
+    "url": "https://gaiaonline.com/",
+    "content_selector": "article",
+    "source_scope": "top10k_category_pass_2026-09-17",
+    "activity": "social_media_browsing"
+  },
+  {
+    "rank": 8002,
+    "domain": "sharechat.com",
+    "url": "https://sharechat.com/",
+    "content_selector": "article",
+    "source_scope": "top10k_category_pass_2026-09-17",
+    "activity": "social_media_browsing"
   }
 ]

@@ -22,6 +22,23 @@ SESSION_COOKIE_DOMAINS = (
     "pinterest.com",
     "tiktok.com",
     "spotify.com",
+    "vk.com",
+    "snapchat.com",
+    "tumblr.com",
+    "weibo.com",
+    "ok.ru",
+    "xiaohongshu.com",
+    "threads.net",
+    "netflix.com",
+    "primevideo.com",
+    "disneyplus.com",
+    "paramountplus.com",
+    "douyin.com",
+    "hulu.com",
+    "hbomax.com",
+    "crunchyroll.com",
+    "peacocktv.com",
+    "max.com",
 )
 
 

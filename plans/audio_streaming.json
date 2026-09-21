@@ -6,5 +6,33 @@
     "loop": true,
     "source_scope": "external_demo_short_loop_not_representative_music_streaming",
     "activity": "audio_streaming"
+  },
+  {
+    "rank": 65,
+    "domain": "spotify.com",
+    "url": "https://spotify.com/",
+    "source_scope": "top10k_category_pass_2026-09-17",
+    "activity": "audio_streaming"
+  },
+  {
+    "rank": 182,
+    "domain": "soundcloud.com",
+    "url": "https://soundcloud.com/",
+    "source_scope": "top10k_category_pass_2026-09-17",
+    "activity": "audio_streaming"
+  },
+  {
+    "rank": 4814,
+    "domain": "tunein.com",
+    "url": "https://tunein.com/",
+    "source_scope": "top10k_category_pass_2026-09-17",
+    "activity": "audio_streaming"
+  },
+  {
+    "rank": 5338,
+    "domain": "audiomack.com",
+    "url": "https://audiomack.com/",
+    "source_scope": "top10k_category_pass_2026-09-17",
+    "activity": "audio_streaming"
   }
 ]
