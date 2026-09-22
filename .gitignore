@@ -7,8 +7,8 @@ __pycache__/
 .env
 *.local.json
 *chrome-profile*/
-dataset/*
-!dataset/*/
+dataset/**
+!dataset/**/
 !dataset/**/.gitkeep
 assessment/
 
