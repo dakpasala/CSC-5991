@@ -16,6 +16,7 @@ import subprocess
 import sys
 import time
 from pathlib import Path
+from urllib.parse import urlsplit
 
 from config import ROOT, CATEGORIES, positive
 
@@ -32,6 +33,7 @@ def top_domains(path, limit):
                 if rank < 1:
                     raise ValueError(f"Invalid rank/domain at row {line}")
                 yield rank, domain
+
     selected = heapq.nsmallest(limit, rows())
     if len({d for _, d in selected}) != len(selected):
         raise ValueError("Duplicate domain in selected ranks")
@@ -61,7 +63,7 @@ def valid_domain(domain):
     )
 
 
-SIGNAL_VERSION = 1
+SIGNAL_VERSION = 2
 BODY_LIMIT = 65536
 
 
@@ -78,13 +80,32 @@ class PageSignals(HTMLParser):
         self.og_type = ""
         self.video = False
         self.audio = False
+        self.og_description = ""
+        self.body_parts = []
+        self.body_chars = 0
+        self.in_body = False
+        self.login_control = False
+        self.password_input = False
+        self.download_link = False
 
     def handle_starttag(self, tag, attrs):
-        if tag in {"script", "style", "template"}:
+        if tag in {"script", "style", "template", "svg", "noscript"}:
             self.ignored += 1
         if self.ignored:
             return
         attrs = dict(attrs)
+        if tag == "body":
+            self.in_body = True
+        if tag == "input" and attrs.get("type", "").lower() == "password":
+            self.password_input = True
+        if tag == "a":
+            href = attrs.get("href") or ""
+            if re.search(r"(?:^|[/?._-])(?:login|signin|sign-in|log-in)(?:$|[/?.#_-])", href, re.I):
+                self.login_control = True
+            if "download" in attrs or re.search(
+                r"\.(?:zip|tar|gz|exe|msi|dmg|iso|apk)(?:$|[?#])", href, re.I
+            ):
+                self.download_link = True
         if tag == "title" and not self.title_seen:
             self.in_title = True
             self.title_seen = True
@@ -95,27 +116,44 @@ class PageSignals(HTMLParser):
                 self.description = value
             elif key == "og:type" and not self.og_type:
                 self.og_type = value
+            elif key == "og:description" and not self.og_description:
+                self.og_description = value
         elif tag == "video":
             self.video = True
         elif tag == "audio":
             self.audio = True
 
     def handle_endtag(self, tag):
-        if tag in {"script", "style", "template"}:
+        if tag in {"script", "style", "template", "svg", "noscript"}:
             self.ignored = max(0, self.ignored - 1)
         if tag == "title":
             self.in_title = False
+        if tag == "body":
+            self.in_body = False
 
     def handle_data(self, data):
         if self.in_title and not self.ignored:
             self.title_parts.append(data)
+        if self.in_body and not self.ignored and self.body_chars < 12000:
+            text = " ".join(data.split())[: 12000 - self.body_chars]
+            if text:
+                self.body_parts.append(text)
+                self.body_chars += len(text)
 
     def signals(self):
         clean = lambda value: " ".join(value.split())[:1000]
-        return dict(title=clean("".join(self.title_parts)),
-                    meta_description=clean(self.description),
-                    og_type=clean(self.og_type).lower(),
-                    video_tag=self.video, audio_tag=self.audio)
+        return dict(
+            title=clean("".join(self.title_parts)),
+            meta_description=clean(self.description),
+            og_type=clean(self.og_type).lower(),
+            video_tag=self.video,
+            audio_tag=self.audio,
+            og_description=clean(self.og_description),
+            public_text=" ".join(self.body_parts)[:12000],
+            login_control=self.login_control,
+            password_input=self.password_input,
+            download_link=self.download_link,
+        )
 
 
 def propose_category(signals):
@@ -123,43 +161,97 @@ def propose_category(signals):
     title = signals.get("title", "")
     description = signals.get("meta_description", "")
     text = (title + " " + description).lower()
-    if re.search(r"captcha|access denied|just a moment|verify you are human|checking your browser|domain.{0,15}for sale|parked domain|sign in|log in|login|403 forbidden|404 not found", text):
+    if re.search(
+        r"captcha|access denied|just a moment|verify you are human|checking your browser|domain.{0,15}for sale|parked domain|sign in|log in|login|403 forbidden|404 not found",
+        text,
+    ):
         return "unknown", "challenge, error, parked, or login page"
     if not title or not description:
         return "unknown", "missing title or meta description"
-    calling_product = re.search(r"\b(?:(?:video conferencing|video meetings|team messaging|instant messaging) (?:software|platform|app|solutions?|service|tool)|messaging app|messaging platform|secure messenger)\b", text)
+    calling_product = re.search(
+        r"\b(?:(?:video conferencing|video meetings|team messaging|instant messaging) (?:software|platform|app|solutions?|service|tool)|messaging app|messaging platform|secure messenger)\b",
+        text,
+    )
     video_chat = "video chat" in title.lower() and "video chat" in description.lower()
     messaging_calls = "отправлять любые виды сообщений и звонить" in description.lower()
-    if (calling_product or video_chat or messaging_calls) and not re.search(r"\b(?:news|reviews?|articles?|tutorials?)\b", text):
-        return "excluded_conferencing", "title/meta description explicitly describes calling or messaging product"
-    video = bool(re.search(r"watch (?:live |free |online )?(?:videos|movies|tv|shows)|video streaming", text))
-    audio = bool(re.search(r"listen to (?:music|podcasts|radio)|stream (?:music|audio)|music streaming", text))
+    if (calling_product or video_chat or messaging_calls) and not re.search(
+        r"\b(?:news|reviews?|articles?|tutorials?)\b", text
+    ):
+        return (
+            "excluded_conferencing",
+            "title/meta description explicitly describes calling or messaging product",
+        )
+    video = bool(
+        re.search(r"watch (?:live |free |online )?(?:videos|movies|tv|shows)|video streaming", text)
+    )
+    audio = bool(
+        re.search(
+            r"listen to (?:music|podcasts|radio)|stream (?:music|audio)|music streaming", text
+        )
+    )
     if video and audio:
         return "unknown", "mixed media purpose"
     if video and signals.get("video_tag") and not signals.get("audio_tag"):
-        return "video_streaming", "explicit video viewing description and raw HTML video element; playback unverified"
+        return (
+            "video_streaming",
+            "explicit video viewing description and raw HTML video element; playback unverified",
+        )
     if audio and signals.get("audio_tag") and not signals.get("video_tag"):
-        return "audio_streaming", "explicit audio listening description and raw HTML audio element; playback unverified"
+        return (
+            "audio_streaming",
+            "explicit audio listening description and raw HTML audio element; playback unverified",
+        )
     reading = r"\b(?:news|articles?|blog|read|documentation|tutorials?)\b"
     article = signals.get("og_type") == "article" and re.search(reading, text)
-    reading_site = (re.search(r"\b(?:news|documentation|encyclopedia|tutorials)\b", title.lower())
-                    and re.search(r"\b(?:news|reporting|documentation|encyclopedia|tutorials)\b", description.lower())
-                    and not re.search(r"\b(?:platform|software|marketing|create|build|hosting)\b", description.lower()))
-    media_intent = re.search(r"\b(?:listen|stream|streaming|radio|podcasts?|trailers?|watch|memes?|gifs?|feeds?)\b", text)
-    if (article or reading_site) and not media_intent and not any(signals.get(k) for k in ("video_tag", "audio_tag")) and not video and not audio:
+    reading_site = (
+        re.search(r"\b(?:news|documentation|encyclopedia|tutorials)\b", title.lower())
+        and re.search(
+            r"\b(?:news|reporting|documentation|encyclopedia|tutorials)\b", description.lower()
+        )
+        and not re.search(
+            r"\b(?:platform|software|marketing|create|build|hosting)\b", description.lower()
+        )
+    )
+    media_intent = re.search(
+        r"\b(?:listen|stream|streaming|radio|podcasts?|trailers?|watch|memes?|gifs?|feeds?)\b", text
+    )
+    if (
+        (article or reading_site)
+        and not media_intent
+        and not any(signals.get(k) for k in ("video_tag", "audio_tag"))
+        and not video
+        and not audio
+    ):
         return "web_browsing", "corroborated reading-related metadata; browser action unverified"
     return "unknown", "insufficient or ambiguous activity-specific evidence"
 
 
-def probe(domain, timeout):
-    result = {"dns": "not_attempted", "http": [], "browser_usability": "not_tested",
-              "signal_version": SIGNAL_VERSION, "proposed_categories": "unknown",
-              "category_status": "unclassified", "actual_activity": None}
+def probe(domain, timeout, origin=None):
+    result = {
+        "dns": "not_attempted",
+        "http": [],
+        "browser_usability": "not_tested",
+        "signal_version": SIGNAL_VERSION,
+        "proposed_categories": "unknown",
+        "category_status": "unclassified",
+        "actual_activity": None,
+    }
     if not valid_domain(domain):
         result["reason"] = "invalid_domain"
         return result
+    url = origin or f"https://{domain}/"
+    parsed = urlsplit(url)
+    if (
+        parsed.scheme not in {"http", "https"}
+        or parsed.hostname != domain
+        or parsed.username
+        or parsed.password
+    ):
+        result["reason"] = "invalid_origin"
+        return result
+    port = parsed.port or (443 if parsed.scheme == "https" else 80)
     try:
-        addresses = socket.getaddrinfo(domain, 443, type=socket.SOCK_STREAM)
+        addresses = socket.getaddrinfo(domain, port, type=socket.SOCK_STREAM)
         result["addresses"] = sorted({item[4][0] for item in addresses})
         result["dns"] = "resolved"
     except OSError:
@@ -168,22 +260,44 @@ def probe(domain, timeout):
     # Connect directly to the first resolved address: no hidden second DNS lookup,
     # redirects, retries, proxy lookups, subresources, or HTTP fallback.
     family, socktype, proto, _, address = addresses[0]
-    connection = http.client.HTTPSConnection(domain, timeout=timeout)
+    connection_class = (
+        http.client.HTTPSConnection if parsed.scheme == "https" else http.client.HTTPConnection
+    )
+    connection = connection_class(domain, port=port, timeout=timeout)
     raw = None
-    entry = {"scheme": "https"}
+    entry = {"scheme": parsed.scheme}
     try:
         raw = socket.socket(family, socktype, proto)
         raw.settimeout(timeout)
         raw.connect(address)
-        connection.sock = ssl.create_default_context().wrap_socket(raw, server_hostname=domain)
-        connection.request("GET", "/", headers={"User-Agent": "CSC5991-research/0.2", "Accept-Encoding": "identity"})
+        connection.sock = (
+            ssl.create_default_context().wrap_socket(raw, server_hostname=domain)
+            if parsed.scheme == "https"
+            else raw
+        )
+        target = parsed.path or "/"
+        if parsed.query:
+            target += "?" + parsed.query
+        connection.request(
+            "GET",
+            target,
+            headers={"User-Agent": "CSC5991-research/0.2", "Accept-Encoding": "identity"},
+        )
         response = connection.getresponse()
         body = response.read(BODY_LIMIT)
         content_type = response.getheader("Content-Type", "")
-        entry.update(status=response.status, final_url=f"https://{domain}/",
-                     content_type=content_type, sampled_bytes=len(body),
-                     body_limit_reached=len(body) == BODY_LIMIT)
-        if 200 <= response.status < 300 and content_type.split(";")[0].strip().lower() in {"text/html", "application/xhtml+xml"} and response.getheader("Content-Encoding", "identity").lower() == "identity":
+        entry.update(
+            status=response.status,
+            final_url=url,
+            content_type=content_type,
+            sampled_bytes=len(body),
+            body_limit_reached=len(body) == BODY_LIMIT,
+        )
+        if (
+            200 <= response.status < 300
+            and content_type.split(";")[0].strip().lower() in {"text/html", "application/xhtml+xml"}
+            and response.getheader("Content-Encoding", "identity").lower() == "identity"
+        ):
             match = re.search(r"charset=[\"']?([\w-]+)", content_type, re.I)
             encoding = match.group(1) if match else "utf-8"
             try:
@@ -194,8 +308,11 @@ def probe(domain, timeout):
             parser.feed(html)
             entry["signals"] = parser.signals()
             category, reason = propose_category(entry["signals"])
-            result.update(proposed_categories=category, category_reason=reason,
-                          category_status="proposal_only" if category != "unknown" else "unclassified")
+            result.update(
+                proposed_categories=category,
+                category_reason=reason,
+                category_status="proposal_only" if category != "unknown" else "unclassified",
+            )
         else:
             result["category_reason"] = "non-success, redirect, non-HTML, or encoded response"
     except (OSError, http.client.HTTPException, ValueError) as error:
@@ -221,7 +338,9 @@ def apply_categories(path, db):
     for row in rows:
         if row["category"] != "unknown":
             continue
-        record = db.execute("SELECT rank, result FROM domains WHERE domain=?", (row["domain"],)).fetchone()
+        record = db.execute(
+            "SELECT rank, result FROM domains WHERE domain=?", (row["domain"],)
+        ).fetchone()
         if not record or record[0] != int(row["rank"]):
             continue
         result = json.loads(record[1])
@@ -240,16 +359,29 @@ def apply_categories(path, db):
         writer.writeheader()
         writer.writerows(rows)
     temporary.replace(path)
-    print(json.dumps({"changed": changed, "stayed_unknown": sum(r["category"] == "unknown" for r in rows)}))
+    print(
+        json.dumps(
+            {"changed": changed, "stayed_unknown": sum(r["category"] == "unknown" for r in rows)}
+        )
+    )
 
 
-def isolated_probe(domain, timeout):
+def isolated_probe(domain, timeout, origin=None):
     """A child-process timeout also bounds DNS, TLS, redirects, and slow body reads."""
     try:
         completed = subprocess.run(
-            [sys.executable, str(Path(__file__).resolve()), "--probe", domain,
-             "--timeout", str(timeout)],
-            capture_output=True, text=True, timeout=timeout,
+            [
+                sys.executable,
+                str(Path(__file__).resolve()),
+                "--probe",
+                domain,
+                "--timeout",
+                str(timeout),
+            ]
+            + (["--origin", origin] if origin else []),
+            capture_output=True,
+            text=True,
+            timeout=timeout,
         )
         if completed.returncode:
             return {"dns": "unknown", "reason": "probe_error", "browser_usability": "not_tested"}
@@ -266,17 +398,26 @@ def main():
     parser.add_argument("--timeout", type=positive, default=15)
     parser.add_argument("--workers", type=int, default=4)
     parser.add_argument(
-        "--interval", type=positive, default=0.5,
+        "--interval",
+        type=positive,
+        default=0.5,
         help="Minimum seconds between launches",
     )
     parser.add_argument("--retry-failed", action="store_true")
-    parser.add_argument("--category-csv", type=Path, help="Probe only unknown rows in this inventory")
-    parser.add_argument("--apply-categories", action="store_true", help="Apply saved proposals offline; requires --category-csv")
+    parser.add_argument(
+        "--category-csv", type=Path, help="Probe only unknown rows in this inventory"
+    )
+    parser.add_argument(
+        "--apply-categories",
+        action="store_true",
+        help="Apply saved proposals offline; requires --category-csv",
+    )
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--probe", help=argparse.SUPPRESS)
+    parser.add_argument("--origin", help=argparse.SUPPRESS)
     args = parser.parse_args()
     if args.probe:
-        print(json.dumps(probe(args.probe, args.timeout)))
+        print(json.dumps(probe(args.probe, args.timeout, args.origin)))
         return 0
     if not 1 <= args.workers <= 16 or not 1 <= args.limit <= 100000:
         parser.error("workers must be 1..16; limit must be 1..100000")
@@ -315,7 +456,8 @@ def main():
             reviewed = {row["domain"]: row for row in csv.DictReader(stream)}
     done = dict(db.execute("SELECT domain, http_success FROM domains"))
     pending = [
-        (rank, domain) for rank, domain in selected
+        (rank, domain)
+        for rank, domain in selected
         if domain not in done or (args.retry_failed and not done[domain])
     ]
     count = 0
@@ -350,10 +492,16 @@ def main():
                     research_source=note.get("source_url"),
                     actual_activity=None,
                 )
-                db.execute("INSERT OR REPLACE INTO domains VALUES (?, ?, ?, ?, ?)", (
-                    domain, rank, time.time(), int(result.get("http_success", False)),
-                    json.dumps(result),
-                ))
+                db.execute(
+                    "INSERT OR REPLACE INTO domains VALUES (?, ?, ?, ?, ?)",
+                    (
+                        domain,
+                        rank,
+                        time.time(),
+                        int(result.get("http_success", False)),
+                        json.dumps(result),
+                    ),
+                )
                 db.commit()
                 count += 1
                 if count % 10 == 0 or count == len(pending):

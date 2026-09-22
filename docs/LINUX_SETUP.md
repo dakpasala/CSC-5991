@@ -4,7 +4,7 @@ This project was built and tested on macOS. Running it on Linux works the same
 way in principle, but a few things need attention: the Chrome binary path is
 hardcoded for macOS, packet-capture permissions work differently, and there's
 no display server to speak of. This doc covers what changes, and the two ways
-to get login-gated sites (Instagram, X, LinkedIn, Netflix, etc.) working.
+to get login-gated sites (Instagram, X, LinkedIn, Amazon, etc.) working.
 
 **Read [AGENTS.md](../AGENTS.md) first** if you haven't — it's the actual
 project-instructions file (label rules, scale limits, what "success" means for
@@ -73,7 +73,7 @@ As of this doc, `--use-login-profile` no longer forces a visible browser
 window (it used to, back when login state could only be checked by a human
 watching). Every collector run — with or without `--use-login-profile` — uses
 `--headless=new` by default unless you explicitly pass `--headed`. So the
-actual data-collection step (`collect_browsing.py`, `collect_10k_loop.sh`,
+actual data-collection step (`collect_browsing.py`, `collect_loop.sh`,
 etc.) needs **no display server at all** on the Linux box.
 
 The one piece that *does* need a real, visible browser is logging in in the
@@ -81,7 +81,7 @@ first place — covered next.
 
 ## Getting login-gated sites working: two options
 
-Sites like Instagram, X, LinkedIn, Netflix, etc. need an authenticated
+Sites like Instagram, X, LinkedIn, Amazon, etc. need an authenticated
 session. That session lives in two files/directories, both under
 `.browser-profiles/`:
 - `collection/` — the actual Chrome profile (cookies, local storage, etc.)
@@ -150,26 +150,44 @@ python src/collect_browsing.py --chrome-binary /usr/bin/google-chrome \
     --session-seconds 20 --total-seconds 4000
 ```
 
-Or use `collect_10k_loop.sh` for the full continuous sweep across all five
+Or use `collect_loop.sh` for the full continuous sweep across all five
 categories (`web_browsing`, `social_media_browsing`, `video_streaming`,
-`audio_streaming`, `file_download`) — it loops until Ctrl+C. You'll need to
-add `--chrome-binary` and `--interface` to the `collect_...` invocations
-inside that script for Linux (they're hardcoded to rely on each script's own
-defaults right now, which assume macOS).
+`audio_streaming`, `file_download`) — it loops until Ctrl+C. Set
+`CHROME_BINARY`/`INTERFACE` as environment variables rather than editing the
+script:
+
+```sh
+CHROME_BINARY=/usr/bin/google-chrome INTERFACE=eth0 ./collect_loop.sh
+```
+
+**Scale, so this isn't a surprise:** `plans/web_browsing.json` alone currently
+has 11,000+ domains. At the script's default 20s/domain + 2s cooldown, one
+full pass through just `web_browsing` takes roughly 70 hours; a complete sweep
+across all five categories is on the order of 3 days before it loops back to
+the start. `collect_loop.sh` computes its own `--total-seconds` budget from
+the actual plan size each time, so it handles this correctly on its own — it
+just means "let it run" is a multi-day thing here, not something to expect to
+finish in one sitting.
 
 `plans/*.json` (which domains get visited, per category) and
-`analysis/top10k_login_requirements.csv` (which domains are believed to need
-login, and which activity category they fall into) are already checked into
-the repo — `git clone` brings those along automatically, no separate transfer
-needed. Rerun `python src/build_plans.py` anytime the CSV's `category` column
-gets updated, to pull any newly-categorized domains into the plan files.
+`analysis/current_origins_verified.csv` (the source those plans were built
+from — real fetched evidence per domain: category, login requirement, and
+why) are already checked into the repo — `git clone` brings both along
+automatically, no separate transfer needed. Rerun `python src/build_plans.py`
+anytime that CSV changes, to pull any newly-categorized domains into the plan
+files (it's additive and safe to rerun — never overwrites or removes an
+existing plan entry).
 
 ## Quick checklist
 
 - [ ] `git clone`, not a zip
 - [ ] `--chrome-binary` pointed at real Chrome/Chromium on every command
+      (or `CHROME_BINARY=...` env var for `collect_loop.sh`)
 - [ ] `--interface` set to the box's actual interface name
+      (or `INTERFACE=...` env var for `collect_loop.sh`)
 - [ ] `setcap` applied to `tcpdump` (not running the collector as root)
 - [ ] `.browser-profiles/` present (yours or the student's), if collecting
       anything from a login-gated domain
 - [ ] `--dry-run` on a plan before the real run, to catch config issues early
+- [ ] Budgeted for the real timescale — a full sweep is multi-day, not
+      something you'll watch finish live

@@ -22,23 +22,12 @@ SESSION_COOKIE_DOMAINS = (
     "pinterest.com",
     "tiktok.com",
     "spotify.com",
-    "vk.com",
     "snapchat.com",
-    "tumblr.com",
-    "weibo.com",
-    "ok.ru",
-    "xiaohongshu.com",
     "threads.net",
-    "netflix.com",
-    "primevideo.com",
-    "disneyplus.com",
-    "paramountplus.com",
-    "douyin.com",
-    "hulu.com",
-    "hbomax.com",
-    "crunchyroll.com",
-    "peacocktv.com",
-    "max.com",
+    "amazon.com",
+    "whatsapp.com",
+    "reddit.com",
+    "adobe.com",
 )
 
 
@@ -71,10 +60,7 @@ def browser_profile(persistent=False, path=LOGIN_PROFILE):
 
 
 def save_session_cookies(cookies_by_domain):
-    """Persist cookies extracted in-memory from an already-authenticated session.
-
-    Written only to this gitignored profile directory, mode 0600, never logged.
-    """
+    """Write to the gitignored profile directory, mode 0600, never logged."""
     SESSION_COOKIES.parent.mkdir(parents=True, exist_ok=True)
     SESSION_COOKIES.write_text(json.dumps(cookies_by_domain))
     SESSION_COOKIES.chmod(0o600)

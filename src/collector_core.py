@@ -47,9 +47,8 @@ def stop_browser(process):
         try:
             os.killpg(process.pid, sig)
         except (ProcessLookupError, PermissionError):
-            # Either the group is already gone, or the PID was recycled by an
-            # unrelated process we have no business signaling -- both mean
-            # there's nothing left here for us to clean up.
+            # Group gone, or the PID got recycled by something we don't own --
+            # either way, nothing left here to clean up.
             break
         process.join(timeout=0.5)
     if process.is_alive():

@@ -7,6 +7,13 @@ PY=.venv/bin/python
 SESSION_SECONDS=20
 COOLDOWN_SECONDS=2
 
+# Set CHROME_BINARY/INTERFACE in the environment to override each script's own
+# default (needed on Linux, where the macOS defaults don't apply), e.g.:
+#   CHROME_BINARY=/usr/bin/google-chrome INTERFACE=eth0 ./collect_loop.sh
+EXTRA_ARGS=""
+[ -n "${CHROME_BINARY:-}" ] && EXTRA_ARGS="$EXTRA_ARGS --chrome-binary $CHROME_BINARY"
+[ -n "${INTERFACE:-}" ] && EXTRA_ARGS="$EXTRA_ARGS --interface $INTERFACE"
+
 run_category() {
     category="$1"
     script="$2"
@@ -16,7 +23,7 @@ run_category() {
     echo "=== $category ($count domains, ~${total}s budget) ==="
     $PY "src/collect_${script}.py" --use-login-profile --once \
         --session-seconds "$SESSION_SECONDS" --cooldown-seconds "$COOLDOWN_SECONDS" \
-        --total-seconds "$total"
+        --total-seconds "$total" $EXTRA_ARGS
 }
 
 while true; do

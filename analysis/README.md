@@ -125,3 +125,36 @@ All examples below came from the single successful apex HTTPS response, not gene
 | tv9telugu.com | web_browsing | TV9 Telugu News: Latest Telugu News, Breaking News Telugu \| తెలుగు వార్తలు \| News in Telugu \| TV9 Telugu | Telugu News - Get Latest Telugu News, తెలుగు వార్తలు and Live Coverage updates online on Andhra Pradesh (AP), Telangana, Hyderabad, Politics, Crime, Sports, Cricket, Business, Education, Jobs, Entertainment, Technology, Health. TV9 Telugu covers Today’s breaking News, Top Headlines in Telugu Language Online at tv9telugu.com. | website | False / False |
 
 Validation: syntax checks; the full offline unittest suite (22 passed, four opt-in Chrome tests skipped); all six collector dry-runs; CSV preservation assertions for all 10,000 rows. Tests cover one DNS/GET without redirect following, ignored script/comment/template media, ambiguous/challenge rejection, and preservation of prior categories and other fields. These are offline tests plus a real DNS/HTTPS inventory, not live browser or capture validation.
+
+## `current_origins_verified.csv` — a separate, real-visited-traffic source (2026-09-22)
+
+Different provenance from everything above: `analysis/current.csv` (not `tranco_GQNVK.csv`) is a CrUX-style list of real visited *origins* (full `scheme://host` URLs, not bare domains), ranked by bucketed popularity tier (1000, 5000, 10000, ...), not a unique per-row ordinal — many origins share the same rank value. `current_top20k.csv` is the first 20,000 rows of that file (header + data, confirmed monotonically sorted ascending by rank bucket).
+
+**Methodology, in contrast to the Codex pass above:** the earlier pass on `top10k_login_requirements.csv` over-restricted category assignment by requiring structural proof (`<video>`/`<audio>` tag presence) rather than treating title/description as sufficient evidence on its own — that conflated "identify the site's purpose" with "prove the activity technically works," and rejected clear cases like Netflix and SoundCloud for lacking a tag that a bare unauthenticated HTTP fetch on a JS-rendered SPA will never show. This pass corrects that: category comes primarily from real fetched title/meta-description/og:type evidence, with structural signals only as supplementary confirmation, never a gate.
+
+All 20,000 origins were fetched directly (single HTTP(S) GET, 65KB sample, same DNS+HTTP inventory posture as `assess_domains.py` — no browser, no Selenium, no live verification of any activity). For each:
+- **Explicit/adult content is dropped from the output entirely** (not merely flagged) — determined from real fetched title/description text, checked across English and numerous other languages/scripts (Japanese, Korean, Thai, Vietnamese, Arabic, Persian, Portuguese/Spanish with accented forms, Chinese euphemisms, etc.), refined iteratively against five ~20-domain spot-check samples per batch of ~5,000 fetched. This is a best-effort, not exhaustive, filter — some explicit content phrased in ways not covered here may still be present in the `web_browsing` bucket, and the reverse (a false positive on borderline/ambiguous terms) is possible though checked conservatively.
+- **A domain that fetch genuinely failed for (DNS/HTTP error, timeout) or that returned no usable title/description at all is skipped — not force-labeled `unknown` or defaulted to any category.** This is the honest resolution to "no unknown category allowed": unassessable domains are absent from the file, not mislabeled.
+- **`category`** is one of `web_browsing`, `social_media_browsing`, `video_streaming`, `audio_streaming`, `excluded_conferencing` (no `file_download` entries — same reasoning as the Tranco-based pass: this activity needs a specific `download_url`, not derivable from a homepage fetch).
+- **`login_required`** (`hard`/`partial`/`no`) is a weaker signal than `category` here: it only catches sites with an *immediate* login wall/redirect in the fetched response (e.g. `accounts.spotify.com` redirecting to `/login`). It does **not** catch sites whose public marketing page loads fine but whose core feature requires an account (e.g. `www.spotify.com`'s own homepage shows `login_required: no` here despite Spotify requiring login for real playback, confirmed elsewhere in this project's live collector testing). Treat `no` as "no obvious wall on this fetch," not "confirmed no login needed."
+- A handful of domains (`category_basis: known_platform_override`) are categorized from direct real-world recognition rather than fetched text — used only for universally-recognized major platforms whose marketing page returned blank title/description (a JS-rendered signup redirect, e.g. `primevideo.com`) or off-pattern phrasing a keyword list can't reasonably anticipate. Same precedent as the OnlyFans/Spotify/TikTok overrides in the pass above; deliberately not extended to less-certain domains.
+
+**Final counts, all 20,000 origins processed:**
+
+| Outcome | Count |
+|---|---|
+| Classified (kept in file) | 12,367 |
+| — `web_browsing` | 12,066 |
+| — `video_streaming` | 227 |
+| — `audio_streaming` | 46 |
+| — `social_media_browsing` | 14 |
+| — `excluded_conferencing` | 14 |
+| Dropped, explicit content | 1,588 |
+| Skipped, fetch failed | 4,846 |
+| Skipped, no usable evidence | 1,199 |
+
+Domain values in the output all pass the project's domain validator (`[a-z0-9.-]+`, matching `config.py`). 393 duplicate domains exist (same effective host reached via multiple origin URLs, e.g. `m.youtube.com` and `www.youtube.com`); harmless since `build_plans.py` already dedupes by domain when merging into `plans/*.json`.
+
+### Second explicit-content pass (2026-09-22)
+
+Re-scanned the full output against a broadened multi-language explicit-content filter and found 64 rows (58 unique domains) that the original per-batch spot-checks had missed, across several additional languages/scripts not covered earlier. All 64 removed from `current_origins_verified.csv`; the 56 of those domains that had already been merged into `plans/web_browsing.json` (52) and `plans/video_streaming.json` (4) were removed from there too. Verified against known false positives from the same broadened check (Stripe, Sensex/`chartink.com`, the legitimate webcomic `questionablecontent.net`) to confirm they weren't caught. File went from 12,367 → 12,303 rows.

@@ -209,10 +209,8 @@ def worker(pipe, item, settings, deadline, profile):
             if activity == "social_media_browsing":
                 driver.execute_script("document.querySelector(arguments[0]).scrollIntoView({block:'center'})",
                                       item["content_selector"])
-            # Network.setCacheDisabled forces resources to fetch fresh each run, and
-            # page_load_strategy="none" can return before a heavy/SPA page finishes its
-            # first real paint (or briefly clears content mid-hydration); poll rather
-            # than a single fixed check before treating it as a failure.
+            # Fresh (uncached) fetches on a heavy/SPA page can lag past first paint;
+            # poll rather than a single fixed check before failing.
             settle_deadline = min(time.monotonic() + 10, deadline - 1.5)
             while True:
                 try:
@@ -296,9 +294,8 @@ def worker(pipe, item, settings, deadline, profile):
                 emit("media_sample", progressing=progressing, **details)
                 previous, sampled = current, now
                 if now - last_progress > settings["stall_seconds"]:
-                    # Once genuine playback already cleared the bar, a late stall
-                    # (ad, bot-check wall, natural end) ends the session gracefully
-                    # instead of discarding an already-verified capture.
+                    # A late stall after the bar's already cleared ends the
+                    # session cleanly instead of discarding a verified capture.
                     if verified >= settings["min_verified_seconds"]:
                         break
                     raise RuntimeError("Playback/call absent or stalled")

@@ -1,19 +1,17 @@
-"""Merge analysis/top10k_login_requirements.csv's `category` column into plans/*.json.
+"""Merge category CSVs' `category` column into plans/*.json.
 
-Adds any domain not already present in that category's plan file, using a bare
-homepage URL and category-appropriate defaults. Never overwrites or removes an
-existing entry (hand-verified selectors like x.com/instagram.com's "article"
-stay untouched). file_download and excluded_conferencing/unknown rows are
-skipped -- file_download needs a specific download_url this CSV can't supply,
-and the other two are deliberately not collection targets.
+Adds any domain not already present in a plan file; never overwrites or
+removes an existing entry. file_download and excluded_conferencing/unknown
+rows are skipped -- file_download needs a download_url these CSVs can't
+supply, and conferencing is out of scope for collection.
 """
 import csv
 import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-CSV_PATH = ROOT / "analysis" / "top10k_login_requirements.csv"
-SOURCE_SCOPE = "top10k_category_pass_2026-09-17"
+SOURCE = ROOT / "analysis" / "current_origins_verified.csv"
+SOURCE_SCOPE = "current_origins_verified_2026-09-22"
 
 CATEGORY_DEFAULTS = {
     "web_browsing": {},
@@ -24,16 +22,13 @@ CATEGORY_DEFAULTS = {
 
 
 def load_csv_by_category():
-    # `needs_more_verification` (added by a later categorization pass) marks rows
-    # where the category was a no-evidence default rather than a real signal match;
-    # those must not be treated as real categorizations here.
     by_category = {category: [] for category in CATEGORY_DEFAULTS}
-    with CSV_PATH.open() as stream:
+    with SOURCE.open() as stream:
         for row in csv.DictReader(stream):
-            if row.get("needs_more_verification") == "TRUE":
-                continue
             if row["category"] in by_category:
-                by_category[row["category"]].append((int(row["rank"]), row["domain"]))
+                by_category[row["category"]].append(
+                    (int(row["rank"]), row["domain"], SOURCE_SCOPE)
+                )
     return by_category
 
 
@@ -42,7 +37,7 @@ def merge_plan(category, csv_entries):
     existing = json.loads(path.read_text()) if path.exists() else []
     existing_domains = {entry["domain"] for entry in existing}
     added = 0
-    for rank, domain in sorted(csv_entries):
+    for rank, domain, source_scope in sorted(csv_entries):
         if domain in existing_domains:
             continue
         entry = {
@@ -50,7 +45,7 @@ def merge_plan(category, csv_entries):
             "domain": domain,
             "url": f"https://{domain}/",
             **CATEGORY_DEFAULTS[category],
-            "source_scope": SOURCE_SCOPE,
+            "source_scope": source_scope,
             "activity": category,
         }
         existing.append(entry)

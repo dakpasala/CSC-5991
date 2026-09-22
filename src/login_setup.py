@@ -14,13 +14,8 @@ from browser_profiles import (
 
 
 def extract_session_cookies(port, chrome_binary):
-    """Read cookies out of the already-authenticated manual Chrome session.
-
-    Attaches to the running browser via its own remote-debugging port rather than
-    launching a new automated one, so this never touches the login flow itself.
-    Cookie values only ever pass through memory here before being written once to
-    the gitignored session-cookie file; nothing is logged or printed.
-    """
+    """Attach to the already-open manual Chrome via its debug port (never launches
+    a new automated one, so this never touches the login flow itself)."""
     from selenium import webdriver
     from selenium.webdriver.chrome.options import Options
 
@@ -76,23 +71,12 @@ def main():
                     "https://www.pinterest.com/login/",
                     "https://www.tiktok.com/login",
                     "https://accounts.spotify.com/login",
-                    "https://vk.com/",
                     "https://www.snapchat.com/",
-                    "https://www.tumblr.com/login",
-                    "https://weibo.com/",
-                    "https://ok.ru/",
-                    "https://www.xiaohongshu.com/",
                     "https://www.threads.net/login",
-                    "https://www.netflix.com/login",
-                    "https://www.primevideo.com/",
-                    "https://www.disneyplus.com/login",
-                    "https://www.paramountplus.com/",
-                    "https://www.douyin.com/",
-                    "https://www.hulu.com/",
-                    "https://www.hbomax.com/",
-                    "https://www.crunchyroll.com/login",
-                    "https://www.peacocktv.com/",
-                    "https://www.max.com/",
+                    "https://www.amazon.com/ap/signin",
+                    "https://web.whatsapp.com/",
+                    "https://www.reddit.com/login",
+                    "https://www.adobe.com/",
                 ],
                 stdout=subprocess.DEVNULL,
                 stderr=subprocess.DEVNULL,
