@@ -4,7 +4,6 @@ cd "$(dirname "$0")"
 
 PY=.venv/bin/python
 
-# Easy to change: how long each individual domain gets per pass.
 SESSION_SECONDS=20
 COOLDOWN_SECONDS=2
 
@@ -25,5 +24,6 @@ while true; do
     run_category social_media_browsing social
     run_category video_streaming video
     run_category audio_streaming audio
+    run_category file_download downloads
     echo "=== full sweep complete, looping again (Ctrl+C to stop) ==="
 done
