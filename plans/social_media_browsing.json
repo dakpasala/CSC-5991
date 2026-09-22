@@ -5,8 +5,7 @@
     "url": "https://x.com/NASA",
     "content_selector": "article",
     "source_scope": "top100_public_profile_access_unverified",
-    "activity": "social_media_browsing",
-    "headed": true
+    "activity": "social_media_browsing"
   },
   {
     "rank": 11,
@@ -15,7 +14,6 @@
     "content_selector": "article",
     "source_scope": "top100_public_profile_access_unverified",
     "activity": "social_media_browsing",
-    "headed": true,
     "dismiss_selector": "[aria-label=\"Close\"]"
   },
   {

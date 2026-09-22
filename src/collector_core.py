@@ -46,7 +46,10 @@ def stop_browser(process):
     for sig in (signal.SIGTERM, signal.SIGKILL):
         try:
             os.killpg(process.pid, sig)
-        except ProcessLookupError:
+        except (ProcessLookupError, PermissionError):
+            # Either the group is already gone, or the PID was recycled by an
+            # unrelated process we have no business signaling -- both mean
+            # there's nothing left here for us to clean up.
             break
         process.join(timeout=0.5)
     if process.is_alive():
@@ -256,13 +259,15 @@ def main(category):
     parser.add_argument(
         "--use-login-profile",
         action="store_true",
-        help="Reuse the dedicated local collection profile in visible Chrome; run login_setup.py first",
+        help=(
+            "Reuse the dedicated local collection profile and its saved session "
+            "cookies; run login_setup.py first. Runs headless by default like any "
+            "other session -- pass --headed too if you want to watch it."
+        ),
     )
     parser.add_argument("--once", action="store_true")
     parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args()
-    if args.use_login_profile:
-        args.headed = True
     if args.session_seconds < args.min_verified_seconds + 3:
         parser.error("Session budget must exceed minimum verification time by 3 seconds")
     if not 0 <= args.snaplen <= 262144:
