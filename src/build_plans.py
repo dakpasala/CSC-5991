@@ -4,10 +4,18 @@ Adds any domain not already present in a plan file; never overwrites or
 removes an existing entry. file_download and excluded_conferencing/unknown
 rows are skipped -- file_download needs a download_url these CSVs can't
 supply, and conferencing is out of scope for collection.
+
+Every run also resorts each plan so domains covered by session-cookie login
+(SESSION_COOKIE_DOMAINS) sit first. Session cookies go stale after roughly a
+day, and some plans are large enough that a full sweep takes far longer than
+that -- without this, a login-gated domain could sit thousands of entries
+deep and never get visited while its cookie is still good.
 """
 import csv
 import json
 from pathlib import Path
+
+from browser_profiles import SESSION_COOKIE_DOMAINS
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "analysis" / "current_origins_verified.csv"
@@ -32,6 +40,10 @@ def load_csv_by_category():
     return by_category
 
 
+def has_session_cookies(domain):
+    return any(domain == d or domain.endswith("." + d) for d in SESSION_COOKIE_DOMAINS)
+
+
 def merge_plan(category, csv_entries):
     path = ROOT / "plans" / f"{category}.json"
     existing = json.loads(path.read_text()) if path.exists() else []
@@ -51,6 +63,7 @@ def merge_plan(category, csv_entries):
         existing.append(entry)
         existing_domains.add(domain)
         added += 1
+    existing.sort(key=lambda entry: not has_session_cookies(entry["domain"]))
     path.write_text(json.dumps(existing, indent=2) + "\n")
     return added, len(existing)
 

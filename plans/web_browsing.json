@@ -1,6 +1,538 @@
 [
   {
     "rank": 1000,
+    "domain": "business.facebook.com",
+    "url": "https://business.facebook.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 1000,
+    "domain": "developers.google.com",
+    "url": "https://developers.google.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 1000,
+    "domain": "faq.whatsapp.com",
+    "url": "https://faq.whatsapp.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 1000,
+    "domain": "m.facebook.com",
+    "url": "https://m.facebook.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 1000,
+    "domain": "music.youtube.com",
+    "url": "https://music.youtube.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 1000,
+    "domain": "old.reddit.com",
+    "url": "https://old.reddit.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 1000,
+    "domain": "one.google.com",
+    "url": "https://one.google.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 1000,
+    "domain": "scholar.google.com",
+    "url": "https://scholar.google.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 1000,
+    "domain": "sellercentral.amazon.com",
+    "url": "https://sellercentral.amazon.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 1000,
+    "domain": "support.google.com",
+    "url": "https://support.google.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 1000,
+    "domain": "web.whatsapp.com",
+    "url": "https://web.whatsapp.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 1000,
+    "domain": "www.google.com",
+    "url": "https://www.google.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 1000,
+    "domain": "www.linkedin.com",
+    "url": "https://www.linkedin.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 1000,
+    "domain": "www.pinterest.com",
+    "url": "https://www.pinterest.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 1000,
+    "domain": "www.reddit.com",
+    "url": "https://www.reddit.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 1000,
+    "domain": "www.snapchat.com",
+    "url": "https://www.snapchat.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 1000,
+    "domain": "www.whatsapp.com",
+    "url": "https://www.whatsapp.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 1000,
+    "domain": "www.youtube.com",
+    "url": "https://www.youtube.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 5000,
+    "domain": "acrobat.adobe.com",
+    "url": "https://acrobat.adobe.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 5000,
+    "domain": "ads.tiktok.com",
+    "url": "https://ads.tiktok.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 5000,
+    "domain": "adsense.google.com",
+    "url": "https://adsense.google.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 5000,
+    "domain": "aistudio.google.com",
+    "url": "https://aistudio.google.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 5000,
+    "domain": "ar.pinterest.com",
+    "url": "https://ar.pinterest.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 5000,
+    "domain": "br.pinterest.com",
+    "url": "https://br.pinterest.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 5000,
+    "domain": "business.google.com",
+    "url": "https://business.google.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 5000,
+    "domain": "cloud.google.com",
+    "url": "https://cloud.google.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 5000,
+    "domain": "colab.research.google.com",
+    "url": "https://colab.research.google.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 5000,
+    "domain": "datastudio.google.com",
+    "url": "https://datastudio.google.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 5000,
+    "domain": "es.pinterest.com",
+    "url": "https://es.pinterest.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 5000,
+    "domain": "fr.pinterest.com",
+    "url": "https://fr.pinterest.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 5000,
+    "domain": "help.snapchat.com",
+    "url": "https://help.snapchat.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 5000,
+    "domain": "id.pinterest.com",
+    "url": "https://id.pinterest.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 5000,
+    "domain": "kdp.amazon.com",
+    "url": "https://kdp.amazon.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 5000,
+    "domain": "messages.google.com",
+    "url": "https://messages.google.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 5000,
+    "domain": "mx.pinterest.com",
+    "url": "https://mx.pinterest.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 5000,
+    "domain": "ru.pinterest.com",
+    "url": "https://ru.pinterest.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 5000,
+    "domain": "seller-vn.tiktok.com",
+    "url": "https://seller-vn.tiktok.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 5000,
+    "domain": "tr.pinterest.com",
+    "url": "https://tr.pinterest.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 5000,
+    "domain": "www.amazon.com",
+    "url": "https://www.amazon.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 5000,
+    "domain": "www.facebook.com",
+    "url": "https://www.facebook.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 10000,
+    "domain": "advertising.amazon.com",
+    "url": "https://advertising.amazon.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 10000,
+    "domain": "aws.amazon.com",
+    "url": "https://aws.amazon.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 10000,
+    "domain": "ca.pinterest.com",
+    "url": "https://ca.pinterest.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 10000,
+    "domain": "co.pinterest.com",
+    "url": "https://co.pinterest.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 10000,
+    "domain": "de.pinterest.com",
+    "url": "https://de.pinterest.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 10000,
+    "domain": "developers.facebook.com",
+    "url": "https://developers.facebook.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 10000,
+    "domain": "edu.google.com",
+    "url": "https://edu.google.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 10000,
+    "domain": "familylink.google.com",
+    "url": "https://familylink.google.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 10000,
+    "domain": "free.facebook.com",
+    "url": "https://free.facebook.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 10000,
+    "domain": "in.linkedin.com",
+    "url": "https://in.linkedin.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 10000,
+    "domain": "it.pinterest.com",
+    "url": "https://it.pinterest.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 10000,
+    "domain": "jp.pinterest.com",
+    "url": "https://jp.pinterest.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 10000,
+    "domain": "kr.pinterest.com",
+    "url": "https://kr.pinterest.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 10000,
+    "domain": "oauth.facebook.com",
+    "url": "https://oauth.facebook.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 10000,
+    "domain": "ph.pinterest.com",
+    "url": "https://ph.pinterest.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 10000,
+    "domain": "seller-th.tiktok.com",
+    "url": "https://seller-th.tiktok.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 10000,
+    "domain": "sellercentral-japan.amazon.com",
+    "url": "https://sellercentral-japan.amazon.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 10000,
+    "domain": "shop.tiktok.com",
+    "url": "https://shop.tiktok.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 10000,
+    "domain": "support.spotify.com",
+    "url": "https://support.spotify.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 10000,
+    "domain": "uk.pinterest.com",
+    "url": "https://uk.pinterest.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 50000,
+    "domain": "affiliate.tiktok.com",
+    "url": "https://affiliate.tiktok.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 50000,
+    "domain": "artists.spotify.com",
+    "url": "https://artists.spotify.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 50000,
+    "domain": "books.google.com",
+    "url": "https://books.google.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 50000,
+    "domain": "br.linkedin.com",
+    "url": "https://br.linkedin.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 50000,
+    "domain": "business.tiktok.com",
+    "url": "https://business.tiktok.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 50000,
+    "domain": "cl.pinterest.com",
+    "url": "https://cl.pinterest.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 50000,
+    "domain": "dk.pinterest.com",
+    "url": "https://dk.pinterest.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 50000,
+    "domain": "families.youtube.com",
+    "url": "https://families.youtube.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 50000,
+    "domain": "fr.linkedin.com",
+    "url": "https://fr.linkedin.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 50000,
+    "domain": "home.google.com",
+    "url": "https://home.google.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 50000,
+    "domain": "mx.linkedin.com",
+    "url": "https://mx.linkedin.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 50000,
+    "domain": "nl.pinterest.com",
+    "url": "https://nl.pinterest.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 50000,
+    "domain": "patents.google.com",
+    "url": "https://patents.google.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 50000,
+    "domain": "privacycenter.instagram.com",
+    "url": "https://privacycenter.instagram.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 50000,
+    "domain": "ro.pinterest.com",
+    "url": "https://ro.pinterest.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 50000,
+    "domain": "seller-ph.tiktok.com",
+    "url": "https://seller-ph.tiktok.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "web_browsing"
+  },
+  {
+    "rank": 1000,
     "domain": "actu.fr",
     "url": "https://actu.fr/",
     "source_scope": "current_top10k_verified_2026-09-22",
@@ -169,13 +701,6 @@
   },
   {
     "rank": 1000,
-    "domain": "business.facebook.com",
-    "url": "https://business.facebook.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 1000,
     "domain": "cardgames.io",
     "url": "https://cardgames.io/",
     "source_scope": "current_top10k_verified_2026-09-22",
@@ -281,13 +806,6 @@
   },
   {
     "rank": 1000,
-    "domain": "developers.google.com",
-    "url": "https://developers.google.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 1000,
     "domain": "divar.ir",
     "url": "https://divar.ir/",
     "source_scope": "current_top10k_verified_2026-09-22",
@@ -381,13 +899,6 @@
     "rank": 1000,
     "domain": "fa.wikipedia.org",
     "url": "https://fa.wikipedia.org/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 1000,
-    "domain": "faq.whatsapp.com",
-    "url": "https://faq.whatsapp.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
     "activity": "web_browsing"
   },
@@ -827,13 +1338,6 @@
   },
   {
     "rank": 1000,
-    "domain": "m.facebook.com",
-    "url": "https://m.facebook.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 1000,
     "domain": "m.flashscore.com.ng",
     "url": "https://m.flashscore.com.ng/",
     "source_scope": "current_top10k_verified_2026-09-22",
@@ -953,13 +1457,6 @@
   },
   {
     "rank": 1000,
-    "domain": "music.youtube.com",
-    "url": "https://music.youtube.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 1000,
     "domain": "musicdel.ir",
     "url": "https://musicdel.ir/",
     "source_scope": "current_top10k_verified_2026-09-22",
@@ -1065,22 +1562,8 @@
   },
   {
     "rank": 1000,
-    "domain": "old.reddit.com",
-    "url": "https://old.reddit.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 1000,
     "domain": "omg10.com",
     "url": "https://omg10.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 1000,
-    "domain": "one.google.com",
-    "url": "https://one.google.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
     "activity": "web_browsing"
   },
@@ -1198,13 +1681,6 @@
   },
   {
     "rank": 1000,
-    "domain": "scholar.google.com",
-    "url": "https://scholar.google.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 1000,
     "domain": "scratch.mit.edu",
     "url": "https://scratch.mit.edu/",
     "source_scope": "current_top10k_verified_2026-09-22",
@@ -1249,13 +1725,6 @@
     "rank": 1000,
     "domain": "select.mamastar.jp",
     "url": "https://select.mamastar.jp/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 1000,
-    "domain": "sellercentral.amazon.com",
-    "url": "https://sellercentral.amazon.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
     "activity": "web_browsing"
   },
@@ -1403,13 +1872,6 @@
     "rank": 1000,
     "domain": "store.supercell.com",
     "url": "https://store.supercell.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 1000,
-    "domain": "support.google.com",
-    "url": "https://support.google.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
     "activity": "web_browsing"
   },
@@ -1599,13 +2061,6 @@
     "rank": 1000,
     "domain": "weathernews.jp",
     "url": "https://weathernews.jp/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 1000,
-    "domain": "web.whatsapp.com",
-    "url": "https://web.whatsapp.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
     "activity": "web_browsing"
   },
@@ -2199,13 +2654,6 @@
   },
   {
     "rank": 1000,
-    "domain": "www.google.com",
-    "url": "https://www.google.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 1000,
     "domain": "www.google.com.hk",
     "url": "https://www.google.com.hk/",
     "source_scope": "current_top10k_verified_2026-09-22",
@@ -2404,13 +2852,6 @@
     "rank": 1000,
     "domain": "www.letras.mus.br",
     "url": "https://www.letras.mus.br/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 1000,
-    "domain": "www.linkedin.com",
-    "url": "https://www.linkedin.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
     "activity": "web_browsing"
   },
@@ -2668,13 +3109,6 @@
   },
   {
     "rank": 1000,
-    "domain": "www.pinterest.com",
-    "url": "https://www.pinterest.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 1000,
     "domain": "www.pixiv.net",
     "url": "https://www.pixiv.net/",
     "source_scope": "current_top10k_verified_2026-09-22",
@@ -2740,13 +3174,6 @@
     "rank": 1000,
     "domain": "www.quora.com",
     "url": "https://www.quora.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 1000,
-    "domain": "www.reddit.com",
-    "url": "https://www.reddit.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
     "activity": "web_browsing"
   },
@@ -2831,13 +3258,6 @@
     "rank": 1000,
     "domain": "www.skysports.com",
     "url": "https://www.skysports.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 1000,
-    "domain": "www.snapchat.com",
-    "url": "https://www.snapchat.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
     "activity": "web_browsing"
   },
@@ -3102,13 +3522,6 @@
   },
   {
     "rank": 1000,
-    "domain": "www.whatsapp.com",
-    "url": "https://www.whatsapp.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 1000,
     "domain": "www.wp.pl",
     "url": "https://www.wp.pl/",
     "source_scope": "current_top10k_verified_2026-09-22",
@@ -3132,13 +3545,6 @@
     "rank": 1000,
     "domain": "www.yahoo.com",
     "url": "https://www.yahoo.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 1000,
-    "domain": "www.youtube.com",
-    "url": "https://www.youtube.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
     "activity": "web_browsing"
   },
@@ -3543,13 +3949,6 @@
   },
   {
     "rank": 5000,
-    "domain": "acrobat.adobe.com",
-    "url": "https://acrobat.adobe.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 5000,
     "domain": "actapp.misa.vn",
     "url": "https://actapp.misa.vn/",
     "source_scope": "current_top10k_verified_2026-09-22",
@@ -3578,22 +3977,8 @@
   },
   {
     "rank": 5000,
-    "domain": "ads.tiktok.com",
-    "url": "https://ads.tiktok.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 5000,
     "domain": "ads1-bewokwin.com",
     "url": "https://ads1-bewokwin.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 5000,
-    "domain": "adsense.google.com",
-    "url": "https://adsense.google.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
     "activity": "web_browsing"
   },
@@ -3629,13 +4014,6 @@
     "rank": 5000,
     "domain": "ais.usvisa-info.com",
     "url": "https://ais.usvisa-info.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 5000,
-    "domain": "aistudio.google.com",
-    "url": "https://aistudio.google.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
     "activity": "web_browsing"
   },
@@ -3874,13 +4252,6 @@
     "rank": 5000,
     "domain": "apuestas.wplay.co",
     "url": "https://apuestas.wplay.co/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 5000,
-    "domain": "ar.pinterest.com",
-    "url": "https://ar.pinterest.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
     "activity": "web_browsing"
   },
@@ -4292,13 +4663,6 @@
   },
   {
     "rank": 5000,
-    "domain": "br.pinterest.com",
-    "url": "https://br.pinterest.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 5000,
     "domain": "br.search.yahoo.com",
     "url": "https://br.search.yahoo.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
@@ -4336,13 +4700,6 @@
     "rank": 5000,
     "domain": "bulbapedia.bulbagarden.net",
     "url": "https://bulbapedia.bulbagarden.net/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 5000,
-    "domain": "business.google.com",
-    "url": "https://business.google.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
     "activity": "web_browsing"
   },
@@ -4663,13 +5020,6 @@
   },
   {
     "rank": 5000,
-    "domain": "cloud.google.com",
-    "url": "https://cloud.google.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 5000,
     "domain": "cmhelpline.mp.gov.in",
     "url": "https://cmhelpline.mp.gov.in/",
     "source_scope": "current_top10k_verified_2026-09-22",
@@ -4693,13 +5043,6 @@
     "rank": 5000,
     "domain": "codeforces.com",
     "url": "https://codeforces.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 5000,
-    "domain": "colab.research.google.com",
-    "url": "https://colab.research.google.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
     "activity": "web_browsing"
   },
@@ -4868,13 +5211,6 @@
     "rank": 5000,
     "domain": "dash.cloudflare.com",
     "url": "https://dash.cloudflare.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 5000,
-    "domain": "datastudio.google.com",
-    "url": "https://datastudio.google.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
     "activity": "web_browsing"
   },
@@ -5363,13 +5699,6 @@
   },
   {
     "rank": 5000,
-    "domain": "es.pinterest.com",
-    "url": "https://es.pinterest.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 5000,
     "domain": "es.search.yahoo.com",
     "url": "https://es.search.yahoo.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
@@ -5701,13 +6030,6 @@
     "rank": 5000,
     "domain": "fr.news.yahoo.com",
     "url": "https://fr.news.yahoo.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 5000,
-    "domain": "fr.pinterest.com",
-    "url": "https://fr.pinterest.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
     "activity": "web_browsing"
   },
@@ -6056,13 +6378,6 @@
   },
   {
     "rank": 5000,
-    "domain": "help.snapchat.com",
-    "url": "https://help.snapchat.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 5000,
     "domain": "help.sportingbet.bet.br",
     "url": "https://help.sportingbet.bet.br/",
     "source_scope": "current_top10k_verified_2026-09-22",
@@ -6212,13 +6527,6 @@
     "rank": 5000,
     "domain": "id.moneyforward.com",
     "url": "https://id.moneyforward.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 5000,
-    "domain": "id.pinterest.com",
-    "url": "https://id.pinterest.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
     "activity": "web_browsing"
   },
@@ -6567,13 +6875,6 @@
   },
   {
     "rank": 5000,
-    "domain": "josporn.red",
-    "url": "https://josporn.red/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 5000,
     "domain": "jovenesconstruyendoelfuturo.stps.gob.mx",
     "url": "https://jovenesconstruyendoelfuturo.stps.gob.mx/",
     "source_scope": "current_top10k_verified_2026-09-22",
@@ -6667,13 +6968,6 @@
     "rank": 5000,
     "domain": "kaskustoto.com",
     "url": "https://kaskustoto.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 5000,
-    "domain": "kdp.amazon.com",
-    "url": "https://kdp.amazon.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
     "activity": "web_browsing"
   },
@@ -7659,13 +7953,6 @@
   },
   {
     "rank": 5000,
-    "domain": "messages.google.com",
-    "url": "https://messages.google.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 5000,
     "domain": "meteofor.com.ua",
     "url": "https://meteofor.com.ua/",
     "source_scope": "current_top10k_verified_2026-09-22",
@@ -7920,13 +8207,6 @@
     "rank": 5000,
     "domain": "musou.sengokuixa.jp",
     "url": "https://musou.sengokuixa.jp/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 5000,
-    "domain": "mx.pinterest.com",
-    "url": "https://mx.pinterest.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
     "activity": "web_browsing"
   },
@@ -8737,13 +9017,6 @@
   },
   {
     "rank": 5000,
-    "domain": "pl.datezone.com",
-    "url": "https://pl.datezone.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 5000,
     "domain": "plataforma.acadeu.com",
     "url": "https://plataforma.acadeu.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
@@ -9395,13 +9668,6 @@
   },
   {
     "rank": 5000,
-    "domain": "ru.pinterest.com",
-    "url": "https://ru.pinterest.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 5000,
     "domain": "rubika.ir",
     "url": "https://rubika.ir/",
     "source_scope": "current_top10k_verified_2026-09-22",
@@ -9733,13 +9999,6 @@
     "rank": 5000,
     "domain": "seller-id.tokopedia.com",
     "url": "https://seller-id.tokopedia.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 5000,
-    "domain": "seller-vn.tiktok.com",
-    "url": "https://seller-vn.tiktok.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
     "activity": "web_browsing"
   },
@@ -10629,13 +10888,6 @@
     "rank": 5000,
     "domain": "tpad2.tsc.go.ke",
     "url": "https://tpad2.tsc.go.ke/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 5000,
-    "domain": "tr.pinterest.com",
-    "url": "https://tr.pinterest.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
     "activity": "web_browsing"
   },
@@ -11728,13 +11980,6 @@
     "rank": 5000,
     "domain": "www.amarujala.com",
     "url": "https://www.amarujala.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 5000,
-    "domain": "www.amazon.com",
-    "url": "https://www.amazon.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
     "activity": "web_browsing"
   },
@@ -13492,13 +13737,6 @@
     "rank": 5000,
     "domain": "www.fabguys.com",
     "url": "https://www.fabguys.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 5000,
-    "domain": "www.facebook.com",
-    "url": "https://www.facebook.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
     "activity": "web_browsing"
   },
@@ -15690,13 +15928,6 @@
     "rank": 5000,
     "domain": "www.mumsnet.com",
     "url": "https://www.mumsnet.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 5000,
-    "domain": "www.mundosexanuncio.com",
-    "url": "https://www.mundosexanuncio.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
     "activity": "web_browsing"
   },
@@ -18390,13 +18621,6 @@
   },
   {
     "rank": 5000,
-    "domain": "www.xdate.ch",
-    "url": "https://www.xdate.ch/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 5000,
     "domain": "www.xiaohongshu.com",
     "url": "https://www.xiaohongshu.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
@@ -19251,13 +19475,6 @@
   },
   {
     "rank": 10000,
-    "domain": "advertising.amazon.com",
-    "url": "https://advertising.amazon.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 10000,
     "domain": "afisha.yandex.ru",
     "url": "https://afisha.yandex.ru/",
     "source_scope": "current_top10k_verified_2026-09-22",
@@ -19825,13 +20042,6 @@
   },
   {
     "rank": 10000,
-    "domain": "aws.amazon.com",
-    "url": "https://aws.amazon.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 10000,
     "domain": "ayuslab.com",
     "url": "https://ayuslab.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
@@ -20343,13 +20553,6 @@
   },
   {
     "rank": 10000,
-    "domain": "ca.pinterest.com",
-    "url": "https://ca.pinterest.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 10000,
     "domain": "cafebazaar.ir",
     "url": "https://cafebazaar.ir/",
     "source_scope": "current_top10k_verified_2026-09-22",
@@ -20700,13 +20903,6 @@
   },
   {
     "rank": 10000,
-    "domain": "co.pinterest.com",
-    "url": "https://co.pinterest.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 10000,
     "domain": "cocomic.co",
     "url": "https://cocomic.co/",
     "source_scope": "current_top10k_verified_2026-09-22",
@@ -21043,13 +21239,6 @@
   },
   {
     "rank": 10000,
-    "domain": "de.pinterest.com",
-    "url": "https://de.pinterest.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 10000,
     "domain": "deadline.com",
     "url": "https://deadline.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
@@ -21136,13 +21325,6 @@
     "rank": 10000,
     "domain": "detyep.com",
     "url": "https://detyep.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 10000,
-    "domain": "developers.facebook.com",
-    "url": "https://developers.facebook.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
     "activity": "web_browsing"
   },
@@ -21542,13 +21724,6 @@
     "rank": 10000,
     "domain": "edocs.es.gov.br",
     "url": "https://edocs.es.gov.br/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 10000,
-    "domain": "edu.google.com",
-    "url": "https://edu.google.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
     "activity": "web_browsing"
   },
@@ -22016,13 +22191,6 @@
   },
   {
     "rank": 10000,
-    "domain": "familylink.google.com",
-    "url": "https://familylink.google.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 10000,
     "domain": "famu.jp",
     "url": "https://famu.jp/",
     "source_scope": "current_top10k_verified_2026-09-22",
@@ -22303,22 +22471,8 @@
   },
   {
     "rank": 10000,
-    "domain": "free.facebook.com",
-    "url": "https://free.facebook.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 10000,
     "domain": "freecash.com",
     "url": "https://freecash.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 10000,
-    "domain": "freemasala.com",
-    "url": "https://freemasala.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
     "activity": "web_browsing"
   },
@@ -22919,13 +23073,6 @@
   },
   {
     "rank": 10000,
-    "domain": "hentaislayer.net",
-    "url": "https://hentaislayer.net/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 10000,
     "domain": "heyzine.com",
     "url": "https://heyzine.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
@@ -23262,13 +23409,6 @@
   },
   {
     "rank": 10000,
-    "domain": "in.linkedin.com",
-    "url": "https://in.linkedin.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 10000,
     "domain": "in.odexglobal.com",
     "url": "https://in.odexglobal.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
@@ -23320,13 +23460,6 @@
     "rank": 10000,
     "domain": "info.mykomon.com",
     "url": "https://info.mykomon.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 10000,
-    "domain": "info.xvideos.net",
-    "url": "https://info.xvideos.net/",
     "source_scope": "current_top10k_verified_2026-09-22",
     "activity": "web_browsing"
   },
@@ -23446,13 +23579,6 @@
     "rank": 10000,
     "domain": "it.finecobank.com",
     "url": "https://it.finecobank.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 10000,
-    "domain": "it.pinterest.com",
-    "url": "https://it.pinterest.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
     "activity": "web_browsing"
   },
@@ -23654,13 +23780,6 @@
   },
   {
     "rank": 10000,
-    "domain": "jp.pinterest.com",
-    "url": "https://jp.pinterest.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 10000,
     "domain": "jp.stanby.com",
     "url": "https://jp.stanby.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
@@ -23852,13 +23971,6 @@
     "rank": 10000,
     "domain": "kpkvdr.com",
     "url": "https://kpkvdr.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 10000,
-    "domain": "kr.pinterest.com",
-    "url": "https://kr.pinterest.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
     "activity": "web_browsing"
   },
@@ -24998,13 +25110,6 @@
   },
   {
     "rank": 10000,
-    "domain": "mmsvibex.fit",
-    "url": "https://mmsvibex.fit/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 10000,
     "domain": "mnc.mizuho-sc.com",
     "url": "https://mnc.mizuho-sc.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
@@ -25719,13 +25824,6 @@
   },
   {
     "rank": 10000,
-    "domain": "oauth.facebook.com",
-    "url": "https://oauth.facebook.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 10000,
     "domain": "observador.pt",
     "url": "https://observador.pt/",
     "source_scope": "current_top10k_verified_2026-09-22",
@@ -26167,13 +26265,6 @@
   },
   {
     "rank": 10000,
-    "domain": "ph.pinterest.com",
-    "url": "https://ph.pinterest.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 10000,
     "domain": "pharmeasy.in",
     "url": "https://pharmeasy.in/",
     "source_scope": "current_top10k_verified_2026-09-22",
@@ -26435,13 +26526,6 @@
     "rank": 10000,
     "domain": "pomorska.pl",
     "url": "https://pomorska.pl/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 10000,
-    "domain": "pornarabi.net",
-    "url": "https://pornarabi.net/",
     "source_scope": "current_top10k_verified_2026-09-22",
     "activity": "web_browsing"
   },
@@ -27448,22 +27532,8 @@
   },
   {
     "rank": 10000,
-    "domain": "seller-th.tiktok.com",
-    "url": "https://seller-th.tiktok.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 10000,
     "domain": "seller.indiamart.com",
     "url": "https://seller.indiamart.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 10000,
-    "domain": "sellercentral-japan.amazon.com",
-    "url": "https://sellercentral-japan.amazon.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
     "activity": "web_browsing"
   },
@@ -27639,13 +27709,6 @@
     "rank": 10000,
     "domain": "shop.nijisanji.jp",
     "url": "https://shop.nijisanji.jp/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 10000,
-    "domain": "shop.tiktok.com",
-    "url": "https://shop.tiktok.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
     "activity": "web_browsing"
   },
@@ -28276,13 +28339,6 @@
     "rank": 10000,
     "domain": "superbet.ro",
     "url": "https://superbet.ro/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 10000,
-    "domain": "support.spotify.com",
-    "url": "https://support.spotify.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
     "activity": "web_browsing"
   },
@@ -29102,13 +29158,6 @@
     "rank": 10000,
     "domain": "ugcnet.nta.nic.in",
     "url": "https://ugcnet.nta.nic.in/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 10000,
-    "domain": "uk.pinterest.com",
-    "url": "https://uk.pinterest.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
     "activity": "web_browsing"
   },
@@ -30409,13 +30458,6 @@
   },
   {
     "rank": 10000,
-    "domain": "www.b-hentai.com",
-    "url": "https://www.b-hentai.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 10000,
     "domain": "www.baamboozle.com",
     "url": "https://www.baamboozle.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
@@ -31482,13 +31524,6 @@
     "rank": 10000,
     "domain": "www.dailythanthi.com",
     "url": "https://www.dailythanthi.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 10000,
-    "domain": "www.damplips.com",
-    "url": "https://www.damplips.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
     "activity": "web_browsing"
   },
@@ -35561,13 +35596,6 @@
   },
   {
     "rank": 10000,
-    "domain": "www.pazintysxxx.com",
-    "url": "https://www.pazintysxxx.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 10000,
     "domain": "www.pddrc.in",
     "url": "https://www.pddrc.in/",
     "source_scope": "current_top10k_verified_2026-09-22",
@@ -36550,13 +36578,6 @@
     "rank": 10000,
     "domain": "www.sikayetvar.com",
     "url": "https://www.sikayetvar.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 10000,
-    "domain": "www.silverdaddies.com",
-    "url": "https://www.silverdaddies.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
     "activity": "web_browsing"
   },
@@ -39768,13 +39789,6 @@
   },
   {
     "rank": 50000,
-    "domain": "affiliate.tiktok.com",
-    "url": "https://affiliate.tiktok.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 50000,
     "domain": "africa.espn.com",
     "url": "https://africa.espn.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
@@ -41070,13 +41084,6 @@
   },
   {
     "rank": 50000,
-    "domain": "artists.spotify.com",
-    "url": "https://artists.spotify.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 50000,
     "domain": "artofproblemsolving.com",
     "url": "https://artofproblemsolving.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
@@ -42316,13 +42323,6 @@
   },
   {
     "rank": 50000,
-    "domain": "bn.videospornosexe.com",
-    "url": "https://bn.videospornosexe.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 50000,
     "domain": "bnrs.dti.gov.ph",
     "url": "https://bnrs.dti.gov.ph/",
     "source_scope": "current_top10k_verified_2026-09-22",
@@ -42409,13 +42409,6 @@
     "rank": 50000,
     "domain": "booklog.jp",
     "url": "https://booklog.jp/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 50000,
-    "domain": "books.google.com",
-    "url": "https://books.google.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
     "activity": "web_browsing"
   },
@@ -42542,13 +42535,6 @@
     "rank": 50000,
     "domain": "br.jobsora.com",
     "url": "https://br.jobsora.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 50000,
-    "domain": "br.linkedin.com",
-    "url": "https://br.linkedin.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
     "activity": "web_browsing"
   },
@@ -42801,13 +42787,6 @@
     "rank": 50000,
     "domain": "business.santander.co.uk",
     "url": "https://business.santander.co.uk/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 50000,
-    "domain": "business.tiktok.com",
-    "url": "https://business.tiktok.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
     "activity": "web_browsing"
   },
@@ -43501,13 +43480,6 @@
     "rank": 50000,
     "domain": "cklass.com",
     "url": "https://cklass.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 50000,
-    "domain": "cl.pinterest.com",
-    "url": "https://cl.pinterest.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
     "activity": "web_browsing"
   },
@@ -44747,13 +44719,6 @@
     "rank": 50000,
     "domain": "djponline.pajak.go.id",
     "url": "https://djponline.pajak.go.id/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 50000,
-    "domain": "dk.pinterest.com",
-    "url": "https://dk.pinterest.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
     "activity": "web_browsing"
   },
@@ -46635,13 +46600,6 @@
   },
   {
     "rank": 50000,
-    "domain": "families.youtube.com",
-    "url": "https://families.youtube.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 50000,
     "domain": "famma-dhaw.com",
     "url": "https://famma-dhaw.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
@@ -47225,13 +47183,6 @@
     "rank": 50000,
     "domain": "fr.getaround.com",
     "url": "https://fr.getaround.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 50000,
-    "domain": "fr.linkedin.com",
-    "url": "https://fr.linkedin.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
     "activity": "web_browsing"
   },
@@ -48569,13 +48520,6 @@
     "rank": 50000,
     "domain": "home.gamer.com.tw",
     "url": "https://home.gamer.com.tw/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 50000,
-    "domain": "home.google.com",
-    "url": "https://home.google.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
     "activity": "web_browsing"
   },
@@ -52438,13 +52382,6 @@
   },
   {
     "rank": 50000,
-    "domain": "mangamaniacs.org",
-    "url": "https://mangamaniacs.org/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 50000,
     "domain": "mangaplaza.com",
     "url": "https://mangaplaza.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
@@ -53817,13 +53754,6 @@
   },
   {
     "rank": 50000,
-    "domain": "mx.linkedin.com",
-    "url": "https://mx.linkedin.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 50000,
     "domain": "my.asos.com",
     "url": "https://my.asos.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
@@ -54715,13 +54645,6 @@
     "rank": 50000,
     "domain": "nl.onecasino.com",
     "url": "https://nl.onecasino.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 50000,
-    "domain": "nl.pinterest.com",
-    "url": "https://nl.pinterest.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
     "activity": "web_browsing"
   },
@@ -55770,13 +55693,6 @@
   },
   {
     "rank": 50000,
-    "domain": "patents.google.com",
-    "url": "https://patents.google.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 50000,
     "domain": "pay.a8pay001.com",
     "url": "https://pay.a8pay001.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
@@ -56470,13 +56386,6 @@
   },
   {
     "rank": 50000,
-    "domain": "porndd.com",
-    "url": "https://porndd.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 50000,
     "domain": "portal-islam.id",
     "url": "https://portal-islam.id/",
     "source_scope": "current_top10k_verified_2026-09-22",
@@ -56808,13 +56717,6 @@
     "rank": 50000,
     "domain": "privacy.samsung.com",
     "url": "https://privacy.samsung.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 50000,
-    "domain": "privacycenter.instagram.com",
-    "url": "https://privacycenter.instagram.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
     "activity": "web_browsing"
   },
@@ -57940,13 +57842,6 @@
   },
   {
     "rank": 50000,
-    "domain": "ro.pinterest.com",
-    "url": "https://ro.pinterest.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 50000,
     "domain": "roadcard.com.br",
     "url": "https://roadcard.com.br/",
     "source_scope": "current_top10k_verified_2026-09-22",
@@ -58915,13 +58810,6 @@
     "rank": 50000,
     "domain": "selfservice.gstsystem.in",
     "url": "https://selfservice.gstsystem.in/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 50000,
-    "domain": "seller-ph.tiktok.com",
-    "url": "https://seller-ph.tiktok.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
     "activity": "web_browsing"
   },
@@ -68587,13 +68475,6 @@
   },
   {
     "rank": 50000,
-    "domain": "www.empornium.sx",
-    "url": "https://www.empornium.sx/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 50000,
     "domain": "www.empregare.com",
     "url": "https://www.empregare.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
@@ -71968,13 +71849,6 @@
   },
   {
     "rank": 50000,
-    "domain": "www.klubb6.se",
-    "url": "https://www.klubb6.se/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 50000,
     "domain": "www.km777.xyz",
     "url": "https://www.km777.xyz/",
     "source_scope": "current_top10k_verified_2026-09-22",
@@ -73510,13 +73384,6 @@
     "rank": 50000,
     "domain": "www.mk88122.com",
     "url": "https://www.mk88122.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "web_browsing"
-  },
-  {
-    "rank": 50000,
-    "domain": "www.mm.pornohype.me",
-    "url": "https://www.mm.pornohype.me/",
     "source_scope": "current_top10k_verified_2026-09-22",
     "activity": "web_browsing"
   },

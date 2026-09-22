@@ -26,11 +26,16 @@ run_category() {
         --total-seconds "$total" $EXTRA_ARGS
 }
 
+# Small login-heavy categories first, then the ~11k-domain web_browsing sweep
+# (which alone takes ~70h), then downloads last. Session cookies go stale in
+# ~24h, so anything gated on them needs to run well before web_browsing would
+# otherwise get to it. build_plans.py also front-loads login-gated domains
+# within each plan file for the same reason.
 while true; do
-    run_category web_browsing browsing
     run_category social_media_browsing social
     run_category video_streaming video
     run_category audio_streaming audio
+    run_category web_browsing browsing
     run_category file_download downloads
     echo "=== full sweep complete, looping again (Ctrl+C to stop) ==="
 done

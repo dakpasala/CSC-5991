@@ -1,13 +1,5 @@
 [
   {
-    "domain": "w3schools.com",
-    "url": "https://www.w3schools.com/html/horse.ogg",
-    "media_selector": "audio, video",
-    "loop": true,
-    "source_scope": "external_demo_short_loop_not_representative_music_streaming",
-    "activity": "audio_streaming"
-  },
-  {
     "rank": 1000,
     "domain": "accounts.spotify.com",
     "url": "https://accounts.spotify.com/",
@@ -19,6 +11,21 @@
     "domain": "open.spotify.com",
     "url": "https://open.spotify.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "audio_streaming"
+  },
+  {
+    "rank": 50000,
+    "domain": "podcast.adobe.com",
+    "url": "https://podcast.adobe.com/",
+    "source_scope": "current_top10k_verified_2026-09-22",
+    "activity": "audio_streaming"
+  },
+  {
+    "domain": "w3schools.com",
+    "url": "https://www.w3schools.com/html/horse.ogg",
+    "media_selector": "audio, video",
+    "loop": true,
+    "source_scope": "external_demo_short_loop_not_representative_music_streaming",
     "activity": "audio_streaming"
   },
   {
@@ -249,13 +256,6 @@
     "rank": 50000,
     "domain": "plus.rtl.de",
     "url": "https://plus.rtl.de/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "audio_streaming"
-  },
-  {
-    "rank": 50000,
-    "domain": "podcast.adobe.com",
-    "url": "https://podcast.adobe.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
     "activity": "audio_streaming"
   },

@@ -151,8 +151,14 @@ python src/collect_browsing.py --chrome-binary /usr/bin/google-chrome \
 ```
 
 Or use `collect_loop.sh` for the full continuous sweep across all five
-categories (`web_browsing`, `social_media_browsing`, `video_streaming`,
-`audio_streaming`, `file_download`) — it loops until Ctrl+C. Set
+categories — it loops until Ctrl+C. Order matters here: it runs
+`social_media_browsing`, `video_streaming`, and `audio_streaming` first
+(small plans, and where most login-gated domains live), then the much
+larger `web_browsing` (also front-loaded with its own login-gated domains
+by `build_plans.py`), then `file_download` last. This is deliberate —
+session cookies go stale in about a day (see above), and `web_browsing`
+alone takes on the order of 70 hours, so login-gated domains need to run
+well before their cookies expire rather than waiting behind it. Set
 `CHROME_BINARY`/`INTERFACE` as environment variables rather than editing the
 script:
 
