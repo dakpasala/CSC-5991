@@ -112,5 +112,17 @@
     "url": "https://www.skysports.com/f1/news/13589266/f1-title-race-why-azerbaijan-malaysia-singapore-triple-header-will-shape-what-rest-of-2026-championship-chase-will-look-like",
     "source_scope": "hand_curated_verified_playback_2026-09-23",
     "activity": "video_streaming"
+  },
+  {
+    "domain": "www.mlb.com",
+    "url": "https://www.mlb.com/video/ben-malgeri-homers-5-on-a-fly-ball-to-left-center-field",
+    "source_scope": "hand_curated_verified_playback_2026-09-23",
+    "activity": "video_streaming"
+  },
+  {
+    "domain": "bleacherreport.com",
+    "url": "https://bleacherreport.com/videos/f5fa2263-5c67-440c-a59b-e54c4febeb2c-tolle-gets-standing-ovation",
+    "source_scope": "hand_curated_verified_playback_2026-09-23",
+    "activity": "video_streaming"
   }
 ]
