@@ -1,12 +1,5 @@
 [
   {
-    "rank": 1000,
-    "domain": "open.spotify.com",
-    "url": "https://open.spotify.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "audio_streaming"
-  },
-  {
     "domain": "w3schools.com",
     "url": "https://www.w3schools.com/html/horse.ogg",
     "media_selector": "audio, video",
@@ -15,193 +8,22 @@
     "activity": "audio_streaming"
   },
   {
-    "rank": 5000,
-    "domain": "www.nrk.no",
-    "url": "https://www.nrk.no/",
-    "source_scope": "current_top10k_verified_2026-09-22",
+    "domain": "freesound.org",
+    "url": "https://freesound.org/people/josefpres/sounds/871553/",
+    "source_scope": "hand_curated_verified_playback_2026-09-23",
     "activity": "audio_streaming"
   },
   {
-    "rank": 10000,
-    "domain": "bible.usccb.org",
-    "url": "https://bible.usccb.org/",
-    "source_scope": "current_top10k_verified_2026-09-22",
+    "domain": "freesound.org",
+    "url": "https://freesound.org/people/CAT-FOX_ALEX/sounds/871552/",
+    "source_scope": "hand_curated_verified_playback_2026-09-23",
     "activity": "audio_streaming"
   },
   {
-    "rank": 10000,
-    "domain": "cadenaser.com",
-    "url": "https://cadenaser.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "audio_streaming"
-  },
-  {
-    "rank": 10000,
-    "domain": "live24.gr",
-    "url": "https://live24.gr/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "audio_streaming"
-  },
-  {
-    "rank": 10000,
-    "domain": "onlineradiobox.com",
-    "url": "https://onlineradiobox.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "audio_streaming"
-  },
-  {
-    "rank": 10000,
-    "domain": "politiken.dk",
-    "url": "https://politiken.dk/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "audio_streaming"
-  },
-  {
-    "rank": 10000,
-    "domain": "www.bnr.nl",
-    "url": "https://www.bnr.nl/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "audio_streaming"
-  },
-  {
-    "rank": 10000,
-    "domain": "www.deezer.com",
-    "url": "https://www.deezer.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "audio_streaming"
-  },
-  {
-    "rank": 10000,
-    "domain": "www.espn.com",
-    "url": "https://www.espn.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "audio_streaming"
-  },
-  {
-    "rank": 10000,
-    "domain": "www.france.tv",
-    "url": "https://www.france.tv/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "audio_streaming"
-  },
-  {
-    "rank": 10000,
-    "domain": "www.gazetaprawna.pl",
-    "url": "https://www.gazetaprawna.pl/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "audio_streaming"
-  },
-  {
-    "rank": 10000,
-    "domain": "www.radiofrance.fr",
-    "url": "https://www.radiofrance.fr/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "audio_streaming"
-  },
-  {
-    "rank": 10000,
-    "domain": "www.rnz.co.nz",
-    "url": "https://www.rnz.co.nz/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "audio_streaming"
-  },
-  {
-    "rank": 50000,
-    "domain": "areena.yle.fi",
-    "url": "https://areena.yle.fi/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "audio_streaming"
-  },
-
-  {
-    "rank": 50000,
-    "domain": "jornal.usp.br",
-    "url": "https://jornal.usp.br/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "audio_streaming"
-  },
-  {
-    "rank": 50000,
-    "domain": "kyivindependent.com",
-    "url": "https://kyivindependent.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "audio_streaming"
-  },
-  {
-    "rank": 50000,
-    "domain": "mytuner-radio.com",
-    "url": "https://mytuner-radio.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "audio_streaming"
-  },
-  {
-    "rank": 50000,
-    "domain": "onlineradiofm.in",
-    "url": "https://onlineradiofm.in/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "audio_streaming"
-  },
-  {
-    "rank": 50000,
-    "domain": "plus.rtl.de",
-    "url": "https://plus.rtl.de/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "audio_streaming"
-  },
-  {
-    "rank": 50000,
-    "domain": "streema.com",
-    "url": "https://streema.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "audio_streaming"
-  },
-  {
-    "rank": 50000,
-    "domain": "www.automobile-propre.com",
-    "url": "https://www.automobile-propre.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "audio_streaming"
-  },
-  {
-    "rank": 50000,
-    "domain": "www.iheart.com",
-    "url": "https://www.iheart.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "audio_streaming"
-  },
-  {
-    "rank": 50000,
-    "domain": "www.kaleva.fi",
-    "url": "https://www.kaleva.fi/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "audio_streaming"
-  },
-  {
-    "rank": 50000,
-    "domain": "www.muchodeporte.com",
-    "url": "https://www.muchodeporte.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "audio_streaming"
-  },
-  {
-    "rank": 50000,
     "domain": "www.oigo.com",
-    "url": "https://www.oigo.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "audio_streaming"
-  },
-  {
-    "rank": 50000,
-    "domain": "www.ondacero.es",
-    "url": "https://www.ondacero.es/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "audio_streaming"
-  },
-  {
-    "rank": 50000,
-    "domain": "www.rac1.cat",
-    "url": "https://www.rac1.cat/",
-    "source_scope": "current_top10k_verified_2026-09-22",
+    "url": "https://www.oigo.com/moda/radioenvivo/",
+    "media_selector": "video",
+    "source_scope": "hand_curated_verified_playback_2026-09-23",
     "activity": "audio_streaming"
   }
 ]
