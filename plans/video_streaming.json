@@ -64,5 +64,23 @@
     "url": "https://odysee.com/@whataboutit:1/%F0%9F%9A%A8full-breakdown-spacex-starship:d",
     "source_scope": "hand_curated_verified_playback_2026-09-23",
     "activity": "video_streaming"
+  },
+  {
+    "domain": "www.theguardian.com",
+    "url": "https://www.theguardian.com/global-development/ng-interactive/2026/sep/23/this-is-where-i-live-now-the-back-of-a-truck-a-day-in-the-life-of-a-grandmother-in-gaza",
+    "source_scope": "hand_curated_verified_playback_2026-09-23",
+    "activity": "video_streaming"
+  },
+  {
+    "domain": "www.aljazeera.com",
+    "url": "https://www.aljazeera.com/video/newsfeed/2026/9/23/jerusalem-daily-world-leaders-condemn-israel-at-un",
+    "source_scope": "hand_curated_verified_playback_2026-09-23",
+    "activity": "video_streaming"
+  },
+  {
+    "domain": "www.euronews.com",
+    "url": "https://www.euronews.com/video/2026/09/23/eu-morocco-migration-issue-needs-a-creative-solution-expert-says",
+    "source_scope": "hand_curated_verified_playback_2026-09-23",
+    "activity": "video_streaming"
   }
 ]
