@@ -1,0 +1,29 @@
+[
+  {
+    "domain": "www.rottentomatoes.com",
+    "url": "https://www.rottentomatoes.com/m/forgotten_island/videos/fYVMCjxjeQTX",
+    "activity": "video_streaming",
+    "media_selector": "video",
+    "source_scope": "current_inventory_public_video_pilot_2026-09-22",
+    "source_origin": "https://www.rottentomatoes.com",
+    "preflight_status": "browser_playback_observed_no_capture",
+    "preflight_session_seconds": 20,
+    "preflight_verified_seconds": 13.601,
+    "rank": 5000
+  },
+  {
+    "domain": "upload.wikimedia.org",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/b/b4/Apollo_11_Introduction.webm",
+    "activity": "video_streaming",
+    "media_selector": "video",
+    "source_domain": "commons.wikimedia.org",
+    "source_page": "https://commons.wikimedia.org/wiki/File:Apollo_11_Introduction.webm",
+    "delivery_mode": "direct_public_media",
+    "source_scope": "current_inventory_public_video_pilot_2026-09-22",
+    "source_origin": "https://commons.wikimedia.org",
+    "preflight_status": "browser_playback_observed_no_capture",
+    "preflight_session_seconds": 20,
+    "preflight_verified_seconds": 17.118,
+    "source_rank": 5000
+  }
+]

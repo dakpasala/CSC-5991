@@ -65,14 +65,19 @@ def worker(pipe, item, settings, deadline, profile):
                 raise TimeoutError("Session deadline reached")
             return seconds
 
-        def find(selector):
+        def find(selector, visible=True):
             nonlocal phase
             phase = "wait_for_selector"
             emit("selector_wait", selector=selector)
+            # <audio> elements are legitimately invisible by design in almost every
+            # real player (no native controls, 0x0 box) -- unlike video, seeing them
+            # was never a meaningful signal, so audio lookups only require presence.
+            condition = conditions.visibility_of_element_located if visible \
+                else conditions.presence_of_element_located
             return WebDriverWait(
                 driver, min(settings["timeout"], remaining()), poll_frequency=0.2,
                 ignored_exceptions=(StaleElementReferenceException,),
-            ).until(conditions.visibility_of_element_located((By.CSS_SELECTOR, selector)))
+            ).until(condition((By.CSS_SELECTOR, selector)))
 
         def navigate(url):
             nonlocal phase
@@ -235,7 +240,19 @@ def worker(pipe, item, settings, deadline, profile):
                 emit("scroll")
                 before = time.monotonic()
                 time.sleep(min(2, max(0, deadline - before - 1.5)))
-                browsing_evidence()
+                # Virtualized feeds (e.g. Facebook) can momentarily render zero
+                # matching nodes mid-repaint right after a scroll; a brief retry
+                # here avoids discarding an otherwise-passing session over one
+                # transient frame, same tolerance the initial check already gets.
+                retry_deadline = min(time.monotonic() + 5, deadline - 1.5)
+                while True:
+                    try:
+                        browsing_evidence()
+                        break
+                    except RuntimeError:
+                        if time.monotonic() >= retry_deadline:
+                            raise
+                        time.sleep(min(1, max(0, retry_deadline - time.monotonic())))
                 verified += time.monotonic() - before
                 links = item.get("links", [])
                 if link_index < len(links) and time.monotonic() - link_time >= 8:
@@ -266,15 +283,45 @@ def worker(pipe, item, settings, deadline, profile):
                 previous = driver.execute_async_script(RTC_STATS)
             else:
                 phase = "media_lookup"
-                find(selector)
+                # Presence only, not visibility -- click-to-load/ad-gated players
+                # commonly keep the tag 0x0 until a click reveals it (same reason
+                # audio tags are never visually sized). Real playback is verified
+                # afterward via MEDIA_STATE's currentTime, which needs no visibility.
+                find(selector, visible=False)
                 phase = "playback"
-                driver.execute_script(
-                    "const m=document.querySelector(arguments[0]); m.muted=true; "
-                    "m.loop=arguments[1]; m.play().catch(()=>{});",
-                    selector, bool(item.get("loop", False)),
-                )
+
+                def request_play():
+                    driver.execute_script(
+                        "const m=document.querySelector(arguments[0]); if(!m) return; "
+                        "m.muted=true; m.loop=arguments[1]; m.play().catch(()=>{});",
+                        selector, bool(item.get("loop", False)),
+                    )
+
+                request_play()
                 emit("play_requested", media="video" if video else "audio")
                 previous = driver.execute_script(MEDIA_STATE, selector)
+                # Some players (ad-gated, click-to-load) never actually assign a
+                # source until they see a real user-gesture click -- a scripted
+                # .play() alone isn't trusted the same way. Try the media element
+                # itself, then video.js's standard big-play-button (used across
+                # thousands of sites), then generic play-button patterns.
+                if previous and previous["time"] == 0:
+                    time.sleep(1.5)
+                    for click_selector in (
+                        selector, ".vjs-big-play-button",
+                        "[class*='play-button' i]", "[aria-label*='play' i]",
+                    ):
+                        current = driver.execute_script(MEDIA_STATE, selector)
+                        if not current or current["time"] > 0:
+                            break
+                        try:
+                            driver.find_element(By.CSS_SELECTOR, click_selector).click()
+                            emit("play_click_fallback", selector=click_selector)
+                            time.sleep(1)
+                        except Exception:
+                            continue
+                    request_play()
+                    previous = driver.execute_script(MEDIA_STATE, selector)
             sampled = last_progress = time.monotonic()
             while deadline - time.monotonic() > 1.5:
                 time.sleep(min(1, max(0, deadline - time.monotonic() - 1.5)))

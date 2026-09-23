@@ -23,11 +23,16 @@ SESSION_COOKIE_DOMAINS = (
     "tiktok.com",
     "spotify.com",
     "snapchat.com",
-    "threads.net",
     "amazon.com",
     "whatsapp.com",
     "reddit.com",
     "adobe.com",
+    "bsky.app",
+    "myanimelist.net",
+    "bing.com",
+    "cloud.microsoft",
+    "twitch.tv",
+    "indeed.com",
 )
 
 
@@ -67,9 +72,15 @@ def save_session_cookies(cookies_by_domain):
 
 
 def load_session_cookies(domain):
+    """Cookies are bucketed by base domain (e.g. "pinterest.com"); match a plan
+    entry like "in.pinterest.com" against its base domain, not by exact key."""
     if not SESSION_COOKIES.exists():
         return []
     try:
-        return json.loads(SESSION_COOKIES.read_text()).get(domain, [])
+        buckets = json.loads(SESSION_COOKIES.read_text())
     except (OSError, ValueError):
         return []
+    for base in SESSION_COOKIE_DOMAINS:
+        if domain == base or domain.endswith("." + base):
+            return buckets.get(base, [])
+    return []

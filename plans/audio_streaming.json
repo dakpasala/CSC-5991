@@ -1,22 +1,8 @@
 [
   {
     "rank": 1000,
-    "domain": "accounts.spotify.com",
-    "url": "https://accounts.spotify.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "audio_streaming"
-  },
-  {
-    "rank": 1000,
     "domain": "open.spotify.com",
     "url": "https://open.spotify.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "audio_streaming"
-  },
-  {
-    "rank": 50000,
-    "domain": "podcast.adobe.com",
-    "url": "https://podcast.adobe.com/",
     "source_scope": "current_top10k_verified_2026-09-22",
     "activity": "audio_streaming"
   },
@@ -30,99 +16,8 @@
   },
   {
     "rank": 5000,
-    "domain": "gshow.globo.com",
-    "url": "https://gshow.globo.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "audio_streaming"
-  },
-  {
-    "rank": 5000,
-    "domain": "m.soundcloud.com",
-    "url": "https://m.soundcloud.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "audio_streaming"
-  },
-  {
-    "rank": 5000,
-    "domain": "music.apple.com",
-    "url": "https://music.apple.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "audio_streaming"
-  },
-  {
-    "rank": 5000,
-    "domain": "soundcloud.com",
-    "url": "https://soundcloud.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "audio_streaming"
-  },
-  {
-    "rank": 5000,
-    "domain": "www.aljazeera.com",
-    "url": "https://www.aljazeera.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "audio_streaming"
-  },
-  {
-    "rank": 5000,
-    "domain": "www.audible.com",
-    "url": "https://www.audible.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "audio_streaming"
-  },
-  {
-    "rank": 5000,
-    "domain": "www.dr.dk",
-    "url": "https://www.dr.dk/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "audio_streaming"
-  },
-  {
-    "rank": 5000,
-    "domain": "www.irishtimes.com",
-    "url": "https://www.irishtimes.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "audio_streaming"
-  },
-  {
-    "rank": 5000,
-    "domain": "www.last.fm",
-    "url": "https://www.last.fm/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "audio_streaming"
-  },
-  {
-    "rank": 5000,
-    "domain": "www.ledauphine.com",
-    "url": "https://www.ledauphine.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "audio_streaming"
-  },
-  {
-    "rank": 5000,
-    "domain": "www.manoramaonline.com",
-    "url": "https://www.manoramaonline.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "audio_streaming"
-  },
-  {
-    "rank": 5000,
-    "domain": "www.npr.org",
-    "url": "https://www.npr.org/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "audio_streaming"
-  },
-  {
-    "rank": 5000,
     "domain": "www.nrk.no",
     "url": "https://www.nrk.no/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "audio_streaming"
-  },
-  {
-    "rank": 5000,
-    "domain": "www.rmf24.pl",
-    "url": "https://www.rmf24.pl/",
     "source_scope": "current_top10k_verified_2026-09-22",
     "activity": "audio_streaming"
   },
@@ -217,13 +112,7 @@
     "source_scope": "current_top10k_verified_2026-09-22",
     "activity": "audio_streaming"
   },
-  {
-    "rank": 50000,
-    "domain": "audiomack.com",
-    "url": "https://audiomack.com/",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "audio_streaming"
-  },
+
   {
     "rank": 50000,
     "domain": "jornal.usp.br",

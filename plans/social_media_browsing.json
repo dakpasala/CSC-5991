@@ -8,11 +8,10 @@
     "dismiss_selector": "[aria-label=\"Close\"]"
   },
   {
-    "rank": 1000,
     "domain": "in.pinterest.com",
     "url": "https://in.pinterest.com/",
-    "content_selector": "article",
-    "source_scope": "current_top10k_verified_2026-09-22",
+    "content_selector": "div:has(img[src*='pinimg.com'])",
+    "source_scope": "hand_curated_verified_playback_2026-09-23",
     "activity": "social_media_browsing"
   },
   {
@@ -24,91 +23,10 @@
     "activity": "social_media_browsing"
   },
   {
-    "rank": 5000,
-    "domain": "ngl.link",
-    "url": "https://ngl.link/",
-    "content_selector": "article",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "social_media_browsing"
-  },
-  {
-    "rank": 5000,
-    "domain": "www.filmaffinity.com",
-    "url": "https://www.filmaffinity.com/",
-    "content_selector": "article",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "social_media_browsing"
-  },
-  {
-    "rank": 5000,
-    "domain": "www.kwai.com",
-    "url": "https://www.kwai.com/",
-    "content_selector": "article",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "social_media_browsing"
-  },
-  {
-    "rank": 10000,
-    "domain": "twitcasting.tv",
-    "url": "https://twitcasting.tv/",
-    "content_selector": "article",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "social_media_browsing"
-  },
-  {
-    "rank": 10000,
-    "domain": "www.chathourmobile.com",
-    "url": "https://www.chathourmobile.com/",
-    "content_selector": "article",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "social_media_browsing"
-  },
-  {
-    "rank": 10000,
-    "domain": "www.reduceimages.com",
-    "url": "https://www.reduceimages.com/",
-    "content_selector": "article",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "social_media_browsing"
-  },
-  {
-    "rank": 50000,
-    "domain": "leagueofcomicgeeks.com",
-    "url": "https://leagueofcomicgeeks.com/",
-    "content_selector": "article",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "social_media_browsing"
-  },
-  {
-    "rank": 50000,
-    "domain": "www.gaiaonline.com",
-    "url": "https://www.gaiaonline.com/",
-    "content_selector": "article",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "social_media_browsing"
-  },
-  {
-    "rank": 50000,
-    "domain": "www.nonshy.com",
-    "url": "https://www.nonshy.com/",
-    "content_selector": "article",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "social_media_browsing"
-  },
-  {
-    "rank": 50000,
-    "domain": "www.snackvideo.com",
-    "url": "https://www.snackvideo.com/",
-    "content_selector": "article",
-    "source_scope": "current_top10k_verified_2026-09-22",
-    "activity": "social_media_browsing"
-  },
-  {
-    "rank": 50000,
-    "domain": "www.utherverse.com",
-    "url": "https://www.utherverse.com/",
-    "content_selector": "article",
-    "source_scope": "current_top10k_verified_2026-09-22",
+    "domain": "www.linkedin.com",
+    "url": "https://www.linkedin.com/feed/",
+    "content_selector": "div[data-testid*=\"FeedType_MAIN_FEED_RELEVANCE\"]",
+    "source_scope": "hand_curated_verified_playback_2026-09-23",
     "activity": "social_media_browsing"
   }
 ]
