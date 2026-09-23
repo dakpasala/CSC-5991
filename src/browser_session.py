@@ -50,7 +50,7 @@ def worker(pipe, item, settings, deadline, profile):
     phase = "startup"
     try:
         from selenium import webdriver
-        from selenium.common.exceptions import StaleElementReferenceException
+        from selenium.common.exceptions import StaleElementReferenceException, WebDriverException
         from selenium.webdriver.chrome.service import Service
         from selenium.webdriver.common.by import By
         from selenium.webdriver.support import expected_conditions as conditions
@@ -301,21 +301,33 @@ def worker(pipe, item, settings, deadline, profile):
                 emit("play_requested", media="video" if video else "audio")
                 previous = driver.execute_script(MEDIA_STATE, selector)
                 # Some players (ad-gated, click-to-load) never actually assign a
-                # source until they see a real user-gesture click -- a scripted
-                # .play() alone isn't trusted the same way. Try the media element
-                # itself, then video.js's standard big-play-button (used across
-                # thousands of sites), then generic play-button patterns.
+                # source until they see a click -- a scripted .play() alone isn't
+                # enough. Try the media element itself, then video.js's standard
+                # big-play-button (used across thousands of sites), then generic
+                # play-button patterns (including Bandcamp's ".playbutton", no
+                # hyphen). A real WebDriver click is tried first since it's a
+                # trusted gesture some sites require; a JS-dispatched click is the
+                # fallback for elements another node visually overlaps (Selenium's
+                # native click refuses those, even headless where nothing is
+                # actually blocking the content).
                 if previous and previous["time"] == 0:
                     time.sleep(1.5)
                     for click_selector in (
-                        selector, ".vjs-big-play-button",
+                        selector, ".vjs-big-play-button", ".playbutton",
                         "[class*='play-button' i]", "[aria-label*='play' i]",
                     ):
                         current = driver.execute_script(MEDIA_STATE, selector)
                         if not current or current["time"] > 0:
                             break
                         try:
-                            driver.find_element(By.CSS_SELECTOR, click_selector).click()
+                            element = driver.find_element(By.CSS_SELECTOR, click_selector)
+                            driver.execute_script(
+                                "arguments[0].scrollIntoView({block:'center'})", element
+                            )
+                            try:
+                                element.click()
+                            except WebDriverException:
+                                driver.execute_script("arguments[0].click()", element)
                             emit("play_click_fallback", selector=click_selector)
                             time.sleep(1)
                         except Exception:
