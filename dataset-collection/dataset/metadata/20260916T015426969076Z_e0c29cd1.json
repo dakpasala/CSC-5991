@@ -1,0 +1,354 @@
+{
+  "session_id": "20260916T015426969076Z_e0c29cd1",
+  "domain": "samsung.com",
+  "rank": 93,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-16T01:54:26.969805+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1789523668.842043,
+      "browser_version": "152.0.7977.84",
+      "headed": true
+    },
+    {
+      "event": "navigate",
+      "time": 1789523671.366923,
+      "url": "https://www.samsung.com/us/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523671.376847,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523671.379085
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523673.419731,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523673.450345
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523675.479904,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523675.511126
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523677.54247,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523677.57362
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523679.606007,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523679.636946
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523681.652637,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523681.6565309
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523683.669583,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523683.671839
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523685.69386,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523685.696882
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523687.719321,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523687.7228742
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523689.737516,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523689.741693
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523691.752675,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523691.754529
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523693.7706518,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523693.774664
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523695.7840772,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523695.7866309
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523697.7977479,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523697.800404
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523699.807085,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523699.809599
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523701.8243961,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523701.8279538
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523703.841245,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523703.844477
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523705.859434,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523705.862873
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523707.877986,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523707.8815308
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523709.897061,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523709.90047
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523711.9108212,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523711.914686
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523713.927037,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523713.9301991
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523715.9513369,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523715.9538078
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523717.971065,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523717.973724
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523719.982977,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523719.985354
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523721.995671,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523721.997646
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523724.010965,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523724.012552
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523725.4815192,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1789523725.4817028,
+      "success": true,
+      "verified_seconds": 53.913
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 60.0,
+  "source_scope": "top100_batch_2026-09-15",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "8f3686dc6920d00c589e766d1180ffb5cd5d60e82d42be00c90e3fc9c23060a5",
+  "profile_mode": "persistent",
+  "browser_version": "152.0.7977.84",
+  "capture_started_at": "2026-09-16T01:54:28.921165+00:00",
+  "browser_success": true,
+  "verified_seconds": 53.913,
+  "capture_ended_at": "2026-09-16T01:55:25.485982+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 8641,
+  "capture_duration_seconds": 56.564817,
+  "duration_seconds": 58.731,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-16T01:55:25.700542+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260916T015426969076Z_e0c29cd1_samsung.com_web_browsing.pcap"
+}

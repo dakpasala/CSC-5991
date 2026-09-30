@@ -1,0 +1,254 @@
+{
+  "session_id": "20260915T173604123890Z_0e1dd8c0",
+  "domain": "instagram.com",
+  "rank": 11,
+  "requested_activity": "social_media_browsing",
+  "started_at": "2026-09-15T17:36:04.124800+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1789493765.422559,
+      "browser_version": "152.0.7977.84",
+      "headed": true
+    },
+    {
+      "event": "session_cookies_injected",
+      "time": 1789493766.5173109,
+      "count": 10
+    },
+    {
+      "event": "navigate",
+      "time": 1789493768.680528,
+      "url": "https://www.instagram.com/"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1789493768.6805718,
+      "selector": "article"
+    },
+    {
+      "event": "content_sample",
+      "time": 1789493768.693989,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789493768.697045
+    },
+    {
+      "event": "content_sample",
+      "time": 1789493770.7169652,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789493770.721067
+    },
+    {
+      "event": "content_sample",
+      "time": 1789493772.737293,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789493772.741374
+    },
+    {
+      "event": "content_sample",
+      "time": 1789493774.787498,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789493774.790795
+    },
+    {
+      "event": "content_sample",
+      "time": 1789493776.808528,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789493776.813472
+    },
+    {
+      "event": "content_sample",
+      "time": 1789493778.844085,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789493778.8464499
+    },
+    {
+      "event": "content_sample",
+      "time": 1789493780.8855958,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789493780.888293
+    },
+    {
+      "event": "content_sample",
+      "time": 1789493782.916074,
+      "content": true,
+      "matching_elements": 2,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789493782.919192
+    },
+    {
+      "event": "content_sample",
+      "time": 1789493784.95557,
+      "content": true,
+      "matching_elements": 2,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789493784.9585621
+    },
+    {
+      "event": "content_sample",
+      "time": 1789493786.977113,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789493786.9813051
+    },
+    {
+      "event": "content_sample",
+      "time": 1789493788.986995,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789493788.989125
+    },
+    {
+      "event": "content_sample",
+      "time": 1789493791.0117261,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789493791.016072
+    },
+    {
+      "event": "content_sample",
+      "time": 1789493793.042943,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789493793.047103
+    },
+    {
+      "event": "content_sample",
+      "time": 1789493795.072855,
+      "content": true,
+      "matching_elements": 3,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789493795.077371
+    },
+    {
+      "event": "content_sample",
+      "time": 1789493797.091935,
+      "content": true,
+      "matching_elements": 3,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789493797.096545
+    },
+    {
+      "event": "content_sample",
+      "time": 1789493799.1147552,
+      "content": true,
+      "matching_elements": 2,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789493799.116585
+    },
+    {
+      "event": "content_sample",
+      "time": 1789493801.1546519,
+      "content": true,
+      "matching_elements": 2,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789493801.156965
+    },
+    {
+      "event": "content_sample",
+      "time": 1789493802.641079,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1789493802.641126,
+      "success": true,
+      "verified_seconds": 33.889
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 40.0,
+  "source_scope": "top100_public_profile_access_unverified",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "02baf1a7ccba62b793c6302f8251951be3ab7d94f258113044f521bc9cfe3edb",
+  "profile_mode": "persistent",
+  "browser_version": "152.0.7977.84",
+  "capture_started_at": "2026-09-15T17:36:05.489789+00:00",
+  "browser_success": true,
+  "verified_seconds": 33.889,
+  "capture_ended_at": "2026-09-15T17:36:42.645198+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 110648,
+  "capture_duration_seconds": 37.155409,
+  "duration_seconds": 38.838,
+  "success": true,
+  "actual_activity": "social_media_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": "social_media",
+  "status": "success",
+  "ended_at": "2026-09-15T17:36:42.962313+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/social_media_browsing/20260915T173604123890Z_0e1dd8c0_instagram.com_social_media_browsing.pcap"
+}

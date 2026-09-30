@@ -1,0 +1,261 @@
+{
+  "session_id": "20260915T172050623714Z_e3d9c638",
+  "domain": "x.com",
+  "rank": 49,
+  "requested_activity": "social_media_browsing",
+  "started_at": "2026-09-15T17:20:50.623918+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1789492852.263784,
+      "browser_version": "152.0.7977.84",
+      "headed": true
+    },
+    {
+      "event": "session_cookies_injected",
+      "time": 1789492852.492816,
+      "count": 14
+    },
+    {
+      "event": "navigate",
+      "time": 1789492854.478045,
+      "url": "https://x.com/NASA"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1789492854.4780989,
+      "selector": "article"
+    },
+    {
+      "event": "content_sample",
+      "time": 1789492854.9221199,
+      "content": false,
+      "matching_elements": 0,
+      "playing_media": false
+    },
+    {
+      "event": "content_sample",
+      "time": 1789492856.440958,
+      "content": true,
+      "matching_elements": 2,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789492856.4449139
+    },
+    {
+      "event": "content_sample",
+      "time": 1789492858.45716,
+      "content": true,
+      "matching_elements": 2,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789492858.461007
+    },
+    {
+      "event": "content_sample",
+      "time": 1789492860.4728901,
+      "content": true,
+      "matching_elements": 2,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789492860.476992
+    },
+    {
+      "event": "content_sample",
+      "time": 1789492862.490587,
+      "content": true,
+      "matching_elements": 3,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789492862.493685
+    },
+    {
+      "event": "content_sample",
+      "time": 1789492864.5063,
+      "content": true,
+      "matching_elements": 2,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789492864.511331
+    },
+    {
+      "event": "content_sample",
+      "time": 1789492866.533775,
+      "content": true,
+      "matching_elements": 2,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789492866.537237
+    },
+    {
+      "event": "content_sample",
+      "time": 1789492868.554076,
+      "content": true,
+      "matching_elements": 2,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789492868.558771
+    },
+    {
+      "event": "content_sample",
+      "time": 1789492870.576236,
+      "content": true,
+      "matching_elements": 3,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789492870.578924
+    },
+    {
+      "event": "content_sample",
+      "time": 1789492872.614215,
+      "content": true,
+      "matching_elements": 3,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789492872.621232
+    },
+    {
+      "event": "content_sample",
+      "time": 1789492874.634814,
+      "content": true,
+      "matching_elements": 3,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789492874.637423
+    },
+    {
+      "event": "content_sample",
+      "time": 1789492876.652226,
+      "content": true,
+      "matching_elements": 3,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789492876.6564522
+    },
+    {
+      "event": "content_sample",
+      "time": 1789492878.6779158,
+      "content": true,
+      "matching_elements": 3,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789492878.6823292
+    },
+    {
+      "event": "content_sample",
+      "time": 1789492880.697547,
+      "content": true,
+      "matching_elements": 3,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789492880.7013261
+    },
+    {
+      "event": "content_sample",
+      "time": 1789492882.7172859,
+      "content": true,
+      "matching_elements": 3,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789492882.721774
+    },
+    {
+      "event": "content_sample",
+      "time": 1789492884.7374022,
+      "content": true,
+      "matching_elements": 2,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789492884.739774
+    },
+    {
+      "event": "content_sample",
+      "time": 1789492886.7625,
+      "content": true,
+      "matching_elements": 2,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789492886.766786
+    },
+    {
+      "event": "content_sample",
+      "time": 1789492888.787431,
+      "content": true,
+      "matching_elements": 3,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789492888.792531
+    },
+    {
+      "event": "content_sample",
+      "time": 1789492889.132475,
+      "content": true,
+      "matching_elements": 3,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1789492889.132544,
+      "success": true,
+      "verified_seconds": 32.625
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 40.0,
+  "source_scope": "top100_public_profile_access_unverified",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "6291aa3c675b3a3db3080d13d2d43c8853c1f46e68a5f071db98d54c357f9236",
+  "profile_mode": "persistent",
+  "browser_version": "152.0.7977.84",
+  "capture_started_at": "2026-09-15T17:20:52.342372+00:00",
+  "browser_success": true,
+  "verified_seconds": 32.625,
+  "capture_ended_at": "2026-09-15T17:21:29.141643+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 98300,
+  "capture_duration_seconds": 36.799271,
+  "duration_seconds": 38.951,
+  "success": true,
+  "actual_activity": "social_media_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": "social_media",
+  "status": "success",
+  "ended_at": "2026-09-15T17:21:29.572594+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/social_media_browsing/20260915T172050623714Z_e3d9c638_x.com_social_media_browsing.pcap"
+}

@@ -1,0 +1,145 @@
+{
+  "session_id": "20260922T023517771026Z_f166a37c",
+  "domain": "calendly.com",
+  "rank": 379,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T02:35:17.771210+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790044518.975727,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790044520.3887029,
+      "url": "https://calendly.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044520.3914812,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044520.3941708
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044522.4134521,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044522.4162939
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044524.4282591,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044524.430784
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044526.4590468,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044526.4609191
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044528.472959,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044528.474547
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044530.4876091,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044530.48945
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044532.504307,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044532.506551
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044534.522592,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044534.52464
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044536.289069,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790044536.2891898,
+      "success": true,
+      "verified_seconds": 15.88
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T02:35:19.031456+00:00",
+  "browser_success": true,
+  "verified_seconds": 15.88,
+  "capture_ended_at": "2026-09-22T02:35:36.293462+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 12874,
+  "capture_duration_seconds": 17.262006,
+  "duration_seconds": 18.697,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T02:35:36.468426+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T023517771026Z_f166a37c_calendly.com_web_browsing.pcap"
+}

@@ -1,0 +1,123 @@
+{
+  "session_id": "20260922T032859153360Z_08ec63ae",
+  "domain": "wcd.gov.in",
+  "rank": 2000,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T03:28:59.153783+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790047740.263958,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790047745.822429,
+      "url": "https://wcd.gov.in/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047745.826564,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047745.830691
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047747.848733,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047747.8513448
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047749.872104,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047749.875941
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047751.8897438,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047751.892819
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047753.899148,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047753.903098
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047755.918966,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047755.922652
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047757.6646678,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790047757.664819,
+      "success": true,
+      "verified_seconds": 11.817
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T03:29:00.321412+00:00",
+  "browser_success": true,
+  "verified_seconds": 11.817,
+  "capture_ended_at": "2026-09-22T03:29:17.668928+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 32821,
+  "capture_duration_seconds": 17.347516,
+  "duration_seconds": 18.78,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T03:29:17.933578+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T032859153360Z_08ec63ae_wcd.gov.in_web_browsing.pcap"
+}

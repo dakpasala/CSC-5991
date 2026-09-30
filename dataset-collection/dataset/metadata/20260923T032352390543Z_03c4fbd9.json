@@ -1,0 +1,161 @@
+{
+  "session_id": "20260923T032352390543Z_03c4fbd9",
+  "domain": "scholar.google.com",
+  "rank": 1000,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-23T03:23:52.391084+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790133833.6447308,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "session_cookies_injected",
+      "time": 1790133834.190028,
+      "count": 27
+    },
+    {
+      "event": "navigate",
+      "time": 1790133834.588354,
+      "url": "https://scholar.google.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790133834.590836,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790133834.5926468
+    },
+    {
+      "event": "content_sample",
+      "time": 1790133836.601418,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790133836.604526
+    },
+    {
+      "event": "content_sample",
+      "time": 1790133838.614996,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790133838.618229
+    },
+    {
+      "event": "content_sample",
+      "time": 1790133840.637225,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790133840.641174
+    },
+    {
+      "event": "content_sample",
+      "time": 1790133842.66384,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790133842.666982
+    },
+    {
+      "event": "content_sample",
+      "time": 1790133844.680917,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790133844.683755
+    },
+    {
+      "event": "content_sample",
+      "time": 1790133846.7087529,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790133846.71401
+    },
+    {
+      "event": "content_sample",
+      "time": 1790133848.72894,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790133848.7334971
+    },
+    {
+      "event": "content_sample",
+      "time": 1790133850.759507,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790133850.7642088
+    },
+    {
+      "event": "content_sample",
+      "time": 1790133850.905489,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790133850.905609,
+      "success": true,
+      "verified_seconds": 16.282
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "current_top10k_verified_2026-09-22",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "e8851e39f479552c001d4daffee8a36af204ce2a7b8234e912959ec7652a5111",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T03:23:53.709158+00:00",
+  "browser_success": true,
+  "verified_seconds": 16.282,
+  "capture_ended_at": "2026-09-23T03:24:10.907626+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 2278,
+  "capture_duration_seconds": 17.198468,
+  "duration_seconds": 18.75,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-23T03:24:11.140540+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260923T032352390543Z_03c4fbd9_scholar.google.com_web_browsing.pcap"
+}

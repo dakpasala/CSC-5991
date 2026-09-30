@@ -1,0 +1,36 @@
+{
+  "session_id": "20260921T222502900372Z_7b846e8b",
+  "domain": "youtube.com",
+  "rank": 9,
+  "requested_activity": "video_streaming",
+  "started_at": "2026-09-21T22:25:02.900617+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790029504.0268512,
+      "browser_version": "153.0.8010.48",
+      "headed": false
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top100_previous_30_second_success_not_guaranteed",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "dc7acab848a9b590246ab75a4038fc44ebfbcb0d801fa3bb734a367e012bff4d",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.48",
+  "browser_success": false,
+  "reason": "Capture initialization interrupted or timed out",
+  "error_type": "RuntimeError",
+  "tcpdump_exit_code": -2,
+  "duration_seconds": 1.284,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-21T22:25:04.184676+00:00",
+  "pcap_path": null
+}

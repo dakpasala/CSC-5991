@@ -1,0 +1,163 @@
+{
+  "session_id": "20260923T025353806089Z_90c03c0d",
+  "domain": "rumble.com",
+  "rank": null,
+  "requested_activity": "video_streaming",
+  "started_at": "2026-09-23T02:53:53.806289+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790132035.684739,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790132036.373269,
+      "url": "https://rumble.com/v7ex6qu-short-stream-dubular-stream-115-nukes.html"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790132036.3733308,
+      "selector": "video"
+    },
+    {
+      "event": "play_requested",
+      "time": 1790132037.518216,
+      "media": "video"
+    },
+    {
+      "event": "media_sample",
+      "time": 1790132038.5381298,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790132039.5498571,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790132040.553424,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790132041.563301,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790132042.5711942,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790132043.575528,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790132044.581374,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790132045.592431,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790132046.620974,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790132047.628478,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790132048.63611,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790132049.643442,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790132050.657946,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790132051.66879,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790132052.312821,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "browser_diagnostic",
+      "time": 1790132052.320543,
+      "phase": "playback",
+      "access_denied": false,
+      "article_elements": 1,
+      "audio_elements": 0,
+      "login_prompt": true,
+      "post_links": 0,
+      "video_elements": 3,
+      "window_count": 1
+    },
+    {
+      "event": "done",
+      "success": false,
+      "reason": "Media was not progressing at session end",
+      "error_type": "RuntimeError"
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "user_plan",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "c5fd2bf301a13c0b3a0282cf879691da45b554623b6dab743951305be00c0610",
+  "profile_mode": "fresh",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T02:53:55.743897+00:00",
+  "browser_success": false,
+  "reason": "Media was not progressing at session end",
+  "error_type": "RuntimeError",
+  "capture_ended_at": "2026-09-23T02:54:12.338819+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 45979,
+  "capture_duration_seconds": 16.594922,
+  "duration_seconds": 18.756,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-23T02:54:12.562176+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260923T025353806089Z_90c03c0d_rumble.com_video_streaming.pcap"
+}

@@ -1,0 +1,58 @@
+{
+  "session_id": "20260915T042506334789Z_9a7719eb",
+  "domain": "x.com",
+  "rank": 49,
+  "requested_activity": "social_media_browsing",
+  "started_at": "2026-09-15T04:25:06.335139+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1789446309.554944,
+      "browser_version": "152.0.7977.84",
+      "headed": true
+    },
+    {
+      "event": "browser_diagnostic",
+      "time": 1789446311.395146,
+      "phase": "navigation",
+      "access_denied": false,
+      "article_elements": 0,
+      "audio_elements": 0,
+      "login_prompt": false,
+      "post_links": 0,
+      "video_elements": 0,
+      "window_count": 1
+    },
+    {
+      "event": "done",
+      "success": false,
+      "reason": "Browser action failed during navigation; inspect access or selectors",
+      "error_type": "StaleElementReferenceException"
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 40.0,
+  "source_scope": "top100_public_profile_access_unverified",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "6291aa3c675b3a3db3080d13d2d43c8853c1f46e68a5f071db98d54c357f9236",
+  "profile_mode": "persistent",
+  "browser_version": "152.0.7977.84",
+  "capture_started_at": "2026-09-15T04:25:09.865495+00:00",
+  "browser_success": false,
+  "reason": "Browser action failed during navigation; inspect access or selectors",
+  "error_type": "StaleElementReferenceException",
+  "capture_ended_at": "2026-09-15T04:25:11.397143+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 2198,
+  "capture_duration_seconds": 1.531648,
+  "duration_seconds": 6.078,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-15T04:25:12.413063+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260915T042506334789Z_9a7719eb_x.com_social_media_browsing.pcap"
+}

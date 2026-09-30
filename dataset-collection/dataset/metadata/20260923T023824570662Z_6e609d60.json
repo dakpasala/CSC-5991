@@ -1,0 +1,163 @@
+{
+  "session_id": "20260923T023824570662Z_6e609d60",
+  "domain": "tubitv.com",
+  "rank": null,
+  "requested_activity": "video_streaming",
+  "started_at": "2026-09-23T02:38:24.571235+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790131105.924006,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790131106.950241,
+      "url": "https://tubitv.com/tv-shows/200412027/s01-e01-sml-movie-five-nights-at-freddy-s-1-and-2"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790131106.950293,
+      "selector": "video"
+    },
+    {
+      "event": "play_requested",
+      "time": 1790131108.434748,
+      "media": "video"
+    },
+    {
+      "event": "media_sample",
+      "time": 1790131109.4531991,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790131110.4572911,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790131111.465008,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790131112.474099,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790131113.481826,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790131114.492206,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790131115.504193,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790131116.545738,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790131117.5564039,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790131118.562599,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790131119.569708,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790131120.573965,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790131121.583023,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790131122.590336,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790131123.076619,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "browser_diagnostic",
+      "time": 1790131123.0815969,
+      "phase": "playback",
+      "access_denied": false,
+      "article_elements": 1,
+      "audio_elements": 0,
+      "login_prompt": true,
+      "post_links": 0,
+      "video_elements": 1,
+      "window_count": 1
+    },
+    {
+      "event": "done",
+      "success": false,
+      "reason": "Media was not progressing at session end",
+      "error_type": "RuntimeError"
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "user_plan",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "df29e91ad2b48878fc36506f28c39a0f2f9e27b8f88f4d1e0af21541f7092eb1",
+  "profile_mode": "fresh",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T02:38:25.988597+00:00",
+  "browser_success": false,
+  "reason": "Media was not progressing at session end",
+  "error_type": "RuntimeError",
+  "capture_ended_at": "2026-09-23T02:38:43.090575+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 45261,
+  "capture_duration_seconds": 17.101978,
+  "duration_seconds": 18.742,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-23T02:38:43.313120+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260923T023824570662Z_6e609d60_tubitv.com_video_streaming.pcap"
+}

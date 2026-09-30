@@ -1,0 +1,120 @@
+{
+  "session_id": "20260923T031149194921Z_b9202abd",
+  "domain": "odysee.com",
+  "rank": null,
+  "requested_activity": "video_streaming",
+  "started_at": "2026-09-23T03:11:49.195626+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790133110.404642,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790133111.4093409,
+      "url": "https://odysee.com/@whataboutit:1/%F0%9F%9A%A8full-breakdown-spacex-starship:d"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790133111.4093828,
+      "selector": "video"
+    },
+    {
+      "event": "play_requested",
+      "time": 1790133114.153902,
+      "media": "video"
+    },
+    {
+      "event": "media_sample",
+      "time": 1790133118.834489,
+      "progressing": true,
+      "media_time": 2.079823
+    },
+    {
+      "event": "media_sample",
+      "time": 1790133119.8448792,
+      "progressing": true,
+      "media_time": 3.090795
+    },
+    {
+      "event": "media_sample",
+      "time": 1790133120.854399,
+      "progressing": true,
+      "media_time": 4.100746
+    },
+    {
+      "event": "media_sample",
+      "time": 1790133121.8650692,
+      "progressing": true,
+      "media_time": 5.110569
+    },
+    {
+      "event": "media_sample",
+      "time": 1790133122.877723,
+      "progressing": true,
+      "media_time": 6.123365
+    },
+    {
+      "event": "media_sample",
+      "time": 1790133123.893261,
+      "progressing": true,
+      "media_time": 7.137398
+    },
+    {
+      "event": "media_sample",
+      "time": 1790133124.904585,
+      "progressing": true,
+      "media_time": 8.150184
+    },
+    {
+      "event": "media_sample",
+      "time": 1790133125.912671,
+      "progressing": true,
+      "media_time": 9.157486
+    },
+    {
+      "event": "media_sample",
+      "time": 1790133126.921039,
+      "progressing": true,
+      "media_time": 10.164813
+    },
+    {
+      "event": "media_sample",
+      "time": 1790133127.704399,
+      "progressing": true,
+      "media_time": 10.946636
+    },
+    {
+      "event": "done",
+      "time": 1790133127.704515,
+      "success": true,
+      "verified_seconds": 9.88
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "hand_curated_verified_playback_2026-09-23",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "3f17f1fb3ea4d6b745ebe4fa2342e04de0a4a505e515b51030b023b84f3a919e",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T03:11:50.463780+00:00",
+  "browser_success": true,
+  "verified_seconds": 9.88,
+  "capture_ended_at": "2026-09-23T03:12:07.706592+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 17951,
+  "capture_duration_seconds": 17.242812,
+  "duration_seconds": 18.698,
+  "success": true,
+  "actual_activity": "video_streaming",
+  "parent_activity": "video_streaming",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-23T03:12:07.892825+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/video_streaming/20260923T031149194921Z_b9202abd_odysee.com_video_streaming.pcap"
+}

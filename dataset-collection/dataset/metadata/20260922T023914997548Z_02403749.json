@@ -1,0 +1,156 @@
+{
+  "session_id": "20260922T023914997548Z_02403749",
+  "domain": "duckduckgo.com",
+  "rank": 510,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T02:39:14.998392+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790044756.424514,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790044757.030685,
+      "url": "https://duckduckgo.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044757.0331311,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044757.034872
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044759.050071,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044759.051618
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044761.060585,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044761.062943
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044763.0732422,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044763.076111
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044765.0903401,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044765.0945878
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044767.10382,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044767.108324
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044769.1239429,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044769.127717
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044771.141079,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044771.144196
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044773.158317,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044773.162164
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044773.5081449,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790044773.508249,
+      "success": true,
+      "verified_seconds": 16.447
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T02:39:16.486858+00:00",
+  "browser_success": true,
+  "verified_seconds": 16.447,
+  "capture_ended_at": "2026-09-22T02:39:33.512568+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 5374,
+  "capture_duration_seconds": 17.02571,
+  "duration_seconds": 18.658,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T02:39:33.655640+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T023914997548Z_02403749_duckduckgo.com_web_browsing.pcap"
+}

@@ -1,0 +1,365 @@
+{
+  "session_id": "20260916T013707906984Z_30428c8d",
+  "domain": "roblox.com",
+  "rank": 59,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-16T01:37:07.908419+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1789522629.477983,
+      "browser_version": "152.0.7977.84",
+      "headed": true
+    },
+    {
+      "event": "navigate",
+      "time": 1789522631.7846668,
+      "url": "https://www.roblox.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522631.787734,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522631.7898
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522633.814328,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522633.8167691
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522635.8378081,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522635.843013
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522637.866375,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522637.869356
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522639.8755379,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522639.877553
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522641.898818,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522641.902834
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522643.914921,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522643.9187782
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522645.938433,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522645.942323
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522647.9548318,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522647.956455
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522649.976933,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522649.980766
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522652.000577,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522652.006579
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522654.015562,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522654.0184891
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522656.0324621,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522656.035913
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522658.054822,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522658.058076
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522660.0654879,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522660.0686579
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522662.088715,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522662.0921972
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522664.110416,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522664.1136892
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522666.132094,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522666.136108
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522668.149674,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522668.15251
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522670.171333,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522670.1748438
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522672.193578,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522672.1973639
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522674.2167602,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522674.220536
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522676.239348,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522676.242694
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522678.261549,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522678.2655208
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522680.28191,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522680.286228
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522682.305312,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522682.3086872
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522684.327581,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522684.330814
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522686.349833,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522686.353503
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522686.424006,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1789522686.4241998,
+      "success": true,
+      "verified_seconds": 54.54
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 60.0,
+  "source_scope": "top100_batch_2026-09-15",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "8f3686dc6920d00c589e766d1180ffb5cd5d60e82d42be00c90e3fc9c23060a5",
+  "profile_mode": "persistent",
+  "browser_version": "152.0.7977.84",
+  "capture_started_at": "2026-09-16T01:37:09.546787+00:00",
+  "browser_success": true,
+  "verified_seconds": 54.54,
+  "capture_ended_at": "2026-09-16T01:38:06.429295+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 9822,
+  "capture_duration_seconds": 56.882508,
+  "duration_seconds": 58.774,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-16T01:38:06.682092+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260916T013707906984Z_30428c8d_roblox.com_web_browsing.pcap"
+}

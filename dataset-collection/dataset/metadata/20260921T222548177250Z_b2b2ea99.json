@@ -1,0 +1,145 @@
+{
+  "session_id": "20260921T222548177250Z_b2b2ea99",
+  "domain": "github.com",
+  "rank": 29,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-21T22:25:48.177497+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790029549.417718,
+      "browser_version": "153.0.8010.48",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790029550.713494,
+      "url": "https://github.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029550.716504,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790029550.7185888
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029552.733139,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790029552.737155
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029554.750897,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790029554.75383
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029556.767089,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790029556.769266
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029558.773834,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790029558.776041
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029560.787507,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790029560.790105
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029562.802378,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790029562.805584
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029564.817738,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790029564.821988
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029566.6893508,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790029566.689554,
+      "success": true,
+      "verified_seconds": 15.95
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top100_batch_2026-09-15",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.48",
+  "capture_started_at": "2026-09-21T22:25:49.475219+00:00",
+  "browser_success": true,
+  "verified_seconds": 15.95,
+  "capture_ended_at": "2026-09-21T22:26:06.693733+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 7556,
+  "capture_duration_seconds": 17.218514,
+  "duration_seconds": 18.685,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-21T22:26:06.862251+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260921T222548177250Z_b2b2ea99_github.com_web_browsing.pcap"
+}

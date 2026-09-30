@@ -1,0 +1,68 @@
+{
+  "session_id": "20260923T041635283570Z_63711e33",
+  "domain": "onlineradiofm.in",
+  "rank": null,
+  "requested_activity": "audio_streaming",
+  "started_at": "2026-09-23T04:16:35.283788+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790136997.3543282,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790136998.995369,
+      "url": "https://onlineradiofm.in/stations/mirchi"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790136998.99541,
+      "selector": "audio"
+    },
+    {
+      "event": "browser_diagnostic",
+      "time": 1790137014.322641,
+      "phase": "wait_for_selector",
+      "access_denied": false,
+      "article_elements": 0,
+      "audio_elements": 0,
+      "login_prompt": false,
+      "post_links": 0,
+      "video_elements": 0,
+      "window_count": 1
+    },
+    {
+      "event": "done",
+      "success": false,
+      "reason": "Browser action failed during wait_for_selector; inspect access or selectors",
+      "error_type": "TimeoutException"
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "user_plan",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "1b61decc66bdb4b71fc8747075ba7f663c3a5b883694d7515807f7f9323a78a6",
+  "profile_mode": "fresh",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T04:16:37.409185+00:00",
+  "browser_success": false,
+  "reason": "Browser action failed during wait_for_selector; inspect access or selectors",
+  "error_type": "TimeoutException",
+  "capture_ended_at": "2026-09-23T04:16:54.340490+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 51453,
+  "capture_duration_seconds": 16.931305,
+  "duration_seconds": 19.769,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-23T04:16:55.052328+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260923T041635283570Z_63711e33_onlineradiofm.in_audio_streaming.pcap"
+}

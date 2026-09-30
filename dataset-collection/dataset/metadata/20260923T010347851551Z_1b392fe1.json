@@ -1,0 +1,58 @@
+{
+  "session_id": "20260923T010347851551Z_1b392fe1",
+  "domain": "leagueofcomicgeeks.com",
+  "rank": 50000,
+  "requested_activity": "social_media_browsing",
+  "started_at": "2026-09-23T01:03:47.851824+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790125429.008874,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "browser_diagnostic",
+      "time": 1790125429.38819,
+      "phase": "navigation",
+      "access_denied": false,
+      "article_elements": 0,
+      "audio_elements": 0,
+      "login_prompt": false,
+      "post_links": 0,
+      "video_elements": 0,
+      "window_count": 1
+    },
+    {
+      "event": "done",
+      "success": false,
+      "reason": "HTTP navigation failure",
+      "error_type": "RuntimeError"
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "current_top10k_verified_2026-09-22",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "d008e31c2076e79e1c44aa89d353447f7c5e47072deea3d8e1f941a41cd0b1fa",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T01:03:49.066349+00:00",
+  "browser_success": false,
+  "reason": "HTTP navigation failure",
+  "error_type": "RuntimeError",
+  "capture_ended_at": "2026-09-23T01:03:49.389653+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 343,
+  "capture_duration_seconds": 0.323304,
+  "duration_seconds": 1.676,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-23T01:03:49.527065+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260923T010347851551Z_1b392fe1_leagueofcomicgeeks.com_social_media_browsing.pcap"
+}

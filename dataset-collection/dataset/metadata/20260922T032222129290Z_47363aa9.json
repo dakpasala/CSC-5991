@@ -1,0 +1,145 @@
+{
+  "session_id": "20260922T032222129290Z_47363aa9",
+  "domain": "mobcup.fm",
+  "rank": 1760,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T03:22:22.129938+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790047343.2892091,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790047344.720456,
+      "url": "https://mobcup.fm/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047344.7223208,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047344.7239418
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047346.736524,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047346.7381692
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047348.7509818,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047348.752624
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047350.767154,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047350.7708821
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047352.7848241,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047352.78784
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047354.8046012,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047354.808809
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047356.822976,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047356.8267388
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047358.841181,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047358.845553
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047360.639982,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790047360.64011,
+      "success": true,
+      "verified_seconds": 15.894
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T03:22:23.350371+00:00",
+  "browser_success": true,
+  "verified_seconds": 15.894,
+  "capture_ended_at": "2026-09-22T03:22:40.643748+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 4837,
+  "capture_duration_seconds": 17.293377,
+  "duration_seconds": 18.691,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T03:22:40.820267+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T032222129290Z_47363aa9_mobcup.fm_web_browsing.pcap"
+}

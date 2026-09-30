@@ -1,0 +1,56 @@
+{
+  "session_id": "20260922T022412964961Z_9f48745e",
+  "domain": "deadline.com",
+  "rank": 3412,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T02:24:12.965070+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790043854.20106,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790043859.9206269,
+      "url": "https://deadline.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043859.975329,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043860.007318
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T02:24:14.268166+00:00",
+  "browser_success": false,
+  "reason": "Session deadline exceeded",
+  "error_type": "RuntimeError",
+  "tcpdump_exit_code": 0,
+  "packet_count": 29856,
+  "capture_ended_at": "2026-09-22T02:24:33.037394+00:00",
+  "capture_duration_seconds": 18.769228,
+  "duration_seconds": 21.33,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-22T02:24:34.333983+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260922T022412964961Z_9f48745e_deadline.com_web_browsing.pcap"
+}

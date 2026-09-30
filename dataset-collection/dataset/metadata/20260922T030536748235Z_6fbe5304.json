@@ -1,0 +1,145 @@
+{
+  "session_id": "20260922T030536748235Z_6fbe5304",
+  "domain": "hdporncomics.com",
+  "rank": 1457,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T03:05:36.749435+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790046337.911031,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790046340.077611,
+      "url": "https://hdporncomics.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046340.0798562,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046340.081533
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046342.103633,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046342.106466
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046344.112803,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046344.114571
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046346.124175,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046346.1284869
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046348.140338,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046348.1437492
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046350.149576,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046350.152668
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046352.168622,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046352.1740842
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046354.184318,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046354.187619
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046355.256643,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790046355.256682,
+      "success": true,
+      "verified_seconds": 15.151
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T03:05:38.021320+00:00",
+  "browser_success": true,
+  "verified_seconds": 15.151,
+  "capture_ended_at": "2026-09-22T03:05:55.258233+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 28776,
+  "capture_duration_seconds": 17.236913,
+  "duration_seconds": 18.717,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T03:05:55.465534+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T030536748235Z_6fbe5304_hdporncomics.com_web_browsing.pcap"
+}

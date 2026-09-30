@@ -1,0 +1,45 @@
+{
+  "session_id": "20260923T203358443232Z_c372e201",
+  "domain": "youtube.com",
+  "rank": null,
+  "requested_activity": "video_streaming",
+  "started_at": "2026-09-23T20:33:58.443422+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790195639.575607,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "session_cookies_injected",
+      "time": 1790195640.1436548,
+      "count": 22
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top100_previous_30_second_success_not_guaranteed",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "4d6f8883f1fc9a3fa2403d1a3fc0e0e3fc846f958ee3d131b403fc75e711f33b",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T20:33:59.635555+00:00",
+  "browser_success": false,
+  "reason": "Interrupted",
+  "error_type": "RuntimeError",
+  "tcpdump_exit_code": 0,
+  "packet_count": 3451,
+  "capture_ended_at": "2026-09-23T20:34:01.256548+00:00",
+  "capture_duration_seconds": 1.620993,
+  "duration_seconds": 3.825,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-23T20:34:02.267807+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260923T203358443232Z_c372e201_youtube.com_video_streaming.pcap"
+}

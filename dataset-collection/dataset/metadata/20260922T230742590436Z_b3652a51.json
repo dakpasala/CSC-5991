@@ -1,0 +1,50 @@
+{
+  "session_id": "20260922T230742590436Z_b3652a51",
+  "domain": "nyaa.si",
+  "rank": 5000,
+  "requested_activity": "video_streaming",
+  "started_at": "2026-09-22T23:07:42.590562+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790118463.836891,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790118464.974688,
+      "url": "https://nyaa.si/"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790118464.974731,
+      "selector": "video"
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "current_top10k_verified_2026-09-22",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "a83fe4f3e068c8ab0a7d417e16adffeb8d3457a4c8b682b52064cd22ae341904",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T23:07:43.896962+00:00",
+  "browser_success": false,
+  "reason": "Interrupted",
+  "error_type": "RuntimeError",
+  "tcpdump_exit_code": 0,
+  "packet_count": 993,
+  "capture_ended_at": "2026-09-22T23:07:47.708137+00:00",
+  "capture_duration_seconds": 3.811175,
+  "duration_seconds": 6.131,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-22T23:07:48.721560+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260922T230742590436Z_b3652a51_nyaa.si_video_streaming.pcap"
+}

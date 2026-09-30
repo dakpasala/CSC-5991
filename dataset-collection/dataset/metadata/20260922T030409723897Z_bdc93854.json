@@ -1,0 +1,145 @@
+{
+  "session_id": "20260922T030409723897Z_bdc93854",
+  "domain": "gamewith.jp",
+  "rank": 1439,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T03:04:09.724541+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790046250.844866,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790046253.7129998,
+      "url": "https://gamewith.jp/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046253.7169201,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046253.7192802
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046255.750839,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046255.753963
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046257.77163,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046257.775109
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046259.7929652,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046259.795444
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046261.821289,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046261.825405
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046263.845238,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046263.8487942
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046265.870293,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046265.873944
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046267.8985522,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046267.9024
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046268.245188,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790046268.245307,
+      "success": true,
+      "verified_seconds": 14.502
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T03:04:10.904301+00:00",
+  "browser_success": true,
+  "verified_seconds": 14.502,
+  "capture_ended_at": "2026-09-22T03:04:28.249542+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 8308,
+  "capture_duration_seconds": 17.345241,
+  "duration_seconds": 18.713,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T03:04:28.436909+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T030409723897Z_bdc93854_gamewith.jp_web_browsing.pcap"
+}

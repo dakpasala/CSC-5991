@@ -1,0 +1,145 @@
+{
+  "session_id": "20260922T025944502495Z_cfd12402",
+  "domain": "netkeiba.com",
+  "rank": 1333,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T02:59:44.503044+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790045985.5653162,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790045988.434363,
+      "url": "https://netkeiba.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045988.436785,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045988.4388711
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045990.4768388,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045990.479744
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045992.493824,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045992.497118
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045994.520381,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045994.5241868
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045996.534815,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045996.5378618
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045998.55064,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045998.555891
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046000.572906,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046000.577303
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046002.6004329,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046002.602804
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046003.019637,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790046003.019713,
+      "success": true,
+      "verified_seconds": 14.556
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T02:59:45.620953+00:00",
+  "browser_success": true,
+  "verified_seconds": 14.556,
+  "capture_ended_at": "2026-09-22T03:00:03.021256+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 13787,
+  "capture_duration_seconds": 17.400303,
+  "duration_seconds": 18.731,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T03:00:03.233571+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T025944502495Z_cfd12402_netkeiba.com_web_browsing.pcap"
+}

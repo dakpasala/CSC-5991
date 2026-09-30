@@ -1,0 +1,156 @@
+{
+  "session_id": "20260922T030242974031Z_f3505336",
+  "domain": "cardgames.io",
+  "rank": 1380,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T03:02:42.974515+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790046164.211408,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790046164.780459,
+      "url": "https://cardgames.io/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046164.782476,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046164.7843242
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046166.79749,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046166.799358
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046168.8487282,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046168.851862
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046170.867875,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046170.873476
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046172.8901188,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046172.894135
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046174.910342,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046174.914895
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046176.929431,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046176.933426
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046178.948647,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046178.9529972
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046180.968479,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046180.972557
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046181.489019,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790046181.489125,
+      "success": true,
+      "verified_seconds": 16.673
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T03:02:44.269094+00:00",
+  "browser_success": true,
+  "verified_seconds": 16.673,
+  "capture_ended_at": "2026-09-22T03:03:01.493333+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 7253,
+  "capture_duration_seconds": 17.224239,
+  "duration_seconds": 18.709,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T03:03:01.683317+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T030242974031Z_f3505336_cardgames.io_web_browsing.pcap"
+}

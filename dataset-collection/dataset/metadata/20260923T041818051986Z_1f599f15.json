@@ -1,0 +1,68 @@
+{
+  "session_id": "20260923T041818051986Z_1f599f15",
+  "domain": "www.oigo.com",
+  "rank": null,
+  "requested_activity": "audio_streaming",
+  "started_at": "2026-09-23T04:18:18.052174+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790137100.586157,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790137103.525076,
+      "url": "https://www.oigo.com/moda/radioenvivo/"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790137103.525406,
+      "selector": "audio"
+    },
+    {
+      "event": "browser_diagnostic",
+      "time": 1790137117.246548,
+      "phase": "wait_for_selector",
+      "access_denied": false,
+      "article_elements": 0,
+      "audio_elements": 0,
+      "login_prompt": false,
+      "post_links": 0,
+      "video_elements": 1,
+      "window_count": 1
+    },
+    {
+      "event": "done",
+      "success": false,
+      "reason": "Browser action failed during wait_for_selector; inspect access or selectors",
+      "error_type": "TimeoutException"
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "user_plan",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "245ff210cba3e682cbb6bbc30ba17a4982869c44574268f758e7e9d6d5cd7ca1",
+  "profile_mode": "fresh",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T04:18:20.638841+00:00",
+  "browser_success": false,
+  "reason": "Browser action failed during wait_for_selector; inspect access or selectors",
+  "error_type": "TimeoutException",
+  "capture_ended_at": "2026-09-23T04:18:37.254272+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 45528,
+  "capture_duration_seconds": 16.615431,
+  "duration_seconds": 20.29,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-23T04:18:38.342063+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260923T041818051986Z_1f599f15_www.oigo.com_audio_streaming.pcap"
+}

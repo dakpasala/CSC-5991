@@ -1,0 +1,145 @@
+{
+  "session_id": "20260922T031113347716Z_80c92377",
+  "domain": "mamastar.jp",
+  "rank": 1588,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T03:11:13.348209+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790046674.7453408,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790046677.41109,
+      "url": "https://mamastar.jp/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046677.413852,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046677.415725
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046679.433938,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046679.4358988
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046681.447333,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046681.451522
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046683.46227,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046683.4643142
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046685.476278,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046685.479755
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046687.494436,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046687.4983091
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046689.5486238,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046689.5509639
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046691.5592651,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046691.56162
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046691.858239,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790046691.858288,
+      "success": true,
+      "verified_seconds": 14.422
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T03:11:14.808010+00:00",
+  "browser_success": true,
+  "verified_seconds": 14.422,
+  "capture_ended_at": "2026-09-22T03:11:31.859869+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 120529,
+  "capture_duration_seconds": 17.051859,
+  "duration_seconds": 18.723,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T03:11:32.070488+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T031113347716Z_80c92377_mamastar.jp_web_browsing.pcap"
+}

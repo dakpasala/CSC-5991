@@ -1,0 +1,58 @@
+{
+  "session_id": "20260923T202152905188Z_d05f9b36",
+  "domain": "www.olympics.com",
+  "rank": null,
+  "requested_activity": "video_streaming",
+  "started_at": "2026-09-23T20:21:52.905388+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790194915.292855,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "browser_diagnostic",
+      "time": 1790194916.461903,
+      "phase": "navigation",
+      "access_denied": false,
+      "article_elements": 0,
+      "audio_elements": 0,
+      "login_prompt": false,
+      "post_links": 0,
+      "video_elements": 0,
+      "window_count": 1
+    },
+    {
+      "event": "done",
+      "success": false,
+      "reason": "Chrome network/access error page",
+      "error_type": "RuntimeError"
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "user_plan",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "5f29f48742bbedd2ca807539116694cf5dc1b535d00a038480f0471f94e37ebc",
+  "profile_mode": "fresh",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T20:21:55.354545+00:00",
+  "browser_success": false,
+  "reason": "Chrome network/access error page",
+  "error_type": "RuntimeError",
+  "capture_ended_at": "2026-09-23T20:21:56.463579+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 290,
+  "capture_duration_seconds": 1.109034,
+  "duration_seconds": 3.719,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-23T20:21:56.623844+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260923T202152905188Z_d05f9b36_www.olympics.com_video_streaming.pcap"
+}

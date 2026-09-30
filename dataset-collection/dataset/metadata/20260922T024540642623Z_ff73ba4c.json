@@ -1,0 +1,40 @@
+{
+  "session_id": "20260922T024540642623Z_ff73ba4c",
+  "domain": "myspace.com",
+  "rank": 883,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T02:45:40.642928+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790045142.0486588,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T02:45:42.107402+00:00",
+  "browser_success": false,
+  "reason": "Session deadline exceeded",
+  "error_type": "RuntimeError",
+  "tcpdump_exit_code": 0,
+  "packet_count": 2058,
+  "capture_ended_at": "2026-09-22T02:46:00.679832+00:00",
+  "capture_duration_seconds": 18.57243,
+  "duration_seconds": 21.06,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-22T02:46:01.702747+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260922T024540642623Z_ff73ba4c_myspace.com_web_browsing.pcap"
+}

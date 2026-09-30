@@ -1,0 +1,150 @@
+{
+  "session_id": "20260923T034513400149Z_ea25053f",
+  "domain": "patents.google.com",
+  "rank": 50000,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-23T03:45:13.400816+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790135114.685998,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "session_cookies_injected",
+      "time": 1790135115.664806,
+      "count": 27
+    },
+    {
+      "event": "navigate",
+      "time": 1790135116.433001,
+      "url": "https://accounts.google.com/v3/signin/accountchooser"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135116.4355268,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135116.437939
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135118.443407,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135118.445471
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135120.4529228,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135120.455799
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135122.462507,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135122.4648168
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135124.471355,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135124.474727
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135126.486227,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135126.492043
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135128.504899,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135128.509223
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135130.515433,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135130.51725
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135131.913236,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790135131.913339,
+      "success": true,
+      "verified_seconds": 15.453
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "current_top10k_verified_2026-09-22",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "e8851e39f479552c001d4daffee8a36af204ce2a7b8234e912959ec7652a5111",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T03:45:14.745329+00:00",
+  "browser_success": true,
+  "verified_seconds": 15.453,
+  "capture_ended_at": "2026-09-23T03:45:31.917536+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 77375,
+  "capture_duration_seconds": 17.172207,
+  "duration_seconds": 18.701,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-23T03:45:32.101048+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260923T034513400149Z_ea25053f_patents.google.com_web_browsing.pcap"
+}

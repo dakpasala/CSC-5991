@@ -1,0 +1,68 @@
+{
+  "session_id": "20260923T202723138941Z_ad3acaac",
+  "domain": "www.aljazeera.com",
+  "rank": null,
+  "requested_activity": "video_streaming",
+  "started_at": "2026-09-23T20:27:23.139433+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790195244.441972,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790195245.207482,
+      "url": "https://www.aljazeera.com/video/newsfeed/2026/9/23/jerusalem-daily-world-leaders-condemn-israel-at-un"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790195245.207535,
+      "selector": "video"
+    },
+    {
+      "event": "browser_diagnostic",
+      "time": 1790195262.242553,
+      "phase": "wait_for_selector",
+      "access_denied": false,
+      "article_elements": 7,
+      "audio_elements": 1,
+      "login_prompt": true,
+      "post_links": 0,
+      "video_elements": 0,
+      "window_count": 1
+    },
+    {
+      "event": "done",
+      "success": false,
+      "reason": "Browser action failed during wait_for_selector; inspect access or selectors",
+      "error_type": "TimeoutException"
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "hand_curated_verified_playback_2026-09-23",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "c22f5fb605a9647a123e30f413e3496c43c4860d4f3e16b4499f37fad35fec3e",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T20:27:24.504108+00:00",
+  "browser_success": false,
+  "reason": "Browser action failed during wait_for_selector; inspect access or selectors",
+  "error_type": "TimeoutException",
+  "capture_ended_at": "2026-09-23T20:27:42.248663+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 8382,
+  "capture_duration_seconds": 17.744555,
+  "duration_seconds": 19.294,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-23T20:27:42.429650+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260923T202723138941Z_ad3acaac_www.aljazeera.com_video_streaming.pcap"
+}

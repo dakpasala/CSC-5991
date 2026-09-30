@@ -1,0 +1,124 @@
+{
+  "session_id": "20260923T202517601286Z_fed7aeff",
+  "domain": "www.ted.com",
+  "rank": null,
+  "requested_activity": "video_streaming",
+  "started_at": "2026-09-23T20:25:17.601644+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790195119.560517,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790195122.475977,
+      "url": "https://www.ted.com/talks/christine_sun_kim_the_enchanting_music_of_sign_language"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790195122.4762728,
+      "selector": "video"
+    },
+    {
+      "event": "play_requested",
+      "time": 1790195122.518177,
+      "media": "video"
+    },
+    {
+      "event": "play_click_fallback",
+      "time": 1790195124.241191,
+      "selector": "video"
+    },
+    {
+      "event": "play_click_fallback",
+      "time": 1790195125.4551098,
+      "selector": "[aria-label*='play' i]"
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195128.395753,
+      "progressing": true,
+      "media_time": 1.961743
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195129.406071,
+      "progressing": true,
+      "media_time": 2.972714
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195130.446506,
+      "progressing": true,
+      "media_time": 4.004353
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195131.4595551,
+      "progressing": true,
+      "media_time": 5.028112
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195132.468513,
+      "progressing": true,
+      "media_time": 6.036282
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195133.483337,
+      "progressing": true,
+      "media_time": 7.049804
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195134.494654,
+      "progressing": true,
+      "media_time": 8.060884
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195135.503575,
+      "progressing": true,
+      "media_time": 9.068709
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195136.11311,
+      "progressing": true,
+      "media_time": 9.679073
+    },
+    {
+      "event": "done",
+      "time": 1790195136.1131809,
+      "success": true,
+      "verified_seconds": 8.912
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "hand_curated_verified_playback_2026-09-23",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "c22f5fb605a9647a123e30f413e3496c43c4860d4f3e16b4499f37fad35fec3e",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T20:25:19.620914+00:00",
+  "browser_success": true,
+  "verified_seconds": 8.912,
+  "capture_ended_at": "2026-09-23T20:25:36.114517+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 68665,
+  "capture_duration_seconds": 16.493603,
+  "duration_seconds": 18.945,
+  "success": true,
+  "actual_activity": "video_streaming",
+  "parent_activity": "video_streaming",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-23T20:25:36.547413+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/video_streaming/20260923T202517601286Z_fed7aeff_www.ted.com_video_streaming.pcap"
+}

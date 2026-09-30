@@ -1,0 +1,139 @@
+{
+  "session_id": "20260921T220754888005Z_710d31dd",
+  "domain": "linkedin.com",
+  "rank": 17,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-21T22:07:54.890442+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790028476.593826,
+      "browser_version": "153.0.8010.48",
+      "headed": true
+    },
+    {
+      "event": "session_cookies_injected",
+      "time": 1790028478.515359,
+      "count": 23
+    },
+    {
+      "event": "navigate",
+      "time": 1790028481.047423,
+      "url": "https://www.linkedin.com/feed/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790028481.0504808,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790028481.0526972
+    },
+    {
+      "event": "content_sample",
+      "time": 1790028483.222635,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790028483.236676
+    },
+    {
+      "event": "content_sample",
+      "time": 1790028485.257447,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790028485.2603688
+    },
+    {
+      "event": "content_sample",
+      "time": 1790028487.282593,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790028487.2856362
+    },
+    {
+      "event": "content_sample",
+      "time": 1790028489.302733,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790028489.306734
+    },
+    {
+      "event": "content_sample",
+      "time": 1790028491.3209972,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790028491.3249059
+    },
+    {
+      "event": "content_sample",
+      "time": 1790028493.339572,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790028493.3432488
+    },
+    {
+      "event": "content_sample",
+      "time": 1790028493.396356,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790028493.3964748,
+      "success": true,
+      "verified_seconds": 12.312
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top100_batch_2026-09-15",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.48",
+  "capture_started_at": "2026-09-21T22:07:56.657564+00:00",
+  "browser_success": true,
+  "verified_seconds": 12.312,
+  "capture_ended_at": "2026-09-21T22:08:13.400897+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 13658,
+  "capture_duration_seconds": 16.743333,
+  "duration_seconds": 18.926,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-21T22:08:13.814331+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260921T220754888005Z_710d31dd_linkedin.com_web_browsing.pcap"
+}

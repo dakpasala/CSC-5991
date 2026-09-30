@@ -1,0 +1,156 @@
+{
+  "session_id": "20260922T030201603015Z_3f835020",
+  "domain": "e-hentai.org",
+  "rank": 1374,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T03:02:01.604049+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790046123.115762,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790046123.822882,
+      "url": "https://e-hentai.org/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046123.825621,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046123.8288472
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046125.845004,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046125.8472488
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046127.8598652,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046127.8649979
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046129.880251,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046129.8842502
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046131.8981462,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046131.901943
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046133.91591,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046133.9192681
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046135.930472,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046135.933642
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046137.944407,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046137.947117
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046139.961304,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046139.964691
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046140.1180391,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790046140.118156,
+      "success": true,
+      "verified_seconds": 16.26
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T03:02:03.174746+00:00",
+  "browser_success": true,
+  "verified_seconds": 16.26,
+  "capture_ended_at": "2026-09-22T03:02:20.122349+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 3389,
+  "capture_duration_seconds": 16.947603,
+  "duration_seconds": 18.703,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T03:02:20.308191+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T030201603015Z_3f835020_e-hentai.org_web_browsing.pcap"
+}

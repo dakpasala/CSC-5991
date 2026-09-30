@@ -1,0 +1,145 @@
+{
+  "session_id": "20260922T023833597665Z_a94eff13",
+  "domain": "ipinfo.io",
+  "rank": 453,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T02:38:33.598028+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790044714.9171798,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790044716.354292,
+      "url": "https://ipinfo.io/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044716.356452,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044716.35798
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044718.380672,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044718.3830872
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044720.3878489,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044720.3899882
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044722.400085,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044722.401763
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044724.4111218,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044724.414277
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044726.420099,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044726.436875
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044728.4481091,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044728.4509819
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044730.455292,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044730.457359
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044732.1104782,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790044732.1105962,
+      "success": true,
+      "verified_seconds": 15.731
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T02:38:34.976519+00:00",
+  "browser_success": true,
+  "verified_seconds": 15.731,
+  "capture_ended_at": "2026-09-22T02:38:52.114840+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 8934,
+  "capture_duration_seconds": 17.138321,
+  "duration_seconds": 18.683,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T02:38:52.280561+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T023833597665Z_a94eff13_ipinfo.io_web_browsing.pcap"
+}

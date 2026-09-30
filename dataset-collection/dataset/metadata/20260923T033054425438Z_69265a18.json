@@ -1,0 +1,150 @@
+{
+  "session_id": "20260923T033054425438Z_69265a18",
+  "domain": "help.snapchat.com",
+  "rank": 5000,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-23T03:30:54.426298+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790134255.612083,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "session_cookies_injected",
+      "time": 1790134256.135159,
+      "count": 27
+    },
+    {
+      "event": "navigate",
+      "time": 1790134256.998541,
+      "url": "https://help.snapchat.com/hc/en-us"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790134257.0024052,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790134257.0041049
+    },
+    {
+      "event": "content_sample",
+      "time": 1790134259.043435,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790134259.0464818
+    },
+    {
+      "event": "content_sample",
+      "time": 1790134261.065357,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790134261.069603
+    },
+    {
+      "event": "content_sample",
+      "time": 1790134263.0787032,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790134263.0803661
+    },
+    {
+      "event": "content_sample",
+      "time": 1790134265.101332,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790134265.105462
+    },
+    {
+      "event": "content_sample",
+      "time": 1790134267.113822,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790134267.115975
+    },
+    {
+      "event": "content_sample",
+      "time": 1790134269.1345332,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790134269.138318
+    },
+    {
+      "event": "content_sample",
+      "time": 1790134271.15854,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790134271.1625369
+    },
+    {
+      "event": "content_sample",
+      "time": 1790134272.9341152,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790134272.934232,
+      "success": true,
+      "verified_seconds": 15.908
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "current_top10k_verified_2026-09-22",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "e8851e39f479552c001d4daffee8a36af204ce2a7b8234e912959ec7652a5111",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T03:30:55.674557+00:00",
+  "browser_success": true,
+  "verified_seconds": 15.908,
+  "capture_ended_at": "2026-09-23T03:31:12.939169+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 8241,
+  "capture_duration_seconds": 17.264612,
+  "duration_seconds": 18.677,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-23T03:31:13.102275+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260923T033054425438Z_69265a18_help.snapchat.com_web_browsing.pcap"
+}

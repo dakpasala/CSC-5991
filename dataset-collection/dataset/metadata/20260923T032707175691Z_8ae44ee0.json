@@ -1,0 +1,150 @@
+{
+  "session_id": "20260923T032707175691Z_8ae44ee0",
+  "domain": "acrobat.adobe.com",
+  "rank": 5000,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-23T03:27:07.176549+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790134028.3493812,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "session_cookies_injected",
+      "time": 1790134028.806182,
+      "count": 67
+    },
+    {
+      "event": "navigate",
+      "time": 1790134030.613622,
+      "url": "https://acrobat.adobe.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790134030.618187,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790134030.619819
+    },
+    {
+      "event": "content_sample",
+      "time": 1790134032.647667,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790134032.649943
+    },
+    {
+      "event": "content_sample",
+      "time": 1790134034.672011,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790134034.675431
+    },
+    {
+      "event": "content_sample",
+      "time": 1790134036.695549,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790134036.698834
+    },
+    {
+      "event": "content_sample",
+      "time": 1790134038.723179,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790134038.7259488
+    },
+    {
+      "event": "content_sample",
+      "time": 1790134040.745615,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790134040.74859
+    },
+    {
+      "event": "content_sample",
+      "time": 1790134042.773798,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790134042.777289
+    },
+    {
+      "event": "content_sample",
+      "time": 1790134044.798325,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790134044.8017678
+    },
+    {
+      "event": "content_sample",
+      "time": 1790134045.6966348,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790134045.69722,
+      "success": true,
+      "verified_seconds": 15.056
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "current_top10k_verified_2026-09-22",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "e8851e39f479552c001d4daffee8a36af204ce2a7b8234e912959ec7652a5111",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T03:27:08.411901+00:00",
+  "browser_success": true,
+  "verified_seconds": 15.056,
+  "capture_ended_at": "2026-09-23T03:27:25.702382+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 16219,
+  "capture_duration_seconds": 17.290481,
+  "duration_seconds": 18.726,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-23T03:27:25.901865+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260923T032707175691Z_8ae44ee0_acrobat.adobe.com_web_browsing.pcap"
+}

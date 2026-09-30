@@ -1,0 +1,132 @@
+{
+  "session_id": "20260923T202456854546Z_6adccb13",
+  "domain": "www.digitalspy.com",
+  "rank": 10000,
+  "requested_activity": "video_streaming",
+  "started_at": "2026-09-23T20:24:56.855111+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790195098.072837,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790195102.526161,
+      "url": "https://www.digitalspy.com/movies/a73838137/snatch-jason-statham-stephen-graham-reunion/"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790195102.526222,
+      "selector": "video"
+    },
+    {
+      "event": "play_requested",
+      "time": 1790195102.532578,
+      "media": "video"
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195105.053985,
+      "progressing": true,
+      "media_time": 2.073968
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195106.0595682,
+      "progressing": true,
+      "media_time": 3.081945
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195107.06872,
+      "progressing": true,
+      "media_time": 4.091239
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195108.073942,
+      "progressing": true,
+      "media_time": 5.09535
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195109.077357,
+      "progressing": true,
+      "media_time": 6.098278
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195110.0923278,
+      "progressing": true,
+      "media_time": 7.111921
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195111.101728,
+      "progressing": true,
+      "media_time": 8.124314
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195112.113698,
+      "progressing": true,
+      "media_time": 9.134053
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195113.118368,
+      "progressing": true,
+      "media_time": 10.13925
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195114.13856,
+      "progressing": true,
+      "media_time": 11.160481
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195115.146304,
+      "progressing": true,
+      "media_time": 12.166845
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195115.360747,
+      "progressing": true,
+      "media_time": 12.381632
+    },
+    {
+      "event": "done",
+      "time": 1790195115.360802,
+      "success": true,
+      "verified_seconds": 11.313
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "hand_curated_verified_playback_2026-09-23",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "c22f5fb605a9647a123e30f413e3496c43c4860d4f3e16b4499f37fad35fec3e",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T20:24:58.131343+00:00",
+  "browser_success": true,
+  "verified_seconds": 11.313,
+  "capture_ended_at": "2026-09-23T20:25:15.362503+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 20651,
+  "capture_duration_seconds": 17.23116,
+  "duration_seconds": 18.742,
+  "success": true,
+  "actual_activity": "video_streaming",
+  "parent_activity": "video_streaming",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-23T20:25:15.596999+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/video_streaming/20260923T202456854546Z_6adccb13_www.digitalspy.com_video_streaming.pcap"
+}

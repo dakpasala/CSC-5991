@@ -1,0 +1,145 @@
+{
+  "session_id": "20260922T024624388692Z_1a75cec2",
+  "domain": "starlink.com",
+  "rank": 924,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T02:46:24.389336+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790045185.623363,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790045187.7081091,
+      "url": "https://starlink.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045187.710065,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045187.711575
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045189.72008,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045189.72206
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045191.736667,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045191.740244
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045193.75669,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045193.760421
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045195.775408,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045195.7796211
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045197.796397,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045197.800094
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045199.8122282,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045199.815014
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045201.830395,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045201.834032
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045202.9005709,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790045202.900741,
+      "success": true,
+      "verified_seconds": 15.166
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T02:46:25.679205+00:00",
+  "browser_success": true,
+  "verified_seconds": 15.166,
+  "capture_ended_at": "2026-09-22T02:46:42.905023+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 9845,
+  "capture_duration_seconds": 17.225818,
+  "duration_seconds": 18.741,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T02:46:43.129409+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T024624388692Z_1a75cec2_starlink.com_web_browsing.pcap"
+}

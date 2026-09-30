@@ -1,0 +1,142 @@
+{
+  "session_id": "20260923T203255849710Z_37d84782",
+  "domain": "sagebava.bandcamp.com",
+  "rank": null,
+  "requested_activity": "audio_streaming",
+  "started_at": "2026-09-23T20:32:55.850315+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790195577.0455601,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790195578.028778,
+      "url": "https://sagebava.bandcamp.com/album/in-whose-eyes"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790195578.028825,
+      "selector": "audio"
+    },
+    {
+      "event": "play_requested",
+      "time": 1790195578.0345469,
+      "media": "audio"
+    },
+    {
+      "event": "play_click_fallback",
+      "time": 1790195579.582936,
+      "selector": "audio"
+    },
+    {
+      "event": "play_click_fallback",
+      "time": 1790195581.6615832,
+      "selector": ".playbutton"
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195583.6852071,
+      "progressing": true,
+      "media_time": 1.583071
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195584.702878,
+      "progressing": true,
+      "media_time": 2.600423
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195585.713942,
+      "progressing": true,
+      "media_time": 3.61549
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195586.719805,
+      "progressing": true,
+      "media_time": 4.621745
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195587.734514,
+      "progressing": true,
+      "media_time": 5.634789
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195588.7450829,
+      "progressing": true,
+      "media_time": 6.642745
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195589.75727,
+      "progressing": true,
+      "media_time": 7.65416
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195590.767113,
+      "progressing": true,
+      "media_time": 8.666497
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195591.795337,
+      "progressing": true,
+      "media_time": 9.69667
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195592.845624,
+      "progressing": true,
+      "media_time": 10.743087
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195593.860348,
+      "progressing": true,
+      "media_time": 11.757298
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195594.361968,
+      "progressing": true,
+      "media_time": 12.262083
+    },
+    {
+      "event": "done",
+      "time": 1790195594.362119,
+      "success": true,
+      "verified_seconds": 11.683
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "hand_curated_verified_playback_2026-09-23",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "398e4cede16dffbf40dbce08be8c83be7be3e1128fa2aac27a827f1efca2115f",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T20:32:57.102479+00:00",
+  "browser_success": true,
+  "verified_seconds": 11.683,
+  "capture_ended_at": "2026-09-23T20:33:14.366448+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 7448,
+  "capture_duration_seconds": 17.263969,
+  "duration_seconds": 18.692,
+  "success": true,
+  "actual_activity": "audio_streaming",
+  "parent_activity": "audio_streaming",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-23T20:33:14.541118+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/audio_streaming/20260923T203255849710Z_37d84782_sagebava.bandcamp.com_audio_streaming.pcap"
+}

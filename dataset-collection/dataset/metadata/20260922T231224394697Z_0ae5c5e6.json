@@ -1,0 +1,68 @@
+{
+  "session_id": "20260922T231224394697Z_0ae5c5e6",
+  "domain": "tubitv.com",
+  "rank": null,
+  "requested_activity": "video_streaming",
+  "started_at": "2026-09-22T23:12:24.394909+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790118745.4569259,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790118746.319262,
+      "url": "https://tubitv.com/movies/544345/secret-window"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790118746.319308,
+      "selector": "video"
+    },
+    {
+      "event": "browser_diagnostic",
+      "time": 1790118763.549171,
+      "phase": "wait_for_selector",
+      "access_denied": false,
+      "article_elements": 1,
+      "audio_elements": 0,
+      "login_prompt": true,
+      "post_links": 0,
+      "video_elements": 0,
+      "window_count": 1
+    },
+    {
+      "event": "done",
+      "success": false,
+      "reason": "Browser action failed during wait_for_selector; inspect access or selectors",
+      "error_type": "TimeoutException"
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "user_plan",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "40d92df001c31d85969b10e8efa2c01c61f911e7b05b1be5d1140f58f00ca08f",
+  "profile_mode": "fresh",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T23:12:25.515068+00:00",
+  "browser_success": false,
+  "reason": "Browser action failed during wait_for_selector; inspect access or selectors",
+  "error_type": "TimeoutException",
+  "capture_ended_at": "2026-09-22T23:12:43.553462+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 45609,
+  "capture_duration_seconds": 18.038394,
+  "duration_seconds": 19.401,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-22T23:12:43.791011+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260922T231224394697Z_0ae5c5e6_tubitv.com_video_streaming.pcap"
+}

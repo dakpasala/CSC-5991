@@ -1,0 +1,161 @@
+{
+  "session_id": "20260923T032306560008Z_7cf2edb9",
+  "domain": "music.youtube.com",
+  "rank": 1000,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-23T03:23:06.560736+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790133787.8241549,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "session_cookies_injected",
+      "time": 1790133788.1460018,
+      "count": 22
+    },
+    {
+      "event": "navigate",
+      "time": 1790133788.5573828,
+      "url": "https://music.youtube.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790133788.559366,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790133788.562398
+    },
+    {
+      "event": "content_sample",
+      "time": 1790133790.578204,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790133790.581828
+    },
+    {
+      "event": "content_sample",
+      "time": 1790133792.59928,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790133792.602923
+    },
+    {
+      "event": "content_sample",
+      "time": 1790133794.6220338,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790133794.626215
+    },
+    {
+      "event": "content_sample",
+      "time": 1790133796.6476002,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790133796.651226
+    },
+    {
+      "event": "content_sample",
+      "time": 1790133798.6699479,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790133798.673791
+    },
+    {
+      "event": "content_sample",
+      "time": 1790133800.691519,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790133800.6953301
+    },
+    {
+      "event": "content_sample",
+      "time": 1790133802.714241,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790133802.717834
+    },
+    {
+      "event": "content_sample",
+      "time": 1790133804.7352629,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790133804.738896
+    },
+    {
+      "event": "content_sample",
+      "time": 1790133805.075277,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790133805.075393,
+      "success": true,
+      "verified_seconds": 16.483
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "current_top10k_verified_2026-09-22",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "e8851e39f479552c001d4daffee8a36af204ce2a7b8234e912959ec7652a5111",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T03:23:07.885433+00:00",
+  "browser_success": true,
+  "verified_seconds": 16.483,
+  "capture_ended_at": "2026-09-23T03:23:25.080246+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 764,
+  "capture_duration_seconds": 17.194813,
+  "duration_seconds": 18.674,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-23T03:23:25.233442+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260923T032306560008Z_7cf2edb9_music.youtube.com_web_browsing.pcap"
+}

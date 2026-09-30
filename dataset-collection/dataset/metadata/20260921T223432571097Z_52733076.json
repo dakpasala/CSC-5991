@@ -1,0 +1,145 @@
+{
+  "session_id": "20260921T223432571097Z_52733076",
+  "domain": "sciencedaily.com",
+  "rank": 1816,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-21T22:34:32.571760+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790030073.868323,
+      "browser_version": "153.0.8010.48",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790030074.708141,
+      "url": "https://sciencedaily.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790030074.7105448,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790030074.712299
+    },
+    {
+      "event": "content_sample",
+      "time": 1790030076.728611,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790030076.7307541
+    },
+    {
+      "event": "content_sample",
+      "time": 1790030080.0450408,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790030080.078089
+    },
+    {
+      "event": "content_sample",
+      "time": 1790030082.100424,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790030082.1041439
+    },
+    {
+      "event": "content_sample",
+      "time": 1790030084.1121001,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790030084.1142578
+    },
+    {
+      "event": "content_sample",
+      "time": 1790030086.141537,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790030086.145817
+    },
+    {
+      "event": "content_sample",
+      "time": 1790030088.165844,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790030088.168865
+    },
+    {
+      "event": "content_sample",
+      "time": 1790030090.191038,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790030090.196125
+    },
+    {
+      "event": "content_sample",
+      "time": 1790030091.0836349,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790030091.0837219,
+      "success": true,
+      "verified_seconds": 16.318
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.48",
+  "capture_started_at": "2026-09-21T22:34:33.926666+00:00",
+  "browser_success": true,
+  "verified_seconds": 16.318,
+  "capture_ended_at": "2026-09-21T22:34:51.085349+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 15464,
+  "capture_duration_seconds": 17.158683,
+  "duration_seconds": 19.404,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-21T22:34:51.974816+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260921T223432571097Z_52733076_sciencedaily.com_web_browsing.pcap"
+}

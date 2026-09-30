@@ -1,0 +1,145 @@
+{
+  "session_id": "20260922T021935014003Z_03b90cdb",
+  "domain": "figma.com",
+  "rank": 864,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T02:19:35.014566+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790043576.105351,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790043577.6728692,
+      "url": "https://www.figma.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043577.675165,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043577.676657
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043579.699391,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043579.702401
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043581.711906,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043581.715297
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043583.7276218,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043583.734273
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043585.7468002,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043585.750068
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043587.759327,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043587.7626162
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043589.8056571,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043589.80777
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043591.817152,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043591.819574
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043593.524437,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790043593.524621,
+      "success": true,
+      "verified_seconds": 15.824
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T02:19:36.160833+00:00",
+  "browser_success": true,
+  "verified_seconds": 15.824,
+  "capture_ended_at": "2026-09-22T02:19:53.528955+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 25153,
+  "capture_duration_seconds": 17.368122,
+  "duration_seconds": 18.739,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T02:19:53.752555+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T021935014003Z_03b90cdb_figma.com_web_browsing.pcap"
+}

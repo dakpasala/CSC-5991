@@ -1,0 +1,138 @@
+{
+  "session_id": "20260923T022427960452Z_71d97122",
+  "domain": "www.tiktok.com",
+  "rank": 1000,
+  "requested_activity": "video_streaming",
+  "started_at": "2026-09-23T02:24:27.960752+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790130269.133198,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "session_cookies_injected",
+      "time": 1790130271.506094,
+      "count": 35
+    },
+    {
+      "event": "navigate",
+      "time": 1790130277.182801,
+      "url": "https://www.tiktok.com/"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790130277.1828768,
+      "selector": "video"
+    },
+    {
+      "event": "play_requested",
+      "time": 1790130277.194696,
+      "media": "video"
+    },
+    {
+      "event": "media_sample",
+      "time": 1790130278.214689,
+      "progressing": false,
+      "media_time": 0.28656
+    },
+    {
+      "event": "media_sample",
+      "time": 1790130279.2259998,
+      "progressing": false,
+      "media_time": 0.28656
+    },
+    {
+      "event": "media_sample",
+      "time": 1790130280.239629,
+      "progressing": false,
+      "media_time": 0.28656
+    },
+    {
+      "event": "media_sample",
+      "time": 1790130281.243579,
+      "progressing": false,
+      "media_time": 0.28656
+    },
+    {
+      "event": "media_sample",
+      "time": 1790130282.256243,
+      "progressing": false,
+      "media_time": 0.28656
+    },
+    {
+      "event": "media_sample",
+      "time": 1790130283.2589178,
+      "progressing": false,
+      "media_time": 0.28656
+    },
+    {
+      "event": "media_sample",
+      "time": 1790130284.274164,
+      "progressing": false,
+      "media_time": 0.28656
+    },
+    {
+      "event": "media_sample",
+      "time": 1790130285.2873542,
+      "progressing": false,
+      "media_time": 0.28656
+    },
+    {
+      "event": "media_sample",
+      "time": 1790130286.2977128,
+      "progressing": false,
+      "media_time": 0.28656
+    },
+    {
+      "event": "media_sample",
+      "time": 1790130286.4653928,
+      "progressing": false,
+      "media_time": 0.28656
+    },
+    {
+      "event": "browser_diagnostic",
+      "time": 1790130286.494032,
+      "phase": "playback",
+      "access_denied": false,
+      "article_elements": 3,
+      "audio_elements": 1,
+      "login_prompt": false,
+      "post_links": 0,
+      "video_elements": 1,
+      "window_count": 1
+    },
+    {
+      "event": "done",
+      "success": false,
+      "reason": "Media was not progressing at session end",
+      "error_type": "RuntimeError"
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "current_top10k_verified_2026-09-22",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "a275a175b2c0bfac7a12977269cd52f76190c2c9254de72d9747e10ea1d46ed4",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T02:24:29.194358+00:00",
+  "browser_success": false,
+  "reason": "Media was not progressing at session end",
+  "error_type": "RuntimeError",
+  "capture_ended_at": "2026-09-23T02:24:46.495314+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 21383,
+  "capture_duration_seconds": 17.300956,
+  "duration_seconds": 18.744,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-23T02:24:46.704892+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260923T022427960452Z_71d97122_www.tiktok.com_video_streaming.pcap"
+}

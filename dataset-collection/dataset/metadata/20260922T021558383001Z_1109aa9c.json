@@ -1,0 +1,156 @@
+{
+  "session_id": "20260922T021558383001Z_1109aa9c",
+  "domain": "vimeo.com",
+  "rank": 88,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T02:15:58.383578+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790043359.653737,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790043360.517581,
+      "url": "https://vimeo.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043360.520629,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043360.52275
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043362.548936,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043362.551071
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043364.579513,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043364.581674
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043366.5879822,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043366.590202
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043368.601345,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043368.602769
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043370.615974,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043370.618937
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043372.6360042,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043372.639824
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043374.658012,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043374.661796
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043376.67086,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043376.673376
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043376.947841,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790043376.947912,
+      "success": true,
+      "verified_seconds": 16.404
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top100_batch_2026-09-15",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T02:15:59.714724+00:00",
+  "browser_success": true,
+  "verified_seconds": 16.404,
+  "capture_ended_at": "2026-09-22T02:16:16.952071+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 11405,
+  "capture_duration_seconds": 17.237347,
+  "duration_seconds": 18.734,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T02:16:17.117113+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T021558383001Z_1109aa9c_vimeo.com_web_browsing.pcap"
+}

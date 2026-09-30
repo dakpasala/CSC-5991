@@ -1,0 +1,139 @@
+{
+  "session_id": "20260921T222506711532Z_ee5d7985",
+  "domain": "facebook.com",
+  "rank": 3,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-21T22:25:06.711728+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790029507.800212,
+      "browser_version": "153.0.8010.48",
+      "headed": false
+    },
+    {
+      "event": "session_cookies_injected",
+      "time": 1790029508.406212,
+      "count": 7
+    },
+    {
+      "event": "navigate",
+      "time": 1790029511.9872189,
+      "url": "https://www.facebook.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029511.990442,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790029511.992378
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029514.0536408,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790029514.091228
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029516.103991,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790029516.1055412
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029518.123612,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790029518.127319
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029520.143649,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790029520.148133
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029522.169882,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790029522.177034
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029524.200923,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790029524.205268
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029525.221375,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790029525.221463,
+      "success": true,
+      "verified_seconds": 13.171
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top100_batch_2026-09-15",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.48",
+  "capture_started_at": "2026-09-21T22:25:07.858530+00:00",
+  "browser_success": true,
+  "verified_seconds": 13.171,
+  "capture_ended_at": "2026-09-21T22:25:25.225623+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 21664,
+  "capture_duration_seconds": 17.367093,
+  "duration_seconds": 18.707,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-21T22:25:25.418590+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260921T222506711532Z_ee5d7985_facebook.com_web_browsing.pcap"
+}

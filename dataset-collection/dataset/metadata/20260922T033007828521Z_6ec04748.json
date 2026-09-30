@@ -1,0 +1,145 @@
+{
+  "session_id": "20260922T033007828521Z_6ec04748",
+  "domain": "funinexch.com",
+  "rank": 2022,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T03:30:07.829799+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790047809.365199,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790047811.507118,
+      "url": "https://funinexch.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047811.510268,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047811.5123131
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047813.522916,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047813.524792
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047815.5395992,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047815.541526
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047817.5565178,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047817.559211
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047819.566956,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047819.568971
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047821.579293,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047821.581435
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047823.598263,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047823.60734
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047825.6222668,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047825.6255739
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047826.340256,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790047826.3403819,
+      "success": true,
+      "verified_seconds": 14.805
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T03:30:09.424340+00:00",
+  "browser_success": true,
+  "verified_seconds": 14.805,
+  "capture_ended_at": "2026-09-22T03:30:26.342031+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 6749,
+  "capture_duration_seconds": 16.917691,
+  "duration_seconds": 18.727,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T03:30:26.556017+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T033007828521Z_6ec04748_funinexch.com_web_browsing.pcap"
+}

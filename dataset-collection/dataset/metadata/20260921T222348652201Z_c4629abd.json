@@ -1,0 +1,122 @@
+{
+  "session_id": "20260921T222348652201Z_c4629abd",
+  "domain": "weibo.com",
+  "rank": 304,
+  "requested_activity": "social_media_browsing",
+  "started_at": "2026-09-21T22:23:48.652640+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790029430.2366028,
+      "browser_version": "153.0.8010.48",
+      "headed": false
+    },
+    {
+      "event": "session_cookies_injected",
+      "time": 1790029432.7843552,
+      "count": 8
+    },
+    {
+      "event": "navigate",
+      "time": 1790029436.103221,
+      "url": "https://weibo.com/newlogin"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790029436.103264,
+      "selector": "article"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029437.3431082,
+      "content": true,
+      "matching_elements": 2,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790029437.348074
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029439.3606248,
+      "content": true,
+      "matching_elements": 2,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790029439.363093
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029441.377197,
+      "content": true,
+      "matching_elements": 3,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790029441.382236
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029443.392843,
+      "content": true,
+      "matching_elements": 3,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790029443.3958762
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029445.4048388,
+      "content": true,
+      "matching_elements": 2,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790029445.407649
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029447.1637352,
+      "content": true,
+      "matching_elements": 3,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790029447.163848,
+      "success": true,
+      "verified_seconds": 9.802
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "b4a18b16b1f09f545b9ca8762bce7ecd9a7a60066d8ec92eac0b3ec2700b5a44",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.48",
+  "capture_started_at": "2026-09-21T22:23:50.293224+00:00",
+  "browser_success": true,
+  "verified_seconds": 9.802,
+  "capture_ended_at": "2026-09-21T22:24:07.165364+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 24438,
+  "capture_duration_seconds": 16.87214,
+  "duration_seconds": 18.679,
+  "success": true,
+  "actual_activity": "social_media_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": "social_media",
+  "status": "success",
+  "ended_at": "2026-09-21T22:24:07.331822+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/social_media_browsing/20260921T222348652201Z_c4629abd_weibo.com_social_media_browsing.pcap"
+}

@@ -1,0 +1,156 @@
+{
+  "session_id": "20260922T032405623482Z_08edf1ee",
+  "domain": "stackexchange.com",
+  "rank": 1771,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T03:24:05.624069+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790047446.7472498,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790047447.696896,
+      "url": "https://stackexchange.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047447.6993659,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047447.70105
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047449.709743,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047449.711583
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047451.725152,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047451.7289732
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047453.740155,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047453.742651
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047455.757202,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047455.760715
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047457.774287,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047457.778998
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047459.79199,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047459.795957
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047461.810187,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047461.813907
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047463.827965,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047463.831914
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047464.1370308,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790047464.137121,
+      "success": true,
+      "verified_seconds": 16.408
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T03:24:06.804936+00:00",
+  "browser_success": true,
+  "verified_seconds": 16.408,
+  "capture_ended_at": "2026-09-22T03:24:24.141201+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 2610,
+  "capture_duration_seconds": 17.336265,
+  "duration_seconds": 18.668,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T03:24:24.291274+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T032405623482Z_08edf1ee_stackexchange.com_web_browsing.pcap"
+}

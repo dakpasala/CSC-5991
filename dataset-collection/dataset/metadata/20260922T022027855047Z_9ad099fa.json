@@ -1,0 +1,156 @@
+{
+  "session_id": "20260922T022027855047Z_9ad099fa",
+  "domain": "bumble.com",
+  "rank": 3001,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T02:20:27.855605+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790043628.903309,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790043630.1597152,
+      "url": "https://bumble.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043630.1619892,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043630.16391
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043632.197237,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043632.199141
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043634.213098,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043634.217097
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043636.2337532,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043636.2375832
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043638.2530181,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043638.257377
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043640.2681909,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043640.271372
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043642.2800488,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043642.2821069
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043644.2928581,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043644.2958028
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043646.3101099,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043646.313853
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043646.3679621,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790043646.3680708,
+      "success": true,
+      "verified_seconds": 16.178
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T02:20:28.962261+00:00",
+  "browser_success": true,
+  "verified_seconds": 16.178,
+  "capture_ended_at": "2026-09-22T02:20:46.372165+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 6465,
+  "capture_duration_seconds": 17.409904,
+  "duration_seconds": 18.68,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T02:20:46.535273+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T022027855047Z_9ad099fa_bumble.com_web_browsing.pcap"
+}

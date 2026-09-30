@@ -1,0 +1,73 @@
+{
+  "session_id": "20260921T222223921223Z_b4d68a62",
+  "domain": "pinterest.com",
+  "rank": 56,
+  "requested_activity": "social_media_browsing",
+  "started_at": "2026-09-21T22:22:23.921580+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790029345.624741,
+      "browser_version": "153.0.8010.48",
+      "headed": false
+    },
+    {
+      "event": "session_cookies_injected",
+      "time": 1790029346.213711,
+      "count": 12
+    },
+    {
+      "event": "navigate",
+      "time": 1790029349.311702,
+      "url": "https://www.pinterest.com/"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790029349.311769,
+      "selector": "article"
+    },
+    {
+      "event": "browser_diagnostic",
+      "time": 1790029363.1195982,
+      "phase": "wait_for_selector",
+      "access_denied": false,
+      "article_elements": 0,
+      "audio_elements": 0,
+      "login_prompt": false,
+      "post_links": 0,
+      "video_elements": 0,
+      "window_count": 1
+    },
+    {
+      "event": "done",
+      "success": false,
+      "reason": "Browser action failed during wait_for_selector; inspect access or selectors",
+      "error_type": "TimeoutException"
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "b4a18b16b1f09f545b9ca8762bce7ecd9a7a60066d8ec92eac0b3ec2700b5a44",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.48",
+  "capture_started_at": "2026-09-21T22:22:25.689381+00:00",
+  "browser_success": false,
+  "reason": "Browser action failed during wait_for_selector; inspect access or selectors",
+  "error_type": "TimeoutException",
+  "capture_ended_at": "2026-09-21T22:22:43.121438+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 23755,
+  "capture_duration_seconds": 17.432057,
+  "duration_seconds": 19.403,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-21T22:22:43.324116+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260921T222223921223Z_b4d68a62_pinterest.com_social_media_browsing.pcap"
+}

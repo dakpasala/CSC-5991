@@ -1,0 +1,148 @@
+{
+  "session_id": "20260923T202805168308Z_a625eecb",
+  "domain": "www.ign.com",
+  "rank": null,
+  "requested_activity": "video_streaming",
+  "started_at": "2026-09-23T20:28:05.168917+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790195286.3227851,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790195287.5722141,
+      "url": "https://www.ign.com/videos/no-franchise-is-safe-as-phase-two-of-xboxs-reset-begins-next-gen-console-watch"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790195287.572265,
+      "selector": "video"
+    },
+    {
+      "event": "play_requested",
+      "time": 1790195287.590464,
+      "media": "video"
+    },
+    {
+      "event": "play_click_fallback",
+      "time": 1790195289.2115068,
+      "selector": "video"
+    },
+    {
+      "event": "play_click_fallback",
+      "time": 1790195290.275769,
+      "selector": "[aria-label*='play' i]"
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195292.304916,
+      "progressing": false,
+      "media_time": 0.704457
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195293.3154829,
+      "progressing": true,
+      "media_time": 1.712192
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195294.326262,
+      "progressing": true,
+      "media_time": 2.729925
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195295.3435678,
+      "progressing": true,
+      "media_time": 3.744994
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195296.3567371,
+      "progressing": true,
+      "media_time": 4.75398
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195297.369337,
+      "progressing": true,
+      "media_time": 5.764795
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195298.3792992,
+      "progressing": true,
+      "media_time": 6.781784
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195299.3910131,
+      "progressing": true,
+      "media_time": 7.789072
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195300.4019608,
+      "progressing": true,
+      "media_time": 8.798145
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195301.408829,
+      "progressing": true,
+      "media_time": 9.812242
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195302.4192908,
+      "progressing": true,
+      "media_time": 10.818999
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195303.431793,
+      "progressing": true,
+      "media_time": 11.828512
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195303.6805692,
+      "progressing": true,
+      "media_time": 12.07659
+    },
+    {
+      "event": "done",
+      "time": 1790195303.6807308,
+      "success": true,
+      "verified_seconds": 11.376
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "hand_curated_verified_playback_2026-09-23",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "c22f5fb605a9647a123e30f413e3496c43c4860d4f3e16b4499f37fad35fec3e",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T20:28:06.383141+00:00",
+  "browser_success": true,
+  "verified_seconds": 11.376,
+  "capture_ended_at": "2026-09-23T20:28:23.685259+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 16089,
+  "capture_duration_seconds": 17.302118,
+  "duration_seconds": 18.723,
+  "success": true,
+  "actual_activity": "video_streaming",
+  "parent_activity": "video_streaming",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-23T20:28:23.891156+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/video_streaming/20260923T202805168308Z_a625eecb_www.ign.com_video_streaming.pcap"
+}

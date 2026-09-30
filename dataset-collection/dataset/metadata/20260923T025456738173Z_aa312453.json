@@ -1,0 +1,157 @@
+{
+  "session_id": "20260923T025456738173Z_aa312453",
+  "domain": "www.nbcnews.com",
+  "rank": null,
+  "requested_activity": "video_streaming",
+  "started_at": "2026-09-23T02:54:56.738711+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790132098.024222,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790132099.0149848,
+      "url": "https://www.nbcnews.com/watch"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790132099.015028,
+      "selector": "video"
+    },
+    {
+      "event": "play_requested",
+      "time": 1790132102.008903,
+      "media": "video"
+    },
+    {
+      "event": "media_sample",
+      "time": 1790132103.022979,
+      "progressing": false,
+      "media_time": null
+    },
+    {
+      "event": "media_sample",
+      "time": 1790132104.028553,
+      "progressing": false,
+      "media_time": null
+    },
+    {
+      "event": "media_sample",
+      "time": 1790132105.040412,
+      "progressing": false,
+      "media_time": null
+    },
+    {
+      "event": "media_sample",
+      "time": 1790132106.0519521,
+      "progressing": false,
+      "media_time": null
+    },
+    {
+      "event": "media_sample",
+      "time": 1790132107.065721,
+      "progressing": false,
+      "media_time": null
+    },
+    {
+      "event": "media_sample",
+      "time": 1790132108.0739682,
+      "progressing": false,
+      "media_time": null
+    },
+    {
+      "event": "media_sample",
+      "time": 1790132109.0833018,
+      "progressing": false,
+      "media_time": null
+    },
+    {
+      "event": "media_sample",
+      "time": 1790132110.091145,
+      "progressing": false,
+      "media_time": null
+    },
+    {
+      "event": "media_sample",
+      "time": 1790132111.095157,
+      "progressing": false,
+      "media_time": null
+    },
+    {
+      "event": "media_sample",
+      "time": 1790132112.1042502,
+      "progressing": false,
+      "media_time": null
+    },
+    {
+      "event": "media_sample",
+      "time": 1790132113.1100612,
+      "progressing": false,
+      "media_time": null
+    },
+    {
+      "event": "media_sample",
+      "time": 1790132114.121197,
+      "progressing": false,
+      "media_time": null
+    },
+    {
+      "event": "media_sample",
+      "time": 1790132115.1327329,
+      "progressing": false,
+      "media_time": null
+    },
+    {
+      "event": "media_sample",
+      "time": 1790132115.2455611,
+      "progressing": false,
+      "media_time": null
+    },
+    {
+      "event": "browser_diagnostic",
+      "time": 1790132115.2504141,
+      "phase": "playback",
+      "access_denied": false,
+      "article_elements": 0,
+      "audio_elements": 0,
+      "login_prompt": false,
+      "post_links": 1,
+      "video_elements": 0,
+      "window_count": 1
+    },
+    {
+      "event": "done",
+      "success": false,
+      "reason": "Media was not progressing at session end",
+      "error_type": "RuntimeError"
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "user_plan",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "c5fd2bf301a13c0b3a0282cf879691da45b554623b6dab743951305be00c0610",
+  "profile_mode": "fresh",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T02:54:58.078899+00:00",
+  "browser_success": false,
+  "reason": "Media was not progressing at session end",
+  "error_type": "RuntimeError",
+  "capture_ended_at": "2026-09-23T02:55:15.267935+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 47594,
+  "capture_duration_seconds": 17.189036,
+  "duration_seconds": 18.802,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-23T02:55:15.539836+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260923T025456738173Z_aa312453_www.nbcnews.com_video_streaming.pcap"
+}

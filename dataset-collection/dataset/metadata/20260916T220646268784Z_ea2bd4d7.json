@@ -1,0 +1,162 @@
+{
+  "session_id": "20260916T220646268784Z_ea2bd4d7",
+  "domain": "youtube.com",
+  "rank": 9,
+  "requested_activity": "video_streaming",
+  "started_at": "2026-09-16T22:06:46.269005+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1789596408.108845,
+      "browser_version": "152.0.7977.84",
+      "headed": true
+    },
+    {
+      "event": "session_cookies_injected",
+      "time": 1789596408.902852,
+      "count": 22
+    },
+    {
+      "event": "navigate",
+      "time": 1789596411.587774,
+      "url": "https://www.youtube.com/watch"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1789596411.5878348,
+      "selector": "video"
+    },
+    {
+      "event": "play_requested",
+      "time": 1789596411.6086972,
+      "media": "video"
+    },
+    {
+      "event": "media_sample",
+      "time": 1789596412.622776,
+      "progressing": true,
+      "media_time": 1.756508
+    },
+    {
+      "event": "media_sample",
+      "time": 1789596413.631385,
+      "progressing": true,
+      "media_time": 2.769096
+    },
+    {
+      "event": "media_sample",
+      "time": 1789596414.6414652,
+      "progressing": true,
+      "media_time": 3.776689
+    },
+    {
+      "event": "media_sample",
+      "time": 1789596415.650784,
+      "progressing": true,
+      "media_time": 4.784368
+    },
+    {
+      "event": "media_sample",
+      "time": 1789596416.661021,
+      "progressing": true,
+      "media_time": 5.793903
+    },
+    {
+      "event": "media_sample",
+      "time": 1789596417.672082,
+      "progressing": true,
+      "media_time": 6.806972
+    },
+    {
+      "event": "media_sample",
+      "time": 1789596418.680575,
+      "progressing": true,
+      "media_time": 7.814269
+    },
+    {
+      "event": "media_sample",
+      "time": 1789596419.695509,
+      "progressing": true,
+      "media_time": 8.827801
+    },
+    {
+      "event": "media_sample",
+      "time": 1789596420.70892,
+      "progressing": true,
+      "media_time": 9.846021
+    },
+    {
+      "event": "media_sample",
+      "time": 1789596421.717906,
+      "progressing": true,
+      "media_time": 10.852704
+    },
+    {
+      "event": "media_sample",
+      "time": 1789596422.729753,
+      "progressing": true,
+      "media_time": 11.863809
+    },
+    {
+      "event": "media_sample",
+      "time": 1789596423.74128,
+      "progressing": true,
+      "media_time": 12.875582
+    },
+    {
+      "event": "media_sample",
+      "time": 1789596424.751838,
+      "progressing": true,
+      "media_time": 13.888446
+    },
+    {
+      "event": "media_sample",
+      "time": 1789596425.7630348,
+      "progressing": true,
+      "media_time": 14.899552
+    },
+    {
+      "event": "media_sample",
+      "time": 1789596426.771213,
+      "progressing": true,
+      "media_time": 15.907992
+    },
+    {
+      "event": "media_sample",
+      "time": 1789596427.784387,
+      "progressing": true,
+      "media_time": 16.919194
+    },
+    {
+      "event": "media_sample",
+      "time": 1789596428.792716,
+      "progressing": true,
+      "media_time": 17.929494
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 60.0,
+  "source_scope": "top100_previous_30_second_success_not_guaranteed",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "776ac888db04e1d4633fe2f39b50984de366a263376bbe02ddd9b3a281fa3046",
+  "profile_mode": "persistent",
+  "browser_version": "152.0.7977.84",
+  "capture_started_at": "2026-09-16T22:06:48.179541+00:00",
+  "browser_success": false,
+  "reason": "Interrupted",
+  "error_type": "RuntimeError",
+  "tcpdump_exit_code": 0,
+  "packet_count": 8225,
+  "capture_ended_at": "2026-09-16T22:07:09.099741+00:00",
+  "capture_duration_seconds": 20.9202,
+  "duration_seconds": 23.848,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-16T22:07:10.117956+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260916T220646268784Z_ea2bd4d7_youtube.com_video_streaming.pcap"
+}

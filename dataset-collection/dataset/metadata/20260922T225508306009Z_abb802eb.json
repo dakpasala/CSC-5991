@@ -1,0 +1,68 @@
+{
+  "session_id": "20260922T225508306009Z_abb802eb",
+  "domain": "www.tiktok.com",
+  "rank": 1000,
+  "requested_activity": "video_streaming",
+  "started_at": "2026-09-22T22:55:08.306610+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790117709.4605498,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790117712.729242,
+      "url": "https://www.tiktok.com/"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790117712.72929,
+      "selector": "video"
+    },
+    {
+      "event": "browser_diagnostic",
+      "time": 1790117727.327872,
+      "phase": "wait_for_selector",
+      "access_denied": false,
+      "article_elements": 0,
+      "audio_elements": 0,
+      "login_prompt": true,
+      "post_links": 0,
+      "video_elements": 0,
+      "window_count": 1
+    },
+    {
+      "event": "done",
+      "success": false,
+      "reason": "Browser action failed during wait_for_selector; inspect access or selectors",
+      "error_type": "TimeoutException"
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "current_top10k_verified_2026-09-22",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "a83fe4f3e068c8ab0a7d417e16adffeb8d3457a4c8b682b52064cd22ae341904",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T22:55:09.517857+00:00",
+  "browser_success": false,
+  "reason": "Browser action failed during wait_for_selector; inspect access or selectors",
+  "error_type": "TimeoutException",
+  "capture_ended_at": "2026-09-22T22:55:27.329368+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 8078,
+  "capture_duration_seconds": 17.811511,
+  "duration_seconds": 19.193,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-22T22:55:27.499300+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260922T225508306009Z_abb802eb_www.tiktok.com_video_streaming.pcap"
+}

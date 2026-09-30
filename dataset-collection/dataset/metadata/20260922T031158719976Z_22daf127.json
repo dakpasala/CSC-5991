@@ -1,0 +1,134 @@
+{
+  "session_id": "20260922T031158719976Z_22daf127",
+  "domain": "mechacomic.jp",
+  "rank": 1621,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T03:11:58.729530+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790046720.284365,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790046723.489295,
+      "url": "https://mechacomic.jp/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046723.4913511,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046723.493116
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046725.521505,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046725.525001
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046727.8237288,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046727.837219
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046729.881825,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046729.883667
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046731.8978329,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046731.9019399
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046733.917387,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046733.9215739
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046735.929434,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046735.932826
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046737.2288792,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790046737.2289448,
+      "success": true,
+      "verified_seconds": 13.705
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T03:12:00.339922+00:00",
+  "browser_success": true,
+  "verified_seconds": 13.705,
+  "capture_ended_at": "2026-09-22T03:12:17.237945+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 457391,
+  "capture_duration_seconds": 16.898023,
+  "duration_seconds": 18.816,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T03:12:17.536223+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T031158719976Z_22daf127_mechacomic.jp_web_browsing.pcap"
+}

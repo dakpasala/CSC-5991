@@ -1,0 +1,145 @@
+{
+  "session_id": "20260922T031138000475Z_79e13beb",
+  "domain": "girlschannel.net",
+  "rank": 1618,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T03:11:38.000721+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790046699.407497,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790046701.610413,
+      "url": "https://girlschannel.net/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046701.6152341,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046701.617793
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046703.6326668,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046703.634764
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046705.6545439,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046705.6565278
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046707.6676512,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046707.6703749
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046709.6778922,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046709.6814442
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046711.700974,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046711.705677
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046713.716387,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046713.7196102
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046715.7381911,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046715.7421381
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046716.513422,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790046716.513571,
+      "success": true,
+      "verified_seconds": 14.873
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T03:11:39.466180+00:00",
+  "browser_success": true,
+  "verified_seconds": 14.873,
+  "capture_ended_at": "2026-09-22T03:11:56.522745+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 101230,
+  "capture_duration_seconds": 17.056565,
+  "duration_seconds": 18.708,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T03:11:56.709001+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T031138000475Z_79e13beb_girlschannel.net_web_browsing.pcap"
+}

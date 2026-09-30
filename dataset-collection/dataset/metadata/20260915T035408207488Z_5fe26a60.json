@@ -1,0 +1,214 @@
+{
+  "session_id": "20260915T035408207488Z_5fe26a60",
+  "domain": "w3schools.com",
+  "rank": null,
+  "requested_activity": "audio_streaming",
+  "started_at": "2026-09-15T03:54:08.207727+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1789444450.632107,
+      "browser_version": "152.0.7977.84"
+    },
+    {
+      "event": "navigate",
+      "time": 1789444450.990268,
+      "url": "https://www.w3schools.com/html/horse.ogg"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1789444450.990463,
+      "selector": "audio, video"
+    },
+    {
+      "event": "play_requested",
+      "time": 1789444451.018892,
+      "media": "audio"
+    },
+    {
+      "event": "media_sample",
+      "time": 1789444452.028248,
+      "progressing": true,
+      "media_time": 0.833217
+    },
+    {
+      "event": "media_sample",
+      "time": 1789444453.04037,
+      "progressing": true,
+      "media_time": 0.283429
+    },
+    {
+      "event": "media_sample",
+      "time": 1789444454.0467,
+      "progressing": true,
+      "media_time": 1.296974
+    },
+    {
+      "event": "media_sample",
+      "time": 1789444455.064057,
+      "progressing": true,
+      "media_time": 0.745735
+    },
+    {
+      "event": "media_sample",
+      "time": 1789444456.074771,
+      "progressing": true,
+      "media_time": 0.193583
+    },
+    {
+      "event": "media_sample",
+      "time": 1789444457.085875,
+      "progressing": true,
+      "media_time": 1.204007
+    },
+    {
+      "event": "media_sample",
+      "time": 1789444458.103884,
+      "progressing": true,
+      "media_time": 0.661989
+    },
+    {
+      "event": "media_sample",
+      "time": 1789444459.146846,
+      "progressing": true,
+      "media_time": 0.13948
+    },
+    {
+      "event": "media_sample",
+      "time": 1789444460.156644,
+      "progressing": true,
+      "media_time": 1.146753
+    },
+    {
+      "event": "media_sample",
+      "time": 1789444461.170902,
+      "progressing": true,
+      "media_time": 0.602927
+    },
+    {
+      "event": "media_sample",
+      "time": 1789444462.1796181,
+      "progressing": true,
+      "media_time": 0.052864
+    },
+    {
+      "event": "media_sample",
+      "time": 1789444463.186307,
+      "progressing": true,
+      "media_time": 1.059765
+    },
+    {
+      "event": "media_sample",
+      "time": 1789444464.19632,
+      "progressing": true,
+      "media_time": 0.513744
+    },
+    {
+      "event": "media_sample",
+      "time": 1789444465.2057369,
+      "progressing": true,
+      "media_time": 0.008227
+    },
+    {
+      "event": "media_sample",
+      "time": 1789444466.213127,
+      "progressing": true,
+      "media_time": 0.966578
+    },
+    {
+      "event": "media_sample",
+      "time": 1789444467.2281952,
+      "progressing": true,
+      "media_time": 0.416495
+    },
+    {
+      "event": "media_sample",
+      "time": 1789444468.241361,
+      "progressing": true,
+      "media_time": 1.430821
+    },
+    {
+      "event": "media_sample",
+      "time": 1789444469.254464,
+      "progressing": true,
+      "media_time": 0.884505
+    },
+    {
+      "event": "media_sample",
+      "time": 1789444470.287808,
+      "progressing": true,
+      "media_time": 0.351433
+    },
+    {
+      "event": "media_sample",
+      "time": 1789444471.297398,
+      "progressing": true,
+      "media_time": 1.360056
+    },
+    {
+      "event": "media_sample",
+      "time": 1789444472.310072,
+      "progressing": true,
+      "media_time": 0.816545
+    },
+    {
+      "event": "media_sample",
+      "time": 1789444473.320398,
+      "progressing": true,
+      "media_time": 0.261809
+    },
+    {
+      "event": "media_sample",
+      "time": 1789444474.330823,
+      "progressing": true,
+      "media_time": 1.2705
+    },
+    {
+      "event": "media_sample",
+      "time": 1789444475.33552,
+      "progressing": true,
+      "media_time": 0.70882
+    },
+    {
+      "event": "media_sample",
+      "time": 1789444476.349043,
+      "progressing": true,
+      "media_time": 0.164997
+    },
+    {
+      "event": "media_sample",
+      "time": 1789444476.717731,
+      "progressing": true,
+      "media_time": 0.534322
+    },
+    {
+      "event": "done",
+      "time": 1789444476.717867,
+      "success": true,
+      "verified_seconds": 25.695
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 29.999996292055584,
+  "source_scope": "external_demo_short_loop_not_representative_music_streaming",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "d1d641b9b585cc7c7241ec14efa2fa4ab3c7180654600bee656c1ef64405d23a",
+  "browser_version": "152.0.7977.84",
+  "capture_started_at": "2026-09-15T03:54:10.686984+00:00",
+  "browser_success": true,
+  "verified_seconds": 25.695,
+  "capture_ended_at": "2026-09-15T03:54:36.719614+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 42989,
+  "capture_duration_seconds": 26.03263,
+  "duration_seconds": 28.763,
+  "success": true,
+  "actual_activity": "audio_streaming",
+  "parent_activity": "audio_streaming",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-15T03:54:36.970272+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/audio_streaming/20260915T035408207488Z_5fe26a60_w3schools.com_audio_streaming.pcap"
+}

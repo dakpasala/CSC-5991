@@ -1,0 +1,145 @@
+{
+  "session_id": "20260922T031953374786Z_ba542db6",
+  "domain": "loteriadehoy.com",
+  "rank": 1738,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T03:19:53.375325+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790047194.4828942,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790047195.823453,
+      "url": "https://loteriadehoy.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047195.825671,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047195.827776
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047197.8453739,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047197.8491971
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047199.86369,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047199.867806
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047201.8814871,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047201.885211
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047203.901025,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047203.9045901
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047205.9185522,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047205.921704
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047207.939399,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047207.941719
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047209.955219,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047209.959195
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047211.888607,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790047211.888737,
+      "success": true,
+      "verified_seconds": 16.036
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T03:19:54.538811+00:00",
+  "browser_success": true,
+  "verified_seconds": 16.036,
+  "capture_ended_at": "2026-09-22T03:20:11.892857+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 2681,
+  "capture_duration_seconds": 17.354046,
+  "duration_seconds": 18.685,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T03:20:12.060257+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T031953374786Z_ba542db6_loteriadehoy.com_web_browsing.pcap"
+}

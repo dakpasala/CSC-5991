@@ -1,0 +1,119 @@
+{
+  "session_id": "20260923T183438948901Z_9dff4f7a",
+  "domain": "www.cnn.com",
+  "rank": null,
+  "requested_activity": "video_streaming",
+  "started_at": "2026-09-23T18:34:38.949375+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790188484.150063,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790188485.7807,
+      "url": "https://www.cnn.com/2026/09/22/us/ice-agents-mistakenly-detain-us-citizen"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790188485.7807648,
+      "selector": "video"
+    },
+    {
+      "event": "play_requested",
+      "time": 1790188485.7912378,
+      "media": "video"
+    },
+    {
+      "event": "play_click_fallback",
+      "time": 1790188489.079733,
+      "selector": "video"
+    },
+    {
+      "event": "play_click_fallback",
+      "time": 1790188490.320571,
+      "selector": "[aria-label*='play' i]"
+    },
+    {
+      "event": "media_sample",
+      "time": 1790188492.357503,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790188493.363457,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790188494.3683,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790188495.897603,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790188496.9077492,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790188497.454842,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "browser_diagnostic",
+      "time": 1790188497.4681149,
+      "phase": "playback",
+      "access_denied": false,
+      "article_elements": 1,
+      "audio_elements": 0,
+      "login_prompt": true,
+      "post_links": 0,
+      "video_elements": 2,
+      "window_count": 1
+    },
+    {
+      "event": "done",
+      "success": false,
+      "reason": "Media was not progressing at session end",
+      "error_type": "RuntimeError"
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "user_plan",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "c242f41a702fd475d5662690806ac20df338c4570ea3cb70b99cbc960cafa209",
+  "profile_mode": "fresh",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T18:34:44.208366+00:00",
+  "browser_success": false,
+  "reason": "Media was not progressing at session end",
+  "error_type": "RuntimeError",
+  "capture_ended_at": "2026-09-23T18:34:57.476494+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 21356,
+  "capture_duration_seconds": 13.268128,
+  "duration_seconds": 18.955,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-23T18:34:57.904157+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260923T183438948901Z_9dff4f7a_www.cnn.com_video_streaming.pcap"
+}

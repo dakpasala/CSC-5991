@@ -1,0 +1,127 @@
+{
+  "session_id": "20260923T022957494543Z_fe62b7b8",
+  "domain": "pluto.tv",
+  "rank": 10000,
+  "requested_activity": "video_streaming",
+  "started_at": "2026-09-23T02:29:57.494708+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790130598.764369,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790130604.8995771,
+      "url": "https://pluto.tv/"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790130604.899629,
+      "selector": "video"
+    },
+    {
+      "event": "play_requested",
+      "time": 1790130607.55214,
+      "media": "video"
+    },
+    {
+      "event": "media_sample",
+      "time": 1790130608.567782,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790130609.577106,
+      "progressing": false,
+      "media_time": 25
+    },
+    {
+      "event": "media_sample",
+      "time": 1790130610.6711721,
+      "progressing": false,
+      "media_time": 25
+    },
+    {
+      "event": "media_sample",
+      "time": 1790130611.67421,
+      "progressing": false,
+      "media_time": 25
+    },
+    {
+      "event": "media_sample",
+      "time": 1790130612.6823628,
+      "progressing": false,
+      "media_time": 25
+    },
+    {
+      "event": "media_sample",
+      "time": 1790130613.6961899,
+      "progressing": false,
+      "media_time": 25
+    },
+    {
+      "event": "media_sample",
+      "time": 1790130614.7011461,
+      "progressing": true,
+      "media_time": 25.700465
+    },
+    {
+      "event": "media_sample",
+      "time": 1790130615.710901,
+      "progressing": true,
+      "media_time": 26.711166
+    },
+    {
+      "event": "media_sample",
+      "time": 1790130615.999382,
+      "progressing": true,
+      "media_time": 26.999026
+    },
+    {
+      "event": "browser_diagnostic",
+      "time": 1790130616.004051,
+      "phase": "playback",
+      "access_denied": false,
+      "article_elements": 0,
+      "audio_elements": 0,
+      "login_prompt": true,
+      "post_links": 0,
+      "video_elements": 1,
+      "window_count": 1
+    },
+    {
+      "event": "done",
+      "success": false,
+      "reason": "Insufficient verified activity duration",
+      "error_type": "RuntimeError"
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "hand_curated_verified_playback_2026-09-22",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "a275a175b2c0bfac7a12977269cd52f76190c2c9254de72d9747e10ea1d46ed4",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T02:29:58.827864+00:00",
+  "browser_success": false,
+  "reason": "Insufficient verified activity duration",
+  "error_type": "RuntimeError",
+  "capture_ended_at": "2026-09-23T02:30:16.005517+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 17815,
+  "capture_duration_seconds": 17.177653,
+  "duration_seconds": 18.793,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-23T02:30:16.287902+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260923T022957494543Z_fe62b7b8_pluto.tv_video_streaming.pcap"
+}

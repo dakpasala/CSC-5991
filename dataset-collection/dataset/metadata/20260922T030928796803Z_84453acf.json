@@ -1,0 +1,145 @@
+{
+  "session_id": "20260922T030928796803Z_84453acf",
+  "domain": "sinoptik.ua",
+  "rank": 1549,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T03:09:28.797347+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790046570.022332,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790046572.216581,
+      "url": "https://sinoptik.ua/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046572.2199318,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046572.22189
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046574.240526,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046574.24249
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046576.2617888,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046576.263434
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046578.282937,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046578.2869608
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046580.302403,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046580.3068259
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046582.320472,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046582.3254342
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046584.338625,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046584.343263
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046586.358797,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046586.362596
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046587.311983,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790046587.31218,
+      "success": true,
+      "verified_seconds": 15.065
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T03:09:30.079928+00:00",
+  "browser_success": true,
+  "verified_seconds": 15.065,
+  "capture_ended_at": "2026-09-22T03:09:47.316506+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 28079,
+  "capture_duration_seconds": 17.236578,
+  "duration_seconds": 18.726,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T03:09:47.522456+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T030928796803Z_84453acf_sinoptik.ua_web_browsing.pcap"
+}

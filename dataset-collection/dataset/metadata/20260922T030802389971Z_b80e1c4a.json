@@ -1,0 +1,134 @@
+{
+  "session_id": "20260922T030802389971Z_b80e1c4a",
+  "domain": "musicdel.ir",
+  "rank": 1526,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T03:08:02.390466+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790046483.5261,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790046487.121554,
+      "url": "https://musicdel.ir/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046487.124251,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046487.126029
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046489.157562,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046489.161212
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046491.181144,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046491.1852942
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046493.200236,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046493.203548
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046495.218827,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046495.222819
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046497.234587,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046497.237227
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046499.256767,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046499.2603872
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046500.9046888,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790046500.9048371,
+      "success": true,
+      "verified_seconds": 13.757
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T03:08:03.584429+00:00",
+  "browser_success": true,
+  "verified_seconds": 13.757,
+  "capture_ended_at": "2026-09-22T03:08:20.913994+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 8941,
+  "capture_duration_seconds": 17.329565,
+  "duration_seconds": 18.714,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T03:08:21.104406+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T030802389971Z_b80e1c4a_musicdel.ir_web_browsing.pcap"
+}

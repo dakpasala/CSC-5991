@@ -1,0 +1,168 @@
+{
+  "session_id": "20260915T174757671354Z_4922bd36",
+  "domain": "youtube.com",
+  "rank": 9,
+  "requested_activity": "video_streaming",
+  "started_at": "2026-09-15T17:47:57.671577+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1789494479.2259278,
+      "browser_version": "152.0.7977.84",
+      "headed": true
+    },
+    {
+      "event": "navigate",
+      "time": 1789494483.9398441,
+      "url": "https://www.youtube.com/watch"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1789494483.93991,
+      "selector": "video"
+    },
+    {
+      "event": "play_requested",
+      "time": 1789494483.9514382,
+      "media": "video"
+    },
+    {
+      "event": "media_sample",
+      "time": 1789494484.980639,
+      "progressing": true,
+      "media_time": 2.584126
+    },
+    {
+      "event": "media_sample",
+      "time": 1789494485.98832,
+      "progressing": true,
+      "media_time": 3.591634
+    },
+    {
+      "event": "media_sample",
+      "time": 1789494486.997014,
+      "progressing": true,
+      "media_time": 4.602099
+    },
+    {
+      "event": "media_sample",
+      "time": 1789494488.008609,
+      "progressing": true,
+      "media_time": 5.612929
+    },
+    {
+      "event": "media_sample",
+      "time": 1789494489.0166242,
+      "progressing": true,
+      "media_time": 6.62154
+    },
+    {
+      "event": "media_sample",
+      "time": 1789494490.025192,
+      "progressing": true,
+      "media_time": 7.628344
+    },
+    {
+      "event": "media_sample",
+      "time": 1789494491.036747,
+      "progressing": true,
+      "media_time": 8.640119
+    },
+    {
+      "event": "media_sample",
+      "time": 1789494492.0473971,
+      "progressing": true,
+      "media_time": 9.650287
+    },
+    {
+      "event": "media_sample",
+      "time": 1789494493.059032,
+      "progressing": true,
+      "media_time": 10.66303
+    },
+    {
+      "event": "media_sample",
+      "time": 1789494494.067612,
+      "progressing": true,
+      "media_time": 11.672635
+    },
+    {
+      "event": "media_sample",
+      "time": 1789494495.0812092,
+      "progressing": true,
+      "media_time": 12.685019
+    },
+    {
+      "event": "media_sample",
+      "time": 1789494496.089649,
+      "progressing": true,
+      "media_time": 13.693049
+    },
+    {
+      "event": "media_sample",
+      "time": 1789494497.0995169,
+      "progressing": true,
+      "media_time": 14.703162
+    },
+    {
+      "event": "media_sample",
+      "time": 1789494498.110092,
+      "progressing": true,
+      "media_time": 15.712799
+    },
+    {
+      "event": "media_sample",
+      "time": 1789494499.1177979,
+      "progressing": true,
+      "media_time": 16.701003
+    },
+    {
+      "event": "media_sample",
+      "time": 1789494500.1276228,
+      "progressing": true,
+      "media_time": 17.709373
+    },
+    {
+      "event": "media_sample",
+      "time": 1789494501.136513,
+      "progressing": true,
+      "media_time": 18.71764
+    },
+    {
+      "event": "media_sample",
+      "time": 1789494501.179285,
+      "progressing": false,
+      "media_time": 18.761768
+    },
+    {
+      "event": "done",
+      "time": 1789494501.1793761,
+      "success": true,
+      "verified_seconds": 17.183
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 25.0,
+  "source_scope": "top100_previous_30_second_success_not_guaranteed",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "3901484afffaa3048cb566bfc80fec1e4e2a3851abf78f752f2bc3aab1c3daf6",
+  "profile_mode": "persistent",
+  "browser_version": "152.0.7977.84",
+  "capture_started_at": "2026-09-15T17:47:59.357371+00:00",
+  "browser_success": true,
+  "verified_seconds": 17.183,
+  "capture_ended_at": "2026-09-15T17:48:21.183861+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 19017,
+  "capture_duration_seconds": 21.82649,
+  "duration_seconds": 23.848,
+  "success": true,
+  "actual_activity": "video_streaming",
+  "parent_activity": "video_streaming",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-15T17:48:21.519475+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/video_streaming/20260915T174757671354Z_4922bd36_youtube.com_video_streaming.pcap"
+}

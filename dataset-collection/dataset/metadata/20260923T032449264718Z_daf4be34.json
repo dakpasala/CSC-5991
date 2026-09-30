@@ -1,0 +1,150 @@
+{
+  "session_id": "20260923T032449264718Z_daf4be34",
+  "domain": "web.whatsapp.com",
+  "rank": 1000,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-23T03:24:49.265245+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790133890.4561112,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "session_cookies_injected",
+      "time": 1790133890.8365319,
+      "count": 2
+    },
+    {
+      "event": "navigate",
+      "time": 1790133891.701993,
+      "url": "https://web.whatsapp.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790133891.704001,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790133891.7055218
+    },
+    {
+      "event": "content_sample",
+      "time": 1790133893.724579,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790133893.727245
+    },
+    {
+      "event": "content_sample",
+      "time": 1790133895.749593,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790133895.752942
+    },
+    {
+      "event": "content_sample",
+      "time": 1790133897.773778,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790133897.777565
+    },
+    {
+      "event": "content_sample",
+      "time": 1790133899.7967958,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790133899.800431
+    },
+    {
+      "event": "content_sample",
+      "time": 1790133901.8201091,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790133901.823586
+    },
+    {
+      "event": "content_sample",
+      "time": 1790133903.843057,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790133903.847682
+    },
+    {
+      "event": "content_sample",
+      "time": 1790133905.85571,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790133905.8583481
+    },
+    {
+      "event": "content_sample",
+      "time": 1790133907.7851782,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790133907.78532,
+      "success": true,
+      "verified_seconds": 16.056
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "current_top10k_verified_2026-09-22",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "e8851e39f479552c001d4daffee8a36af204ce2a7b8234e912959ec7652a5111",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T03:24:50.516519+00:00",
+  "browser_success": true,
+  "verified_seconds": 16.056,
+  "capture_ended_at": "2026-09-23T03:25:07.790198+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 8579,
+  "capture_duration_seconds": 17.273679,
+  "duration_seconds": 18.686,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-23T03:25:07.951031+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260923T032449264718Z_daf4be34_web.whatsapp.com_web_browsing.pcap"
+}

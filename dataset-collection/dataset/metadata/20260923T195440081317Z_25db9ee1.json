@@ -1,0 +1,137 @@
+{
+  "session_id": "20260923T195440081317Z_25db9ee1",
+  "domain": "www.nfl.com",
+  "rank": null,
+  "requested_activity": "video_streaming",
+  "started_at": "2026-09-23T19:54:40.081527+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790193282.452438,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790193284.688022,
+      "url": "https://www.nfl.com/videos/every-team-s-best-play-of-week-2-2026-nfl-season"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790193284.688076,
+      "selector": "video"
+    },
+    {
+      "event": "play_requested",
+      "time": 1790193285.173121,
+      "media": "video"
+    },
+    {
+      "event": "play_click_fallback",
+      "time": 1790193286.7141361,
+      "selector": "video"
+    },
+    {
+      "event": "play_click_fallback",
+      "time": 1790193288.810616,
+      "selector": "[aria-label*='play' i]"
+    },
+    {
+      "event": "media_sample",
+      "time": 1790193290.8378801,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790193291.854885,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790193292.8611252,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790193293.8676732,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790193294.87836,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790193295.88576,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790193296.894588,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790193297.906975,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790193298.593534,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "browser_diagnostic",
+      "time": 1790193298.601129,
+      "phase": "playback",
+      "access_denied": false,
+      "article_elements": 0,
+      "audio_elements": 4,
+      "login_prompt": true,
+      "post_links": 0,
+      "video_elements": 6,
+      "window_count": 1
+    },
+    {
+      "event": "done",
+      "success": false,
+      "reason": "Media was not progressing at session end",
+      "error_type": "RuntimeError"
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "user_plan",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "bc69e0100870afe948ad5bfa7b2cdc39ac2cddd62fc4d7442b646a52ef8a476a",
+  "profile_mode": "fresh",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T19:54:42.510433+00:00",
+  "browser_success": false,
+  "reason": "Media was not progressing at session end",
+  "error_type": "RuntimeError",
+  "capture_ended_at": "2026-09-23T19:54:58.611299+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 71945,
+  "capture_duration_seconds": 16.100866,
+  "duration_seconds": 18.797,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-23T19:54:58.881380+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260923T195440081317Z_25db9ee1_www.nfl.com_video_streaming.pcap"
+}

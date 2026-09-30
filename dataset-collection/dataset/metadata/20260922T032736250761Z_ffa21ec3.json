@@ -1,0 +1,145 @@
+{
+  "session_id": "20260922T032736250761Z_ffa21ec3",
+  "domain": "www.nhs.uk",
+  "rank": 1925,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T03:27:36.251451+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790047657.436092,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790047658.954116,
+      "url": "https://www.nhs.uk/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047658.95649,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047658.958297
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047660.9734159,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047660.977412
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047662.991467,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047662.9951518
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047665.0096471,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047665.0136142
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047667.026091,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047667.029417
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047669.0453382,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047669.049044
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047671.063482,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047671.067609
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047673.081093,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047673.08481
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047674.763723,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790047674.763854,
+      "success": true,
+      "verified_seconds": 15.779
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T03:27:37.499507+00:00",
+  "browser_success": true,
+  "verified_seconds": 15.779,
+  "capture_ended_at": "2026-09-22T03:27:54.768010+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 1864,
+  "capture_duration_seconds": 17.268503,
+  "duration_seconds": 18.697,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T03:27:54.947540+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T032736250761Z_ffa21ec3_www.nhs.uk_web_browsing.pcap"
+}

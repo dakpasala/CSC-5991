@@ -1,0 +1,144 @@
+{
+  "session_id": "20260923T203051679168Z_a6eef6ca",
+  "domain": "freesound.org",
+  "rank": null,
+  "requested_activity": "audio_streaming",
+  "started_at": "2026-09-23T20:30:51.679526+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790195453.3491468,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790195455.2252958,
+      "url": "https://freesound.org/people/josefpres/sounds/871553/"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790195455.22535,
+      "selector": "audio"
+    },
+    {
+      "event": "play_requested",
+      "time": 1790195455.234445,
+      "media": "audio"
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195457.766463,
+      "progressing": true,
+      "media_time": 1.441676
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195458.780282,
+      "progressing": true,
+      "media_time": 2.455659
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195459.7927082,
+      "progressing": true,
+      "media_time": 3.466795
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195460.8025868,
+      "progressing": true,
+      "media_time": 4.476894
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195461.814463,
+      "progressing": true,
+      "media_time": 5.489624
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195462.82497,
+      "progressing": true,
+      "media_time": 6.501071
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195463.833034,
+      "progressing": true,
+      "media_time": 7.5073
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195464.845859,
+      "progressing": true,
+      "media_time": 8.522738
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195465.8502688,
+      "progressing": true,
+      "media_time": 9.527116
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195466.8602118,
+      "progressing": true,
+      "media_time": 10.53403
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195467.867867,
+      "progressing": true,
+      "media_time": 11.543839
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195468.8750641,
+      "progressing": true,
+      "media_time": 12.55
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195469.886219,
+      "progressing": true,
+      "media_time": 13.560184
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195470.188737,
+      "progressing": true,
+      "media_time": 13.864776
+    },
+    {
+      "event": "done",
+      "time": 1790195470.188834,
+      "success": true,
+      "verified_seconds": 13.432
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "hand_curated_verified_playback_2026-09-23",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "398e4cede16dffbf40dbce08be8c83be7be3e1128fa2aac27a827f1efca2115f",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T20:30:53.414815+00:00",
+  "browser_success": true,
+  "verified_seconds": 13.432,
+  "capture_ended_at": "2026-09-23T20:31:10.193106+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 3169,
+  "capture_duration_seconds": 16.778291,
+  "duration_seconds": 18.673,
+  "success": true,
+  "actual_activity": "audio_streaming",
+  "parent_activity": "audio_streaming",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-23T20:31:10.352513+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/audio_streaming/20260923T203051679168Z_a6eef6ca_freesound.org_audio_streaming.pcap"
+}

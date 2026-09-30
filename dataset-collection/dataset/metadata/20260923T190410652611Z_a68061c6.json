@@ -1,0 +1,156 @@
+{
+  "session_id": "20260923T190410652611Z_a68061c6",
+  "domain": "www.euronews.com",
+  "rank": null,
+  "requested_activity": "video_streaming",
+  "started_at": "2026-09-23T19:04:10.652736+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790190251.694143,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790190252.3453178,
+      "url": "https://www.euronews.com/video/2026/09/23/eu-morocco-migration-issue-needs-a-creative-solution-expert-says"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790190252.345366,
+      "selector": "video"
+    },
+    {
+      "event": "play_requested",
+      "time": 1790190252.379958,
+      "media": "video"
+    },
+    {
+      "event": "media_sample",
+      "time": 1790190254.92612,
+      "progressing": true,
+      "media_time": 1.886455
+    },
+    {
+      "event": "media_sample",
+      "time": 1790190255.933724,
+      "progressing": true,
+      "media_time": 2.89319
+    },
+    {
+      "event": "media_sample",
+      "time": 1790190256.941942,
+      "progressing": true,
+      "media_time": 3.902528
+    },
+    {
+      "event": "media_sample",
+      "time": 1790190257.951883,
+      "progressing": true,
+      "media_time": 4.912614
+    },
+    {
+      "event": "media_sample",
+      "time": 1790190258.9607859,
+      "progressing": true,
+      "media_time": 5.920301
+    },
+    {
+      "event": "media_sample",
+      "time": 1790190259.9723141,
+      "progressing": true,
+      "media_time": 6.926808
+    },
+    {
+      "event": "media_sample",
+      "time": 1790190260.978076,
+      "progressing": true,
+      "media_time": 7.933577
+    },
+    {
+      "event": "media_sample",
+      "time": 1790190261.987913,
+      "progressing": true,
+      "media_time": 8.946351
+    },
+    {
+      "event": "media_sample",
+      "time": 1790190262.993031,
+      "progressing": true,
+      "media_time": 9.951577
+    },
+    {
+      "event": "media_sample",
+      "time": 1790190264.000214,
+      "progressing": true,
+      "media_time": 10.959425
+    },
+    {
+      "event": "media_sample",
+      "time": 1790190265.006901,
+      "progressing": true,
+      "media_time": 11.964562
+    },
+    {
+      "event": "media_sample",
+      "time": 1790190266.011978,
+      "progressing": true,
+      "media_time": 12.969238
+    },
+    {
+      "event": "media_sample",
+      "time": 1790190267.0197692,
+      "progressing": true,
+      "media_time": 13.98004
+    },
+    {
+      "event": "media_sample",
+      "time": 1790190268.030318,
+      "progressing": true,
+      "media_time": 14.990243
+    },
+    {
+      "event": "media_sample",
+      "time": 1790190269.041525,
+      "progressing": true,
+      "media_time": 16.000884
+    },
+    {
+      "event": "media_sample",
+      "time": 1790190269.1611671,
+      "progressing": true,
+      "media_time": 16.121181
+    },
+    {
+      "event": "done",
+      "time": 1790190269.161238,
+      "success": true,
+      "verified_seconds": 15.245
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "user_plan",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "77c1f373a781c419c67eae8d8a888830ea7d242937ae264cbee93160b27fd9ea",
+  "profile_mode": "fresh",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T19:04:11.749340+00:00",
+  "browser_success": true,
+  "verified_seconds": 15.245,
+  "capture_ended_at": "2026-09-23T19:04:29.170242+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 57606,
+  "capture_duration_seconds": 17.420902,
+  "duration_seconds": 18.779,
+  "success": true,
+  "actual_activity": "video_streaming",
+  "parent_activity": "video_streaming",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-23T19:04:29.431745+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/video_streaming/20260923T190410652611Z_a68061c6_www.euronews.com_video_streaming.pcap"
+}

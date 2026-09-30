@@ -1,0 +1,73 @@
+{
+  "session_id": "20260923T021414523816Z_8101d0f8",
+  "domain": "dulo.sx",
+  "rank": null,
+  "requested_activity": "video_streaming",
+  "started_at": "2026-09-23T02:14:14.524046+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790129655.796778,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790129657.2515578,
+      "url": "https://dulo.sx/watch/tv/95350/1/1"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790129657.251627,
+      "selector": "iframe[src*='vidsrc']"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790129657.269519,
+      "selector": "video"
+    },
+    {
+      "event": "browser_diagnostic",
+      "time": 1790129673.7213151,
+      "phase": "wait_for_selector",
+      "access_denied": false,
+      "article_elements": 0,
+      "audio_elements": 0,
+      "login_prompt": false,
+      "post_links": 0,
+      "video_elements": 0,
+      "window_count": 1
+    },
+    {
+      "event": "done",
+      "success": false,
+      "reason": "Browser action failed during wait_for_selector; inspect access or selectors",
+      "error_type": "TimeoutException"
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "user_plan",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "8cfa4b62b2fc17e8e952806f243efb4fba6f0c01545715980bce32b43d10d2e5",
+  "profile_mode": "fresh",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T02:14:15.860384+00:00",
+  "browser_success": false,
+  "reason": "Browser action failed during wait_for_selector; inspect access or selectors",
+  "error_type": "TimeoutException",
+  "capture_ended_at": "2026-09-23T02:14:33.735227+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 43192,
+  "capture_duration_seconds": 17.874843,
+  "duration_seconds": 19.43,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-23T02:14:33.953925+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260923T021414523816Z_8101d0f8_dulo.sx_video_streaming.pcap"
+}

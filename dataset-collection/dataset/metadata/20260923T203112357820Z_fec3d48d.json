@@ -1,0 +1,144 @@
+{
+  "session_id": "20260923T203112357820Z_fec3d48d",
+  "domain": "freesound.org",
+  "rank": null,
+  "requested_activity": "audio_streaming",
+  "started_at": "2026-09-23T20:31:12.358459+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790195473.701254,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790195475.41024,
+      "url": "https://freesound.org/people/CAT-FOX_ALEX/sounds/871552/"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790195475.410282,
+      "selector": "audio"
+    },
+    {
+      "event": "play_requested",
+      "time": 1790195475.416964,
+      "media": "audio"
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195477.9483361,
+      "progressing": true,
+      "media_time": 1.374198
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195478.9596732,
+      "progressing": true,
+      "media_time": 2.384194
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195479.9687328,
+      "progressing": true,
+      "media_time": 3.393584
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195480.978049,
+      "progressing": true,
+      "media_time": 4.404854
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195481.9898722,
+      "progressing": true,
+      "media_time": 5.413774
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195483.003419,
+      "progressing": true,
+      "media_time": 6.427074
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195484.015392,
+      "progressing": true,
+      "media_time": 7.440951
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195485.026117,
+      "progressing": true,
+      "media_time": 8.450336
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195486.034285,
+      "progressing": true,
+      "media_time": 9.460256
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195487.040402,
+      "progressing": true,
+      "media_time": 10.467793
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195488.049518,
+      "progressing": true,
+      "media_time": 11.473172
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195489.064297,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195490.076129,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195490.871315,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "done",
+      "time": 1790195490.8714292,
+      "success": true,
+      "verified_seconds": 11.111
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "hand_curated_verified_playback_2026-09-23",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "398e4cede16dffbf40dbce08be8c83be7be3e1128fa2aac27a827f1efca2115f",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T20:31:13.759297+00:00",
+  "browser_success": true,
+  "verified_seconds": 11.111,
+  "capture_ended_at": "2026-09-23T20:31:30.875483+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 1939,
+  "capture_duration_seconds": 17.116186,
+  "duration_seconds": 18.662,
+  "success": true,
+  "actual_activity": "audio_streaming",
+  "parent_activity": "audio_streaming",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-23T20:31:31.019466+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/audio_streaming/20260923T203112357820Z_fec3d48d_freesound.org_audio_streaming.pcap"
+}

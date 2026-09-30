@@ -1,0 +1,134 @@
+{
+  "session_id": "20260923T040201558565Z_3fee17cc",
+  "domain": "events.fconline.nexon.com",
+  "rank": 1000,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-23T04:02:01.559107+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790136122.726151,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790136127.4248269,
+      "url": "https://events.fconline.nexon.com/260910/Join"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790136127.427168,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790136127.42903
+    },
+    {
+      "event": "content_sample",
+      "time": 1790136129.4511108,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790136129.452975
+    },
+    {
+      "event": "content_sample",
+      "time": 1790136131.537224,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790136131.547173
+    },
+    {
+      "event": "content_sample",
+      "time": 1790136133.563968,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790136133.5663319
+    },
+    {
+      "event": "content_sample",
+      "time": 1790136135.577285,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790136135.581308
+    },
+    {
+      "event": "content_sample",
+      "time": 1790136137.593086,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790136137.5957592
+    },
+    {
+      "event": "content_sample",
+      "time": 1790136139.604741,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790136139.607338
+    },
+    {
+      "event": "content_sample",
+      "time": 1790136140.0762181,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790136140.076278,
+      "success": true,
+      "verified_seconds": 12.623
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "current_top10k_verified_2026-09-22",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "e8851e39f479552c001d4daffee8a36af204ce2a7b8234e912959ec7652a5111",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T04:02:02.781088+00:00",
+  "browser_success": true,
+  "verified_seconds": 12.623,
+  "capture_ended_at": "2026-09-23T04:02:20.080367+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 19193,
+  "capture_duration_seconds": 17.299279,
+  "duration_seconds": 18.72,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-23T04:02:20.278326+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260923T040201558565Z_3fee17cc_events.fconline.nexon.com_web_browsing.pcap"
+}

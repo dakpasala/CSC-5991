@@ -1,0 +1,137 @@
+{
+  "session_id": "20260923T031128397596Z_3484d6eb",
+  "domain": "www.ted.com",
+  "rank": null,
+  "requested_activity": "video_streaming",
+  "started_at": "2026-09-23T03:11:28.397928+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790133089.776521,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790133092.7819579,
+      "url": "https://www.ted.com/talks/charlene_kaye_how_to_become_a_k_pop_superstar_in_7_minutes"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790133092.782006,
+      "selector": "video"
+    },
+    {
+      "event": "play_requested",
+      "time": 1790133092.7973251,
+      "media": "video"
+    },
+    {
+      "event": "play_click_fallback",
+      "time": 1790133094.406849,
+      "selector": "[aria-label*='play' i]"
+    },
+    {
+      "event": "media_sample",
+      "time": 1790133096.621762,
+      "progressing": true,
+      "media_time": 1.406242
+    },
+    {
+      "event": "media_sample",
+      "time": 1790133097.651886,
+      "progressing": true,
+      "media_time": 2.436579
+    },
+    {
+      "event": "media_sample",
+      "time": 1790133098.660487,
+      "progressing": true,
+      "media_time": 3.444563
+    },
+    {
+      "event": "media_sample",
+      "time": 1790133099.672228,
+      "progressing": true,
+      "media_time": 4.456056
+    },
+    {
+      "event": "media_sample",
+      "time": 1790133100.686486,
+      "progressing": true,
+      "media_time": 5.468782
+    },
+    {
+      "event": "media_sample",
+      "time": 1790133101.6924539,
+      "progressing": true,
+      "media_time": 6.475077
+    },
+    {
+      "event": "media_sample",
+      "time": 1790133102.707082,
+      "progressing": true,
+      "media_time": 7.490697
+    },
+    {
+      "event": "media_sample",
+      "time": 1790133103.717899,
+      "progressing": true,
+      "media_time": 8.502627
+    },
+    {
+      "event": "media_sample",
+      "time": 1790133104.729779,
+      "progressing": true,
+      "media_time": 9.514709
+    },
+    {
+      "event": "media_sample",
+      "time": 1790133105.7371972,
+      "progressing": true,
+      "media_time": 10.522069
+    },
+    {
+      "event": "media_sample",
+      "time": 1790133106.746285,
+      "progressing": true,
+      "media_time": 11.530917
+    },
+    {
+      "event": "media_sample",
+      "time": 1790133106.913323,
+      "progressing": true,
+      "media_time": 11.696072
+    },
+    {
+      "event": "done",
+      "time": 1790133106.913464,
+      "success": true,
+      "verified_seconds": 11.486
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "hand_curated_verified_playback_2026-09-23",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "3f17f1fb3ea4d6b745ebe4fa2342e04de0a4a505e515b51030b023b84f3a919e",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T03:11:29.831621+00:00",
+  "browser_success": true,
+  "verified_seconds": 11.486,
+  "capture_ended_at": "2026-09-23T03:11:46.917942+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 64448,
+  "capture_duration_seconds": 17.086321,
+  "duration_seconds": 18.791,
+  "success": true,
+  "actual_activity": "video_streaming",
+  "parent_activity": "video_streaming",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-23T03:11:47.188711+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/video_streaming/20260923T031128397596Z_3484d6eb_www.ted.com_video_streaming.pcap"
+}

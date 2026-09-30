@@ -1,0 +1,134 @@
+{
+  "session_id": "20260923T040107086067Z_728fef2b",
+  "domain": "erotik.markt.de",
+  "rank": 1000,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-23T04:01:07.086663+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790136068.8666759,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790136072.188289,
+      "url": "https://erotik.markt.de/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790136072.190562,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790136072.192906
+    },
+    {
+      "event": "content_sample",
+      "time": 1790136074.20953,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790136074.213297
+    },
+    {
+      "event": "content_sample",
+      "time": 1790136076.2237089,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790136076.226775
+    },
+    {
+      "event": "content_sample",
+      "time": 1790136078.2404978,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790136078.243547
+    },
+    {
+      "event": "content_sample",
+      "time": 1790136080.267828,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790136080.271349
+    },
+    {
+      "event": "content_sample",
+      "time": 1790136082.285961,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790136082.290427
+    },
+    {
+      "event": "content_sample",
+      "time": 1790136084.3027,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790136084.306047
+    },
+    {
+      "event": "content_sample",
+      "time": 1790136085.593484,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790136085.5936189,
+      "success": true,
+      "verified_seconds": 13.38
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "current_top10k_verified_2026-09-22",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "e8851e39f479552c001d4daffee8a36af204ce2a7b8234e912959ec7652a5111",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T04:01:08.926672+00:00",
+  "browser_success": true,
+  "verified_seconds": 13.38,
+  "capture_ended_at": "2026-09-23T04:01:25.598012+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 4013,
+  "capture_duration_seconds": 16.67134,
+  "duration_seconds": 18.722,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-23T04:01:25.808329+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260923T040107086067Z_728fef2b_erotik.markt.de_web_browsing.pcap"
+}

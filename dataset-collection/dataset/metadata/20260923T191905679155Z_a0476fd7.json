@@ -1,0 +1,138 @@
+{
+  "session_id": "20260923T191905679155Z_a0476fd7",
+  "domain": "www.polygon.com",
+  "rank": null,
+  "requested_activity": "video_streaming",
+  "started_at": "2026-09-23T19:19:05.679347+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790191147.7305238,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790191149.1008818,
+      "url": "https://www.polygon.com/video/does-xbox-want-to-sell-blizzard-point-it-out/"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790191149.100928,
+      "selector": "video"
+    },
+    {
+      "event": "play_requested",
+      "time": 1790191150.406111,
+      "media": "video"
+    },
+    {
+      "event": "media_sample",
+      "time": 1790191152.991104,
+      "progressing": true,
+      "media_time": 2.017155
+    },
+    {
+      "event": "media_sample",
+      "time": 1790191153.9983401,
+      "progressing": true,
+      "media_time": 3.023738
+    },
+    {
+      "event": "media_sample",
+      "time": 1790191155.007651,
+      "progressing": true,
+      "media_time": 4.032374
+    },
+    {
+      "event": "media_sample",
+      "time": 1790191156.012387,
+      "progressing": true,
+      "media_time": 5.038145
+    },
+    {
+      "event": "media_sample",
+      "time": 1790191157.020967,
+      "progressing": true,
+      "media_time": 6.045334
+    },
+    {
+      "event": "media_sample",
+      "time": 1790191158.0285802,
+      "progressing": true,
+      "media_time": 7.052731
+    },
+    {
+      "event": "media_sample",
+      "time": 1790191159.0337899,
+      "progressing": true,
+      "media_time": 8.058983
+    },
+    {
+      "event": "media_sample",
+      "time": 1790191160.0413141,
+      "progressing": true,
+      "media_time": 9.065488
+    },
+    {
+      "event": "media_sample",
+      "time": 1790191161.049141,
+      "progressing": true,
+      "media_time": 10.073998
+    },
+    {
+      "event": "media_sample",
+      "time": 1790191162.054326,
+      "progressing": true,
+      "media_time": 11.079159
+    },
+    {
+      "event": "media_sample",
+      "time": 1790191163.060705,
+      "progressing": true,
+      "media_time": 12.085064
+    },
+    {
+      "event": "media_sample",
+      "time": 1790191164.067518,
+      "progressing": true,
+      "media_time": 13.09181
+    },
+    {
+      "event": "media_sample",
+      "time": 1790191164.1861691,
+      "progressing": true,
+      "media_time": 13.212321
+    },
+    {
+      "event": "done",
+      "time": 1790191164.186219,
+      "success": true,
+      "verified_seconds": 12.204
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "user_plan",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "e257b5e0277916ac4d6ea60d9daf83cb50781db5a8ad3c8545483793e14cac3c",
+  "profile_mode": "fresh",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T19:19:07.790771+00:00",
+  "browser_success": true,
+  "verified_seconds": 12.204,
+  "capture_ended_at": "2026-09-23T19:19:24.194838+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 438873,
+  "capture_duration_seconds": 16.404067,
+  "duration_seconds": 19.099,
+  "success": true,
+  "actual_activity": "video_streaming",
+  "parent_activity": "video_streaming",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-23T19:19:24.778180+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/video_streaming/20260923T191905679155Z_a0476fd7_www.polygon.com_video_streaming.pcap"
+}

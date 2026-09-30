@@ -1,0 +1,52 @@
+{
+  "session_id": "20260923T035318110874Z_ebdfda81",
+  "domain": "blacktoon423.com",
+  "rank": 1000,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-23T03:53:18.111369+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790135599.240961,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "browser_diagnostic",
+      "time": 1790135617.2981079,
+      "phase": "navigation",
+      "diagnostic_error": "JavascriptException"
+    },
+    {
+      "event": "done",
+      "success": false,
+      "reason": "Browser action failed during navigation; inspect access or selectors",
+      "error_type": "TimeoutException"
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "current_top10k_verified_2026-09-22",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "e8851e39f479552c001d4daffee8a36af204ce2a7b8234e912959ec7652a5111",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T03:53:19.296681+00:00",
+  "browser_success": false,
+  "reason": "Browser action failed during navigation; inspect access or selectors",
+  "error_type": "TimeoutException",
+  "capture_ended_at": "2026-09-23T03:53:37.302410+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 1462,
+  "capture_duration_seconds": 18.005729,
+  "duration_seconds": 19.326,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-23T03:53:37.437414+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260923T035318110874Z_ebdfda81_blacktoon423.com_web_browsing.pcap"
+}

@@ -1,0 +1,138 @@
+{
+  "session_id": "20260923T203009967033Z_08d07fa4",
+  "domain": "bleacherreport.com",
+  "rank": null,
+  "requested_activity": "video_streaming",
+  "started_at": "2026-09-23T20:30:09.967751+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790195411.312926,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790195412.8395488,
+      "url": "https://bleacherreport.com/videos/f5fa2263-5c67-440c-a59b-e54c4febeb2c-tolle-gets-standing-ovation"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790195412.8395898,
+      "selector": "video"
+    },
+    {
+      "event": "play_requested",
+      "time": 1790195414.3147478,
+      "media": "video"
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195416.8383172,
+      "progressing": true,
+      "media_time": 1.362251
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195417.849142,
+      "progressing": true,
+      "media_time": 2.37268
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195418.862297,
+      "progressing": true,
+      "media_time": 3.384714
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195419.869569,
+      "progressing": true,
+      "media_time": 4.392073
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195420.87904,
+      "progressing": true,
+      "media_time": 5.400654
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195421.883368,
+      "progressing": true,
+      "media_time": 6.407924
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195422.890846,
+      "progressing": true,
+      "media_time": 7.414301
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195423.898477,
+      "progressing": true,
+      "media_time": 8.421971
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195424.906997,
+      "progressing": true,
+      "media_time": 9.430921
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195425.915901,
+      "progressing": true,
+      "media_time": 10.439201
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195426.925198,
+      "progressing": true,
+      "media_time": 11.447712
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195427.9351249,
+      "progressing": true,
+      "media_time": 12.457842
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195428.4749582,
+      "progressing": true,
+      "media_time": 12.998146
+    },
+    {
+      "event": "done",
+      "time": 1790195428.4750268,
+      "success": true,
+      "verified_seconds": 12.642
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "hand_curated_verified_playback_2026-09-23",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "c22f5fb605a9647a123e30f413e3496c43c4860d4f3e16b4499f37fad35fec3e",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T20:30:11.366604+00:00",
+  "browser_success": true,
+  "verified_seconds": 12.642,
+  "capture_ended_at": "2026-09-23T20:30:28.476453+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 9675,
+  "capture_duration_seconds": 17.109849,
+  "duration_seconds": 18.68,
+  "success": true,
+  "actual_activity": "video_streaming",
+  "parent_activity": "video_streaming",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-23T20:30:28.647093+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/video_streaming/20260923T203009967033Z_08d07fa4_bleacherreport.com_video_streaming.pcap"
+}

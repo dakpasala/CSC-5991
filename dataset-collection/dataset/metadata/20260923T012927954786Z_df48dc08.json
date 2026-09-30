@@ -1,0 +1,129 @@
+{
+  "session_id": "20260923T012927954786Z_df48dc08",
+  "domain": "www.facebook.com",
+  "rank": null,
+  "requested_activity": "social_media_browsing",
+  "started_at": "2026-09-23T01:29:27.955007+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790126970.824367,
+      "browser_version": "153.0.8010.53",
+      "headed": true
+    },
+    {
+      "event": "session_cookies_injected",
+      "time": 1790126971.8741179,
+      "count": 7
+    },
+    {
+      "event": "navigate",
+      "time": 1790126975.972561,
+      "url": "https://www.facebook.com/"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790126975.9726799,
+      "selector": "[role=\"article\"]"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790126976.017824,
+      "content": false,
+      "matching_elements": 2,
+      "playing_media": false
+    },
+    {
+      "event": "content_sample",
+      "time": 1790126977.5409422,
+      "content": false,
+      "matching_elements": 0,
+      "playing_media": false
+    },
+    {
+      "event": "content_sample",
+      "time": 1790126979.059755,
+      "content": false,
+      "matching_elements": 0,
+      "playing_media": false
+    },
+    {
+      "event": "content_sample",
+      "time": 1790126980.596609,
+      "content": false,
+      "matching_elements": 0,
+      "playing_media": false
+    },
+    {
+      "event": "content_sample",
+      "time": 1790126982.2079208,
+      "content": false,
+      "matching_elements": 0,
+      "playing_media": false
+    },
+    {
+      "event": "content_sample",
+      "time": 1790126983.725556,
+      "content": false,
+      "matching_elements": 0,
+      "playing_media": false
+    },
+    {
+      "event": "content_sample",
+      "time": 1790126985.234686,
+      "content": false,
+      "matching_elements": 0,
+      "playing_media": false
+    },
+    {
+      "event": "content_sample",
+      "time": 1790126986.001389,
+      "content": false,
+      "matching_elements": 0,
+      "playing_media": false
+    },
+    {
+      "event": "browser_diagnostic",
+      "time": 1790126986.008569,
+      "phase": "browsing",
+      "access_denied": false,
+      "article_elements": 0,
+      "audio_elements": 0,
+      "login_prompt": false,
+      "post_links": 2,
+      "video_elements": 2,
+      "window_count": 1
+    },
+    {
+      "event": "done",
+      "success": false,
+      "reason": "Readable browsing content absent or media playing",
+      "error_type": "RuntimeError"
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "user_plan",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "3852188a1d9483895f89db2c85a98d09ca50195490db047c107ff4398fa52e00",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T01:29:30.910463+00:00",
+  "browser_success": false,
+  "reason": "Readable browsing content absent or media playing",
+  "error_type": "RuntimeError",
+  "capture_ended_at": "2026-09-23T01:29:46.012754+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 31044,
+  "capture_duration_seconds": 15.102291,
+  "duration_seconds": 18.668,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-23T01:29:46.622690+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260923T012927954786Z_df48dc08_www.facebook.com_social_media_browsing.pcap"
+}

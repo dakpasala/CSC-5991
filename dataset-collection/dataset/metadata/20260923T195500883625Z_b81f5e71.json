@@ -1,0 +1,130 @@
+{
+  "session_id": "20260923T195500883625Z_b81f5e71",
+  "domain": "www.mlb.com",
+  "rank": null,
+  "requested_activity": "video_streaming",
+  "started_at": "2026-09-23T19:55:00.884064+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790193302.098885,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790193302.654454,
+      "url": "https://www.mlb.com/video/ben-malgeri-homers-5-on-a-fly-ball-to-left-center-field"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790193302.654495,
+      "selector": "video"
+    },
+    {
+      "event": "play_requested",
+      "time": 1790193303.757567,
+      "media": "video"
+    },
+    {
+      "event": "play_click_fallback",
+      "time": 1790193306.5467122,
+      "selector": "video"
+    },
+    {
+      "event": "play_click_fallback",
+      "time": 1790193308.647945,
+      "selector": "[aria-label*='play' i]"
+    },
+    {
+      "event": "media_sample",
+      "time": 1790193310.709431,
+      "progressing": true,
+      "media_time": 1.008475
+    },
+    {
+      "event": "media_sample",
+      "time": 1790193311.71603,
+      "progressing": true,
+      "media_time": 2.013909
+    },
+    {
+      "event": "media_sample",
+      "time": 1790193312.7239401,
+      "progressing": true,
+      "media_time": 3.022116
+    },
+    {
+      "event": "media_sample",
+      "time": 1790193313.7312908,
+      "progressing": true,
+      "media_time": 4.028506
+    },
+    {
+      "event": "media_sample",
+      "time": 1790193314.738177,
+      "progressing": true,
+      "media_time": 5.037317
+    },
+    {
+      "event": "media_sample",
+      "time": 1790193315.746163,
+      "progressing": true,
+      "media_time": 6.044353
+    },
+    {
+      "event": "media_sample",
+      "time": 1790193316.751847,
+      "progressing": true,
+      "media_time": 7.050395
+    },
+    {
+      "event": "media_sample",
+      "time": 1790193317.761544,
+      "progressing": true,
+      "media_time": 8.059759
+    },
+    {
+      "event": "media_sample",
+      "time": 1790193318.7683399,
+      "progressing": true,
+      "media_time": 9.067503
+    },
+    {
+      "event": "media_sample",
+      "time": 1790193319.3927839,
+      "progressing": true,
+      "media_time": 9.691689
+    },
+    {
+      "event": "done",
+      "time": 1790193319.392844,
+      "success": true,
+      "verified_seconds": 9.695
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "user_plan",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "bc69e0100870afe948ad5bfa7b2cdc39ac2cddd62fc4d7442b646a52ef8a476a",
+  "profile_mode": "fresh",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T19:55:02.152512+00:00",
+  "browser_success": true,
+  "verified_seconds": 9.695,
+  "capture_ended_at": "2026-09-23T19:55:19.394407+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 68055,
+  "capture_duration_seconds": 17.241895,
+  "duration_seconds": 18.88,
+  "success": true,
+  "actual_activity": "video_streaming",
+  "parent_activity": "video_streaming",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-23T19:55:19.765146+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/video_streaming/20260923T195500883625Z_b81f5e71_www.mlb.com_video_streaming.pcap"
+}

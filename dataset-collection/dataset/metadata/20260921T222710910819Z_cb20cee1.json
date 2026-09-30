@@ -1,0 +1,139 @@
+{
+  "session_id": "20260921T222710910819Z_cb20cee1",
+  "domain": "spotify.com",
+  "rank": 65,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-21T22:27:10.911431+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790029632.1082802,
+      "browser_version": "153.0.8010.48",
+      "headed": false
+    },
+    {
+      "event": "session_cookies_injected",
+      "time": 1790029633.076025,
+      "count": 16
+    },
+    {
+      "event": "navigate",
+      "time": 1790029635.919635,
+      "url": "https://open.spotify.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029635.922466,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790029635.924104
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029637.954079,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790029637.9571662
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029639.97228,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790029639.975067
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029641.9850008,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790029641.986947
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029643.9990132,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790029644.002431
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029646.017502,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790029646.021229
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029648.0312471,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790029648.0344288
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029649.419522,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790029649.419589,
+      "success": true,
+      "verified_seconds": 13.478
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top100_batch_2026-09-15",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.48",
+  "capture_started_at": "2026-09-21T22:27:12.166243+00:00",
+  "browser_success": true,
+  "verified_seconds": 13.478,
+  "capture_ended_at": "2026-09-21T22:27:29.423560+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 7272,
+  "capture_duration_seconds": 17.257317,
+  "duration_seconds": 18.656,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-21T22:27:29.567439+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260921T222710910819Z_cb20cee1_spotify.com_web_browsing.pcap"
+}

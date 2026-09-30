@@ -1,0 +1,49 @@
+{
+  "session_id": "20260915T032415535346Z_a33eafb0",
+  "domain": "w3schools.com",
+  "rank": null,
+  "requested_activity": "audio_streaming",
+  "started_at": "2026-09-15T03:24:15.535569+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1789442657.801025,
+      "browser_version": "152.0.7977.84"
+    },
+    {
+      "event": "navigate",
+      "time": 1789442659.7503529,
+      "url": "https://www.w3schools.com/html/html5_audio.asp"
+    },
+    {
+      "event": "done",
+      "success": false,
+      "reason": "Browser action failed; inspect access or selectors using --headed",
+      "error_type": "TimeoutException"
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 60.0,
+  "source_scope": "external_demo_short_loop_not_representative_music_streaming",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "cc685ac1d57bf61f5cf4203a2b9c4ff062353628f3c654f69684b1be04cb01ef",
+  "browser_version": "152.0.7977.84",
+  "capture_started_at": "2026-09-15T03:24:18.071546+00:00",
+  "browser_success": false,
+  "reason": "Browser action failed; inspect access or selectors using --headed",
+  "error_type": "TimeoutException",
+  "capture_ended_at": "2026-09-15T03:24:50.058740+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 67915,
+  "capture_duration_seconds": 31.987194,
+  "duration_seconds": 36.102,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-15T03:24:51.638898+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260915T032415535346Z_a33eafb0_w3schools.com_audio_streaming.pcap"
+}

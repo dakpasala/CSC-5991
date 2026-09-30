@@ -1,0 +1,125 @@
+{
+  "session_id": "20260923T202436167539Z_41c1a4a4",
+  "domain": "pluto.tv",
+  "rank": 10000,
+  "requested_activity": "video_streaming",
+  "started_at": "2026-09-23T20:24:36.167769+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790195077.3736188,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790195080.119992,
+      "url": "https://pluto.tv/us/watch/live-tv/"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790195080.120034,
+      "selector": "video"
+    },
+    {
+      "event": "play_requested",
+      "time": 1790195081.030376,
+      "media": "video"
+    },
+    {
+      "event": "play_click_fallback",
+      "time": 1790195083.6019058,
+      "selector": "video"
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195085.63446,
+      "progressing": false,
+      "media_time": 25
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195086.651677,
+      "progressing": false,
+      "media_time": 25
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195087.66166,
+      "progressing": false,
+      "media_time": 25.011569
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195088.6710122,
+      "progressing": true,
+      "media_time": 26.013553
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195089.677078,
+      "progressing": true,
+      "media_time": 27.020137
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195090.6825962,
+      "progressing": true,
+      "media_time": 28.024432
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195091.696745,
+      "progressing": true,
+      "media_time": 29.037434
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195092.708997,
+      "progressing": true,
+      "media_time": 30.050889
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195093.719077,
+      "progressing": true,
+      "media_time": 31.061479
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195094.677723,
+      "progressing": true,
+      "media_time": 32.020474
+    },
+    {
+      "event": "done",
+      "time": 1790195094.6777751,
+      "success": true,
+      "verified_seconds": 7.016
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "hand_curated_verified_playback_2026-09-22",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "c22f5fb605a9647a123e30f413e3496c43c4860d4f3e16b4499f37fad35fec3e",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T20:24:37.432042+00:00",
+  "browser_success": true,
+  "verified_seconds": 7.016,
+  "capture_ended_at": "2026-09-23T20:24:54.679202+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 13382,
+  "capture_duration_seconds": 17.24716,
+  "duration_seconds": 18.681,
+  "success": true,
+  "actual_activity": "video_streaming",
+  "parent_activity": "video_streaming",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-23T20:24:54.848346+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/video_streaming/20260923T202436167539Z_41c1a4a4_pluto.tv_video_streaming.pcap"
+}

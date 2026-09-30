@@ -1,0 +1,163 @@
+{
+  "session_id": "20260922T230406467399Z_b872e964",
+  "domain": "funnyjunk.com",
+  "rank": 5000,
+  "requested_activity": "video_streaming",
+  "started_at": "2026-09-22T23:04:06.467514+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790118247.7649128,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790118248.7331882,
+      "url": "https://funnyjunk.com/"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790118248.733237,
+      "selector": "video"
+    },
+    {
+      "event": "play_requested",
+      "time": 1790118248.961071,
+      "media": "video"
+    },
+    {
+      "event": "media_sample",
+      "time": 1790118249.989262,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790118251.00335,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790118252.012579,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790118253.074912,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790118254.086743,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790118255.091733,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790118256.1047611,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790118257.116715,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790118258.128501,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790118259.139971,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790118260.1464121,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790118261.1605482,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790118262.1687932,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790118263.175359,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790118264.1835048,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "browser_diagnostic",
+      "time": 1790118264.190979,
+      "phase": "playback",
+      "access_denied": false,
+      "article_elements": 1,
+      "audio_elements": 0,
+      "login_prompt": true,
+      "post_links": 0,
+      "video_elements": 3,
+      "window_count": 1
+    },
+    {
+      "event": "done",
+      "success": false,
+      "reason": "Playback/call absent or stalled",
+      "error_type": "RuntimeError"
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "current_top10k_verified_2026-09-22",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "a83fe4f3e068c8ab0a7d417e16adffeb8d3457a4c8b682b52064cd22ae341904",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T23:04:07.824828+00:00",
+  "browser_success": false,
+  "reason": "Playback/call absent or stalled",
+  "error_type": "RuntimeError",
+  "capture_ended_at": "2026-09-22T23:04:24.195736+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 16720,
+  "capture_duration_seconds": 16.370908,
+  "duration_seconds": 17.903,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-22T23:04:24.370234+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260922T230406467399Z_b872e964_funnyjunk.com_video_streaming.pcap"
+}

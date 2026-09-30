@@ -1,0 +1,145 @@
+{
+  "session_id": "20260922T032324278595Z_3e9538c2",
+  "domain": "xvideo.vlog.br",
+  "rank": 1767,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T03:23:24.279160+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790047405.541982,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790047406.710589,
+      "url": "https://xvideo.vlog.br/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047406.7129111,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047406.714632
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047408.73332,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047408.737059
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047410.751484,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047410.7553952
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047412.7662342,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047412.769381
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047414.783475,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047414.787138
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047416.8010309,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047416.804103
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047418.8191931,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047418.82267
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047420.837055,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047420.840864
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047422.792602,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790047422.7927291,
+      "success": true,
+      "verified_seconds": 16.054
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T03:23:25.605909+00:00",
+  "browser_success": true,
+  "verified_seconds": 16.054,
+  "capture_ended_at": "2026-09-22T03:23:42.796879+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 2776,
+  "capture_duration_seconds": 17.19097,
+  "duration_seconds": 18.659,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T03:23:42.938122+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T032324278595Z_3e9538c2_xvideo.vlog.br_web_browsing.pcap"
+}

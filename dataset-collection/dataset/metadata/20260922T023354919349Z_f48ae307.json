@@ -1,0 +1,145 @@
+{
+  "session_id": "20260922T023354919349Z_f48ae307",
+  "domain": "weather.com",
+  "rank": 316,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T02:33:54.919451+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790044436.0902028,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790044438.258744,
+      "url": "https://weather.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044438.2614028,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044438.263293
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044440.288725,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044440.290642
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044442.3273652,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044442.3297338
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044444.3454561,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044444.349511
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044446.361814,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044446.365932
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044448.39282,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044448.395966
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044450.412668,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044450.417761
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044452.433766,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044452.437608
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044453.439184,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790044453.4392939,
+      "success": true,
+      "verified_seconds": 15.151
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T02:33:56.147722+00:00",
+  "browser_success": true,
+  "verified_seconds": 15.151,
+  "capture_ended_at": "2026-09-22T02:34:13.443434+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 13730,
+  "capture_duration_seconds": 17.295712,
+  "duration_seconds": 18.791,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T02:34:13.710447+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T023354919349Z_f48ae307_weather.com_web_browsing.pcap"
+}

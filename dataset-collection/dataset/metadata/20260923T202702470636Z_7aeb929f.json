@@ -1,0 +1,162 @@
+{
+  "session_id": "20260923T202702470636Z_7aeb929f",
+  "domain": "www.theguardian.com",
+  "rank": null,
+  "requested_activity": "video_streaming",
+  "started_at": "2026-09-23T20:27:02.471296+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790195223.7486038,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790195224.390003,
+      "url": "https://www.theguardian.com/global-development/ng-interactive/2026/sep/23/this-is-where-i-live-now-the-back-of-a-truck-a-day-in-the-life-of-a-grandmother-in-gaza"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790195224.390046,
+      "selector": "video"
+    },
+    {
+      "event": "play_requested",
+      "time": 1790195224.397494,
+      "media": "video"
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195225.4202108,
+      "progressing": true,
+      "media_time": 0.969884
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195226.436076,
+      "progressing": true,
+      "media_time": 1.98608
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195227.447514,
+      "progressing": true,
+      "media_time": 2.998487
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195228.462065,
+      "progressing": true,
+      "media_time": 4.013521
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195229.470145,
+      "progressing": true,
+      "media_time": 5.022522
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195230.4799411,
+      "progressing": false,
+      "media_time": 5.48
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195231.490817,
+      "progressing": false,
+      "media_time": 5.48
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195232.500855,
+      "progressing": false,
+      "media_time": 5.48
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195233.51162,
+      "progressing": false,
+      "media_time": 5.48
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195234.522819,
+      "progressing": false,
+      "media_time": 5.48
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195235.53669,
+      "progressing": false,
+      "media_time": 5.48
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195236.5461278,
+      "progressing": false,
+      "media_time": 5.48
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195237.5540612,
+      "progressing": false,
+      "media_time": 5.48
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195238.5618718,
+      "progressing": false,
+      "media_time": 5.48
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195239.573699,
+      "progressing": false,
+      "media_time": 5.48
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195240.57892,
+      "progressing": false,
+      "media_time": 5.48
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195240.969862,
+      "progressing": false,
+      "media_time": 5.48
+    },
+    {
+      "event": "done",
+      "time": 1790195240.9699259,
+      "success": true,
+      "verified_seconds": 5.072
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "hand_curated_verified_playback_2026-09-23",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "c22f5fb605a9647a123e30f413e3496c43c4860d4f3e16b4499f37fad35fec3e",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T20:27:03.806741+00:00",
+  "browser_success": true,
+  "verified_seconds": 5.072,
+  "capture_ended_at": "2026-09-23T20:27:20.971526+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 8123,
+  "capture_duration_seconds": 17.164785,
+  "duration_seconds": 18.673,
+  "success": true,
+  "actual_activity": "video_streaming",
+  "parent_activity": "video_streaming",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-23T20:27:21.132959+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/video_streaming/20260923T202702470636Z_7aeb929f_www.theguardian.com_video_streaming.pcap"
+}

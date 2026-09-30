@@ -1,0 +1,145 @@
+{
+  "session_id": "20260922T023146999544Z_a45c2bac",
+  "domain": "ubuntu.com",
+  "rank": 233,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T02:31:46.999930+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790044308.246848,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790044310.2565088,
+      "url": "https://ubuntu.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044310.259498,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044310.261326
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044312.295757,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044312.298832
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044314.307195,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044314.3090649
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044316.3246112,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044316.32888
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044318.33875,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044318.341099
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044320.3509061,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044320.353916
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044322.3670988,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044322.37039
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044324.38338,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044324.386554
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044325.5099258,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790044325.5099971,
+      "success": true,
+      "verified_seconds": 15.228
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T02:31:48.302463+00:00",
+  "browser_success": true,
+  "verified_seconds": 15.228,
+  "capture_ended_at": "2026-09-22T02:32:05.511482+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 4543,
+  "capture_duration_seconds": 17.209019,
+  "duration_seconds": 18.653,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T02:32:05.652325+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T023146999544Z_a45c2bac_ubuntu.com_web_browsing.pcap"
+}

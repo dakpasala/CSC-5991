@@ -1,0 +1,145 @@
+{
+  "session_id": "20260922T023752039864Z_aa1f695d",
+  "domain": "steamcommunity.com",
+  "rank": 433,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T02:37:52.040093+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790044673.647867,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790044674.516545,
+      "url": "https://steamcommunity.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044674.518882,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044674.520949
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044676.550006,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044676.554224
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044678.569258,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044678.573295
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044680.588351,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044680.592756
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044682.608526,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044682.6124601
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044684.627001,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044684.630452
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044686.645181,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044686.648649
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044688.663782,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044688.667419
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044690.556383,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790044690.556551,
+      "success": true,
+      "verified_seconds": 16.009
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T02:37:53.705964+00:00",
+  "browser_success": true,
+  "verified_seconds": 16.009,
+  "capture_ended_at": "2026-09-22T02:38:10.560890+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 10705,
+  "capture_duration_seconds": 16.854926,
+  "duration_seconds": 18.692,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T02:38:10.731825+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T023752039864Z_aa1f695d_steamcommunity.com_web_browsing.pcap"
+}

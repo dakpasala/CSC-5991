@@ -1,0 +1,145 @@
+{
+  "session_id": "20260922T033130706074Z_f9503b35",
+  "domain": "sogou.com",
+  "rank": 2074,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T03:31:30.706437+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790047892.088228,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790047894.454334,
+      "url": "https://sogou.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047894.456725,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047894.45897
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047896.484475,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047896.489949
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047898.5050712,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047898.508953
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047900.544266,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047900.556057
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047902.5752409,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047902.577227
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047904.588402,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047904.5906901
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047906.5994308,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047906.602307
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047908.6125948,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047908.6146162
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047909.217603,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790047909.217778,
+      "success": true,
+      "verified_seconds": 14.729
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T03:31:32.146105+00:00",
+  "browser_success": true,
+  "verified_seconds": 14.729,
+  "capture_ended_at": "2026-09-22T03:31:49.221959+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 7898,
+  "capture_duration_seconds": 17.075854,
+  "duration_seconds": 18.734,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T03:31:49.439395+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T033130706074Z_f9503b35_sogou.com_web_browsing.pcap"
+}

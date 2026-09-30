@@ -1,0 +1,52 @@
+{
+  "session_id": "20260923T040057769837Z_30109d2b",
+  "domain": "eportal.incometax.gov.in",
+  "rank": 1000,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-23T04:00:57.770127+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790136059.520939,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "browser_diagnostic",
+      "time": 1790136064.050657,
+      "phase": "navigation",
+      "diagnostic_error": "UnexpectedAlertPresentException"
+    },
+    {
+      "event": "done",
+      "success": false,
+      "reason": "Browser action failed during navigation; inspect access or selectors",
+      "error_type": "AttributeError"
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "current_top10k_verified_2026-09-22",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "e8851e39f479552c001d4daffee8a36af204ce2a7b8234e912959ec7652a5111",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T04:00:59.579453+00:00",
+  "browser_success": false,
+  "reason": "Browser action failed during navigation; inspect access or selectors",
+  "error_type": "AttributeError",
+  "capture_ended_at": "2026-09-23T04:01:04.060194+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 1209,
+  "capture_duration_seconds": 4.480741,
+  "duration_seconds": 7.302,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-23T04:01:05.071729+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260923T040057769837Z_30109d2b_eportal.incometax.gov.in_web_browsing.pcap"
+}

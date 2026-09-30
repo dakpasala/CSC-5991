@@ -1,0 +1,156 @@
+{
+  "session_id": "20260922T022610815484Z_f2fb13c4",
+  "domain": "cointelegraph.com",
+  "rank": 5403,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T02:26:10.816197+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790043971.9535758,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790043972.783247,
+      "url": "https://cointelegraph.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043972.7961879,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043972.7984772
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043974.8238761,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043974.8259358
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043976.835762,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043976.841164
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043978.851302,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043978.856101
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043980.8652182,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043980.867245
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043982.875764,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043982.87772
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043984.88667,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043984.890461
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043986.9009721,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043986.9057028
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043988.9152231,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043988.918234
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043989.323615,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790043989.323665,
+      "success": true,
+      "verified_seconds": 16.498
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T02:26:12.011443+00:00",
+  "browser_success": true,
+  "verified_seconds": 16.498,
+  "capture_ended_at": "2026-09-22T02:26:29.325069+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 7746,
+  "capture_duration_seconds": 17.313626,
+  "duration_seconds": 18.653,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T02:26:29.468807+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T022610815484Z_f2fb13c4_cointelegraph.com_web_browsing.pcap"
+}

@@ -1,0 +1,145 @@
+{
+  "session_id": "20260922T031031577790Z_7a9156fd",
+  "domain": "meteociel.fr",
+  "rank": 1577,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T03:10:31.578258+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790046632.884036,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790046635.425577,
+      "url": "https://meteociel.fr/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046635.427972,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046635.4300969
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046637.4456499,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046637.4487839
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046639.459554,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046639.4619951
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046641.472409,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046641.474574
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046643.4867342,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046643.4896379
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046645.524929,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046645.528668
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046647.540752,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046647.542901
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046649.553455,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046649.5556421
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046650.086248,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790046650.086355,
+      "success": true,
+      "verified_seconds": 14.638
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T03:10:32.943002+00:00",
+  "browser_success": true,
+  "verified_seconds": 14.638,
+  "capture_ended_at": "2026-09-22T03:10:50.090771+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 21300,
+  "capture_duration_seconds": 17.147769,
+  "duration_seconds": 19.032,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T03:10:50.610268+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T031031577790Z_7a9156fd_meteociel.fr_web_browsing.pcap"
+}

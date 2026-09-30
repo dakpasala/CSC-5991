@@ -1,0 +1,145 @@
+{
+  "session_id": "20260923T040403896946Z_168e11d1",
+  "domain": "finance.yahoo.co.jp",
+  "rank": 1000,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-23T04:04:03.897134+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790136245.345952,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790136247.335161,
+      "url": "https://finance.yahoo.co.jp/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790136247.337568,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790136247.34003
+    },
+    {
+      "event": "content_sample",
+      "time": 1790136249.364009,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790136249.3665001
+    },
+    {
+      "event": "content_sample",
+      "time": 1790136251.451222,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790136251.454077
+    },
+    {
+      "event": "content_sample",
+      "time": 1790136253.473044,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790136253.476039
+    },
+    {
+      "event": "content_sample",
+      "time": 1790136255.489297,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790136255.49176
+    },
+    {
+      "event": "content_sample",
+      "time": 1790136257.501258,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790136257.503789
+    },
+    {
+      "event": "content_sample",
+      "time": 1790136259.517884,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790136259.5220191
+    },
+    {
+      "event": "content_sample",
+      "time": 1790136261.5275478,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790136261.5302668
+    },
+    {
+      "event": "content_sample",
+      "time": 1790136262.408989,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790136262.40906,
+      "success": true,
+      "verified_seconds": 15.049
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "current_top10k_verified_2026-09-22",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "e8851e39f479552c001d4daffee8a36af204ce2a7b8234e912959ec7652a5111",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T04:04:05.408525+00:00",
+  "browser_success": true,
+  "verified_seconds": 15.049,
+  "capture_ended_at": "2026-09-23T04:04:22.413634+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 9683,
+  "capture_duration_seconds": 17.005109,
+  "duration_seconds": 18.715,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-23T04:04:22.612527+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260923T040403896946Z_168e11d1_finance.yahoo.co.jp_web_browsing.pcap"
+}

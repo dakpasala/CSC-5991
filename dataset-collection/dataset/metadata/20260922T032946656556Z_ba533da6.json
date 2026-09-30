@@ -1,0 +1,134 @@
+{
+  "session_id": "20260922T032946656556Z_ba533da6",
+  "domain": "romarg.com",
+  "rank": 2015,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T03:29:46.656807+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790047788.7202299,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790047791.081621,
+      "url": "https://romarg.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047791.0839071,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047791.086931
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047793.096249,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047793.09877
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047795.105927,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047795.1079879
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047797.115368,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047797.117045
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047799.129549,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047799.133558
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047801.14703,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047801.149919
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047803.159768,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047803.16199
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047805.1804218,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790047805.180783,
+      "success": true,
+      "verified_seconds": 14.078
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T03:29:48.778809+00:00",
+  "browser_success": true,
+  "verified_seconds": 14.078,
+  "capture_ended_at": "2026-09-22T03:30:05.185271+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 2322,
+  "capture_duration_seconds": 16.406462,
+  "duration_seconds": 19.165,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T03:30:05.821785+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T032946656556Z_ba533da6_romarg.com_web_browsing.pcap"
+}

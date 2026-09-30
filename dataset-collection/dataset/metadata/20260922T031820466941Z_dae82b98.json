@@ -1,0 +1,145 @@
+{
+  "session_id": "20260922T031820466941Z_dae82b98",
+  "domain": "triunfobet.com",
+  "rank": 1710,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T03:18:20.467305+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790047101.7172449,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790047104.759867,
+      "url": "https://triunfobet.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047104.762152,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047104.7640269
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047106.778697,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047106.783177
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047108.802182,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047108.806928
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047110.8184052,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047110.822457
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047112.839164,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047112.843806
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047114.858079,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047114.862815
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047116.874351,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047116.879039
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047118.887368,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047118.890016
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047118.976933,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790047118.977056,
+      "success": true,
+      "verified_seconds": 14.183
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T03:18:21.777512+00:00",
+  "browser_success": true,
+  "verified_seconds": 14.183,
+  "capture_ended_at": "2026-09-22T03:18:38.981217+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 82328,
+  "capture_duration_seconds": 17.203705,
+  "duration_seconds": 18.701,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T03:18:39.168070+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T031820466941Z_dae82b98_triunfobet.com_web_browsing.pcap"
+}

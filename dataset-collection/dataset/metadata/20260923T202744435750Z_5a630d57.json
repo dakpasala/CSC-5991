@@ -1,0 +1,150 @@
+{
+  "session_id": "20260923T202744435750Z_5a630d57",
+  "domain": "www.euronews.com",
+  "rank": null,
+  "requested_activity": "video_streaming",
+  "started_at": "2026-09-23T20:27:44.436446+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790195265.591685,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790195266.273758,
+      "url": "https://www.euronews.com/video/2026/09/23/eu-morocco-migration-issue-needs-a-creative-solution-expert-says"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790195266.273802,
+      "selector": "video"
+    },
+    {
+      "event": "play_requested",
+      "time": 1790195266.280372,
+      "media": "video"
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195268.810751,
+      "progressing": true,
+      "media_time": 2.10305
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195269.8183072,
+      "progressing": true,
+      "media_time": 3.106595
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195270.825424,
+      "progressing": true,
+      "media_time": 4.114657
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195271.8331509,
+      "progressing": true,
+      "media_time": 5.124034
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195272.8451982,
+      "progressing": true,
+      "media_time": 6.136312
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195273.8589308,
+      "progressing": true,
+      "media_time": 7.148348
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195274.867751,
+      "progressing": true,
+      "media_time": 8.158303
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195275.877741,
+      "progressing": true,
+      "media_time": 9.168821
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195276.888059,
+      "progressing": true,
+      "media_time": 10.182566
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195277.897625,
+      "progressing": true,
+      "media_time": 11.190665
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195278.911401,
+      "progressing": true,
+      "media_time": 12.200292
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195279.923991,
+      "progressing": true,
+      "media_time": 13.214581
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195280.936842,
+      "progressing": true,
+      "media_time": 14.229194
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195281.9469109,
+      "progressing": true,
+      "media_time": 15.239018
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195282.9436438,
+      "progressing": true,
+      "media_time": 16.235213
+    },
+    {
+      "event": "done",
+      "time": 1790195282.9437492,
+      "success": true,
+      "verified_seconds": 15.14
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "hand_curated_verified_playback_2026-09-23",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "c22f5fb605a9647a123e30f413e3496c43c4860d4f3e16b4499f37fad35fec3e",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T20:27:45.651345+00:00",
+  "browser_success": true,
+  "verified_seconds": 15.14,
+  "capture_ended_at": "2026-09-23T20:28:02.948036+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 18712,
+  "capture_duration_seconds": 17.296691,
+  "duration_seconds": 18.73,
+  "success": true,
+  "actual_activity": "video_streaming",
+  "parent_activity": "video_streaming",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-23T20:28:03.164948+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/video_streaming/20260923T202744435750Z_5a630d57_www.euronews.com_video_streaming.pcap"
+}

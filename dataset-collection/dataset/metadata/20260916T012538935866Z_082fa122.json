@@ -1,0 +1,354 @@
+{
+  "session_id": "20260916T012538935866Z_082fa122",
+  "domain": "github.com",
+  "rank": 29,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-16T01:25:38.936118+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1789521940.649845,
+      "browser_version": "152.0.7977.84",
+      "headed": true
+    },
+    {
+      "event": "navigate",
+      "time": 1789521943.352028,
+      "url": "https://github.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1789521943.356243,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789521943.359143
+    },
+    {
+      "event": "content_sample",
+      "time": 1789521945.369749,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789521945.3742678
+    },
+    {
+      "event": "content_sample",
+      "time": 1789521947.3864582,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789521947.390134
+    },
+    {
+      "event": "content_sample",
+      "time": 1789521949.398898,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789521949.401962
+    },
+    {
+      "event": "content_sample",
+      "time": 1789521951.4079292,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789521951.410625
+    },
+    {
+      "event": "content_sample",
+      "time": 1789521953.421717,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789521953.423821
+    },
+    {
+      "event": "content_sample",
+      "time": 1789521955.4323032,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789521955.4353201
+    },
+    {
+      "event": "content_sample",
+      "time": 1789521957.447541,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789521957.4501991
+    },
+    {
+      "event": "content_sample",
+      "time": 1789521959.4586859,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789521959.462401
+    },
+    {
+      "event": "content_sample",
+      "time": 1789521961.47213,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789521961.474916
+    },
+    {
+      "event": "content_sample",
+      "time": 1789521963.489424,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789521963.492367
+    },
+    {
+      "event": "content_sample",
+      "time": 1789521965.506206,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789521965.510286
+    },
+    {
+      "event": "content_sample",
+      "time": 1789521967.51845,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789521967.5218759
+    },
+    {
+      "event": "content_sample",
+      "time": 1789521969.5419111,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789521969.54605
+    },
+    {
+      "event": "content_sample",
+      "time": 1789521971.5571032,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789521971.5595279
+    },
+    {
+      "event": "content_sample",
+      "time": 1789521973.5699031,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789521973.574632
+    },
+    {
+      "event": "content_sample",
+      "time": 1789521975.584121,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789521975.587172
+    },
+    {
+      "event": "content_sample",
+      "time": 1789521977.594887,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789521977.5988429
+    },
+    {
+      "event": "content_sample",
+      "time": 1789521979.615081,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789521979.618016
+    },
+    {
+      "event": "content_sample",
+      "time": 1789521981.626443,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789521981.6288252
+    },
+    {
+      "event": "content_sample",
+      "time": 1789521983.641876,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789521983.644747
+    },
+    {
+      "event": "content_sample",
+      "time": 1789521985.653288,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789521985.655143
+    },
+    {
+      "event": "content_sample",
+      "time": 1789521987.669523,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789521987.673494
+    },
+    {
+      "event": "content_sample",
+      "time": 1789521989.679184,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789521989.68109
+    },
+    {
+      "event": "content_sample",
+      "time": 1789521991.691116,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789521991.693063
+    },
+    {
+      "event": "content_sample",
+      "time": 1789521993.703862,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789521993.707114
+    },
+    {
+      "event": "content_sample",
+      "time": 1789521995.720852,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789521995.724852
+    },
+    {
+      "event": "content_sample",
+      "time": 1789521997.445877,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1789521997.445963,
+      "success": true,
+      "verified_seconds": 54.005
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 60.0,
+  "source_scope": "top100_batch_2026-09-15",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "8f3686dc6920d00c589e766d1180ffb5cd5d60e82d42be00c90e3fc9c23060a5",
+  "profile_mode": "persistent",
+  "browser_version": "152.0.7977.84",
+  "capture_started_at": "2026-09-16T01:25:40.711319+00:00",
+  "browser_success": true,
+  "verified_seconds": 54.005,
+  "capture_ended_at": "2026-09-16T01:26:37.449975+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 12637,
+  "capture_duration_seconds": 56.738656,
+  "duration_seconds": 58.74,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-16T01:26:37.676959+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260916T012538935866Z_082fa122_github.com_web_browsing.pcap"
+}

@@ -1,0 +1,348 @@
+{
+  "session_id": "20260916T013910102039Z_935f2fd9",
+  "domain": "spotify.com",
+  "rank": 65,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-16T01:39:10.102893+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1789522751.658446,
+      "browser_version": "152.0.7977.84",
+      "headed": true
+    },
+    {
+      "event": "session_cookies_injected",
+      "time": 1789522753.546533,
+      "count": 17
+    },
+    {
+      "event": "navigate",
+      "time": 1789522757.5944262,
+      "url": "https://open.spotify.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522757.5975192,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522757.599542
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522759.619433,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522759.622678
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522761.638349,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522761.641706
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522763.663649,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522763.667246
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522765.687077,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522765.691097
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522767.7133708,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522767.7168808
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522769.735439,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522769.739058
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522771.7599108,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522771.7633548
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522773.784014,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522773.787691
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522775.809078,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522775.812667
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522777.8325608,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522777.836067
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522779.855905,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522779.859396
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522781.880107,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522781.8838122
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522783.898077,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522783.900568
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522785.9204328,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522785.9241211
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522787.944261,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522787.9478002
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522789.967977,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522789.971562
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522791.993259,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522791.996995
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522794.007961,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522794.011543
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522796.0284731,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522796.031849
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522798.048413,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522798.050507
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522800.070653,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522800.074419
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522802.095884,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522802.099841
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522804.116399,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522804.1200671
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522806.140623,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522806.1440141
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522808.156416,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522808.15973
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522808.6240551,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1789522808.624177,
+      "success": true,
+      "verified_seconds": 50.937
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 60.0,
+  "source_scope": "top100_batch_2026-09-15",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "8f3686dc6920d00c589e766d1180ffb5cd5d60e82d42be00c90e3fc9c23060a5",
+  "profile_mode": "persistent",
+  "browser_version": "152.0.7977.84",
+  "capture_started_at": "2026-09-16T01:39:11.719181+00:00",
+  "browser_success": true,
+  "verified_seconds": 50.937,
+  "capture_ended_at": "2026-09-16T01:40:08.629073+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 13979,
+  "capture_duration_seconds": 56.909892,
+  "duration_seconds": 58.737,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-16T01:40:08.840957+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260916T013910102039Z_935f2fd9_spotify.com_web_browsing.pcap"
+}

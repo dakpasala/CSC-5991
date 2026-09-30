@@ -1,0 +1,145 @@
+{
+  "session_id": "20260922T032715560377Z_10765f56",
+  "domain": "ucsd.edu",
+  "rank": 1882,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T03:27:15.560568+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790047636.87728,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790047638.675158,
+      "url": "https://ucsd.edu/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047638.6779468,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047638.6825442
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047640.7100108,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047640.7130811
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047642.726706,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047642.731176
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047644.744426,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047644.748112
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047646.761229,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047646.765249
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047648.779597,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047648.7837791
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047650.8000681,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047650.803749
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047652.819065,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047652.825047
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047654.070452,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790047654.070571,
+      "success": true,
+      "verified_seconds": 15.359
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T03:27:16.937010+00:00",
+  "browser_success": true,
+  "verified_seconds": 15.359,
+  "capture_ended_at": "2026-09-22T03:27:34.072206+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 19904,
+  "capture_duration_seconds": 17.135196,
+  "duration_seconds": 18.688,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T03:27:34.248211+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T032715560377Z_10765f56_ucsd.edu_web_browsing.pcap"
+}

@@ -1,0 +1,105 @@
+{
+  "session_id": "20260915T031650621437Z_9b024878",
+  "domain": "nginx.org",
+  "rank": 73,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-15T03:16:50.622087+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1789442211.776192,
+      "browser_version": "152.0.7977.84"
+    },
+    {
+      "event": "navigate",
+      "time": 1789442212.84319,
+      "url": "https://nginx.org/en/"
+    },
+    {
+      "event": "scroll",
+      "time": 1789442212.8458738
+    },
+    {
+      "event": "scroll",
+      "time": 1789442214.8572469
+    },
+    {
+      "event": "scroll",
+      "time": 1789442216.872001
+    },
+    {
+      "event": "scroll",
+      "time": 1789442218.88286
+    },
+    {
+      "event": "navigate",
+      "time": 1789442221.321193,
+      "url": "https://nginx.org/en/docs/"
+    },
+    {
+      "event": "scroll",
+      "time": 1789442221.3238358
+    },
+    {
+      "event": "scroll",
+      "time": 1789442223.3398762
+    },
+    {
+      "event": "scroll",
+      "time": 1789442225.351892
+    },
+    {
+      "event": "scroll",
+      "time": 1789442227.36306
+    },
+    {
+      "event": "scroll",
+      "time": 1789442229.3742049
+    },
+    {
+      "event": "scroll",
+      "time": 1789442231.384641
+    },
+    {
+      "event": "scroll",
+      "time": 1789442233.394071
+    },
+    {
+      "event": "scroll",
+      "time": 1789442235.4056509
+    },
+    {
+      "event": "scroll",
+      "time": 1789442237.417873
+    },
+    {
+      "event": "done",
+      "time": 1789442238.37198,
+      "success": true,
+      "verified_seconds": 25.015
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 29.24543549993541,
+  "source_scope": "user_plan",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "bd9b45f291d5a5c83f4595eb2ad13db946e4247f7bcdd0c1485d59d22f6bc9c2",
+  "browser_version": "152.0.7977.84",
+  "capture_started_at": "2026-09-15T03:16:51.834804+00:00",
+  "browser_success": true,
+  "verified_seconds": 25.015,
+  "capture_ended_at": "2026-09-15T03:17:18.373446+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 40416,
+  "capture_duration_seconds": 26.538642,
+  "duration_seconds": 27.948,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-15T03:17:18.569282+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260915T031650621437Z_9b024878_nginx.org_web_browsing.pcap"
+}

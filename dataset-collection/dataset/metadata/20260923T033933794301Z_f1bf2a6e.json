@@ -1,0 +1,139 @@
+{
+  "session_id": "20260923T033933794301Z_f1bf2a6e",
+  "domain": "seller-th.tiktok.com",
+  "rank": 10000,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-23T03:39:33.794651+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790134775.411094,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "session_cookies_injected",
+      "time": 1790134777.689535,
+      "count": 35
+    },
+    {
+      "event": "navigate",
+      "time": 1790134779.905838,
+      "url": "https://seller-th.tiktok.com/account/login"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790134779.908719,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790134779.9110012
+    },
+    {
+      "event": "content_sample",
+      "time": 1790134781.9332669,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790134781.934797
+    },
+    {
+      "event": "content_sample",
+      "time": 1790134784.049851,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790134784.058571
+    },
+    {
+      "event": "content_sample",
+      "time": 1790134786.0750651,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790134786.0781188
+    },
+    {
+      "event": "content_sample",
+      "time": 1790134788.102051,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790134788.105145
+    },
+    {
+      "event": "content_sample",
+      "time": 1790134790.122058,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790134790.125857
+    },
+    {
+      "event": "content_sample",
+      "time": 1790134792.1735501,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790134792.175731
+    },
+    {
+      "event": "content_sample",
+      "time": 1790134792.303568,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790134792.303658,
+      "success": true,
+      "verified_seconds": 12.371
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "current_top10k_verified_2026-09-22",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "e8851e39f479552c001d4daffee8a36af204ce2a7b8234e912959ec7652a5111",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T03:39:35.532383+00:00",
+  "browser_success": true,
+  "verified_seconds": 12.371,
+  "capture_ended_at": "2026-09-23T03:39:52.307786+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 48011,
+  "capture_duration_seconds": 16.775403,
+  "duration_seconds": 18.767,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-23T03:39:52.561403+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260923T033933794301Z_f1bf2a6e_seller-th.tiktok.com_web_browsing.pcap"
+}

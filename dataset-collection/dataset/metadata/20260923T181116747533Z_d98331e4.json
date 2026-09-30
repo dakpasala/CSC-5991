@@ -1,0 +1,144 @@
+{
+  "session_id": "20260923T181116747533Z_d98331e4",
+  "domain": "freesound.org",
+  "rank": null,
+  "requested_activity": "audio_streaming",
+  "started_at": "2026-09-23T18:11:16.747763+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790187078.2935538,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790187080.0963478,
+      "url": "https://freesound.org/people/CHallSmith/packs/46349/"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790187080.096406,
+      "selector": "audio"
+    },
+    {
+      "event": "play_requested",
+      "time": 1790187080.1134348,
+      "media": "audio"
+    },
+    {
+      "event": "media_sample",
+      "time": 1790187082.6409311,
+      "progressing": true,
+      "media_time": 1.188769
+    },
+    {
+      "event": "media_sample",
+      "time": 1790187083.6491468,
+      "progressing": true,
+      "media_time": 2.201551
+    },
+    {
+      "event": "media_sample",
+      "time": 1790187084.6531572,
+      "progressing": true,
+      "media_time": 3.206916
+    },
+    {
+      "event": "media_sample",
+      "time": 1790187085.6573288,
+      "progressing": true,
+      "media_time": 4.210299
+    },
+    {
+      "event": "media_sample",
+      "time": 1790187086.6661172,
+      "progressing": true,
+      "media_time": 5.214462
+    },
+    {
+      "event": "media_sample",
+      "time": 1790187087.674585,
+      "progressing": true,
+      "media_time": 6.223686
+    },
+    {
+      "event": "media_sample",
+      "time": 1790187088.685112,
+      "progressing": true,
+      "media_time": 7.236594
+    },
+    {
+      "event": "media_sample",
+      "time": 1790187089.68798,
+      "progressing": true,
+      "media_time": 8.237482
+    },
+    {
+      "event": "media_sample",
+      "time": 1790187090.700589,
+      "progressing": true,
+      "media_time": 9.250401
+    },
+    {
+      "event": "media_sample",
+      "time": 1790187091.708649,
+      "progressing": true,
+      "media_time": 10.260616
+    },
+    {
+      "event": "media_sample",
+      "time": 1790187092.714123,
+      "progressing": true,
+      "media_time": 11.262991
+    },
+    {
+      "event": "media_sample",
+      "time": 1790187093.740163,
+      "progressing": true,
+      "media_time": 12.287663
+    },
+    {
+      "event": "media_sample",
+      "time": 1790187094.744122,
+      "progressing": true,
+      "media_time": 13.294864
+    },
+    {
+      "event": "media_sample",
+      "time": 1790187095.250717,
+      "progressing": true,
+      "media_time": 13.801792
+    },
+    {
+      "event": "done",
+      "time": 1790187095.250804,
+      "success": true,
+      "verified_seconds": 13.619
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "user_plan",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "3c46625cde44189da98ec8d3d6ed78f5fedf685bcff2e3243f1ee78415e0245c",
+  "profile_mode": "fresh",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T18:11:18.354147+00:00",
+  "browser_success": true,
+  "verified_seconds": 13.619,
+  "capture_ended_at": "2026-09-23T18:11:35.259940+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 29751,
+  "capture_duration_seconds": 16.905793,
+  "duration_seconds": 18.777,
+  "success": true,
+  "actual_activity": "audio_streaming",
+  "parent_activity": "audio_streaming",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-23T18:11:35.524801+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/audio_streaming/20260923T181116747533Z_d98331e4_freesound.org_audio_streaming.pcap"
+}

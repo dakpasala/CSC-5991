@@ -1,0 +1,12 @@
+{
+  "ended_at": "2026-09-16T02:01:32.474690+00:00",
+  "elapsed_seconds": 2954.068,
+  "total_budget_seconds": 4000.0,
+  "counts": {
+    "success": 48,
+    "failed": 4,
+    "unavailable": 0
+  },
+  "interrupted": false,
+  "note": "Bounded cleanup may extend the deadline by several seconds"
+}

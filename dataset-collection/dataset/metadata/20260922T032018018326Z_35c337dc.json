@@ -1,0 +1,145 @@
+{
+  "session_id": "20260922T032018018326Z_35c337dc",
+  "domain": "cbl.gov.ly",
+  "rank": 1744,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T03:20:18.019151+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790047219.1038709,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790047221.402733,
+      "url": "https://cbl.gov.ly/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047221.405212,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047221.406971
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047223.424429,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047223.428239
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047225.445357,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047225.449806
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047227.466799,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047227.47047
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047229.482469,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047229.485292
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047231.496653,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047231.499872
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047233.517676,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047233.522099
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047235.537318,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047235.541089
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047236.526576,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790047236.5266209,
+      "success": true,
+      "verified_seconds": 15.094
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T03:20:19.161634+00:00",
+  "browser_success": true,
+  "verified_seconds": 15.094,
+  "capture_ended_at": "2026-09-22T03:20:36.528051+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 2523,
+  "capture_duration_seconds": 17.366417,
+  "duration_seconds": 18.643,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T03:20:36.661309+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T032018018326Z_35c337dc_cbl.gov.ly_web_browsing.pcap"
+}

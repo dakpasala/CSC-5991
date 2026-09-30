@@ -1,0 +1,89 @@
+{
+  "session_id": "20260922T221050899108Z_259606ce",
+  "domain": "az24.vn",
+  "rank": 1000,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T22:10:50.899464+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790115052.239873,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790115054.13278,
+      "url": "https://az24.vn/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790115054.13704,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790115054.1395252
+    },
+    {
+      "event": "content_sample",
+      "time": 1790115056.161247,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790115056.1631281
+    },
+    {
+      "event": "content_sample",
+      "time": 1790115058.204536,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790115058.2062888
+    },
+    {
+      "event": "content_sample",
+      "time": 1790115060.3114629,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790115060.315788
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "current_top10k_verified_2026-09-22",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "62c3532d14826202c86562f6668c28401e0b2aeb2cb8c88671e8dc81f6faf738",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T22:10:52.297850+00:00",
+  "browser_success": false,
+  "reason": "Interrupted",
+  "error_type": "RuntimeError",
+  "tcpdump_exit_code": 0,
+  "packet_count": 16833,
+  "capture_ended_at": "2026-09-22T22:11:04.233129+00:00",
+  "capture_duration_seconds": 11.935279,
+  "duration_seconds": 14.507,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-22T22:11:05.405896+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260922T221050899108Z_259606ce_az24.vn_web_browsing.pcap"
+}

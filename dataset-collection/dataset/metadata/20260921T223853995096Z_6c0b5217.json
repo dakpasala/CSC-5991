@@ -1,0 +1,145 @@
+{
+  "session_id": "20260921T223853995096Z_6c0b5217",
+  "domain": "gamerant.com",
+  "rank": 5423,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-21T22:38:53.995714+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790030335.0774899,
+      "browser_version": "153.0.8010.48",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790030336.409499,
+      "url": "https://gamerant.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790030336.4122822,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790030336.414437
+    },
+    {
+      "event": "content_sample",
+      "time": 1790030338.445547,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790030338.44842
+    },
+    {
+      "event": "content_sample",
+      "time": 1790030340.458255,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790030340.4602828
+    },
+    {
+      "event": "content_sample",
+      "time": 1790030342.470238,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790030342.4725
+    },
+    {
+      "event": "content_sample",
+      "time": 1790030344.4866712,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790030344.490817
+    },
+    {
+      "event": "content_sample",
+      "time": 1790030346.504781,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790030346.508466
+    },
+    {
+      "event": "content_sample",
+      "time": 1790030348.5230742,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790030348.527251
+    },
+    {
+      "event": "content_sample",
+      "time": 1790030350.542826,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790030350.5469692
+    },
+    {
+      "event": "content_sample",
+      "time": 1790030352.5049028,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790030352.504951,
+      "success": true,
+      "verified_seconds": 16.067
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.48",
+  "capture_started_at": "2026-09-21T22:38:55.135168+00:00",
+  "browser_success": true,
+  "verified_seconds": 16.067,
+  "capture_ended_at": "2026-09-21T22:39:12.506365+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 5993,
+  "capture_duration_seconds": 17.371197,
+  "duration_seconds": 18.629,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-21T22:39:12.624720+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260921T223853995096Z_6c0b5217_gamerant.com_web_browsing.pcap"
+}

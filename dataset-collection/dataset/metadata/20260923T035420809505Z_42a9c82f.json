@@ -1,0 +1,156 @@
+{
+  "session_id": "20260923T035420809505Z_42a9c82f",
+  "domain": "cdn.33apk.com",
+  "rank": 1000,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-23T03:54:20.810028+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790135661.9843452,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790135662.541642,
+      "url": "https://cdn.33apk.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135662.543942,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135662.545634
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135664.561047,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135664.564801
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135666.579856,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135666.583472
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135668.597663,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135668.6011379
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135670.614644,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135670.618179
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135672.6314628,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135672.6352751
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135674.6578162,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135674.659714
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135676.6793249,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135676.682953
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135678.6920462,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135678.700154
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135679.3210602,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790135679.321154,
+      "success": true,
+      "verified_seconds": 16.744
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "current_top10k_verified_2026-09-22",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "e8851e39f479552c001d4daffee8a36af204ce2a7b8234e912959ec7652a5111",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T03:54:22.042319+00:00",
+  "browser_success": true,
+  "verified_seconds": 16.744,
+  "capture_ended_at": "2026-09-23T03:54:39.322991+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 1427,
+  "capture_duration_seconds": 17.280672,
+  "duration_seconds": 18.765,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-23T03:54:39.574875+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260923T035420809505Z_42a9c82f_cdn.33apk.com_web_browsing.pcap"
+}

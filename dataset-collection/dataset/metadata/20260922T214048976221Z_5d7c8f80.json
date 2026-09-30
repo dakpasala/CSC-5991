@@ -1,0 +1,45 @@
+{
+  "session_id": "20260922T214048976221Z_5d7c8f80",
+  "domain": "tiktok.com",
+  "rank": 54,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T21:40:48.976428+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790113250.181372,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "session_cookies_injected",
+      "time": 1790113251.259982,
+      "count": 35
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top100_batch_2026-09-15",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "1fbc6503157781ed7c203a0c8b63f0c0d071378b8519f51a474c5687b647b3a2",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T21:40:50.240557+00:00",
+  "browser_success": false,
+  "reason": "Interrupted",
+  "error_type": "RuntimeError",
+  "tcpdump_exit_code": 0,
+  "packet_count": 2988,
+  "capture_ended_at": "2026-09-22T21:40:54.222338+00:00",
+  "capture_duration_seconds": 3.981781,
+  "duration_seconds": 6.262,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-22T21:40:55.238069+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260922T214048976221Z_5d7c8f80_tiktok.com_web_browsing.pcap"
+}

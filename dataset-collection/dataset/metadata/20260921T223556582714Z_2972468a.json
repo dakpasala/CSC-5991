@@ -1,0 +1,92 @@
+{
+  "session_id": "20260921T223556582714Z_2972468a",
+  "domain": "abcnews.com",
+  "rank": 2486,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-21T22:35:56.583049+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790030157.941793,
+      "browser_version": "153.0.8010.48",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790030160.171461,
+      "url": "https://abcnews.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790030160.1740239,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790030160.175879
+    },
+    {
+      "event": "content_sample",
+      "time": 1790030163.852708,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790030163.85671
+    },
+    {
+      "event": "content_sample",
+      "time": 1790030166.5478091,
+      "content": false,
+      "matching_elements": 0,
+      "playing_media": false
+    },
+    {
+      "event": "browser_diagnostic",
+      "time": 1790030166.552373,
+      "phase": "browsing",
+      "access_denied": false,
+      "article_elements": 0,
+      "audio_elements": 0,
+      "login_prompt": false,
+      "post_links": 0,
+      "video_elements": 10,
+      "window_count": 1
+    },
+    {
+      "event": "done",
+      "success": false,
+      "reason": "Readable browsing content absent or media playing",
+      "error_type": "RuntimeError"
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.48",
+  "capture_started_at": "2026-09-21T22:35:57.998058+00:00",
+  "browser_success": false,
+  "reason": "Readable browsing content absent or media playing",
+  "error_type": "RuntimeError",
+  "capture_ended_at": "2026-09-21T22:36:06.554099+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 39586,
+  "capture_duration_seconds": 8.556041,
+  "duration_seconds": 10.891,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-21T22:36:07.473446+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260921T223556582714Z_2972468a_abcnews.com_web_browsing.pcap"
+}

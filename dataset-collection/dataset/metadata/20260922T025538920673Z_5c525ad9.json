@@ -1,0 +1,145 @@
+{
+  "session_id": "20260922T025538920673Z_5c525ad9",
+  "domain": "litnet.com",
+  "rank": 1259,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T02:55:38.921475+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790045740.127879,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790045741.827277,
+      "url": "https://litnet.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045741.8339572,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045741.8358982
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045743.867786,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045743.869591
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045745.893931,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045745.8969338
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045747.914398,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045747.916508
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045749.934376,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045749.9368079
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045751.9465191,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045751.9481258
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045753.96469,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045753.966642
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045755.9806972,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045755.982892
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045757.4305658,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790045757.430658,
+      "success": true,
+      "verified_seconds": 15.58
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T02:55:40.183930+00:00",
+  "browser_success": true,
+  "verified_seconds": 15.58,
+  "capture_ended_at": "2026-09-22T02:55:57.432372+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 17884,
+  "capture_duration_seconds": 17.248442,
+  "duration_seconds": 18.946,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T02:55:57.866834+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T025538920673Z_5c525ad9_litnet.com_web_browsing.pcap"
+}

@@ -1,0 +1,156 @@
+{
+  "session_id": "20260923T023845319632Z_2f4a2984",
+  "domain": "www.digitalspy.com",
+  "rank": null,
+  "requested_activity": "video_streaming",
+  "started_at": "2026-09-23T02:38:45.319838+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790131127.0713952,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790131128.190079,
+      "url": "https://www.digitalspy.com/movies/a73838137/snatch-jason-statham-stephen-graham-reunion/"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790131128.190136,
+      "selector": "video"
+    },
+    {
+      "event": "play_requested",
+      "time": 1790131128.200342,
+      "media": "video"
+    },
+    {
+      "event": "media_sample",
+      "time": 1790131129.211935,
+      "progressing": true,
+      "media_time": 0.686277
+    },
+    {
+      "event": "media_sample",
+      "time": 1790131130.220924,
+      "progressing": true,
+      "media_time": 1.694062
+    },
+    {
+      "event": "media_sample",
+      "time": 1790131131.23927,
+      "progressing": true,
+      "media_time": 2.71563
+    },
+    {
+      "event": "media_sample",
+      "time": 1790131132.246575,
+      "progressing": true,
+      "media_time": 3.721544
+    },
+    {
+      "event": "media_sample",
+      "time": 1790131133.258236,
+      "progressing": true,
+      "media_time": 4.733014
+    },
+    {
+      "event": "media_sample",
+      "time": 1790131134.266199,
+      "progressing": true,
+      "media_time": 5.740093
+    },
+    {
+      "event": "media_sample",
+      "time": 1790131135.273757,
+      "progressing": true,
+      "media_time": 6.74934
+    },
+    {
+      "event": "media_sample",
+      "time": 1790131136.282732,
+      "progressing": true,
+      "media_time": 7.758125
+    },
+    {
+      "event": "media_sample",
+      "time": 1790131137.2902458,
+      "progressing": true,
+      "media_time": 8.765906
+    },
+    {
+      "event": "media_sample",
+      "time": 1790131138.296086,
+      "progressing": true,
+      "media_time": 9.771077
+    },
+    {
+      "event": "media_sample",
+      "time": 1790131139.303402,
+      "progressing": true,
+      "media_time": 10.777544
+    },
+    {
+      "event": "media_sample",
+      "time": 1790131140.311923,
+      "progressing": true,
+      "media_time": 11.787328
+    },
+    {
+      "event": "media_sample",
+      "time": 1790131141.318103,
+      "progressing": true,
+      "media_time": 12.794089
+    },
+    {
+      "event": "media_sample",
+      "time": 1790131142.324595,
+      "progressing": true,
+      "media_time": 13.799021
+    },
+    {
+      "event": "media_sample",
+      "time": 1790131143.338738,
+      "progressing": true,
+      "media_time": 14.812772
+    },
+    {
+      "event": "media_sample",
+      "time": 1790131143.82792,
+      "progressing": true,
+      "media_time": 15.302342
+    },
+    {
+      "event": "done",
+      "time": 1790131143.828001,
+      "success": true,
+      "verified_seconds": 15.626
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "user_plan",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "df29e91ad2b48878fc36506f28c39a0f2f9e27b8f88f4d1e0af21541f7092eb1",
+  "profile_mode": "fresh",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T02:38:47.129215+00:00",
+  "browser_success": true,
+  "verified_seconds": 15.626,
+  "capture_ended_at": "2026-09-23T02:39:03.832069+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 66836,
+  "capture_duration_seconds": 16.702854,
+  "duration_seconds": 18.851,
+  "success": true,
+  "actual_activity": "video_streaming",
+  "parent_activity": "video_streaming",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-23T02:39:04.170324+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/video_streaming/20260923T023845319632Z_2f4a2984_www.digitalspy.com_video_streaming.pcap"
+}

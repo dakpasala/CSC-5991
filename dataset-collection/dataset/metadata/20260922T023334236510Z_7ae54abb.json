@@ -1,0 +1,156 @@
+{
+  "session_id": "20260922T023334236510Z_7ae54abb",
+  "domain": "www.gov.uk",
+  "rank": 309,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T02:33:34.237358+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790044415.446613,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790044416.0560389,
+      "url": "https://www.gov.uk/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044416.058243,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044416.0599859
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044418.074008,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044418.077674
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044420.091485,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044420.09584
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044422.109386,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044422.113197
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044424.122444,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044424.125869
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044426.1392078,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044426.142899
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044428.1510139,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044428.153097
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044430.160613,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044430.168719
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044432.18304,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044432.186642
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044432.7503831,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790044432.750507,
+      "success": true,
+      "verified_seconds": 16.658
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T02:33:35.500892+00:00",
+  "browser_success": true,
+  "verified_seconds": 16.658,
+  "capture_ended_at": "2026-09-22T02:33:52.754611+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 1433,
+  "capture_duration_seconds": 17.253719,
+  "duration_seconds": 18.676,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T02:33:52.913246+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T023334236510Z_7ae54abb_www.gov.uk_web_browsing.pcap"
+}

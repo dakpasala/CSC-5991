@@ -1,0 +1,145 @@
+{
+  "session_id": "20260922T024459044131Z_11e2a8ce",
+  "domain": "hbr.org",
+  "rank": 870,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T02:44:59.044704+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790045100.272625,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790045101.44532,
+      "url": "https://hbr.org/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045101.447663,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045101.4493551
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045103.495668,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045103.4985118
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045105.518177,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045105.5219252
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045107.543875,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045107.567924
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045109.5871649,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045109.592233
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045111.609983,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045111.614298
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045113.636075,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045113.639159
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045115.654181,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045115.663174
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045117.555477,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790045117.555547,
+      "success": true,
+      "verified_seconds": 16.054
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T02:45:00.326746+00:00",
+  "browser_success": true,
+  "verified_seconds": 16.054,
+  "capture_ended_at": "2026-09-22T02:45:17.557129+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 11322,
+  "capture_duration_seconds": 17.230383,
+  "duration_seconds": 18.815,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T02:45:17.858838+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T024459044131Z_11e2a8ce_hbr.org_web_browsing.pcap"
+}

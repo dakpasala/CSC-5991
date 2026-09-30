@@ -1,0 +1,68 @@
+{
+  "session_id": "20260922T225301873708Z_4b61ece3",
+  "domain": "www.gaiaonline.com",
+  "rank": 50000,
+  "requested_activity": "social_media_browsing",
+  "started_at": "2026-09-22T22:53:01.874258+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790117583.0317178,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790117584.350282,
+      "url": "https://www.gaiaonline.com/"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790117584.3503292,
+      "selector": "article"
+    },
+    {
+      "event": "browser_diagnostic",
+      "time": 1790117601.035103,
+      "phase": "wait_for_selector",
+      "access_denied": false,
+      "article_elements": 0,
+      "audio_elements": 0,
+      "login_prompt": false,
+      "post_links": 0,
+      "video_elements": 0,
+      "window_count": 1
+    },
+    {
+      "event": "done",
+      "success": false,
+      "reason": "Browser action failed during wait_for_selector; inspect access or selectors",
+      "error_type": "TimeoutException"
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "current_top10k_verified_2026-09-22",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "a6a6378b2a18dddefc27fe364240321c456e6a3f07542e7b9937a0c0746eaf11",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T22:53:03.086965+00:00",
+  "browser_success": false,
+  "reason": "Browser action failed during wait_for_selector; inspect access or selectors",
+  "error_type": "TimeoutException",
+  "capture_ended_at": "2026-09-22T22:53:21.039429+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 5656,
+  "capture_duration_seconds": 17.952464,
+  "duration_seconds": 19.327,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-22T22:53:21.200956+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260922T225301873708Z_4b61ece3_www.gaiaonline.com_social_media_browsing.pcap"
+}

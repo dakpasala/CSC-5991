@@ -1,0 +1,145 @@
+{
+  "session_id": "20260922T024209363649Z_513e78aa",
+  "domain": "mailchimp.com",
+  "rank": 732,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T02:42:09.364070+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790044930.7135549,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790044932.672257,
+      "url": "https://mailchimp.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044932.7155771,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044932.730198
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044934.749357,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044934.7519019
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044936.764225,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044936.767848
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044938.7916548,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044938.7959108
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044940.8132129,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044940.817427
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044942.830772,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044942.8341079
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044944.855246,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044944.8675141
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044946.884512,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044946.8884292
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044947.877883,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790044947.8779671,
+      "success": true,
+      "verified_seconds": 15.114
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T02:42:10.771263+00:00",
+  "browser_success": true,
+  "verified_seconds": 15.114,
+  "capture_ended_at": "2026-09-22T02:42:27.879606+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 6346,
+  "capture_duration_seconds": 17.108343,
+  "duration_seconds": 18.711,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T02:42:28.074486+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T024209363649Z_513e78aa_mailchimp.com_web_browsing.pcap"
+}

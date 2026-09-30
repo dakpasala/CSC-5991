@@ -1,0 +1,145 @@
+{
+  "session_id": "20260923T034630924302Z_4ae0832c",
+  "domain": "actu.fr",
+  "rank": 1000,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-23T03:46:30.924818+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790135192.276164,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790135194.096846,
+      "url": "https://actu.fr/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135194.099831,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135194.1022851
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135196.125005,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135196.128335
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135198.145049,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135198.1489532
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135200.161035,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135200.164778
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135202.178619,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135202.1830451
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135204.2011461,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135204.205399
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135206.225868,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135206.230583
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135208.250649,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135208.255141
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135209.438794,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790135209.438941,
+      "success": true,
+      "verified_seconds": 15.308
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "current_top10k_verified_2026-09-22",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "e8851e39f479552c001d4daffee8a36af204ce2a7b8234e912959ec7652a5111",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T03:46:32.331945+00:00",
+  "browser_success": true,
+  "verified_seconds": 15.308,
+  "capture_ended_at": "2026-09-23T03:46:49.443175+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 73734,
+  "capture_duration_seconds": 17.11123,
+  "duration_seconds": 18.715,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-23T03:46:49.639430+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260923T034630924302Z_4ae0832c_actu.fr_web_browsing.pcap"
+}

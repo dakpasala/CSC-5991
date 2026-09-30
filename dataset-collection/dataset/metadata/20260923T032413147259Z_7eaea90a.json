@@ -1,0 +1,150 @@
+{
+  "session_id": "20260923T032413147259Z_7eaea90a",
+  "domain": "sellercentral.amazon.com",
+  "rank": 1000,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-23T03:24:13.148094+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790133854.399675,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "session_cookies_injected",
+      "time": 1790133854.897485,
+      "count": 16
+    },
+    {
+      "event": "navigate",
+      "time": 1790133855.823759,
+      "url": "https://sellercentral.amazon.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790133855.825956,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790133855.827581
+    },
+    {
+      "event": "content_sample",
+      "time": 1790133857.8594592,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790133857.8627572
+    },
+    {
+      "event": "content_sample",
+      "time": 1790133859.875902,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790133859.877354
+    },
+    {
+      "event": "content_sample",
+      "time": 1790133861.88319,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790133861.88692
+    },
+    {
+      "event": "content_sample",
+      "time": 1790133863.9040792,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790133863.905277
+    },
+    {
+      "event": "content_sample",
+      "time": 1790133865.923129,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790133865.926112
+    },
+    {
+      "event": "content_sample",
+      "time": 1790133867.941953,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790133867.9448051
+    },
+    {
+      "event": "content_sample",
+      "time": 1790133869.964534,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790133869.967974
+    },
+    {
+      "event": "content_sample",
+      "time": 1790133871.669066,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790133871.669291,
+      "success": true,
+      "verified_seconds": 15.823
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "current_top10k_verified_2026-09-22",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "e8851e39f479552c001d4daffee8a36af204ce2a7b8234e912959ec7652a5111",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T03:24:14.456379+00:00",
+  "browser_success": true,
+  "verified_seconds": 15.823,
+  "capture_ended_at": "2026-09-23T03:24:31.674549+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 5394,
+  "capture_duration_seconds": 17.21817,
+  "duration_seconds": 18.74,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-23T03:24:31.887254+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260923T032413147259Z_7eaea90a_sellercentral.amazon.com_web_browsing.pcap"
+}

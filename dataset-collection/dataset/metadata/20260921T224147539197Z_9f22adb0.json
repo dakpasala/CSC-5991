@@ -1,0 +1,145 @@
+{
+  "session_id": "20260921T224147539197Z_9f22adb0",
+  "domain": "mangakatana.com",
+  "rank": 7927,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-21T22:41:47.539772+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790030508.5761778,
+      "browser_version": "153.0.8010.48",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790030511.004149,
+      "url": "https://mangakatana.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790030511.0067031,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790030511.00854
+    },
+    {
+      "event": "content_sample",
+      "time": 1790030513.021329,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790030513.0230389
+    },
+    {
+      "event": "content_sample",
+      "time": 1790030515.0309691,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790030515.0328078
+    },
+    {
+      "event": "content_sample",
+      "time": 1790030517.046944,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790030517.050705
+    },
+    {
+      "event": "content_sample",
+      "time": 1790030519.066059,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790030519.0694
+    },
+    {
+      "event": "content_sample",
+      "time": 1790030521.081378,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790030521.084032
+    },
+    {
+      "event": "content_sample",
+      "time": 1790030523.0945768,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790030523.0975292
+    },
+    {
+      "event": "content_sample",
+      "time": 1790030525.109653,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790030525.112921
+    },
+    {
+      "event": "content_sample",
+      "time": 1790030526.054034,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790030526.0541499,
+      "success": true,
+      "verified_seconds": 15.026
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.48",
+  "capture_started_at": "2026-09-21T22:41:48.637063+00:00",
+  "browser_success": true,
+  "verified_seconds": 15.026,
+  "capture_ended_at": "2026-09-21T22:42:06.058236+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 5394,
+  "capture_duration_seconds": 17.421173,
+  "duration_seconds": 18.663,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-21T22:42:06.202278+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260921T224147539197Z_9f22adb0_mangakatana.com_web_browsing.pcap"
+}

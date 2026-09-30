@@ -1,0 +1,145 @@
+{
+  "session_id": "20260922T030324373739Z_318b507c",
+  "domain": "admanmedia.com",
+  "rank": 1399,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T03:03:24.374603+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790046205.521315,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790046207.822649,
+      "url": "https://admanmedia.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046207.824845,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046207.826934
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046209.8444219,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046209.8466492
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046211.861061,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046211.865799
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046213.881289,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046213.8856902
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046215.899223,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046215.902863
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046217.9136279,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046217.916904
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046219.928735,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046219.932349
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046221.951788,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046221.956311
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046222.8876212,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790046222.887809,
+      "success": true,
+      "verified_seconds": 15.035
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T03:03:25.579557+00:00",
+  "browser_success": true,
+  "verified_seconds": 15.035,
+  "capture_ended_at": "2026-09-22T03:03:42.892180+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 9293,
+  "capture_duration_seconds": 17.312623,
+  "duration_seconds": 18.665,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T03:03:43.039022+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T030324373739Z_318b507c_admanmedia.com_web_browsing.pcap"
+}

@@ -1,0 +1,126 @@
+{
+  "session_id": "20260923T020204689552Z_f1ff6bcc",
+  "domain": "www.ted.com",
+  "rank": null,
+  "requested_activity": "video_streaming",
+  "started_at": "2026-09-23T02:02:04.689756+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790128927.1159801,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790128927.731596,
+      "url": "https://www.ted.com/talks/jacob_collier_the_wiggly_wonder_of_music"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790128927.73165,
+      "selector": "video"
+    },
+    {
+      "event": "play_requested",
+      "time": 1790128932.313044,
+      "media": "video"
+    },
+    {
+      "event": "media_sample",
+      "time": 1790128933.3401878,
+      "progressing": true,
+      "media_time": 0.484272
+    },
+    {
+      "event": "media_sample",
+      "time": 1790128934.41409,
+      "progressing": true,
+      "media_time": 1.556787
+    },
+    {
+      "event": "media_sample",
+      "time": 1790128935.434636,
+      "progressing": true,
+      "media_time": 2.574693
+    },
+    {
+      "event": "media_sample",
+      "time": 1790128936.448568,
+      "progressing": true,
+      "media_time": 3.586561
+    },
+    {
+      "event": "media_sample",
+      "time": 1790128937.456813,
+      "progressing": true,
+      "media_time": 4.600702
+    },
+    {
+      "event": "media_sample",
+      "time": 1790128938.794553,
+      "progressing": true,
+      "media_time": 5.938295
+    },
+    {
+      "event": "media_sample",
+      "time": 1790128939.803345,
+      "progressing": true,
+      "media_time": 6.945792
+    },
+    {
+      "event": "media_sample",
+      "time": 1790128940.8130639,
+      "progressing": true,
+      "media_time": 7.954724
+    },
+    {
+      "event": "media_sample",
+      "time": 1790128941.8232388,
+      "progressing": true,
+      "media_time": 8.963796
+    },
+    {
+      "event": "media_sample",
+      "time": 1790128942.8341,
+      "progressing": true,
+      "media_time": 9.974655
+    },
+    {
+      "event": "media_sample",
+      "time": 1790128943.198453,
+      "progressing": true,
+      "media_time": 10.341713
+    },
+    {
+      "event": "done",
+      "time": 1790128943.1985438,
+      "success": true,
+      "verified_seconds": 10.883
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "user_plan",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "ced69fb6b0a58178c62bf33faef85bcf4df95daac1abf7bfce3afee83e99d8b4",
+  "profile_mode": "fresh",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T02:02:07.170229+00:00",
+  "browser_success": true,
+  "verified_seconds": 10.883,
+  "capture_ended_at": "2026-09-23T02:02:23.202709+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 114942,
+  "capture_duration_seconds": 16.03248,
+  "duration_seconds": 19.035,
+  "success": true,
+  "actual_activity": "video_streaming",
+  "parent_activity": "video_streaming",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-23T02:02:23.724982+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/video_streaming/20260923T020204689552Z_f1ff6bcc_www.ted.com_video_streaming.pcap"
+}

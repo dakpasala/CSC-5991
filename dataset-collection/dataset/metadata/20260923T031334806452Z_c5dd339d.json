@@ -1,0 +1,157 @@
+{
+  "session_id": "20260923T031334806452Z_c5dd339d",
+  "domain": "cadenaser.com",
+  "rank": 10000,
+  "requested_activity": "audio_streaming",
+  "started_at": "2026-09-23T03:13:34.807134+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790133216.0128808,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790133217.461111,
+      "url": "https://cadenaser.com/"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790133217.461154,
+      "selector": "audio"
+    },
+    {
+      "event": "play_requested",
+      "time": 1790133218.114804,
+      "media": "audio"
+    },
+    {
+      "event": "media_sample",
+      "time": 1790133220.666075,
+      "progressing": false,
+      "media_time": 0.278639
+    },
+    {
+      "event": "media_sample",
+      "time": 1790133221.684213,
+      "progressing": false,
+      "media_time": 0.278639
+    },
+    {
+      "event": "media_sample",
+      "time": 1790133222.701898,
+      "progressing": false,
+      "media_time": 0.278639
+    },
+    {
+      "event": "media_sample",
+      "time": 1790133223.717691,
+      "progressing": false,
+      "media_time": 0.278639
+    },
+    {
+      "event": "media_sample",
+      "time": 1790133224.732626,
+      "progressing": false,
+      "media_time": 0.278639
+    },
+    {
+      "event": "media_sample",
+      "time": 1790133225.746799,
+      "progressing": false,
+      "media_time": 0.278639
+    },
+    {
+      "event": "media_sample",
+      "time": 1790133226.7615669,
+      "progressing": false,
+      "media_time": 0.278639
+    },
+    {
+      "event": "media_sample",
+      "time": 1790133227.777088,
+      "progressing": false,
+      "media_time": 0.278639
+    },
+    {
+      "event": "media_sample",
+      "time": 1790133228.790089,
+      "progressing": false,
+      "media_time": 0.278639
+    },
+    {
+      "event": "media_sample",
+      "time": 1790133229.8055239,
+      "progressing": false,
+      "media_time": 0.278639
+    },
+    {
+      "event": "media_sample",
+      "time": 1790133230.819138,
+      "progressing": false,
+      "media_time": 0.278639
+    },
+    {
+      "event": "media_sample",
+      "time": 1790133231.830694,
+      "progressing": false,
+      "media_time": 0.278639
+    },
+    {
+      "event": "media_sample",
+      "time": 1790133232.844673,
+      "progressing": false,
+      "media_time": 0.278639
+    },
+    {
+      "event": "media_sample",
+      "time": 1790133233.321331,
+      "progressing": false,
+      "media_time": 0.278639
+    },
+    {
+      "event": "browser_diagnostic",
+      "time": 1790133233.330796,
+      "phase": "playback",
+      "access_denied": false,
+      "article_elements": 83,
+      "audio_elements": 1,
+      "login_prompt": false,
+      "post_links": 0,
+      "video_elements": 1,
+      "window_count": 1
+    },
+    {
+      "event": "done",
+      "success": false,
+      "reason": "Media was not progressing at session end",
+      "error_type": "RuntimeError"
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "current_top10k_verified_2026-09-22",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "f921d68eb15d4e96e6534e2e4b1b2fde6cc128a1beb073112f9a140910c247d3",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T03:13:36.068616+00:00",
+  "browser_success": false,
+  "reason": "Media was not progressing at session end",
+  "error_type": "RuntimeError",
+  "capture_ended_at": "2026-09-23T03:13:53.335198+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 15919,
+  "capture_duration_seconds": 17.266582,
+  "duration_seconds": 18.705,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-23T03:13:53.511449+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260923T031334806452Z_c5dd339d_cadenaser.com_audio_streaming.pcap"
+}

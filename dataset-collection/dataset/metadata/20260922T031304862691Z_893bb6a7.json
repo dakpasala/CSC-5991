@@ -1,0 +1,123 @@
+{
+  "session_id": "20260922T031304862691Z_893bb6a7",
+  "domain": "nustargame.com",
+  "rank": 1635,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T03:13:04.863251+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790046785.9370291,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790046792.3490539,
+      "url": "https://nustargame.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046792.352386,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046792.3544178
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046794.359026,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046794.360606
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046796.3734221,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046796.377036
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046798.391244,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046798.396161
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046800.410271,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046800.414002
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046802.4292731,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046802.4326038
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046803.3785448,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790046803.378647,
+      "success": true,
+      "verified_seconds": 11.007
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T03:13:05.997322+00:00",
+  "browser_success": true,
+  "verified_seconds": 11.007,
+  "capture_ended_at": "2026-09-22T03:13:23.382724+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 24864,
+  "capture_duration_seconds": 17.385402,
+  "duration_seconds": 18.717,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T03:13:23.580219+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T031304862691Z_893bb6a7_nustargame.com_web_browsing.pcap"
+}

@@ -1,0 +1,155 @@
+{
+  "session_id": "20260921T222327949225Z_6e2cdaa2",
+  "domain": "tumblr.com",
+  "rank": 162,
+  "requested_activity": "social_media_browsing",
+  "started_at": "2026-09-21T22:23:27.949497+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790029409.4003808,
+      "browser_version": "153.0.8010.48",
+      "headed": false
+    },
+    {
+      "event": "session_cookies_injected",
+      "time": 1790029409.791805,
+      "count": 2
+    },
+    {
+      "event": "navigate",
+      "time": 1790029410.438813,
+      "url": "https://www.tumblr.com/"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790029410.438865,
+      "selector": "article"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029410.919282,
+      "content": true,
+      "matching_elements": 2,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790029410.9217489
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029412.937839,
+      "content": true,
+      "matching_elements": 2,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790029412.941531
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029414.956963,
+      "content": true,
+      "matching_elements": 4,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790029414.961025
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029416.966591,
+      "content": true,
+      "matching_elements": 3,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790029416.96985
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029418.986042,
+      "content": true,
+      "matching_elements": 4,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790029418.9886148
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029420.9976819,
+      "content": true,
+      "matching_elements": 2,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790029421.001705
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029423.011345,
+      "content": true,
+      "matching_elements": 3,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790029423.014184
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029425.029525,
+      "content": true,
+      "matching_elements": 4,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790029425.032641
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029426.4579132,
+      "content": true,
+      "matching_elements": 5,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790029426.457994,
+      "success": true,
+      "verified_seconds": 15.512
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "b4a18b16b1f09f545b9ca8762bce7ecd9a7a60066d8ec92eac0b3ec2700b5a44",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.48",
+  "capture_started_at": "2026-09-21T22:23:29.454153+00:00",
+  "browser_success": true,
+  "verified_seconds": 15.512,
+  "capture_ended_at": "2026-09-21T22:23:46.459564+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 21323,
+  "capture_duration_seconds": 17.005411,
+  "duration_seconds": 18.701,
+  "success": true,
+  "actual_activity": "social_media_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": "social_media",
+  "status": "success",
+  "ended_at": "2026-09-21T22:23:46.650301+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/social_media_browsing/20260921T222327949225Z_6e2cdaa2_tumblr.com_social_media_browsing.pcap"
+}

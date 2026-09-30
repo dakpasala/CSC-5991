@@ -1,0 +1,145 @@
+{
+  "session_id": "20260922T033233252760Z_55053a97",
+  "domain": "bitbucket.org",
+  "rank": 2109,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T03:32:33.253177+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790047954.508971,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790047955.707982,
+      "url": "https://bitbucket.org/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047955.710158,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047955.711864
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047957.7304409,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047957.7329159
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047959.7474189,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047959.790545
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047961.798381,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047961.8058329
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047963.8209212,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047963.8234959
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047965.862112,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047965.8739681
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047967.8918982,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047967.895756
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047969.907469,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047969.909885
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047971.7681348,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790047971.768405,
+      "success": true,
+      "verified_seconds": 15.984
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T03:32:34.568841+00:00",
+  "browser_success": true,
+  "verified_seconds": 15.984,
+  "capture_ended_at": "2026-09-22T03:32:51.772876+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 15930,
+  "capture_duration_seconds": 17.204035,
+  "duration_seconds": 18.77,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T03:32:52.022639+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T033233252760Z_55053a97_bitbucket.org_web_browsing.pcap"
+}

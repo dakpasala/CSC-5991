@@ -1,0 +1,145 @@
+{
+  "session_id": "20260923T035236703765Z_26eca145",
+  "domain": "beauty.hotpepper.jp",
+  "rank": 1000,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-23T03:52:36.704239+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790135557.829002,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790135560.29818,
+      "url": "https://beauty.hotpepper.jp/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135560.300583,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135560.302669
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135562.3836899,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135562.3856158
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135564.411257,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135564.414242
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135566.430857,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135566.434678
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135568.43983,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135568.442507
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135570.452379,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135570.454611
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135572.483457,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135572.4867358
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135574.501081,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135574.505002
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135575.220038,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790135575.220164,
+      "success": true,
+      "verified_seconds": 14.897
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "current_top10k_verified_2026-09-22",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "e8851e39f479552c001d4daffee8a36af204ce2a7b8234e912959ec7652a5111",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T03:52:37.885980+00:00",
+  "browser_success": true,
+  "verified_seconds": 14.897,
+  "capture_ended_at": "2026-09-23T03:52:55.224295+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 10928,
+  "capture_duration_seconds": 17.338315,
+  "duration_seconds": 18.711,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-23T03:52:55.414804+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260923T035236703765Z_26eca145_beauty.hotpepper.jp_web_browsing.pcap"
+}

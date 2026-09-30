@@ -1,0 +1,156 @@
+{
+  "session_id": "20260921T222834941603Z_791cb443",
+  "domain": "reddit.com",
+  "rank": 111,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-21T22:28:34.942211+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790029716.179039,
+      "browser_version": "153.0.8010.48",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790029716.7352588,
+      "url": "https://www.reddit.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029716.7375429,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790029716.7392871
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029718.757799,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790029718.7613928
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029720.775996,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790029720.780146
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029722.7910771,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790029722.794535
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029724.807622,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790029724.812042
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029726.825196,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790029726.829126
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029728.846411,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790029728.850013
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029730.865133,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790029730.868853
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029732.8828218,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790029732.887121
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029733.4550972,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790029733.4552598,
+      "success": true,
+      "verified_seconds": 16.685
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.48",
+  "capture_started_at": "2026-09-21T22:28:36.238028+00:00",
+  "browser_success": true,
+  "verified_seconds": 16.685,
+  "capture_ended_at": "2026-09-21T22:28:53.459396+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 2092,
+  "capture_duration_seconds": 17.221368,
+  "duration_seconds": 18.659,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-21T22:28:53.600451+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260921T222834941603Z_791cb443_reddit.com_web_browsing.pcap"
+}

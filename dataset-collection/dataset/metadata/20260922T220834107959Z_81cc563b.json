@@ -1,0 +1,119 @@
+{
+  "session_id": "20260922T220834107959Z_81cc563b",
+  "domain": "archive.org",
+  "rank": 1000,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T22:08:34.108121+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790114915.237021,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790114915.736405,
+      "url": "https://archive.org/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790114915.739796,
+      "content": false,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "content_sample",
+      "time": 1790114917.257165,
+      "content": false,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "content_sample",
+      "time": 1790114918.775437,
+      "content": false,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "content_sample",
+      "time": 1790114920.283697,
+      "content": false,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "content_sample",
+      "time": 1790114921.798261,
+      "content": false,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "content_sample",
+      "time": 1790114923.304797,
+      "content": false,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "content_sample",
+      "time": 1790114924.814653,
+      "content": false,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "content_sample",
+      "time": 1790114925.7481542,
+      "content": false,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "browser_diagnostic",
+      "time": 1790114925.7624488,
+      "phase": "browsing",
+      "access_denied": false,
+      "article_elements": 0,
+      "audio_elements": 0,
+      "login_prompt": false,
+      "post_links": 0,
+      "video_elements": 0,
+      "window_count": 1
+    },
+    {
+      "event": "done",
+      "success": false,
+      "reason": "Readable browsing content absent or media playing",
+      "error_type": "RuntimeError"
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "current_top10k_verified_2026-09-22",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "62c3532d14826202c86562f6668c28401e0b2aeb2cb8c88671e8dc81f6faf738",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T22:08:35.294902+00:00",
+  "browser_success": false,
+  "reason": "Readable browsing content absent or media playing",
+  "error_type": "RuntimeError",
+  "capture_ended_at": "2026-09-22T22:08:45.767343+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 2098,
+  "capture_duration_seconds": 10.472441,
+  "duration_seconds": 11.915,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-22T22:08:46.023582+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260922T220834107959Z_81cc563b_archive.org_web_browsing.pcap"
+}

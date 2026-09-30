@@ -1,0 +1,156 @@
+{
+  "session_id": "20260922T030430440136Z_782c3b39",
+  "domain": "ssstik.io",
+  "rank": 1444,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T03:04:30.440891+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790046271.592777,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790046272.090892,
+      "url": "https://ssstik.io/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046272.093122,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046272.0951
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046274.113896,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046274.115675
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046276.133139,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046276.135118
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046278.155157,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046278.15857
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046280.16836,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046280.171867
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046282.180798,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046282.1840289
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046284.193038,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046284.195938
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046286.210575,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046286.214553
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046288.2283058,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046288.232401
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046288.953779,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790046288.953908,
+      "success": true,
+      "verified_seconds": 16.834
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T03:04:31.650105+00:00",
+  "browser_success": true,
+  "verified_seconds": 16.834,
+  "capture_ended_at": "2026-09-22T03:04:48.958166+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 5671,
+  "capture_duration_seconds": 17.308061,
+  "duration_seconds": 18.686,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T03:04:49.126177+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T030430440136Z_782c3b39_ssstik.io_web_browsing.pcap"
+}

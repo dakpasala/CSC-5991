@@ -1,0 +1,123 @@
+{
+  "session_id": "20260922T025804588733Z_ff147f0d",
+  "domain": "suumo.jp",
+  "rank": 1313,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T02:58:04.588969+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790045886.161803,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790045890.954265,
+      "url": "https://suumo.jp/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045890.9581141,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045890.959956
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045893.0700622,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045893.071923
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045895.1403499,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045895.142165
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045897.1589,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045897.162344
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045899.17904,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045899.181751
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045901.1926541,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045901.196758
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045903.0991738,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790045903.099222,
+      "success": true,
+      "verified_seconds": 12.125
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T02:58:06.221704+00:00",
+  "browser_success": true,
+  "verified_seconds": 12.125,
+  "capture_ended_at": "2026-09-22T02:58:23.100643+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 9497,
+  "capture_duration_seconds": 16.878939,
+  "duration_seconds": 18.699,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T02:58:23.287702+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T025804588733Z_ff147f0d_suumo.jp_web_browsing.pcap"
+}

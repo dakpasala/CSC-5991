@@ -1,0 +1,248 @@
+{
+  "session_id": "20260917T222739720827Z_df133dfd",
+  "domain": "wikipedia.org",
+  "rank": 30,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-17T22:27:39.721252+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1789684062.646425,
+      "browser_version": "152.0.7977.84",
+      "headed": true
+    },
+    {
+      "event": "navigate",
+      "time": 1789684063.770209,
+      "url": "https://en.wikipedia.org/wiki/Computer_network"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1789684063.770257,
+      "selector": "#mw-content-text"
+    },
+    {
+      "event": "content_sample",
+      "time": 1789684063.7815292,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789684063.784721
+    },
+    {
+      "event": "content_sample",
+      "time": 1789684065.802499,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789684065.806151
+    },
+    {
+      "event": "content_sample",
+      "time": 1789684067.8254359,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789684067.829503
+    },
+    {
+      "event": "content_sample",
+      "time": 1789684069.846946,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789684069.8505778
+    },
+    {
+      "event": "content_sample",
+      "time": 1789684071.869348,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "navigate",
+      "time": 1789684072.309441,
+      "url": "https://en.wikipedia.org/wiki/Network_packet"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1789684072.309479,
+      "selector": "#mw-content-text"
+    },
+    {
+      "event": "scroll",
+      "time": 1789684072.3189461
+    },
+    {
+      "event": "content_sample",
+      "time": 1789684074.335891,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789684074.339632
+    },
+    {
+      "event": "content_sample",
+      "time": 1789684076.3513548,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789684076.3540359
+    },
+    {
+      "event": "content_sample",
+      "time": 1789684078.3633769,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789684078.369741
+    },
+    {
+      "event": "content_sample",
+      "time": 1789684080.3785331,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789684080.381164
+    },
+    {
+      "event": "content_sample",
+      "time": 1789684082.3851972,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789684082.388895
+    },
+    {
+      "event": "content_sample",
+      "time": 1789684084.4021251,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789684084.406039
+    },
+    {
+      "event": "content_sample",
+      "time": 1789684086.419041,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789684086.422816
+    },
+    {
+      "event": "content_sample",
+      "time": 1789684088.427362,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789684088.429715
+    },
+    {
+      "event": "content_sample",
+      "time": 1789684090.437684,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789684090.4393148
+    },
+    {
+      "event": "content_sample",
+      "time": 1789684092.4472,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789684092.449151
+    },
+    {
+      "event": "content_sample",
+      "time": 1789684094.453096,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789684094.4551911
+    },
+    {
+      "event": "browser_diagnostic",
+      "time": 1789684096.462247,
+      "phase": "wait_for_selector",
+      "diagnostic_error": "NoSuchWindowException"
+    },
+    {
+      "event": "done",
+      "success": false,
+      "reason": "Browser action failed during wait_for_selector; inspect access or selectors",
+      "error_type": "TypeError"
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 60.0,
+  "source_scope": "user_plan",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "8f3686dc6920d00c589e766d1180ffb5cd5d60e82d42be00c90e3fc9c23060a5",
+  "profile_mode": "persistent",
+  "browser_version": "152.0.7977.84",
+  "capture_started_at": "2026-09-17T22:27:42.717026+00:00",
+  "browser_success": false,
+  "reason": "Browser action failed during wait_for_selector; inspect access or selectors",
+  "error_type": "TypeError",
+  "capture_ended_at": "2026-09-17T22:28:16.463944+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 15225,
+  "capture_duration_seconds": 33.746918,
+  "duration_seconds": 37.254,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-17T22:28:16.975469+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260917T222739720827Z_df133dfd_wikipedia.org_web_browsing.pcap"
+}

@@ -1,0 +1,145 @@
+{
+  "session_id": "20260922T030949528338Z_552de514",
+  "domain": "trilltrill.jp",
+  "rank": 1563,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T03:09:49.528841+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790046590.766753,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790046593.086314,
+      "url": "https://trilltrill.jp/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046593.090956,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046593.0936399
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046595.142715,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046595.145091
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046597.172349,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046597.175193
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046599.193863,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046599.196023
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046601.210428,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046601.213838
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046603.2318442,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046603.23579
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046605.260747,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046605.265053
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046607.290932,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046607.29557
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046608.039763,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790046608.039948,
+      "success": true,
+      "verified_seconds": 14.923
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T03:09:50.825222+00:00",
+  "browser_success": true,
+  "verified_seconds": 14.923,
+  "capture_ended_at": "2026-09-22T03:10:08.044028+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 41847,
+  "capture_duration_seconds": 17.218806,
+  "duration_seconds": 18.75,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T03:10:08.278411+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T030949528338Z_552de514_trilltrill.jp_web_browsing.pcap"
+}

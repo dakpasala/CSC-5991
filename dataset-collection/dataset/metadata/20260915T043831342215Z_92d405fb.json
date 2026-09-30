@@ -1,0 +1,68 @@
+{
+  "session_id": "20260915T043831342215Z_92d405fb",
+  "domain": "x.com",
+  "rank": 49,
+  "requested_activity": "social_media_browsing",
+  "started_at": "2026-09-15T04:38:31.343092+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1789447114.49018,
+      "browser_version": "152.0.7977.84",
+      "headed": true
+    },
+    {
+      "event": "navigate",
+      "time": 1789447119.1499982,
+      "url": "https://x.com/NASA"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1789447119.15012,
+      "selector": "article"
+    },
+    {
+      "event": "browser_diagnostic",
+      "time": 1789447139.250894,
+      "phase": "wait_for_selector",
+      "access_denied": false,
+      "article_elements": 0,
+      "audio_elements": 0,
+      "login_prompt": true,
+      "post_links": 0,
+      "video_elements": 0,
+      "window_count": 1
+    },
+    {
+      "event": "done",
+      "success": false,
+      "reason": "Browser action failed during wait_for_selector; inspect access or selectors",
+      "error_type": "TimeoutException"
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 40.0,
+  "source_scope": "top100_public_profile_access_unverified",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "6291aa3c675b3a3db3080d13d2d43c8853c1f46e68a5f071db98d54c357f9236",
+  "profile_mode": "persistent",
+  "browser_version": "152.0.7977.84",
+  "capture_started_at": "2026-09-15T04:38:34.604957+00:00",
+  "browser_success": false,
+  "reason": "Browser action failed during wait_for_selector; inspect access or selectors",
+  "error_type": "TimeoutException",
+  "capture_ended_at": "2026-09-15T04:38:59.256070+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 8559,
+  "capture_duration_seconds": 24.651113,
+  "duration_seconds": 28.31,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-15T04:38:59.651904+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260915T043831342215Z_92d405fb_x.com_social_media_browsing.pcap"
+}

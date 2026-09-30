@@ -1,0 +1,145 @@
+{
+  "session_id": "20260922T030642620782Z_3f945449",
+  "domain": "torob.com",
+  "rank": 1484,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T03:06:42.621366+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790046403.7320619,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790046406.230134,
+      "url": "https://torob.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046406.2324328,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046406.2342038
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046408.240911,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046408.243055
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046410.251279,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046410.252825
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046412.2606,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046412.2649758
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046414.2791932,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046414.283488
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046416.3081532,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046416.3103921
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046418.3183172,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046418.321687
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046420.335883,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046420.340201
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046421.1348412,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790046421.134992,
+      "success": true,
+      "verified_seconds": 14.878
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T03:06:43.788576+00:00",
+  "browser_success": true,
+  "verified_seconds": 14.878,
+  "capture_ended_at": "2026-09-22T03:07:01.139083+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 20882,
+  "capture_duration_seconds": 17.350507,
+  "duration_seconds": 18.728,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T03:07:01.348504+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T030642620782Z_3f945449_torob.com_web_browsing.pcap"
+}

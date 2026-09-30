@@ -1,0 +1,128 @@
+{
+  "session_id": "20260921T221703628960Z_d89a3016",
+  "domain": "tiktok.com",
+  "rank": 54,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-21T22:17:03.629808+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790029025.2600489,
+      "browser_version": "153.0.8010.48",
+      "headed": false
+    },
+    {
+      "event": "session_cookies_injected",
+      "time": 1790029026.113711,
+      "count": 37
+    },
+    {
+      "event": "navigate",
+      "time": 1790029030.96002,
+      "url": "https://www.tiktok.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029030.9626,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790029030.964541
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029032.977629,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790029032.979649
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029034.993987,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790029034.9965749
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029037.007282,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790029037.009851
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029039.0225642,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790029039.0251698
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029041.036201,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790029041.038764
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029042.1416378,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790029042.141761,
+      "success": true,
+      "verified_seconds": 11.165
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top100_batch_2026-09-15",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.48",
+  "capture_started_at": "2026-09-21T22:17:05.325065+00:00",
+  "browser_success": true,
+  "verified_seconds": 11.165,
+  "capture_ended_at": "2026-09-21T22:17:22.143529+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 16289,
+  "capture_duration_seconds": 16.818464,
+  "duration_seconds": 18.708,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-21T22:17:22.336980+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260921T221703628960Z_d89a3016_tiktok.com_web_browsing.pcap"
+}

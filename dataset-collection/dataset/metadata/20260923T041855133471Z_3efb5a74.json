@@ -1,0 +1,138 @@
+{
+  "session_id": "20260923T041855133471Z_3efb5a74",
+  "domain": "www.oigo.com",
+  "rank": null,
+  "requested_activity": "audio_streaming",
+  "started_at": "2026-09-23T04:18:55.133679+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790137136.869762,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790137139.321432,
+      "url": "https://www.oigo.com/moda/radioenvivo/"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790137139.321478,
+      "selector": "video"
+    },
+    {
+      "event": "play_requested",
+      "time": 1790137139.328043,
+      "media": "audio"
+    },
+    {
+      "event": "media_sample",
+      "time": 1790137141.929811,
+      "progressing": true,
+      "media_time": 0.357782
+    },
+    {
+      "event": "media_sample",
+      "time": 1790137142.9395368,
+      "progressing": true,
+      "media_time": 1.371248
+    },
+    {
+      "event": "media_sample",
+      "time": 1790137143.948233,
+      "progressing": true,
+      "media_time": 2.377349
+    },
+    {
+      "event": "media_sample",
+      "time": 1790137144.95593,
+      "progressing": true,
+      "media_time": 3.38795
+    },
+    {
+      "event": "media_sample",
+      "time": 1790137145.96176,
+      "progressing": true,
+      "media_time": 4.392154
+    },
+    {
+      "event": "media_sample",
+      "time": 1790137146.9727502,
+      "progressing": true,
+      "media_time": 5.403319
+    },
+    {
+      "event": "media_sample",
+      "time": 1790137147.982453,
+      "progressing": true,
+      "media_time": 6.417462
+    },
+    {
+      "event": "media_sample",
+      "time": 1790137148.986611,
+      "progressing": true,
+      "media_time": 7.419841
+    },
+    {
+      "event": "media_sample",
+      "time": 1790137149.993393,
+      "progressing": true,
+      "media_time": 8.428474
+    },
+    {
+      "event": "media_sample",
+      "time": 1790137150.995692,
+      "progressing": true,
+      "media_time": 9.431999
+    },
+    {
+      "event": "media_sample",
+      "time": 1790137152.002847,
+      "progressing": true,
+      "media_time": 10.435818
+    },
+    {
+      "event": "media_sample",
+      "time": 1790137153.013629,
+      "progressing": true,
+      "media_time": 11.449354
+    },
+    {
+      "event": "media_sample",
+      "time": 1790137153.625443,
+      "progressing": true,
+      "media_time": 12.060195
+    },
+    {
+      "event": "done",
+      "time": 1790137153.625521,
+      "success": true,
+      "verified_seconds": 12.71
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "user_plan",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "913d45277e6fb05d456f1ef3756d857d38e8e13a0277d6da0539a724588f7fac",
+  "profile_mode": "fresh",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T04:18:56.927952+00:00",
+  "browser_success": true,
+  "verified_seconds": 12.71,
+  "capture_ended_at": "2026-09-23T04:19:13.629513+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 46112,
+  "capture_duration_seconds": 16.701561,
+  "duration_seconds": 18.84,
+  "success": true,
+  "actual_activity": "audio_streaming",
+  "parent_activity": "audio_streaming",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-23T04:19:13.961694+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/audio_streaming/20260923T041855133471Z_3efb5a74_www.oigo.com_audio_streaming.pcap"
+}

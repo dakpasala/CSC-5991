@@ -1,0 +1,156 @@
+{
+  "session_id": "20260922T022946581657Z_4f2be55c",
+  "domain": "theweek.com",
+  "rank": 9217,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T02:29:46.582108+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790044187.967336,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790044188.7661178,
+      "url": "https://theweek.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044188.8260858,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044188.835916
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044190.876009,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044190.878073
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044192.905098,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044192.907128
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044194.924125,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044194.926947
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044196.943297,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044196.9480371
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044198.96654,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044198.971064
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044200.989983,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044200.994057
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044203.006946,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044203.010803
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044205.032098,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044205.035521
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044205.092062,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790044205.092132,
+      "success": true,
+      "verified_seconds": 16.229
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T02:29:48.026335+00:00",
+  "browser_success": true,
+  "verified_seconds": 16.229,
+  "capture_ended_at": "2026-09-22T02:30:05.093702+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 21157,
+  "capture_duration_seconds": 17.067367,
+  "duration_seconds": 18.739,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T02:30:05.320408+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T022946581657Z_4f2be55c_theweek.com_web_browsing.pcap"
+}

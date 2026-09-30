@@ -1,0 +1,155 @@
+{
+  "session_id": "20260923T022346519337Z_aac8682f",
+  "domain": "youtube.com",
+  "rank": null,
+  "requested_activity": "video_streaming",
+  "started_at": "2026-09-23T02:23:46.519549+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790130227.604202,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "session_cookies_injected",
+      "time": 1790130228.180574,
+      "count": 22
+    },
+    {
+      "event": "navigate",
+      "time": 1790130230.326064,
+      "url": "https://www.youtube.com/watch"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790130230.326114,
+      "selector": "video"
+    },
+    {
+      "event": "play_requested",
+      "time": 1790130230.337316,
+      "media": "video"
+    },
+    {
+      "event": "media_sample",
+      "time": 1790130231.3701131,
+      "progressing": true,
+      "media_time": 0.32
+    },
+    {
+      "event": "media_sample",
+      "time": 1790130232.377086,
+      "progressing": false,
+      "media_time": 0.348903
+    },
+    {
+      "event": "media_sample",
+      "time": 1790130233.384638,
+      "progressing": false,
+      "media_time": 1.356641
+    },
+    {
+      "event": "media_sample",
+      "time": 1790130234.388306,
+      "progressing": true,
+      "media_time": 2.360209
+    },
+    {
+      "event": "media_sample",
+      "time": 1790130235.39754,
+      "progressing": true,
+      "media_time": 3.369333
+    },
+    {
+      "event": "media_sample",
+      "time": 1790130236.406514,
+      "progressing": true,
+      "media_time": 4.377449
+    },
+    {
+      "event": "media_sample",
+      "time": 1790130237.4146402,
+      "progressing": true,
+      "media_time": 5.386479
+    },
+    {
+      "event": "media_sample",
+      "time": 1790130238.424223,
+      "progressing": true,
+      "media_time": 6.395046
+    },
+    {
+      "event": "media_sample",
+      "time": 1790130239.4294112,
+      "progressing": true,
+      "media_time": 7.400902
+    },
+    {
+      "event": "media_sample",
+      "time": 1790130240.4366279,
+      "progressing": true,
+      "media_time": 8.407792
+    },
+    {
+      "event": "media_sample",
+      "time": 1790130241.449515,
+      "progressing": true,
+      "media_time": 9.420231
+    },
+    {
+      "event": "media_sample",
+      "time": 1790130242.4559748,
+      "progressing": true,
+      "media_time": 10.427717
+    },
+    {
+      "event": "media_sample",
+      "time": 1790130243.46629,
+      "progressing": true,
+      "media_time": 11.437419
+    },
+    {
+      "event": "media_sample",
+      "time": 1790130244.475219,
+      "progressing": true,
+      "media_time": 12.446476
+    },
+    {
+      "event": "media_sample",
+      "time": 1790130245.02859,
+      "progressing": true,
+      "media_time": 12.999792
+    },
+    {
+      "event": "done",
+      "time": 1790130245.028735,
+      "success": true,
+      "verified_seconds": 12.673
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top100_previous_30_second_success_not_guaranteed",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "a275a175b2c0bfac7a12977269cd52f76190c2c9254de72d9747e10ea1d46ed4",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T02:23:47.660072+00:00",
+  "browser_success": true,
+  "verified_seconds": 12.673,
+  "capture_ended_at": "2026-09-23T02:24:05.032923+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 9652,
+  "capture_duration_seconds": 17.372851,
+  "duration_seconds": 18.724,
+  "success": true,
+  "actual_activity": "video_streaming",
+  "parent_activity": "video_streaming",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-23T02:24:05.243514+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/video_streaming/20260923T022346519337Z_aac8682f_youtube.com_video_streaming.pcap"
+}

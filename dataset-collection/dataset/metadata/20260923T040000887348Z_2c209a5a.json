@@ -1,0 +1,134 @@
+{
+  "session_id": "20260923T040000887348Z_2c209a5a",
+  "domain": "ekstrabladet.dk",
+  "rank": 1000,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-23T04:00:00.888110+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790136002.6974669,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790136005.9557009,
+      "url": "https://ekstrabladet.dk/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790136005.958377,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790136005.960971
+    },
+    {
+      "event": "content_sample",
+      "time": 1790136007.972981,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790136007.97485
+    },
+    {
+      "event": "content_sample",
+      "time": 1790136009.98513,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790136009.9881501
+    },
+    {
+      "event": "content_sample",
+      "time": 1790136012.0496929,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790136012.053566
+    },
+    {
+      "event": "content_sample",
+      "time": 1790136014.0667179,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790136014.070836
+    },
+    {
+      "event": "content_sample",
+      "time": 1790136016.090497,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790136016.095248
+    },
+    {
+      "event": "content_sample",
+      "time": 1790136018.104637,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790136018.106833
+    },
+    {
+      "event": "content_sample",
+      "time": 1790136019.3972769,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790136019.397352,
+      "success": true,
+      "verified_seconds": 13.417
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "current_top10k_verified_2026-09-22",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "e8851e39f479552c001d4daffee8a36af204ce2a7b8234e912959ec7652a5111",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T04:00:02.765244+00:00",
+  "browser_success": true,
+  "verified_seconds": 13.417,
+  "capture_ended_at": "2026-09-23T04:00:19.398874+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 7864,
+  "capture_duration_seconds": 16.63363,
+  "duration_seconds": 18.689,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-23T04:00:19.576489+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260923T040000887348Z_2c209a5a_ekstrabladet.dk_web_browsing.pcap"
+}

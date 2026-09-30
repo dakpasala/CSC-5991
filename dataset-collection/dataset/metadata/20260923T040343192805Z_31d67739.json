@@ -1,0 +1,156 @@
+{
+  "session_id": "20260923T040343192805Z_31d67739",
+  "domain": "ficbook.net",
+  "rank": 1000,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-23T04:03:43.193173+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790136224.5424,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790136225.126296,
+      "url": "https://ficbook.net/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790136225.128453,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790136225.1302028
+    },
+    {
+      "event": "content_sample",
+      "time": 1790136227.139484,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790136227.141232
+    },
+    {
+      "event": "content_sample",
+      "time": 1790136229.155037,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790136229.1575701
+    },
+    {
+      "event": "content_sample",
+      "time": 1790136231.16391,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790136231.1658602
+    },
+    {
+      "event": "content_sample",
+      "time": 1790136233.177752,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790136233.181626
+    },
+    {
+      "event": "content_sample",
+      "time": 1790136235.190511,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790136235.1921222
+    },
+    {
+      "event": "content_sample",
+      "time": 1790136237.2111611,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790136237.21342
+    },
+    {
+      "event": "content_sample",
+      "time": 1790136239.222741,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790136239.2243352
+    },
+    {
+      "event": "content_sample",
+      "time": 1790136241.2333062,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790136241.2357981
+    },
+    {
+      "event": "content_sample",
+      "time": 1790136241.7007182,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790136241.7008,
+      "success": true,
+      "verified_seconds": 16.552
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "current_top10k_verified_2026-09-22",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "e8851e39f479552c001d4daffee8a36af204ce2a7b8234e912959ec7652a5111",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T04:03:44.606373+00:00",
+  "browser_success": true,
+  "verified_seconds": 16.552,
+  "capture_ended_at": "2026-09-23T04:04:01.704865+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 3562,
+  "capture_duration_seconds": 17.098492,
+  "duration_seconds": 18.698,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-23T04:04:01.890606+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260923T040343192805Z_31d67739_ficbook.net_web_browsing.pcap"
+}

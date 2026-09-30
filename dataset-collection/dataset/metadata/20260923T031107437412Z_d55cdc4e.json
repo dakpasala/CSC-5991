@@ -1,0 +1,137 @@
+{
+  "session_id": "20260923T031107437412Z_d55cdc4e",
+  "domain": "www.ted.com",
+  "rank": null,
+  "requested_activity": "video_streaming",
+  "started_at": "2026-09-23T03:11:07.437558+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790133069.046276,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790133071.18456,
+      "url": "https://www.ted.com/talks/mas_vocal_bridge_over_troubled_water_like_you_ve_never_heard_it_before"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790133071.184629,
+      "selector": "video"
+    },
+    {
+      "event": "play_requested",
+      "time": 1790133071.192374,
+      "media": "video"
+    },
+    {
+      "event": "play_click_fallback",
+      "time": 1790133072.782689,
+      "selector": "[aria-label*='play' i]"
+    },
+    {
+      "event": "media_sample",
+      "time": 1790133074.972681,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790133076.020559,
+      "progressing": true,
+      "media_time": 0.759748
+    },
+    {
+      "event": "media_sample",
+      "time": 1790133077.0370328,
+      "progressing": true,
+      "media_time": 1.775897
+    },
+    {
+      "event": "media_sample",
+      "time": 1790133078.047914,
+      "progressing": true,
+      "media_time": 2.786202
+    },
+    {
+      "event": "media_sample",
+      "time": 1790133079.059724,
+      "progressing": true,
+      "media_time": 3.796466
+    },
+    {
+      "event": "media_sample",
+      "time": 1790133080.06988,
+      "progressing": true,
+      "media_time": 4.806808
+    },
+    {
+      "event": "media_sample",
+      "time": 1790133081.078423,
+      "progressing": true,
+      "media_time": 5.815899
+    },
+    {
+      "event": "media_sample",
+      "time": 1790133082.0923798,
+      "progressing": true,
+      "media_time": 6.829398
+    },
+    {
+      "event": "media_sample",
+      "time": 1790133083.104775,
+      "progressing": true,
+      "media_time": 7.844043
+    },
+    {
+      "event": "media_sample",
+      "time": 1790133084.1165462,
+      "progressing": true,
+      "media_time": 8.854775
+    },
+    {
+      "event": "media_sample",
+      "time": 1790133085.126451,
+      "progressing": true,
+      "media_time": 9.866224
+    },
+    {
+      "event": "media_sample",
+      "time": 1790133085.9493928,
+      "progressing": true,
+      "media_time": 10.688266
+    },
+    {
+      "event": "done",
+      "time": 1790133085.949517,
+      "success": true,
+      "verified_seconds": 10.977
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "hand_curated_verified_playback_2026-09-23",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "3f17f1fb3ea4d6b745ebe4fa2342e04de0a4a505e515b51030b023b84f3a919e",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T03:11:09.103048+00:00",
+  "browser_success": true,
+  "verified_seconds": 10.977,
+  "capture_ended_at": "2026-09-23T03:11:25.953715+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 68485,
+  "capture_duration_seconds": 16.850667,
+  "duration_seconds": 18.955,
+  "success": true,
+  "actual_activity": "video_streaming",
+  "parent_activity": "video_streaming",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-23T03:11:26.392096+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/video_streaming/20260923T031107437412Z_d55cdc4e_www.ted.com_video_streaming.pcap"
+}

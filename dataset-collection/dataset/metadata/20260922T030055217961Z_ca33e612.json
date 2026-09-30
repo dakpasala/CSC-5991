@@ -1,0 +1,134 @@
+{
+  "session_id": "20260922T030055217961Z_ca33e612",
+  "domain": "turkiye.gov.tr",
+  "rank": 1363,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T03:00:55.218765+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790046056.4135702,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790046061.206741,
+      "url": "https://turkiye.gov.tr/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046061.209173,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046061.210669
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046063.224927,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046063.228937
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046065.245994,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046065.249604
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046067.2647412,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046067.268838
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046069.282929,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046069.286946
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046071.2973151,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046071.299583
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046073.31389,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046073.317788
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046073.733873,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790046073.7340028,
+      "success": true,
+      "verified_seconds": 12.502
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T03:00:56.468039+00:00",
+  "browser_success": true,
+  "verified_seconds": 12.502,
+  "capture_ended_at": "2026-09-22T03:01:13.738057+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 2885,
+  "capture_duration_seconds": 17.270018,
+  "duration_seconds": 18.684,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T03:01:13.901687+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T030055217961Z_ca33e612_turkiye.gov.tr_web_browsing.pcap"
+}

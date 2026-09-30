@@ -1,0 +1,132 @@
+{
+  "session_id": "20260923T034131368734Z_659f1f50",
+  "domain": "artists.spotify.com",
+  "rank": 50000,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-23T03:41:31.369036+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790134893.070108,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "session_cookies_injected",
+      "time": 1790134893.909228,
+      "count": 8
+    },
+    {
+      "event": "navigate",
+      "time": 1790134894.6876218,
+      "url": "https://artists.spotify.com/home"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790134894.69096,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790134894.6934001
+    },
+    {
+      "event": "content_sample",
+      "time": 1790134896.725004,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790134896.726978
+    },
+    {
+      "event": "content_sample",
+      "time": 1790134898.7399302,
+      "content": false,
+      "matching_elements": 0,
+      "playing_media": false
+    },
+    {
+      "event": "content_sample",
+      "time": 1790134899.7471411,
+      "content": false,
+      "matching_elements": 0,
+      "playing_media": false
+    },
+    {
+      "event": "content_sample",
+      "time": 1790134900.7619379,
+      "content": false,
+      "matching_elements": 0,
+      "playing_media": false
+    },
+    {
+      "event": "content_sample",
+      "time": 1790134901.7739232,
+      "content": false,
+      "matching_elements": 0,
+      "playing_media": false
+    },
+    {
+      "event": "content_sample",
+      "time": 1790134902.7888598,
+      "content": false,
+      "matching_elements": 0,
+      "playing_media": false
+    },
+    {
+      "event": "content_sample",
+      "time": 1790134903.744241,
+      "content": false,
+      "matching_elements": 0,
+      "playing_media": false
+    },
+    {
+      "event": "browser_diagnostic",
+      "time": 1790134903.753088,
+      "phase": "browsing",
+      "access_denied": false,
+      "article_elements": 5,
+      "audio_elements": 0,
+      "login_prompt": false,
+      "post_links": 0,
+      "video_elements": 0,
+      "window_count": 1
+    },
+    {
+      "event": "done",
+      "success": false,
+      "reason": "Readable browsing content absent or media playing",
+      "error_type": "RuntimeError"
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "current_top10k_verified_2026-09-22",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "e8851e39f479552c001d4daffee8a36af204ce2a7b8234e912959ec7652a5111",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T03:41:33.129900+00:00",
+  "browser_success": false,
+  "reason": "Readable browsing content absent or media playing",
+  "error_type": "RuntimeError",
+  "capture_ended_at": "2026-09-23T03:41:43.755894+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 31685,
+  "capture_duration_seconds": 10.625994,
+  "duration_seconds": 12.574,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-23T03:41:43.943165+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260923T034131368734Z_659f1f50_artists.spotify.com_web_browsing.pcap"
+}

@@ -1,0 +1,58 @@
+{
+  "session_id": "20260923T190406891213Z_ad3fb2e9",
+  "domain": "www.cbc.ca",
+  "rank": null,
+  "requested_activity": "video_streaming",
+  "started_at": "2026-09-23T19:04:06.891476+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790190248.054524,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "browser_diagnostic",
+      "time": 1790190248.477222,
+      "phase": "navigation",
+      "access_denied": false,
+      "article_elements": 0,
+      "audio_elements": 0,
+      "login_prompt": false,
+      "post_links": 0,
+      "video_elements": 0,
+      "window_count": 1
+    },
+    {
+      "event": "done",
+      "success": false,
+      "reason": "Chrome network/access error page",
+      "error_type": "RuntimeError"
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "user_plan",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "77c1f373a781c419c67eae8d8a888830ea7d242937ae264cbee93160b27fd9ea",
+  "profile_mode": "fresh",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T19:04:08.116763+00:00",
+  "browser_success": false,
+  "reason": "Chrome network/access error page",
+  "error_type": "RuntimeError",
+  "capture_ended_at": "2026-09-23T19:04:08.478653+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 414,
+  "capture_duration_seconds": 0.36189,
+  "duration_seconds": 1.756,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-23T19:04:08.647188+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260923T190406891213Z_ad3fb2e9_www.cbc.ca_video_streaming.pcap"
+}

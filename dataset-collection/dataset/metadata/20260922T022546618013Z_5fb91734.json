@@ -1,0 +1,156 @@
+{
+  "session_id": "20260922T022546618013Z_5fb91734",
+  "domain": "laravel-news.com",
+  "rank": 5186,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T02:25:46.618122+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790043947.88465,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790043948.944065,
+      "url": "https://laravel-news.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043948.946403,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043948.948587
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043950.95874,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043950.961905
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043952.9732301,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043952.9774861
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043954.984226,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043954.9875689
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043957.00447,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043957.007976
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043959.015001,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043959.017327
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043961.025595,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043961.0282838
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043963.0431092,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043963.047234
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043965.053697,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043965.055422
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043965.12564,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790043965.125677,
+      "success": true,
+      "verified_seconds": 16.152
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T02:25:47.945498+00:00",
+  "browser_success": true,
+  "verified_seconds": 16.152,
+  "capture_ended_at": "2026-09-22T02:26:05.127062+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 9320,
+  "capture_duration_seconds": 17.181564,
+  "duration_seconds": 18.645,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T02:26:05.263157+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T022546618013Z_5fb91734_laravel-news.com_web_browsing.pcap"
+}

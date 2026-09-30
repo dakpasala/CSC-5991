@@ -1,0 +1,40 @@
+{
+  "session_id": "20260923T022342026966Z_16ed1f45",
+  "domain": "instagram.com",
+  "rank": null,
+  "requested_activity": "social_media_browsing",
+  "started_at": "2026-09-23T02:23:42.027208+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790130224.010584,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top100_public_profile_access_unverified",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "78e2681c3ece5b5406c33d43ec6475004f227e0ea44149e7ca87e7ab76d505d0",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T02:23:44.076664+00:00",
+  "browser_success": false,
+  "reason": "Interrupted",
+  "error_type": "RuntimeError",
+  "tcpdump_exit_code": 0,
+  "packet_count": 399,
+  "capture_ended_at": "2026-09-23T02:23:45.190070+00:00",
+  "capture_duration_seconds": 1.113406,
+  "duration_seconds": 4.172,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-23T02:23:46.199322+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260923T022342026966Z_16ed1f45_instagram.com_social_media_browsing.pcap"
+}

@@ -1,0 +1,156 @@
+{
+  "session_id": "20260922T023731287731Z_9ca87142",
+  "domain": "supercell.com",
+  "rank": 428,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T02:37:31.289842+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790044652.88583,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790044653.462759,
+      "url": "https://supercell.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044653.4699259,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044653.472171
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044655.502614,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044655.5047302
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044657.5154932,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044657.517955
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044659.5259478,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044659.5277739
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044661.535894,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044661.5377522
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044663.546763,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044663.548491
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044665.556488,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044665.5579572
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044667.565543,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044667.5671082
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044669.575799,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044669.5777988
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044669.801876,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790044669.80205,
+      "success": true,
+      "verified_seconds": 16.315
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T02:37:32.943746+00:00",
+  "browser_success": true,
+  "verified_seconds": 16.315,
+  "capture_ended_at": "2026-09-22T02:37:49.811431+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 54544,
+  "capture_duration_seconds": 16.867685,
+  "duration_seconds": 18.747,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T02:37:50.035208+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T023731287731Z_9ca87142_supercell.com_web_browsing.pcap"
+}

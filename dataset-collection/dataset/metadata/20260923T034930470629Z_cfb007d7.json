@@ -1,0 +1,145 @@
+{
+  "session_id": "20260923T034930470629Z_cfb007d7",
+  "domain": "auctions.yahoo.co.jp",
+  "rank": 1000,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-23T03:49:30.470940+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790135372.040603,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790135374.1488268,
+      "url": "https://auctions.yahoo.co.jp/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135374.1509068,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135374.152728
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135376.193467,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135376.19553
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135378.211872,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135378.2135
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135380.228565,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135380.233056
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135382.248665,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135382.252255
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135384.2668958,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135384.271619
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135386.2858958,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135386.289453
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135388.3040798,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135388.307616
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135388.986231,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790135388.9863439,
+      "success": true,
+      "verified_seconds": 14.81
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "current_top10k_verified_2026-09-22",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "e8851e39f479552c001d4daffee8a36af204ce2a7b8234e912959ec7652a5111",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T03:49:32.102760+00:00",
+  "browser_success": true,
+  "verified_seconds": 14.81,
+  "capture_ended_at": "2026-09-23T03:49:48.990600+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 6746,
+  "capture_duration_seconds": 16.88784,
+  "duration_seconds": 18.679,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-23T03:49:49.149525+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260923T034930470629Z_cfb007d7_auctions.yahoo.co.jp_web_browsing.pcap"
+}

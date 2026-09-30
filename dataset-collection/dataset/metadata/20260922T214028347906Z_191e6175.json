@@ -1,0 +1,145 @@
+{
+  "session_id": "20260922T214028347906Z_191e6175",
+  "domain": "wordpress.org",
+  "rank": 48,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T21:40:28.348051+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790113229.67603,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790113230.883564,
+      "url": "https://wordpress.org/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790113230.886452,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790113230.888274
+    },
+    {
+      "event": "content_sample",
+      "time": 1790113232.906223,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790113232.9098308
+    },
+    {
+      "event": "content_sample",
+      "time": 1790113234.923611,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790113234.9277282
+    },
+    {
+      "event": "content_sample",
+      "time": 1790113236.9414499,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790113236.945487
+    },
+    {
+      "event": "content_sample",
+      "time": 1790113238.953682,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790113238.957576
+    },
+    {
+      "event": "content_sample",
+      "time": 1790113240.9713569,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790113240.9752588
+    },
+    {
+      "event": "content_sample",
+      "time": 1790113242.989208,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790113242.9934778
+    },
+    {
+      "event": "content_sample",
+      "time": 1790113245.004046,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790113245.0076742
+    },
+    {
+      "event": "content_sample",
+      "time": 1790113246.8554041,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790113246.855447,
+      "success": true,
+      "verified_seconds": 15.94
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top100_batch_2026-09-15",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "1fbc6503157781ed7c203a0c8b63f0c0d071378b8519f51a474c5687b647b3a2",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T21:40:29.733782+00:00",
+  "browser_success": true,
+  "verified_seconds": 15.94,
+  "capture_ended_at": "2026-09-22T21:40:46.856889+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 4064,
+  "capture_duration_seconds": 17.123107,
+  "duration_seconds": 18.626,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T21:40:46.973308+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T214028347906Z_191e6175_wordpress.org_web_browsing.pcap"
+}

@@ -1,0 +1,58 @@
+{
+  "session_id": "20260923T192659274266Z_84701243",
+  "domain": "www.axios.com",
+  "rank": null,
+  "requested_activity": "video_streaming",
+  "started_at": "2026-09-23T19:26:59.274464+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790191621.127979,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "browser_diagnostic",
+      "time": 1790191621.419911,
+      "phase": "navigation",
+      "access_denied": false,
+      "article_elements": 0,
+      "audio_elements": 0,
+      "login_prompt": false,
+      "post_links": 0,
+      "video_elements": 0,
+      "window_count": 1
+    },
+    {
+      "event": "done",
+      "success": false,
+      "reason": "Blocked page or browser error",
+      "error_type": "RuntimeError"
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "user_plan",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "d256ea77c85df8f97f90c100578890a8c8a040bee7a9c06a3cfdf3c71011761b",
+  "profile_mode": "fresh",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T19:27:01.194131+00:00",
+  "browser_success": false,
+  "reason": "Blocked page or browser error",
+  "error_type": "RuntimeError",
+  "capture_ended_at": "2026-09-23T19:27:01.423929+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 207,
+  "capture_duration_seconds": 0.229798,
+  "duration_seconds": 2.323,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-23T19:27:01.597100+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260923T192659274266Z_84701243_www.axios.com_video_streaming.pcap"
+}

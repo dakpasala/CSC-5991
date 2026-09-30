@@ -1,0 +1,156 @@
+{
+  "session_id": "20260922T025144226891Z_1530fb1f",
+  "domain": "huggingface.co",
+  "rank": 1147,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T02:51:44.227203+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790045505.4550889,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790045506.409773,
+      "url": "https://huggingface.co/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045506.412301,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045506.4140108
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045508.428416,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045508.4310908
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045510.443574,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045510.4466639
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045512.458386,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045512.46134
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045514.4762502,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045514.480642
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045516.4927769,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045516.495924
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045518.511227,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045518.514606
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045520.5264251,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045520.530178
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045522.544961,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045522.5485609
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045522.738091,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790045522.7381551,
+      "success": true,
+      "verified_seconds": 16.297
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T02:51:45.513089+00:00",
+  "browser_success": true,
+  "verified_seconds": 16.297,
+  "capture_ended_at": "2026-09-22T02:52:02.739651+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 4294,
+  "capture_duration_seconds": 17.226562,
+  "duration_seconds": 18.655,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T02:52:02.881567+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T025144226891Z_1530fb1f_huggingface.co_web_browsing.pcap"
+}

@@ -1,0 +1,123 @@
+{
+  "session_id": "20260923T035939736568Z_bbf33f89",
+  "domain": "ecnavi.jp",
+  "rank": 1000,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-23T03:59:39.737109+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790135981.9683478,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790135985.6330051,
+      "url": "https://ecnavi.jp/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135985.636956,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135985.662858
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135987.74033,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135987.759414
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135990.797667,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135990.801754
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135992.876128,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135992.878316
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135994.884772,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135994.888087
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135996.896568,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135996.8990169
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135998.2512288,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790135998.2514281,
+      "success": true,
+      "verified_seconds": 12.557
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "current_top10k_verified_2026-09-22",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "e8851e39f479552c001d4daffee8a36af204ce2a7b8234e912959ec7652a5111",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T03:59:42.029659+00:00",
+  "browser_success": true,
+  "verified_seconds": 12.557,
+  "capture_ended_at": "2026-09-23T03:59:58.256017+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 17373,
+  "capture_duration_seconds": 16.226358,
+  "duration_seconds": 19.144,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-23T03:59:58.880426+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260923T035939736568Z_bbf33f89_ecnavi.jp_web_browsing.pcap"
+}

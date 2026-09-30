@@ -1,0 +1,56 @@
+{
+  "session_id": "20260922T033506272520Z_8cb755a6",
+  "domain": "trustedstack.com",
+  "rank": 2199,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T03:35:06.273388+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790048107.5109289,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790048108.6868548,
+      "url": "https://trustedstack.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790048108.6890712,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790048108.690882
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T03:35:07.579456+00:00",
+  "browser_success": false,
+  "reason": "Interrupted",
+  "error_type": "RuntimeError",
+  "tcpdump_exit_code": 0,
+  "packet_count": 2017,
+  "capture_ended_at": "2026-09-22T03:35:09.712855+00:00",
+  "capture_duration_seconds": 2.133399,
+  "duration_seconds": 4.458,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-22T03:35:10.730395+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260922T033506272520Z_8cb755a6_trustedstack.com_web_browsing.pcap"
+}

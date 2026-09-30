@@ -1,0 +1,68 @@
+{
+  "session_id": "20260923T021520491160Z_e4cb7809",
+  "domain": "hianimez.org",
+  "rank": null,
+  "requested_activity": "video_streaming",
+  "started_at": "2026-09-23T02:15:20.491374+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790129722.512146,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790129724.2589812,
+      "url": "https://hianimez.org/watch/solo-leveling-season-2-arise-from-the-shadow-3eukp/ep-1"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790129724.259072,
+      "selector": "video"
+    },
+    {
+      "event": "browser_diagnostic",
+      "time": 1790129739.6910121,
+      "phase": "wait_for_selector",
+      "access_denied": false,
+      "article_elements": 0,
+      "audio_elements": 0,
+      "login_prompt": false,
+      "post_links": 0,
+      "video_elements": 0,
+      "window_count": 1
+    },
+    {
+      "event": "done",
+      "success": false,
+      "reason": "Browser action failed during wait_for_selector; inspect access or selectors",
+      "error_type": "TimeoutException"
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "user_plan",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "4ff387f597a5f741f5373139b8df6f4f3168fefc9070493ad771e510c0e60afb",
+  "profile_mode": "fresh",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T02:15:22.570908+00:00",
+  "browser_success": false,
+  "reason": "Browser action failed during wait_for_selector; inspect access or selectors",
+  "error_type": "TimeoutException",
+  "capture_ended_at": "2026-09-23T02:15:39.695181+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 43915,
+  "capture_duration_seconds": 17.124273,
+  "duration_seconds": 19.426,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-23T02:15:39.917434+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260923T021520491160Z_e4cb7809_hianimez.org_video_streaming.pcap"
+}

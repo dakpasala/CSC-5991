@@ -1,0 +1,156 @@
+{
+  "session_id": "20260921T224258377738Z_fc97259c",
+  "domain": "tv9telugu.com",
+  "rank": 9381,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-21T22:42:58.378331+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790030579.419004,
+      "browser_version": "153.0.8010.48",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790030580.22646,
+      "url": "https://tv9telugu.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790030580.228884,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790030580.230583
+    },
+    {
+      "event": "content_sample",
+      "time": 1790030582.2638469,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790030582.265378
+    },
+    {
+      "event": "content_sample",
+      "time": 1790030584.283915,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790030584.287116
+    },
+    {
+      "event": "content_sample",
+      "time": 1790030586.3091772,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790030586.312664
+    },
+    {
+      "event": "content_sample",
+      "time": 1790030588.336854,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790030588.340554
+    },
+    {
+      "event": "content_sample",
+      "time": 1790030590.353257,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790030590.355776
+    },
+    {
+      "event": "content_sample",
+      "time": 1790030592.391212,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790030592.394698
+    },
+    {
+      "event": "content_sample",
+      "time": 1790030594.425218,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790030594.4305081
+    },
+    {
+      "event": "content_sample",
+      "time": 1790030596.46256,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790030596.465025
+    },
+    {
+      "event": "content_sample",
+      "time": 1790030596.8931699,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790030596.893213,
+      "success": true,
+      "verified_seconds": 16.637
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.48",
+  "capture_started_at": "2026-09-21T22:42:59.476764+00:00",
+  "browser_success": true,
+  "verified_seconds": 16.637,
+  "capture_ended_at": "2026-09-21T22:43:16.894862+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 19067,
+  "capture_duration_seconds": 17.418098,
+  "duration_seconds": 18.823,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-21T22:43:17.201388+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260921T224258377738Z_fc97259c_tv9telugu.com_web_browsing.pcap"
+}

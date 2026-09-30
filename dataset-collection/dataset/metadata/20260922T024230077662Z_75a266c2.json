@@ -1,0 +1,145 @@
+{
+  "session_id": "20260922T024230077662Z_75a266c2",
+  "domain": "wpguardian.com",
+  "rank": 740,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T02:42:30.077942+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790044951.2982988,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790044952.261326,
+      "url": "https://wpguardian.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044952.2637582,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044952.265522
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044954.706018,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044954.707951
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044956.7226188,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044956.726905
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044958.737042,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044958.740265
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044960.7550359,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044960.758849
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044962.77213,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044962.776133
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044964.7972312,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044964.802907
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044966.8181891,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044966.821295
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044968.5935109,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790044968.593597,
+      "success": true,
+      "verified_seconds": 16.302
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T02:42:31.356578+00:00",
+  "browser_success": true,
+  "verified_seconds": 16.302,
+  "capture_ended_at": "2026-09-22T02:42:48.597641+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 7271,
+  "capture_duration_seconds": 17.241063,
+  "duration_seconds": 18.706,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T02:42:48.783671+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T024230077662Z_75a266c2_wpguardian.com_web_browsing.pcap"
+}

@@ -1,0 +1,156 @@
+{
+  "session_id": "20260922T033212564927Z_35228d4d",
+  "domain": "alexismilan.com",
+  "rank": 2086,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T03:32:12.565700+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790047933.909906,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790047934.569706,
+      "url": "https://alexismilan.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047934.572674,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047934.5747578
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047936.5887842,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047936.592333
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047938.606455,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047938.610376
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047940.6248262,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047940.6285179
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047942.640694,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047942.643224
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047944.657421,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047944.661001
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047946.667048,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047946.669451
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047948.682364,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047948.6864371
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047950.700254,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047950.7035468
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047951.078826,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790047951.079028,
+      "success": true,
+      "verified_seconds": 16.478
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T03:32:13.966959+00:00",
+  "browser_success": true,
+  "verified_seconds": 16.478,
+  "capture_ended_at": "2026-09-22T03:32:31.083172+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 3163,
+  "capture_duration_seconds": 17.116213,
+  "duration_seconds": 18.684,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T03:32:31.248529+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T033212564927Z_35228d4d_alexismilan.com_web_browsing.pcap"
+}

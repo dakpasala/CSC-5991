@@ -1,0 +1,156 @@
+{
+  "session_id": "20260922T033404114499Z_01ad923b",
+  "domain": "sonobi.com",
+  "rank": 2153,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T03:34:04.114693+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790048045.482979,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790048046.429877,
+      "url": "https://sonobi.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790048046.432189,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790048046.433894
+    },
+    {
+      "event": "content_sample",
+      "time": 1790048048.4453278,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790048048.4476318
+    },
+    {
+      "event": "content_sample",
+      "time": 1790048050.45742,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790048050.460051
+    },
+    {
+      "event": "content_sample",
+      "time": 1790048052.472942,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790048052.47698
+    },
+    {
+      "event": "content_sample",
+      "time": 1790048054.487369,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790048054.489496
+    },
+    {
+      "event": "content_sample",
+      "time": 1790048056.502364,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790048056.5063958
+    },
+    {
+      "event": "content_sample",
+      "time": 1790048058.52001,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790048058.5230982
+    },
+    {
+      "event": "content_sample",
+      "time": 1790048060.540978,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790048060.543137
+    },
+    {
+      "event": "content_sample",
+      "time": 1790048062.5567229,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790048062.561758
+    },
+    {
+      "event": "content_sample",
+      "time": 1790048062.6229608,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790048062.6231198,
+      "success": true,
+      "verified_seconds": 16.164
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T03:34:05.542528+00:00",
+  "browser_success": true,
+  "verified_seconds": 16.164,
+  "capture_ended_at": "2026-09-22T03:34:22.627319+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 7843,
+  "capture_duration_seconds": 17.084791,
+  "duration_seconds": 18.681,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T03:34:22.796072+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T033404114499Z_01ad923b_sonobi.com_web_browsing.pcap"
+}

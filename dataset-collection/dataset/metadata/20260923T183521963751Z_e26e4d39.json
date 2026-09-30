@@ -1,0 +1,156 @@
+{
+  "session_id": "20260923T183521963751Z_e26e4d39",
+  "domain": "www.theguardian.com",
+  "rank": null,
+  "requested_activity": "video_streaming",
+  "started_at": "2026-09-23T18:35:21.963934+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790188523.4647648,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790188524.744917,
+      "url": "https://www.theguardian.com/global-development/ng-interactive/2026/sep/23/this-is-where-i-live-now-the-back-of-a-truck-a-day-in-the-life-of-a-grandmother-in-gaza"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790188524.7449641,
+      "selector": "video"
+    },
+    {
+      "event": "play_requested",
+      "time": 1790188524.75175,
+      "media": "video"
+    },
+    {
+      "event": "media_sample",
+      "time": 1790188525.768066,
+      "progressing": true,
+      "media_time": 1.099857
+    },
+    {
+      "event": "media_sample",
+      "time": 1790188526.784089,
+      "progressing": true,
+      "media_time": 2.115347
+    },
+    {
+      "event": "media_sample",
+      "time": 1790188527.7900941,
+      "progressing": true,
+      "media_time": 3.121804
+    },
+    {
+      "event": "media_sample",
+      "time": 1790188528.9303281,
+      "progressing": true,
+      "media_time": 4.25789
+    },
+    {
+      "event": "media_sample",
+      "time": 1790188529.950752,
+      "progressing": true,
+      "media_time": 5.276464
+    },
+    {
+      "event": "media_sample",
+      "time": 1790188530.9603899,
+      "progressing": false,
+      "media_time": 5.48
+    },
+    {
+      "event": "media_sample",
+      "time": 1790188531.967191,
+      "progressing": false,
+      "media_time": 5.48
+    },
+    {
+      "event": "media_sample",
+      "time": 1790188532.972446,
+      "progressing": false,
+      "media_time": 5.48
+    },
+    {
+      "event": "media_sample",
+      "time": 1790188533.986489,
+      "progressing": false,
+      "media_time": 5.48
+    },
+    {
+      "event": "media_sample",
+      "time": 1790188534.997065,
+      "progressing": false,
+      "media_time": 5.48
+    },
+    {
+      "event": "media_sample",
+      "time": 1790188536.009572,
+      "progressing": false,
+      "media_time": 5.48
+    },
+    {
+      "event": "media_sample",
+      "time": 1790188537.017808,
+      "progressing": false,
+      "media_time": 5.48
+    },
+    {
+      "event": "media_sample",
+      "time": 1790188538.026921,
+      "progressing": false,
+      "media_time": 5.48
+    },
+    {
+      "event": "media_sample",
+      "time": 1790188539.032345,
+      "progressing": false,
+      "media_time": 5.48
+    },
+    {
+      "event": "media_sample",
+      "time": 1790188540.0382788,
+      "progressing": false,
+      "media_time": 5.48
+    },
+    {
+      "event": "media_sample",
+      "time": 1790188540.473154,
+      "progressing": false,
+      "media_time": 5.48
+    },
+    {
+      "event": "done",
+      "time": 1790188540.4732149,
+      "success": true,
+      "verified_seconds": 5.196
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "user_plan",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "c242f41a702fd475d5662690806ac20df338c4570ea3cb70b99cbc960cafa209",
+  "profile_mode": "fresh",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T18:35:23.519575+00:00",
+  "browser_success": true,
+  "verified_seconds": 5.196,
+  "capture_ended_at": "2026-09-23T18:35:40.480368+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 25300,
+  "capture_duration_seconds": 16.960793,
+  "duration_seconds": 19.054,
+  "success": true,
+  "actual_activity": "video_streaming",
+  "parent_activity": "video_streaming",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-23T18:35:41.018330+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/video_streaming/20260923T183521963751Z_e26e4d39_www.theguardian.com_video_streaming.pcap"
+}

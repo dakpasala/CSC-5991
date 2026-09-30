@@ -1,0 +1,155 @@
+{
+  "session_id": "20260923T202334023695Z_cfa8b992",
+  "domain": "youtube.com",
+  "rank": null,
+  "requested_activity": "video_streaming",
+  "started_at": "2026-09-23T20:23:34.023902+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790195015.1662312,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "session_cookies_injected",
+      "time": 1790195015.8170838,
+      "count": 22
+    },
+    {
+      "event": "navigate",
+      "time": 1790195018.163279,
+      "url": "https://www.youtube.com/watch"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790195018.1633239,
+      "selector": "video"
+    },
+    {
+      "event": "play_requested",
+      "time": 1790195018.232439,
+      "media": "video"
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195019.279391,
+      "progressing": true,
+      "media_time": 1.451808
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195020.286707,
+      "progressing": true,
+      "media_time": 2.4586
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195021.300501,
+      "progressing": true,
+      "media_time": 3.471494
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195022.312371,
+      "progressing": true,
+      "media_time": 4.480269
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195023.321651,
+      "progressing": true,
+      "media_time": 5.490888
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195024.332984,
+      "progressing": true,
+      "media_time": 6.50544
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195025.3446279,
+      "progressing": true,
+      "media_time": 7.515632
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195026.355668,
+      "progressing": true,
+      "media_time": 8.525991
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195027.369864,
+      "progressing": true,
+      "media_time": 9.54149
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195028.381044,
+      "progressing": true,
+      "media_time": 10.551843
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195029.391993,
+      "progressing": true,
+      "media_time": 11.560801
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195030.403328,
+      "progressing": true,
+      "media_time": 12.573933
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195031.412597,
+      "progressing": true,
+      "media_time": 13.584571
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195032.4253418,
+      "progressing": true,
+      "media_time": 14.59607
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195032.535883,
+      "progressing": true,
+      "media_time": 14.706295
+    },
+    {
+      "event": "done",
+      "time": 1790195032.535979,
+      "success": true,
+      "verified_seconds": 14.27
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top100_previous_30_second_success_not_guaranteed",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "c22f5fb605a9647a123e30f413e3496c43c4860d4f3e16b4499f37fad35fec3e",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T20:23:35.224225+00:00",
+  "browser_success": true,
+  "verified_seconds": 14.27,
+  "capture_ended_at": "2026-09-23T20:23:52.540093+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 8886,
+  "capture_duration_seconds": 17.315868,
+  "duration_seconds": 18.71,
+  "success": true,
+  "actual_activity": "video_streaming",
+  "parent_activity": "video_streaming",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-23T20:23:52.734008+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/video_streaming/20260923T202334023695Z_cfa8b992_youtube.com_video_streaming.pcap"
+}

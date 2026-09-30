@@ -1,0 +1,145 @@
+{
+  "session_id": "20260922T021906472746Z_b7fbdc7c",
+  "domain": "gitlab.com",
+  "rank": 386,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T02:19:06.473286+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790043547.553994,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790043548.9384131,
+      "url": "https://about.gitlab.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043548.940819,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043548.942652
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043550.969195,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043550.970727
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043552.980764,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043552.983047
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043554.998196,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043555.002091
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043557.013145,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043557.014763
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043559.0431302,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043559.045374
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043561.06162,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043561.065681
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043563.082324,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043563.087138
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043564.986173,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790043564.98629,
+      "success": true,
+      "verified_seconds": 16.023
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T02:19:07.611565+00:00",
+  "browser_success": true,
+  "verified_seconds": 16.023,
+  "capture_ended_at": "2026-09-22T02:19:24.990543+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 6884,
+  "capture_duration_seconds": 17.378978,
+  "duration_seconds": 18.688,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T02:19:25.160834+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T021906472746Z_b7fbdc7c_gitlab.com_web_browsing.pcap"
+}

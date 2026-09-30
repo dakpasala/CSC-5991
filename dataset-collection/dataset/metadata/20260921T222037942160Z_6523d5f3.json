@@ -1,0 +1,144 @@
+{
+  "session_id": "20260921T222037942160Z_6523d5f3",
+  "domain": "x.com",
+  "rank": 49,
+  "requested_activity": "social_media_browsing",
+  "started_at": "2026-09-21T22:20:37.942379+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790029239.2310662,
+      "browser_version": "153.0.8010.48",
+      "headed": false
+    },
+    {
+      "event": "session_cookies_injected",
+      "time": 1790029239.42364,
+      "count": 14
+    },
+    {
+      "event": "navigate",
+      "time": 1790029242.505617,
+      "url": "https://x.com/NASA"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790029242.5056798,
+      "selector": "article"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029242.52267,
+      "content": true,
+      "matching_elements": 2,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790029242.525022
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029244.537832,
+      "content": true,
+      "matching_elements": 2,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790029244.540137
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029246.5510762,
+      "content": true,
+      "matching_elements": 2,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790029246.5578501
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029248.5686011,
+      "content": true,
+      "matching_elements": 3,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790029248.5716841
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029250.587992,
+      "content": true,
+      "matching_elements": 3,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790029250.592427
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029252.6232681,
+      "content": true,
+      "matching_elements": 2,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790029252.629149
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029254.641862,
+      "content": true,
+      "matching_elements": 2,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790029254.644395
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029256.460225,
+      "content": true,
+      "matching_elements": 3,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790029256.46034,
+      "success": true,
+      "verified_seconds": 13.909
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top100_public_profile_access_unverified",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "b4a18b16b1f09f545b9ca8762bce7ecd9a7a60066d8ec92eac0b3ec2700b5a44",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.48",
+  "capture_started_at": "2026-09-21T22:20:39.289509+00:00",
+  "browser_success": true,
+  "verified_seconds": 13.909,
+  "capture_ended_at": "2026-09-21T22:20:56.464516+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 30224,
+  "capture_duration_seconds": 17.175007,
+  "duration_seconds": 19.568,
+  "success": true,
+  "actual_activity": "social_media_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": "social_media",
+  "status": "success",
+  "ended_at": "2026-09-21T22:20:57.512011+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/social_media_browsing/20260921T222037942160Z_6523d5f3_x.com_social_media_browsing.pcap"
+}

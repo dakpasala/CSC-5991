@@ -1,0 +1,163 @@
+{
+  "session_id": "20260922T231703901958Z_e44ae703",
+  "domain": "www.iq.com",
+  "rank": null,
+  "requested_activity": "video_streaming",
+  "started_at": "2026-09-22T23:17:03.902161+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790119025.134358,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790119026.412513,
+      "url": "https://www.iq.com/play/between-her-and-her-romance-wxjtxt6p5m"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790119026.412556,
+      "selector": "video"
+    },
+    {
+      "event": "play_requested",
+      "time": 1790119026.892809,
+      "media": "video"
+    },
+    {
+      "event": "media_sample",
+      "time": 1790119027.943108,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790119028.965825,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790119030.053542,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790119031.070237,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790119032.076471,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790119033.086338,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790119034.098125,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790119035.1073081,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790119036.119919,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790119037.1267798,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790119038.1319182,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790119039.139076,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790119040.147668,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790119041.163092,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790119042.174808,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "browser_diagnostic",
+      "time": 1790119042.182028,
+      "phase": "playback",
+      "access_denied": false,
+      "article_elements": 0,
+      "audio_elements": 0,
+      "login_prompt": false,
+      "post_links": 0,
+      "video_elements": 3,
+      "window_count": 1
+    },
+    {
+      "event": "done",
+      "success": false,
+      "reason": "Playback/call absent or stalled",
+      "error_type": "RuntimeError"
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "user_plan",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "df4716a56c6021bf66260522e31becc8123a750a3d7dcb6ba0a37615b865799c",
+  "profile_mode": "fresh",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T23:17:05.192667+00:00",
+  "browser_success": false,
+  "reason": "Playback/call absent or stalled",
+  "error_type": "RuntimeError",
+  "capture_ended_at": "2026-09-22T23:17:22.184019+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 67378,
+  "capture_duration_seconds": 16.991352,
+  "duration_seconds": 18.573,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-22T23:17:22.475099+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260922T231703901958Z_e44ae703_www.iq.com_video_streaming.pcap"
+}

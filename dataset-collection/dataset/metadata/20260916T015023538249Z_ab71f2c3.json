@@ -1,0 +1,354 @@
+{
+  "session_id": "20260916T015023538249Z_ab71f2c3",
+  "domain": "yandex.net",
+  "rank": 87,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-16T01:50:23.538793+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1789523425.5133388,
+      "browser_version": "152.0.7977.84",
+      "headed": true
+    },
+    {
+      "event": "navigate",
+      "time": 1789523428.7076852,
+      "url": "https://ya.ru/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523428.710009,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523428.711763
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523430.72471,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523430.7269702
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523432.741409,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523432.744916
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523434.762315,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523434.765648
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523436.779383,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523436.7828312
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523438.795972,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523438.7982771
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523440.808974,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523440.812404
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523442.823307,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523442.825619
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523444.835236,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523444.837395
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523446.843287,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523446.846973
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523448.857464,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523448.860265
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523450.8753111,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523450.878752
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523452.89187,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523452.895435
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523454.90852,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523454.912077
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523456.920663,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523456.921941
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523458.936224,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523458.939841
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523460.953964,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523460.957289
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523462.9672441,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523462.9695868
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523464.982282,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523464.986239
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523466.999727,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523467.00335
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523469.018519,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523469.022283
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523471.035743,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523471.03948
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523473.053034,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523473.0569758
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523475.068182,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523475.071181
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523477.0860212,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523477.089431
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523479.10257,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523479.1061351
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523481.118665,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523481.121321
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523482.050071,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1789523482.050281,
+      "success": true,
+      "verified_seconds": 53.257
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 60.0,
+  "source_scope": "top100_batch_2026-09-15",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "8f3686dc6920d00c589e766d1180ffb5cd5d60e82d42be00c90e3fc9c23060a5",
+  "profile_mode": "persistent",
+  "browser_version": "152.0.7977.84",
+  "capture_started_at": "2026-09-16T01:50:25.595706+00:00",
+  "browser_success": true,
+  "verified_seconds": 53.257,
+  "capture_ended_at": "2026-09-16T01:51:22.054411+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 5184,
+  "capture_duration_seconds": 56.458705,
+  "duration_seconds": 58.685,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-16T01:51:22.224502+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260916T015023538249Z_ab71f2c3_yandex.net_web_browsing.pcap"
+}

@@ -1,0 +1,145 @@
+{
+  "session_id": "20260922T031759795583Z_33c42d61",
+  "domain": "packzy.com",
+  "rank": 1709,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T03:17:59.796453+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790047080.9580648,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790047083.4834912,
+      "url": "https://packzy.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047083.485565,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047083.487157
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047085.498733,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047085.500957
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047087.50939,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047087.5112839
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047089.518621,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047089.521114
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047091.529666,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047091.53195
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047093.550695,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047093.553386
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047095.564808,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047095.569448
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047097.577783,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047097.5805151
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047098.30735,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790047098.307435,
+      "success": true,
+      "verified_seconds": 14.801
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T03:18:01.015557+00:00",
+  "browser_success": true,
+  "verified_seconds": 14.801,
+  "capture_ended_at": "2026-09-22T03:18:18.311673+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 2601,
+  "capture_duration_seconds": 17.296116,
+  "duration_seconds": 18.665,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T03:18:18.460494+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T031759795583Z_33c42d61_packzy.com_web_browsing.pcap"
+}

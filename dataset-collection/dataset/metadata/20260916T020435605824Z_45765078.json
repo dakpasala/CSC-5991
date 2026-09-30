@@ -1,0 +1,377 @@
+{
+  "session_id": "20260916T020435605824Z_45765078",
+  "domain": "instagram.com",
+  "rank": 11,
+  "requested_activity": "video_streaming",
+  "started_at": "2026-09-16T02:04:35.606585+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1789524277.013964,
+      "browser_version": "152.0.7977.84",
+      "headed": true
+    },
+    {
+      "event": "session_cookies_injected",
+      "time": 1789524277.763516,
+      "count": 10
+    },
+    {
+      "event": "navigate",
+      "time": 1789524281.696991,
+      "url": "https://www.instagram.com/reels/Dc8yFqSRIBM/"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1789524281.6970398,
+      "selector": "video"
+    },
+    {
+      "event": "play_requested",
+      "time": 1789524281.711503,
+      "media": "video"
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524282.726336,
+      "progressing": true,
+      "media_time": 1.04773
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524283.7376158,
+      "progressing": true,
+      "media_time": 2.05816
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524284.747502,
+      "progressing": true,
+      "media_time": 3.067286
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524286.1378171,
+      "progressing": false,
+      "media_time": 0.158306
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524287.1627939,
+      "progressing": true,
+      "media_time": 1.179628
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524288.18007,
+      "progressing": true,
+      "media_time": 2.199182
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524289.1915672,
+      "progressing": true,
+      "media_time": 3.210263
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524290.2021198,
+      "progressing": true,
+      "media_time": 4.218779
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524291.212428,
+      "progressing": true,
+      "media_time": 5.232316
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524292.219532,
+      "progressing": true,
+      "media_time": 6.238619
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524293.231522,
+      "progressing": true,
+      "media_time": 7.248609
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524294.243999,
+      "progressing": true,
+      "media_time": 8.262387
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524295.256886,
+      "progressing": true,
+      "media_time": 9.274318
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524296.267072,
+      "progressing": true,
+      "media_time": 10.285715
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524297.276279,
+      "progressing": true,
+      "media_time": 11.296119
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524298.2856262,
+      "progressing": true,
+      "media_time": 12.305031
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524299.2928598,
+      "progressing": true,
+      "media_time": 13.312585
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524300.3000991,
+      "progressing": true,
+      "media_time": 14.319395
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524301.310239,
+      "progressing": false,
+      "media_time": 0.017938
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524302.3193312,
+      "progressing": true,
+      "media_time": 0.98271
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524303.330282,
+      "progressing": true,
+      "media_time": 1.99325
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524304.3404071,
+      "progressing": true,
+      "media_time": 3.003027
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524305.351018,
+      "progressing": true,
+      "media_time": 4.012796
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524306.3606532,
+      "progressing": true,
+      "media_time": 5.025006
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524307.368223,
+      "progressing": true,
+      "media_time": 6.031571
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524308.378845,
+      "progressing": true,
+      "media_time": 7.040921
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524309.39062,
+      "progressing": true,
+      "media_time": 8.050543
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524310.401386,
+      "progressing": true,
+      "media_time": 9.064442
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524311.413313,
+      "progressing": true,
+      "media_time": 10.074821
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524312.419213,
+      "progressing": true,
+      "media_time": 11.078262
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524313.426879,
+      "progressing": true,
+      "media_time": 12.086132
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524314.440714,
+      "progressing": true,
+      "media_time": 13.101827
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524315.457741,
+      "progressing": true,
+      "media_time": 14.118349
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524316.472269,
+      "progressing": true,
+      "media_time": 15.134884
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524317.484596,
+      "progressing": false,
+      "media_time": 0.784042
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524318.494318,
+      "progressing": true,
+      "media_time": 1.795595
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524319.506502,
+      "progressing": true,
+      "media_time": 2.806724
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524320.518066,
+      "progressing": true,
+      "media_time": 3.819694
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524321.5265212,
+      "progressing": true,
+      "media_time": 4.827839
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524322.536433,
+      "progressing": true,
+      "media_time": 5.837487
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524323.545336,
+      "progressing": true,
+      "media_time": 6.847436
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524324.551856,
+      "progressing": true,
+      "media_time": 7.853667
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524325.560815,
+      "progressing": true,
+      "media_time": 8.861029
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524326.571328,
+      "progressing": true,
+      "media_time": 9.871936
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524327.58038,
+      "progressing": true,
+      "media_time": 10.879118
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524328.587803,
+      "progressing": true,
+      "media_time": 11.889193
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524329.59922,
+      "progressing": true,
+      "media_time": 12.896261
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524330.6104572,
+      "progressing": true,
+      "media_time": 13.910903
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524331.623659,
+      "progressing": true,
+      "media_time": 14.921404
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524332.633976,
+      "progressing": false,
+      "media_time": 0.572312
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524333.650581,
+      "progressing": true,
+      "media_time": 1.588175
+    },
+    {
+      "event": "media_sample",
+      "time": 1789524334.114722,
+      "progressing": true,
+      "media_time": 2.05442
+    },
+    {
+      "event": "done",
+      "time": 1789524334.114773,
+      "success": true,
+      "verified_seconds": 47.977
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 60.0,
+  "source_scope": "login_required_reels_player_short_clip_looped",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "3901484afffaa3048cb566bfc80fec1e4e2a3851abf78f752f2bc3aab1c3daf6",
+  "profile_mode": "persistent",
+  "browser_version": "152.0.7977.84",
+  "capture_started_at": "2026-09-16T02:04:37.073568+00:00",
+  "browser_success": true,
+  "verified_seconds": 47.977,
+  "capture_ended_at": "2026-09-16T02:05:34.116365+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 88528,
+  "capture_duration_seconds": 57.042797,
+  "duration_seconds": 58.79,
+  "success": true,
+  "actual_activity": "video_streaming",
+  "parent_activity": "video_streaming",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-16T02:05:34.396273+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/video_streaming/20260916T020435605824Z_45765078_instagram.com_video_streaming.pcap"
+}

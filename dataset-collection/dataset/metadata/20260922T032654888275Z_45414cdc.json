@@ -1,0 +1,134 @@
+{
+  "session_id": "20260922T032654888275Z_45414cdc",
+  "domain": "mega.nz",
+  "rank": 1879,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T03:26:54.888869+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790047616.0295548,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790047619.8509371,
+      "url": "https://mega.io/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047619.8532312,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047619.855393
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047621.877505,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047621.879204
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047623.89812,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047623.901908
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047625.917402,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047625.920515
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047627.9360042,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047627.9397051
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047629.949534,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047629.952139
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047631.967853,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047631.971956
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047633.403478,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790047633.403606,
+      "success": true,
+      "verified_seconds": 13.529
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T03:26:56.089558+00:00",
+  "browser_success": true,
+  "verified_seconds": 13.529,
+  "capture_ended_at": "2026-09-22T03:27:13.407693+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 16346,
+  "capture_duration_seconds": 17.318135,
+  "duration_seconds": 18.665,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T03:27:13.553257+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T032654888275Z_45414cdc_mega.nz_web_browsing.pcap"
+}

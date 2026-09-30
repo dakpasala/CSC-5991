@@ -1,0 +1,142 @@
+{
+  "session_id": "20260923T202928482338Z_c9e1917e",
+  "domain": "www.skysports.com",
+  "rank": null,
+  "requested_activity": "video_streaming",
+  "started_at": "2026-09-23T20:29:28.482670+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790195369.882137,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790195371.4401631,
+      "url": "https://www.skysports.com/f1/news/13589266/f1-title-race-why-azerbaijan-malaysia-singapore-triple-header-will-shape-what-rest-of-2026-championship-chase-will-look-like"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790195371.440208,
+      "selector": "video"
+    },
+    {
+      "event": "play_requested",
+      "time": 1790195371.465186,
+      "media": "video"
+    },
+    {
+      "event": "play_click_fallback",
+      "time": 1790195373.1732328,
+      "selector": "video"
+    },
+    {
+      "event": "play_click_fallback",
+      "time": 1790195374.262402,
+      "selector": ".vjs-big-play-button"
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195376.311496,
+      "progressing": true,
+      "media_time": 1.944225
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195377.322165,
+      "progressing": true,
+      "media_time": 2.957598
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195378.331349,
+      "progressing": true,
+      "media_time": 3.964974
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195379.3431108,
+      "progressing": true,
+      "media_time": 4.979052
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195380.353836,
+      "progressing": true,
+      "media_time": 5.989088
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195381.364068,
+      "progressing": true,
+      "media_time": 7.000456
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195382.369942,
+      "progressing": true,
+      "media_time": 8.007402
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195383.377295,
+      "progressing": true,
+      "media_time": 9.014071
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195384.391746,
+      "progressing": true,
+      "media_time": 10.027439
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195385.4075782,
+      "progressing": true,
+      "media_time": 11.040184
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195386.420952,
+      "progressing": true,
+      "media_time": 12.05456
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195386.993611,
+      "progressing": true,
+      "media_time": 12.624141
+    },
+    {
+      "event": "done",
+      "time": 1790195386.993744,
+      "success": true,
+      "verified_seconds": 11.711
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "hand_curated_verified_playback_2026-09-23",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "c22f5fb605a9647a123e30f413e3496c43c4860d4f3e16b4499f37fad35fec3e",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T20:29:29.938976+00:00",
+  "browser_success": true,
+  "verified_seconds": 11.711,
+  "capture_ended_at": "2026-09-23T20:29:46.997895+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 23689,
+  "capture_duration_seconds": 17.058919,
+  "duration_seconds": 18.741,
+  "success": true,
+  "actual_activity": "video_streaming",
+  "parent_activity": "video_streaming",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-23T20:29:47.223452+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/video_streaming/20260923T202928482338Z_c9e1917e_www.skysports.com_video_streaming.pcap"
+}

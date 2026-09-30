@@ -1,0 +1,90 @@
+{
+  "session_id": "20260922T025518204545Z_031396ce",
+  "domain": "amap.com",
+  "rank": 1252,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T02:55:18.205108+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790045719.382316,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790045731.19456,
+      "url": "https://amap.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045731.196825,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045731.198708
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045733.230968,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045733.2329018
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045735.249208,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045735.250574
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045736.715435,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790045736.715543,
+      "success": true,
+      "verified_seconds": 5.513
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T02:55:19.441260+00:00",
+  "browser_success": true,
+  "verified_seconds": 5.513,
+  "capture_ended_at": "2026-09-22T02:55:36.719660+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 6808,
+  "capture_duration_seconds": 17.2784,
+  "duration_seconds": 18.714,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T02:55:36.918951+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T025518204545Z_031396ce_amap.com_web_browsing.pcap"
+}

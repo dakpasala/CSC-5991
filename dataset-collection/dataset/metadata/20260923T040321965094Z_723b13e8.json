@@ -1,0 +1,58 @@
+{
+  "session_id": "20260923T040321965094Z_723b13e8",
+  "domain": "fe.afip.gob.ar",
+  "rank": 1000,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-23T04:03:21.965199+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790136203.51743,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "browser_diagnostic",
+      "time": 1790136221.0103061,
+      "phase": "navigation",
+      "access_denied": false,
+      "article_elements": 0,
+      "audio_elements": 0,
+      "login_prompt": false,
+      "post_links": 0,
+      "video_elements": 0,
+      "window_count": 1
+    },
+    {
+      "event": "done",
+      "success": false,
+      "reason": "Browser action failed during navigation; inspect access or selectors",
+      "error_type": "TimeoutException"
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "current_top10k_verified_2026-09-22",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "e8851e39f479552c001d4daffee8a36af204ce2a7b8234e912959ec7652a5111",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T04:03:23.576813+00:00",
+  "browser_success": false,
+  "reason": "Browser action failed during navigation; inspect access or selectors",
+  "error_type": "TimeoutException",
+  "capture_ended_at": "2026-09-23T04:03:41.015104+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 2788,
+  "capture_duration_seconds": 17.438291,
+  "duration_seconds": 19.225,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-23T04:03:41.190578+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260923T040321965094Z_723b13e8_fe.afip.gob.ar_web_browsing.pcap"
+}

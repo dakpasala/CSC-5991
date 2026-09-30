@@ -1,0 +1,132 @@
+{
+  "session_id": "20260923T041458966183Z_c5d4a4b4",
+  "domain": "mytuner-radio.com",
+  "rank": null,
+  "requested_activity": "audio_streaming",
+  "started_at": "2026-09-23T04:14:58.966450+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790136901.4292579,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790136904.889559,
+      "url": "https://mytuner-radio.com/radio/kbue-que-buena-1055-943-fm-us-only-403364/"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790136904.889678,
+      "selector": "audio"
+    },
+    {
+      "event": "play_requested",
+      "time": 1790136904.897692,
+      "media": "audio"
+    },
+    {
+      "event": "play_click_fallback",
+      "time": 1790136906.766377,
+      "selector": "[aria-label*='play' i]"
+    },
+    {
+      "event": "media_sample",
+      "time": 1790136909.577303,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790136910.588758,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790136911.768963,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790136912.779079,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790136913.786887,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790136914.7945988,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790136915.80004,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790136916.8082519,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790136917.4742432,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "browser_diagnostic",
+      "time": 1790136917.486478,
+      "phase": "playback",
+      "access_denied": false,
+      "article_elements": 0,
+      "audio_elements": 1,
+      "login_prompt": true,
+      "post_links": 1,
+      "video_elements": 0,
+      "window_count": 2
+    },
+    {
+      "event": "done",
+      "success": false,
+      "reason": "Media was not progressing at session end",
+      "error_type": "RuntimeError"
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "user_plan",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "fe21252b8611a50ccc6d4cdee2eca662372dbacb2538ea65b5f657536b24193b",
+  "profile_mode": "fresh",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T04:15:01.489599+00:00",
+  "browser_success": false,
+  "reason": "Media was not progressing at session end",
+  "error_type": "RuntimeError",
+  "capture_ended_at": "2026-09-23T04:15:17.531733+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 56049,
+  "capture_duration_seconds": 16.042134,
+  "duration_seconds": 18.926,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-23T04:15:17.892550+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260923T041458966183Z_c5d4a4b4_mytuner-radio.com_audio_streaming.pcap"
+}

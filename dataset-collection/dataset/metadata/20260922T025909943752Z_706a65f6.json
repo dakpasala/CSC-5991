@@ -1,0 +1,123 @@
+{
+  "session_id": "20260922T025909943752Z_706a65f6",
+  "domain": "meteofrance.com",
+  "rank": 1325,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T02:59:09.944361+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790045951.084084,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790045957.9154298,
+      "url": "https://meteofrance.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045957.91786,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045957.9197319
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045959.947745,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045959.951051
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045961.959218,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045961.960938
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045963.9771771,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045963.981167
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045965.997741,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045966.001468
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045968.0153441,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045968.018325
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045968.456626,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790045968.456769,
+      "success": true,
+      "verified_seconds": 10.521
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T02:59:11.141957+00:00",
+  "browser_success": true,
+  "verified_seconds": 10.521,
+  "capture_ended_at": "2026-09-22T02:59:28.460953+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 7787,
+  "capture_duration_seconds": 17.318996,
+  "duration_seconds": 18.704,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T02:59:28.647799+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T025909943752Z_706a65f6_meteofrance.com_web_browsing.pcap"
+}

@@ -1,0 +1,145 @@
+{
+  "session_id": "20260922T032038663989Z_141ce152",
+  "domain": "newtoki1.org",
+  "rank": 1749,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T03:20:38.664519+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790047239.795466,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790047241.922871,
+      "url": "https://newtoki1.org/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047241.925515,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047241.927624
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047243.9564538,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047243.960463
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047245.978712,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047245.9823842
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047247.9878788,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047247.9898171
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047249.9961238,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047249.9982028
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047252.0085208,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047252.010456
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047254.0209322,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047254.023652
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047256.034186,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047256.036771
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047257.17281,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790047257.17288,
+      "success": true,
+      "verified_seconds": 15.226
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T03:20:39.850033+00:00",
+  "browser_success": true,
+  "verified_seconds": 15.226,
+  "capture_ended_at": "2026-09-22T03:20:57.174373+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 9572,
+  "capture_duration_seconds": 17.32434,
+  "duration_seconds": 18.68,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T03:20:57.344596+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T032038663989Z_141ce152_newtoki1.org_web_browsing.pcap"
+}

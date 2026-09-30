@@ -1,0 +1,145 @@
+{
+  "session_id": "20260923T035717047857Z_7562db28",
+  "domain": "cursos.alura.com.br",
+  "rank": 1000,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-23T03:57:17.048559+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790135838.476487,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790135840.317587,
+      "url": "https://cursos.alura.com.br/app/login"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135840.319511,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135840.3214011
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135842.335371,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135842.338233
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135844.3497128,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135844.352718
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135846.363533,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135846.3666172
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135848.380796,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135848.3832161
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135850.392883,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135850.395552
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135852.408309,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135852.411826
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135854.420374,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135854.4244108
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135855.563905,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790135855.5640378,
+      "success": true,
+      "verified_seconds": 15.221
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "current_top10k_verified_2026-09-22",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "e8851e39f479552c001d4daffee8a36af204ce2a7b8234e912959ec7652a5111",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T03:57:18.534739+00:00",
+  "browser_success": true,
+  "verified_seconds": 15.221,
+  "capture_ended_at": "2026-09-23T03:57:35.568075+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 2450,
+  "capture_duration_seconds": 17.033336,
+  "duration_seconds": 18.68,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-23T03:57:35.727703+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260923T035717047857Z_7562db28_cursos.alura.com.br_web_browsing.pcap"
+}

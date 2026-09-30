@@ -1,0 +1,145 @@
+{
+  "session_id": "20260921T223028312183Z_decbe052",
+  "domain": "slack.com",
+  "rank": 355,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-21T22:30:28.312597+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790029829.8896132,
+      "browser_version": "153.0.8010.48",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790029832.6471019,
+      "url": "https://slack.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029832.64993,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790029832.652
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029834.7181172,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790029834.72167
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029836.730249,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790029836.732203
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029838.7472901,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790029838.750881
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029840.765363,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790029840.7694201
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029842.779488,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790029842.7813828
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029844.795445,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790029844.79824
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029846.809001,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790029846.811169
+    },
+    {
+      "event": "content_sample",
+      "time": 1790029846.815103,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790029846.81518,
+      "success": true,
+      "verified_seconds": 14.143
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.48",
+  "capture_started_at": "2026-09-21T22:30:29.947519+00:00",
+  "browser_success": true,
+  "verified_seconds": 14.143,
+  "capture_ended_at": "2026-09-21T22:30:46.816723+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 40560,
+  "capture_duration_seconds": 16.869204,
+  "duration_seconds": 18.897,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-21T22:30:47.208952+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260921T223028312183Z_decbe052_slack.com_web_browsing.pcap"
+}

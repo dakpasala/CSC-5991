@@ -1,0 +1,163 @@
+{
+  "session_id": "20260922T225740704136Z_097add9e",
+  "domain": "www.disneyplus.com",
+  "rank": 1000,
+  "requested_activity": "video_streaming",
+  "started_at": "2026-09-22T22:57:40.705571+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790117861.990564,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790117862.7784839,
+      "url": "https://www.disneyplus.com/"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790117862.7785332,
+      "selector": "video"
+    },
+    {
+      "event": "play_requested",
+      "time": 1790117863.5102432,
+      "media": "video"
+    },
+    {
+      "event": "media_sample",
+      "time": 1790117864.580302,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790117865.5958002,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790117866.804903,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790117867.8392031,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790117868.8507211,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790117869.865969,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790117870.877451,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790117871.893058,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790117872.901964,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790117873.916214,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790117874.925306,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790117875.9399402,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790117876.9504771,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790117877.9633012,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790117878.975069,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "browser_diagnostic",
+      "time": 1790117878.9850419,
+      "phase": "playback",
+      "access_denied": false,
+      "article_elements": 0,
+      "audio_elements": 0,
+      "login_prompt": true,
+      "post_links": 0,
+      "video_elements": 6,
+      "window_count": 1
+    },
+    {
+      "event": "done",
+      "success": false,
+      "reason": "Playback/call absent or stalled",
+      "error_type": "RuntimeError"
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "current_top10k_verified_2026-09-22",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "a83fe4f3e068c8ab0a7d417e16adffeb8d3457a4c8b682b52064cd22ae341904",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T22:57:42.060982+00:00",
+  "browser_success": false,
+  "reason": "Playback/call absent or stalled",
+  "error_type": "RuntimeError",
+  "capture_ended_at": "2026-09-22T22:57:58.989601+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 11347,
+  "capture_duration_seconds": 16.928619,
+  "duration_seconds": 18.45,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-22T22:57:59.154187+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260922T225740704136Z_097add9e_www.disneyplus.com_video_streaming.pcap"
+}

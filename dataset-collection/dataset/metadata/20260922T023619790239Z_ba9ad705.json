@@ -1,0 +1,156 @@
+{
+  "session_id": "20260922T023619790239Z_ba9ad705",
+  "domain": "newrelic.com",
+  "rank": 396,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T02:36:19.790353+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790044581.008848,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790044582.103498,
+      "url": "https://newrelic.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044582.1057951,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044582.107326
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044584.119324,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044584.1223738
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044586.140233,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044586.1431758
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044588.159426,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044588.161249
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044590.171465,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044590.1737978
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044592.1837819,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044592.186006
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044594.198653,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044594.2024388
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044596.216949,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044596.22033
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044598.224229,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044598.2259378
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044598.298128,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790044598.2981682,
+      "success": true,
+      "verified_seconds": 16.17
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T02:36:21.066760+00:00",
+  "browser_success": true,
+  "verified_seconds": 16.17,
+  "capture_ended_at": "2026-09-22T02:36:38.299599+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 10870,
+  "capture_duration_seconds": 17.232839,
+  "duration_seconds": 18.65,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T02:36:38.440573+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T023619790239Z_ba9ad705_newrelic.com_web_browsing.pcap"
+}

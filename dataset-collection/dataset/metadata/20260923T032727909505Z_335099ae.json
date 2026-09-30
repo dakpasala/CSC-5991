@@ -1,0 +1,63 @@
+{
+  "session_id": "20260923T032727909505Z_335099ae",
+  "domain": "ads.tiktok.com",
+  "rank": 5000,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-23T03:27:27.909956+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790134049.112488,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "session_cookies_injected",
+      "time": 1790134050.3558972,
+      "count": 35
+    },
+    {
+      "event": "browser_diagnostic",
+      "time": 1790134050.926956,
+      "phase": "navigation",
+      "access_denied": true,
+      "article_elements": 0,
+      "audio_elements": 0,
+      "login_prompt": false,
+      "post_links": 0,
+      "video_elements": 0,
+      "window_count": 1
+    },
+    {
+      "event": "done",
+      "success": false,
+      "reason": "Chrome network/access error page",
+      "error_type": "RuntimeError"
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "current_top10k_verified_2026-09-22",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "e8851e39f479552c001d4daffee8a36af204ce2a7b8234e912959ec7652a5111",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T03:27:29.168762+00:00",
+  "browser_success": false,
+  "reason": "Chrome network/access error page",
+  "error_type": "RuntimeError",
+  "capture_ended_at": "2026-09-23T03:27:30.928720+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 260,
+  "capture_duration_seconds": 1.759958,
+  "duration_seconds": 3.126,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-23T03:27:31.035666+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260923T032727909505Z_335099ae_ads.tiktok.com_web_browsing.pcap"
+}

@@ -1,0 +1,156 @@
+{
+  "session_id": "20260922T230530401068Z_e260bda3",
+  "domain": "movie-box.co",
+  "rank": 5000,
+  "requested_activity": "video_streaming",
+  "started_at": "2026-09-22T23:05:30.401646+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790118331.638998,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790118333.2021298,
+      "url": "https://movie-box.co/"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790118333.202215,
+      "selector": "video"
+    },
+    {
+      "event": "play_requested",
+      "time": 1790118333.219506,
+      "media": "video"
+    },
+    {
+      "event": "media_sample",
+      "time": 1790118334.230377,
+      "progressing": true,
+      "media_time": 0.986524
+    },
+    {
+      "event": "media_sample",
+      "time": 1790118335.240288,
+      "progressing": true,
+      "media_time": 1.995981
+    },
+    {
+      "event": "media_sample",
+      "time": 1790118336.346665,
+      "progressing": true,
+      "media_time": 3.101722
+    },
+    {
+      "event": "media_sample",
+      "time": 1790118337.363266,
+      "progressing": false,
+      "media_time": 0.014291
+    },
+    {
+      "event": "media_sample",
+      "time": 1790118338.3761191,
+      "progressing": true,
+      "media_time": 1.027241
+    },
+    {
+      "event": "media_sample",
+      "time": 1790118339.386623,
+      "progressing": true,
+      "media_time": 2.03787
+    },
+    {
+      "event": "media_sample",
+      "time": 1790118340.39199,
+      "progressing": true,
+      "media_time": 3.042772
+    },
+    {
+      "event": "media_sample",
+      "time": 1790118341.401703,
+      "progressing": true,
+      "media_time": 4.051834
+    },
+    {
+      "event": "media_sample",
+      "time": 1790118342.4044201,
+      "progressing": true,
+      "media_time": 5.054364
+    },
+    {
+      "event": "media_sample",
+      "time": 1790118343.412491,
+      "progressing": true,
+      "media_time": 6.06323
+    },
+    {
+      "event": "media_sample",
+      "time": 1790118344.420607,
+      "progressing": true,
+      "media_time": 7.071331
+    },
+    {
+      "event": "media_sample",
+      "time": 1790118345.426601,
+      "progressing": true,
+      "media_time": 8.076961
+    },
+    {
+      "event": "media_sample",
+      "time": 1790118346.432272,
+      "progressing": true,
+      "media_time": 9.082698
+    },
+    {
+      "event": "media_sample",
+      "time": 1790118347.4388878,
+      "progressing": true,
+      "media_time": 10.090298
+    },
+    {
+      "event": "media_sample",
+      "time": 1790118348.445267,
+      "progressing": true,
+      "media_time": 11.096096
+    },
+    {
+      "event": "media_sample",
+      "time": 1790118348.9067352,
+      "progressing": true,
+      "media_time": 11.557804
+    },
+    {
+      "event": "done",
+      "time": 1790118348.9067972,
+      "success": true,
+      "verified_seconds": 14.667
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "current_top10k_verified_2026-09-22",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "a83fe4f3e068c8ab0a7d417e16adffeb8d3457a4c8b682b52064cd22ae341904",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T23:05:31.692143+00:00",
+  "browser_success": true,
+  "verified_seconds": 14.667,
+  "capture_ended_at": "2026-09-22T23:05:48.908235+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 69790,
+  "capture_duration_seconds": 17.216092,
+  "duration_seconds": 18.692,
+  "success": true,
+  "actual_activity": "video_streaming",
+  "parent_activity": "video_streaming",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T23:05:49.093758+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/video_streaming/20260922T230530401068Z_e260bda3_movie-box.co_video_streaming.pcap"
+}

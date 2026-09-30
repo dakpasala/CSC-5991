@@ -1,0 +1,131 @@
+{
+  "session_id": "20260923T030902563972Z_6681ad39",
+  "domain": "instagram.com",
+  "rank": null,
+  "requested_activity": "video_streaming",
+  "started_at": "2026-09-23T03:09:02.564538+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790132943.850623,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "session_cookies_injected",
+      "time": 1790132945.012626,
+      "count": 8
+    },
+    {
+      "event": "navigate",
+      "time": 1790132948.637107,
+      "url": "https://www.instagram.com/reels/Ddd_OnrxmGE/"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790132948.637144,
+      "selector": "video"
+    },
+    {
+      "event": "play_requested",
+      "time": 1790132948.64343,
+      "media": "video"
+    },
+    {
+      "event": "media_sample",
+      "time": 1790132951.174201,
+      "progressing": true,
+      "media_time": 2.184105
+    },
+    {
+      "event": "media_sample",
+      "time": 1790132952.184893,
+      "progressing": true,
+      "media_time": 3.196399
+    },
+    {
+      "event": "media_sample",
+      "time": 1790132953.212383,
+      "progressing": false,
+      "media_time": 0.715488
+    },
+    {
+      "event": "media_sample",
+      "time": 1790132954.226558,
+      "progressing": true,
+      "media_time": 1.729694
+    },
+    {
+      "event": "media_sample",
+      "time": 1790132955.238322,
+      "progressing": true,
+      "media_time": 2.739199
+    },
+    {
+      "event": "media_sample",
+      "time": 1790132956.247608,
+      "progressing": true,
+      "media_time": 3.747882
+    },
+    {
+      "event": "media_sample",
+      "time": 1790132957.2573152,
+      "progressing": true,
+      "media_time": 4.758882
+    },
+    {
+      "event": "media_sample",
+      "time": 1790132958.2732852,
+      "progressing": true,
+      "media_time": 5.775652
+    },
+    {
+      "event": "media_sample",
+      "time": 1790132959.280782,
+      "progressing": true,
+      "media_time": 6.781525
+    },
+    {
+      "event": "media_sample",
+      "time": 1790132960.2873359,
+      "progressing": false,
+      "media_time": 0.021333
+    },
+    {
+      "event": "media_sample",
+      "time": 1790132961.071906,
+      "progressing": true,
+      "media_time": 0.768222
+    },
+    {
+      "event": "done",
+      "time": 1790132961.071967,
+      "success": true,
+      "verified_seconds": 8.876
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "login_required_reels_player_short_clip_looped",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "3f17f1fb3ea4d6b745ebe4fa2342e04de0a4a505e515b51030b023b84f3a919e",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T03:09:03.905434+00:00",
+  "browser_success": true,
+  "verified_seconds": 8.876,
+  "capture_ended_at": "2026-09-23T03:09:21.075644+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 59185,
+  "capture_duration_seconds": 17.17021,
+  "duration_seconds": 18.817,
+  "success": true,
+  "actual_activity": "video_streaming",
+  "parent_activity": "video_streaming",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-23T03:09:21.380898+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/video_streaming/20260923T030902563972Z_6681ad39_instagram.com_video_streaming.pcap"
+}

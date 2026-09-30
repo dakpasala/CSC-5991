@@ -1,0 +1,145 @@
+{
+  "session_id": "20260922T031219539423Z_64d20efe",
+  "domain": "tiktokio.com",
+  "rank": 1625,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T03:12:19.539571+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790046740.823446,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790046741.848654,
+      "url": "https://tiktokio.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046741.8511271,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046741.852695
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046743.915746,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046743.9182332
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046745.93144,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046745.933109
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046747.946093,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046747.947944
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046749.966815,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046749.970861
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046751.9881248,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046751.99212
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046754.0044959,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046754.008377
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046756.028054,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046756.0317929
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046758.05122,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790046758.051429,
+      "success": true,
+      "verified_seconds": 16.177
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T03:12:20.881976+00:00",
+  "browser_success": true,
+  "verified_seconds": 16.177,
+  "capture_ended_at": "2026-09-22T03:12:38.055958+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 6233,
+  "capture_duration_seconds": 17.173982,
+  "duration_seconds": 18.708,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T03:12:38.247616+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T031219539423Z_64d20efe_tiktokio.com_web_browsing.pcap"
+}

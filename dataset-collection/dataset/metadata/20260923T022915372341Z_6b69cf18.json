@@ -1,0 +1,144 @@
+{
+  "session_id": "20260923T022915372341Z_6b69cf18",
+  "domain": "pixai.art",
+  "rank": 10000,
+  "requested_activity": "video_streaming",
+  "started_at": "2026-09-23T02:29:15.372888+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790130556.616846,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790130560.1747682,
+      "url": "https://pixai.art/en"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790130560.174919,
+      "selector": "video"
+    },
+    {
+      "event": "play_requested",
+      "time": 1790130560.277445,
+      "media": "video"
+    },
+    {
+      "event": "media_sample",
+      "time": 1790130561.295327,
+      "progressing": true,
+      "media_time": 0.821787
+    },
+    {
+      "event": "media_sample",
+      "time": 1790130562.300252,
+      "progressing": true,
+      "media_time": 1.827535
+    },
+    {
+      "event": "media_sample",
+      "time": 1790130563.3076942,
+      "progressing": true,
+      "media_time": 2.83511
+    },
+    {
+      "event": "media_sample",
+      "time": 1790130564.319417,
+      "progressing": true,
+      "media_time": 3.844964
+    },
+    {
+      "event": "media_sample",
+      "time": 1790130565.333199,
+      "progressing": true,
+      "media_time": 4.860221
+    },
+    {
+      "event": "media_sample",
+      "time": 1790130566.341745,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790130567.358237,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790130568.3693461,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790130569.376838,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790130570.3871171,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790130571.396874,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790130572.406534,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790130573.4178681,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790130573.8860438,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "done",
+      "time": 1790130573.8861609,
+      "success": true,
+      "verified_seconds": 5.052
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "current_top10k_verified_2026-09-22",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "a275a175b2c0bfac7a12977269cd52f76190c2c9254de72d9747e10ea1d46ed4",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T02:29:16.670909+00:00",
+  "browser_success": true,
+  "verified_seconds": 5.052,
+  "capture_ended_at": "2026-09-23T02:29:33.890447+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 35062,
+  "capture_duration_seconds": 17.219538,
+  "duration_seconds": 18.744,
+  "success": true,
+  "actual_activity": "video_streaming",
+  "parent_activity": "video_streaming",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-23T02:29:34.116080+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/video_streaming/20260923T022915372341Z_6b69cf18_pixai.art_video_streaming.pcap"
+}

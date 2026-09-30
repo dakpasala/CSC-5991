@@ -1,0 +1,163 @@
+{
+  "session_id": "20260923T024543072212Z_0d428ef0",
+  "domain": "somafm.com",
+  "rank": null,
+  "requested_activity": "audio_streaming",
+  "started_at": "2026-09-23T02:45:43.072388+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790131545.38677,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790131546.106991,
+      "url": "https://somafm.com/player/"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790131546.107032,
+      "selector": "audio"
+    },
+    {
+      "event": "play_requested",
+      "time": 1790131546.113348,
+      "media": "audio"
+    },
+    {
+      "event": "media_sample",
+      "time": 1790131547.145073,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790131548.150149,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790131549.159325,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790131550.1677902,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790131551.183449,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790131552.196717,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790131553.2057002,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790131554.213956,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790131555.228375,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790131556.237858,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790131557.2514482,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790131558.262819,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790131559.276644,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790131560.280148,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790131561.2913122,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "browser_diagnostic",
+      "time": 1790131561.331879,
+      "phase": "playback",
+      "access_denied": false,
+      "article_elements": 0,
+      "audio_elements": 1,
+      "login_prompt": false,
+      "post_links": 0,
+      "video_elements": 0,
+      "window_count": 1
+    },
+    {
+      "event": "done",
+      "success": false,
+      "reason": "Playback/call absent or stalled",
+      "error_type": "RuntimeError"
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "user_plan",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "2994e2d1c084798f529bcaa52a501076dbb55cfc986dd9f3ebbaf86afcf0e5e6",
+  "profile_mode": "fresh",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T02:45:45.447425+00:00",
+  "browser_success": false,
+  "reason": "Playback/call absent or stalled",
+  "error_type": "RuntimeError",
+  "capture_ended_at": "2026-09-23T02:46:01.341846+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 9909,
+  "capture_duration_seconds": 15.894421,
+  "duration_seconds": 19.319,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-23T02:46:02.385785+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260923T024543072212Z_0d428ef0_somafm.com_audio_streaming.pcap"
+}

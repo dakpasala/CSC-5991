@@ -1,0 +1,365 @@
+{
+  "session_id": "20260916T015628451055Z_dd918257",
+  "domain": "nginx.com",
+  "rank": 95,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-16T01:56:28.451932+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1789523790.0368052,
+      "browser_version": "152.0.7977.84",
+      "headed": true
+    },
+    {
+      "event": "navigate",
+      "time": 1789523791.3281379,
+      "url": "https://www.f5.com/products/nginx"
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523791.3300428,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523791.331727
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523793.3550541,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523793.357701
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523795.3729799,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523795.376539
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523797.394529,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523797.398108
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523799.409943,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523799.413447
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523801.4274402,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523801.4298172
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523803.4432,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523803.445195
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523805.4563682,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523805.459667
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523807.4751601,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523807.478736
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523809.492844,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523809.4963489
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523811.51087,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523811.514152
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523813.5278358,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523813.531442
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523815.5446029,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523815.547997
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523817.558326,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523817.5607219
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523819.574924,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523819.578403
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523821.5926669,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523821.596246
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523823.611893,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523823.615523
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523825.62898,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523825.632767
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523827.6473541,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523827.6507251
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523829.664534,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523829.6680892
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523831.682674,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523831.68606
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523833.698923,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523833.701374
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523835.715219,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523835.719111
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523837.733595,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523837.7371578
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523839.7510452,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523839.7545469
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523841.768026,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523841.771471
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523843.785028,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523843.788835
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523845.8029702,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789523845.806405
+    },
+    {
+      "event": "content_sample",
+      "time": 1789523846.965109,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1789523846.965277,
+      "success": true,
+      "verified_seconds": 55.545
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 60.0,
+  "source_scope": "top100_batch_2026-09-15",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "8f3686dc6920d00c589e766d1180ffb5cd5d60e82d42be00c90e3fc9c23060a5",
+  "profile_mode": "persistent",
+  "browser_version": "152.0.7977.84",
+  "capture_started_at": "2026-09-16T01:56:30.108588+00:00",
+  "browser_success": true,
+  "verified_seconds": 55.545,
+  "capture_ended_at": "2026-09-16T01:57:26.969386+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 6103,
+  "capture_duration_seconds": 56.860798,
+  "duration_seconds": 58.73,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-16T01:57:27.182190+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260916T015628451055Z_dd918257_nginx.com_web_browsing.pcap"
+}

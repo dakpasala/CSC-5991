@@ -1,0 +1,123 @@
+{
+  "session_id": "20260921T223453986132Z_0422e6bf",
+  "domain": "arstechnica.com",
+  "rank": 1856,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-21T22:34:53.986416+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790030097.098412,
+      "browser_version": "153.0.8010.48",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790030099.623843,
+      "url": "https://arstechnica.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790030099.633127,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790030099.635315
+    },
+    {
+      "event": "content_sample",
+      "time": 1790030101.8061628,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790030101.8091588
+    },
+    {
+      "event": "content_sample",
+      "time": 1790030105.6003368,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790030105.6026042
+    },
+    {
+      "event": "content_sample",
+      "time": 1790030107.612614,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790030107.6157892
+    },
+    {
+      "event": "content_sample",
+      "time": 1790030109.6430871,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790030109.646097
+    },
+    {
+      "event": "content_sample",
+      "time": 1790030111.663299,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790030111.666352
+    },
+    {
+      "event": "content_sample",
+      "time": 1790030112.4953809,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790030112.495527,
+      "success": true,
+      "verified_seconds": 12.846
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.48",
+  "capture_started_at": "2026-09-21T22:34:57.156749+00:00",
+  "browser_success": true,
+  "verified_seconds": 12.846,
+  "capture_ended_at": "2026-09-21T22:35:12.499525+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 18507,
+  "capture_duration_seconds": 15.342776,
+  "duration_seconds": 18.73,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-21T22:35:12.715849+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260921T223453986132Z_0422e6bf_arstechnica.com_web_browsing.pcap"
+}

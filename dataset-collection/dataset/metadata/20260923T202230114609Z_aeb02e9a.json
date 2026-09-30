@@ -1,0 +1,129 @@
+{
+  "session_id": "20260923T202230114609Z_aeb02e9a",
+  "domain": "instagram.com",
+  "rank": null,
+  "requested_activity": "social_media_browsing",
+  "started_at": "2026-09-23T20:22:30.114834+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790194951.715252,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "session_cookies_injected",
+      "time": 1790194953.182174,
+      "count": 8
+    },
+    {
+      "event": "navigate",
+      "time": 1790194956.070762,
+      "url": "https://www.instagram.com/"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790194956.070807,
+      "selector": "article"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790194956.09567,
+      "content": false,
+      "matching_elements": 0,
+      "playing_media": false
+    },
+    {
+      "event": "content_sample",
+      "time": 1790194957.607602,
+      "content": false,
+      "matching_elements": 0,
+      "playing_media": false
+    },
+    {
+      "event": "content_sample",
+      "time": 1790194959.117158,
+      "content": false,
+      "matching_elements": 0,
+      "playing_media": false
+    },
+    {
+      "event": "content_sample",
+      "time": 1790194960.630563,
+      "content": false,
+      "matching_elements": 0,
+      "playing_media": false
+    },
+    {
+      "event": "content_sample",
+      "time": 1790194962.159678,
+      "content": false,
+      "matching_elements": 0,
+      "playing_media": false
+    },
+    {
+      "event": "content_sample",
+      "time": 1790194963.679214,
+      "content": false,
+      "matching_elements": 0,
+      "playing_media": false
+    },
+    {
+      "event": "content_sample",
+      "time": 1790194965.20052,
+      "content": false,
+      "matching_elements": 0,
+      "playing_media": false
+    },
+    {
+      "event": "content_sample",
+      "time": 1790194966.102331,
+      "content": false,
+      "matching_elements": 0,
+      "playing_media": false
+    },
+    {
+      "event": "browser_diagnostic",
+      "time": 1790194966.109169,
+      "phase": "browsing",
+      "access_denied": false,
+      "article_elements": 4,
+      "audio_elements": 0,
+      "login_prompt": false,
+      "post_links": 9,
+      "video_elements": 2,
+      "window_count": 1
+    },
+    {
+      "event": "done",
+      "success": false,
+      "reason": "Readable browsing content absent or media playing",
+      "error_type": "RuntimeError"
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top100_public_profile_access_unverified",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "78e2681c3ece5b5406c33d43ec6475004f227e0ea44149e7ca87e7ab76d505d0",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T20:22:31.773846+00:00",
+  "browser_success": false,
+  "reason": "Readable browsing content absent or media playing",
+  "error_type": "RuntimeError",
+  "capture_ended_at": "2026-09-23T20:22:46.113476+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 16378,
+  "capture_duration_seconds": 14.33963,
+  "duration_seconds": 16.16,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-23T20:22:46.275117+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260923T202230114609Z_aeb02e9a_instagram.com_social_media_browsing.pcap"
+}

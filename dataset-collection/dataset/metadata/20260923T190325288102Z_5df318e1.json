@@ -1,0 +1,137 @@
+{
+  "session_id": "20260923T190325288102Z_5df318e1",
+  "domain": "www.dw.com",
+  "rank": null,
+  "requested_activity": "video_streaming",
+  "started_at": "2026-09-23T19:03:25.288296+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790190207.2160158,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790190209.109539,
+      "url": "https://www.dw.com/en/dutch-sign-language-cafes-let-guests-order-by-hand/svideo-78194509"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790190209.109579,
+      "selector": "video"
+    },
+    {
+      "event": "play_requested",
+      "time": 1790190209.141803,
+      "media": "video"
+    },
+    {
+      "event": "play_click_fallback",
+      "time": 1790190211.722538,
+      "selector": "video"
+    },
+    {
+      "event": "play_click_fallback",
+      "time": 1790190213.821125,
+      "selector": "[aria-label*='play' i]"
+    },
+    {
+      "event": "media_sample",
+      "time": 1790190215.8345249,
+      "progressing": false,
+      "media_time": null
+    },
+    {
+      "event": "media_sample",
+      "time": 1790190216.843219,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790190217.85504,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790190218.86018,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790190219.870826,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790190220.879031,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790190221.8832798,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790190222.893636,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790190223.797157,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "browser_diagnostic",
+      "time": 1790190223.8053162,
+      "phase": "playback",
+      "access_denied": false,
+      "article_elements": 1,
+      "audio_elements": 0,
+      "login_prompt": false,
+      "post_links": 9,
+      "video_elements": 1,
+      "window_count": 1
+    },
+    {
+      "event": "done",
+      "success": false,
+      "reason": "Media was not progressing at session end",
+      "error_type": "RuntimeError"
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "user_plan",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "77c1f373a781c419c67eae8d8a888830ea7d242937ae264cbee93160b27fd9ea",
+  "profile_mode": "fresh",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T19:03:27.275086+00:00",
+  "browser_success": false,
+  "reason": "Media was not progressing at session end",
+  "error_type": "RuntimeError",
+  "capture_ended_at": "2026-09-23T19:03:43.822700+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 43039,
+  "capture_duration_seconds": 16.547614,
+  "duration_seconds": 18.732,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-23T19:03:44.020317+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260923T190325288102Z_5df318e1_www.dw.com_video_streaming.pcap"
+}

@@ -1,0 +1,134 @@
+{
+  "session_id": "20260922T021639779780Z_5f6b446a",
+  "domain": "outlook.com",
+  "rank": 119,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T02:16:39.780045+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790043400.914901,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790043404.406534,
+      "url": "https://www.microsoft.com/en-us/microsoft-365/outlook/email-and-calendar-software-microsoft-outlook"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043404.410888,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043404.6121469
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043406.932857,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043406.9868999
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043409.007318,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043409.009557
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043411.037575,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043411.040968
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043413.0568871,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043413.060388
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043415.0772932,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043415.0808089
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043417.096889,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043417.100533
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043418.288852,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790043418.288893,
+      "success": true,
+      "verified_seconds": 13.607
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T02:16:40.973070+00:00",
+  "browser_success": true,
+  "verified_seconds": 13.607,
+  "capture_ended_at": "2026-09-22T02:16:58.290324+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 22868,
+  "capture_duration_seconds": 17.317254,
+  "duration_seconds": 18.678,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T02:16:58.457340+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T021639779780Z_5f6b446a_outlook.com_web_browsing.pcap"
+}

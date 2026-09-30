@@ -1,0 +1,120 @@
+{
+  "session_id": "20260923T193720467621Z_7fee36e3",
+  "domain": "www.businessinsider.com",
+  "rank": null,
+  "requested_activity": "video_streaming",
+  "started_at": "2026-09-23T19:37:20.467954+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790192242.240042,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790192242.58027,
+      "url": "https://www.businessinsider.com/h1b-visa-hopeful-america-india-100k-fee-video-2026-9"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790192242.58031,
+      "selector": "video"
+    },
+    {
+      "event": "play_requested",
+      "time": 1790192247.825669,
+      "media": "video"
+    },
+    {
+      "event": "media_sample",
+      "time": 1790192250.3711202,
+      "progressing": false,
+      "media_time": 0.121657
+    },
+    {
+      "event": "media_sample",
+      "time": 1790192251.381013,
+      "progressing": false,
+      "media_time": 0.121657
+    },
+    {
+      "event": "media_sample",
+      "time": 1790192252.394518,
+      "progressing": false,
+      "media_time": 0.121657
+    },
+    {
+      "event": "media_sample",
+      "time": 1790192253.403511,
+      "progressing": true,
+      "media_time": 0.676311
+    },
+    {
+      "event": "media_sample",
+      "time": 1790192254.408735,
+      "progressing": true,
+      "media_time": 1.682026
+    },
+    {
+      "event": "media_sample",
+      "time": 1790192255.419434,
+      "progressing": true,
+      "media_time": 2.690331
+    },
+    {
+      "event": "media_sample",
+      "time": 1790192256.427032,
+      "progressing": true,
+      "media_time": 3.697918
+    },
+    {
+      "event": "media_sample",
+      "time": 1790192257.440419,
+      "progressing": true,
+      "media_time": 4.712415
+    },
+    {
+      "event": "media_sample",
+      "time": 1790192258.4526699,
+      "progressing": true,
+      "media_time": 5.724627
+    },
+    {
+      "event": "media_sample",
+      "time": 1790192258.983934,
+      "progressing": true,
+      "media_time": 6.256676
+    },
+    {
+      "event": "done",
+      "time": 1790192258.983976,
+      "success": true,
+      "verified_seconds": 6.589
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "user_plan",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "d3dc5f02718bd675eaf4728ced4b604e206a0ca0dc911165a50aae1574d66323",
+  "profile_mode": "fresh",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T19:37:22.304049+00:00",
+  "browser_success": true,
+  "verified_seconds": 6.589,
+  "capture_ended_at": "2026-09-23T19:37:38.992972+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 52936,
+  "capture_duration_seconds": 16.688923,
+  "duration_seconds": 18.831,
+  "success": true,
+  "actual_activity": "video_streaming",
+  "parent_activity": "video_streaming",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-23T19:37:39.298623+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/video_streaming/20260923T193720467621Z_7fee36e3_www.businessinsider.com_video_streaming.pcap"
+}

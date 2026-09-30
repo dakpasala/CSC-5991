@@ -1,0 +1,150 @@
+{
+  "session_id": "20260923T032856003500Z_a3c5f850",
+  "domain": "business.google.com",
+  "rank": 5000,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-23T03:28:56.003817+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790134137.1295948,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "session_cookies_injected",
+      "time": 1790134138.021072,
+      "count": 27
+    },
+    {
+      "event": "navigate",
+      "time": 1790134139.322925,
+      "url": "https://business.google.com/us/business-profile/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790134139.326418,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790134139.3286972
+    },
+    {
+      "event": "content_sample",
+      "time": 1790134141.36204,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790134141.364636
+    },
+    {
+      "event": "content_sample",
+      "time": 1790134143.3853838,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790134143.389388
+    },
+    {
+      "event": "content_sample",
+      "time": 1790134145.409228,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790134145.4122381
+    },
+    {
+      "event": "content_sample",
+      "time": 1790134147.43505,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790134147.4388669
+    },
+    {
+      "event": "content_sample",
+      "time": 1790134149.460168,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790134149.463876
+    },
+    {
+      "event": "content_sample",
+      "time": 1790134151.479846,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790134151.482382
+    },
+    {
+      "event": "content_sample",
+      "time": 1790134153.5042171,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790134153.5084212
+    },
+    {
+      "event": "content_sample",
+      "time": 1790134154.5243552,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790134154.524584,
+      "success": true,
+      "verified_seconds": 15.172
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "current_top10k_verified_2026-09-22",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "e8851e39f479552c001d4daffee8a36af204ce2a7b8234e912959ec7652a5111",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T03:28:57.185654+00:00",
+  "browser_success": true,
+  "verified_seconds": 15.172,
+  "capture_ended_at": "2026-09-23T03:29:14.529749+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 37288,
+  "capture_duration_seconds": 17.344095,
+  "duration_seconds": 18.708,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-23T03:29:14.711149+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260923T032856003500Z_a3c5f850_business.google.com_web_browsing.pcap"
+}

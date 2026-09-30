@@ -1,0 +1,73 @@
+{
+  "session_id": "20260923T024112036281Z_3416a979",
+  "domain": "open.spotify.com",
+  "rank": null,
+  "requested_activity": "audio_streaming",
+  "started_at": "2026-09-23T02:41:12.036515+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790131274.468578,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "session_cookies_injected",
+      "time": 1790131275.3607821,
+      "count": 8
+    },
+    {
+      "event": "navigate",
+      "time": 1790131276.588583,
+      "url": "https://open.spotify.com/track/1UBTWr92y3Nh93TewXycYS"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790131276.588646,
+      "selector": "audio"
+    },
+    {
+      "event": "browser_diagnostic",
+      "time": 1790131291.206487,
+      "phase": "wait_for_selector",
+      "access_denied": false,
+      "article_elements": 0,
+      "audio_elements": 0,
+      "login_prompt": false,
+      "post_links": 0,
+      "video_elements": 0,
+      "window_count": 1
+    },
+    {
+      "event": "done",
+      "success": false,
+      "reason": "Browser action failed during wait_for_selector; inspect access or selectors",
+      "error_type": "TimeoutException"
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "user_plan",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "d4c4c88ad0dae61f7513cce9a16e4098b9c572130a2fa3f3c5c5245e1a187028",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T02:41:14.531116+00:00",
+  "browser_success": false,
+  "reason": "Browser action failed during wait_for_selector; inspect access or selectors",
+  "error_type": "TimeoutException",
+  "capture_ended_at": "2026-09-23T02:41:31.210245+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 6940,
+  "capture_duration_seconds": 16.679129,
+  "duration_seconds": 19.898,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-23T02:41:31.934054+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260923T024112036281Z_3416a979_open.spotify.com_audio_streaming.pcap"
+}

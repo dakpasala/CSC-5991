@@ -1,0 +1,343 @@
+{
+  "session_id": "20260916T012852309419Z_8295f457",
+  "domain": "sharepoint.com",
+  "rank": 43,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-16T01:28:52.309821+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1789522133.954062,
+      "browser_version": "152.0.7977.84",
+      "headed": true
+    },
+    {
+      "event": "navigate",
+      "time": 1789522138.8981109,
+      "url": "https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration"
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522138.900722,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522138.9025128
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522140.9212558,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522140.924453
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522142.939112,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522142.94141
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522144.95807,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522144.961916
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522146.97386,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522146.976044
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522148.991203,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522148.9926789
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522151.006308,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522151.008638
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522153.024492,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522153.027858
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522155.041524,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522155.0441651
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522157.073371,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522157.076677
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522159.092621,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522159.096694
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522161.1116061,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522161.113861
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522163.1254048,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522163.128163
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522165.142632,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522165.145291
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522167.1621828,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522167.1643898
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522169.1776829,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522169.1800268
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522171.2003908,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522171.204438
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522173.220902,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522173.2243142
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522175.237464,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522175.2408588
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522177.255899,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522177.25914
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522179.2705688,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522179.274257
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522181.287233,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522181.2904801
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522183.303746,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522183.307382
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522185.322297,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522185.325669
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522187.341899,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522187.345602
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522189.362946,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522189.366513
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522190.8241642,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1789522190.824342,
+      "success": true,
+      "verified_seconds": 51.846
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 60.0,
+  "source_scope": "top100_batch_2026-09-15",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "8f3686dc6920d00c589e766d1180ffb5cd5d60e82d42be00c90e3fc9c23060a5",
+  "profile_mode": "persistent",
+  "browser_version": "152.0.7977.84",
+  "capture_started_at": "2026-09-16T01:28:54.026695+00:00",
+  "browser_success": true,
+  "verified_seconds": 51.846,
+  "capture_ended_at": "2026-09-16T01:29:50.828548+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 16614,
+  "capture_duration_seconds": 56.801853,
+  "duration_seconds": 58.749,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-16T01:29:51.059290+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260916T012852309419Z_8295f457_sharepoint.com_web_browsing.pcap"
+}

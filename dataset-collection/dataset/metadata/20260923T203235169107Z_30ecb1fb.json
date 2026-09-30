@@ -1,0 +1,130 @@
+{
+  "session_id": "20260923T203235169107Z_30ecb1fb",
+  "domain": "www.mixcloud.com",
+  "rank": null,
+  "requested_activity": "audio_streaming",
+  "started_at": "2026-09-23T20:32:35.169554+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790195556.630469,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790195558.717003,
+      "url": "https://www.mixcloud.com/djsantarosa/jsevents-presents-global-party-mix-september-2026/"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790195558.7170439,
+      "selector": "audio"
+    },
+    {
+      "event": "play_requested",
+      "time": 1790195560.29885,
+      "media": "audio"
+    },
+    {
+      "event": "play_click_fallback",
+      "time": 1790195561.819804,
+      "selector": "audio"
+    },
+    {
+      "event": "play_click_fallback",
+      "time": 1790195562.885489,
+      "selector": "[aria-label*='play' i]"
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195564.915411,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195565.9242492,
+      "progressing": true,
+      "media_time": 0.650355
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195566.932467,
+      "progressing": true,
+      "media_time": 1.658926
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195567.960278,
+      "progressing": true,
+      "media_time": 2.688558
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195568.973019,
+      "progressing": true,
+      "media_time": 3.702387
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195569.984648,
+      "progressing": true,
+      "media_time": 4.71146
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195570.999721,
+      "progressing": true,
+      "media_time": 5.725471
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195572.0045052,
+      "progressing": true,
+      "media_time": 6.733815
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195573.015174,
+      "progressing": true,
+      "media_time": 7.744917
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195573.6745331,
+      "progressing": true,
+      "media_time": 8.404874
+    },
+    {
+      "event": "done",
+      "time": 1790195573.6746318,
+      "success": true,
+      "verified_seconds": 8.759
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "hand_curated_verified_playback_2026-09-23",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "398e4cede16dffbf40dbce08be8c83be7be3e1128fa2aac27a827f1efca2115f",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T20:32:36.688765+00:00",
+  "browser_success": true,
+  "verified_seconds": 8.759,
+  "capture_ended_at": "2026-09-23T20:32:53.678690+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 11588,
+  "capture_duration_seconds": 16.989925,
+  "duration_seconds": 18.676,
+  "success": true,
+  "actual_activity": "audio_streaming",
+  "parent_activity": "audio_streaming",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-23T20:32:53.845191+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/audio_streaming/20260923T203235169107Z_30ecb1fb_www.mixcloud.com_audio_streaming.pcap"
+}

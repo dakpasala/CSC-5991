@@ -1,0 +1,55 @@
+{
+  "session_id": "20260923T023710300892Z_3ac0291a",
+  "domain": "w3schools.com",
+  "rank": null,
+  "requested_activity": "audio_streaming",
+  "started_at": "2026-09-23T02:37:10.302001+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790131031.817039,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790131032.22722,
+      "url": "https://www.w3schools.com/html/horse.ogg"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790131032.227263,
+      "selector": "audio, video"
+    },
+    {
+      "event": "play_requested",
+      "time": 1790131032.237709,
+      "media": "audio"
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "external_demo_short_loop_not_representative_music_streaming",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "f635e7131e05b2c8a2e56ff9576682a43346eac1f36e4d64ccc6d95fe42d4ad6",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T02:37:11.877194+00:00",
+  "browser_success": false,
+  "reason": "Interrupted",
+  "error_type": "RuntimeError",
+  "tcpdump_exit_code": 0,
+  "packet_count": 247,
+  "capture_ended_at": "2026-09-23T02:37:12.943907+00:00",
+  "capture_duration_seconds": 1.066713,
+  "duration_seconds": 3.658,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-23T02:37:13.958497+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260923T023710300892Z_3ac0291a_w3schools.com_audio_streaming.pcap"
+}

@@ -1,0 +1,111 @@
+{
+  "session_id": "20260921T220815819072Z_e61b7c29",
+  "domain": "github.com",
+  "rank": 29,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-21T22:08:15.819989+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790028497.386344,
+      "browser_version": "153.0.8010.48",
+      "headed": true
+    },
+    {
+      "event": "navigate",
+      "time": 1790028499.5038831,
+      "url": "https://github.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790028499.506876,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790028499.5100548
+    },
+    {
+      "event": "content_sample",
+      "time": 1790028501.521374,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790028501.524085
+    },
+    {
+      "event": "content_sample",
+      "time": 1790028503.5345988,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790028503.536853
+    },
+    {
+      "event": "content_sample",
+      "time": 1790028505.543473,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790028505.545259
+    },
+    {
+      "event": "content_sample",
+      "time": 1790028507.5517619,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790028507.5539148
+    },
+    {
+      "event": "content_sample",
+      "time": 1790028509.5587,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790028509.561035
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top100_batch_2026-09-15",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.48",
+  "capture_started_at": "2026-09-21T22:08:17.460166+00:00",
+  "browser_success": false,
+  "reason": "Interrupted",
+  "error_type": "RuntimeError",
+  "tcpdump_exit_code": 0,
+  "packet_count": 9122,
+  "capture_ended_at": "2026-09-21T22:08:30.171495+00:00",
+  "capture_duration_seconds": 12.711329,
+  "duration_seconds": 15.372,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-21T22:08:31.190885+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260921T220815819072Z_e61b7c29_github.com_web_browsing.pcap"
+}

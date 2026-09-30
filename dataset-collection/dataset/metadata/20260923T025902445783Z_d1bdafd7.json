@@ -1,0 +1,163 @@
+{
+  "session_id": "20260923T025902445783Z_d1bdafd7",
+  "domain": "ocw.mit.edu",
+  "rank": null,
+  "requested_activity": "video_streaming",
+  "started_at": "2026-09-23T02:59:02.446290+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790132344.332273,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790132344.919154,
+      "url": "https://ocw.mit.edu/courses/8-01sc-classical-mechanics-fall-2016/pages/week-6-continuous-mass-transfer/week-6-introduction/"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790132344.9191968,
+      "selector": "video"
+    },
+    {
+      "event": "play_requested",
+      "time": 1790132344.9745128,
+      "media": "video"
+    },
+    {
+      "event": "media_sample",
+      "time": 1790132346.0006368,
+      "progressing": false,
+      "media_time": null
+    },
+    {
+      "event": "media_sample",
+      "time": 1790132347.008372,
+      "progressing": false,
+      "media_time": null
+    },
+    {
+      "event": "media_sample",
+      "time": 1790132348.0162518,
+      "progressing": false,
+      "media_time": null
+    },
+    {
+      "event": "media_sample",
+      "time": 1790132349.0267892,
+      "progressing": false,
+      "media_time": null
+    },
+    {
+      "event": "media_sample",
+      "time": 1790132350.037157,
+      "progressing": false,
+      "media_time": null
+    },
+    {
+      "event": "media_sample",
+      "time": 1790132351.047196,
+      "progressing": false,
+      "media_time": null
+    },
+    {
+      "event": "media_sample",
+      "time": 1790132352.054563,
+      "progressing": false,
+      "media_time": null
+    },
+    {
+      "event": "media_sample",
+      "time": 1790132353.0615501,
+      "progressing": false,
+      "media_time": null
+    },
+    {
+      "event": "media_sample",
+      "time": 1790132354.071608,
+      "progressing": false,
+      "media_time": null
+    },
+    {
+      "event": "media_sample",
+      "time": 1790132355.082339,
+      "progressing": false,
+      "media_time": null
+    },
+    {
+      "event": "media_sample",
+      "time": 1790132356.087521,
+      "progressing": false,
+      "media_time": null
+    },
+    {
+      "event": "media_sample",
+      "time": 1790132357.095045,
+      "progressing": false,
+      "media_time": null
+    },
+    {
+      "event": "media_sample",
+      "time": 1790132358.104604,
+      "progressing": false,
+      "media_time": null
+    },
+    {
+      "event": "media_sample",
+      "time": 1790132359.109004,
+      "progressing": false,
+      "media_time": null
+    },
+    {
+      "event": "media_sample",
+      "time": 1790132360.118523,
+      "progressing": false,
+      "media_time": null
+    },
+    {
+      "event": "browser_diagnostic",
+      "time": 1790132360.126314,
+      "phase": "playback",
+      "access_denied": false,
+      "article_elements": 1,
+      "audio_elements": 0,
+      "login_prompt": false,
+      "post_links": 0,
+      "video_elements": 0,
+      "window_count": 1
+    },
+    {
+      "event": "done",
+      "success": false,
+      "reason": "Playback/call absent or stalled",
+      "error_type": "RuntimeError"
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "user_plan",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "c498b46bae80e72d00c3914aa8cea397f62a174cd4442db8bb56e53c3bc48d73",
+  "profile_mode": "fresh",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T02:59:04.393521+00:00",
+  "browser_success": false,
+  "reason": "Playback/call absent or stalled",
+  "error_type": "RuntimeError",
+  "capture_ended_at": "2026-09-23T02:59:20.130631+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 42856,
+  "capture_duration_seconds": 15.73711,
+  "duration_seconds": 17.899,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-23T02:59:20.344528+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260923T025902445783Z_d1bdafd7_ocw.mit.edu_video_streaming.pcap"
+}

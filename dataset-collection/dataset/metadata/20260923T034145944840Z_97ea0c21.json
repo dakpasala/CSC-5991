@@ -1,0 +1,161 @@
+{
+  "session_id": "20260923T034145944840Z_97ea0c21",
+  "domain": "books.google.com",
+  "rank": 50000,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-23T03:41:45.945866+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790134907.135971,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "session_cookies_injected",
+      "time": 1790134907.606101,
+      "count": 27
+    },
+    {
+      "event": "navigate",
+      "time": 1790134907.9108741,
+      "url": "https://books.google.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790134907.913384,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790134907.915854
+    },
+    {
+      "event": "content_sample",
+      "time": 1790134909.932555,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790134909.935785
+    },
+    {
+      "event": "content_sample",
+      "time": 1790134911.94854,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790134911.952781
+    },
+    {
+      "event": "content_sample",
+      "time": 1790134913.965895,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790134913.970102
+    },
+    {
+      "event": "content_sample",
+      "time": 1790134915.982309,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790134915.9861078
+    },
+    {
+      "event": "content_sample",
+      "time": 1790134918.0010428,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790134918.0055602
+    },
+    {
+      "event": "content_sample",
+      "time": 1790134920.0202649,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790134920.0242481
+    },
+    {
+      "event": "content_sample",
+      "time": 1790134922.035389,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790134922.039307
+    },
+    {
+      "event": "content_sample",
+      "time": 1790134924.0525079,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790134924.056871
+    },
+    {
+      "event": "content_sample",
+      "time": 1790134924.458817,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790134924.458966,
+      "success": true,
+      "verified_seconds": 16.511
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "current_top10k_verified_2026-09-22",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "e8851e39f479552c001d4daffee8a36af204ce2a7b8234e912959ec7652a5111",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T03:41:47.194211+00:00",
+  "browser_success": true,
+  "verified_seconds": 16.511,
+  "capture_ended_at": "2026-09-23T03:42:04.463236+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 2218,
+  "capture_duration_seconds": 17.269025,
+  "duration_seconds": 18.73,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-23T03:42:04.674400+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260923T034145944840Z_97ea0c21_books.google.com_web_browsing.pcap"
+}

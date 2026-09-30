@@ -1,0 +1,45 @@
+{
+  "session_id": "20260921T220514919719Z_df07885d",
+  "domain": "x.com",
+  "rank": 49,
+  "requested_activity": "social_media_browsing",
+  "started_at": "2026-09-21T22:05:14.919944+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790028316.7135491,
+      "browser_version": "153.0.8010.48",
+      "headed": true
+    },
+    {
+      "event": "session_cookies_injected",
+      "time": 1790028316.9071062,
+      "count": 14
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 10.0,
+  "source_scope": "top100_public_profile_access_unverified",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "f483d8826e17ad1c5002021d5ac182c3149cc9e5beda447a689ed3b51ec9d758",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.48",
+  "capture_started_at": "2026-09-21T22:05:16.781181+00:00",
+  "browser_success": false,
+  "reason": "Interrupted",
+  "error_type": "RuntimeError",
+  "tcpdump_exit_code": 0,
+  "packet_count": 2803,
+  "capture_ended_at": "2026-09-21T22:05:18.247123+00:00",
+  "capture_duration_seconds": 1.465942,
+  "duration_seconds": 4.35,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-21T22:05:19.269254+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260921T220514919719Z_df07885d_x.com_social_media_browsing.pcap"
+}

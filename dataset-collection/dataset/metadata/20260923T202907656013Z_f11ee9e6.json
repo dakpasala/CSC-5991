@@ -1,0 +1,138 @@
+{
+  "session_id": "20260923T202907656013Z_f11ee9e6",
+  "domain": "www.foxsports.com",
+  "rank": null,
+  "requested_activity": "video_streaming",
+  "started_at": "2026-09-23T20:29:07.656510+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790195348.8067808,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790195350.258004,
+      "url": "https://www.foxsports.com/watch/fmc-0wxoueqq5bc7h5wz"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790195350.25809,
+      "selector": "video"
+    },
+    {
+      "event": "play_requested",
+      "time": 1790195352.259916,
+      "media": "video"
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195354.795893,
+      "progressing": true,
+      "media_time": 2.123356
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195355.806637,
+      "progressing": true,
+      "media_time": 3.131926
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195356.814157,
+      "progressing": true,
+      "media_time": 4.141546
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195357.830291,
+      "progressing": true,
+      "media_time": 5.156587
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195358.844796,
+      "progressing": true,
+      "media_time": 6.169415
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195359.855242,
+      "progressing": true,
+      "media_time": 7.181342
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195360.86686,
+      "progressing": true,
+      "media_time": 8.1932
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195361.8734138,
+      "progressing": true,
+      "media_time": 9.19977
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195362.884646,
+      "progressing": true,
+      "media_time": 10.212686
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195363.892968,
+      "progressing": true,
+      "media_time": 11.218629
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195364.898805,
+      "progressing": true,
+      "media_time": 12.224313
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195365.9100769,
+      "progressing": true,
+      "media_time": 13.236589
+    },
+    {
+      "event": "media_sample",
+      "time": 1790195366.167021,
+      "progressing": true,
+      "media_time": 13.492149
+    },
+    {
+      "event": "done",
+      "time": 1790195366.1670778,
+      "success": true,
+      "verified_seconds": 12.38
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "hand_curated_verified_playback_2026-09-23",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "c22f5fb605a9647a123e30f413e3496c43c4860d4f3e16b4499f37fad35fec3e",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T20:29:08.866333+00:00",
+  "browser_success": true,
+  "verified_seconds": 12.38,
+  "capture_ended_at": "2026-09-23T20:29:26.168632+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 42246,
+  "capture_duration_seconds": 17.302299,
+  "duration_seconds": 18.823,
+  "success": true,
+  "actual_activity": "video_streaming",
+  "parent_activity": "video_streaming",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-23T20:29:26.478454+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/video_streaming/20260923T202907656013Z_f11ee9e6_www.foxsports.com_video_streaming.pcap"
+}

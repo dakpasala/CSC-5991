@@ -1,0 +1,156 @@
+{
+  "session_id": "20260922T031240253968Z_e8677866",
+  "domain": "arabxn.sex",
+  "rank": 1626,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T03:12:40.254424+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790046761.475816,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790046762.3779242,
+      "url": "https://arabxn.sex/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046762.380739,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046762.383014
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046764.394989,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046764.397033
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046766.411337,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046766.4145331
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046768.423237,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046768.4251678
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046770.441275,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046770.445132
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046772.459296,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046772.46289
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046774.476494,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046774.480511
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046776.4940422,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046776.4978938
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046778.511307,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046778.5148559
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046778.76779,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790046778.7679381,
+      "success": true,
+      "verified_seconds": 16.359
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T03:12:41.534752+00:00",
+  "browser_success": true,
+  "verified_seconds": 16.359,
+  "capture_ended_at": "2026-09-22T03:12:58.772070+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 1629,
+  "capture_duration_seconds": 17.237318,
+  "duration_seconds": 18.699,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T03:12:58.952719+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T031240253968Z_e8677866_arabxn.sex_web_browsing.pcap"
+}

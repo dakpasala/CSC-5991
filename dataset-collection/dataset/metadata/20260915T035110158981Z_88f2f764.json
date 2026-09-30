@@ -1,0 +1,88 @@
+{
+  "session_id": "20260915T035110158981Z_88f2f764",
+  "domain": "w3schools.com",
+  "rank": null,
+  "requested_activity": "audio_streaming",
+  "started_at": "2026-09-15T03:51:10.159243+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1789444272.491202,
+      "browser_version": "152.0.7977.84"
+    },
+    {
+      "event": "navigate",
+      "time": 1789444274.124494,
+      "url": "https://www.w3schools.com/html/tryit.asp"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1789444274.124541,
+      "selector": "#iframeResult"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1789444274.144105,
+      "selector": "audio"
+    },
+    {
+      "event": "play_requested",
+      "time": 1789444274.155916,
+      "media": "audio"
+    },
+    {
+      "event": "media_sample",
+      "time": 1789444275.2257018,
+      "progressing": true,
+      "media_time": 0.874285
+    },
+    {
+      "event": "media_sample",
+      "time": 1789444299.921272,
+      "progressing": true,
+      "media_time": 0.577196
+    },
+    {
+      "event": "browser_diagnostic",
+      "time": 1789444299.927401,
+      "phase": "playback",
+      "access_denied": false,
+      "article_elements": 0,
+      "audio_elements": 1,
+      "login_prompt": false,
+      "post_links": 0,
+      "video_elements": 0,
+      "window_count": 1
+    },
+    {
+      "event": "done",
+      "success": false,
+      "reason": "Media was not progressing at session end",
+      "error_type": "RuntimeError"
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 29.999996958998963,
+  "source_scope": "external_demo_short_loop_not_representative_music_streaming",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "19abc5c9e8493763d345e50daccc5f1028512685201b3e9c1b99cc4aa5f92c9b",
+  "browser_version": "152.0.7977.84",
+  "capture_started_at": "2026-09-15T03:51:12.548473+00:00",
+  "browser_success": false,
+  "reason": "Media was not progressing at session end",
+  "error_type": "RuntimeError",
+  "capture_ended_at": "2026-09-15T03:51:39.931554+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 45067,
+  "capture_duration_seconds": 27.383081,
+  "duration_seconds": 30.335,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-15T03:51:40.493552+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260915T035110158981Z_88f2f764_w3schools.com_audio_streaming.pcap"
+}

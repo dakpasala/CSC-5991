@@ -1,0 +1,96 @@
+{
+  "session_id": "20260923T010455764453Z_c7861474",
+  "domain": "youtube.com",
+  "rank": null,
+  "requested_activity": "video_streaming",
+  "started_at": "2026-09-23T01:04:55.764791+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790125496.97298,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "session_cookies_injected",
+      "time": 1790125497.7012842,
+      "count": 22
+    },
+    {
+      "event": "navigate",
+      "time": 1790125499.944531,
+      "url": "https://www.youtube.com/watch"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790125499.9445791,
+      "selector": "video"
+    },
+    {
+      "event": "play_requested",
+      "time": 1790125499.9943511,
+      "media": "video"
+    },
+    {
+      "event": "media_sample",
+      "time": 1790125501.009475,
+      "progressing": true,
+      "media_time": 1.499247
+    },
+    {
+      "event": "media_sample",
+      "time": 1790125502.0186439,
+      "progressing": true,
+      "media_time": 2.512038
+    },
+    {
+      "event": "media_sample",
+      "time": 1790125503.028192,
+      "progressing": true,
+      "media_time": 3.521197
+    },
+    {
+      "event": "media_sample",
+      "time": 1790125504.039574,
+      "progressing": true,
+      "media_time": 4.532041
+    },
+    {
+      "event": "media_sample",
+      "time": 1790125505.048636,
+      "progressing": true,
+      "media_time": 5.544598
+    },
+    {
+      "event": "media_sample",
+      "time": 1790125506.0654452,
+      "progressing": true,
+      "media_time": 6.558707
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top100_previous_30_second_success_not_guaranteed",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "0d54740cf8fd790197913471f7dd56326ca8866a16fc0057a9cd60806b4b4b66",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T01:04:57.032954+00:00",
+  "browser_success": false,
+  "reason": "Interrupted",
+  "error_type": "RuntimeError",
+  "tcpdump_exit_code": 0,
+  "packet_count": 5413,
+  "capture_ended_at": "2026-09-23T01:05:06.472544+00:00",
+  "capture_duration_seconds": 9.43959,
+  "duration_seconds": 11.732,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-23T01:05:07.497003+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260923T010455764453Z_c7861474_youtube.com_video_streaming.pcap"
+}

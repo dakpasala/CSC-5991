@@ -1,0 +1,145 @@
+{
+  "session_id": "20260922T030908081561Z_414bb9c7",
+  "domain": "kakuyomu.jp",
+  "rank": 1548,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T03:09:08.082236+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790046549.45294,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790046551.889529,
+      "url": "https://kakuyomu.jp/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046551.891883,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046551.893512
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046553.915869,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046553.917501
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046555.933908,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046555.9357781
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046557.9584231,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046557.9627972
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046559.975235,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046559.97923
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046561.9856791,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046561.992993
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046564.004252,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046564.0082428
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046566.021836,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046566.026193
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046566.596513,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790046566.596664,
+      "success": true,
+      "verified_seconds": 14.676
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T03:09:09.513433+00:00",
+  "browser_success": true,
+  "verified_seconds": 14.676,
+  "capture_ended_at": "2026-09-22T03:09:26.600759+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 7790,
+  "capture_duration_seconds": 17.087326,
+  "duration_seconds": 18.709,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T03:09:26.790551+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T030908081561Z_414bb9c7_kakuyomu.jp_web_browsing.pcap"
+}

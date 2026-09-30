@@ -1,0 +1,161 @@
+{
+  "session_id": "20260923T034329681215Z_bb6f01ea",
+  "domain": "families.youtube.com",
+  "rank": 50000,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-23T03:43:29.682012+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790135011.032629,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "session_cookies_injected",
+      "time": 1790135011.366282,
+      "count": 22
+    },
+    {
+      "event": "navigate",
+      "time": 1790135011.53302,
+      "url": "https://families.youtube.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135011.535511,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135011.537686
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135013.553134,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135013.556772
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135015.56918,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135015.5735822
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135017.585046,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135017.588672
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135019.599027,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135019.602719
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135021.611997,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135021.614252
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135023.6257331,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135023.628735
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135025.640828,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135025.6451
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135027.6586869,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135027.663511
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135028.1909142,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790135028.191046,
+      "success": true,
+      "verified_seconds": 16.624
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "current_top10k_verified_2026-09-22",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "e8851e39f479552c001d4daffee8a36af204ce2a7b8234e912959ec7652a5111",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T03:43:31.092013+00:00",
+  "browser_success": true,
+  "verified_seconds": 16.624,
+  "capture_ended_at": "2026-09-23T03:43:48.199966+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 67751,
+  "capture_duration_seconds": 17.107953,
+  "duration_seconds": 18.679,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-23T03:43:48.360489+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260923T034329681215Z_bb6f01ea_families.youtube.com_web_browsing.pcap"
+}

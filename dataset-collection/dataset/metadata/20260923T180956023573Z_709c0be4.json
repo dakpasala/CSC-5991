@@ -1,0 +1,118 @@
+{
+  "session_id": "20260923T180956023573Z_709c0be4",
+  "domain": "trha.bandcamp.com",
+  "rank": null,
+  "requested_activity": "audio_streaming",
+  "started_at": "2026-09-23T18:09:56.023790+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790186999.0073578,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790187002.192223,
+      "url": "https://trha.bandcamp.com/album/umad-ejja-o-tovaj"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790187002.192322,
+      "selector": "audio"
+    },
+    {
+      "event": "play_requested",
+      "time": 1790187002.204175,
+      "media": "audio"
+    },
+    {
+      "event": "play_click_fallback",
+      "time": 1790187003.822551,
+      "selector": "audio"
+    },
+    {
+      "event": "play_click_fallback",
+      "time": 1790187005.933184,
+      "selector": ".playbutton"
+    },
+    {
+      "event": "media_sample",
+      "time": 1790187007.946951,
+      "progressing": true,
+      "media_time": 1.30271
+    },
+    {
+      "event": "media_sample",
+      "time": 1790187009.0033522,
+      "progressing": true,
+      "media_time": 2.358197
+    },
+    {
+      "event": "media_sample",
+      "time": 1790187010.010844,
+      "progressing": true,
+      "media_time": 3.368067
+    },
+    {
+      "event": "media_sample",
+      "time": 1790187011.017805,
+      "progressing": true,
+      "media_time": 4.370873
+    },
+    {
+      "event": "media_sample",
+      "time": 1790187012.2816179,
+      "progressing": true,
+      "media_time": 5.632955
+    },
+    {
+      "event": "media_sample",
+      "time": 1790187013.287209,
+      "progressing": true,
+      "media_time": 6.646357
+    },
+    {
+      "event": "media_sample",
+      "time": 1790187014.325527,
+      "progressing": true,
+      "media_time": 7.67603
+    },
+    {
+      "event": "media_sample",
+      "time": 1790187014.53071,
+      "progressing": true,
+      "media_time": 7.890658
+    },
+    {
+      "event": "done",
+      "time": 1790187014.5308,
+      "success": true,
+      "verified_seconds": 7.589
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "user_plan",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "df0de5053cdad7b73dd6d44c5167f3d6a68ed16b54ff31fdc7f65cdbba3093ff",
+  "profile_mode": "fresh",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T18:09:59.064632+00:00",
+  "browser_success": true,
+  "verified_seconds": 7.589,
+  "capture_ended_at": "2026-09-23T18:10:14.535032+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 50544,
+  "capture_duration_seconds": 15.4704,
+  "duration_seconds": 18.998,
+  "success": true,
+  "actual_activity": "audio_streaming",
+  "parent_activity": "audio_streaming",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-23T18:10:15.021455+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/audio_streaming/20260923T180956023573Z_709c0be4_trha.bandcamp.com_audio_streaming.pcap"
+}

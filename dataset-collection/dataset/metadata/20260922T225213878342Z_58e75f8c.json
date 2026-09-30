@@ -1,0 +1,40 @@
+{
+  "session_id": "20260922T225213878342Z_58e75f8c",
+  "domain": "www.chathourmobile.com",
+  "rank": 10000,
+  "requested_activity": "social_media_browsing",
+  "started_at": "2026-09-22T22:52:13.878615+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790117535.053983,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "current_top10k_verified_2026-09-22",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "a6a6378b2a18dddefc27fe364240321c456e6a3f07542e7b9937a0c0746eaf11",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T22:52:15.111829+00:00",
+  "browser_success": false,
+  "reason": "Session deadline exceeded",
+  "error_type": "RuntimeError",
+  "tcpdump_exit_code": 0,
+  "packet_count": 1364,
+  "capture_ended_at": "2026-09-22T22:52:33.958091+00:00",
+  "capture_duration_seconds": 18.846262,
+  "duration_seconds": 21.109,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-22T22:52:34.987536+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260922T225213878342Z_58e75f8c_www.chathourmobile.com_social_media_browsing.pcap"
+}

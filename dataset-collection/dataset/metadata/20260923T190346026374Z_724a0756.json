@@ -1,0 +1,142 @@
+{
+  "session_id": "20260923T190346026374Z_724a0756",
+  "domain": "www.aljazeera.com",
+  "rank": null,
+  "requested_activity": "video_streaming",
+  "started_at": "2026-09-23T19:03:46.026661+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790190227.26654,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790190228.273292,
+      "url": "https://www.aljazeera.com/video/newsfeed/2026/9/23/jerusalem-daily-world-leaders-condemn-israel-at-un"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790190228.273338,
+      "selector": "video"
+    },
+    {
+      "event": "play_requested",
+      "time": 1790190228.592164,
+      "media": "video"
+    },
+    {
+      "event": "play_click_fallback",
+      "time": 1790190231.226805,
+      "selector": "video"
+    },
+    {
+      "event": "play_click_fallback",
+      "time": 1790190232.248595,
+      "selector": ".vjs-big-play-button"
+    },
+    {
+      "event": "media_sample",
+      "time": 1790190234.269622,
+      "progressing": true,
+      "media_time": 1.988872
+    },
+    {
+      "event": "media_sample",
+      "time": 1790190235.276185,
+      "progressing": true,
+      "media_time": 2.993779
+    },
+    {
+      "event": "media_sample",
+      "time": 1790190236.285221,
+      "progressing": true,
+      "media_time": 4.002648
+    },
+    {
+      "event": "media_sample",
+      "time": 1790190237.2943091,
+      "progressing": true,
+      "media_time": 5.014731
+    },
+    {
+      "event": "media_sample",
+      "time": 1790190238.305797,
+      "progressing": true,
+      "media_time": 6.023982
+    },
+    {
+      "event": "media_sample",
+      "time": 1790190239.311528,
+      "progressing": true,
+      "media_time": 7.030439
+    },
+    {
+      "event": "media_sample",
+      "time": 1790190240.3198552,
+      "progressing": true,
+      "media_time": 8.036724
+    },
+    {
+      "event": "media_sample",
+      "time": 1790190241.32736,
+      "progressing": true,
+      "media_time": 9.047622
+    },
+    {
+      "event": "media_sample",
+      "time": 1790190242.3331041,
+      "progressing": true,
+      "media_time": 10.052593
+    },
+    {
+      "event": "media_sample",
+      "time": 1790190243.343276,
+      "progressing": true,
+      "media_time": 11.062089
+    },
+    {
+      "event": "media_sample",
+      "time": 1790190244.3531,
+      "progressing": true,
+      "media_time": 12.073245
+    },
+    {
+      "event": "media_sample",
+      "time": 1790190244.5354052,
+      "progressing": true,
+      "media_time": 12.255887
+    },
+    {
+      "event": "done",
+      "time": 1790190244.535597,
+      "success": true,
+      "verified_seconds": 11.273
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "user_plan",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "77c1f373a781c419c67eae8d8a888830ea7d242937ae264cbee93160b27fd9ea",
+  "profile_mode": "fresh",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T19:03:47.327816+00:00",
+  "browser_success": true,
+  "verified_seconds": 11.273,
+  "capture_ended_at": "2026-09-23T19:04:04.537173+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 66944,
+  "capture_duration_seconds": 17.209357,
+  "duration_seconds": 18.861,
+  "success": true,
+  "actual_activity": "video_streaming",
+  "parent_activity": "video_streaming",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-23T19:04:04.886846+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/video_streaming/20260923T190346026374Z_724a0756_www.aljazeera.com_video_streaming.pcap"
+}

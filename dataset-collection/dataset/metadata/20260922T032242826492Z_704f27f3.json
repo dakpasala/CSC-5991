@@ -1,0 +1,145 @@
+{
+  "session_id": "20260922T032242826492Z_704f27f3",
+  "domain": "mangaraw.ac",
+  "rank": 1761,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T03:22:42.826795+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790047364.028085,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790047366.8401349,
+      "url": "https://mangaraw.ac/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047366.8426812,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047366.8446562
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047368.8580852,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047368.860543
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047370.87819,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047370.882279
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047372.896564,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047372.900512
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047374.9181921,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047374.921927
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047376.9376042,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047376.9412422
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047378.954727,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047378.958076
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047380.972387,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047380.97617
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047381.3407922,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790047381.340939,
+      "success": true,
+      "verified_seconds": 14.471
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T03:22:44.085449+00:00",
+  "browser_success": true,
+  "verified_seconds": 14.471,
+  "capture_ended_at": "2026-09-22T03:23:01.345068+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 5508,
+  "capture_duration_seconds": 17.259619,
+  "duration_seconds": 18.664,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T03:23:01.491144+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T032242826492Z_704f27f3_mangaraw.ac_web_browsing.pcap"
+}

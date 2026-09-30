@@ -1,0 +1,123 @@
+{
+  "session_id": "20260922T024438333114Z_f1ade5dc",
+  "domain": "skybridge.click",
+  "rank": 847,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T02:44:38.333800+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790045079.6047418,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790045084.8954072,
+      "url": "https://skybridge.click/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045084.897373,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045084.89903
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045086.912888,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045086.91626
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045088.923289,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045088.926102
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045090.943871,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045090.947915
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045092.955572,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045092.95754
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045094.973854,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045094.977414
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045096.847988,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790045096.848146,
+      "success": true,
+      "verified_seconds": 11.934
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T02:44:39.663154+00:00",
+  "browser_success": true,
+  "verified_seconds": 11.934,
+  "capture_ended_at": "2026-09-22T02:44:56.852396+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 10918,
+  "capture_duration_seconds": 17.189242,
+  "duration_seconds": 18.708,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T02:44:57.041431+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T024438333114Z_f1ade5dc_skybridge.click_web_browsing.pcap"
+}

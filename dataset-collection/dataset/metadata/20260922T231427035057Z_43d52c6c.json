@@ -1,0 +1,156 @@
+{
+  "session_id": "20260922T231427035057Z_43d52c6c",
+  "domain": "www.rottentomatoes.com",
+  "rank": null,
+  "requested_activity": "video_streaming",
+  "started_at": "2026-09-22T23:14:27.035297+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790118868.120239,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790118869.579465,
+      "url": "https://www.rottentomatoes.com/m/forgotten_island/videos/fYVMCjxjeQTX"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790118869.57951,
+      "selector": "video"
+    },
+    {
+      "event": "play_requested",
+      "time": 1790118869.596488,
+      "media": "video"
+    },
+    {
+      "event": "media_sample",
+      "time": 1790118870.6141078,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790118871.632162,
+      "progressing": true,
+      "media_time": 0.900871
+    },
+    {
+      "event": "media_sample",
+      "time": 1790118872.644355,
+      "progressing": true,
+      "media_time": 1.912624
+    },
+    {
+      "event": "media_sample",
+      "time": 1790118873.654707,
+      "progressing": true,
+      "media_time": 2.923341
+    },
+    {
+      "event": "media_sample",
+      "time": 1790118874.6684108,
+      "progressing": true,
+      "media_time": 3.936897
+    },
+    {
+      "event": "media_sample",
+      "time": 1790118875.679931,
+      "progressing": true,
+      "media_time": 4.948259
+    },
+    {
+      "event": "media_sample",
+      "time": 1790118876.695037,
+      "progressing": true,
+      "media_time": 5.961624
+    },
+    {
+      "event": "media_sample",
+      "time": 1790118877.7084742,
+      "progressing": true,
+      "media_time": 6.97625
+    },
+    {
+      "event": "media_sample",
+      "time": 1790118878.722036,
+      "progressing": true,
+      "media_time": 7.989898
+    },
+    {
+      "event": "media_sample",
+      "time": 1790118879.7291362,
+      "progressing": true,
+      "media_time": 8.997299
+    },
+    {
+      "event": "media_sample",
+      "time": 1790118880.737346,
+      "progressing": true,
+      "media_time": 10.004683
+    },
+    {
+      "event": "media_sample",
+      "time": 1790118881.7465742,
+      "progressing": true,
+      "media_time": 11.011863
+    },
+    {
+      "event": "media_sample",
+      "time": 1790118882.75822,
+      "progressing": true,
+      "media_time": 12.025764
+    },
+    {
+      "event": "media_sample",
+      "time": 1790118883.770397,
+      "progressing": true,
+      "media_time": 13.037828
+    },
+    {
+      "event": "media_sample",
+      "time": 1790118884.781043,
+      "progressing": true,
+      "media_time": 14.047556
+    },
+    {
+      "event": "media_sample",
+      "time": 1790118885.541047,
+      "progressing": true,
+      "media_time": 14.807195
+    },
+    {
+      "event": "done",
+      "time": 1790118885.5411808,
+      "success": true,
+      "verified_seconds": 14.927
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "user_plan",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "969448257e6fd668696dfd038c88f244184bbce3dd8dfc4511f7c375c6c6ca2e",
+  "profile_mode": "fresh",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T23:14:28.178666+00:00",
+  "browser_success": true,
+  "verified_seconds": 14.927,
+  "capture_ended_at": "2026-09-22T23:14:45.560334+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 53864,
+  "capture_duration_seconds": 17.381668,
+  "duration_seconds": 18.796,
+  "success": true,
+  "actual_activity": "video_streaming",
+  "parent_activity": "video_streaming",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T23:14:45.831639+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/video_streaming/20260922T231427035057Z_43d52c6c_www.rottentomatoes.com_video_streaming.pcap"
+}

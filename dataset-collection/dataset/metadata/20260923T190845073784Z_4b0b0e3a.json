@@ -1,0 +1,68 @@
+{
+  "session_id": "20260923T190845073784Z_4b0b0e3a",
+  "domain": "www.iheart.com",
+  "rank": null,
+  "requested_activity": "audio_streaming",
+  "started_at": "2026-09-23T19:08:45.074004+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790190527.2102468,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790190542.1314728,
+      "url": "https://www.iheart.com/podcast/1119-stuff-you-should-know-26940277"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790190542.131518,
+      "selector": "audio"
+    },
+    {
+      "event": "browser_diagnostic",
+      "time": 1790190544.11309,
+      "phase": "wait_for_selector",
+      "access_denied": false,
+      "article_elements": 0,
+      "audio_elements": 0,
+      "login_prompt": true,
+      "post_links": 0,
+      "video_elements": 3,
+      "window_count": 1
+    },
+    {
+      "event": "done",
+      "success": false,
+      "reason": "Browser action failed during wait_for_selector; inspect access or selectors",
+      "error_type": "TimeoutException"
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "user_plan",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "42e7c48f2cbbf7098e74ecf400986044f789c5ecde72063eed31c122aad19ebb",
+  "profile_mode": "fresh",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T19:08:47.270404+00:00",
+  "browser_success": false,
+  "reason": "Browser action failed during wait_for_selector; inspect access or selectors",
+  "error_type": "TimeoutException",
+  "capture_ended_at": "2026-09-23T19:09:04.114631+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 45352,
+  "capture_duration_seconds": 16.844227,
+  "duration_seconds": 19.27,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-23T19:09:04.343500+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260923T190845073784Z_4b0b0e3a_www.iheart.com_audio_streaming.pcap"
+}

@@ -1,0 +1,55 @@
+{
+  "session_id": "20260921T222451828847Z_7c0dec9a",
+  "domain": "threads.net",
+  "rank": 1783,
+  "requested_activity": "social_media_browsing",
+  "started_at": "2026-09-21T22:24:51.829140+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790029493.0135849,
+      "browser_version": "153.0.8010.48",
+      "headed": false
+    },
+    {
+      "event": "session_cookies_injected",
+      "time": 1790029494.343024,
+      "count": 1
+    },
+    {
+      "event": "navigate",
+      "time": 1790029496.0530822,
+      "url": "https://www.threads.com/"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790029496.053129,
+      "selector": "article"
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "b4a18b16b1f09f545b9ca8762bce7ecd9a7a60066d8ec92eac0b3ec2700b5a44",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.48",
+  "capture_started_at": "2026-09-21T22:24:53.070827+00:00",
+  "browser_success": false,
+  "reason": "Interrupted",
+  "error_type": "RuntimeError",
+  "tcpdump_exit_code": 0,
+  "packet_count": 9289,
+  "capture_ended_at": "2026-09-21T22:25:01.524224+00:00",
+  "capture_duration_seconds": 8.453397,
+  "duration_seconds": 10.724,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-21T22:25:02.553204+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260921T222451828847Z_7c0dec9a_threads.net_social_media_browsing.pcap"
+}

@@ -1,0 +1,138 @@
+{
+  "session_id": "20260923T020542396167Z_51157888",
+  "domain": "mzfi.me",
+  "rank": null,
+  "requested_activity": "video_streaming",
+  "started_at": "2026-09-23T02:05:42.396383+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790129144.3636448,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790129145.436241,
+      "url": "https://mzfi.me/spa/videoPlayPage/movies/reacher-e1nw56h5sj4"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790129145.4362838,
+      "selector": "video"
+    },
+    {
+      "event": "play_requested",
+      "time": 1790129148.184864,
+      "media": "video"
+    },
+    {
+      "event": "media_sample",
+      "time": 1790129149.200017,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790129150.207489,
+      "progressing": true,
+      "media_time": 0.562021
+    },
+    {
+      "event": "media_sample",
+      "time": 1790129151.2224991,
+      "progressing": true,
+      "media_time": 1.574469
+    },
+    {
+      "event": "media_sample",
+      "time": 1790129152.2298071,
+      "progressing": true,
+      "media_time": 2.585524
+    },
+    {
+      "event": "media_sample",
+      "time": 1790129153.235583,
+      "progressing": true,
+      "media_time": 3.589406
+    },
+    {
+      "event": "media_sample",
+      "time": 1790129154.245601,
+      "progressing": true,
+      "media_time": 4.600075
+    },
+    {
+      "event": "media_sample",
+      "time": 1790129155.26,
+      "progressing": true,
+      "media_time": 5.612364
+    },
+    {
+      "event": "media_sample",
+      "time": 1790129156.288127,
+      "progressing": true,
+      "media_time": 6.642356
+    },
+    {
+      "event": "media_sample",
+      "time": 1790129157.295583,
+      "progressing": true,
+      "media_time": 7.649123
+    },
+    {
+      "event": "media_sample",
+      "time": 1790129158.321185,
+      "progressing": true,
+      "media_time": 8.673639
+    },
+    {
+      "event": "media_sample",
+      "time": 1790129159.331172,
+      "progressing": true,
+      "media_time": 9.685476
+    },
+    {
+      "event": "media_sample",
+      "time": 1790129160.336352,
+      "progressing": true,
+      "media_time": 10.69031
+    },
+    {
+      "event": "media_sample",
+      "time": 1790129160.919678,
+      "progressing": true,
+      "media_time": 11.273098
+    },
+    {
+      "event": "done",
+      "time": 1790129160.919748,
+      "success": true,
+      "verified_seconds": 11.72
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "user_plan",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "db24ef68d0b29854b6dc08446ce7936627605baa67a797940a2a5ab40700302c",
+  "profile_mode": "fresh",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T02:05:44.421581+00:00",
+  "browser_success": true,
+  "verified_seconds": 11.72,
+  "capture_ended_at": "2026-09-23T02:06:00.928987+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 51670,
+  "capture_duration_seconds": 16.507406,
+  "duration_seconds": 18.853,
+  "success": true,
+  "actual_activity": "video_streaming",
+  "parent_activity": "video_streaming",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-23T02:06:01.249471+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/video_streaming/20260923T020542396167Z_51157888_mzfi.me_video_streaming.pcap"
+}

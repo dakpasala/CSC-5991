@@ -1,0 +1,145 @@
+{
+  "session_id": "20260922T030703355250Z_fdf451aa",
+  "domain": "xnxx.health",
+  "rank": 1492,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T03:07:03.355794+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790046424.599296,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790046425.89629,
+      "url": "https://xnxx.health/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046425.8988721,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046425.9011772
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046427.932493,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046427.936129
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046429.952617,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046429.955937
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046431.975179,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046431.9800162
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046433.992357,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046433.994352
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046436.007139,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046436.013482
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046438.0283399,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046438.0335941
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046440.051818,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046440.0554938
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046441.867282,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790046441.8674529,
+      "success": true,
+      "verified_seconds": 15.937
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T03:07:04.671222+00:00",
+  "browser_success": true,
+  "verified_seconds": 15.937,
+  "capture_ended_at": "2026-09-22T03:07:21.871784+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 25428,
+  "capture_duration_seconds": 17.200562,
+  "duration_seconds": 18.716,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T03:07:22.071385+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T030703355250Z_fdf451aa_xnxx.health_web_browsing.pcap"
+}

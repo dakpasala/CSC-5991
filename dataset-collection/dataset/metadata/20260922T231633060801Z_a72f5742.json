@@ -1,0 +1,163 @@
+{
+  "session_id": "20260922T231633060801Z_a72f5742",
+  "domain": "www.iq.com",
+  "rank": null,
+  "requested_activity": "video_streaming",
+  "started_at": "2026-09-22T23:16:33.061005+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790118994.8392,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790118996.787659,
+      "url": "https://www.iq.com/play/xu-kaizhou-ye-collection-2ajz6bqeyk6"
+    },
+    {
+      "event": "selector_wait",
+      "time": 1790118996.7877069,
+      "selector": "video"
+    },
+    {
+      "event": "play_requested",
+      "time": 1790118996.891856,
+      "media": "video"
+    },
+    {
+      "event": "media_sample",
+      "time": 1790118997.971402,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790118998.994745,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790119000.007806,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790119001.0177479,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790119002.0260491,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790119003.036643,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790119004.0469701,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790119005.0581279,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790119006.069639,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790119007.081804,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790119008.09056,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790119009.101006,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790119010.1095,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790119011.121804,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "media_sample",
+      "time": 1790119011.577161,
+      "progressing": false,
+      "media_time": 0
+    },
+    {
+      "event": "browser_diagnostic",
+      "time": 1790119011.5835142,
+      "phase": "playback",
+      "access_denied": false,
+      "article_elements": 0,
+      "audio_elements": 0,
+      "login_prompt": false,
+      "post_links": 0,
+      "video_elements": 3,
+      "window_count": 1
+    },
+    {
+      "event": "done",
+      "success": false,
+      "reason": "Media was not progressing at session end",
+      "error_type": "RuntimeError"
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "user_plan",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "6518ef087391b6456629d9c84ec3f800be6a87494b96c7fdd4e3020376dde62a",
+  "profile_mode": "fresh",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T23:16:34.900997+00:00",
+  "browser_success": false,
+  "reason": "Media was not progressing at session end",
+  "error_type": "RuntimeError",
+  "capture_ended_at": "2026-09-22T23:16:51.585439+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 63865,
+  "capture_duration_seconds": 16.684442,
+  "duration_seconds": 18.797,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-22T23:16:51.858332+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260922T231633060801Z_a72f5742_www.iq.com_video_streaming.pcap"
+}

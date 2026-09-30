@@ -1,0 +1,145 @@
+{
+  "session_id": "20260922T031410884400Z_1e702315",
+  "domain": "bakusai.com",
+  "rank": 1658,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T03:14:10.886083+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790046851.986707,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790046854.086603,
+      "url": "https://bakusai.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046854.088759,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046854.0906801
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046856.1064,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046856.1082392
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046858.1234062,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046858.1274738
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046860.142405,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046860.1461298
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046862.156544,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046862.1583009
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046864.17167,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046864.1753018
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046866.1891148,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046866.192945
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046868.206859,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046868.2109618
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046869.3955688,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790046869.3956811,
+      "success": true,
+      "verified_seconds": 15.282
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T03:14:12.048742+00:00",
+  "browser_success": true,
+  "verified_seconds": 15.282,
+  "capture_ended_at": "2026-09-22T03:14:29.399765+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 3171,
+  "capture_duration_seconds": 17.351023,
+  "duration_seconds": 18.685,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T03:14:29.569830+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T031410884400Z_1e702315_bakusai.com_web_browsing.pcap"
+}

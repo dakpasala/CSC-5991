@@ -1,0 +1,145 @@
+{
+  "session_id": "20260922T022347636022Z_36bf7a89",
+  "domain": "indianexpress.com",
+  "rank": 2818,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T02:23:47.636121+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790043828.836624,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790043830.216772,
+      "url": "https://indianexpress.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043830.2197828,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043830.221998
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043832.247726,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043832.249978
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043834.355402,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043834.448364
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043836.485246,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043836.487825
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043838.541481,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043838.546734
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043840.600699,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043840.602945
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043842.621412,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043842.624629
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043844.64685,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790043844.653416
+    },
+    {
+      "event": "content_sample",
+      "time": 1790043846.1431859,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790043846.143234,
+      "success": true,
+      "verified_seconds": 15.806
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T02:23:48.895028+00:00",
+  "browser_success": true,
+  "verified_seconds": 15.806,
+  "capture_ended_at": "2026-09-22T02:24:06.144869+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 23634,
+  "capture_duration_seconds": 17.249841,
+  "duration_seconds": 19.032,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T02:24:06.667962+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T022347636022Z_36bf7a89_indianexpress.com_web_browsing.pcap"
+}

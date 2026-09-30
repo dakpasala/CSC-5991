@@ -1,0 +1,156 @@
+{
+  "session_id": "20260922T220948623183Z_7f395b92",
+  "domain": "auth.platorelay.com",
+  "rank": 1000,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T22:09:48.623513+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790114989.842582,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790114990.544988,
+      "url": "https://auth.platorelay.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790114990.547394,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790114990.54956
+    },
+    {
+      "event": "content_sample",
+      "time": 1790114992.561186,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790114992.565332
+    },
+    {
+      "event": "content_sample",
+      "time": 1790114994.57417,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790114994.5773408
+    },
+    {
+      "event": "content_sample",
+      "time": 1790114996.589011,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790114996.59318
+    },
+    {
+      "event": "content_sample",
+      "time": 1790114998.6070662,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790114998.611264
+    },
+    {
+      "event": "content_sample",
+      "time": 1790115000.6188018,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790115000.6204438
+    },
+    {
+      "event": "content_sample",
+      "time": 1790115002.628314,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790115002.630858
+    },
+    {
+      "event": "content_sample",
+      "time": 1790115004.64353,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790115004.647993
+    },
+    {
+      "event": "content_sample",
+      "time": 1790115006.656291,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790115006.658116
+    },
+    {
+      "event": "content_sample",
+      "time": 1790115007.132243,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790115007.132291,
+      "success": true,
+      "verified_seconds": 16.556
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "current_top10k_verified_2026-09-22",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "62c3532d14826202c86562f6668c28401e0b2aeb2cb8c88671e8dc81f6faf738",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T22:09:49.901711+00:00",
+  "browser_success": true,
+  "verified_seconds": 16.556,
+  "capture_ended_at": "2026-09-22T22:10:07.133719+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 2713,
+  "capture_duration_seconds": 17.232008,
+  "duration_seconds": 18.8,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T22:10:07.423782+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T220948623183Z_7f395b92_auth.platorelay.com_web_browsing.pcap"
+}

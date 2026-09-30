@@ -1,0 +1,365 @@
+{
+  "session_id": "20260916T013103348500Z_a3589281",
+  "domain": "digicert.com",
+  "rank": 47,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-16T01:31:03.349557+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1789522265.385515,
+      "browser_version": "152.0.7977.84",
+      "headed": true
+    },
+    {
+      "event": "navigate",
+      "time": 1789522266.267967,
+      "url": "https://www.digicert.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522266.270095,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522266.272692
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522268.3282402,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522268.330922
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522270.349005,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522270.3523898
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522272.370828,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522272.374796
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522274.388758,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522274.391938
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522276.4109912,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522276.414819
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522278.428958,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522278.432578
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522280.450881,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522280.453433
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522282.470127,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522282.4744792
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522284.489242,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522284.492953
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522286.50463,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522286.507242
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522288.522938,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522288.527342
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522290.5410109,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522290.544718
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522292.560158,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522292.563817
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522294.5786722,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522294.582686
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522296.5974689,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522296.601011
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522298.617117,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522298.620866
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522300.635076,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522300.6389608
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522302.654363,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522302.6580951
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522304.672213,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522304.6744561
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522306.689572,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522306.693287
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522308.708439,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522308.712163
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522310.727752,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522310.731358
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522312.7457862,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522312.749651
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522314.7685308,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522314.772245
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522316.788117,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522316.791584
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522318.806081,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522318.8096251
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522320.821381,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1789522320.824587
+    },
+    {
+      "event": "content_sample",
+      "time": 1789522321.864437,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1789522321.8645902,
+      "success": true,
+      "verified_seconds": 55.497
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 60.0,
+  "source_scope": "top100_batch_2026-09-15",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "8f3686dc6920d00c589e766d1180ffb5cd5d60e82d42be00c90e3fc9c23060a5",
+  "profile_mode": "persistent",
+  "browser_version": "152.0.7977.84",
+  "capture_started_at": "2026-09-16T01:31:05.444254+00:00",
+  "browser_success": true,
+  "verified_seconds": 55.497,
+  "capture_ended_at": "2026-09-16T01:32:01.873994+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 6306,
+  "capture_duration_seconds": 56.42974,
+  "duration_seconds": 58.781,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-16T01:32:02.130459+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260916T013103348500Z_a3589281_digicert.com_web_browsing.pcap"
+}

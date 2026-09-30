@@ -1,0 +1,92 @@
+{
+  "session_id": "20260922T030313909117Z_40f0b834",
+  "domain": "okdiario.com",
+  "rank": 1390,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T03:03:13.909396+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790046195.233951,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790046198.162693,
+      "url": "https://okdiario.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046198.166872,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046198.1689548
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046200.193726,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046200.1967769
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046202.205585,
+      "content": false,
+      "matching_elements": 0,
+      "playing_media": false
+    },
+    {
+      "event": "browser_diagnostic",
+      "time": 1790046202.2103932,
+      "phase": "browsing",
+      "access_denied": false,
+      "article_elements": 217,
+      "audio_elements": 0,
+      "login_prompt": false,
+      "post_links": 0,
+      "video_elements": 1,
+      "window_count": 1
+    },
+    {
+      "event": "done",
+      "success": false,
+      "reason": "Readable browsing content absent or media playing",
+      "error_type": "RuntimeError"
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T03:03:15.292536+00:00",
+  "browser_success": false,
+  "reason": "Readable browsing content absent or media playing",
+  "error_type": "RuntimeError",
+  "capture_ended_at": "2026-09-22T03:03:22.211654+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 6545,
+  "capture_duration_seconds": 6.919118,
+  "duration_seconds": 8.462,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-22T03:03:22.371310+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260922T030313909117Z_40f0b834_okdiario.com_web_browsing.pcap"
+}

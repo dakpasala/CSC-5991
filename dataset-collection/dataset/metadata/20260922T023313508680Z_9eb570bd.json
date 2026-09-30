@@ -1,0 +1,141 @@
+{
+  "session_id": "20260922T023313508680Z_9eb570bd",
+  "domain": "amplitude.com",
+  "rank": 288,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T02:33:13.509314+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790044394.715343,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790044396.892117,
+      "url": "https://amplitude.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044396.920911,
+      "content": false,
+      "matching_elements": 0,
+      "playing_media": false
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044398.4885702,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044398.49052
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044400.511093,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044400.5126631
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044402.528497,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044402.532149
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044404.5461729,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044404.549004
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044406.575285,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044406.578157
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044408.591996,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044408.5948238
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044410.6079402,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790044410.6107001
+    },
+    {
+      "event": "content_sample",
+      "time": 1790044412.0273972,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790044412.027554,
+      "success": true,
+      "verified_seconds": 13.52
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T02:33:14.773293+00:00",
+  "browser_success": true,
+  "verified_seconds": 13.52,
+  "capture_ended_at": "2026-09-22T02:33:32.031941+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 11667,
+  "capture_duration_seconds": 17.258648,
+  "duration_seconds": 18.72,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T02:33:32.229748+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T023313508680Z_9eb570bd_amplitude.com_web_browsing.pcap"
+}

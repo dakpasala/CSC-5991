@@ -1,0 +1,145 @@
+{
+  "session_id": "20260922T030034496235Z_95a73598",
+  "domain": "weathernews.jp",
+  "rank": 1362,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T03:00:34.496738+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790046035.758761,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790046037.2027469,
+      "url": "https://weathernews.jp/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046037.205524,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046037.2073238
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046039.245515,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046039.248246
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046041.27767,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046041.279681
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046043.3065522,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046043.3099542
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046045.342836,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046045.3471282
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046047.361918,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046047.3661351
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046049.383486,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046049.3882182
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046051.405484,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790046051.409796
+    },
+    {
+      "event": "content_sample",
+      "time": 1790046053.010622,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790046053.0107641,
+      "success": true,
+      "verified_seconds": 15.778
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T03:00:35.817594+00:00",
+  "browser_success": true,
+  "verified_seconds": 15.778,
+  "capture_ended_at": "2026-09-22T03:00:53.014933+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 10307,
+  "capture_duration_seconds": 17.197339,
+  "duration_seconds": 18.718,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T03:00:53.214227+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T030034496235Z_95a73598_weathernews.jp_web_browsing.pcap"
+}

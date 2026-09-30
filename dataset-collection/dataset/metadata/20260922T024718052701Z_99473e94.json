@@ -1,0 +1,156 @@
+{
+  "session_id": "20260922T024718052701Z_99473e94",
+  "domain": "tailscale.com",
+  "rank": 959,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T02:47:18.053198+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790045239.0896268,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790045239.889598,
+      "url": "https://tailscale.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045239.8922062,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045239.893954
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045241.950995,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045241.952965
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045243.9664462,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045243.972816
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045245.980843,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045245.9824069
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045247.9968472,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045248.000587
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045250.0156028,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045250.019945
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045252.0341702,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045252.038163
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045254.048328,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045254.051626
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045256.0634081,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790045256.066436
+    },
+    {
+      "event": "content_sample",
+      "time": 1790045256.566509,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790045256.566561,
+      "success": true,
+      "verified_seconds": 16.644
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T02:47:19.147496+00:00",
+  "browser_success": true,
+  "verified_seconds": 16.644,
+  "capture_ended_at": "2026-09-22T02:47:36.568050+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 6919,
+  "capture_duration_seconds": 17.420554,
+  "duration_seconds": 18.677,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T02:47:36.729917+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T024718052701Z_99473e94_tailscale.com_web_browsing.pcap"
+}

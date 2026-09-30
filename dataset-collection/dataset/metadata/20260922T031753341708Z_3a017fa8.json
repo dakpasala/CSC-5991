@@ -1,0 +1,81 @@
+{
+  "session_id": "20260922T031753341708Z_3a017fa8",
+  "domain": "xoso.com.vn",
+  "rank": 1708,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T03:17:53.342625+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790047074.6217039,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790047075.537462,
+      "url": "https://xoso.com.vn/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047075.5403898,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047075.542408
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047077.564178,
+      "content": false,
+      "matching_elements": 0,
+      "playing_media": false
+    },
+    {
+      "event": "browser_diagnostic",
+      "time": 1790047077.568788,
+      "phase": "browsing",
+      "access_denied": false,
+      "article_elements": 0,
+      "audio_elements": 0,
+      "login_prompt": false,
+      "post_links": 0,
+      "video_elements": 0,
+      "window_count": 1
+    },
+    {
+      "event": "done",
+      "success": false,
+      "reason": "Readable browsing content absent or media playing",
+      "error_type": "RuntimeError"
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T03:17:54.680826+00:00",
+  "browser_success": false,
+  "reason": "Readable browsing content absent or media playing",
+  "error_type": "RuntimeError",
+  "capture_ended_at": "2026-09-22T03:17:57.570203+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 11103,
+  "capture_duration_seconds": 2.889377,
+  "duration_seconds": 4.447,
+  "success": false,
+  "actual_activity": null,
+  "parent_activity": null,
+  "subtype": null,
+  "status": "failed",
+  "ended_at": "2026-09-22T03:17:57.788721+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/failed/20260922T031753341708Z_3a017fa8_xoso.com.vn_web_browsing.pcap"
+}

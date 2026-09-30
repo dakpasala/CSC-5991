@@ -1,0 +1,134 @@
+{
+  "session_id": "20260923T035741375763Z_6034f9a5",
+  "domain": "dantri.com.vn",
+  "rank": 1000,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-23T03:57:41.377082+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790135862.501667,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790135865.541395,
+      "url": "https://dantri.com.vn/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135865.54675,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135865.548958
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135867.583759,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135867.5857658
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135869.631565,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135869.633318
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135871.672412,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135871.674906
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135873.865464,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135873.8721652
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135876.1389408,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135876.158171
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135878.1725922,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790135878.17485
+    },
+    {
+      "event": "content_sample",
+      "time": 1790135879.946836,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790135879.946969,
+      "success": true,
+      "verified_seconds": 14.364
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "current_top10k_verified_2026-09-22",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "e8851e39f479552c001d4daffee8a36af204ce2a7b8234e912959ec7652a5111",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-23T03:57:42.559876+00:00",
+  "browser_success": true,
+  "verified_seconds": 14.364,
+  "capture_ended_at": "2026-09-23T03:57:59.951148+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 23601,
+  "capture_duration_seconds": 17.391272,
+  "duration_seconds": 18.872,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-23T03:58:00.248428+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260923T035741375763Z_6034f9a5_dantri.com.vn_web_browsing.pcap"
+}

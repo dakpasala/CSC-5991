@@ -1,0 +1,156 @@
+{
+  "session_id": "20260922T032511489371Z_21bc6207",
+  "domain": "trello.com",
+  "rank": 1825,
+  "requested_activity": "web_browsing",
+  "started_at": "2026-09-22T03:25:11.490013+00:00",
+  "actions": [
+    {
+      "event": "ready",
+      "time": 1790047512.561976,
+      "browser_version": "153.0.8010.53",
+      "headed": false
+    },
+    {
+      "event": "navigate",
+      "time": 1790047513.3488388,
+      "url": "https://trello.com/"
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047513.3513348,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047513.3529139
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047515.394367,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047515.3973398
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047517.4122329,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047517.41616
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047519.426455,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047519.4307451
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047521.443819,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047521.447488
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047523.46188,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047523.465701
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047525.4800599,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047525.483825
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047527.497081,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047527.500575
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047529.510975,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "scroll",
+      "time": 1790047529.513637
+    },
+    {
+      "event": "content_sample",
+      "time": 1790047530.0022779,
+      "content": true,
+      "matching_elements": 1,
+      "playing_media": false
+    },
+    {
+      "event": "done",
+      "time": 1790047530.002377,
+      "success": true,
+      "verified_seconds": 16.621
+    }
+  ],
+  "interface": "en0",
+  "bpf_filter": "ip or ip6",
+  "snaplen": 128,
+  "session_budget_seconds": 20.0,
+  "source_scope": "top10k_category_pass_2026-09-17",
+  "label_scope": "session; interface packets are not process-attributed",
+  "plan_sha256": "7b620decd6aab3463f6fc7adca7c75b5e49c91d219ffbc48ddc9646e29c25b61",
+  "profile_mode": "persistent",
+  "browser_version": "153.0.8010.53",
+  "capture_started_at": "2026-09-22T03:25:12.620049+00:00",
+  "browser_success": true,
+  "verified_seconds": 16.621,
+  "capture_ended_at": "2026-09-22T03:25:30.006443+00:00",
+  "tcpdump_exit_code": 0,
+  "packet_count": 11264,
+  "capture_duration_seconds": 17.386394,
+  "duration_seconds": 18.678,
+  "success": true,
+  "actual_activity": "web_browsing",
+  "parent_activity": "web_browsing",
+  "subtype": null,
+  "status": "success",
+  "ended_at": "2026-09-22T03:25:30.168013+00:00",
+  "pcap_path": "/Users/dakshesh/Cal Poly/CSC-5991/dataset/web_browsing/20260922T032511489371Z_21bc6207_trello.com_web_browsing.pcap"
+}
