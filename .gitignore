@@ -13,3 +13,5 @@ dataset/**
 assessment/
 
 .browser-profiles/
+traffic.pcapng
+
