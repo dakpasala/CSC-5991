@@ -14,4 +14,7 @@ assessment/
 
 .browser-profiles/
 traffic.pcapng
+.agents
+.codex
+.claude
 
