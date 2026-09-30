@@ -35,6 +35,10 @@ Verified derivable via tshark's own TCP analysis fields: RTT (`tcp.analysis.ack_
 
 The ~18% retransmission rate is unusually high for real-world traffic. Note it as an observed property of this dataset when reporting results — don't silently normalize it away, and don't claim it's a bug without more evidence either.
 
+Session IDs are up to 20 digits, past int64 range. `build_dataset.py` writes them as exact text, but a plain `pd.read_csv(...)` on the output CSVs will silently round them through float64 and corrupt them (verified: this happens even though the file itself is correct). Always load these CSVs with `dtype={"session_id": str}`.
+
+A flow is identified by a 4-tuple within one session; if a session happens to reuse the same client port for two genuinely separate connections hours apart, they get merged into a single flow, producing a nonsensical multi-hour "duration" and RTT for that row. Confirmed present in `traffic.pcapng` (rare, one observed case). Known and documented in `flow_builder.py`, not fixed — would need a real gap-based flow-splitting heuristic if it turns out to matter at scale.
+
 ## Tooling
 
 The professor suggested `dpkt` and `scapy`. In practice, `tshark` (already installed, paired with Wireshark) reads this entire 3.39M-packet file's fields — including frame comments and TCP analysis fields — in under a minute per pass, and its dissectors already implement RTT/retransmission detection correctly for header-only captures. The practical pipeline: use `tshark` to export the needed per-packet fields to a flat file, then use Python (pandas) for session/flow grouping and the aggregate statistics. Reach for `dpkt`/`scapy` for anything tshark's field export can't give directly (e.g. `bytes_in_flight`, segment-burst inference) rather than re-deriving everything tshark already computes correctly.

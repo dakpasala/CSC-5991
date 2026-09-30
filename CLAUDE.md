@@ -23,8 +23,26 @@ sessions) is done and archived — see below.
   domain-categorization CSV pipeline, `collect_loop.sh`, its own `AGENTS.md`/`CLAUDE.md`,
   everything). Reference only. Don't run or modify anything in here unless explicitly
   asked — it's not part of the active pipeline.
-- Nothing else exists yet in the active phase; the flow/session extraction pipeline
-  (tshark export → Python/pandas aggregation, per AGENTS.md) is still to be built.
+- `src/pcapng_reader.py` — streams a pcapng file's Enhanced Packet Blocks, keeping
+  each packet's frame comment (dpkt's own reader discards it; see the module
+  docstring for why this reimplements the block loop instead of subclassing).
+- `src/packet_parser.py` — parses Ethernet/IPv4/TCP fields into a `TcpPacket`.
+- `src/flow_builder.py` — groups packets into `Session`/`Flow` objects (session =
+  shared comment ID, flow = 4-tuple within a session). Known limitation documented
+  in its docstring: a reused 4-tuple within one session merges into a single flow.
+- `src/feature_extraction.py` — the actual feature table (network/transport layers
+  exact; application layer inferred from downstream data bursts, since there's no
+  payload to read real segment boundaries from — see its module docstring before
+  trusting those columns).
+- `src/build_dataset.py` — CLI entry point; writes `flow_features.csv` (one row per
+  flow) and `session_features.csv` (one row per session: `num_flows` plus median/
+  p25/p75 of every flow feature). Read the output CSVs with
+  `dtype={"session_id": str}` — session IDs are up to 20 digits and a plain
+  `pd.read_csv` will silently corrupt them through float64.
+- `src/inspect_session.py` — scapy-based, human-readable dump of one session's
+  packets, for spot-checking `build_dataset.py` output against the raw capture.
+  (dpkt does the bulk parsing; scapy is only used here, where per-packet
+  readability matters more than throughput.)
 
 ## Rules worth not forgetting
 

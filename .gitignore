@@ -14,6 +14,8 @@ assessment/
 
 .browser-profiles/
 traffic.pcapng
+flow_features.csv
+session_features.csv
 .agents
 .codex
 .claude
