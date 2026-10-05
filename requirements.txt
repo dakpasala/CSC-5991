@@ -2,3 +2,4 @@ dpkt
 scapy
 pandas
 numpy
+visidata

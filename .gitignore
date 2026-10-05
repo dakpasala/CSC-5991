@@ -17,6 +17,9 @@ traffic.pcapng
 all_traffic_time_10.pkl
 flow_features.csv
 session_features.csv
+streaming_traffic_features.csv
+streaming_traffic_features_sample.csv
+streaming_traffic_features_real.csv
 .agents
 .codex
 .claude

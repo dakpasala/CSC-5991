@@ -43,6 +43,32 @@ sessions) is done and archived — see below.
   packets, for spot-checking `build_dataset.py` output against the raw capture.
   (dpkt does the bulk parsing; scapy is only used here, where per-packet
   readability matters more than throughput.)
+- `all_traffic_time_10.pkl` — the real dataset (as of October 2026), supersedes
+  `traffic.pcapng`. Already fully feature-engineered (not raw packets) — one row
+  per 10-second window per session. See AGENTS.md's "The real dataset" section
+  before touching this; the pcapng pipeline above doesn't apply to it.
+- `src/export_streaming_features.py` — loads the pickle (Python-2 encoding, see
+  its docstring), drops the dead `index` column, expands `10_EWMA_chunksizes`
+  (a 10-element array per row, not a scalar) into ten `10_EWMA_chunksizes_1..10`
+  columns, derives a `label` column that splits YouTube into
+  `youtube_quic`/`youtube_tcp` by `is_tcp`, and writes
+  `streaming_traffic_features.csv` (260 columns, gitignored). A matching
+  `streaming_traffic_features_sample.csv` (first 2,000 rows) is handy for
+  opening in Excel/Numbers; for the full file, use `.venv/bin/vd
+  streaming_traffic_features.csv` (VisiData, in requirements.txt) instead —
+  GUI spreadsheet apps don't handle a file this size well.
+- `src/aggregate_sessions.py` — collapses the per-window rows into one row per
+  session, split into `session_features_real.csv` (13,081 real-world sessions)
+  and `session_features_lab.csv` (684 controlled-network-condition lab
+  sessions, identified by non-hash `session_id`s). Three aggregation rules by
+  column (cumulative/count/distribution) — see the module docstring for why a
+  single median/p25/p75 rule for every column would have been wrong, and
+  AGENTS.md's "The real dataset" section for which columns got which rule.
+- `src/filter_real_sessions.py` — the window-level equivalent of the real/lab
+  split above: filters `streaming_traffic_features.csv` down to
+  `streaming_traffic_features_real.csv` (682,450 rows), dropping the 46,542
+  window-rows that belong to lab-experiment sessions. Use this one, not the
+  unfiltered file, for anything meant to reflect organic network conditions.
 
 ## Rules worth not forgetting
 
