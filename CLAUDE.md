@@ -46,7 +46,15 @@ Two earlier phases are archived, not active:
 - `src/build_session_csv.py` — CLI entry point. Takes a session directory, appends its
   windows to a shared, accumulating CSV named by window size
   (`session_statistics_<N>_second_window.csv`), so re-running it on more session
-  directories builds up one combined dataset rather than one file per session.
+  directories builds up one combined dataset rather than one file per session. Either
+  positional argument (`session_directory`, `--window-seconds`) can be the literal
+  string `"all"` instead of a specific value: `"all"` for the directory
+  auto-discovers every subdirectory containing both `dump.pcap` and `exp.txt` (skipping
+  everything else, e.g. `src/`, archived phases, non-session dirs); `"all"` for
+  `--window-seconds` runs the full pipeline at 10/8/4/2/1 seconds, each to its own
+  file. Both can be `"all"` at once for the full cross-product — meant for a Linux
+  batch run once every session directory is present. Each (directory, window-size)
+  combination runs in its own try/except; one failure doesn't abort the batch.
 
 ## Rules worth not forgetting
 
@@ -64,10 +72,15 @@ Two earlier phases are archived, not active:
   `request_duration_ms_*`) are real, not inferred** — read directly from
   `requests_history.json`'s actual HTTP request/response records, a genuine upgrade
   over the burst-timing inference the first pcapng-based phase had to rely on.
-- **`exp.txt`'s label format has only been verified against one real example** (a
-  Twitch session) — `parse_exp_label()` assumes `"<prefix>_<service>.<suffix>"`.
-  Re-verify this against a youtube/netflix/amazon example the moment one is available;
-  don't assume the format generalizes without checking.
+- **`exp.txt`'s label format is verified against twitch/netflix/youtube examples**
+  (all fit `"<prefix>_<service>.<suffix>"`) — amazon not yet seen; re-verify the moment
+  one is available rather than assuming the format generalizes.
+- **No confirmed `youtube_quic` session yet.** The one YouTube directory processed so
+  far (`9b020fe43e6d5751a2e6face89a261c1`) is 99.91% TCP packets, so it resolved to
+  `youtube_tcp`. The QUIC/TCP split logic (`frac_udp` majority vote in
+  `_decide_label`) is implemented and will zero out ~40 TCP-specific columns for a
+  genuinely QUIC-dominant session, but that behavior is reasoned, not yet observed
+  against real QUIC traffic.
 - Session-aware splitting (train/test by `session_id`, not by row) still applies once
   this feeds a model, same reasoning as the earlier phase.
 

@@ -1,63 +1,70 @@
-"""Extract per-window traffic statistics from one session directory and
-append them to a shared, accumulating CSV.
+"""Extract per-window traffic statistics from one or all session directories
+and append them to a shared, accumulating CSV per window size.
 
-A session directory must contain dump.pcap, exp.txt, and (optionally)
-requests_history.json. Running this against multiple session directories
-with the same --window-seconds value builds up one combined dataset; a
-different --window-seconds writes to a differently-named file, so window
-sizes never get mixed together.
+A session directory must contain dump.pcap and exp.txt (requests_history.json
+is optional). Running this against multiple session directories with the
+same --window-seconds value builds up one combined dataset; a different
+--window-seconds writes to a differently-named file, so window sizes never
+mix together.
 
 Usage:
     python src/build_session_csv.py <session_directory> [--window-seconds 10] [--output path.csv]
+    python src/build_session_csv.py all                      # every session directory found, 10s windows
+    python src/build_session_csv.py all --window-seconds all # every directory x every window size (10/8/4/2/1)
 """
 
 import argparse
 import os
+import traceback
 
 from window_features import build_session_dataframe
+
+ALL_WINDOW_SIZES = (10, 8, 4, 2, 1)
+REQUIRED_FILES = ("dump.pcap", "exp.txt")
 
 
 def parse_exp_label(exp_path):
     """Extract the service name from exp.txt.
 
-    Verified format (one real example so far): "test1-05_twitch.run276-...",
-    i.e. "<run prefix>_<service>.<run suffix>". Only "twitch" has actually
-    been observed -- this needs re-checking against youtube/netflix/amazon
-    examples once those session directories are available.
+    Verified format: "<run prefix>_<service>.<run suffix>", e.g.
+    "test1-05_twitch.run276-...", "princ-paul_netflix.run2061527974066",
+    "lab10_youtube.run30-1549387740". Confirmed against twitch/netflix/
+    youtube examples; amazon not yet seen.
     """
     content = open(exp_path).read().strip()
     after_prefix = content.split("_", 1)[1]
     return after_prefix.split(".", 1)[0]
 
 
-def parse_args():
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("session_directory")
-    parser.add_argument("--window-seconds", type=float, default=10)
-    parser.add_argument("--output", default=None)
-    return parser.parse_args()
+def discover_session_directories(root="."):
+    found = []
+    for entry in sorted(os.listdir(root)):
+        path = os.path.join(root, entry)
+        if not os.path.isdir(path):
+            continue
+        if all(os.path.isfile(os.path.join(path, f)) for f in REQUIRED_FILES):
+            found.append(path)
+    return found
 
 
-def main():
-    args = parse_args()
-    session_dir = args.session_directory.rstrip("/")
+def _window_seconds_label(window_seconds):
+    return int(window_seconds) if window_seconds == int(window_seconds) else window_seconds
+
+
+def process_session(session_dir, window_seconds, output=None):
+    session_dir = session_dir.rstrip("/")
     session_id = os.path.basename(session_dir)
 
-    exp_path = os.path.join(session_dir, "exp.txt")
-    label = parse_exp_label(exp_path)
+    label = parse_exp_label(os.path.join(session_dir, "exp.txt"))
 
     requests_path = os.path.join(session_dir, "requests_history.json")
     if not os.path.isfile(requests_path):
         requests_path = None
 
-    window_seconds_label = (
-        int(args.window_seconds) if args.window_seconds == int(args.window_seconds)
-        else args.window_seconds
-    )
-    output_path = args.output or f"session_statistics_{window_seconds_label}_second_window.csv"
+    output_path = output or f"session_statistics_{_window_seconds_label(window_seconds)}_second_window.csv"
 
     session_df = build_session_dataframe(
-        session_dir, args.window_seconds, label, session_id, requests_path
+        session_dir, window_seconds, label, session_id, requests_path
     )
 
     file_exists = os.path.isfile(output_path)
@@ -65,6 +72,48 @@ def main():
 
     final_label = session_df["label"].iloc[0]
     print(f"{len(session_df)} windows for session {session_id} ({final_label}) -> {output_path}")
+
+
+def parse_args():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("session_directory", help='a session directory path, or "all"')
+    parser.add_argument("--window-seconds", default="10", help='a number, or "all"')
+    parser.add_argument("--output", default=None, help="only valid with a single directory and window size")
+    return parser.parse_args()
+
+
+def main():
+    args = parse_args()
+
+    if args.session_directory.lower() == "all":
+        directories = discover_session_directories()
+        print(f"found {len(directories)} session directories")
+    else:
+        directories = [args.session_directory]
+
+    if args.window_seconds.lower() == "all":
+        window_sizes = list(ALL_WINDOW_SIZES)
+    else:
+        window_sizes = [float(args.window_seconds)]
+
+    if args.output and (len(directories) > 1 or len(window_sizes) > 1):
+        raise SystemExit("--output can only be used with one directory and one window size")
+
+    failures = []
+    for session_dir in directories:
+        for window_seconds in window_sizes:
+            try:
+                process_session(session_dir, window_seconds, args.output)
+            except Exception:
+                failures.append((session_dir, window_seconds))
+                print(f"FAILED: {session_dir} at {window_seconds}s")
+                traceback.print_exc()
+
+    if len(directories) > 1 or len(window_sizes) > 1:
+        total = len(directories) * len(window_sizes)
+        print(f"\n{total - len(failures)}/{total} session x window-size runs succeeded")
+        if failures:
+            print("failed:", failures)
 
 
 if __name__ == "__main__":

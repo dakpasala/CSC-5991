@@ -35,6 +35,23 @@ First run showed `up_retransmission_count` at 50-90% of `up_packet_count` — im
 
 One other real observation, not yet fully explained: `rtt_ms_median` and `rtt_ms_mean` diverge heavily (median ~0.07ms, mean 5-30ms) — a right-skewed distribution where most RTT samples are near-instant (plausible for a controlled lab test environment, consistent with this session's `exp.txt` naming pattern) but a minority are much larger. Worth revisiting once more sessions are available to see if this pattern holds.
 
+### Three real sessions processed; TCP vs QUIC differentiation
+
+As of this writing, three session directories have been processed: a Twitch session (`9fa4dd9141aaa60a5f590a2c00bca0ad`, 490s, 50 ten-second windows), a Netflix session (`9f99ed55d91e4463b7ef8d3f29f7a048`, 605s, 61 windows), and a YouTube session (`9b020fe43e6d5751a2e6face89a261c1`, confirmed TCP via direct protocol-mix check — 99.91% TCP packets — so labeled `youtube_tcp`, 74 windows). No confirmed `youtube_quic` example has been seen yet. `parse_exp_label`'s format assumption is now verified against all three of twitch/netflix/youtube.
+
+Session directories can contain other files beyond `dump.pcap`/`exp.txt`/`requests_history.json` — e.g. `9b020...` also has `cleaned.pcap`, several `loss_rate_*.pcap` variants, and a `flows/` subdirectory of tiny per-flow pcaps. The pipeline only reads the three known files by name; the rest is ignored by design, not accidentally missed.
+
+**How `youtube_tcp`/`youtube_quic` differentiation actually works**: `frac_udp` (majority vote across the session) is the primary signal, since QUIC runs entirely over UDP. But the practical consequence is bigger than one column — if a session is genuinely QUIC-dominant, roughly 40+ of the ~130 columns go structurally empty for it, not just low: every TCP flag count is exactly 0 (UDP has no TCP header), `recv_window_*` is entirely `NaN` (`_tag_with_flows` only populates it for TCP packets), and `retransmission_count`/`out_of_order_count`/`rtt_ms_*` are all 0/`NaN` (`flow_metrics.compute_flow_metrics` returns immediately for any non-TCP flow). Only packet/byte counts, throughput, and the payload/packet-size distributions (computed from IP/UDP header lengths, not TCP-specific fields) carry real signal for QUIC traffic. Practical implication for evaluation: a model will likely separate `youtube_quic` from the other four classes almost trivially (it's closer to a protocol check than traffic-shape learning), which can inflate a single blended accuracy number — report per-class metrics, not just one overall figure, so the genuinely hard part of the task (telling the four TCP-based classes apart from each other) isn't masked by one easy class.
+
+### Batch processing: `all` for directory and/or window size
+
+`src/build_session_csv.py <dir_or_all> [--window-seconds <N_or_all>]` supports both arguments being literal `"all"`:
+- `session_directory = "all"` → `discover_session_directories()` scans the current directory for every subdirectory containing both `dump.pcap` and `exp.txt`, processes each, silently skips anything else (verified: correctly found exactly the 3 real session directories, nothing from `src/`, `.git/`, `dataset-collection/`, `10-5-oldcode/`, etc.).
+- `--window-seconds all` → runs the full pipeline at `(10, 8, 4, 2, 1)` seconds, each to its own correctly-named file. Verified against one session: window counts for 490.28s of traffic came out as 50/62/123/246/491 for 10/8/4/2/1s respectively — matches `floor(duration / window_seconds) + 1` exactly.
+- Both combined processes the full cross-product (every directory × every window size). Verified: 3 directories × 1s windows correctly appended into one shared file (736 + 605 + 491 = 1,832 rows, matching exactly).
+- `--output` is rejected if more than one directory or window size is being processed (only meaningful for the single-run case).
+- Each (directory, window-size) run is wrapped in try/except — one failing session doesn't abort the whole batch; failures are collected and printed in a summary at the end, not silently swallowed.
+
 ## The data source
 
 `traffic.pcapng` (485 MB, ~3.39M packets, pcapng format) sits in the project root. Confirmed by direct parsing, not assumed:
