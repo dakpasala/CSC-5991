@@ -7,6 +7,10 @@ same --window-seconds value builds up one combined dataset; a different
 --window-seconds writes to a differently-named file, so window sizes never
 mix together.
 
+"all" for session_directory discovers every session directory in the
+current working directory -- run this from wherever the raw session
+directories actually live.
+
 Usage:
     python src/build_session_csv.py <session_directory> [--window-seconds 10] [--output path.csv]
     python src/build_session_csv.py all                      # every session directory found, 10s windows
