@@ -21,19 +21,29 @@ from window_features import build_session_dataframe
 
 ALL_WINDOW_SIZES = (10, 8, 4, 2, 1)
 REQUIRED_FILES = ("dump.pcap", "exp.txt")
+SERVICE_NAMES = ("youtube", "netflix", "twitch", "amazon")
 
 
 def parse_exp_label(exp_path):
     """Extract the service name from exp.txt.
 
-    Verified format: "<run prefix>_<service>.<run suffix>", e.g.
-    "test1-05_twitch.run276-...", "princ-paul_netflix.run2061527974066",
-    "lab10_youtube.run30-1549387740". Confirmed against twitch/netflix/
-    youtube examples; amazon not yet seen.
+    Two shapes have been seen:
+      - "<prefix>_<service>.<suffix>": "test1-05_twitch.run276-...",
+        "princ-paul_netflix.run2061527974066", "lab10_youtube.run30-1549387740"
+        -- service sits right after the underscore, before the first dot.
+      - controlled-experiment runs where the service leads and everything
+        between it and ".run" is experiment config, not part of the label:
+        "youtube-0_rate+3000kbps+loss+1%+25%.run2".
+    Rather than parse position (which these two shapes disagree on), just
+    search for whichever known service name appears in the string -- it's
+    present verbatim in every shape seen so far, so this sidesteps having to
+    special-case each new condition-string format.
     """
-    content = open(exp_path).read().strip()
-    after_prefix = content.split("_", 1)[1]
-    return after_prefix.split(".", 1)[0]
+    content = open(exp_path).read().strip().lower()
+    for service in SERVICE_NAMES:
+        if service in content:
+            return service
+    raise ValueError(f"no known service name found in {exp_path}: {content!r}")
 
 
 def discover_session_directories(root="."):

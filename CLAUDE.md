@@ -72,9 +72,14 @@ Two earlier phases are archived, not active:
   `request_duration_ms_*`) are real, not inferred** — read directly from
   `requests_history.json`'s actual HTTP request/response records, a genuine upgrade
   over the burst-timing inference the first pcapng-based phase had to rely on.
-- **`exp.txt`'s label format is verified against twitch/netflix/youtube examples**
-  (all fit `"<prefix>_<service>.<suffix>"`) — amazon not yet seen; re-verify the moment
-  one is available rather than assuming the format generalizes.
+- **`exp.txt`'s label comes from substring-matching a known service name**
+  (`youtube`/`netflix`/`twitch`/`amazon`), not positional parsing — two shapes exist
+  and disagree on where the service sits relative to `_`/`.`: real-world sessions
+  (`"<prefix>_<service>.<suffix>"`, e.g. `"lab10_youtube.run30-1549387740"`) and
+  controlled lab experiments where the service leads and arbitrary condition text
+  follows before `.run` (e.g. `"youtube-0_rate+3000kbps+loss+1%+25%.run2"`, where
+  everything between `youtube` and `.run` is experiment config, not part of the
+  label, and is ignored). Amazon not yet seen in either shape.
 - **No confirmed `youtube_quic` session yet.** The one YouTube directory processed so
   far (`9b020fe43e6d5751a2e6face89a261c1`) is 99.91% TCP packets, so it resolved to
   `youtube_tcp`. The QUIC/TCP split logic (`frac_udp` majority vote in
