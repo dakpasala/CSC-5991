@@ -2,7 +2,38 @@
 
 ## Purpose and long-term goal
 
-This thesis investigates lightweight machine-learning classification of network activity without deep packet inspection. As of September 2026 the project pivoted from live Selenium-driven traffic collection (archived in `dataset-collection/`, kept only for reference) to feature engineering on a professor-provided capture: `traffic.pcapng`. The goal now is to turn that raw capture into labeled tabular CSVs of flow-level and session-level statistics, which will later feed an ML classifier distinguishing streaming services by traffic shape alone — never by payload content.
+This thesis investigates lightweight machine-learning classification of network activity without deep packet inspection. The project has gone through three phases: live Selenium-driven traffic collection (archived in `dataset-collection/`), feature engineering on a pre-aggregated professor-provided dataset (archived in `10-5-oldcode/`, superseded because no real flow-level data was recoverable from it), and the current active phase (October 2026 onward): building a labeled, per-10-second-window traffic-statistics CSV directly from real per-session capture directories, which will feed an ML classifier distinguishing streaming services by traffic shape alone — never by payload content.
+
+## Current phase: per-session window statistics (October 2026)
+
+Each real session is one directory (e.g. `9fa4dd9141aaa60a5f590a2c00bca0ad/`), containing:
+- `dump.pcap` — raw packet capture. Snaplen-truncated to 200 captured bytes per packet, but verified: the pcap record header's `len` field (true original length, separate from `caplen`) is preserved per-packet regardless of truncation — confirmed directly (10,471 of 20,000 sampled packets in the one real session seen so far have a true length exceeding 200 bytes, up to several hundred). Always compute packet/payload sizes from header-declared lengths (`hdr.len`, IP total length, IP/TCP header lengths), never from how many payload bytes actually got captured — the latter silently undercounts anything over ~200 bytes.
+- `exp.txt` — tiny label/run-config file, e.g. `test1-05_twitch.run276-1525964730`. `src/build_session_csv.py`'s `parse_exp_label()` assumes the format `"<prefix>_<service>.<suffix>"`, verified only against this one Twitch example. Re-check against youtube/netflix/amazon examples before trusting it generalizes.
+- `requests_history.json` — real browser-level HTTP request log (looks like Chrome's `webRequest` API), keyed by request ID, each with `OnBeforeRequestOptions` (always present) and `onCompleted` (present once finished) sub-records — real timestamps, real `content-length` response headers. This session's log included 1,375 requests, most of it unrelated background traffic (Google scripts, ad/analytics domains like `doubleclick`/`scorecardresearch`/`krxd`) alongside the real Twitch CDN requests (`*.ttvnw.net`, `api.twitch.tv`, etc.) — `src/requests_log.py` filters by a per-service domain-keyword list, currently just `twitch`/`ttvnw` for Twitch, `youtube`/`googlevideo`/`ytimg`, `netflix`/`nflxvideo`/`nflximg`, `amazon`/`primevideo`/`media-amazon` — unverified for the other three services, since only a Twitch session has actually been seen.
+- A large per-session JSON of high-resolution (~500ms interval) client-side `<video>`-element telemetry (buffered ranges, decoded frame/byte counts, resolution, playback state). Not currently used by the pipeline — real, rich QoE ground truth if it's ever needed, but out of scope for what the professor asked for this round.
+
+### Output: `session_statistics_<N>_second_window.csv`
+
+One row per fixed-size time window within a session (default 10s, via `--window-seconds`; the output filename encodes whatever value was used, so different window sizes never mix in the same file). Running `src/build_session_csv.py` against more session directories **appends** to the same file rather than overwriting — it's meant to accumulate across every session directory handed over. No IP addresses or ports appear in the output; 5-tuples are used only internally to identify flows.
+
+Full column set (~130 columns), confirmed against a real 50-window run:
+
+- **Metadata** (5): `label`, `session_id`, `window_index`, `window_start_s`, `window_end_s`.
+- **Flow tracking, window-level** (4): `num_flows`, `num_new_flows` (5-tuple never seen in an earlier window this session), `num_continuing_flows`, `frac_udp`.
+- **Direction-scoped ×3 (`up`/`down`/`total`), plain counts** (9): `packet_count`, `byte_count`, `throughput_bps`.
+- **Direction-scoped ×3, TCP flag counts** (15): `syn_count`, `ack_count`, `rst_count`, `psh_count`, `urg_count`.
+- **Direction-scoped ×3, other counts** (6): `retransmission_count`, `out_of_order_count`.
+- **Direction-scoped ×3, each with all 6 stats** (min/max/mean/median/p25/p75 — 72 columns): `payload_size` (true TCP data length), `packet_size` (full wire length), `recv_window`, `interarrival_time`.
+- **Window-level, not direction-split, 6 stats** (6): `rtt_ms`.
+- **From `requests_history.json`, filtered to video-relevant requests** (13): `request_count`, `segment_size_bytes_*` (6, from real `content-length`), `request_duration_ms_*` (6, from real request→response timing).
+
+YouTube's final label (`youtube_tcp` vs `youtube_quic`) is decided per-session from the actual observed protocol mix (`frac_udp` over the whole session), not assumed from the label alone.
+
+### Bug found and fixed: retransmission over-counting
+
+First run showed `up_retransmission_count` at 50-90% of `up_packet_count` — implausible. Root cause: a pure ACK (no payload, not a SYN) doesn't consume TCP sequence space, so a client sending many ACK-only packets (acking downstream video data) legitimately repeats the exact same sequence number on every one of them — that's normal TCP behavior, not a retransmission. `flow_metrics.py`'s `seen_seqs`/retransmission/out-of-order tracking now only applies to packets that actually consume sequence space (real payload, or a SYN). After the fix, `up_retransmission_count` dropped to a believable 0-6% range. Keep this in mind if a future metric looks suspiciously high relative to its packet count — check whether it's conflating "same value repeated" with "same value resent."
+
+One other real observation, not yet fully explained: `rtt_ms_median` and `rtt_ms_mean` diverge heavily (median ~0.07ms, mean 5-30ms) — a right-skewed distribution where most RTT samples are near-instant (plausible for a controlled lab test environment, consistent with this session's `exp.txt` naming pattern) but a minority are much larger. Worth revisiting once more sessions are available to see if this pattern holds.
 
 ## The data source
 

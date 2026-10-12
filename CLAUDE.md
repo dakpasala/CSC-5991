@@ -7,96 +7,73 @@ doing any nontrivial work here. This file is a shorter map on top of it.
 ## What this project is
 
 A CSC-5991 thesis: lightweight ML classification of network activity *without* deep
-packet inspection. As of September 2026 the active phase is feature engineering — turning
-a professor-provided packet capture (`traffic.pcapng`) into labeled flow-level and
-session-level CSVs of traffic statistics (throughput, TCP flags, RTT, retransmissions,
-inferred segment behavior, etc.) for four streaming services: YouTube, Netflix, Twitch,
-Amazon. No model training exists yet. The prior phase (live Selenium capture of browsing
-sessions) is done and archived — see below.
+packet inspection. As of October 2026 the active phase builds a labeled, per-10-second-
+window traffic-statistics CSV from real per-session capture directories (raw `.pcap` +
+browser-level telemetry), for four streaming services (YouTube split into
+`youtube_tcp`/`youtube_quic`, Netflix, Twitch, Amazon). No model training exists yet.
+
+Two earlier phases are archived, not active:
+- `dataset-collection/` — live Selenium-driven browsing capture (first phase).
+- `10-5-oldcode/` — the `all_traffic_time_10.pkl`-based phase (second phase, a
+  pre-aggregated dataset with no real flow-level data recoverable from it). Superseded
+  because it couldn't support true flow/5-tuple-level statistics.
 
 ## Layout
 
-- `traffic.pcapng` — the actual data source, 485 MB / ~3.39M packets. Every packet has a
-  frame comment `<session_id>,<label>`; see AGENTS.md for the verified label counts,
-  protocol makeup, and timestamp caveats before writing any parsing code against it.
-- `dataset-collection/` — the entire previous project phase (Selenium collectors, the
-  domain-categorization CSV pipeline, `collect_loop.sh`, its own `AGENTS.md`/`CLAUDE.md`,
-  everything). Reference only. Don't run or modify anything in here unless explicitly
-  asked — it's not part of the active pipeline.
-- `src/pcapng_reader.py` — streams a pcapng file's Enhanced Packet Blocks, keeping
-  each packet's frame comment (dpkt's own reader discards it; see the module
-  docstring for why this reimplements the block loop instead of subclassing).
-- `src/packet_parser.py` — parses Ethernet/IPv4/TCP fields into a `TcpPacket`.
-- `src/flow_builder.py` — groups packets into `Session`/`Flow` objects (session =
-  shared comment ID, flow = 4-tuple within a session). Known limitation documented
-  in its docstring: a reused 4-tuple within one session merges into a single flow.
-- `src/feature_extraction.py` — the actual feature table (network/transport layers
-  exact; application layer inferred from downstream data bursts, since there's no
-  payload to read real segment boundaries from — see its module docstring before
-  trusting those columns).
-- `src/build_dataset.py` — CLI entry point; writes `flow_features.csv` (one row per
-  flow) and `session_features.csv` (one row per session: `num_flows` plus median/
-  p25/p75 of every flow feature). Read the output CSVs with
-  `dtype={"session_id": str}` — session IDs are up to 20 digits and a plain
-  `pd.read_csv` will silently corrupt them through float64.
-- `src/inspect_session.py` — scapy-based, human-readable dump of one session's
-  packets, for spot-checking `build_dataset.py` output against the raw capture.
-  (dpkt does the bulk parsing; scapy is only used here, where per-packet
-  readability matters more than throughput.)
-- `all_traffic_time_10.pkl` — the real dataset (as of October 2026), supersedes
-  `traffic.pcapng`. Already fully feature-engineered (not raw packets) — one row
-  per 10-second window per session. See AGENTS.md's "The real dataset" section
-  before touching this; the pcapng pipeline above doesn't apply to it.
-- `src/export_streaming_features.py` — loads the pickle (Python-2 encoding, see
-  its docstring), drops the dead `index` column, expands `10_EWMA_chunksizes`
-  (a 10-element array per row, not a scalar) into ten `10_EWMA_chunksizes_1..10`
-  columns, derives a `label` column that splits YouTube into
-  `youtube_quic`/`youtube_tcp` by `is_tcp`, and writes
-  `streaming_traffic_features.csv` (260 columns, gitignored). A matching
-  `streaming_traffic_features_sample.csv` (first 2,000 rows) is handy for
-  opening in Excel/Numbers; for the full file, use `.venv/bin/vd
-  streaming_traffic_features.csv` (VisiData, in requirements.txt) instead —
-  GUI spreadsheet apps don't handle a file this size well.
-- `src/aggregate_sessions.py` — collapses the per-window rows into one row per
-  session, split into `session_features_real.csv` (13,081 real-world sessions)
-  and `session_features_lab.csv` (684 controlled-network-condition lab
-  sessions, identified by non-hash `session_id`s). Three aggregation rules by
-  column (cumulative/count/distribution) — see the module docstring for why a
-  single median/p25/p75 rule for every column would have been wrong, and
-  AGENTS.md's "The real dataset" section for which columns got which rule.
-- `src/filter_real_sessions.py` — the window-level equivalent of the real/lab
-  split above: filters `streaming_traffic_features.csv` down to
-  `streaming_traffic_features_real.csv` (682,450 rows), dropping the 46,542
-  window-rows that belong to lab-experiment sessions. Use this one, not the
-  unfiltered file, for anything meant to reflect organic network conditions.
+- `<hash>/` directories (e.g. `9fa4dd9141aaa60a5f590a2c00bca0ad/`) — one real session
+  each: `dump.pcap` (raw capture, snaplen-truncated to 200 captured bytes but with true
+  original packet length preserved per-record), `exp.txt` (tiny label/run-config file),
+  `requests_history.json` (real browser-level HTTP request log with genuine
+  `content-length`/timing — not inferred), and a large per-session JSON of client-side
+  video-element telemetry (not currently used by the pipeline below).
+- `src/pcap_reader.py` — endian-aware plain-`.pcap` reader that keeps the true,
+  pre-truncation packet length (`dpkt.pcap.Reader`'s own iterator discards it).
+- `src/packet_parser.py` — Ethernet/IPv4/TCP-or-UDP parsing; payload size is computed
+  from header-declared lengths, not from how many payload bytes actually got captured.
+- `src/flow_tracker.py` — 5-tuple flow identification across a packet stream, client/
+  server determination (SYN-based for TCP, first-packet-sender assumption for UDP).
+- `src/flow_metrics.py` — per-flow retransmission/out-of-order/RTT detection, using
+  each flow's full session history so cross-window retransmissions are caught
+  correctly. Only packets that consume sequence space (real payload or a SYN) are
+  checked — a bug where pure ACKs' naturally-repeated sequence number was being
+  misread as mass retransmission was found and fixed here (see git history).
+- `src/requests_log.py` — loads `requests_history.json`, filters to the requests that
+  actually belong to the service under test (by domain keyword), extracts real
+  segment sizes and request/completion timing.
+- `src/window_features.py` — the orchestrator: buckets everything into fixed-size time
+  windows and computes the full ~130-column feature table (see AGENTS.md for the
+  complete column list and the direction-scoped up/down/total design).
+- `src/build_session_csv.py` — CLI entry point. Takes a session directory, appends its
+  windows to a shared, accumulating CSV named by window size
+  (`session_statistics_<N>_second_window.csv`), so re-running it on more session
+  directories builds up one combined dataset rather than one file per session.
 
 ## Rules worth not forgetting
 
-- **No time-windowing.** The professor was explicit: full-session/full-flow statistics,
-  not 1-2 second windows. Don't reintroduce windowing without asking first.
-- **No QUIC/TCP split for YouTube.** `traffic.pcapng` has zero UDP/QUIC traffic; the
-  professor confirmed YouTube stays a single class. Only revisit this if a different
-  capture file with real QUIC traffic shows up.
-- **There is no packet payload** (header-only captures, ~73-byte average size) — this is
-  a deliberate continuation of the project's no-DPI premise, not a limitation to work
-  around. Application-layer "segment" features must be inferred from TCP segment
-  lengths/timing, and any such inference needs to be documented as inferred, not
-  presented as real HTTP/QUIC-layer ground truth.
-- **Don't trust absolute packet timestamps** — they're a synthetic-generation artifact
-  (dates far in the future). Relative/elapsed time within a session is fine to use.
-- **Verify against the file, don't assume from the professor's description alone.**
-  Every fact currently in AGENTS.md about this dataset was checked directly with
-  `tshark`/`capinfos`. Keep doing that before writing anything down as fact.
-- `tcp.analysis.bytes_in_flight` from tshark is essentially unpopulated in this dataset
-  (2 packets out of 3.39M) — compute bytes-in-flight manually per flow instead of
-  trusting that field. `tcp.analysis.out_of_order` reads exactly zero file-wide; treat
-  that as unresolved (real property of the data vs. a session-interleaving artifact),
-  not settled fact.
+- **No IP addresses or ports in the output CSV.** 5-tuples are used internally to
+  identify flows; none of that identifying detail should reach the final columns.
+- **Window size is configurable** (`--window-seconds`, default 10) and changes the
+  output filename accordingly — different window sizes must never land in the same
+  CSV.
+- **Every distribution-style column gets all six stats**: min, max, mean, median,
+  p25, p75. Pure counts (packet count, byte count, flow count) are single numbers per
+  window — no percentile breakdown applies to those.
+- **Retransmission/out-of-order/RTT only apply to TCP.** UDP (QUIC) flows produce no
+  signal for these, same as what a real no-DPI observer would see.
+- **The application-layer stats (`request_count`, `segment_size_bytes_*`,
+  `request_duration_ms_*`) are real, not inferred** — read directly from
+  `requests_history.json`'s actual HTTP request/response records, a genuine upgrade
+  over the burst-timing inference the first pcapng-based phase had to rely on.
+- **`exp.txt`'s label format has only been verified against one real example** (a
+  Twitch session) — `parse_exp_label()` assumes `"<prefix>_<service>.<suffix>"`.
+  Re-verify this against a youtube/netflix/amazon example the moment one is available;
+  don't assume the format generalizes without checking.
+- Session-aware splitting (train/test by `session_id`, not by row) still applies once
+  this feeds a model, same reasoning as the earlier phase.
 
 ## Maintenance expectations
 
-No test suite or formatter convention has been established yet for this new phase
-(the old phase's `pyproject.toml`/`requirements*.txt`/`tests/` all live under
-`dataset-collection/` and don't apply here unless reused deliberately). When real
-pipeline code gets written, this section should be updated with whatever testing/
-formatting approach is actually adopted — don't invent one preemptively.
+No test suite or formatter convention has been established for this phase yet. Before
+calling anything done: verify numeric output against hand-checkable facts in the real
+data (e.g. `up_count + down_count == total_count`, no unexpectedly-all-null columns),
+the same habit that caught the retransmission-counting bug above.
