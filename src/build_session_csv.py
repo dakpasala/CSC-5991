@@ -63,7 +63,8 @@ def main():
     file_exists = os.path.isfile(output_path)
     session_df.to_csv(output_path, mode="a", header=not file_exists, index=False)
 
-    print(f"{len(session_df)} windows for session {session_id} ({label}) -> {output_path}")
+    final_label = session_df["label"].iloc[0]
+    print(f"{len(session_df)} windows for session {session_id} ({final_label}) -> {output_path}")
 
 
 if __name__ == "__main__":
