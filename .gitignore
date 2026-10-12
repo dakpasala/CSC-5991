@@ -21,6 +21,9 @@ streaming_traffic_features.csv
 streaming_traffic_features_sample.csv
 streaming_traffic_features_real.csv
 10-5-oldcode/
+dataset-collection/
+sessions/
+find_amazon_sessions.sh
 *.pcap
 requests_history.json
 .agents
