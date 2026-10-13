@@ -8,7 +8,7 @@ first packet; this is a real assumption (there's no equivalent of a SYN to
 confirm it), documented here rather than presented as certain.
 """
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 
 FlowKey = tuple[str, int, str, int, str]  # (ip_a, port_a, ip_b, port_b, protocol)
 
@@ -19,7 +19,6 @@ class FlowState:
     client_port: int
     server_ip: str
     server_port: int
-    first_seen_window_index: int
 
 
 class FlowTracker:
@@ -33,10 +32,13 @@ class FlowTracker:
         lo, hi = (a, b) if a <= b else (b, a)
         return (lo[0], lo[1], hi[0], hi[1], packet.protocol)
 
-    def process(self, packet, window_index):
+    def process(self, packet):
         """Call once per packet, in chronological order. Returns
         (flow_key, direction, is_new_flow) where direction is "up" if the
-        packet travels client -> server, else "down"."""
+        packet travels client -> server, else "down". Deliberately
+        window-size-independent -- flow identity doesn't depend on how the
+        caller later buckets packets into time windows, so this can be
+        computed once per session and reused across every window size."""
         key = self._canonical_key(packet)
         is_pure_syn = packet.protocol == "tcp" and packet.flag("syn") and not packet.flag("ack")
 
@@ -47,7 +49,6 @@ class FlowTracker:
                 client_port=packet.src_port,
                 server_ip=packet.dst_ip,
                 server_port=packet.dst_port,
-                first_seen_window_index=window_index,
             )
             self._flows[key] = state
             is_new_flow = True

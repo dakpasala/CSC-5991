@@ -6,6 +6,14 @@ every column described in AGENTS.md's session-statistics section: direction-
 scoped (up/down/total) counts, flag counts, and 6-stat distributions
 (min/max/mean/median/p25/p75), window-level flow-novelty and RTT stats, and
 request-log-derived application-layer stats.
+
+Parsing the raw pcap and running flow tracking (_parse_and_track_flows) is
+the expensive part and is entirely independent of window size -- flow
+identity, retransmission/out-of-order/RTT detection, and the youtube_tcp/
+youtube_quic label decision don't change based on how packets later get
+bucketed into windows. build_session_dataframes() does that expensive work
+exactly once per session and reuses the result across every requested
+window size, rather than re-parsing the pcap once per window size.
 """
 
 import os
@@ -38,8 +46,7 @@ def _distribution(values):
 
 
 def _load_and_tag_packets(pcap_path):
-    """Parse every packet, assign window_index/direction/flow identity, and
-    run retransmission/out-of-order/RTT detection per flow."""
+    """Parse every packet in the pcap and find the session's start time."""
     packets = [p for p in (parse_packet(raw) for raw in read_packets(pcap_path)) if p is not None]
     if not packets:
         raise ValueError(f"no parseable TCP/UDP packets found in {pcap_path}")
@@ -48,16 +55,21 @@ def _load_and_tag_packets(pcap_path):
     return packets, t0
 
 
-def _tag_with_flows(packets, t0, window_seconds):
+def _parse_and_track_flows(pcap_path):
+    """The expensive, window-size-independent work: parse every packet,
+    identify flows, and run retransmission/out-of-order/RTT detection.
+    Returns (packet_df, rtt_samples, t0) -- none of this depends on window
+    size, so callers can bucket the same result into as many different
+    window sizes as needed without repeating this step."""
+    packets, t0 = _load_and_tag_packets(pcap_path)
+
     tracker = FlowTracker()
     tagged = []  # list of dicts, one per packet
     flow_packet_lists = defaultdict(list)  # flow_key -> [(packet, direction), ...]
 
     for packet in packets:
-        window_index = int((packet.timestamp - t0) // window_seconds)
-        flow_key, direction, is_new_flow = tracker.process(packet, window_index)
+        flow_key, direction, is_new_flow = tracker.process(packet)
         row = {
-            "window_index": window_index,
             "direction": direction,
             "protocol": packet.protocol,
             "wire_len": packet.wire_len,
@@ -88,11 +100,23 @@ def _tag_with_flows(packets, t0, window_seconds):
         row["is_out_of_order"] = is_out_of_order
         flow_cursor[row["flow_key"]] += 1
 
+    return pd.DataFrame(tagged), rtt_samples, t0
+
+
+def _bucket_into_windows(packet_df, rtt_samples, t0, window_seconds):
+    """The cheap, window-size-dependent step: assign a window_index to each
+    already-tagged packet (vectorized, not a per-packet Python loop) and
+    bucket RTT samples the same way."""
+    packet_df = packet_df.copy()
+    packet_df["window_index"] = ((packet_df["timestamp"] - t0) // window_seconds).astype(int)
+
+    flow_first_window = packet_df[packet_df["is_new_flow"]].groupby("window_index").size()
+
     rtt_by_window = defaultdict(list)
     for ts, rtt_ms in rtt_samples:
         rtt_by_window[int((ts - t0) // window_seconds)].append(rtt_ms)
 
-    return pd.DataFrame(tagged), rtt_by_window
+    return packet_df, flow_first_window, rtt_by_window
 
 
 def _decide_label(label, packet_df):
@@ -148,20 +172,9 @@ def _request_stats(requests, t0, window_index, window_seconds):
     return stats
 
 
-def build_session_dataframe(session_dir, window_seconds, label, session_id, requests_path):
-    pcap_path = os.path.join(session_dir, "dump.pcap")
-    packets, t0 = _load_and_tag_packets(pcap_path)
-    packet_df, rtt_by_window = _tag_with_flows(packets, t0, window_seconds)
-
-    final_label = _decide_label(label, packet_df)
-    requests = load_relevant_requests(requests_path, final_label) if requests_path else []
-
+def _build_window_rows(packet_df, flow_first_window, rtt_by_window, t0, window_seconds, final_label, session_id, requests):
     last_timestamp = packet_df["timestamp"].max()
     num_windows = int((last_timestamp - t0) // window_seconds) + 1
-
-    flow_first_window = (
-        packet_df[packet_df["is_new_flow"]].groupby("window_index").size()
-    )
 
     rows = []
     for window_index in range(num_windows):
@@ -199,3 +212,30 @@ def build_session_dataframe(session_dir, window_seconds, label, session_id, requ
         rows.append(row)
 
     return pd.DataFrame(rows)
+
+
+def build_session_dataframes(session_dir, window_sizes, label, session_id, requests_path):
+    """Compute the per-window feature table for every window size in
+    window_sizes, parsing the raw pcap and running flow tracking only once
+    -- the expensive part is window-size-independent -- and reusing that
+    result across every window size. Returns {window_seconds: DataFrame}."""
+    pcap_path = os.path.join(session_dir, "dump.pcap")
+    packet_df, rtt_samples, t0 = _parse_and_track_flows(pcap_path)
+
+    final_label = _decide_label(label, packet_df)
+    requests = load_relevant_requests(requests_path, final_label) if requests_path else []
+
+    results = {}
+    for window_seconds in window_sizes:
+        windowed_df, flow_first_window, rtt_by_window = _bucket_into_windows(
+            packet_df, rtt_samples, t0, window_seconds
+        )
+        results[window_seconds] = _build_window_rows(
+            windowed_df, flow_first_window, rtt_by_window, t0, window_seconds, final_label, session_id, requests
+        )
+    return results
+
+
+def build_session_dataframe(session_dir, window_seconds, label, session_id, requests_path):
+    """Single-window-size convenience wrapper around build_session_dataframes."""
+    return build_session_dataframes(session_dir, [window_seconds], label, session_id, requests_path)[window_seconds]

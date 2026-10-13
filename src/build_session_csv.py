@@ -18,15 +18,24 @@ batch 1 is entries [0:batch_size), batch 2 is [batch_size:2*batch_size), etc.
 Output CSVs always land in the current working directory, regardless of
 --source-dir.
 
-"all" also parallelizes across (directory, window-size) combinations using
-a process pool, since each one is fully independent -- packet parsing and
-per-flow state tracking are CPU-bound, branchy Python work with no benefit
-from threads (the GIL would just serialize them) or a GPU (no bulk uniform
-numeric computation to vectorize; the real cost is per-packet sequential
-logic, not matrix math). Only the actual CSV-writing is kept serialized,
-done in the main process as results come back, so concurrent workers never
-write to the same output file at once. Defaults to one worker per CPU core;
+"all" also parallelizes across session directories using a process pool,
+since each one is fully independent -- packet parsing and per-flow state
+tracking are CPU-bound, branchy Python work with no benefit from threads
+(the GIL would just serialize them) or a GPU (no bulk uniform numeric
+computation to vectorize; the real cost is per-packet sequential logic,
+not matrix math). Only the actual CSV-writing is kept serialized, done in
+the main process as results come back, so concurrent workers never write
+to the same output file at once. Defaults to one worker per CPU core;
 override with --workers.
+
+Every run -- single directory or "all", parallel or not -- parses a
+session's pcap and runs flow tracking exactly once per directory, then
+builds all requested window sizes from that single result (parsing and
+flow tracking don't depend on window size at all -- only the final
+bucketing step does, which is cheap). So requesting --window-seconds all
+costs barely more than a single window size, not 5x more. Parallelism
+(when it applies) is per DIRECTORY, not per (directory, window-size)
+combination, for the same reason.
 
 Usage:
     python src/build_session_csv.py <session_directory> [--window-seconds 10] [--output path.csv]
@@ -41,7 +50,7 @@ import os
 import traceback
 from concurrent.futures import ProcessPoolExecutor, as_completed
 
-from window_features import build_session_dataframe
+from window_features import build_session_dataframes
 
 ALL_WINDOW_SIZES = (10, 8, 4, 2, 1)
 REQUIRED_FILES = ("dump.pcap", "exp.txt")
@@ -95,9 +104,11 @@ def _output_path_for(window_seconds, output=None):
     return output or f"session_statistics_{_window_seconds_label(window_seconds)}_second_window.csv"
 
 
-def compute_session_dataframe(session_dir, window_seconds):
-    """The CPU-bound part only -- no file writes. Safe to run in a worker
-    process; the caller is responsible for writing the result."""
+def compute_session_dataframes(session_dir, window_sizes):
+    """The CPU-bound part only -- no file writes. Parses the pcap and runs
+    flow tracking exactly once, reused across every window size. Safe to
+    run in a worker process; the caller is responsible for writing results.
+    Returns (session_id, {window_seconds: DataFrame})."""
     session_dir = session_dir.rstrip("/")
     session_id = os.path.basename(session_dir)
 
@@ -107,10 +118,8 @@ def compute_session_dataframe(session_dir, window_seconds):
     if not os.path.isfile(requests_path):
         requests_path = None
 
-    session_df = build_session_dataframe(
-        session_dir, window_seconds, label, session_id, requests_path
-    )
-    return session_id, session_df
+    dfs_by_window = build_session_dataframes(session_dir, window_sizes, label, session_id, requests_path)
+    return session_id, dfs_by_window
 
 
 def _write_session_df(output_path, session_id, session_df):
@@ -119,11 +128,6 @@ def _write_session_df(output_path, session_id, session_df):
 
     final_label = session_df["label"].iloc[0]
     print(f"{len(session_df)} windows for session {session_id} ({final_label}) -> {output_path}")
-
-
-def process_session(session_dir, window_seconds, output=None):
-    session_id, session_df = compute_session_dataframe(session_dir, window_seconds)
-    _write_session_df(_output_path_for(window_seconds, output), session_id, session_df)
 
 
 def parse_args():
@@ -160,37 +164,45 @@ def main():
     if args.output and (len(directories) > 1 or len(window_sizes) > 1):
         raise SystemExit("--output can only be used with one directory and one window size")
 
-    tasks = [(session_dir, window_seconds) for session_dir in directories for window_seconds in window_sizes]
     failures = []
 
-    if is_all_directories and len(tasks) > 1:
+    def handle_result(session_id, dfs_by_window):
+        for window_seconds, session_df in dfs_by_window.items():
+            _write_session_df(_output_path_for(window_seconds, args.output), session_id, session_df)
+
+    if is_all_directories and len(directories) > 1:
         workers = args.workers or os.cpu_count()
-        print(f"processing {len(tasks)} (directory, window-size) combinations with {workers} workers...")
+        print(
+            f"processing {len(directories)} directories x {len(window_sizes)} window sizes "
+            f"with {workers} workers (each directory parsed once, reused across window sizes)..."
+        )
         with ProcessPoolExecutor(max_workers=workers) as pool:
             futures = {
-                pool.submit(compute_session_dataframe, session_dir, window_seconds): (session_dir, window_seconds)
-                for session_dir, window_seconds in tasks
+                pool.submit(compute_session_dataframes, session_dir, window_sizes): session_dir
+                for session_dir in directories
             }
             for future in as_completed(futures):
-                session_dir, window_seconds = futures[future]
+                session_dir = futures[future]
                 try:
-                    session_id, session_df = future.result()
-                    _write_session_df(_output_path_for(window_seconds, args.output), session_id, session_df)
+                    session_id, dfs_by_window = future.result()
+                    handle_result(session_id, dfs_by_window)
                 except Exception:
-                    failures.append((session_dir, window_seconds))
-                    print(f"FAILED: {session_dir} at {window_seconds}s")
+                    failures.append(session_dir)
+                    print(f"FAILED: {session_dir}")
                     traceback.print_exc()
     else:
-        for session_dir, window_seconds in tasks:
+        for session_dir in directories:
             try:
-                process_session(session_dir, window_seconds, args.output)
+                session_id, dfs_by_window = compute_session_dataframes(session_dir, window_sizes)
+                handle_result(session_id, dfs_by_window)
             except Exception:
-                failures.append((session_dir, window_seconds))
-                print(f"FAILED: {session_dir} at {window_seconds}s")
+                failures.append(session_dir)
+                print(f"FAILED: {session_dir}")
                 traceback.print_exc()
 
-    if len(tasks) > 1:
-        print(f"\n{len(tasks) - len(failures)}/{len(tasks)} session x window-size runs succeeded")
+    if len(directories) > 1 or len(window_sizes) > 1:
+        total = len(directories)
+        print(f"\n{total - len(failures)}/{total} directories succeeded")
         if failures:
             print("failed:", failures)
 

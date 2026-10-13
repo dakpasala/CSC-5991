@@ -59,13 +59,19 @@ Two earlier phases are archived, not active:
   CSVs always land in the repo root regardless of `--source-dir`. `"all"` for
   `--window-seconds` runs the full pipeline at 10/8/4/2/1 seconds, each to its own
   file. Both can be `"all"` at once for the full cross-product — meant for a Linux
-  batch run once every session directory is present. Each (directory, window-size)
-  combination runs in its own try/except; one failure doesn't abort the batch.
-  `"all"` also parallelizes across every combination with a `ProcessPoolExecutor`
-  (one worker per CPU core by default, override with `--workers`) — only the CSV
-  write stays serialized in the main process, so concurrent workers never corrupt
-  the shared output file. CPU-bound, not GPU-bound: the cost is per-packet branchy
-  logic with a sequential per-flow dependency, not bulk numeric work a GPU helps with.
+  batch run once every session directory is present. Each directory runs in its
+  own try/except; one failure doesn't abort the batch. `"all"` also parallelizes
+  across session **directories** with a `ProcessPoolExecutor` (one worker per CPU
+  core by default, override with `--workers`) — only the CSV write stays
+  serialized in the main process, so concurrent workers never corrupt the shared
+  output file. CPU-bound, not GPU-bound: the cost is per-packet branchy logic
+  with a sequential per-flow dependency, not bulk numeric work a GPU helps with.
+  Parsing the pcap and running flow tracking happens exactly **once per
+  directory**, regardless of how many window sizes are requested — window size
+  only affects the cheap final bucketing step — so `--window-seconds all` costs
+  barely more than one window size, not 5x more. Verified both for correctness
+  (output numerically identical to the pre-optimization code) and speed (a single
+  session at all 5 window sizes dropped from 28s to 11s wall-clock).
 
 ## Rules worth not forgetting
 
