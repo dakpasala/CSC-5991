@@ -52,7 +52,14 @@ def _service_key(label):
 def load_relevant_requests(path, label):
     keywords = SERVICE_DOMAIN_KEYWORDS.get(_service_key(label), ())
     with open(path) as handle:
-        data = json.load(handle)
+        try:
+            data = json.load(handle)
+        except json.JSONDecodeError:
+            # Some captures ship an empty or corrupt requests_history.json --
+            # treat that the same as the file not existing at all (no real
+            # application-layer stats for this session) rather than failing
+            # the whole session over an optional, auxiliary input.
+            return []
 
     records = []
     for entry in data.values():

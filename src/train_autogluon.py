@@ -12,9 +12,22 @@ Reports per-class precision/recall/f1 (not just overall accuracy), since a
 single accuracy number can hide one trivially-easy class (e.g. youtube_quic,
 separable almost entirely via protocol mix) masking how hard the rest are.
 
+Also computes permutation feature importance (predictor.feature_importance)
+on the held-out test set, not train -- importance computed on training data
+can be inflated if a model partially memorized it. Saved to
+feature_importance_<N>_second_window.csv per window size, alongside the
+printed table (importance, stddev, p-value, per feature).
+
+Defaults to presets="best_quality" (AutoGluon's most exhaustive search --
+multi-layer stacking, k-fold bagging, the widest hyperparameter search per
+model type) and no time limit (runs until the search is actually done, not
+until a clock cuts it off). This is slower than a quick baseline but tries
+every model AutoGluon has, not just whatever fits in a fixed time budget.
+
 Usage:
-    python src/train_autogluon.py [--window-seconds all] [--time-limit 120] [--presets medium_quality] [--test-frac 0.2] [--seed 0] [--num-gpus 1]
+    python src/train_autogluon.py [--window-seconds all] [--time-limit None] [--presets best_quality] [--test-frac 0.2] [--seed 0] [--num-gpus 1]
     python src/train_autogluon.py --window-seconds 10   # just the 10s CSV
+    python src/train_autogluon.py --time-limit 600      # cap it if a full run takes too long
 """
 
 import argparse
@@ -78,11 +91,22 @@ def train_one_window_size(window_seconds, time_limit, presets, test_frac, seed, 
     print(f"\nper-class report ({csv_path}):")
     print(classification_report(y_true, y_pred))
 
+    print(f"\ncomputing permutation feature importance on the held-out test set ({csv_path})...")
+    importance_df = predictor.feature_importance(test_df)
+    print(f"\nfeature importance ({csv_path}):")
+    print(importance_df)
+
+    importance_path = f"feature_importance_{window_seconds}_second_window.csv"
+    importance_df.to_csv(importance_path)
+    print(f"saved to {importance_path}")
+
 
 def parse_args():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--time-limit", type=int, default=120, help="seconds AutoGluon spends per window size")
-    parser.add_argument("--presets", default="medium_quality")
+    parser.add_argument(
+        "--time-limit", type=int, default=None, help="seconds AutoGluon spends per window size (default: unlimited)"
+    )
+    parser.add_argument("--presets", default="best_quality")
     parser.add_argument("--test-frac", type=float, default=0.2)
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--num-gpus", type=int, default=1, help="GPUs to grant the whole predictor; 0 forces CPU")
