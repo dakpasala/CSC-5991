@@ -7,15 +7,22 @@ same --window-seconds value builds up one combined dataset; a different
 --window-seconds writes to a differently-named file, so window sizes never
 mix together.
 
-"all" for session_directory discovers every session directory in the
-PARENT of the current working directory (the real session directories sit
-as siblings of this repo, not inside it) -- run this from inside the repo,
-as usual. Output CSVs still land in the current working directory.
+"all" for session_directory discovers every session directory under
+--source-dir (default: the parent of the current working directory, since
+the real session directories normally sit as siblings of this repo). Pass
+--source-dir to scan somewhere else directly -- e.g. a NAS mount -- without
+copying anything locally first. --batch-index/--batch-size slice that
+(sorted) directory listing into fixed-size chunks, so a huge source
+directory can be worked through a batch at a time across multiple runs:
+batch 1 is entries [0:batch_size), batch 2 is [batch_size:2*batch_size), etc.
+Output CSVs always land in the current working directory, regardless of
+--source-dir.
 
 Usage:
     python src/build_session_csv.py <session_directory> [--window-seconds 10] [--output path.csv]
     python src/build_session_csv.py all                      # every session directory found in ../, 10s windows
     python src/build_session_csv.py all --window-seconds all # every directory x every window size (10/8/4/2/1)
+    python src/build_session_csv.py all --source-dir /mnt/NAS/salmo-trutta/traces --batch-index 2 --batch-size 500
 """
 
 import argparse
@@ -51,9 +58,15 @@ def parse_exp_label(exp_path):
     raise ValueError(f"no known service name found in {exp_path}: {content!r}")
 
 
-def discover_session_directories(root=".."):
+def discover_session_directories(root="..", batch_index=None, batch_size=500):
+    entries = sorted(entry for entry in os.listdir(root) if not entry.startswith("."))
+
+    if batch_index is not None:
+        start = (batch_index - 1) * batch_size
+        entries = entries[start:start + batch_size]
+
     found = []
-    for entry in sorted(os.listdir(root)):
+    for entry in entries:
         path = os.path.join(root, entry)
         if not os.path.isdir(path):
             continue
@@ -94,6 +107,9 @@ def parse_args():
     parser.add_argument("session_directory", help='a session directory path, or "all"')
     parser.add_argument("--window-seconds", default="10", help='a number, or "all"')
     parser.add_argument("--output", default=None, help="only valid with a single directory and window size")
+    parser.add_argument("--source-dir", default="..", help='where "all" scans for session directories')
+    parser.add_argument("--batch-index", type=int, default=None, help="1-based batch number (with --batch-size)")
+    parser.add_argument("--batch-size", type=int, default=500, help="directories per batch (default 500)")
     return parser.parse_args()
 
 
@@ -101,7 +117,9 @@ def main():
     args = parse_args()
 
     if args.session_directory.lower() == "all":
-        directories = discover_session_directories()
+        directories = discover_session_directories(
+            root=args.source_dir, batch_index=args.batch_index, batch_size=args.batch_size
+        )
         print(f"found {len(directories)} session directories")
     else:
         directories = [args.session_directory]

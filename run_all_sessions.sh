@@ -1,14 +1,25 @@
 #!/usr/bin/env bash
-# Sets up the Python environment (creating/populating .venv if needed) and
-# then runs the full feature-extraction pipeline across every session
-# directory in the current directory and every window size (10/8/4/2/1
-# seconds), producing session_statistics_10_second_window.csv through
-# session_statistics_1_second_window.csv, written to the current directory.
+# Usage: ./run_all_sessions.sh <batch-index> [batch-size]
 #
-# Run this FROM the directory that holds all the raw session directories
-# (this script just needs to know where the repo's src/ and requirements.txt
-# are, which it finds relative to its own location).
+# Sets up the Python environment (creating/populating .venv if needed) and
+# then runs the full feature-extraction pipeline directly against the NAS
+# source directory (no local cp needed), one batch at a time, across every
+# window size (10/8/4/2/1 seconds). <batch-index> selects which chunk of the
+# sorted NAS directory listing to process this run -- batch 1 is the first
+# batch-size (default 500) directories, batch 2 the next batch-size, etc.
+# Output CSVs accumulate in the current directory.
+#
+# Override the source directory with SOURCE_DIR=/some/other/path if needed.
 set -euo pipefail
+
+if [ $# -lt 1 ]; then
+    echo "Usage: $0 <batch-index> [batch-size]" >&2
+    exit 1
+fi
+
+BATCH_INDEX="$1"
+BATCH_SIZE="${2:-500}"
+SOURCE_DIR="${SOURCE_DIR:-/mnt/NAS/salmo-trutta/traces}"
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
@@ -25,4 +36,9 @@ echo "Checking requirements.txt dependencies..."
 pip install --quiet --upgrade pip
 pip install --quiet -r "$SCRIPT_DIR/requirements.txt"
 
-python3 "$SCRIPT_DIR/src/build_session_csv.py" all --window-seconds all
+echo "Processing batch $BATCH_INDEX (size $BATCH_SIZE) from $SOURCE_DIR..."
+python3 "$SCRIPT_DIR/src/build_session_csv.py" all \
+    --source-dir "$SOURCE_DIR" \
+    --batch-index "$BATCH_INDEX" \
+    --batch-size "$BATCH_SIZE" \
+    --window-seconds all
