@@ -61,6 +61,11 @@ Two earlier phases are archived, not active:
   file. Both can be `"all"` at once for the full cross-product — meant for a Linux
   batch run once every session directory is present. Each (directory, window-size)
   combination runs in its own try/except; one failure doesn't abort the batch.
+  `"all"` also parallelizes across every combination with a `ProcessPoolExecutor`
+  (one worker per CPU core by default, override with `--workers`) — only the CSV
+  write stays serialized in the main process, so concurrent workers never corrupt
+  the shared output file. CPU-bound, not GPU-bound: the cost is per-packet branchy
+  logic with a sequential per-flow dependency, not bulk numeric work a GPU helps with.
 
 ## Rules worth not forgetting
 

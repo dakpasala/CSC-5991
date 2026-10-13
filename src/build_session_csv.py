@@ -18,16 +18,28 @@ batch 1 is entries [0:batch_size), batch 2 is [batch_size:2*batch_size), etc.
 Output CSVs always land in the current working directory, regardless of
 --source-dir.
 
+"all" also parallelizes across (directory, window-size) combinations using
+a process pool, since each one is fully independent -- packet parsing and
+per-flow state tracking are CPU-bound, branchy Python work with no benefit
+from threads (the GIL would just serialize them) or a GPU (no bulk uniform
+numeric computation to vectorize; the real cost is per-packet sequential
+logic, not matrix math). Only the actual CSV-writing is kept serialized,
+done in the main process as results come back, so concurrent workers never
+write to the same output file at once. Defaults to one worker per CPU core;
+override with --workers.
+
 Usage:
     python src/build_session_csv.py <session_directory> [--window-seconds 10] [--output path.csv]
     python src/build_session_csv.py all                      # every session directory found in ../, 10s windows
     python src/build_session_csv.py all --window-seconds all # every directory x every window size (10/8/4/2/1)
     python src/build_session_csv.py all --source-dir /mnt/NAS/salmo-trutta/traces --batch-index 2 --batch-size 500
+    python src/build_session_csv.py all --window-seconds all --workers 16
 """
 
 import argparse
 import os
 import traceback
+from concurrent.futures import ProcessPoolExecutor, as_completed
 
 from window_features import build_session_dataframe
 
@@ -79,7 +91,13 @@ def _window_seconds_label(window_seconds):
     return int(window_seconds) if window_seconds == int(window_seconds) else window_seconds
 
 
-def process_session(session_dir, window_seconds, output=None):
+def _output_path_for(window_seconds, output=None):
+    return output or f"session_statistics_{_window_seconds_label(window_seconds)}_second_window.csv"
+
+
+def compute_session_dataframe(session_dir, window_seconds):
+    """The CPU-bound part only -- no file writes. Safe to run in a worker
+    process; the caller is responsible for writing the result."""
     session_dir = session_dir.rstrip("/")
     session_id = os.path.basename(session_dir)
 
@@ -89,17 +107,23 @@ def process_session(session_dir, window_seconds, output=None):
     if not os.path.isfile(requests_path):
         requests_path = None
 
-    output_path = output or f"session_statistics_{_window_seconds_label(window_seconds)}_second_window.csv"
-
     session_df = build_session_dataframe(
         session_dir, window_seconds, label, session_id, requests_path
     )
+    return session_id, session_df
 
+
+def _write_session_df(output_path, session_id, session_df):
     file_exists = os.path.isfile(output_path)
     session_df.to_csv(output_path, mode="a", header=not file_exists, index=False)
 
     final_label = session_df["label"].iloc[0]
     print(f"{len(session_df)} windows for session {session_id} ({final_label}) -> {output_path}")
+
+
+def process_session(session_dir, window_seconds, output=None):
+    session_id, session_df = compute_session_dataframe(session_dir, window_seconds)
+    _write_session_df(_output_path_for(window_seconds, output), session_id, session_df)
 
 
 def parse_args():
@@ -110,13 +134,17 @@ def parse_args():
     parser.add_argument("--source-dir", default="..", help='where "all" scans for session directories')
     parser.add_argument("--batch-index", type=int, default=None, help="1-based batch number (with --batch-size)")
     parser.add_argument("--batch-size", type=int, default=500, help="directories per batch (default 500)")
+    parser.add_argument(
+        "--workers", type=int, default=None, help="parallel worker processes for 'all' (default: all CPU cores)"
+    )
     return parser.parse_args()
 
 
 def main():
     args = parse_args()
+    is_all_directories = args.session_directory.lower() == "all"
 
-    if args.session_directory.lower() == "all":
+    if is_all_directories:
         directories = discover_session_directories(
             root=args.source_dir, batch_index=args.batch_index, batch_size=args.batch_size
         )
@@ -132,9 +160,28 @@ def main():
     if args.output and (len(directories) > 1 or len(window_sizes) > 1):
         raise SystemExit("--output can only be used with one directory and one window size")
 
+    tasks = [(session_dir, window_seconds) for session_dir in directories for window_seconds in window_sizes]
     failures = []
-    for session_dir in directories:
-        for window_seconds in window_sizes:
+
+    if is_all_directories and len(tasks) > 1:
+        workers = args.workers or os.cpu_count()
+        print(f"processing {len(tasks)} (directory, window-size) combinations with {workers} workers...")
+        with ProcessPoolExecutor(max_workers=workers) as pool:
+            futures = {
+                pool.submit(compute_session_dataframe, session_dir, window_seconds): (session_dir, window_seconds)
+                for session_dir, window_seconds in tasks
+            }
+            for future in as_completed(futures):
+                session_dir, window_seconds = futures[future]
+                try:
+                    session_id, session_df = future.result()
+                    _write_session_df(_output_path_for(window_seconds, args.output), session_id, session_df)
+                except Exception:
+                    failures.append((session_dir, window_seconds))
+                    print(f"FAILED: {session_dir} at {window_seconds}s")
+                    traceback.print_exc()
+    else:
+        for session_dir, window_seconds in tasks:
             try:
                 process_session(session_dir, window_seconds, args.output)
             except Exception:
@@ -142,9 +189,8 @@ def main():
                 print(f"FAILED: {session_dir} at {window_seconds}s")
                 traceback.print_exc()
 
-    if len(directories) > 1 or len(window_sizes) > 1:
-        total = len(directories) * len(window_sizes)
-        print(f"\n{total - len(failures)}/{total} session x window-size runs succeeded")
+    if len(tasks) > 1:
+        print(f"\n{len(tasks) - len(failures)}/{len(tasks)} session x window-size runs succeeded")
         if failures:
             print("failed:", failures)
 
