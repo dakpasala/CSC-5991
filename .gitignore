@@ -26,6 +26,7 @@ sessions/
 find_amazon_sessions.sh
 *.pcap
 requests_history.json
+session_statistics_*_second_window.csv
 .agents
 .codex
 .claude
