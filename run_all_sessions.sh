@@ -6,7 +6,9 @@
 # source directory (no local cp needed), one batch at a time, across every
 # window size (10/8/4/2/1 seconds). <batch-index> selects which chunk of the
 # sorted NAS directory listing to process this run -- batch 1 is the first
-# batch-size (default 500) directories, batch 2 the next batch-size, etc.
+# batch-size (default 100) directories, batch 2 the next batch-size, etc.
+# Offset = (batch-index - 1) * batch-size, so e.g. with the default size of
+# 100, batch-index 6 covers directories 500-600, not 2.
 # Output CSVs accumulate in the current directory.
 #
 # Override the source directory with SOURCE_DIR=/some/other/path if needed.
@@ -18,7 +20,7 @@ if [ $# -lt 1 ]; then
 fi
 
 BATCH_INDEX="$1"
-BATCH_SIZE="${2:-500}"
+BATCH_SIZE="${2:-100}"
 SOURCE_DIR="${SOURCE_DIR:-/mnt/NAS/salmo-trutta/traces}"
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
