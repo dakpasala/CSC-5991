@@ -8,12 +8,13 @@ same --window-seconds value builds up one combined dataset; a different
 mix together.
 
 "all" for session_directory discovers every session directory in the
-current working directory -- run this from wherever the raw session
-directories actually live.
+PARENT of the current working directory (the real session directories sit
+as siblings of this repo, not inside it) -- run this from inside the repo,
+as usual. Output CSVs still land in the current working directory.
 
 Usage:
     python src/build_session_csv.py <session_directory> [--window-seconds 10] [--output path.csv]
-    python src/build_session_csv.py all                      # every session directory found, 10s windows
+    python src/build_session_csv.py all                      # every session directory found in ../, 10s windows
     python src/build_session_csv.py all --window-seconds all # every directory x every window size (10/8/4/2/1)
 """
 
@@ -50,7 +51,7 @@ def parse_exp_label(exp_path):
     raise ValueError(f"no known service name found in {exp_path}: {content!r}")
 
 
-def discover_session_directories(root="."):
+def discover_session_directories(root=".."):
     found = []
     for entry in sorted(os.listdir(root)):
         path = os.path.join(root, entry)

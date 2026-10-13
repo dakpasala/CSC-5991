@@ -49,8 +49,10 @@ Two earlier phases are archived, not active:
   directories builds up one combined dataset rather than one file per session. Either
   positional argument (`session_directory`, `--window-seconds`) can be the literal
   string `"all"` instead of a specific value: `"all"` for the directory
-  auto-discovers every subdirectory containing both `dump.pcap` and `exp.txt` (skipping
-  everything else, e.g. `src/`, archived phases, non-session dirs); `"all"` for
+  auto-discovers every subdirectory of the **parent** of the current working directory
+  containing both `dump.pcap` and `exp.txt` (skipping everything else) — on the real
+  Linux box the raw session directories sit as siblings of this repo, not inside it;
+  output CSVs still land in the repo root, only discovery looks one level up. `"all"` for
   `--window-seconds` runs the full pipeline at 10/8/4/2/1 seconds, each to its own
   file. Both can be `"all"` at once for the full cross-product — meant for a Linux
   batch run once every session directory is present. Each (directory, window-size)
