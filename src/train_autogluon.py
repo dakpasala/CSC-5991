@@ -13,7 +13,8 @@ single accuracy number can hide one trivially-easy class (e.g. youtube_quic,
 separable almost entirely via protocol mix) masking how hard the rest are.
 
 Usage:
-    python src/train_autogluon.py [--time-limit 120] [--presets medium_quality] [--test-frac 0.2] [--seed 0] [--num-gpus 1]
+    python src/train_autogluon.py [--window-seconds all] [--time-limit 120] [--presets medium_quality] [--test-frac 0.2] [--seed 0] [--num-gpus 1]
+    python src/train_autogluon.py --window-seconds 10   # just the 10s CSV
 """
 
 import argparse
@@ -85,12 +86,18 @@ def parse_args():
     parser.add_argument("--test-frac", type=float, default=0.2)
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--num-gpus", type=int, default=1, help="GPUs to grant the whole predictor; 0 forces CPU")
+    parser.add_argument("--window-seconds", default="all", help='one of 10/8/4/2/1, or "all"')
     return parser.parse_args()
 
 
 def main():
     args = parse_args()
-    for window_seconds in WINDOW_SECONDS:
+    if args.window_seconds.lower() == "all":
+        window_sizes = WINDOW_SECONDS
+    else:
+        window_sizes = [int(args.window_seconds)]
+
+    for window_seconds in window_sizes:
         train_one_window_size(
             window_seconds, args.time_limit, args.presets, args.test_frac, args.seed, args.num_gpus
         )
