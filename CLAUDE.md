@@ -71,7 +71,15 @@ Two earlier phases are archived, not active:
   only affects the cheap final bucketing step — so `--window-seconds all` costs
   barely more than one window size, not 5x more. Verified both for correctness
   (output numerically identical to the pre-optimization code) and speed (a single
-  session at all 5 window sizes dropped from 28s to 11s wall-clock).
+  session at all 5 window sizes dropped from 28s to 11s wall-clock). **Controlled/
+  lab-condition sessions are skipped entirely**, not written to any CSV — detected
+  live per directory (via `src/find_controlled_sessions.py`'s `is_controlled_experiment()`)
+  before the pcap is even opened, and logged as `skipping <dir> (controlled
+  experiment)` rather than silently dropped or counted as a failure. This is a
+  policy change: earlier in the project every directory was processed uniformly and
+  the mix was split apart afterward (see `src/filter_controlled_sessions.py` and the
+  `session_statistics_*_second_window_controlled.csv` files it produced from the
+  real 19,672-directory batch — 18,957 organic, 715 controlled).
 
 ## Rules worth not forgetting
 

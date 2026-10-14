@@ -18,6 +18,13 @@ batch 1 is entries [0:batch_size), batch 2 is [batch_size:2*batch_size), etc.
 Output CSVs always land in the current working directory, regardless of
 --source-dir.
 
+Controlled/lab-condition experiments (condition text like "rate+3000kbps"
+sitting between the service name and ".run" in exp.txt -- see
+find_controlled_sessions.py) are skipped entirely, not written to any CSV.
+Detected live per directory at processing time (not from a precomputed
+list), so it stays correct even for directories that didn't exist yet when
+controlled_session_ids.txt was last generated.
+
 "all" also parallelizes across session directories using a process pool,
 since each one is fully independent -- packet parsing and per-flow state
 tracking are CPU-bound, branchy Python work with no benefit from threads
@@ -50,6 +57,7 @@ import os
 import traceback
 from concurrent.futures import ProcessPoolExecutor, as_completed
 
+from find_controlled_sessions import is_controlled_experiment
 from window_features import build_session_dataframes
 
 ALL_WINDOW_SIZES = (10, 8, 4, 2, 1)
@@ -57,8 +65,13 @@ REQUIRED_FILES = ("dump.pcap", "exp.txt")
 SERVICE_NAMES = ("youtube", "netflix", "twitch", "amazon")
 
 
-def parse_exp_label(exp_path):
-    """Extract the service name from exp.txt.
+class ControlledExperimentSkip(Exception):
+    """Raised to signal a directory was deliberately skipped (controlled/
+    lab-condition experiment), not a real processing failure."""
+
+
+def parse_exp_label(exp_content):
+    """Extract the service name from exp.txt's content.
 
     Two shapes have been seen:
       - "<prefix>_<service>.<suffix>": "test1-05_twitch.run276-...",
@@ -72,11 +85,11 @@ def parse_exp_label(exp_path):
     present verbatim in every shape seen so far, so this sidesteps having to
     special-case each new condition-string format.
     """
-    content = open(exp_path).read().strip().lower()
+    content = exp_content.strip().lower()
     for service in SERVICE_NAMES:
         if service in content:
             return service
-    raise ValueError(f"no known service name found in {exp_path}: {content!r}")
+    raise ValueError(f"no known service name found in exp.txt content: {content!r}")
 
 
 def discover_session_directories(root="..", batch_index=None, batch_size=500):
@@ -108,11 +121,19 @@ def compute_session_dataframes(session_dir, window_sizes):
     """The CPU-bound part only -- no file writes. Parses the pcap and runs
     flow tracking exactly once, reused across every window size. Safe to
     run in a worker process; the caller is responsible for writing results.
-    Returns (session_id, {window_seconds: DataFrame})."""
+    Returns (session_id, {window_seconds: DataFrame}).
+
+    Raises ControlledExperimentSkip (before touching the pcap at all) for
+    controlled/lab-condition sessions -- cheap to check, since it only needs
+    exp.txt, not the far more expensive packet parsing."""
     session_dir = session_dir.rstrip("/")
     session_id = os.path.basename(session_dir)
 
-    label = parse_exp_label(os.path.join(session_dir, "exp.txt"))
+    exp_content = open(os.path.join(session_dir, "exp.txt")).read()
+    if is_controlled_experiment(exp_content):
+        raise ControlledExperimentSkip(session_id, exp_content.strip())
+
+    label = parse_exp_label(exp_content)
 
     requests_path = os.path.join(session_dir, "requests_history.json")
     if not os.path.isfile(requests_path):
@@ -165,6 +186,7 @@ def main():
         raise SystemExit("--output can only be used with one directory and one window size")
 
     failures = []
+    skipped = []
 
     def handle_result(session_id, dfs_by_window):
         for window_seconds, session_df in dfs_by_window.items():
@@ -186,6 +208,10 @@ def main():
                 try:
                     session_id, dfs_by_window = future.result()
                     handle_result(session_id, dfs_by_window)
+                except ControlledExperimentSkip as exc:
+                    _, exp_text = exc.args
+                    skipped.append(session_dir)
+                    print(f"skipping {session_dir} (controlled experiment: {exp_text!r})")
                 except Exception:
                     failures.append(session_dir)
                     print(f"FAILED: {session_dir}")
@@ -195,6 +221,10 @@ def main():
             try:
                 session_id, dfs_by_window = compute_session_dataframes(session_dir, window_sizes)
                 handle_result(session_id, dfs_by_window)
+            except ControlledExperimentSkip as exc:
+                _, exp_text = exc.args
+                skipped.append(session_dir)
+                print(f"skipping {session_dir} (controlled experiment: {exp_text!r})")
             except Exception:
                 failures.append(session_dir)
                 print(f"FAILED: {session_dir}")
@@ -202,9 +232,12 @@ def main():
 
     if len(directories) > 1 or len(window_sizes) > 1:
         total = len(directories)
-        print(f"\n{total - len(failures)}/{total} directories succeeded")
+        processed = total - len(failures) - len(skipped)
+        print(f"\n{processed}/{total} directories succeeded ({len(skipped)} skipped as controlled experiments, {len(failures)} failed)")
         if failures:
             print("failed:", failures)
+        if skipped:
+            print(f"skipped (controlled): {skipped}")
 
 
 if __name__ == "__main__":
