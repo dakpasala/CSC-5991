@@ -70,13 +70,20 @@ def train_one_window_size(window_seconds, time_limit, presets, test_frac, seed, 
         return
 
     df = pd.read_csv(csv_path, dtype={"session_id": str})
-    print(f"\n{'=' * 70}\n{csv_path}: {len(df)} rows, {df['session_id'].nunique()} sessions")
+    n_sessions = df["session_id"].nunique()
+    print(f"\n{'=' * 70}\n{csv_path}: {len(df)} rows, {n_sessions} sessions")
     print(df["label"].value_counts())
 
     train_df, test_df = session_aware_split(df, test_frac, seed)
     print(f"train: {len(train_df)} rows, test: {len(test_df)} rows")
 
-    save_path = f"AutogluonModels/window_{window_seconds}s"
+    # Tag outputs with the actual session count so re-running later on a
+    # bigger dataset never collides with (or silently overwrites) an older
+    # run -- each dataset size gets its own model directory and importance
+    # file, and old runs stick around for comparison.
+    run_tag = f"{window_seconds}s_{n_sessions}sessions"
+
+    save_path = f"AutogluonModels/window_{run_tag}"
     predictor = TabularPredictor(
         label=LABEL_COLUMN, path=save_path, eval_metric="accuracy", problem_type="multiclass"
     )
@@ -96,7 +103,7 @@ def train_one_window_size(window_seconds, time_limit, presets, test_frac, seed, 
     print(f"\nfeature importance ({csv_path}):")
     print(importance_df)
 
-    importance_path = f"feature_importance_{window_seconds}_second_window.csv"
+    importance_path = f"feature_importance_{run_tag}.csv"
     importance_df.to_csv(importance_path)
     print(f"saved to {importance_path}")
 
