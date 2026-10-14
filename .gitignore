@@ -27,6 +27,7 @@ find_amazon_sessions.sh
 *.pcap
 requests_history.json
 session_statistics_*_second_window.csv
+session_statistics_*_second_window_controlled.csv
 AutogluonModels/
 .agents
 .codex
