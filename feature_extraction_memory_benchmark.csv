@@ -1,0 +1,9 @@
+stat,avg_bytes
+retransmission_rtt_state (per flow),111243.68918816675
+interarrival_time_buffer (per window),65800.3925211385
+recv_window_buffer (per window),58681.12040014291
+packet_size_buffer (per window),54525.58199356913
+payload_size_buffer (per window),54475.48910325116
+flow_identification_state (per flow),520.1944465461148
+request_duration_ms_buffer (per window),327.16684530189355
+segment_size_bytes_buffer (per window),198.44658806716686
