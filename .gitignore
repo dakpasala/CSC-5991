@@ -28,6 +28,7 @@ find_amazon_sessions.sh
 requests_history.json
 session_statistics_*_second_window.csv
 session_statistics_*_second_window_controlled.csv
+session_statistics_*_second_window_no_applayer.csv
 AutogluonModels/
 .agents
 .codex
