@@ -24,10 +24,31 @@ model type) and no time limit (runs until the search is actually done, not
 until a clock cuts it off). This is slower than a quick baseline but tries
 every model AutoGluon has, not just whatever fits in a fixed time budget.
 
+--dynamic-stacking defaults to False (disabled). best_quality enables
+AutoGluon's "DyStack" by default: before the real fit, it trains a whole
+separate diagnostic ensemble on a data subset just to decide whether
+stacking will cause overfitting. With --time-limit unset (unlimited,
+the default here), that diagnostic step has no time bound of its own and
+can itself take days on a large dataset with the full model zoo actually
+training -- confirmed in practice: a run on 17,350 sessions spent 5+ days
+stuck in the DyStack sub-fit without the real training ever starting.
+Pass --dynamic-stacking to re-enable it if you specifically want that
+overfitting check; otherwise this skips straight to the real fit.
+
+--variant full (default) trains on session_statistics_<N>_second_window.csv,
+the complete dataset including the 13 real application-layer columns (an
+oracle-level upper bound -- a real router can't see decrypted HTTP data).
+--variant no_applayer trains on session_statistics_<N>_second_window_no_applayer.csv
+instead (produced by src/strip_application_layer.py), the router-realistic
+dataset with those 13 columns removed. Model/importance output filenames
+are tagged with the variant too, so a no_applayer run never collides with
+or overwrites a full run on the same window size and session count.
+
 Usage:
-    python src/train_autogluon.py [--window-seconds all] [--time-limit None] [--presets best_quality] [--test-frac 0.2] [--seed 0] [--num-gpus 1]
-    python src/train_autogluon.py --window-seconds 10   # just the 10s CSV
-    python src/train_autogluon.py --time-limit 600      # cap it if a full run takes too long
+    python src/train_autogluon.py [--window-seconds all] [--time-limit None] [--presets best_quality] [--test-frac 0.2] [--seed 0] [--num-gpus 1] [--variant full]
+    python src/train_autogluon.py --window-seconds 10            # just the 10s CSV
+    python src/train_autogluon.py --variant no_applayer          # router-realistic dataset instead
+    python src/train_autogluon.py --time-limit 600                # cap it if a full run takes too long
 """
 
 import argparse
@@ -63,8 +84,9 @@ def session_aware_split(df, test_frac, seed):
     return train_df, test_df
 
 
-def train_one_window_size(window_seconds, time_limit, presets, test_frac, seed, num_gpus):
-    csv_path = f"session_statistics_{window_seconds}_second_window.csv"
+def train_one_window_size(window_seconds, time_limit, presets, test_frac, seed, num_gpus, variant, dynamic_stacking):
+    suffix = "_no_applayer" if variant == "no_applayer" else ""
+    csv_path = f"session_statistics_{window_seconds}_second_window{suffix}.csv"
     if not os.path.isfile(csv_path):
         print(f"skipping {csv_path} (not found)")
         return
@@ -77,17 +99,22 @@ def train_one_window_size(window_seconds, time_limit, presets, test_frac, seed, 
     train_df, test_df = session_aware_split(df, test_frac, seed)
     print(f"train: {len(train_df)} rows, test: {len(test_df)} rows")
 
-    # Tag outputs with the actual session count so re-running later on a
-    # bigger dataset never collides with (or silently overwrites) an older
-    # run -- each dataset size gets its own model directory and importance
-    # file, and old runs stick around for comparison.
+    # Tag outputs with the actual session count and variant so re-running
+    # later on a bigger dataset -- or the other variant -- never collides
+    # with (or silently overwrites) an older run; each combination gets its
+    # own model directory and importance file, and old runs stick around
+    # for comparison.
     run_tag = f"{window_seconds}s_{n_sessions}sessions"
+    if variant != "full":
+        run_tag += f"_{variant}"
 
     save_path = f"AutogluonModels/window_{run_tag}"
     predictor = TabularPredictor(
         label=LABEL_COLUMN, path=save_path, eval_metric="accuracy", problem_type="multiclass"
     )
-    predictor.fit(train_df, time_limit=time_limit, presets=presets, num_gpus=num_gpus)
+    predictor.fit(
+        train_df, time_limit=time_limit, presets=presets, num_gpus=num_gpus, dynamic_stacking=dynamic_stacking
+    )
 
     y_true = test_df[LABEL_COLUMN]
     y_pred = predictor.predict(test_df.drop(columns=[LABEL_COLUMN]))
@@ -118,6 +145,19 @@ def parse_args():
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--num-gpus", type=int, default=1, help="GPUs to grant the whole predictor; 0 forces CPU")
     parser.add_argument("--window-seconds", default="all", help='one of 10/8/4/2/1, or "all"')
+    parser.add_argument(
+        "--variant",
+        choices=["full", "no_applayer"],
+        default="full",
+        help="full = normal CSVs (incl. application-layer cols); "
+        "no_applayer = router-realistic CSVs from strip_application_layer.py",
+    )
+    parser.add_argument(
+        "--dynamic-stacking",
+        action="store_true",
+        help="re-enable AutoGluon's DyStack overfitting check (disabled by default -- "
+        "see module docstring, it can take days unbounded when --time-limit is unset)",
+    )
     return parser.parse_args()
 
 
@@ -130,7 +170,14 @@ def main():
 
     for window_seconds in window_sizes:
         train_one_window_size(
-            window_seconds, args.time_limit, args.presets, args.test_frac, args.seed, args.num_gpus
+            window_seconds,
+            args.time_limit,
+            args.presets,
+            args.test_frac,
+            args.seed,
+            args.num_gpus,
+            args.variant,
+            args.dynamic_stacking,
         )
 
 
