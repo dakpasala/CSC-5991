@@ -26,7 +26,7 @@
 // interface -- same privilege requirement as the Python version's tcpdump
 // subprocess, just now needed directly by this binary instead.
 //
-// Usage:
+// Usage (run from src/, where go.mod lives):
 //
 //	sudo go run ./live_capture_go/live -interface eth0
 //	sudo go run ./live_capture_go/live -interface eth0 -window-seconds 10 -output live_stats.csv

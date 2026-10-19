@@ -19,10 +19,10 @@
 // whichever window is open when detected, not retroactively added to an
 // already-closed earlier row.
 //
-// Usage:
+// Usage (run from src/, where go.mod lives):
 //
-//	go run ./live_capture_go -pcap sessions/<id>/dump.pcap
-//	go run ./live_capture_go -pcap sessions/<id>/dump.pcap -speed 4 -window-seconds 10
+//	go run ./live_capture_go/replay -pcap ../sessions/<id>/dump.pcap
+//	go run ./live_capture_go/replay -pcap ../sessions/<id>/dump.pcap -speed 4 -window-seconds 10
 package main
 
 import (

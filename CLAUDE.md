@@ -104,6 +104,31 @@ deliberately stayed at `src/` root, unmoved, since it was actively training when
 reorganization happened (it imports none of the above anyway — just pandas/sklearn/autogluon,
 reading CSVs directly).
 
+## Go port (`src/core_go/`, `src/live_capture_go/`)
+
+The professor asked for real-time/router deployment code to be in Go, not Python. `src/core_go/`
+is a field-for-field Go port of the live-relevant parts of `src/core/` (packet parsing, flow
+tracking, retransmission/RTT detection, window-stat computation) — `requests_log.py`/
+`find_controlled_sessions.py` are NOT ported, since there's no `requests_history.json`/`exp.txt`
+on a live capture for them to act on. `src/live_capture_go/replay/` ports
+`replay_pcap_as_live.py`; `src/live_capture_go/live/` ports `live_capture_pipeline.py` but
+architecturally better — no `tcpdump` subprocess or file-rotation polling needed, since Go's
+goroutines (no GIL) let capture and window-processing run genuinely concurrently in one process.
+Both share one `core.WindowAccumulator` state machine.
+
+This is its own Go module (`src/go.mod`) — **run Go commands from inside `src/`**, not the
+project root (`go build ./...`, `go run ./live_capture_go/replay -pcap ../sessions/<id>/dump.pcap`,
+`sudo go run ./live_capture_go/live -interface eth0`), since `go.mod` lives there.
+
+Verified against the real batch pipeline for the same session: 6,499 of 6,500 compared values
+identical; the one outlier (`up_interarrival_time_min`, the sparsest/last window) was traced to a
+~240-nanosecond floating-point rounding difference between Python/dpkt's and Go/gopacket's
+timestamp-parsing pipelines (confirmed by dumping raw per-packet timestamps from both side by
+side), not a logic bug. Also dramatically faster: 0.007–0.026s per window vs. Python's
+0.2–0.4s+ at the same packet volumes. The live-capture command was also tested for real, not just
+built — it successfully captured genuine live traffic off a Mac's own `en0` interface with no
+`sudo` needed, producing correctly-structured real-time windows.
+
 ## Rules worth not forgetting
 
 - **No IP addresses or ports in the output CSV.** 5-tuples are used internally to
