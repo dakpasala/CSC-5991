@@ -47,6 +47,7 @@ from collections import defaultdict
 import numpy as np
 import pandas as pd
 
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "scripts"))  # find_controlled_sessions.py
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "core"))  # shared library modules
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))  # build_session_csv.py (main CLI, stays in src/)
 

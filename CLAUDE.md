@@ -73,7 +73,7 @@ Two earlier phases are archived, not active:
   (output numerically identical to the pre-optimization code) and speed (a single
   session at all 5 window sizes dropped from 28s to 11s wall-clock). **Controlled/
   lab-condition sessions are skipped entirely**, not written to any CSV — detected
-  live per directory (via `src/core/find_controlled_sessions.py`'s `is_controlled_experiment()`)
+  live per directory (via `src/scripts/find_controlled_sessions.py`'s `is_controlled_experiment()`)
   before the pcap is even opened, and logged as `skipping <dir> (controlled
   experiment)` rather than silently dropped or counted as a failure. This is a
   policy change: earlier in the project every directory was processed uniformly and
@@ -81,23 +81,28 @@ Two earlier phases are archived, not active:
   `session_statistics_*_second_window_controlled.csv` files it produced from the
   real 19,672-directory batch — 18,957 organic, 715 controlled).
 
-`src/` is organized by category. The 7 shared library modules above
+`src/` is organized by category. The 6 shared library modules above
 (`pcap_reader.py`/`packet_parser.py`/`flow_tracker.py`/`flow_metrics.py`/`requests_log.py`/
-`window_features.py`/`find_controlled_sessions.py`) live in `src/core/`, since every other
-category imports from them. `src/build_session_csv.py` (the main CLI entry point
+`window_features.py`) live in `src/core/`, since every other category imports from them.
+`find_controlled_sessions.py` lives in `src/scripts/` instead, even though `build_session_csv.py`
+and both benchmarking scripts import `is_controlled_experiment()` from it — it's genuinely
+dual-purpose (also a standalone CLI tool, see below), so it didn't fit the "pure shared library"
+rule `src/core/` is organized around. `src/build_session_csv.py` (the main CLI entry point
 `run_all_sessions.sh` directly references) stays at `src/` root, one level above `src/core/`.
 Everything else is grouped by what it's for: `src/scripts/` (one-off utilities:
-`filter_controlled_sessions.py`, `strip_application_layer.py` — pure stdlib+pandas, no core-module
-imports), `src/progress/` (`check_progress.py`, `check_model_failures.py` — same), `src/benchmarking/`
-(`benchmark_feature_costs.py`, `benchmark_feature_memory.py`), `src/live_capture/`
-(`live_capture_pipeline.py`, `replay_pcap_as_live.py`). The last two categories' scripts import core
-modules, so each has `sys.path.insert(0, ...)` line(s) before those imports — pointing at
-`src/core/` for the shared library, and additionally at `src/` for the two files
-(`benchmark_feature_costs.py`/`benchmark_feature_memory.py`) that also import
-`build_session_csv.py` directly. Invoked the same way as before, just with the new path, e.g.
-`python src/benchmarking/benchmark_feature_costs.py`. `src/train_autogluon.py` deliberately
-stayed at `src/` root, unmoved, since it was actively training when this reorganization happened
-(it imports none of the above anyway — just pandas/sklearn/autogluon, reading CSVs directly).
+`find_controlled_sessions.py`, `filter_controlled_sessions.py`, `strip_application_layer.py` —
+pure stdlib+pandas, no core-module imports), `src/progress/` (`check_progress.py`,
+`check_model_failures.py` — same), `src/benchmarking/` (`benchmark_feature_costs.py`,
+`benchmark_feature_memory.py`), `src/live_capture/` (`live_capture_pipeline.py`,
+`replay_pcap_as_live.py`). Files outside `src/core/`/`src/scripts/` that need either one have
+`sys.path.insert(0, ...)` line(s) before those imports — `build_session_csv.py` needs both
+`src/core/` (for `window_features`) and `src/scripts/` (for `find_controlled_sessions`); the two
+benchmarking scripts need those same two plus `src/` itself (since they also import
+`build_session_csv.py` directly, which stays there). Invoked the same way as before, just with
+the new path, e.g. `python src/benchmarking/benchmark_feature_costs.py`. `src/train_autogluon.py`
+deliberately stayed at `src/` root, unmoved, since it was actively training when this
+reorganization happened (it imports none of the above anyway — just pandas/sklearn/autogluon,
+reading CSVs directly).
 
 ## Rules worth not forgetting
 

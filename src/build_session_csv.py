@@ -58,6 +58,7 @@ import sys
 import traceback
 from concurrent.futures import ProcessPoolExecutor, as_completed
 
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "scripts"))  # find_controlled_sessions.py
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "core"))  # shared library modules live in src/core/
 
 from find_controlled_sessions import is_controlled_experiment  # noqa: E402

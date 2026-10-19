@@ -131,7 +131,7 @@ current training run:
 dataset.** Some `exp.txt` files encode deliberately-throttled network
 conditions (e.g. `youtube-0_rate+3000kbps+loss+1%+25%.run2`) rather than
 representing organic real-world traffic. A scan of all 19,672 directories
-on the NAS (`src/core/find_controlled_sessions.py`, detects condition text
+on the NAS (`src/scripts/find_controlled_sessions.py`, detects condition text
 sitting between the service name and `.run`) found **18,957 organic**
 sessions and **715 controlled** ones. `src/filter_controlled_sessions.py`
 split the already-processed CSVs accordingly — controlled rows moved out
