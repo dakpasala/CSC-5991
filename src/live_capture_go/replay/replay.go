@@ -96,7 +96,8 @@ func main() {
 
 	outputPath := *output
 	if outputPath == "" {
-		outputPath = fmt.Sprintf("replay_statistics_%d_second_window.csv", int(*windowSeconds))
+		os.MkdirAll("live_runs", 0755)
+		outputPath = fmt.Sprintf("live_runs/replay_statistics_%d_second_window.csv", int(*windowSeconds))
 	}
 	sessionID := filepath.Base(filepath.Dir(*pcapPath))
 	if sessionID == "" || sessionID == "." {

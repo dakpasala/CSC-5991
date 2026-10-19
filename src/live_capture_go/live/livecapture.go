@@ -63,7 +63,8 @@ func main() {
 	runStartedAt := time.Now().Format("20060102_150405")
 	outputPath := *output
 	if outputPath == "" {
-		outputPath = fmt.Sprintf("live_statistics_%d_second_window_%s.csv", int(*windowSeconds), runStartedAt)
+		os.MkdirAll("live_runs", 0755)
+		outputPath = fmt.Sprintf("live_runs/live_statistics_%d_second_window_%s.csv", int(*windowSeconds), runStartedAt)
 	}
 
 	handle, err := pcap.OpenLive(*iface, snaplen, true, pcap.BlockForever)

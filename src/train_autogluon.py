@@ -15,8 +15,9 @@ separable almost entirely via protocol mix) masking how hard the rest are.
 Also computes permutation feature importance (predictor.feature_importance)
 on the held-out test set, not train -- importance computed on training data
 can be inflated if a model partially memorized it. Saved to
-feature_importance_<N>_second_window.csv per window size, alongside the
-printed table (importance, stddev, p-value, per feature).
+benchmarks/feature_importance_<window_seconds>s_<n_sessions>sessions.csv
+(variant suffix appended for --variant no_applayer), alongside the printed
+table (importance, stddev, p-value, per feature).
 
 Defaults to presets="best_quality" (AutoGluon's most exhaustive search --
 multi-layer stacking, k-fold bagging, the widest hyperparameter search per
@@ -130,7 +131,8 @@ def train_one_window_size(window_seconds, time_limit, presets, test_frac, seed, 
     print(f"\nfeature importance ({csv_path}):")
     print(importance_df)
 
-    importance_path = f"feature_importance_{run_tag}.csv"
+    os.makedirs("benchmarks", exist_ok=True)
+    importance_path = f"benchmarks/feature_importance_{run_tag}.csv"
     importance_df.to_csv(importance_path)
     print(f"saved to {importance_path}")
 

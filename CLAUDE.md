@@ -118,7 +118,9 @@ Both share one `core.WindowAccumulator` state machine.
 
 This is its own Go module (`src/go.mod`) — **run Go commands from inside `src/`**, not the
 project root (`go build ./...`, `go run ./live_capture_go/replay -pcap ../sessions/<id>/dump.pcap`,
-`sudo go run ./live_capture_go/live -interface eth0`), since `go.mod` lives there.
+`sudo go run ./live_capture_go/live -interface eth0`), since `go.mod` lives there. Because of
+this, its default output path (see `live_runs/` below) lands relative to `src/`, not the repo
+root, unless run from the repo root instead.
 
 Verified against the real batch pipeline for the same session: 6,499 of 6,500 compared values
 identical; the one outlier (`up_interarrival_time_min`, the sparsest/last window) was traced to a
@@ -128,6 +130,18 @@ side), not a logic bug. Also dramatically faster: 0.007–0.026s per window vs. 
 0.2–0.4s+ at the same packet volumes. The live-capture command was also tested for real, not just
 built — it successfully captured genuine live traffic off a Mac's own `en0` interface with no
 `sudo` needed, producing correctly-structured real-time windows.
+
+## Output folder conventions: `benchmarks/` and `live_runs/`
+
+Every benchmarking/feature-importance output (`benchmark_feature_costs.py`,
+`benchmark_feature_memory.py`, `train_autogluon.py`'s feature-importance CSV) is written under
+`benchmarks/`, created with `os.makedirs("benchmarks", exist_ok=True)` right before the write.
+Every live-traffic-statistics output (`live_capture_pipeline.py`/`replay_pcap_as_live.py` and
+their Go ports `live_capture_go/live`, `live_capture_go/replay`) is written under `live_runs/`
+the same way (`os.MkdirAll("live_runs", 0755)` on the Go side). Both default-output filename
+patterns inside those folders are already covered by existing `.gitignore` glob entries
+(no leading slash, so they match at any depth) — no `.gitignore` changes needed when adding
+either folder. `--output`/`-output` still overrides the default path explicitly if given.
 
 ## Rules worth not forgetting
 

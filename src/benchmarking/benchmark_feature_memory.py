@@ -4,7 +4,7 @@ across many real sessions -- this replaced an earlier CPU-cycles framing
 flow/window-level stats, the thing a router actually has to worry about is
 how much state it must hold in memory, not how many cycles a calculation
 takes. Two columns out: stat name, average bytes held to compute it,
-printed and saved to feature_extraction_memory_benchmark.csv.
+printed and saved to benchmarks/feature_extraction_memory_benchmark.csv.
 
 What "memory to compute this stat" means, per row:
   - Flow identification state (FlowTracker.FlowState): fixed-size, doesn't
@@ -260,7 +260,8 @@ def main():
     print("\naverage memory per stat (bytes):")
     print(result_df.to_string(index=False))
 
-    out_path = "feature_extraction_memory_benchmark.csv"
+    os.makedirs("benchmarks", exist_ok=True)
+    out_path = "benchmarks/feature_extraction_memory_benchmark.csv"
     result_df.to_csv(out_path, index=False)
     print(f"\nsaved to {out_path}")
 

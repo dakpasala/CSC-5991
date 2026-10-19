@@ -2,7 +2,7 @@
 across many real sessions -- directly relevant to what a router (one CPU
 core, no parallelism, no process pool) could realistically compute in real
 time. Two columns out: stat name, average CPU time to compute it (us),
-printed and saved to feature_extraction_cost_benchmark.csv.
+printed and saved to benchmarks/feature_extraction_cost_benchmark.csv.
 
 Per-packet costs (scale with packet arrival rate -- what actually has to
 keep up with live traffic): raw header parsing, flow identification,
@@ -240,7 +240,8 @@ def main():
     print("\naverage CPU time per stat (microseconds):")
     print(result_df.to_string(index=False))
 
-    out_path = "feature_extraction_cost_benchmark.csv"
+    os.makedirs("benchmarks", exist_ok=True)
+    out_path = "benchmarks/feature_extraction_cost_benchmark.csv"
     result_df.to_csv(out_path, index=False)
     print(f"\nsaved to {out_path}")
 

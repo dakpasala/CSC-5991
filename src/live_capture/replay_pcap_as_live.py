@@ -130,7 +130,8 @@ def main():
     parser.add_argument("--output", default=None)
     args = parser.parse_args()
 
-    output_path = args.output or f"replay_statistics_{int(args.window_seconds)}_second_window.csv"
+    os.makedirs("live_runs", exist_ok=True)
+    output_path = args.output or f"live_runs/replay_statistics_{int(args.window_seconds)}_second_window.csv"
     session_id = os.path.basename(os.path.dirname(args.pcap)) or "replay"
 
     packets, t0 = _load_and_tag_packets(args.pcap)

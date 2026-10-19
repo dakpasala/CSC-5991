@@ -126,8 +126,9 @@ def main():
     args = parser.parse_args()
 
     run_started_at = datetime.now().strftime("%Y%m%d_%H%M%S")
+    os.makedirs("live_runs", exist_ok=True)
     output_path = (
-        args.output or f"live_statistics_{int(args.window_seconds)}_second_window_{run_started_at}.csv"
+        args.output or f"live_runs/live_statistics_{int(args.window_seconds)}_second_window_{run_started_at}.csv"
     )
 
     tcpdump_proc = start_tcpdump(args.interface, args.capture_dir, args.window_seconds, args.snaplen)
