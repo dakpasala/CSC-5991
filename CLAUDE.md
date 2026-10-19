@@ -77,9 +77,21 @@ Two earlier phases are archived, not active:
   before the pcap is even opened, and logged as `skipping <dir> (controlled
   experiment)` rather than silently dropped or counted as a failure. This is a
   policy change: earlier in the project every directory was processed uniformly and
-  the mix was split apart afterward (see `src/filter_controlled_sessions.py` and the
+  the mix was split apart afterward (see `src/scripts/filter_controlled_sessions.py` and the
   `session_statistics_*_second_window_controlled.csv` files it produced from the
   real 19,672-directory batch — 18,957 organic, 715 controlled).
+
+`src/` is organized by category beyond the core pipeline files above (which all stay directly
+in `src/` since they're imported by each other and by everything below): `src/scripts/`
+(one-off utilities: `filter_controlled_sessions.py`, `strip_application_layer.py`),
+`src/progress/` (`check_progress.py`, `check_model_failures.py`), `src/benchmarking/`
+(`benchmark_feature_costs.py`, `benchmark_feature_memory.py`), `src/live_capture/`
+(`live_capture_pipeline.py`, `replay_pcap_as_live.py`). Each of these imports core pipeline
+modules via a `sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))` line before
+its other imports, since it needs to reach back into `src/` from one level down — invoked the
+same way as before, just with the new path, e.g. `python src/benchmarking/benchmark_feature_costs.py`.
+`src/train_autogluon.py` deliberately stayed in `src/` root, unmoved, since it was actively
+training when this reorganization happened.
 
 ## Rules worth not forgetting
 

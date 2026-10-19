@@ -32,11 +32,12 @@ ProcessPoolExecutor in build_session_csv.py only parallelizes ACROSS
 sessions, never within processing one).
 
 Usage:
-    python src/benchmark_feature_costs.py [--source-dir /mnt/NAS/salmo-trutta/traces] [--num-sessions 100] [--window-seconds 10]
+    python src/benchmarking/benchmark_feature_costs.py [--source-dir /mnt/NAS/salmo-trutta/traces] [--num-sessions 100] [--window-seconds 10]
 """
 
 import argparse
 import os
+import sys
 import time
 import traceback
 from collections import defaultdict
@@ -44,12 +45,14 @@ from collections import defaultdict
 import numpy as np
 import pandas as pd
 
-from build_session_csv import discover_session_directories, parse_exp_label
-from find_controlled_sessions import is_controlled_experiment
-from flow_metrics import compute_flow_metrics
-from flow_tracker import FlowTracker
-from requests_log import load_relevant_requests
-from window_features import TCP_FLAGS, _distribution, _flag_count, _load_and_tag_packets
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))  # core pipeline modules live in src/
+
+from build_session_csv import discover_session_directories, parse_exp_label  # noqa: E402
+from find_controlled_sessions import is_controlled_experiment  # noqa: E402
+from flow_metrics import compute_flow_metrics  # noqa: E402
+from flow_tracker import FlowTracker  # noqa: E402
+from requests_log import load_relevant_requests  # noqa: E402
+from window_features import TCP_FLAGS, _distribution, _flag_count, _load_and_tag_packets  # noqa: E402
 
 DISTRIBUTION_METRICS = ("payload_size", "packet_size", "recv_window", "interarrival_time")
 REQUEST_METRICS = ("segment_size_bytes", "request_duration_ms")

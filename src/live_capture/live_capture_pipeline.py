@@ -38,8 +38,8 @@ Requires root (or equivalent capture capabilities) for tcpdump to open the
 interface, and tcpdump itself installed on the machine.
 
 Usage:
-    sudo python3 src/live_capture_pipeline.py --interface eth0
-    sudo python3 src/live_capture_pipeline.py --interface eth0 --window-seconds 10 --output live_stats.csv
+    sudo python3 src/live_capture/live_capture_pipeline.py --interface eth0
+    sudo python3 src/live_capture/live_capture_pipeline.py --interface eth0 --window-seconds 10 --output live_stats.csv
 """
 
 import argparse
@@ -53,7 +53,9 @@ from datetime import datetime
 
 import pandas as pd
 
-from window_features import _build_window_rows, _bucket_into_windows, _parse_and_track_flows
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))  # core pipeline modules live in src/
+
+from window_features import _build_window_rows, _bucket_into_windows, _parse_and_track_flows  # noqa: E402
 
 LABEL_PLACEHOLDER = "live_unlabeled"
 

@@ -44,22 +44,25 @@ Two known simplifications versus true incremental processing:
     the sample is simply not retroactively added to that earlier row.
 
 Usage:
-    python src/replay_pcap_as_live.py --pcap sessions/<id>/dump.pcap
-    python src/replay_pcap_as_live.py --pcap sessions/<id>/dump.pcap --speed 4 --window-seconds 10
+    python src/live_capture/replay_pcap_as_live.py --pcap sessions/<id>/dump.pcap
+    python src/live_capture/replay_pcap_as_live.py --pcap sessions/<id>/dump.pcap --speed 4 --window-seconds 10
 """
 
 import argparse
 import os
 import queue
+import sys
 import threading
 import time
 from collections import defaultdict
 
 import pandas as pd
 
-from flow_metrics import compute_flow_metrics
-from flow_tracker import FlowTracker
-from window_features import _build_one_window_row, _load_and_tag_packets
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))  # core pipeline modules live in src/
+
+from flow_metrics import compute_flow_metrics  # noqa: E402
+from flow_tracker import FlowTracker  # noqa: E402
+from window_features import _build_one_window_row, _load_and_tag_packets  # noqa: E402
 
 LABEL_PLACEHOLDER = "live_unlabeled"
 
