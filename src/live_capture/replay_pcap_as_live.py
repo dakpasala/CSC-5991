@@ -58,7 +58,7 @@ from collections import defaultdict
 
 import pandas as pd
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))  # core pipeline modules live in src/
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "core"))  # shared library modules
 
 from flow_metrics import compute_flow_metrics  # noqa: E402
 from flow_tracker import FlowTracker  # noqa: E402

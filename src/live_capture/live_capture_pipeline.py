@@ -53,7 +53,7 @@ from datetime import datetime
 
 import pandas as pd
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))  # core pipeline modules live in src/
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "core"))  # shared library modules
 
 from window_features import _build_window_rows, _bucket_into_windows, _parse_and_track_flows  # noqa: E402
 

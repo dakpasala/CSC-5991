@@ -47,7 +47,8 @@ from collections import defaultdict
 import numpy as np
 import pandas as pd
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))  # core pipeline modules live in src/
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "core"))  # shared library modules
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))  # build_session_csv.py (main CLI, stays in src/)
 
 from build_session_csv import discover_session_directories, parse_exp_label  # noqa: E402
 from find_controlled_sessions import is_controlled_experiment  # noqa: E402

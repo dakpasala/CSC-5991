@@ -14,8 +14,8 @@ Starting point: real per-session capture directories (`dump.pcap`,
 `exp.txt`, optionally `requests_history.json`), one directory per browsing
 session, across four streaming services (YouTube, Netflix, Twitch, Amazon).
 
-The pipeline (`src/pcap_reader.py` → `src/packet_parser.py` →
-`src/flow_tracker.py` → `src/flow_metrics.py` → `src/window_features.py` →
+The pipeline (`src/core/pcap_reader.py` → `src/core/packet_parser.py` →
+`src/core/flow_tracker.py` → `src/core/flow_metrics.py` → `src/core/window_features.py` →
 `src/build_session_csv.py`) does, per session:
 
 1. Parse every packet's Ethernet/IPv4/TCP-or-UDP headers (payload size
@@ -131,7 +131,7 @@ current training run:
 dataset.** Some `exp.txt` files encode deliberately-throttled network
 conditions (e.g. `youtube-0_rate+3000kbps+loss+1%+25%.run2`) rather than
 representing organic real-world traffic. A scan of all 19,672 directories
-on the NAS (`src/find_controlled_sessions.py`, detects condition text
+on the NAS (`src/core/find_controlled_sessions.py`, detects condition text
 sitting between the service name and `.run`) found **18,957 organic**
 sessions and **715 controlled** ones. `src/filter_controlled_sessions.py`
 split the already-processed CSVs accordingly — controlled rows moved out

@@ -54,11 +54,14 @@ Usage:
 
 import argparse
 import os
+import sys
 import traceback
 from concurrent.futures import ProcessPoolExecutor, as_completed
 
-from find_controlled_sessions import is_controlled_experiment
-from window_features import build_session_dataframes
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "core"))  # shared library modules live in src/core/
+
+from find_controlled_sessions import is_controlled_experiment  # noqa: E402
+from window_features import build_session_dataframes  # noqa: E402
 
 ALL_WINDOW_SIZES = (10, 8, 4, 2, 1)
 REQUIRED_FILES = ("dump.pcap", "exp.txt")

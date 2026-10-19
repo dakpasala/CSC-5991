@@ -26,21 +26,21 @@ Two earlier phases are archived, not active:
   `requests_history.json` (real browser-level HTTP request log with genuine
   `content-length`/timing — not inferred), and a large per-session JSON of client-side
   video-element telemetry (not currently used by the pipeline below).
-- `src/pcap_reader.py` — endian-aware plain-`.pcap` reader that keeps the true,
+- `src/core/pcap_reader.py` — endian-aware plain-`.pcap` reader that keeps the true,
   pre-truncation packet length (`dpkt.pcap.Reader`'s own iterator discards it).
-- `src/packet_parser.py` — Ethernet/IPv4/TCP-or-UDP parsing; payload size is computed
+- `src/core/packet_parser.py` — Ethernet/IPv4/TCP-or-UDP parsing; payload size is computed
   from header-declared lengths, not from how many payload bytes actually got captured.
-- `src/flow_tracker.py` — 5-tuple flow identification across a packet stream, client/
+- `src/core/flow_tracker.py` — 5-tuple flow identification across a packet stream, client/
   server determination (SYN-based for TCP, first-packet-sender assumption for UDP).
-- `src/flow_metrics.py` — per-flow retransmission/out-of-order/RTT detection, using
+- `src/core/flow_metrics.py` — per-flow retransmission/out-of-order/RTT detection, using
   each flow's full session history so cross-window retransmissions are caught
   correctly. Only packets that consume sequence space (real payload or a SYN) are
   checked — a bug where pure ACKs' naturally-repeated sequence number was being
   misread as mass retransmission was found and fixed here (see git history).
-- `src/requests_log.py` — loads `requests_history.json`, filters to the requests that
+- `src/core/requests_log.py` — loads `requests_history.json`, filters to the requests that
   actually belong to the service under test (by domain keyword), extracts real
   segment sizes and request/completion timing.
-- `src/window_features.py` — the orchestrator: buckets everything into fixed-size time
+- `src/core/window_features.py` — the orchestrator: buckets everything into fixed-size time
   windows and computes the full ~130-column feature table (see AGENTS.md for the
   complete column list and the direction-scoped up/down/total design).
 - `src/build_session_csv.py` — CLI entry point. Takes a session directory, appends its
@@ -73,7 +73,7 @@ Two earlier phases are archived, not active:
   (output numerically identical to the pre-optimization code) and speed (a single
   session at all 5 window sizes dropped from 28s to 11s wall-clock). **Controlled/
   lab-condition sessions are skipped entirely**, not written to any CSV — detected
-  live per directory (via `src/find_controlled_sessions.py`'s `is_controlled_experiment()`)
+  live per directory (via `src/core/find_controlled_sessions.py`'s `is_controlled_experiment()`)
   before the pcap is even opened, and logged as `skipping <dir> (controlled
   experiment)` rather than silently dropped or counted as a failure. This is a
   policy change: earlier in the project every directory was processed uniformly and
@@ -81,17 +81,23 @@ Two earlier phases are archived, not active:
   `session_statistics_*_second_window_controlled.csv` files it produced from the
   real 19,672-directory batch — 18,957 organic, 715 controlled).
 
-`src/` is organized by category beyond the core pipeline files above (which all stay directly
-in `src/` since they're imported by each other and by everything below): `src/scripts/`
-(one-off utilities: `filter_controlled_sessions.py`, `strip_application_layer.py`),
-`src/progress/` (`check_progress.py`, `check_model_failures.py`), `src/benchmarking/`
+`src/` is organized by category. The 7 shared library modules above
+(`pcap_reader.py`/`packet_parser.py`/`flow_tracker.py`/`flow_metrics.py`/`requests_log.py`/
+`window_features.py`/`find_controlled_sessions.py`) live in `src/core/`, since every other
+category imports from them. `src/build_session_csv.py` (the main CLI entry point
+`run_all_sessions.sh` directly references) stays at `src/` root, one level above `src/core/`.
+Everything else is grouped by what it's for: `src/scripts/` (one-off utilities:
+`filter_controlled_sessions.py`, `strip_application_layer.py` — pure stdlib+pandas, no core-module
+imports), `src/progress/` (`check_progress.py`, `check_model_failures.py` — same), `src/benchmarking/`
 (`benchmark_feature_costs.py`, `benchmark_feature_memory.py`), `src/live_capture/`
-(`live_capture_pipeline.py`, `replay_pcap_as_live.py`). Each of these imports core pipeline
-modules via a `sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))` line before
-its other imports, since it needs to reach back into `src/` from one level down — invoked the
-same way as before, just with the new path, e.g. `python src/benchmarking/benchmark_feature_costs.py`.
-`src/train_autogluon.py` deliberately stayed in `src/` root, unmoved, since it was actively
-training when this reorganization happened.
+(`live_capture_pipeline.py`, `replay_pcap_as_live.py`). The last two categories' scripts import core
+modules, so each has `sys.path.insert(0, ...)` line(s) before those imports — pointing at
+`src/core/` for the shared library, and additionally at `src/` for the two files
+(`benchmark_feature_costs.py`/`benchmark_feature_memory.py`) that also import
+`build_session_csv.py` directly. Invoked the same way as before, just with the new path, e.g.
+`python src/benchmarking/benchmark_feature_costs.py`. `src/train_autogluon.py` deliberately
+stayed at `src/` root, unmoved, since it was actively training when this reorganization happened
+(it imports none of the above anyway — just pandas/sklearn/autogluon, reading CSVs directly).
 
 ## Rules worth not forgetting
 
