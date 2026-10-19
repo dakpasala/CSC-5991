@@ -29,6 +29,9 @@ requests_history.json
 session_statistics_*_second_window.csv
 session_statistics_*_second_window_controlled.csv
 session_statistics_*_second_window_no_applayer.csv
+live_statistics_*_second_window_*.csv
+replay_statistics_*_second_window.csv
+live_captures/
 AutogluonModels/
 .agents
 .codex

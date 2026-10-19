@@ -172,6 +172,48 @@ def _request_stats(requests, t0, window_index, window_seconds):
     return stats
 
 
+def _build_one_window_row(window_packets, flow_first_window, rtt_by_window, window_index, window_seconds, final_label, session_id, requests, t0):
+    """Builds a single window's row dict from its already-filtered packet
+    subset. Pulled out of _build_window_rows so callers that already know
+    exactly which window they want (e.g. a live/streaming consumer closing
+    out one window at a time) can call this directly, without needing
+    _build_window_rows's whole-session "how many windows does packet_df
+    span" bookkeeping -- that bookkeeping assumes it's being handed an
+    entire session's packets at once, which isn't true for a streaming
+    caller."""
+    row = {
+        "label": final_label,
+        "session_id": session_id,
+        "window_index": window_index,
+        "window_start_s": window_index * window_seconds,
+        "window_end_s": (window_index + 1) * window_seconds,
+    }
+
+    if len(window_packets) == 0:
+        row["num_flows"] = 0
+        row["num_new_flows"] = 0
+        row["num_continuing_flows"] = 0
+        row["frac_udp"] = np.nan
+    else:
+        row["num_flows"] = window_packets["flow_key"].nunique()
+        row["num_new_flows"] = int(flow_first_window.get(window_index, 0))
+        row["num_continuing_flows"] = row["num_flows"] - row["num_new_flows"]
+        row["frac_udp"] = (window_packets["protocol"] == "udp").mean()
+
+    for prefix, mask in (
+        ("up", window_packets["direction"] == "up"),
+        ("down", window_packets["direction"] == "down"),
+        ("total", pd.Series(True, index=window_packets.index)),
+    ):
+        row.update(_direction_stats(window_packets[mask], prefix, window_seconds))
+
+    for stat, value in _distribution(rtt_by_window.get(window_index, [])).items():
+        row[f"rtt_ms_{stat}"] = value
+
+    row.update(_request_stats(requests, t0, window_index, window_seconds))
+    return row
+
+
 def _build_window_rows(packet_df, flow_first_window, rtt_by_window, t0, window_seconds, final_label, session_id, requests):
     last_timestamp = packet_df["timestamp"].max()
     num_windows = int((last_timestamp - t0) // window_seconds) + 1
@@ -179,37 +221,12 @@ def _build_window_rows(packet_df, flow_first_window, rtt_by_window, t0, window_s
     rows = []
     for window_index in range(num_windows):
         window_packets = packet_df[packet_df["window_index"] == window_index]
-        row = {
-            "label": final_label,
-            "session_id": session_id,
-            "window_index": window_index,
-            "window_start_s": window_index * window_seconds,
-            "window_end_s": (window_index + 1) * window_seconds,
-        }
-
-        if len(window_packets) == 0:
-            row["num_flows"] = 0
-            row["num_new_flows"] = 0
-            row["num_continuing_flows"] = 0
-            row["frac_udp"] = np.nan
-        else:
-            row["num_flows"] = window_packets["flow_key"].nunique()
-            row["num_new_flows"] = int(flow_first_window.get(window_index, 0))
-            row["num_continuing_flows"] = row["num_flows"] - row["num_new_flows"]
-            row["frac_udp"] = (window_packets["protocol"] == "udp").mean()
-
-        for prefix, mask in (
-            ("up", window_packets["direction"] == "up"),
-            ("down", window_packets["direction"] == "down"),
-            ("total", pd.Series(True, index=window_packets.index)),
-        ):
-            row.update(_direction_stats(window_packets[mask], prefix, window_seconds))
-
-        for stat, value in _distribution(rtt_by_window.get(window_index, [])).items():
-            row[f"rtt_ms_{stat}"] = value
-
-        row.update(_request_stats(requests, t0, window_index, window_seconds))
-        rows.append(row)
+        rows.append(
+            _build_one_window_row(
+                window_packets, flow_first_window, rtt_by_window, window_index, window_seconds,
+                final_label, session_id, requests, t0,
+            )
+        )
 
     return pd.DataFrame(rows)
 
