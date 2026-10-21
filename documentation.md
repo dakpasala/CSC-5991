@@ -297,13 +297,19 @@ just a benchmarking quirk.
 
 ## Current status
 
-**Training in progress**: a `--variant no_applayer` run (option 3 below,
-chosen first) is running on the Linux box in a `train_no_applayer` tmux
-session, on the 10-second window dataset, confirmed via `ps -ef` to
+**Training in progress**: a `--variant no_applayer` run (option 3 from the
+old list, chosen first) is running on the Linux box in a
+`train_no_applayer` tmux session, on the full accumulated 10-second-window
+dataset (`session_statistics_10_second_window_no_applayer.csv`, lives on
+the Linux box/NAS only — not mirrored locally), confirmed via `ps -ef` to
 actually be passing the flag (not just named that way). Once it finishes,
-its feature importance will be compared against the full-dataset run to
-see how much of the earlier ~98% accuracy was actually leaning on the 13
-application-layer columns a real router can't see.
+the plan is to look at both its accuracy (per-class report) and its
+feature importance together — not just compare to the old full-dataset
+run — to decide which features are worth dropping going forward. The
+tmux session's scrollback is being captured into `~/train_no_applayer.log`
+on the Linux box (via `tmux capture-pane` + `tmux pipe-pane`, after the
+original log file was lost to a repo reset) so progress can be tailed
+without needing a true interactive reattach.
 
 ## Next up
 
