@@ -1,0 +1,21 @@
+stat,avg_bytes,p95_bytes,max_bytes
+retransmission_rtt_state (total per session),10294394.857142856,26409375.199999996,31094984
+total_window_buffer (simultaneous),98611.1269035533,376053.9999999998,1208464
+retransmission_rtt_state (per flow),74907.23908523908,33911.39999999969,18618400
+total_payload_size_buffer (per window),24281.56345177665,88689.2,279840
+total_packet_size_buffer (per window),24281.56345177665,88689.2,279840
+total_interarrival_time_buffer (per window),24273.624365482232,88681.2,279832
+total_recv_window_buffer (per window),21160.162436548224,88605.2,278488
+down_packet_size_buffer (per window),17448.08121827411,54392.39999999998,178344
+down_payload_size_buffer (per window),17448.08121827411,54392.39999999998,178344
+down_interarrival_time_buffer (per window),17440.162436548224,54384.39999999998,178336
+down_recv_window_buffer (per window),15388.568527918782,54392.39999999998,177632
+flow_identification_state (total per session),10222.714285714286,16617,17691
+up_payload_size_buffer (per window),6857.482233502538,27967.6,101520
+up_packet_size_buffer (per window),6857.482233502538,27967.6,101520
+up_interarrival_time_buffer (per window),6849.543147208122,27959.6,101512
+up_recv_window_buffer (per window),5795.593908629442,27954.399999999998,100880
+rtt_ms_buffer (per window),4464.0609137055835,21830.79999999999,88896
+request_duration_ms_buffer (per window),92.04060913705584,248,856
+flow_identification_state (per flow),74.38565488565489,76,77
+segment_size_bytes_buffer (per window),58.111675126903556,136,768
