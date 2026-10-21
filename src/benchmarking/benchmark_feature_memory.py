@@ -3,18 +3,27 @@ across many real sessions -- this replaced an earlier CPU-cycles framing
 (see benchmark_feature_costs.py) after discussion with the professor: for
 flow/window-level stats, the thing a router actually has to worry about is
 how much state it must hold in memory, not how many cycles a calculation
-takes. Two columns out: stat name, average bytes held to compute it,
-printed and saved to benchmarks/feature_extraction_memory_benchmark.csv.
+takes. Printed and saved to benchmarks/feature_extraction_memory_benchmark.csv,
+with avg/p95/max bytes per stat -- max/p95 matter alongside the average
+since a router has to provision for its worst session/window, not its
+typical one.
 
 What "memory to compute this stat" means, per row:
   - Flow identification state (FlowTracker.FlowState): fixed-size, doesn't
-    grow with packets -- measured once per flow.
+    grow with packets -- measured once per flow ("per flow" rows).
   - Retransmission/RTT tracking state (flow_metrics' internal
     _DirectionState.seen_seqs set + the outstanding ack-tracking dict):
     THIS is the interesting one -- seen_seqs adds one entry per
     data-carrying packet for the flow's entire life and is never pruned,
     so it genuinely grows with how much that flow has carried. Measured
     once per flow, at the point the flow finishes (its peak size).
+  - "(total per session)" rows for the above two: since neither is ever
+    pruned/evicted in this pipeline, the real memory a long-running
+    process holds for a session is the SUM across every flow that
+    session ever had, not just one flow's average -- that sum only grows
+    over a session's life, so its value at the end IS its peak. This is
+    the number that actually answers "can a router afford to hold this,"
+    not the per-flow average alone.
   - Every distribution-style metric (payload_size, packet_size,
     recv_window, interarrival_time, rtt_ms, segment_size_bytes,
     request_duration_ms): the memory cost of the RAW BUFFERED LIST of
@@ -22,6 +31,17 @@ What "memory to compute this stat" means, per row:
     median/percentiles -- these can't be computed with an O(1) running
     accumulator the way a sum or count can, so the full list really has
     to sit in memory until the window closes. Measured once per window.
+    (rtt_ms_buffer previously missing from this benchmark despite being
+    named in this docstring -- fixed; it's bucketed into windows by ACK
+    timestamp exactly like benchmark_feature_costs.py already does.)
+  - "total_window_buffer (simultaneous, per window)": the SUM of every
+    buffer above (all 3 directions x 4 direction-scoped metrics, plus
+    rtt_ms/segment_size_bytes/request_duration_ms, which aren't
+    direction-split) that must be resident in memory AT ONCE during a
+    single window, before that window's row can be computed and the
+    buffers freed. This is the real peak instantaneous memory cost of
+    one window's bookkeeping, not just a sum of unrelated per-metric
+    averages.
   - flag_counts / num_flows / frac_udp are NOT given a row: counting is
     streaming-compatible and needs no buffer beyond data already held for
     other reasons, so their marginal memory cost is ~0.
@@ -53,7 +73,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))  # build_sessi
 
 from build_session_csv import discover_session_directories, parse_exp_label  # noqa: E402
 from find_controlled_sessions import is_controlled_experiment  # noqa: E402
-from flow_metrics import SEQ_MODULUS, _DirectionState, _seq_delta  # noqa: E402
+from flow_metrics import SEQ_MODULUS, _DirectionState, _seq_delta, compute_flow_metrics  # noqa: E402
 from flow_tracker import FlowTracker  # noqa: E402
 from requests_log import load_relevant_requests  # noqa: E402
 from window_features import _load_and_tag_packets  # noqa: E402
@@ -126,8 +146,14 @@ def _flow_state_sizes(flow_packets):
 
 
 def benchmark_session(session_dir, window_seconds):
-    """Returns (flow_state_sizes: [bytes, ...], window_sizes: {stat: [bytes, ...]})
-    for this one session, or None if it's a controlled experiment."""
+    """Returns a dict of per-session results, or None if it's a controlled
+    experiment:
+      flow_identification_sizes: [bytes, ...] one per flow
+      retransmission_rtt_sizes: [bytes, ...] one per flow
+      flow_identification_total: sum of the above (this session's total)
+      retransmission_rtt_total: sum of the above (this session's total)
+      window_sizes: {stat: [bytes, ...]} one entry per window
+    """
     exp_content = open(os.path.join(session_dir, "exp.txt")).read()
     if is_controlled_experiment(exp_content):
         return None
@@ -158,15 +184,25 @@ def benchmark_session(session_dir, window_seconds):
     # Per-flow state: flow identification (fixed) + retransmission/RTT
     # tracking (grows with the flow's packet count). One measurement per
     # flow, taken at the point the flow is "done" (all its packets seen).
+    # Also collect real RTT samples (compute_flow_metrics) here, same loop,
+    # so the rtt_ms window buffer below is bucketed from genuine samples,
+    # not re-derived separately.
     flow_identification_sizes = []
     retransmission_rtt_sizes = []
+    rtt_samples = []
     for flow_key, flow_state in tracker._flows.items():
         flow_identification_sizes.append(deep_sizeof(flow_state))
     for flow_key, flow_packets in flow_packet_lists.items():
         retransmission_rtt_sizes.append(_flow_state_sizes(flow_packets))
+        _flags, rtts = compute_flow_metrics(flow_packets)
+        rtt_samples.extend(rtts)
 
     packet_df = pd.DataFrame(tagged)
     packet_df["window_index"] = ((packet_df["timestamp"] - t0) // window_seconds).astype(int)
+
+    rtt_by_window = defaultdict(list)
+    for ts, rtt_ms in rtt_samples:
+        rtt_by_window[int((ts - t0) // window_seconds)].append(rtt_ms)
 
     requests_path = os.path.join(session_dir, "requests_history.json")
     requests = load_relevant_requests(requests_path, label) if os.path.isfile(requests_path) else []
@@ -176,6 +212,7 @@ def benchmark_session(session_dir, window_seconds):
 
     for window_index in range(num_windows):
         window_packets = packet_df[packet_df["window_index"] == window_index]
+        window_total_bytes = 0
 
         for _prefix, mask in (
             ("up", window_packets["direction"] == "up"),
@@ -190,17 +227,36 @@ def benchmark_session(session_dir, window_seconds):
                 ("recv_window", group["recv_window"].dropna().tolist()),
                 ("interarrival_time", interarrival_ms.tolist()),
             ):
-                window_sizes[f"{metric_name}_buffer"].append(deep_sizeof(values))
+                size = deep_sizeof(values)
+                window_sizes[f"{metric_name}_buffer"].append(size)
+                window_total_bytes += size
+
+        # rtt_ms is window-level, not direction-split (see project rules),
+        # so it's measured once per window rather than once per direction.
+        rtt_size = deep_sizeof(rtt_by_window.get(window_index, []))
+        window_sizes["rtt_ms_buffer"].append(rtt_size)
+        window_total_bytes += rtt_size
 
         window_start = t0 + window_index * window_seconds
         window_end = window_start + window_seconds
         in_window = [r for r in requests if window_start <= r.start_s < window_end]
         sizes = [r.content_length for r in in_window if r.content_length is not None]
         durations = [r.duration_ms for r in in_window if r.duration_ms is not None]
-        window_sizes["segment_size_bytes_buffer"].append(deep_sizeof(sizes))
-        window_sizes["request_duration_ms_buffer"].append(deep_sizeof(durations))
+        segment_size = deep_sizeof(sizes)
+        duration_size = deep_sizeof(durations)
+        window_sizes["segment_size_bytes_buffer"].append(segment_size)
+        window_sizes["request_duration_ms_buffer"].append(duration_size)
+        window_total_bytes += segment_size + duration_size
 
-    return flow_identification_sizes, retransmission_rtt_sizes, dict(window_sizes)
+        window_sizes["total_window_buffer (simultaneous)"].append(window_total_bytes)
+
+    return {
+        "flow_identification_sizes": flow_identification_sizes,
+        "retransmission_rtt_sizes": retransmission_rtt_sizes,
+        "flow_identification_total": sum(flow_identification_sizes),
+        "retransmission_rtt_total": sum(retransmission_rtt_sizes),
+        "window_sizes": dict(window_sizes),
+    }
 
 
 def main():
@@ -214,6 +270,8 @@ def main():
 
     all_flow_identification = []
     all_retransmission_rtt = []
+    all_flow_identification_total = []  # one value per session
+    all_retransmission_rtt_total = []  # one value per session
     all_window_sizes = defaultdict(list)
     benchmarked = 0
     skipped_controlled = 0
@@ -234,30 +292,37 @@ def main():
             skipped_controlled += 1
             continue
 
-        flow_id_sizes, retrans_sizes, window_sizes = result
         benchmarked += 1
-        all_flow_identification.extend(flow_id_sizes)
-        all_retransmission_rtt.extend(retrans_sizes)
-        for stat, values in window_sizes.items():
+        all_flow_identification.extend(result["flow_identification_sizes"])
+        all_retransmission_rtt.extend(result["retransmission_rtt_sizes"])
+        all_flow_identification_total.append(result["flow_identification_total"])
+        all_retransmission_rtt_total.append(result["retransmission_rtt_total"])
+        for stat, values in result["window_sizes"].items():
             all_window_sizes[stat].extend(values)
 
-        print(f"[{benchmarked}/{args.num_sessions}] {session_dir}: {len(flow_id_sizes)} flows")
+        print(f"[{benchmarked}/{args.num_sessions}] {session_dir}: {len(result['flow_identification_sizes'])} flows")
 
     print(f"\nbenchmarked {benchmarked} sessions, skipped {skipped_controlled} controlled, {failed} failed")
 
+    def stats_row(name, values):
+        return (name, np.mean(values), np.percentile(values, 95), np.max(values))
+
     rows = [
-        ("flow_identification_state (per flow)", np.mean(all_flow_identification)),
-        ("retransmission_rtt_state (per flow)", np.mean(all_retransmission_rtt)),
+        stats_row("flow_identification_state (per flow)", all_flow_identification),
+        stats_row("retransmission_rtt_state (per flow)", all_retransmission_rtt),
+        stats_row("flow_identification_state (total per session)", all_flow_identification_total),
+        stats_row("retransmission_rtt_state (total per session)", all_retransmission_rtt_total),
     ]
     for stat, values in all_window_sizes.items():
-        rows.append((f"{stat} (per window)", np.mean(values)))
+        label = stat if "(simultaneous)" in stat else f"{stat} (per window)"
+        rows.append(stats_row(label, values))
 
-    result_df = pd.DataFrame(rows, columns=["stat", "avg_bytes"]).sort_values("avg_bytes", ascending=False)
-    result_df = result_df.reset_index(drop=True)
+    result_df = pd.DataFrame(rows, columns=["stat", "avg_bytes", "p95_bytes", "max_bytes"])
+    result_df = result_df.sort_values("avg_bytes", ascending=False).reset_index(drop=True)
 
     pd.set_option("display.max_rows", None)
     pd.set_option("display.float_format", "{:.1f}".format)
-    print("\naverage memory per stat (bytes):")
+    print("\nmemory per stat (bytes) -- avg / p95 / max across sessions-or-windows:")
     print(result_df.to_string(index=False))
 
     os.makedirs("benchmarks", exist_ok=True)
