@@ -34,14 +34,28 @@ What "memory to compute this stat" means, per row:
     (rtt_ms_buffer previously missing from this benchmark despite being
     named in this docstring -- fixed; it's bucketed into windows by ACK
     timestamp exactly like benchmark_feature_costs.py already does.)
-  - "total_window_buffer (simultaneous, per window)": the SUM of every
-    buffer above (all 3 directions x 4 direction-scoped metrics, plus
-    rtt_ms/segment_size_bytes/request_duration_ms, which aren't
-    direction-split) that must be resident in memory AT ONCE during a
-    single window, before that window's row can be computed and the
-    buffers freed. This is the real peak instantaneous memory cost of
-    one window's bookkeeping, not just a sum of unrelated per-metric
-    averages.
+  - Every distribution metric above is now split by direction
+    (up_*_buffer/down_*_buffer/total_*_buffer), not pooled -- streaming
+    traffic is heavily down-dominated, so this is where that asymmetry
+    actually shows up (down holds far more packets per window than up).
+  - "total_window_buffer (simultaneous, per window)": checked directly
+    against window_features._direction_stats's real control flow, not
+    assumed -- up/down/total are each built and consumed by one call to
+    _direction_stats in turn (its 4 metric lists are a single tuple
+    literal, so they DO coexist for that one call, but that call's
+    buffers are freed via refcounting before the next direction's call
+    begins -- confirmed by reading the actual loop, not guessed). So the
+    real simultaneous peak during one window's row-construction is just
+    the single largest _direction_stats call's 4 buffers -- always the
+    "total" direction, since total's packet set is a superset of
+    up's + down's. rtt_ms/segment_size_bytes/request_duration_ms are
+    built in separate, later, non-overlapping steps and are added into
+    this row as a small conservative pad on top (their lifetimes don't
+    truly overlap "total"'s buffers, but they're tiny enough relative to
+    it -- hundreds to tens of thousands of bytes vs. total's buffers each
+    in the tens of thousands -- that padding them in doesn't materially
+    change the peak). up's and down's own buffers are NOT added here;
+    they're smaller than total's and never coexist with it.
   - flag_counts / num_flows / frac_udp are NOT given a row: counting is
     streaming-compatible and needs no buffer beyond data already held for
     other reasons, so their marginal memory cost is ~0.
@@ -214,7 +228,7 @@ def benchmark_session(session_dir, window_seconds):
         window_packets = packet_df[packet_df["window_index"] == window_index]
         window_total_bytes = 0
 
-        for _prefix, mask in (
+        for prefix, mask in (
             ("up", window_packets["direction"] == "up"),
             ("down", window_packets["direction"] == "down"),
             ("total", pd.Series(True, index=window_packets.index)),
@@ -228,8 +242,13 @@ def benchmark_session(session_dir, window_seconds):
                 ("interarrival_time", interarrival_ms.tolist()),
             ):
                 size = deep_sizeof(values)
-                window_sizes[f"{metric_name}_buffer"].append(size)
-                window_total_bytes += size
+                window_sizes[f"{prefix}_{metric_name}_buffer"].append(size)
+                # "total" duplicates up+down's packets into its own buffer
+                # (that's the real memory cost of building the combined
+                # view too) but must only be counted once toward the
+                # window's simultaneous total, not three times over.
+                if prefix == "total":
+                    window_total_bytes += size
 
         # rtt_ms is window-level, not direction-split (see project rules),
         # so it's measured once per window rather than once per direction.
