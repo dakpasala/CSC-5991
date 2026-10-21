@@ -165,10 +165,150 @@ on an even bigger dataset will never collide with or overwrite this run).
 
 ---
 
+## Step 4: Professor redirect — memory, not CPU cycles
+
+The original plan for "what does this cost to compute" was CPU time:
+`src/benchmarking/benchmark_feature_costs.py`, using `time.process_time()`
+(excludes idle/wait, unaffected by what else is running on the machine),
+single-threaded (matching a router's one-core reality), averaged over 100
+real sessions. After discussion with the professor, the framing changed —
+for a router, the binding constraint is how much *memory* each stat needs
+to hold, not how many cycles a calculation takes. Literal CPU-cycle counts
+would need `perf stat` anyway (Linux-only), so the pivot was also a
+practical simplification, not just a reframing.
+
+Built `src/benchmarking/benchmark_feature_memory.py` using a hand-written
+recursive `deep_sizeof()` (`sys.getsizeof()` alone only measures a
+container's own shallow size, not what it points to — badly understates a
+list of boxed Python floats/ints). First 100-session result:
+`retransmission_rtt_state` — the `seen_seqs` set inside
+`flow_metrics.py`'s per-flow bookkeeping, tracking every sequence number a
+flow has ever carried — dominates at ~111KB per flow on average, and
+critically, it's the one structure that's *never pruned*, growing for a
+flow's entire life. The four window-level distribution buffers
+(interarrival_time/recv_window/packet_size/payload_size) each cost
+roughly 54-66KB per window, since every raw value has to sit in memory
+until the window closes before `_distribution()` can compute
+min/max/mean/median/p25/p75 — these can't be done with a running
+accumulator the way a sum or count can.
+
+## Step 5: Real-time infrastructure — live capture, replay, and a Go port
+
+The professor's direction shifted toward actually deploying this: can the
+pipeline run against real, live traffic, and can it run fast enough on a
+router. Built in order:
+
+1. **`src/live_capture/replay_pcap_as_live.py`** — replays an existing
+   session's `dump.pcap` as if it were arriving live (paced by real
+   relative packet timing via a thread+queue), closing out windows the
+   moment a packet's timestamp crosses a boundary rather than polling a
+   clock. Chosen over true live capture first since it needs no root and
+   poses no privacy risk on a shared box. Two real bugs were caught and
+   fixed here by explicitly re-verifying against the batch pipeline's
+   known-correct output (not just "does it run"): a window-count explosion
+   bug (incremental calls were re-deriving the window count from scratch
+   each time) and a retransmission-count divergence bug (the per-flow
+   cursor into each flow's full recomputed history was being reset to 0
+   every window close instead of persisting across closes). After both
+   fixes: 50/50 rows match the batch pipeline, zero duplicate windows, all
+   115 non-app-layer columns byte-identical.
+2. **`src/live_capture/live_capture_pipeline.py`** — true live capture off
+   a real NIC (`tcpdump` subprocess rotating files by `-G`, a consumer
+   loop processing each finished rotation). Tested for real on this Mac's
+   own `en0` interface — worked with no `sudo` needed (macOS apparently
+   grants this by default) — and successfully captured ~140 seconds of
+   genuine live traffic into 14 correctly-structured windows (app-layer
+   columns correctly 0/NaN, no `requests_history.json` on a live capture).
+3. **A full Go port** (`src/core_go/`, `src/live_capture_go/`), because
+   the professor specified real-time/router deployment code should be Go,
+   not Python. Field-for-field port of the live-relevant parts of
+   `src/core/` (packet parsing, flow tracking, retransmission/RTT,
+   window-stat computation, including replicating numpy's exact
+   percentile interpolation and Python's tuple-comparison semantics for
+   flow-key ordering, bit-for-bit). Verified against the same real test
+   session: 6,499 of 6,500 compared values identical, the one outlier a
+   ~240-nanosecond floating-point rounding artifact between Python/dpkt's
+   and Go/gopacket's timestamp pipelines (confirmed by dumping raw
+   per-packet timestamps side by side), not a logic bug. Also
+   dramatically faster: 0.007–0.026s per window vs. Python's 0.2–0.4s+ at
+   the same packet volumes. The Go live-capture tool was tested for real
+   too, same `en0` interface, same clean result.
+
+## Step 6: Repo reorganization + output-folder conventions
+
+With this many moving pieces, `src/` was reorganized into `core/`
+(shared library modules), `scripts/` (one-off utilities, including
+`find_controlled_sessions.py`), `progress/`, `benchmarking/`, and
+`live_capture/`, each with a Go-ported sibling (`core_go/`,
+`live_capture_go/`) where real-time relevance applies. `build_session_csv.py`
+and `train_autogluon.py` stay at `src/` root. Every moved file was
+re-verified working post-move, not just re-imported successfully.
+
+Two output-folder conventions were added so generated CSVs stop
+cluttering the repo root: every benchmarking/feature-importance CSV now
+lands under `benchmarks/`, and every live-capture/replay CSV lands under
+`live_runs/` — both created with `os.makedirs(..., exist_ok=True)`
+(`os.MkdirAll` on the Go side) right before the write. The Go tools'
+default output paths are relative to wherever the binary is actually run
+from (normally `src/`, where `go.mod` lives), not automatically the repo
+root — worth remembering when checking where a Go tool's output actually
+landed.
+
+## Step 7: Memory benchmark round two — direction splits and a Go-side sanity check
+
+Revisited `benchmark_feature_memory.py` to get much more granular: fixed
+a real gap where `rtt_ms_buffer` was named in the module's own docstring
+but never actually measured; added `p95`/`max` alongside the average
+(a router has to provision for its worst session/window, not its typical
+one); added `(total per session)` rows for the two per-flow categories
+(since neither is ever pruned, the sum across a session's flows — not
+just one flow's average — is the number that answers "can a router
+actually afford this"; the real 100-session result: `retransmission_rtt_state`
+averages ~14.7MB per session, peaking at ~85.9MB); and split every
+distribution buffer by direction (`up_*_buffer`/`down_*_buffer`/
+`total_*_buffer`) instead of pooling them, to see whether streaming's
+download-heavy asymmetry shows up in memory cost the way it does in
+bytes transferred.
+
+It does, but inconsistently across metrics in the Python numbers:
+`payload_size`/`packet_size` buffers showed an ~8x down:up ratio, while
+`recv_window`/`interarrival_time` showed only ~2x. The likely cause:
+CPython caches small integers (-5 to 256) as process-wide singletons, and
+`up` traffic is mostly bare ACKs with `payload_size == 0` — so a long run
+of repeated `0`s in a Python list costs almost nothing extra beyond the
+first occurrence, understating exactly the buffers dominated by that
+value. Since the actual deployment target is Go, not Python, this
+mattered enough to check directly: built a Go port of this same benchmark
+(`src/benchmarking/benchmark_feature_memory.go`, hand-rolled Go-side
+memory-size approximations since Go has no general "deep sizeof" API,
+duplicating `flow_metrics`'s bookkeeping loop locally the same way the
+Python version does, since `ComputeFlowMetrics` doesn't expose its
+internal state). Go doesn't get CPython's singleton-caching discount —
+every slice element costs its real, fixed size regardless of value — and
+at real 100-session scale, all four metrics agreed on a consistent
+**~2x** down:up ratio, confirming the Python benchmark's 8x figure for
+two of the four metrics was a measurement artifact, not a real traffic
+asymmetry. Also surfaced, independent of that artifact: Go's flat
+`FlowState` struct costs ~74 bytes per flow vs. Python's ~520 — a real,
+language-level memory advantage for the actual router deployment, not
+just a benchmarking quirk.
+
+---
+
+## Current status
+
+**Training in progress**: a `--variant no_applayer` run (option 3 below,
+chosen first) is running on the Linux box in a `train_no_applayer` tmux
+session, on the 10-second window dataset, confirmed via `ps -ef` to
+actually be passing the flag (not just named that way). Once it finishes,
+its feature importance will be compared against the full-dataset run to
+see how much of the earlier ~98% accuracy was actually leaning on the 13
+application-layer columns a real router can't see.
+
 ## Next up
 
-Three directions under consideration once the current 17,350-session, 10s
-run finishes:
+Two directions still open once the `no_applayer` run finishes and its
+results are reviewed:
 
 1. **Train on the remaining window sizes** (8, 4, 2, 1 seconds) — four
    more training runs, same dataset, to compare how window granularity
@@ -178,20 +318,5 @@ run finishes:
    suggests many columns contribute very little; worth testing whether
    dropping them changes (helps, hurts, or doesn't move) the model's
    predictions, and whether a simpler feature set is worth the tradeoff.
-3. **Train a "router-realistic" variant that drops all 13
-   application-layer columns** (`request_count`, `segment_size_bytes_*`,
-   `request_duration_ms_*`). These come from the browser's own
-   `webRequest` log — real, decrypted HTTP data the browser can see
-   because it's the TLS endpoint. A real deployed router sitting in the
-   middle of the network path is not a TLS endpoint and has no way to see
-   this without actively decrypting traffic (a TLS-terminating
-   man-in-the-middle), which is exactly the kind of deep packet inspection
-   this whole project is built to avoid needing. Two of Step 2's top 3
-   most important features (`request_duration_ms_min` at #2,
-   `request_count` at #3) are app-layer, meaning the 98% accuracy number
-   partially leans on information a real router couldn't observe. Training
-   without those 13 columns would give the honest, deployable accuracy
-   number — separate from the oracle-level one that assumes full
-   application-layer visibility.
 
-Not yet decided which of these three happens first.
+Not yet decided which happens first.

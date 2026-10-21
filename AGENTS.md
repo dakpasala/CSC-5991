@@ -78,6 +78,56 @@ Session directories can contain other files beyond `dump.pcap`/`exp.txt`/`reques
   `replay_statistics_*_second_window.csv`, etc.) already match at any directory depth (no
   leading `/`), so moving the output into a subfolder needed no `.gitignore` changes. An
   explicit `--output`/`-output` still overrides the default path, unchanged.
+- **`benchmark_feature_memory.go` is the one exception to "Go tools land wherever CWD is."**
+  Its output path is hardcoded to `../benchmarks/...` instead of plain `benchmarks/...`, since
+  the whole point of this file is to sit next to the Python memory benchmark's output for direct
+  comparison, not produce a separate `src/benchmarks/` copy. Confirmed by running it from `src/`
+  (as documented) both before and after this fix: before, it landed at `src/benchmarks/`; after,
+  it correctly lands at the repo-root `benchmarks/`, alongside the Python CSV.
+
+## Go memory benchmark: a Python-measurement-artifact catch
+
+`src/benchmarking/benchmark_feature_memory.go` is a Go port of `benchmark_feature_memory.py` --
+same stat categories (flow identification, retransmission/RTT state, the per-window distribution
+buffers now split by direction, app-layer buffers), same CSV schema
+(`stat,avg_bytes,p95_bytes,max_bytes`), written to a SEPARATE file
+(`benchmarks/feature_extraction_memory_benchmark_go.csv`) so the two can be compared side by
+side rather than one overwriting the other.
+
+Built specifically to resolve a real discrepancy, not as a parity exercise for its own sake:
+after adding direction splits (`up_*_buffer`/`down_*_buffer`/`total_*_buffer`) to the Python
+benchmark, the down:up ratio came out *inconsistent* across metrics that should behave
+identically -- `payload_size_buffer`/`packet_size_buffer` showed ~8x, while
+`recv_window_buffer`/`interarrival_time_buffer` showed only ~2x, even though all four are
+measuring the same underlying packets per direction per window. The likely cause: CPython caches
+small integers (-5 to 256) as process-wide singletons, and `up` traffic is mostly bare ACKs with
+`payload_size == 0` -- so a long run of repeated `0`s in a Python list costs almost nothing
+beyond the first occurrence (`deep_sizeof`'s `seen`-based cycle detection only charges a given
+object id once), understating exactly the buffers dominated by that value. `recv_window`/
+`interarrival_time` values aren't nearly as often exactly `0`, so they didn't get this same
+discount.
+
+Since the actual deployment target is Go, not Python, and Go gives no such singleton-caching
+discount (every slice element costs its real, fixed size regardless of value), this mattered
+enough to check directly rather than just noting it as a caveat. `core_go`'s `ComputeFlowMetrics`
+doesn't expose its internal per-direction bookkeeping state (it only returns final
+retransmission/RTT results), so `flowStateSize()` in this file duplicates that bookkeeping loop
+locally purely to get at the state for sizing -- same reasoning as the Python benchmark's own
+`_flow_state_sizes` duplicating `flow_metrics.py`'s loop for the same reason, not a shortcut
+unique to the Go side. Go has no general "deep sizeof" API the way Python's `sys.getsizeof` is,
+so this file uses hand-rolled, documented-as-approximate size formulas for Go's own memory shapes
+(slice header + backing array; a commonly-cited ~48-bytes/entry rough figure for small-key map
+overhead) -- approximate, not byte-exact, the same honest caveat `deep_sizeof` itself carries.
+
+**Result, verified at real 100-session scale**: all four direction-split metrics agreed on a
+consistent ~2x down:up ratio in the Go version, confirming the Python benchmark's 8x figure for
+`payload_size`/`packet_size` was a measurement artifact of int caching, not a real traffic
+asymmetry -- the true down:up asymmetry for this traffic is closer to 2x across the board.
+Independently (not an artifact either way, a genuine language-level difference): Go's flat
+`FlowState` struct costs ~74 bytes per flow vs. Python's ~520 bytes, and
+`retransmission_rtt_state` (total per session) averaged ~8.9MB in Go vs. ~14.7MB in Python (same
+shape -- dominated by a few long-lived flows, never pruned -- just leaner per-entry overhead in
+Go's maps than Python's dict+set).
 - `--window-seconds all` → runs the full pipeline at `(10, 8, 4, 2, 1)` seconds, each to its own correctly-named file. Verified against one session: window counts for 490.28s of traffic came out as 50/62/123/246/491 for 10/8/4/2/1s respectively — matches `floor(duration / window_seconds) + 1` exactly.
 - Both combined processes the full cross-product (every directory × every window size). Verified: 3 directories × 1s windows correctly appended into one shared file (736 + 605 + 491 = 1,832 rows, matching exactly).
 - `--output` is rejected if more than one directory or window size is being processed (only meaningful for the single-run case).

@@ -143,6 +143,31 @@ patterns inside those folders are already covered by existing `.gitignore` glob 
 (no leading slash, so they match at any depth) — no `.gitignore` changes needed when adding
 either folder. `--output`/`-output` still overrides the default path explicitly if given.
 
+One deliberate exception: `benchmark_feature_memory.go` (see below) writes to
+`../benchmarks/...` instead of plain `benchmarks/...`, since its whole point is to land next to
+the Python benchmark's output for direct comparison, not a separate `src/benchmarks/` copy —
+unlike the live-capture Go tools, which intentionally land wherever the process's CWD happens
+to be, matching their Python originals' behavior.
+
+## Go memory benchmark (`src/benchmarking/benchmark_feature_memory.go`)
+
+A Go port of `benchmark_feature_memory.py`, same stat categories and CSV schema, written to
+`benchmarks/feature_extraction_memory_benchmark_go.csv` (a separate file from the Python one,
+so both can be compared). Built specifically because CPython caches small integers (-5 to 256)
+as process-wide singletons — a Python list full of repeated `0`s (e.g. `up_payload_size_buffer`,
+mostly bare-ACK packets) gets measured as far cheaper than it really costs on a platform without
+that caching, which matters because the real deployment target is Go, not Python. Confirmed at
+real 100-session scale: Python's benchmark showed an inconsistent down:up ratio across metrics
+(~8x for `payload_size`/`packet_size`, ~2x for `recv_window`/`interarrival_time`); the Go version
+showed a consistent ~2x ratio across all four, confirming the 8x figure was a measurement
+artifact of Python's int caching, not a real traffic asymmetry. Also surfaced independently: Go's
+flat `FlowState` struct costs ~74 bytes per flow vs. Python's ~520 — a real per-flow memory
+advantage of the actual router implementation, not a benchmarking artifact. Since `core_go`'s
+`ComputeFlowMetrics` doesn't expose its internal per-direction bookkeeping state, this file
+duplicates that bookkeeping loop locally to get at it for sizing — same reasoning as the Python
+benchmark's own `_flow_state_sizes` duplicating `flow_metrics.py`'s loop for the same reason. Run
+from `src/`: `go run ./benchmarking -source-dir /mnt/NAS/salmo-trutta/traces -num-sessions 100`.
+
 ## Rules worth not forgetting
 
 - **No IP addresses or ports in the output CSV.** 5-tuples are used internally to

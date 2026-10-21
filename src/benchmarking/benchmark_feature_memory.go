@@ -1,9 +1,11 @@
 // Go port of benchmark_feature_memory.py -- same methodology, same stat
 // categories, same CSV schema (stat,avg_bytes,p95_bytes,max_bytes), but
 // measuring Go's actual memory shapes instead of Python's. Written to a
-// SEPARATE file (feature_extraction_memory_benchmark_go.csv), not
-// overwriting the Python one, so the two can be compared side by side --
-// that comparison is the whole point of building this.
+// SEPARATE file (benchmarks/feature_extraction_memory_benchmark_go.csv,
+// at the repo root -- NOT src/benchmarks/, even though this binary runs
+// from src/; see the outPath comment near the bottom), not overwriting
+// the Python one, so the two can be compared side by side -- that
+// comparison is the whole point of building this.
 //
 // Why bother with a second implementation at all: CPython caches small
 // integers (-5..256) as process-wide singletons, so a Python list full of
@@ -656,7 +658,13 @@ func main() {
 		fmt.Printf("%-55s %12.1f %12.1f %12.1f\n", r.stat, r.avg, r.p95, r.maxV)
 	}
 
-	outPath := "benchmarks/feature_extraction_memory_benchmark_go.csv"
+	// Unlike live_capture_go's tools (which intentionally land wherever
+	// the process's CWD happens to be, same as their Python originals),
+	// this one's whole point is to sit next to the Python benchmark's
+	// output for direct comparison -- so it goes up one level from
+	// src/ (where this is run from, per go.mod) to the repo root's
+	// benchmarks/, not a separate src/benchmarks/ copy.
+	outPath := "../benchmarks/feature_extraction_memory_benchmark_go.csv"
 	if err := os.MkdirAll(filepath.Dir(outPath), 0755); err != nil {
 		fmt.Fprintln(os.Stderr, "error creating output dir:", err)
 		os.Exit(1)
