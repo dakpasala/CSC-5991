@@ -125,9 +125,14 @@ then reporting that test score is data snooping):
 The whole stack buys ~0.11 points over the best single model. The top 15 L1 models are within
 ~0.03 points of each other (noise) but differ ~35x in prediction cost. `clone_for_deployment()`
 on the L3 ensemble only got it from 70GB to **50GB**, because every L2 stacker takes all ~75 L1
-models' outputs as input, so nearly all of L1 has to be kept. Selection rule used: among L1
-models within noise of the best validation score, take the cheapest to predict →
-`XGBoost_r22_BAG_L1`, cloned with
+models' outputs as input, so nearly all of L1 has to be kept. Selection: among the top 15 L1
+models (all within noise of the best validation score), the best accuracy/speed balance --
+`XGBoost_r22_BAG_L1` is 3rd by val accuracy and 4th by prediction time (16.0s). It is **not**
+strictly the fastest: `XGBoost_r194_BAG_L1` (7.0s, val 0.984423), `XGBoost_BAG_L1` (11.6s,
+0.984410) and `XGBoost_r89_BAG_L1` (14.3s, 0.984504) are faster at slightly lower val accuracy,
+and any of them would be equally defensible given the noise. 6 of the 7 fastest top-15 models are
+XGBoost. Full 218-model leaderboard: `~/CSC-5991/leaderboard_no_applayer_val.csv` (Linux box).
+Cloned with
 `p.clone_for_deployment(path=..., model='XGBoost_r22_BAG_L1')` to
 `AutogluonModels/window_10s_19468sessions_no_applayer_xgb22` (**333MB**: just that model plus
 `trainer.pkl`). It was copied to the Mac with `rsync`. `clone_for_deployment` copies the whole

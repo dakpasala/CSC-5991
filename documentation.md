@@ -327,9 +327,13 @@ The validation leaderboard showed the size wasn't buying much. The L3
 ensemble scored 0.985771 on validation; the best single model scored
 0.984623, a gap of ~0.11 points. The top 15 single models were all within
 ~0.03 points of each other, but their prediction cost varied ~35x. We
-picked **`XGBoost_r22_BAG_L1`** (0.984536, 3rd best single model, ~15x
-faster to predict than the best one). The rule: among single models within
-noise of the best *validation* score, take the cheapest to run. It was
+picked **`XGBoost_r22_BAG_L1`** (0.984536), the best balance of the two
+among those near-tied models: 3rd most accurate and 4th fastest of the
+top 15, ~15x faster to predict than the most accurate one. It wasn't
+strictly the fastest. Three other XGBoost variants were quicker (down to
+7.0s vs. its 16.0s) at slightly lower validation accuracy, and given how
+close the scores are, any of them would have been an equally reasonable
+pick. It was
 chosen on validation, not test, so reporting its test score later isn't
 data snooping. A single-model clone came out to **333MB**, small enough to
 copy to the Mac. That's a 70GB → 333MB reduction for ~0.1 points of
