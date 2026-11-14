@@ -37,13 +37,13 @@ One other real observation, not yet fully explained: `rtt_ms_median` and `rtt_ms
 
 ### Three real sessions processed; TCP vs QUIC differentiation
 
-As of this writing, three session directories have been processed: a Twitch session (`9fa4dd9141aaa60a5f590a2c00bca0ad`, 490s, 50 ten-second windows), a Netflix session (`9f99ed55d91e4463b7ef8d3f29f7a048`, 605s, 61 windows), and a YouTube session (`9b020fe43e6d5751a2e6face89a261c1`, confirmed TCP via direct protocol-mix check — 99.91% TCP packets — so labeled `youtube_tcp`, 74 windows). No confirmed `youtube_quic` example has been seen yet. `parse_exp_label` is now substring-based (searches for a known service name rather than assuming a fixed position), verified against all three of twitch/netflix/youtube in both the real-world and controlled-lab-experiment `exp.txt` shapes.
+As of this writing, three session directories have been processed: a Twitch session (`9fa4dd9141aaa60a5f590a2c00bca0ad`, 490s, 50 ten-second windows), a Netflix session (`9f99ed55d91e4463b7ef8d3f29f7a048`, 605s, 61 windows), and a YouTube session (`9b020fe43e6d5751a2e6face89a261c1`, confirmed TCP via direct protocol-mix check — 99.91% TCP packets — so labeled `youtube_tcp`, 74 windows). No confirmed `youtube_quic` example had been seen at that point -- since confirmed: the full 19,468-session dataset has 30,086 `youtube_quic` test windows, and local session `a03921b7cdc37b4f42965503297b4be9` (`lab09_youtube`) resolves to it. `parse_exp_label` is now substring-based (searches for a known service name rather than assuming a fixed position), verified against all three of twitch/netflix/youtube in both the real-world and controlled-lab-experiment `exp.txt` shapes.
 
 Session directories can contain other files beyond `dump.pcap`/`exp.txt`/`requests_history.json` — e.g. `9b020...` also has `cleaned.pcap`, several `loss_rate_*.pcap` variants, and a `flows/` subdirectory of tiny per-flow pcaps. The pipeline only reads the three known files by name; the rest is ignored by design, not accidentally missed.
 
 **Some real sessions ship an empty or corrupt `requests_history.json`** (found via a real 500-directory batch run: `508185219978e05415905ebcd8555fe1`, a `youtube-0_rate+50kbps+delay+20ms.run1` controlled session, failed with `json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)` -- the classic signature of parsing an empty file). `load_relevant_requests()` in `src/core/requests_log.py` now catches `JSONDecodeError` and returns `[]`, treating it the same as the file not existing at all, since it's an optional, auxiliary input -- a session's real pcap-derived data shouldn't be thrown away over an unrelated malformed file. Before this fix, one bad `requests_history.json` failed the *entire* session, including all the perfectly good packet-level stats.
 
-**How `youtube_tcp`/`youtube_quic` differentiation actually works**: `frac_udp` (majority vote across the session) is the primary signal, since QUIC runs entirely over UDP. But the practical consequence is bigger than one column — if a session is genuinely QUIC-dominant, roughly 40+ of the ~130 columns go structurally empty for it, not just low: every TCP flag count is exactly 0 (UDP has no TCP header), `recv_window_*` is entirely `NaN` (`_tag_with_flows` only populates it for TCP packets), and `retransmission_count`/`out_of_order_count`/`rtt_ms_*` are all 0/`NaN` (`flow_metrics.compute_flow_metrics` returns immediately for any non-TCP flow). Only packet/byte counts, throughput, and the payload/packet-size distributions (computed from IP/UDP header lengths, not TCP-specific fields) carry real signal for QUIC traffic. Practical implication for evaluation: a model will likely separate `youtube_quic` from the other four classes almost trivially (it's closer to a protocol check than traffic-shape learning), which can inflate a single blended accuracy number — report per-class metrics, not just one overall figure, so the genuinely hard part of the task (telling the four TCP-based classes apart from each other) isn't masked by one easy class.
+**How `youtube_tcp`/`youtube_quic` differentiation actually works**: `frac_udp` (majority vote across the session) is the primary signal, since QUIC runs entirely over UDP. But the practical consequence is bigger than one column — if a session is genuinely QUIC-dominant, roughly 40+ of the ~130 columns go structurally empty for it, not just low: every TCP flag count is exactly 0 (UDP has no TCP header), `recv_window_*` is entirely `NaN` (`_tag_with_flows` only populates it for TCP packets), and `retransmission_count`/`out_of_order_count`/`rtt_ms_*` are all 0/`NaN` (`flow_metrics.compute_flow_metrics` returns immediately for any non-TCP flow). Only packet/byte counts, throughput, and the payload/packet-size distributions (computed from IP/UDP header lengths, not TCP-specific fields) carry real signal for QUIC traffic. Practical implication for evaluation: a model will likely separate `youtube_quic` from the other four classes almost trivially (it's closer to a protocol check than traffic-shape learning), which can inflate a single blended accuracy number — report per-class metrics, not just one overall figure, so the genuinely hard part of the task (telling the four TCP-based classes apart from each other) isn't masked by one easy class. **Outcome on the real `no_applayer` run: this prediction did not hold.** `youtube_quic` scored precision 0.99 / recall 0.98 / F1 0.98 -- in line with the TCP classes, not above them -- while Amazon and Twitch were the near-perfect ones (1.00/1.00). The weakest pair is Netflix (recall 0.97) and `youtube_tcp` (precision 0.96), consistent with Netflix windows being called `youtube_tcp`. Per-class reporting is still the right call, just for a different reason than predicted.
 
 ### Batch processing: `all` for directory and/or window size
 
@@ -84,6 +84,139 @@ Session directories can contain other files beyond `dump.pcap`/`exp.txt`/`reques
   comparison, not produce a separate `src/benchmarks/` copy. Confirmed by running it from `src/`
   (as documented) both before and after this fix: before, it landed at `src/benchmarks/`; after,
   it correctly lands at the repo-root `benchmarks/`, alongside the Python CSV.
+
+## Training results and inference (November 2026)
+
+### The `no_applayer` 10s run
+
+`python src/train_autogluon.py --variant no_applayer` on the full 10s dataset
+(`session_statistics_10_second_window_no_applayer.csv`, Linux box/NAS only), presets
+`best_quality`, session-aware split with the script defaults (`--test-frac 0.2 --seed 0`).
+Model directory: `AutogluonModels/window_10s_19468sessions_no_applayer` on the Linux box,
+**70GB** once finished (was 9.6GB mid-training). 218 models; best is `WeightedEnsemble_L3`.
+- Held-out test set, 212,184 windows: accuracy 0.98, macro F1 0.99. Per class (P/R/F1): amazon
+  1.00/1.00/1.00 (18,411), netflix 0.99/0.97/0.98 (59,413), twitch 1.00/1.00/1.00 (38,598),
+  youtube_quic 0.99/0.98/0.98 (30,086), youtube_tcp 0.96/0.99/0.98 (65,676).
+- The full stdout, including the test-set leaderboard (pandas-truncated in the log) and per-class
+  report, lives in `~/train_no_applayer.log` on the Linux box. The full **validation**
+  leaderboard (all 218 models, cheap to compute since it reads stored scores) was saved to
+  `~/CSC-5991/leaderboard_no_applayer_val.csv` there.
+- Two features are ignored by the predictor as unused: `down_urg_count`, `total_urg_count`.
+- **Permutation feature importance was still running** as of 2026-11-14 (110 features, 5,000
+  rows, 5 shuffle sets, AutoGluon's estimate 187,058s ≈ 52h). It is slow because every shuffle
+  scores the full L3 stack. It writes `benchmarks/feature_importance_10s_19468sessions_no_applayer.csv`
+  when done. Don't start new training runs on the Linux box until it finishes -- they would compete
+  for the same CPUs.
+
+### Why a single model is deployed, not the ensemble
+
+Validation accuracy (choose models on **validation**, never test -- picking by test score and
+then reporting that test score is data snooping):
+
+| model | score_val | pred_time_val (s) |
+|---|---|---|
+| WeightedEnsemble_L3 | 0.985771 | -- |
+| WeightedEnsemble_L2 | 0.984805 | -- |
+| LightGBM_r131_BAG_L1 (best L1) | 0.984623 | 245.0 |
+| LightGBM_r15_BAG_L1 | 0.984592 | 229.5 |
+| **XGBoost_r22_BAG_L1 (deployed)** | 0.984536 | 16.0 |
+| LightGBM_r130_BAG_L1 | 0.984491 | 23.1 |
+
+The whole stack buys ~0.11 points over the best single model. The top 15 L1 models are within
+~0.03 points of each other (noise) but differ ~35x in prediction cost. `clone_for_deployment()`
+on the L3 ensemble only got it from 70GB to **50GB**, because every L2 stacker takes all ~75 L1
+models' outputs as input, so nearly all of L1 has to be kept. Selection rule used: among L1
+models within noise of the best validation score, take the cheapest to predict →
+`XGBoost_r22_BAG_L1`, cloned with
+`p.clone_for_deployment(path=..., model='XGBoost_r22_BAG_L1')` to
+`AutogluonModels/window_10s_19468sessions_no_applayer_xgb22` (**333MB**: just that model plus
+`trainer.pkl`). It was copied to the Mac with `rsync`. `clone_for_deployment` copies the whole
+source directory first and then deletes from the copy, so it needs ~source-size free disk
+temporarily. The original directory is never modified (the long "Deleting model ..." log only
+touches the clone). The 50GB `_deploy` L3 clone still exists on the Linux box and isn't used.
+
+Being a `BAG` model, `XGBoost_r22_BAG_L1` is 8 fold models whose predictions AutoGluon averages.
+That matters for a future pure-Go port (e.g. via the `leaves` library): either export all 8 and
+average them in Go, or `refit_full` into a single model first.
+
+### Local inference environment
+
+The repo `.venv` is Python 3.14 with no AutoGluon. Inference uses `.venv-infer`
+(`python3.13 -m venv .venv-infer`), pinned to the Linux box: `autogluon.tabular==1.6.3
+xgboost==3.4.1 scikit-learn==1.9.1 numpy==2.5.4 pandas==2.3.3`. It installs only
+`autogluon.tabular`, not `autogluon` (which drags in PyTorch, several GB, and the Mac disk is
+~98% full). On the Linux box `pip show autogluon` finds nothing for the same reason -- check the
+version with `python -c "import autogluon.tabular as t; print(t.__version__)"`. Loading on the
+Mac prints a Python micro-version (3.13.5 vs 3.13.2) and a Linux-vs-Darwin warning; both are
+harmless, since predictions came out as expected.
+
+### `src/inference/predict.py`
+
+Loads a `TabularPredictor` once and scores rows. Batch mode: `--input file.csv`. Streaming
+mode: no `--input`, reads CSV rows from stdin via `csv.DictReader`. It drops
+`session_id`/`window_*`/`label` before scoring and coerces everything else to numeric. Extra
+columns (e.g. the 13 app-layer columns a Go row still carries) are ignored by AutoGluon.
+- Prints one JSON line per row: `window_index`/`window_start_s`/`window_end_s` (when present),
+  `label`, `confidence` (max probability), `probabilities`.
+- `--output <csv>` also appends `window_index, window_start_s, window_end_s, predicted_label,
+  confidence, prob_<class>...` per row, flushed every row. The header is written only if the file
+  is new.
+- It calls `predict_proba` once and takes the argmax rather than calling `predict` +
+  `predict_proba`, which halves the per-window model cost.
+- `autogluon.tabular` is imported lazily inside `main()`, so `--help`/argument errors work without
+  AutoGluon installed.
+
+### Go → Python sidecar: `src/live_capture_go/inference/sidecar.go`
+
+The Go tools can't load AutoGluon pickles, so for now Go does capture/parsing/windowing and
+Python does only the model. With `-model-dir`, both `live_capture_go/live` and
+`live_capture_go/replay`:
+- start `predict.py --model-dir <dir> --output <predictions csv>` once, as a child process (the
+  model loads once, not per window);
+- pipe every closed window's `row.Values()` into its stdin as CSV text, header first. Rows go
+  straight through the pipe with no intermediate stats file -- the stats CSV is now skipped in
+  this mode unless `-output` is given explicitly. Without `-model-dir`, both tools behave exactly
+  as before;
+- read its JSON-lines stdout back and print `-> window N predicted: <label> (<conf>)`.
+  `predict.py`'s stderr (load progress) passes straight through to the terminal.
+
+Two design points, both deliberate:
+- **`Send` never blocks the caller.** Rows go onto a 4,096-row buffered channel drained by a
+  writer goroutine. If the live tool's main goroutine blocked on the pipe (e.g. while Python is
+  still loading the model at startup), the 1,024-packet capture channel would fill and the kernel
+  would drop packets. This is also why predictions in a fast replay print after "replay
+  complete": rows queue until the model is loaded.
+- **The child gets its own process group (`SysProcAttr{Setpgid: true}`).** Otherwise Ctrl+C's
+  SIGINT hits Python too and kills it mid-queue. Instead, Go flushes the final partial window,
+  closes stdin, and `Close()` waits for Python to score everything queued and exit on EOF.
+
+Flags: `-model-dir`, `-python` (default `../.venv-infer/bin/python`), `-predict-script` (default
+`inference/predict.py`), `-predictions-output` (default
+`live_runs/live_predictions_<N>_second_window_<timestamp>.csv` for live,
+`live_runs/replay_predictions_<N>_second_window.csv` for replay). Every default is relative to
+`src/`, the same as the Go module.
+
+### Verification
+
+- **Held-out sample, batch mode:** 3 test sessions per class (15 sessions, 815 windows), chosen
+  by reproducing `session_aware_split` (`stratify`, `test_size=0.2`, `random_state=0`) on the
+  Linux box → 0.9963 window accuracy, 15/15 sessions correct by majority vote. All 3 errors
+  involved `youtube_quic` (1 netflix→quic, 2 quic→tcp). This is a smoke test; the 212k-window test
+  report is the number to cite.
+- **Replay, all 7 local sessions with `-model-dir`:** every session correct by majority vote --
+  twitch 50/50, amazon 49/49, youtube_tcp 74/74 and 49/49, youtube_quic 62/62, netflix 61/61, and
+  `lab08_netflix` 44 netflix + 5 youtube_tcp. The predictions file has exactly one row per window.
+  These local sessions may be in the training set, so this verifies the pipeline, not
+  generalization.
+- **Live on the Mac's `en0`, no `sudo`:** with YouTube playing in Chrome, 11 of 13 windows were
+  labeled YouTube (8 `youtube_quic`, 3 `youtube_tcp`). Both misses were `netflix` at low
+  confidence (0.56, 0.45), and every window at ≥0.85 confidence was YouTube. This was 2026
+  traffic against a model trained on 2018-2019 sessions. With nothing streaming, idle traffic gets
+  labels at ~0.5 confidence: the model is **closed-world** and always picks one of the 5 classes,
+  so low confidence is the only signal that a window isn't one of them. The capture also sees the
+  whole interface, so other apps' traffic mixes into each window's features.
+- **Ctrl+C:** the last partial window still got a prediction, and no `predict.py` process was left
+  running.
 
 ## Go memory benchmark: a Python-measurement-artifact catch
 

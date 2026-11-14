@@ -10,9 +10,14 @@ A CSC-5991 thesis: lightweight ML classification of network activity *without* d
 packet inspection. As of October 2026 the active phase builds a labeled, per-10-second-
 window traffic-statistics CSV from real per-session capture directories (raw `.pcap` +
 browser-level telemetry), for four streaming services (YouTube split into
-`youtube_tcp`/`youtube_quic`, Netflix, Twitch, Amazon). No model training exists yet.
+`youtube_tcp`/`youtube_quic`, Netflix, Twitch, Amazon). As of November 2026 a full
+AutoGluon training run on that data has finished (`no_applayer` variant, 19,468 sessions,
+0.98 test accuracy), a single 333MB XGBoost model from it is deployed locally, and the Go
+live-capture/replay tools can label every window in real time through a Python inference
+sidecar — see "Inference" below. Thesis writing has started in `thesis/` (gitignored, local only).
 
-Two earlier phases are archived, not active:
+Two earlier phases are archived, not active. Both directories were removed from the working
+tree in commit `e6953ec`; recover them from git history (`git show e6953ec^:<path>`) if needed:
 - `dataset-collection/` — live Selenium-driven browsing capture (first phase).
 - `10-5-oldcode/` — the `all_traffic_time_10.pkl`-based phase (second phase, a
   pre-aggregated dataset with no real flow-level data recoverable from it). Superseded
@@ -131,6 +136,47 @@ side), not a logic bug. Also dramatically faster: 0.007–0.026s per window vs. 
 built — it successfully captured genuine live traffic off a Mac's own `en0` interface with no
 `sudo` needed, producing correctly-structured real-time windows.
 
+## Inference (`src/inference/predict.py`, `src/live_capture_go/inference/`)
+
+**Trained model.** The `no_applayer` 10s run (`AutogluonModels/window_10s_19468sessions_no_applayer`,
+70GB, Linux box only) scored 0.98 accuracy / 0.99 macro F1 on 212,184 held-out windows. Its best
+model, `WeightedEnsemble_L3`, is only ~0.11 points better on validation (0.985771) than the best
+single L1 model (0.984623), and `clone_for_deployment()` only shrank it to 50GB, because every L2
+stacker depends on all ~75 L1 models. So a single model was cloned instead, chosen **by
+validation score, not test score** (choosing on test would leak): `XGBoost_r22_BAG_L1` (val
+0.984536, 3rd best L1, ~15x faster to predict than the top LightGBM) →
+`AutogluonModels/window_10s_19468sessions_no_applayer_xgb22`, 333MB, copied to the Mac.
+`AutogluonModels/` is gitignored.
+
+**Local environment.** The repo's `.venv` is Python 3.14 with no AutoGluon. Inference uses a
+separate `.venv-infer` (python3.13) pinned to the Linux box's versions: `autogluon.tabular==1.6.3`,
+`xgboost==3.4.1`, `scikit-learn==1.9.1`, `numpy==2.5.4`, `pandas==2.3.3`. It installs only
+`autogluon.tabular`, not the full `autogluon` package (which pulls in PyTorch). Loading prints a
+harmless Python micro-version (3.13.5 vs 3.13.2) and Linux-vs-Darwin mismatch warning.
+
+**Sidecar pipeline.** `live_capture_go/live` and `live_capture_go/replay` take `-model-dir`. When
+it's set, `live_capture_go/inference/sidecar.go` starts `predict.py` once as a child process, and
+every closed window row is piped to its stdin as CSV text (no intermediate stats file). `predict.py`
+appends to `live_runs/{live,replay}_predictions_<N>_second_window[_<timestamp>].csv`
+(`window_index, window_start_s, window_end_s, predicted_label, confidence, prob_<class>...`) and
+prints a JSON line per window, which Go echoes as `-> window N predicted: <label> (<conf>)`.
+- With `-model-dir`, the stats CSV is skipped unless `-output` is also given explicitly.
+- `Send` never blocks: rows go through a buffered channel to a writer goroutine, so a slow Python
+  start can't back up packet capture.
+- The child runs in its own process group (`Setpgid`), so Ctrl+C only reaches Go. Go flushes the
+  last partial window, closes the pipe, and waits for every queued prediction before exiting.
+- Other flags: `-python` (default `../.venv-infer/bin/python`), `-predict-script` (default
+  `inference/predict.py`), `-predictions-output`. All defaults assume running from `src/`.
+
+**Verified.** Replay of all 7 local sessions → every one correct by majority vote (`lab08_netflix`
+had 5/49 windows called `youtube_tcp`, the same Netflix/youtube_tcp confusion as the full test
+report). Note that these 7 may be in the training set. A 15-session held-out sample (3 per class,
+reproducing `train_autogluon.py`'s split) scored 0.9963 over 815 windows, 15/15 sessions correct.
+Live on the Mac's `en0` with YouTube playing: 11 of 13 windows labeled YouTube (mostly
+`youtube_quic`), and both misses were low-confidence `netflix` (0.56, 0.45). Idle traffic with
+nothing streaming gets ~0.5 confidence: the model is closed-world and always picks one of the 5
+classes. Ctrl+C shutdown loses no predictions and leaves no `predict.py` process behind.
+
 ## Output folder conventions: `benchmarks/` and `live_runs/`
 
 Every benchmarking/feature-importance output (`benchmark_feature_costs.py`,
@@ -191,13 +237,14 @@ from `src/`: `go run ./benchmarking -source-dir /mnt/NAS/salmo-trutta/traces -nu
   controlled lab experiments where the service leads and arbitrary condition text
   follows before `.run` (e.g. `"youtube-0_rate+3000kbps+loss+1%+25%.run2"`, where
   everything between `youtube` and `.run` is experiment config, not part of the
-  label, and is ignored). Amazon not yet seen in either shape.
-- **No confirmed `youtube_quic` session yet.** The one YouTube directory processed so
-  far (`9b020fe43e6d5751a2e6face89a261c1`) is 99.91% TCP packets, so it resolved to
-  `youtube_tcp`. The QUIC/TCP split logic (`frac_udp` majority vote in
-  `_decide_label`) is implemented and will zero out ~40 TCP-specific columns for a
-  genuinely QUIC-dominant session, but that behavior is reasoned, not yet observed
-  against real QUIC traffic.
+  label, and is ignored). Amazon has since appeared in the real-world shape
+  (`"lab2_amazon.run250-1523976505"`, local session `001f998ac218390146d1c568eaa21cd8`).
+- **`youtube_quic` is now confirmed on real data.** The full dataset has 30,086
+  `youtube_quic` test windows (F1 0.98), and local session `a03921b7cdc37b4f42965503297b4be9`
+  (`lab09_youtube`) resolves to it. The QUIC/TCP split is the `frac_udp` majority vote in
+  `_decide_label`, which zeroes out ~40 TCP-specific columns for a QUIC-dominant session.
+  QUIC did *not* turn out to be the trivially easy class AGENTS.md predicted: Amazon and
+  Twitch score 1.00, while `youtube_quic` sits at 0.98 with the TCP-based classes.
 - Session-aware splitting (train/test by `session_id`, not by row) still applies once
   this feeds a model, same reasoning as the earlier phase.
 

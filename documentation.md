@@ -295,34 +295,133 @@ just a benchmarking quirk.
 
 ---
 
+## Step 8: The `no_applayer` run finishes — 0.98 accuracy, and one small model instead of a 70GB ensemble
+
+The `no_applayer` training run on the full 10-second dataset (19,468
+sessions, every application-layer column removed) finished. On the
+held-out test set of 212,184 windows, from sessions the model never saw
+during training, it scored **0.98 accuracy and 0.99 macro F1**:
+
+| class | precision | recall | F1 | test windows |
+|---|---|---|---|---|
+| amazon | 1.00 | 1.00 | 1.00 | 18,411 |
+| netflix | 0.99 | 0.97 | 0.98 | 59,413 |
+| twitch | 1.00 | 1.00 | 1.00 | 38,598 |
+| youtube_quic | 0.99 | 0.98 | 0.98 | 30,086 |
+| youtube_tcp | 0.96 | 0.99 | 0.98 | 65,676 |
+
+This is the first real `youtube_quic` result. The TCP/QUIC split had only
+been reasoned about before, and QUIC turned out *not* to be the trivially
+easy class we expected. Amazon and Twitch were the near-perfect ones. The
+weakest spot is Netflix vs. `youtube_tcp`: Netflix's lower recall plus
+`youtube_tcp`'s lower precision suggest some Netflix windows get called
+`youtube_tcp`. A confusion matrix would confirm it.
+
+The finished model directory was **70GB** (218 models, best one
+`WeightedEnsemble_L3`). Running AutoGluon's `clone_for_deployment()` on it
+only got it down to **50GB**, because the L3 ensemble sits on L2 stackers
+that each take every L1 model's output as input, so almost nothing can be
+dropped. That's unusable on a laptop, let alone a router.
+
+The validation leaderboard showed the size wasn't buying much. The L3
+ensemble scored 0.985771 on validation; the best single model scored
+0.984623, a gap of ~0.11 points. The top 15 single models were all within
+~0.03 points of each other, but their prediction cost varied ~35x. We
+picked **`XGBoost_r22_BAG_L1`** (0.984536, 3rd best single model, ~15x
+faster to predict than the best one). The rule: among single models within
+noise of the best *validation* score, take the cheapest to run. It was
+chosen on validation, not test, so reporting its test score later isn't
+data snooping. A single-model clone came out to **333MB**, small enough to
+copy to the Mac. That's a 70GB → 333MB reduction for ~0.1 points of
+validation accuracy, which is the lightweight-classifier argument in one
+number.
+
+Locally, inference runs in a separate `.venv-infer` (Python 3.13) pinned to
+the Linux box's exact `autogluon.tabular`/`xgboost`/`scikit-learn`/`numpy`/
+`pandas` versions, since pickled models are version-sensitive. As a first
+check, we pulled 15 held-out test sessions (3 per class, reproducing the
+training script's exact session split). The local model scored 0.9963 over
+their 815 windows, and every one of the 15 sessions was correct by majority
+vote across its windows.
+
+Permutation feature importance for this run is still computing on the
+Linux box: AutoGluon estimated ~52 hours, because each shuffle has to
+score the full 70GB ensemble.
+
+## Step 9: Real-time labeling — Go captures, Python labels, every 10 seconds
+
+The Go tools can't load AutoGluon's pickled models, so we connected the two
+halves with a sidecar. With `-model-dir`, the Go live-capture and replay
+tools start `src/inference/predict.py` once as a child process. They pipe
+each finished window's feature row straight into it, as CSV text over
+stdin, with no intermediate file. Python appends a line per window
+(window number, time range, predicted label, confidence, per-class
+probabilities) to a predictions CSV in `live_runs/`, and Go prints
+`-> window N predicted: <label> (<confidence>)` as it goes.
+
+Two details keep it reliable on live traffic. Go never waits on Python:
+rows queue in a buffer, so a slow model load at startup can't stall packet
+capture into dropped packets. And Python runs in its own process group,
+so Ctrl+C stops only Go, which then sends the last partial window and
+waits for every queued prediction before exiting.
+
+Results:
+- **Replaying all 7 local sessions:** every session correct by majority
+  vote. The only stray windows were 5 of `lab08_netflix`'s 49 called
+  `youtube_tcp`, the same confusion as the full test report. (These local
+  sessions may have been in the training data, so this shows the pipeline
+  works, not that the model generalizes.)
+- **Live on the Mac's Wi-Fi with YouTube playing:** 11 of 13 windows
+  labeled YouTube, mostly `youtube_quic`, which matches Chrome streaming
+  YouTube over QUIC today. Both misses were low-confidence `netflix` (0.56
+  and 0.45), and every window at 0.85 confidence or above was YouTube.
+  This is a model trained on 2018-2019 traffic, classifying 2026 traffic.
+- **With nothing streaming,** idle laptop traffic still gets one of the 5
+  labels, at ~0.5 confidence. The model is closed-world, so low confidence
+  is the only sign a window isn't one of the known services. Live capture
+  also sees the whole interface, so other apps' traffic mixes into the
+  windows. Both are limitations to state in the thesis.
+
+## Step 10: Thesis writing starts
+
+Started a `thesis/` directory. `thesis/related_work.md` is a first draft
+of the related work chapter (~1,250 words, about 4.5 double-spaced pages).
+It covers traffic classification without DPI, encrypted video traffic
+analysis, in-network classification, and the two closest papers (Bronzino
+et al.'s streaming-quality inference and Traffic Refinery). It ends with a
+paragraph on how this thesis differs from them. Its citations were written
+from memory and still need checking against the actual papers. It is also
+still unconfirmed whether the session dataset is Bronzino et al.'s; ask the
+professor.
+
+---
+
 ## Current status
 
-**Training in progress**: a `--variant no_applayer` run (option 3 from the
-old list, chosen first) is running on the Linux box in a
-`train_no_applayer` tmux session, on the full accumulated 10-second-window
-dataset (`session_statistics_10_second_window_no_applayer.csv`, lives on
-the Linux box/NAS only — not mirrored locally), confirmed via `ps -ef` to
-actually be passing the flag (not just named that way). Once it finishes,
-the plan is to look at both its accuracy (per-class report) and its
-feature importance together — not just compare to the old full-dataset
-run — to decide which features are worth dropping going forward. The
-tmux session's scrollback is being captured into `~/train_no_applayer.log`
-on the Linux box (via `tmux capture-pane` + `tmux pipe-pane`, after the
-original log file was lost to a repo reset) so progress can be tailed
-without needing a true interactive reattach.
+- **`no_applayer` training: done** (Step 8). The model directory is on the
+  Linux box; the deployed `XGBoost_r22_BAG_L1` copy (333MB) is on the Mac
+  and runs live (Step 9).
+- **Feature importance: still running** in the `train_no_applayer` tmux
+  session on the Linux box (estimate ~52h from 2026-11-14), output
+  `benchmarks/feature_importance_10s_19468sessions_no_applayer.csv`.
+  Progress is visible in `~/train_no_applayer.log`. No new training runs
+  until it finishes, since they would compete for CPU.
+- **Thesis:** related work drafted, citations unverified (Step 10).
 
 ## Next up
 
-Two directions still open once the `no_applayer` run finishes and its
-results are reviewed:
-
-1. **Train on the remaining window sizes** (8, 4, 2, 1 seconds) — four
-   more training runs, same dataset, to compare how window granularity
-   affects accuracy and which features matter at each scale.
-2. **Go back to the 10s dataset and try trimming low-importance
-   features** — the long flat tail from Step 2's feature importance table
-   suggests many columns contribute very little; worth testing whether
-   dropping them changes (helps, hurts, or doesn't move) the model's
-   predictions, and whether a simpler feature set is worth the tradeoff.
-
-Not yet decided which happens first.
+1. **Once feature importance lands:** review it together with the
+   per-class results and decide which features to drop.
+2. **Then either** train the other window sizes (8, 4, 2, 1 seconds), or
+   retrain at 10s with the trimmed feature set, to measure what the
+   simpler model costs in accuracy.
+3. **Pure-Go inference:** export the deployed XGBoost model (8 bagged
+   fold models, or one `refit_full` model) and load it in Go with the
+   `leaves` library, so the router pipeline needs no Python at all. Best
+   done after the feature decision, since dropping features changes the
+   model.
+4. **Strengthen the Go-vs-Python equivalence claim:** it currently rests on
+   one session (6,499/6,500 values identical); rerun the comparison on all 7
+   local sessions, including the QUIC one.
+5. **Thesis:** verify the related-work citations, and confirm the dataset's
+   origin with the professor.
