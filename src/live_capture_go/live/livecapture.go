@@ -26,10 +26,16 @@
 // interface -- same privilege requirement as the Python version's tcpdump
 // subprocess, just now needed directly by this binary instead.
 //
+// With -model-dir, every closed window is also piped straight to
+// src/inference/predict.py (see live_capture_go/inference), which labels it
+// and appends the prediction to live_runs/live_predictions_..._.csv. In that
+// mode the stats CSV is skipped unless -output is also given explicitly.
+//
 // Usage (run from src/, where go.mod lives):
 //
 //	sudo go run ./live_capture_go/live -interface eth0
 //	sudo go run ./live_capture_go/live -interface eth0 -window-seconds 10 -output live_stats.csv
+//	sudo go run ./live_capture_go/live -interface eth0 -model-dir ../AutogluonModels/window_10s_19468sessions_no_applayer_xgb22
 package main
 
 import (
@@ -42,6 +48,7 @@ import (
 	"time"
 
 	core "csc5991/core_go"
+	"csc5991/live_capture_go/inference"
 
 	"github.com/google/gopacket/pcap"
 )
@@ -52,20 +59,16 @@ const snaplen = 200
 func main() {
 	iface := flag.String("interface", "", `network interface to capture on, e.g. "eth0"`)
 	windowSeconds := flag.Float64("window-seconds", 10, "window size in seconds")
-	output := flag.String("output", "", "output CSV path (default: timestamped live_statistics_<N>_second_window file)")
+	output := flag.String("output", "", "stats CSV path (default: timestamped live_statistics_<N>_second_window file; skipped with -model-dir unless given)")
+	inferenceFlags := inference.RegisterFlags()
 	flag.Parse()
 
 	if *iface == "" {
-		fmt.Fprintln(os.Stderr, "usage: live -interface <name> [-window-seconds 10] [-output path.csv]")
+		fmt.Fprintln(os.Stderr, "usage: live -interface <name> [-window-seconds 10] [-output path.csv] [-model-dir <predictor dir>]")
 		os.Exit(1)
 	}
 
 	runStartedAt := time.Now().Format("20060102_150405")
-	outputPath := *output
-	if outputPath == "" {
-		os.MkdirAll("live_runs", 0755)
-		outputPath = fmt.Sprintf("live_runs/live_statistics_%d_second_window_%s.csv", int(*windowSeconds), runStartedAt)
-	}
 
 	handle, err := pcap.OpenLive(*iface, snaplen, true, pcap.BlockForever)
 	if err != nil {
@@ -74,18 +77,36 @@ func main() {
 	}
 	defer handle.Close()
 
-	f, err := os.OpenFile(outputPath, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
-	if err != nil {
-		fmt.Fprintln(os.Stderr, "error opening output file:", err)
-		os.Exit(1)
+	var out sinks
+	if *output != "" || !inferenceFlags.Enabled() {
+		out.statsPath = *output
+		if out.statsPath == "" {
+			os.MkdirAll("live_runs", 0755)
+			out.statsPath = fmt.Sprintf("live_runs/live_statistics_%d_second_window_%s.csv", int(*windowSeconds), runStartedAt)
+		}
+		f, err := os.OpenFile(out.statsPath, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+		if err != nil {
+			fmt.Fprintln(os.Stderr, "error opening output file:", err)
+			os.Exit(1)
+		}
+		defer f.Close()
+		out.stats = csv.NewWriter(f)
+		if err := out.stats.Write(core.CSVHeader()); err != nil {
+			fmt.Fprintln(os.Stderr, "error writing CSV header:", err)
+			os.Exit(1)
+		}
+		out.stats.Flush()
 	}
-	defer f.Close()
-	w := csv.NewWriter(f)
-	if err := w.Write(core.CSVHeader()); err != nil {
-		fmt.Fprintln(os.Stderr, "error writing CSV header:", err)
-		os.Exit(1)
+	if inferenceFlags.Enabled() {
+		os.MkdirAll("live_runs", 0755)
+		cfg := inferenceFlags.Config(fmt.Sprintf("live_runs/live_predictions_%d_second_window_%s.csv", int(*windowSeconds), runStartedAt))
+		out.sidecar, err = inference.Start(cfg, core.CSVHeader())
+		if err != nil {
+			fmt.Fprintln(os.Stderr, "error starting inference:", err)
+			os.Exit(1)
+		}
+		out.predictionsPath = cfg.OutputPath
 	}
-	w.Flush()
 
 	sessionID := "live_" + runStartedAt
 	var acc *core.WindowAccumulator // created once the first packet's timestamp gives us t0
@@ -96,29 +117,48 @@ func main() {
 	sigChan := make(chan os.Signal, 1)
 	signal.Notify(sigChan, os.Interrupt, syscall.SIGTERM)
 
-	fmt.Printf("capturing on %s, %gs windows -> %s (Ctrl+C to stop)\n", *iface, *windowSeconds, outputPath)
+	fmt.Printf("capturing on %s, %gs windows -> %s (Ctrl+C to stop)\n", *iface, *windowSeconds, out.describe())
 
-	rowsWritten := 0
 	for {
 		select {
 		case p, ok := <-pktChan:
 			if !ok {
-				finish(acc, w, &rowsWritten)
-				fmt.Printf("\ncapture ended, %d window rows written to %s\n", rowsWritten, outputPath)
+				fmt.Println("\ncapture ended")
+				out.finish(acc)
 				return
 			}
 			if acc == nil {
 				acc = core.NewWindowAccumulator(p.Timestamp, *windowSeconds, sessionID, labelPlaceholder)
 			}
 			for _, row := range acc.HandlePacket(p) {
-				writeRow(w, row, &rowsWritten)
+				out.writeRow(row)
 			}
 		case <-sigChan:
 			fmt.Println("\nstopping capture...")
-			finish(acc, w, &rowsWritten)
-			fmt.Printf("%d window rows written to %s\n", rowsWritten, outputPath)
+			out.finish(acc)
 			return
 		}
+	}
+}
+
+// sinks is where each closed window row goes: the stats CSV, the
+// inference sidecar, or both -- whichever were enabled by the flags.
+type sinks struct {
+	stats           *csv.Writer
+	statsPath       string
+	sidecar         *inference.Sidecar
+	predictionsPath string
+	rowsWritten     int
+}
+
+func (s *sinks) describe() string {
+	switch {
+	case s.stats != nil && s.sidecar != nil:
+		return s.statsPath + " + predictions " + s.predictionsPath
+	case s.sidecar != nil:
+		return "predictions " + s.predictionsPath
+	default:
+		return s.statsPath
 	}
 }
 
@@ -140,19 +180,34 @@ func captureLoop(handle *pcap.Handle, out chan<- *core.Packet) {
 	}
 }
 
-func finish(acc *core.WindowAccumulator, w *csv.Writer, rowsWritten *int) {
-	if acc == nil {
-		return // never saw a single parseable packet
+// finish writes the final partial window, then (if inference is on) waits
+// for predict.py to score everything still queued before exiting, so no
+// window's prediction is lost on Ctrl+C.
+func (s *sinks) finish(acc *core.WindowAccumulator) {
+	if acc != nil { // nil means we never saw a single parseable packet
+		s.writeRow(acc.Flush())
 	}
-	writeRow(w, acc.Flush(), rowsWritten)
+	if s.sidecar != nil {
+		fmt.Println("waiting for remaining predictions...")
+		if err := s.sidecar.Close(); err != nil {
+			fmt.Fprintln(os.Stderr, "predict.py exited with error:", err)
+		}
+	}
+	fmt.Printf("%d windows -> %s\n", s.rowsWritten, s.describe())
 }
 
-func writeRow(w *csv.Writer, row core.WindowRow, rowsWritten *int) {
-	if err := w.Write(row.Values()); err != nil {
-		fmt.Fprintln(os.Stderr, "error writing CSV row:", err)
-		return
+func (s *sinks) writeRow(row core.WindowRow) {
+	values := row.Values()
+	if s.stats != nil {
+		if err := s.stats.Write(values); err != nil {
+			fmt.Fprintln(os.Stderr, "error writing CSV row:", err)
+			return
+		}
+		s.stats.Flush()
 	}
-	w.Flush()
-	*rowsWritten++
-	fmt.Printf("window %d written\n", row.WindowIndex)
+	if s.sidecar != nil {
+		s.sidecar.Send(values)
+	}
+	s.rowsWritten++
+	fmt.Printf("window %d closed\n", row.WindowIndex)
 }

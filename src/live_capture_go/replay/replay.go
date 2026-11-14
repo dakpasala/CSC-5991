@@ -23,6 +23,12 @@
 //
 //	go run ./live_capture_go/replay -pcap ../sessions/<id>/dump.pcap
 //	go run ./live_capture_go/replay -pcap ../sessions/<id>/dump.pcap -speed 4 -window-seconds 10
+//	go run ./live_capture_go/replay -pcap ../sessions/<id>/dump.pcap -speed 20 -model-dir ../AutogluonModels/window_10s_19468sessions_no_applayer_xgb22
+//
+// With -model-dir, each closed window is also piped to predict.py, which
+// labels it and appends to live_runs/replay_predictions_<N>_second_window.csv
+// (see live_capture_go/inference). The stats CSV is skipped in that mode
+// unless -output is given explicitly.
 package main
 
 import (
@@ -33,6 +39,7 @@ import (
 	"time"
 
 	core "csc5991/core_go"
+	"csc5991/live_capture_go/inference"
 
 	"github.com/google/gopacket/pcapgo"
 )
@@ -86,7 +93,8 @@ func main() {
 	pcapPath := flag.String("pcap", "", "path to an existing session's dump.pcap")
 	windowSeconds := flag.Float64("window-seconds", 10, "window size in seconds")
 	speed := flag.Float64("speed", 1.0, "replay speed multiplier (1.0 = real-time)")
-	output := flag.String("output", "", "output CSV path (default: replay_statistics_<N>_second_window.csv)")
+	output := flag.String("output", "", "stats CSV path (default: replay_statistics_<N>_second_window.csv; skipped with -model-dir unless given)")
+	inferenceFlags := inference.RegisterFlags()
 	flag.Parse()
 
 	if *pcapPath == "" {
@@ -95,7 +103,7 @@ func main() {
 	}
 
 	outputPath := *output
-	if outputPath == "" {
+	if outputPath == "" && !inferenceFlags.Enabled() {
 		os.MkdirAll("live_runs", 0755)
 		outputPath = fmt.Sprintf("live_runs/replay_statistics_%d_second_window.csv", int(*windowSeconds))
 	}
@@ -114,13 +122,37 @@ func main() {
 	pktChan := make(chan *core.Packet, 1024)
 	go replayPackets(packets, *speed, pktChan)
 
-	rw := newReplayWriter(t0, *windowSeconds, sessionID, outputPath, *speed)
-	defer rw.close()
+	var sidecar *inference.Sidecar
+	predictionsPath := ""
+	if inferenceFlags.Enabled() {
+		os.MkdirAll("live_runs", 0755)
+		cfg := inferenceFlags.Config(fmt.Sprintf("live_runs/replay_predictions_%d_second_window.csv", int(*windowSeconds)))
+		sidecar, err = inference.Start(cfg, core.CSVHeader())
+		if err != nil {
+			fmt.Fprintln(os.Stderr, "error starting inference:", err)
+			os.Exit(1)
+		}
+		predictionsPath = cfg.OutputPath
+	}
+
+	rw := newReplayWriter(t0, *windowSeconds, sessionID, outputPath, *speed, sidecar)
 
 	for p := range pktChan {
 		rw.handlePacket(p)
 	}
 	rw.flush() // the final, partial window
+	rw.close()
 
-	fmt.Printf("\nreplay complete, %d window rows written to %s\n", rw.totalRowsWritten, outputPath)
+	fmt.Printf("\nreplay complete, %d windows", rw.totalRowsWritten)
+	if outputPath != "" {
+		fmt.Printf(", stats -> %s", outputPath)
+	}
+	if sidecar != nil {
+		fmt.Println("\nwaiting for remaining predictions...")
+		if err := sidecar.Close(); err != nil {
+			fmt.Fprintln(os.Stderr, "predict.py exited with error:", err)
+		}
+		fmt.Printf("predictions -> %s", predictionsPath)
+	}
+	fmt.Println()
 }

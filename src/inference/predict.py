@@ -27,7 +27,18 @@ Two modes:
 
 Output, one JSON object per line ("JSON Lines", so a Go reader can decode
 incrementally without needing a row count up front):
-  {"label": "<predicted class>", "probabilities": {"<class>": <prob>, ...}}
+  {"window_index": <int>, "window_start_s": <float>, "window_end_s": <float>,
+   "label": "<predicted class>", "confidence": <max prob>,
+   "probabilities": {"<class>": <prob>, ...}}
+The three window_* keys are only present if the input row had those
+columns (every Go/Python stats row does).
+
+--output <path.csv> additionally appends one row per scored window to a
+predictions CSV (window_index, window_start_s, window_end_s,
+predicted_label, confidence, prob_<class>...), flushed after every row so
+it's durable the moment a window is scored. This is how the Go live/
+replay tools' -model-dir mode records predictions: Go pipes rows in over
+stdin, this process owns the predictions file.
 
 Drops the same non-feature columns train_autogluon.py does
 (session_id/window_index/window_start_s/window_end_s/label) if present,
@@ -46,6 +57,7 @@ autogluon package at all.
 Usage:
     python src/inference/predict.py --model-dir AutogluonModels/window_10s_19468sessions_no_applayer --input session_statistics_10_second_window_no_applayer.csv
     python src/inference/predict.py --model-dir AutogluonModels/window_10s_19468sessions_no_applayer < rows.csv
+    python src/inference/predict.py --model-dir AutogluonModels/window_10s_19468sessions_no_applayer_xgb22 --output live_runs/predictions.csv < rows.csv
 """
 
 import argparse
@@ -77,27 +89,83 @@ def _prepare_features(df):
     return features.apply(pd.to_numeric, errors="coerce")
 
 
+WINDOW_COLUMNS = ("window_index", "window_start_s", "window_end_s")
+
+
 def _score_rows(predictor, df):
     features = _prepare_features(df)
-    labels = predictor.predict(features)
+    # predict_proba once and take the argmax, instead of predict() +
+    # predict_proba() -- halves the per-window model cost, which matters
+    # in streaming mode where every window pays it individually.
     probs = predictor.predict_proba(features)
+    labels = probs.idxmax(axis=1)
+    window_meta = df[[c for c in WINDOW_COLUMNS if c in df.columns]].apply(pd.to_numeric, errors="coerce")
     for i in range(len(features)):
+        result = {}
+        for col in window_meta.columns:
+            value = window_meta.iloc[i][col]
+            result[col] = int(value) if col == "window_index" else float(value)
         row_probs = {str(cls): float(probs.iloc[i][cls]) for cls in probs.columns}
-        yield {"label": str(labels.iloc[i]), "probabilities": row_probs}
+        result["label"] = str(labels.iloc[i])
+        result["confidence"] = max(row_probs.values())
+        result["probabilities"] = row_probs
+        yield result
 
 
-def run_batch(predictor, input_path):
+class PredictionsWriter:
+    """Appends one CSV row per scored window, flushed immediately. The
+    header (which needs the class list) is written lazily on the first
+    result, and only if the file didn't already exist -- same append-to-
+    accumulating-file convention as the stats CSVs."""
+
+    def __init__(self, path):
+        directory = os.path.dirname(path)
+        if directory:
+            os.makedirs(directory, exist_ok=True)
+        self._needs_header = not os.path.isfile(path)
+        self._file = open(path, "a", newline="")
+        self._writer = csv.writer(self._file)
+        self._classes = None
+
+    def write(self, result):
+        if self._classes is None:
+            self._classes = sorted(result["probabilities"])
+            if self._needs_header:
+                self._writer.writerow(
+                    [*WINDOW_COLUMNS, "predicted_label", "confidence", *(f"prob_{c}" for c in self._classes)]
+                )
+        self._writer.writerow(
+            [
+                *(result.get(c, "") for c in WINDOW_COLUMNS),
+                result["label"],
+                f"{result['confidence']:.4f}",
+                *(f"{result['probabilities'][c]:.4f}" for c in self._classes),
+            ]
+        )
+        self._file.flush()
+
+    def close(self):
+        self._file.close()
+
+
+def _emit(result, predictions_writer):
+    print(json.dumps(result), flush=True)
+    if predictions_writer is not None:
+        predictions_writer.write(result)
+
+
+def run_batch(predictor, input_path, predictions_writer):
     df = pd.read_csv(input_path, dtype={"session_id": str})
     for result in _score_rows(predictor, df):
-        print(json.dumps(result), flush=True)
+        _emit(result, predictions_writer)
 
 
-def run_streaming(predictor):
+def run_streaming(predictor, predictions_writer):
     reader = csv.DictReader(sys.stdin)
     for row in reader:
         df = pd.DataFrame([row])
         for result in _score_rows(predictor, df):
-            print(json.dumps(result), flush=True)
+            _emit(result, predictions_writer)
 
 
 def main():
@@ -105,6 +173,9 @@ def main():
     parser.add_argument("--model-dir", required=True, help="path to a saved TabularPredictor directory")
     parser.add_argument(
         "--input", default=None, help="CSV file to score in batch mode; omit to read one row at a time from stdin"
+    )
+    parser.add_argument(
+        "--output", default=None, help="also append one row per scored window to this predictions CSV"
     )
     args = parser.parse_args()
 
@@ -117,10 +188,15 @@ def main():
     predictor = TabularPredictor.load(args.model_dir)
     print("predictor loaded, ready to score", file=sys.stderr)
 
-    if args.input:
-        run_batch(predictor, args.input)
-    else:
-        run_streaming(predictor)
+    predictions_writer = PredictionsWriter(args.output) if args.output else None
+    try:
+        if args.input:
+            run_batch(predictor, args.input, predictions_writer)
+        else:
+            run_streaming(predictor, predictions_writer)
+    finally:
+        if predictions_writer is not None:
+            predictions_writer.close()
 
 
 if __name__ == "__main__":
