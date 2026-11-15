@@ -269,16 +269,19 @@ def append_result(path, row):
     new = pd.DataFrame([row])
     if os.path.isfile(path):
         existing_columns = list(pd.read_csv(path, nrows=0).columns)
-        if existing_columns != list(new.columns):
+        if set(existing_columns) == set(new.columns):
+            new = new[existing_columns]  # same schema, different order: plain append in the file's order
+        else:
             # Older file with a different schema: rewrite with the union of
             # columns instead of appending a misaligned row.
             merged = pd.concat([pd.read_csv(path), new], ignore_index=True)
             # Backfill router-cost columns for rows written before they
             # existed, from each row's own feature list.
             missing = merged["dist_families"].isna()
-            costs = merged.loc[missing, "features"].map(lambda f: router_cost(f.split(";")))
-            merged.loc[missing, "dist_families"] = costs.map(lambda c: c[0])
-            merged.loc[missing, "buffered_families"] = costs.map(lambda c: c[1])
+            if missing.any():
+                costs = [router_cost(f.split(";")) for f in merged.loc[missing, "features"]]
+                merged.loc[missing, "dist_families"] = [c[0] for c in costs]
+                merged.loc[missing, "buffered_families"] = [c[1] for c in costs]
             for col in ("dist_families", "buffered_families"):
                 merged[col] = merged[col].astype(int)
             merged.to_csv(path, index=False)
