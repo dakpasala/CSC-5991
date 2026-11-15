@@ -30,23 +30,50 @@ Two kinds of experiments, both written to one results CSV:
                        importance. Tests whether services are separable by
                        traffic shape alone (a shortcut-learning check)
        infra_only   -- only recv_window/rtt/frac_udp, the reverse check
-  2. Recursive feature elimination (rfe): starting from all features,
-     repeatedly train, measure permutation importance on val, and drop the
-     weakest --drop-frac (at least 1) until --min-features remain.
-     Importance is recomputed after every drop because the features are
-     heavily redundant: one-at-a-time permutation importance gives near
-     zero to a feature whose siblings carry the same information, and those
-     siblings become important once it's gone.
+       streaming_only      -- drop every median/p25/p75 column (see "router
+                              cost" below): min/max/mean and counts only
+       no_total_streaming  -- both of the above at once: the cheapest
+                              possible feature extraction
+  2. Recursive feature elimination (rfe): starting from --rfe-start (any
+     fixed set above, default all), repeatedly train, measure permutation
+     importance on val, and drop the weakest --drop-frac of the remaining
+     units (at least 1) until --min-features units remain. Importance is
+     recomputed after every drop because the features are heavily
+     redundant: one-at-a-time permutation importance gives near zero to a
+     feature whose siblings carry the same information, and those siblings
+     become important once it's gone.
+     --rfe-unit feature (default) eliminates individual columns.
+     --rfe-unit family eliminates whole distribution families at once (all
+     six stats of e.g. down_payload_size, shuffled together for grouped
+     permutation importance); scalar columns (counts, frac_udp, ...) are
+     each their own unit. Every family step frees a real per-window buffer,
+     which single-column steps usually don't.
+     The rfe experiment is named "rfe" for the defaults, otherwise
+     "rfe_<unit>_from_<start>", so several rfe runs can share one CSV.
 
-At the end it prints the recommended rfe step: the smallest feature set
-whose val accuracy is within --tolerance of the best val accuracy any step
-reached (all-features baseline included).
+Router cost: a feature's memory cost on a router is per distribution
+FAMILY, not per column. min/max/mean can be updated one packet at a time in
+O(1) memory, but median/p25/p75 need every value of the window kept in a
+buffer, and one buffer serves all six stats of its family -- dropping
+down_payload_size_mean saves nothing while down_payload_size_p25 is still
+used. So every result row also records dist_families (distribution
+families used at all) and buffered_families (families needing a full
+buffer because some median/p25/p75 of theirs is used). The first rfe run
+showed why this matters: its recommended 47-feature set still needed all 13
+families (10 buffered), while no_total's 78 features needed only 9.
+
+At the end of each rfe run it prints two recommendations among the steps
+within --tolerance of the best val accuracy any step reached (all-features
+baseline included): the fewest features, and the fewest buffered families.
 
 Outputs (repo-root-relative, like train_autogluon.py):
   benchmarks/xgb_ablation_<window>s_<variant>.csv -- one row per model:
       experiment, step, n_features, val_accuracy, test_accuracy,
-      test_macro_f1, best_iteration, fit_seconds, predict_us_per_row,
-      dropped (features removed at this rfe step), features (all used)
+      test_macro_f1, predict_us_per_row, best_iteration, fit_seconds,
+      dist_families, buffered_families, dropped (features removed at this
+      rfe step), features (all used). If an older results CSV lacks a
+      column, the file is rewritten with the union of columns rather than
+      appended misaligned.
   XGBoostModels/<window>s_<variant>/<experiment>[_step<k>].json -- every
       trained model, in XGBoost's native JSON format (load in Go with
       leaves, or in Python with xgb.XGBClassifier().load_model)
@@ -55,12 +82,16 @@ Usage (from the repo root, on the box that has the CSV):
     python src/train_xgboost_ablation.py
     python src/train_xgboost_ablation.py --window-seconds 4
     python src/train_xgboost_ablation.py --experiments rfe --drop-frac 0.1
+    python src/train_xgboost_ablation.py --experiments streaming_only,no_total_streaming
+    python src/train_xgboost_ablation.py --experiments rfe --rfe-start no_total
+    python src/train_xgboost_ablation.py --experiments rfe --rfe-start no_total --rfe-unit family
     python src/train_xgboost_ablation.py --csv session_statistics_10_second_window.csv --variant no_applayer  # strips app-layer cols if present
 """
 
 import argparse
 import json
 import os
+import sys
 import time
 
 import numpy as np
@@ -82,7 +113,41 @@ APPLICATION_LAYER_COLUMNS = (
 )
 
 INFRA_SUBSTRINGS = ("recv_window", "rtt_ms", "frac_udp")
-FIXED_EXPERIMENTS = ("all", "no_total", "shape_only", "infra_only")
+FIXED_EXPERIMENTS = ("all", "no_total", "shape_only", "infra_only", "streaming_only", "no_total_streaming")
+DIST_STATS = ("min", "max", "mean", "median", "p25", "p75")
+BUFFERED_STATS = ("median", "p25", "p75")  # need the whole window's values kept; min/max/mean don't
+
+
+def split_stat(feature):
+    """("down_payload_size", "p25") for a distribution column, (feature, None)
+    for a scalar one."""
+    base, _, stat = feature.rpartition("_")
+    return (base, stat) if stat in DIST_STATS else (feature, None)
+
+
+def router_cost(features):
+    """(distribution families used, families needing a full buffer)."""
+    families, buffered = set(), set()
+    for f in features:
+        base, stat = split_stat(f)
+        if stat is not None:
+            families.add(base)
+            if stat in BUFFERED_STATS:
+                buffered.add(base)
+    return len(families), len(buffered)
+
+
+def elimination_units(features, unit):
+    """{unit name: [columns]}. One column per unit for --rfe-unit feature;
+    for family, each distribution family is one unit (all its stats that
+    are still present) and each scalar column is its own unit."""
+    if unit == "feature":
+        return {f: [f] for f in features}
+    units = {}
+    for f in features:
+        base, stat = split_stat(f)
+        units.setdefault(base if stat is not None else f, []).append(f)
+    return units
 
 
 def split_sessions(session_labels, frac, seed):
@@ -125,6 +190,10 @@ def feature_set(experiment, all_features):
         return [f for f in all_features if not any(s in f for s in INFRA_SUBSTRINGS)]
     if experiment == "infra_only":
         return [f for f in all_features if any(s in f for s in INFRA_SUBSTRINGS)]
+    if experiment == "streaming_only":
+        return [f for f in all_features if split_stat(f)[1] not in BUFFERED_STATS]
+    if experiment == "no_total_streaming":
+        return [f for f in feature_set("no_total", all_features) if split_stat(f)[1] not in BUFFERED_STATS]
     raise ValueError(experiment)
 
 
@@ -170,9 +239,11 @@ class Trainer:
             "predict_us_per_row": predict_us,
         }
 
-    def val_permutation_importance(self, model, features):
-        """Accuracy drop on (a sample of) val when each feature is shuffled,
-        averaged over --perm-repeats shuffles."""
+    def val_permutation_importance(self, model, features, units):
+        """Accuracy drop on (a sample of) val when each unit's columns are
+        shuffled -- together, with one shared row permutation, so a family's
+        stats stay consistent with each other -- averaged over
+        --perm-repeats shuffles."""
         rng = np.random.default_rng(self.args.seed)
         X = self.X("val", features)
         y = self.y("val")
@@ -181,13 +252,13 @@ class Trainer:
             X, y = X.iloc[idx].reset_index(drop=True), y[idx]
         base = accuracy_score(y, model.predict(X))
         importance = {}
-        for f in features:
+        for name, cols in units.items():
             drops = []
             for _ in range(self.args.perm_repeats):
                 shuffled = X.copy()
-                shuffled[f] = rng.permutation(shuffled[f].to_numpy())
+                shuffled[cols] = shuffled[cols].to_numpy()[rng.permutation(len(shuffled))]
                 drops.append(base - accuracy_score(y, model.predict(shuffled)))
-            importance[f] = float(np.mean(drops))
+            importance[name] = float(np.mean(drops))
         return pd.Series(importance).sort_values(ascending=False)
 
     def save(self, model, name):
@@ -195,20 +266,43 @@ class Trainer:
 
 
 def append_result(path, row):
-    pd.DataFrame([row]).to_csv(path, mode="a", header=not os.path.isfile(path), index=False)
+    new = pd.DataFrame([row])
+    if os.path.isfile(path):
+        existing_columns = list(pd.read_csv(path, nrows=0).columns)
+        if existing_columns != list(new.columns):
+            # Older file with a different schema: rewrite with the union of
+            # columns instead of appending a misaligned row.
+            merged = pd.concat([pd.read_csv(path), new], ignore_index=True)
+            # Backfill router-cost columns for rows written before they
+            # existed, from each row's own feature list.
+            missing = merged["dist_families"].isna()
+            costs = merged.loc[missing, "features"].map(lambda f: router_cost(f.split(";")))
+            merged.loc[missing, "dist_families"] = costs.map(lambda c: c[0])
+            merged.loc[missing, "buffered_families"] = costs.map(lambda c: c[1])
+            for col in ("dist_families", "buffered_families"):
+                merged[col] = merged[col].astype(int)
+            merged.to_csv(path, index=False)
+            return
+    new.to_csv(path, mode="a", header=not os.path.isfile(path), index=False)
 
 
 def main():
+    # Line-buffer stdout so each model's result line shows up immediately
+    # under `| tee` / tmux logging; Python block-buffers stdout when it isn't
+    # a terminal, which otherwise hides progress for many models at a time.
+    sys.stdout.reconfigure(line_buffering=True)
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--window-seconds", type=int, default=10)
     parser.add_argument("--variant", choices=["full", "no_applayer"], default="no_applayer")
     parser.add_argument("--csv", default=None, help="override the input CSV (default: session_statistics_<N>_second_window[_no_applayer].csv)")
     parser.add_argument("--experiments", default="all,no_total,shape_only,infra_only,rfe", help="comma-separated subset of: " + ",".join((*FIXED_EXPERIMENTS, "rfe")))
+    parser.add_argument("--rfe-start", choices=FIXED_EXPERIMENTS, default="all", help="rfe: feature set to start eliminating from")
+    parser.add_argument("--rfe-unit", choices=["feature", "family"], default="feature", help="rfe: eliminate single columns, or whole distribution families")
     parser.add_argument("--test-frac", type=float, default=0.2, help="must match train_autogluon.py's run to share its test sessions")
     parser.add_argument("--val-frac", type=float, default=0.15, help="fraction of TRAINING sessions held out for validation")
     parser.add_argument("--seed", type=int, default=0)
-    parser.add_argument("--drop-frac", type=float, default=0.2, help="rfe: fraction of remaining features dropped per step")
-    parser.add_argument("--min-features", type=int, default=3, help="rfe: stop once this many remain")
+    parser.add_argument("--drop-frac", type=float, default=0.2, help="rfe: fraction of remaining units dropped per step")
+    parser.add_argument("--min-features", type=int, default=3, help="rfe: stop once this many units (features or families) remain")
     parser.add_argument("--tolerance", type=float, default=0.001, help="recommend the smallest rfe set within this much val accuracy of baseline")
     parser.add_argument("--perm-rows", type=int, default=20000, help="val rows sampled for permutation importance")
     parser.add_argument("--perm-repeats", type=int, default=3)
@@ -249,6 +343,7 @@ def main():
         metrics = trainer.evaluate(model, features)
         name = experiment if step == "" else f"{experiment}_step{step:02d}"
         trainer.save(model, name)
+        n_families, n_buffered = router_cost(features)
         row = {
             "experiment": experiment,
             "step": step,
@@ -256,14 +351,16 @@ def main():
             **{k: round(v, 6) for k, v in metrics.items()},
             "best_iteration": model.best_iteration,
             "fit_seconds": round(fit_s, 1),
+            "dist_families": n_families,
+            "buffered_families": n_buffered,
             "dropped": ";".join(dropped),
             "features": ";".join(features),
         }
         append_result(results_path, row)
         print(
-            f"{name:<22} {len(features):>3} features  val {metrics['val_accuracy']:.4f}  "
+            f"{name:<32} {len(features):>3} features  val {metrics['val_accuracy']:.4f}  "
             f"test {metrics['test_accuracy']:.4f}  macroF1 {metrics['test_macro_f1']:.4f}  "
-            f"{fit_s:.0f}s fit, {model.best_iteration} trees"
+            f"{fit_s:.0f}s fit, {model.best_iteration} trees, {n_families} families ({n_buffered} buffered)"
         )
         return model, metrics
 
@@ -278,21 +375,25 @@ def main():
             baseline_val = metrics["val_accuracy"]
 
     if "rfe" in experiments:
-        features = list(all_features)
+        rfe_name = "rfe" if (args.rfe_unit, args.rfe_start) == ("feature", "all") else f"rfe_{args.rfe_unit}_from_{args.rfe_start}"
+        features = feature_set(args.rfe_start, all_features)
         steps = []
         step = 0
         dropped = ()
         while True:
-            model, metrics = run("rfe", features, step=step, dropped=dropped)
-            steps.append((step, len(features), metrics["val_accuracy"], metrics["test_accuracy"]))
+            model, metrics = run(rfe_name, features, step=step, dropped=dropped)
+            n_families, n_buffered = router_cost(features)
+            steps.append((step, len(features), metrics["val_accuracy"], metrics["test_accuracy"], n_families, n_buffered))
             if step == 0 and baseline_val is None:
                 baseline_val = metrics["val_accuracy"]
-            if len(features) <= args.min_features:
+            units = elimination_units(features, args.rfe_unit)
+            if len(units) <= args.min_features:
                 break
-            importance = trainer.val_permutation_importance(model, features)
-            n_drop = max(1, int(len(features) * args.drop_frac))
-            n_drop = min(n_drop, len(features) - args.min_features)
-            dropped = tuple(importance.index[-n_drop:])
+            importance = trainer.val_permutation_importance(model, features, units)
+            n_drop = max(1, int(len(units) * args.drop_frac))
+            n_drop = min(n_drop, len(units) - args.min_features)
+            dropped_units = importance.index[-n_drop:]
+            dropped = tuple(c for u in dropped_units for c in units[u])
             features = [f for f in features if f not in dropped]
             step += 1
 
@@ -302,12 +403,16 @@ def main():
         # recommend cutting further than the data supports.
         reference_val = max(baseline_val, max(s[2] for s in steps))
         within = [s for s in steps if s[2] >= reference_val - args.tolerance]
-        best = min(within, key=lambda s: s[1])
+        fewest_features = min(within, key=lambda s: (s[1], s[5]))
+        cheapest = min(within, key=lambda s: (s[5], s[4], s[1]))
         print(
-            f"\nrecommended: rfe step {best[0]} -- {best[1]} features, val {best[2]:.4f} "
-            f"(best val {reference_val:.4f}, all-features val {baseline_val:.4f}, tolerance {args.tolerance}), "
-            f"test {best[3]:.4f}"
+            f"\n{rfe_name}: best val {reference_val:.4f} (all-features val {baseline_val:.4f}), tolerance {args.tolerance}"
         )
+        for label, s in (("fewest features", fewest_features), ("cheapest on a router", cheapest)):
+            print(
+                f"recommended ({label}): step {s[0]} -- {s[1]} features, {s[4]} families ({s[5]} buffered), "
+                f"val {s[2]:.4f}, test {s[3]:.4f}"
+            )
 
     print(f"\nresults -> {results_path}\nmodels  -> {model_dir}/")
 
