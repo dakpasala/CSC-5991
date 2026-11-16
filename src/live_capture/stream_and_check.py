@@ -14,14 +14,24 @@ One run = one service:
   2. open the URL in headless Chromium and make sure the <video> is actually
      playing (consent/mature-content gates are clicked through, playback is
      forced if autoplay is blocked), logging playback state every few
-     seconds to live_runs/eval_<tag>_timeline.csv here;
+     seconds to live_runs/eval_<tag>_timeline.csv here. If the video position
+     stops advancing for 15s, the stall is logged with a screenshot and the
+     page text (live_runs/eval_<tag>_stall<N>.png/.txt, to see what the site
+     showed), a play/skip is attempted, and after 30s the page is reloaded
+     (at most 3 times). Early test runs all died ~30s in, which is what made
+     most of their windows unscoreable;
   3. after --minutes, close the browser, stop live-router with SIGINT (it
      flushes its last window), and copy the predictions back, plus the raw
      per-window stats (live_runs/eval_<tag>_stats.csv) for diagnosis;
   4. score them: expected label vs. predicted label for every window that
      started after playback began (plus --warmup-windows more, since the
-     first windows are partial and join connections mid-stream), printed and
-     appended to live_runs/eval_summary.csv.
+     first windows are partial and join connections mid-stream), and
+     separately for active windows (>= --min-packets packets) and playing
+     windows (the timeline shows the video advancing during them) -- the
+     playing-window numbers are the ones that measure the classifier, the
+     others also count silence and stalls. Printed, appended to
+     live_runs/eval_summary.csv, and written per window to
+     live_runs/eval_<tag>_scored.csv.
 
 Expected label: youtube -> youtube_quic (Chromium streams YouTube over QUIC
 by default), or youtube_tcp with --disable-quic; twitch -> twitch.
@@ -143,10 +153,18 @@ def open_browser(disable_quic, chromium, chromedriver):
         opts.add_argument(arg)
     if disable_quic:
         opts.add_argument("--disable-quic")
-    return webdriver.Chrome(service=Service(chromedriver), options=opts)
+    # Headless Chromium advertises itself ("HeadlessChrome" in the user
+    # agent, navigator.webdriver = true); sites treat that as a bot, and
+    # YouTube playback died ~30s into every early test run.
+    opts.add_argument("--disable-blink-features=AutomationControlled")
+    opts.add_experimental_option("excludeSwitches", ["enable-automation"])
+    driver = webdriver.Chrome(service=Service(chromedriver), options=opts)
+    ua = driver.execute_script("return navigator.userAgent").replace("HeadlessChrome", "Chrome")
+    driver.execute_cdp_cmd("Emulation.setUserAgentOverride", {"userAgent": ua})
+    return driver
 
 
-GATE_BUTTON_TEXTS = ("Accept all", "Reject all", "I agree", "Start Watching", "Accept")
+GATE_BUTTON_TEXTS = ("Accept all", "Reject all", "I agree", "Start Watching", "Accept", "Skip", "Skip Ad", "Skip Ads")
 
 
 def click_through_gates(driver):
@@ -173,6 +191,20 @@ return {t: v.currentTime, paused: v.paused, w: v.videoWidth, h: v.videoHeight};
 """
 
 
+def save_stall_diagnostics(driver, prefix):
+    """Screenshot + visible page text, to see what the site put up instead
+    of the video (bot check, sign-in wall, ad, error message...)."""
+    try:
+        driver.save_screenshot(prefix + ".png")
+        text = driver.execute_script("return document.body ? document.body.innerText : ''") or ""
+        with open(prefix + ".txt", "w") as f:
+            f.write(driver.current_url + "\n\n" + text[:5000])
+        first = " ".join(text.split())[:160]
+        print(f"  stall diagnostics -> {prefix}.png/.txt (page says: {first!r})")
+    except Exception as exc:
+        print(f"  could not save stall diagnostics: {exc}")
+
+
 def wait_for_playback(driver, timeout_s=60):
     start = time.time()
     last_t = None
@@ -189,7 +221,18 @@ def wait_for_playback(driver, timeout_s=60):
 # --- scoring ------------------------------------------------------------------
 
 
-def score(predictions_path, expected, skip_before_s, warmup_windows, stats_path=None, min_packets=100):
+def playing_windows(df, timeline_path):
+    """Window index -> whether the timeline saw the video advancing at some
+    poll inside that window (polls are every 5s, so ~2 per 10s window)."""
+    t = pd.read_csv(timeline_path)
+    if "playing" not in t.columns or t.empty:
+        return None
+    t = t[t.playing.astype(str) == "True"]
+    starts = t.seconds_since_router_start.to_numpy()
+    return df.apply(lambda w: bool(((starts >= w.window_start_s) & (starts < w.window_end_s)).any()), axis=1)
+
+
+def score(predictions_path, expected, skip_before_s, warmup_windows, stats_path=None, min_packets=100, timeline_path=None, scored_path=None):
     """Window accuracy over every window after playback started, and -- when
     the raw stats are available -- over just the active windows (at least
     min_packets packets). Once its buffer is full, YouTube fetches in bursts,
@@ -239,6 +282,20 @@ def score(predictions_path, expected, skip_before_s, warmup_windows, stats_path=
         summary["windows_with_packets_over_1514B"] = int(oversized)
         if oversized:
             summary["warning"] = "packets larger than an Ethernet frame were captured: GRO/GSO is on at the router; see ethtool -K ... gro off"
+    if timeline_path and os.path.isfile(timeline_path):
+        flags = playing_windows(usable, timeline_path)
+        if flags is not None:
+            usable = usable.assign(playing=flags)
+            playing = usable[usable.playing]
+            summary["playing_windows"] = f"{len(playing)} of {len(usable)} (video advancing during the window)"
+            if not playing.empty:
+                summary["playing_label_counts"] = "; ".join(f"{k}={v}" for k, v in playing.predicted_label.value_counts().items())
+                if expected is not None:
+                    summary["playing_window_accuracy"] = round((playing.predicted_label == expected).mean(), 4)
+                    if expected.startswith("youtube"):
+                        summary["playing_any_youtube_accuracy"] = round(playing.predicted_label.str.startswith("youtube").mean(), 4)
+    if scored_path:
+        usable.to_csv(scored_path, index=False)
     return summary
 
 
@@ -268,6 +325,7 @@ def main():
     parser.add_argument("--warmup-windows", type=int, default=1, help="extra windows skipped after playback starts")
     parser.add_argument("--min-packets", type=int, default=100, help="packets a window needs to count as active")
     parser.add_argument("--stats", metavar="STATS_CSV", help="with --score: the matching raw window stats, for active-window accuracy")
+    parser.add_argument("--timeline", metavar="TIMELINE_CSV", help="with --score: the matching playback timeline, for playing-window accuracy")
     parser.add_argument("--chromium", default="/usr/bin/chromium")
     parser.add_argument("--chromedriver", default="/usr/bin/chromedriver")
     parser.add_argument("--score", metavar="PREDICTIONS_CSV", help="only score an existing predictions file (no browser, no router)")
@@ -278,7 +336,7 @@ def main():
         expected = "youtube_tcp"
 
     if args.score:
-        print_summary(score(args.score, expected, 0, args.warmup_windows, args.stats, args.min_packets))
+        print_summary(score(args.score, expected, 0, args.warmup_windows, args.stats, args.min_packets, args.timeline))
         return
     if args.service != "idle" and not args.url:
         parser.error("--url is required unless --service idle")
@@ -291,18 +349,21 @@ def main():
     remote_predictions = f"live_runs/eval_{tag}.csv"
 
     pid = None
+    # live-router's window times count from its first captured packet, which
+    # arrives right after launch -- so measure from just before the launch,
+    # not after start_live_router's 3s liveness check.
     router_started = time.time()
     if args.router:
         print(f"starting live-router on {args.router} ({args.model}, {args.interface}) ...")
-        pid = start_live_router(args.router, args.model, args.interface, remote_predictions)
         router_started = time.time()
+        pid = start_live_router(args.router, args.model, args.interface, remote_predictions)
 
     driver = None
     play_started = router_started
     try:
         with open(timeline_path, "w", newline="") as f:
             timeline = csv.writer(f, lineterminator="\n")
-            timeline.writerow(["unix_time", "seconds_since_router_start", "video_time_s", "paused", "width", "height"])
+            timeline.writerow(["unix_time", "seconds_since_router_start", "video_time_s", "paused", "width", "height", "playing"])
             if args.service != "idle":
                 print(f"opening {args.url} in headless Chromium{' (QUIC disabled)' if args.disable_quic else ''} ...")
                 driver = open_browser(args.disable_quic, args.chromium, args.chromedriver)
@@ -311,14 +372,37 @@ def main():
                 play_started = time.time()
                 print(f"playing at {state['w']}x{state['h']}, {play_started - router_started:.0f}s after live-router started")
             end = time.time() + args.minutes * 60
+            last_t, last_advance, stalls, reloads, diagnosed = None, time.time(), 0, 0, False
             while time.time() < end:
                 now = time.time()
                 state = driver.execute_script(VIDEO_STATE_JS) if driver else None
-                if state:
-                    timeline.writerow([f"{now:.3f}", f"{now - router_started:.1f}", f"{state['t']:.1f}", state["paused"], state["w"], state["h"]])
+                if driver:
+                    t = state["t"] if state else None
+                    playing = bool(state) and not state["paused"] and last_t is not None and t > last_t
+                    timeline.writerow([f"{now:.3f}", f"{now - router_started:.1f}",
+                                       f"{t:.1f}" if t is not None else "", state["paused"] if state else "",
+                                       state["w"] if state else "", state["h"] if state else "", playing])
                     f.flush()
-                    if state["paused"]:
-                        print(f"  warning: video paused at {state['t']:.0f}s")
+                    last_t = t
+                    if playing:
+                        last_advance, diagnosed = now, False
+                    elif now - last_advance >= 15:
+                        if not diagnosed:
+                            stalls += 1
+                            print(f"  video stalled {now - last_advance:.0f}s at {now - router_started:.0f}s (video time {t})")
+                            save_stall_diagnostics(driver, f"live_runs/eval_{tag}_stall{stalls}")
+                            diagnosed = True
+                        click_through_gates(driver)
+                        if now - last_advance >= 30 and reloads < 3:
+                            reloads += 1
+                            print(f"  reloading the page (reload {reloads}/3) ...")
+                            driver.get(args.url)
+                            try:
+                                wait_for_playback(driver, timeout_s=45)
+                                print(f"  playing again at {time.time() - router_started:.0f}s")
+                            except SystemExit as exc:
+                                print(f"  {exc}")
+                            last_t, last_advance, diagnosed = None, time.time(), False
                 time.sleep(5)
     finally:
         if driver:
@@ -342,13 +426,16 @@ def main():
         f.write(ssh(args.router, f"cat {REMOTE_DIR}/{stats_name}"))
     print(f"window stats -> {stats_name}")
 
-    summary = score(local_predictions, expected, play_started - router_started, args.warmup_windows, stats_name, args.min_packets)
+    scored_path = local_predictions.replace(".csv", "_scored.csv")
+    summary = score(local_predictions, expected, play_started - router_started, args.warmup_windows, stats_name,
+                    args.min_packets, timeline_path, scored_path)
     print_summary(summary)
     append_summary(
         "live_runs/eval_summary.csv",
         {"tag": tag, "service": args.service, "url": args.url or "", "disable_quic": args.disable_quic,
          "model": args.model, "minutes": args.minutes, **summary},
     )
+    print(f"per-window scoring -> {scored_path}")
     print("summary appended -> live_runs/eval_summary.csv")
 
 
