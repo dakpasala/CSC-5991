@@ -53,9 +53,9 @@ type Flags struct {
 // RegisterFlags must be called before flag.Parse().
 func RegisterFlags() *Flags {
 	return &Flags{
-		ModelDir: flag.String("model-dir", "", "AutoGluon predictor directory or XGBoost .json (train_xgboost_ablation.py --final); when set, every window is also labeled by predict.py"),
-		Python:   flag.String("python", "../.venv-infer/bin/python", "Python interpreter with autogluon.tabular installed (used with -model-dir)"),
-		Script:   flag.String("predict-script", "inference/predict.py", "path to predict.py (used with -model-dir)"),
+		ModelDir: flag.String("model-dir", "", "model to label every window with: an XGBoost .json (train_xgboost_ablation.py --final), scored natively in Go, or an AutoGluon predictor directory, served by predict.py"),
+		Python:   flag.String("python", "../.venv-infer/bin/python", "Python interpreter with autogluon.tabular installed (AutoGluon -model-dir only)"),
+		Script:   flag.String("predict-script", "inference/predict.py", "path to predict.py (AutoGluon -model-dir only)"),
 		Output:   flag.String("predictions-output", "", "predictions CSV path (used with -model-dir; default: live_runs/<name>_predictions_..._.csv)"),
 	}
 }

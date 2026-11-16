@@ -13,7 +13,7 @@ import (
 const labelPlaceholder = "live_unlabeled"
 
 // replayWriter wraps a core.WindowAccumulator with the replay tool's own
-// concerns: writing rows to CSV and/or the inference sidecar as they
+// concerns: writing rows to CSV and/or the inference labeler as they
 // close, and reporting whether each window's computation stayed within its
 // real-time budget. csvWriter is nil when no stats CSV was requested.
 type replayWriter struct {
@@ -22,16 +22,16 @@ type replayWriter struct {
 	speed            float64
 	csvWriter        *csv.Writer
 	csvFile          *os.File
-	sidecar          *inference.Sidecar
+	labeler          inference.Labeler
 	totalRowsWritten int
 }
 
-func newReplayWriter(t0, windowSeconds float64, sessionID, outputPath string, speed float64, sidecar *inference.Sidecar) *replayWriter {
+func newReplayWriter(t0, windowSeconds float64, sessionID, outputPath string, speed float64, labeler inference.Labeler) *replayWriter {
 	rw := &replayWriter{
 		acc:           core.NewWindowAccumulator(t0, windowSeconds, sessionID, labelPlaceholder),
 		windowSeconds: windowSeconds,
 		speed:         speed,
-		sidecar:       sidecar,
+		labeler:       labeler,
 	}
 	if outputPath == "" {
 		return rw
@@ -93,8 +93,8 @@ func (rw *replayWriter) writeRow(row core.WindowRow, packetCount int, computeTim
 		}
 		rw.csvWriter.Flush()
 	}
-	if rw.sidecar != nil {
-		rw.sidecar.Send(values)
+	if rw.labeler != nil {
+		rw.labeler.Send(values)
 	}
 	rw.totalRowsWritten++
 

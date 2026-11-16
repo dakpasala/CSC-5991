@@ -25,9 +25,10 @@
 //	go run ./live_capture_go/replay -pcap ../sessions/<id>/dump.pcap -speed 4 -window-seconds 10
 //	go run ./live_capture_go/replay -pcap ../sessions/<id>/dump.pcap -speed 20 -model-dir ../AutogluonModels/window_10s_19468sessions_no_applayer_xgb22
 //
-// With -model-dir, each closed window is also piped to predict.py, which
-// labels it and appends to live_runs/replay_predictions_<N>_second_window.csv
-// (see live_capture_go/inference). The stats CSV is skipped in that mode
+// With -model-dir, each closed window is also labeled and appended to
+// live_runs/replay_predictions_<N>_second_window.csv (see
+// live_capture_go/inference): natively in Go for an XGBoost .json model,
+// through predict.py for an AutoGluon directory. The stats CSV is skipped in that mode
 // unless -output is given explicitly.
 package main
 
@@ -122,12 +123,12 @@ func main() {
 	pktChan := make(chan *core.Packet, 1024)
 	go replayPackets(packets, *speed, pktChan)
 
-	var sidecar *inference.Sidecar
+	var labeler inference.Labeler
 	predictionsPath := ""
 	if inferenceFlags.Enabled() {
 		os.MkdirAll("live_runs", 0755)
 		cfg := inferenceFlags.Config(fmt.Sprintf("live_runs/replay_predictions_%d_second_window.csv", int(*windowSeconds)))
-		sidecar, err = inference.Start(cfg, core.CSVHeader())
+		labeler, err = inference.StartLabeler(cfg, core.CSVHeader())
 		if err != nil {
 			fmt.Fprintln(os.Stderr, "error starting inference:", err)
 			os.Exit(1)
@@ -135,7 +136,7 @@ func main() {
 		predictionsPath = cfg.OutputPath
 	}
 
-	rw := newReplayWriter(t0, *windowSeconds, sessionID, outputPath, *speed, sidecar)
+	rw := newReplayWriter(t0, *windowSeconds, sessionID, outputPath, *speed, labeler)
 
 	for p := range pktChan {
 		rw.handlePacket(p)
@@ -147,9 +148,9 @@ func main() {
 	if outputPath != "" {
 		fmt.Printf(", stats -> %s", outputPath)
 	}
-	if sidecar != nil {
+	if labeler != nil {
 		fmt.Println("\nwaiting for remaining predictions...")
-		if err := sidecar.Close(); err != nil {
+		if err := labeler.Close(); err != nil {
 			fmt.Fprintln(os.Stderr, "predict.py exited with error:", err)
 		}
 		fmt.Printf("predictions -> %s", predictionsPath)

@@ -22,13 +22,21 @@
 // this never touches real payload bytes, consistent with the project's
 // no-DPI premise throughout.
 //
+// Packet capture goes through libpcap (capture_pcap.go) wherever cgo is
+// available, and through a pure-Go Linux AF_PACKET raw socket
+// (capture_linux_nocgo.go) when built with CGO_ENABLED=0 -- that's the
+// router build: cross-compiled on a Mac as one static binary, for an OpenWrt
+// router with no C compiler. Both truncate to the same 200-byte snaplen
+// and report the true original packet length.
+//
 // Requires root (or equivalent capture capabilities) to open the
 // interface -- same privilege requirement as the Python version's tcpdump
 // subprocess, just now needed directly by this binary instead.
 //
-// With -model-dir, every closed window is also piped straight to
-// src/inference/predict.py (see live_capture_go/inference), which labels it
-// and appends the prediction to live_runs/live_predictions_..._.csv. In that
+// With -model-dir, every closed window is also labeled and the prediction
+// appended to live_runs/live_predictions_..._.csv (see live_capture_go/
+// inference): an XGBoost .json model is scored natively in Go, no Python
+// needed; an AutoGluon directory is piped to src/inference/predict.py. In that
 // mode the stats CSV is skipped unless -output is also given explicitly.
 //
 // Usage (run from src/, where go.mod lives):
@@ -36,6 +44,7 @@
 //	sudo go run ./live_capture_go/live -interface eth0
 //	sudo go run ./live_capture_go/live -interface eth0 -window-seconds 10 -output live_stats.csv
 //	sudo go run ./live_capture_go/live -interface eth0 -model-dir ../AutogluonModels/window_10s_19468sessions_no_applayer_xgb22
+//	sudo go run ./live_capture_go/live -interface eth0 -model-dir ../XGBoostModels/10s_no_applayer/final_option_c.json
 package main
 
 import (
@@ -49,8 +58,6 @@ import (
 
 	core "csc5991/core_go"
 	"csc5991/live_capture_go/inference"
-
-	"github.com/google/gopacket/pcap"
 )
 
 const labelPlaceholder = "live_unlabeled"
@@ -70,7 +77,7 @@ func main() {
 
 	runStartedAt := time.Now().Format("20060102_150405")
 
-	handle, err := pcap.OpenLive(*iface, snaplen, true, pcap.BlockForever)
+	handle, err := openCapture(*iface, snaplen)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, "error opening interface (needs root/capture capabilities):", err)
 		os.Exit(1)
@@ -100,7 +107,7 @@ func main() {
 	if inferenceFlags.Enabled() {
 		os.MkdirAll("live_runs", 0755)
 		cfg := inferenceFlags.Config(fmt.Sprintf("live_runs/live_predictions_%d_second_window_%s.csv", int(*windowSeconds), runStartedAt))
-		out.sidecar, err = inference.Start(cfg, core.CSVHeader())
+		out.labeler, err = inference.StartLabeler(cfg, core.CSVHeader())
 		if err != nil {
 			fmt.Fprintln(os.Stderr, "error starting inference:", err)
 			os.Exit(1)
@@ -142,20 +149,20 @@ func main() {
 }
 
 // sinks is where each closed window row goes: the stats CSV, the
-// inference sidecar, or both -- whichever were enabled by the flags.
+// labeler (Go-native XGBoost or the predict.py sidecar), or both -- whichever were enabled by the flags.
 type sinks struct {
 	stats           *csv.Writer
 	statsPath       string
-	sidecar         *inference.Sidecar
+	labeler         inference.Labeler
 	predictionsPath string
 	rowsWritten     int
 }
 
 func (s *sinks) describe() string {
 	switch {
-	case s.stats != nil && s.sidecar != nil:
+	case s.stats != nil && s.labeler != nil:
 		return s.statsPath + " + predictions " + s.predictionsPath
-	case s.sidecar != nil:
+	case s.labeler != nil:
 		return "predictions " + s.predictionsPath
 	default:
 		return s.statsPath
@@ -166,7 +173,7 @@ func (s *sinks) describe() string {
 // -- this goroutine never blocks on window computation, matching the
 // Python version's "tcpdump never pauses" guarantee, just without needing
 // an external process to get it.
-func captureLoop(handle *pcap.Handle, out chan<- *core.Packet) {
+func captureLoop(handle captureHandle, out chan<- *core.Packet) {
 	for {
 		data, ci, err := handle.ReadPacketData()
 		if err != nil {
@@ -187,9 +194,9 @@ func (s *sinks) finish(acc *core.WindowAccumulator) {
 	if acc != nil { // nil means we never saw a single parseable packet
 		s.writeRow(acc.Flush())
 	}
-	if s.sidecar != nil {
+	if s.labeler != nil {
 		fmt.Println("waiting for remaining predictions...")
-		if err := s.sidecar.Close(); err != nil {
+		if err := s.labeler.Close(); err != nil {
 			fmt.Fprintln(os.Stderr, "predict.py exited with error:", err)
 		}
 	}
@@ -205,8 +212,8 @@ func (s *sinks) writeRow(row core.WindowRow) {
 		}
 		s.stats.Flush()
 	}
-	if s.sidecar != nil {
-		s.sidecar.Send(values)
+	if s.labeler != nil {
+		s.labeler.Send(values)
 	}
 	s.rowsWritten++
 	fmt.Printf("window %d closed\n", row.WindowIndex)

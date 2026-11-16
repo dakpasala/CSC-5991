@@ -188,7 +188,9 @@ class PredictionsWriter:
             os.makedirs(directory, exist_ok=True)
         self._needs_header = not os.path.isfile(path)
         self._file = open(path, "a", newline="")
-        self._writer = csv.writer(self._file)
+        # "\n", not csv's default "\r\n": matches pandas-written CSVs and the
+        # Go-native PredictionsWriter, so files from either side diff cleanly.
+        self._writer = csv.writer(self._file, lineterminator="\n")
         self._classes = None
 
     def write(self, result):
