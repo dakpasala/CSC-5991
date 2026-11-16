@@ -37,7 +37,7 @@ import (
 type Config struct {
 	Python     string // interpreter with autogluon.tabular installed, e.g. ../.venv-infer/bin/python
 	Script     string // path to predict.py
-	ModelDir   string // saved TabularPredictor directory
+	ModelDir   string // saved TabularPredictor directory, or an XGBoost .json model
 	OutputPath string // predictions CSV that predict.py appends to
 }
 
@@ -53,7 +53,7 @@ type Flags struct {
 // RegisterFlags must be called before flag.Parse().
 func RegisterFlags() *Flags {
 	return &Flags{
-		ModelDir: flag.String("model-dir", "", "AutoGluon predictor directory; when set, every window is also labeled by predict.py"),
+		ModelDir: flag.String("model-dir", "", "AutoGluon predictor directory or XGBoost .json (train_xgboost_ablation.py --final); when set, every window is also labeled by predict.py"),
 		Python:   flag.String("python", "../.venv-infer/bin/python", "Python interpreter with autogluon.tabular installed (used with -model-dir)"),
 		Script:   flag.String("predict-script", "inference/predict.py", "path to predict.py (used with -model-dir)"),
 		Output:   flag.String("predictions-output", "", "predictions CSV path (used with -model-dir; default: live_runs/<name>_predictions_..._.csv)"),
