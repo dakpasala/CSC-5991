@@ -51,6 +51,23 @@ Two kinds of experiments, both written to one results CSV:
      The rfe experiment is named "rfe" for the defaults, otherwise
      "rfe_<unit>_from_<start>", so several rfe runs can share one CSV.
 
+Final model (--final <feature list file>): instead of running experiments,
+train ONE model on exactly the features listed in the file (one name per
+line; blank lines and # comments ignored; column order is kept as written).
+Two stages, so test stays untouched:
+  1. fit on the fit split with early stopping on val -- this picks the
+     number of boosting rounds, and its val accuracy is what gets reported
+     as val_accuracy (the only honest val number, since stage 2 trains on
+     val);
+  2. refit from scratch on fit + val combined, with the round count scaled
+     by (fit + val rows) / fit rows, no early stopping. Skip with
+     --no-refit to keep the stage-1 model instead.
+The final model is scored on test once and saved as
+XGBoostModels/<run>/final_<name>.json alongside final_<name>.features.json
+(the exact input column order the model expects -- a Go evaluator must feed
+values in this order) and classes.json. Ready-made lists for the candidate
+options are in benchmarks/feature_sets/.
+
 Router cost: a feature's memory cost on a router is per distribution
 FAMILY, not per column. min/max/mean can be updated one packet at a time in
 O(1) memory, but median/p25/p75 need every value of the window kept in a
@@ -85,6 +102,8 @@ Usage (from the repo root, on the box that has the CSV):
     python src/train_xgboost_ablation.py --experiments streaming_only,no_total_streaming
     python src/train_xgboost_ablation.py --experiments rfe --rfe-start no_total
     python src/train_xgboost_ablation.py --experiments rfe --rfe-start no_total --rfe-unit family
+    python src/train_xgboost_ablation.py --final benchmarks/feature_sets/option_c.txt
+    python src/train_xgboost_ablation.py --final my_features.txt --max-depth 6
     python src/train_xgboost_ablation.py --csv session_statistics_10_second_window.csv --variant no_applayer  # strips app-layer cols if present
 """
 
@@ -135,6 +154,20 @@ def router_cost(features):
             if stat in BUFFERED_STATS:
                 buffered.add(base)
     return len(families), len(buffered)
+
+
+def read_feature_file(path):
+    """Feature names from a --final file: one per line, blank lines and
+    # comments ignored, order preserved, duplicates rejected."""
+    with open(path) as f:
+        names = [line.split("#", 1)[0].strip() for line in f]
+    names = [n for n in names if n]
+    duplicates = sorted({n for n in names if names.count(n) > 1})
+    if duplicates:
+        raise SystemExit(f"{path}: duplicate features: {duplicates}")
+    if not names:
+        raise SystemExit(f"{path}: no features listed")
+    return names
 
 
 def elimination_units(features, unit):
@@ -225,6 +258,35 @@ class Trainer:
         model.fit(self.X("fit", features), self.y("fit"), eval_set=[(self.X("val", features), self.y("val"))], verbose=False)
         return model, time.time() - start
 
+    def fit_fixed_rounds_on_fit_and_val(self, features, n_rounds):
+        """Refit from scratch on fit + val combined, for a fixed number of
+        rounds (no early stopping -- val is training data here)."""
+        model = xgb.XGBClassifier(
+            n_estimators=n_rounds,
+            learning_rate=self.args.learning_rate,
+            max_depth=self.args.max_depth,
+            tree_method="hist",
+            n_jobs=self.args.n_jobs,
+            random_state=self.args.seed,
+        )
+        X = pd.concat([self.X("fit", features), self.X("val", features)], ignore_index=True)
+        y = np.concatenate([self.y("fit"), self.y("val")])
+        start = time.time()
+        model.fit(X, y, verbose=False)
+        return model, time.time() - start
+
+    def test_metrics(self, model, features):
+        X_test = self.X("test", features)
+        start = time.time()
+        test_pred = model.predict(X_test)
+        predict_us = (time.time() - start) / len(X_test) * 1e6
+        y_test = self.y("test")
+        return {
+            "test_accuracy": accuracy_score(y_test, test_pred),
+            "test_macro_f1": f1_score(y_test, test_pred, average="macro"),
+            "predict_us_per_row": predict_us,
+        }
+
     def evaluate(self, model, features):
         val_acc = accuracy_score(self.y("val"), model.predict(self.X("val", features)))
         X_test = self.X("test", features)
@@ -289,6 +351,66 @@ def append_result(path, row):
     new.to_csv(path, mode="a", header=not os.path.isfile(path), index=False)
 
 
+def run_final(args, trainer, all_features, results_path, model_dir):
+    features = read_feature_file(args.final)
+    unknown = [f for f in features if f not in all_features]
+    if unknown:
+        raise SystemExit(f"{args.final}: not columns in the dataset: {unknown}")
+    name = "final_" + os.path.splitext(os.path.basename(args.final))[0]
+    n_families, n_buffered = router_cost(features)
+    print(f"{name}: {len(features)} features from {args.final}, {n_families} families ({n_buffered} buffered)")
+
+    # Stage 1: early stopping on val picks the round count.
+    model, fit_s = trainer.fit(features)
+    stage1 = trainer.evaluate(model, features)
+    rounds = model.best_iteration + 1
+    print(
+        f"  stage 1 (fit split, early stopped): {rounds} rounds, val {stage1['val_accuracy']:.4f}, "
+        f"test {stage1['test_accuracy']:.4f}, {fit_s:.0f}s"
+    )
+
+    if args.no_refit:
+        final_model, final_rounds, final = model, rounds, stage1
+    else:
+        # Stage 2: refit on fit + val with proportionally more rounds.
+        n_fit, n_val = len(trainer.splits["fit"][0]), len(trainer.splits["val"][0])
+        final_rounds = max(1, round(rounds * (n_fit + n_val) / n_fit))
+        final_model, refit_s = trainer.fit_fixed_rounds_on_fit_and_val(features, final_rounds)
+        final = trainer.test_metrics(final_model, features)
+        fit_s += refit_s
+        print(f"  stage 2 (refit on fit+val): {final_rounds} rounds, test {final['test_accuracy']:.4f}, {refit_s:.0f}s")
+
+    trainer.save(final_model, name)
+    with open(os.path.join(model_dir, f"{name}.features.json"), "w") as f:
+        json.dump(features, f, indent=1)
+    append_result(
+        results_path,
+        {
+            "experiment": name,
+            "step": "",
+            "n_features": len(features),
+            "val_accuracy": round(stage1["val_accuracy"], 6),
+            "test_accuracy": round(final["test_accuracy"], 6),
+            "test_macro_f1": round(final["test_macro_f1"], 6),
+            "predict_us_per_row": round(final["predict_us_per_row"], 6),
+            "best_iteration": final_rounds,
+            "fit_seconds": round(fit_s, 1),
+            "dist_families": n_families,
+            "buffered_families": n_buffered,
+            "dropped": "",
+            "features": ";".join(features),
+        },
+    )
+    print(
+        f"\n{name}: test accuracy {final['test_accuracy']:.4f}, macro F1 {final['test_macro_f1']:.4f} "
+        f"(val {stage1['val_accuracy']:.4f} from stage 1)\n"
+        f"model    -> {model_dir}/{name}.json\n"
+        f"features -> {model_dir}/{name}.features.json (input column order)\n"
+        f"classes  -> {model_dir}/classes.json\n"
+        f"results  -> {results_path}"
+    )
+
+
 def main():
     # Line-buffer stdout so each model's result line shows up immediately
     # under `| tee` / tmux logging; Python block-buffers stdout when it isn't
@@ -314,6 +436,8 @@ def main():
     parser.add_argument("--learning-rate", type=float, default=0.1)
     parser.add_argument("--max-depth", type=int, default=8)
     parser.add_argument("--n-jobs", type=int, default=-1)
+    parser.add_argument("--final", metavar="FEATURE_FILE", default=None, help="train one final model on the features listed in this file instead of running experiments")
+    parser.add_argument("--no-refit", action="store_true", help="--final: keep the early-stopped fit-split model instead of refitting on fit+val")
     args = parser.parse_args()
 
     experiments = [e.strip() for e in args.experiments.split(",") if e.strip()]
@@ -340,6 +464,10 @@ def main():
         json.dump(classes, f)  # class index -> label, needed to decode predictions from the saved JSON models
     all_features = list(splits["fit"][0].columns)
     trainer = Trainer(splits, classes, args, model_dir)
+
+    if args.final:
+        run_final(args, trainer, all_features, results_path, model_dir)
+        return
 
     def run(experiment, features, step="", dropped=()):
         model, fit_s = trainer.fit(features)

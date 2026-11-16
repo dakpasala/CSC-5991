@@ -169,6 +169,25 @@ tested yet.
   buffers. `total_*` adds nothing even here (0.9811
   vs. 0.9810).
 
+## Train a final model on one option
+
+Each option's feature list is in `benchmarks/feature_sets/` (`option_b.txt`, `option_c.txt`,
+`option_d.txt`): one feature per line, `#` comments allowed. To train one XGBoost on exactly
+those features (from the repo root, on the box with the dataset):
+
+```bash
+python src/train_xgboost_ablation.py --final benchmarks/feature_sets/option_c.txt
+python src/train_xgboost_ablation.py --final benchmarks/feature_sets/option_c.txt --max-depth 6   # smaller model
+```
+
+Any custom list works the same way: write the feature names to a `.txt` file and pass it to
+`--final`. The script runs in two stages. First it trains on the fit split with early stopping
+on validation, which picks the number of rounds. Then it retrains on fit + validation with
+proportionally more rounds, unless `--no-refit` is given. The final model is scored on test
+once. It writes `XGBoostModels/10s_no_applayer/final_<name>.json` (the model),
+`final_<name>.features.json` (the input column order the model expects) and `classes.json`,
+and appends a `final_<name>` row to the results CSV.
+
 ## Elimination curves
 
 ### RFE from `no_total_streaming` (by feature, no buffers throughout)

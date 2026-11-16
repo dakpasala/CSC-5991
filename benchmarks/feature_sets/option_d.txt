@@ -1,0 +1,13 @@
+# Option D: minimal, no buffers, no TCP sequence/RTT tracking (RFE from no_total_streaming, step 9)
+# 8 features, 3 distribution families, 0 full buffers
+# ablation model: val 0.9714, test 0.9705, macro F1 0.9721
+# Source: benchmarks/xgb_ablation_10s_no_applayer.csv. Train with:
+#   python src/train_xgboost_ablation.py --final benchmarks/feature_sets/option_d.txt
+frac_udp
+up_byte_count
+up_psh_count
+up_payload_size_max
+down_payload_size_mean
+down_recv_window_min
+down_recv_window_max
+down_recv_window_mean

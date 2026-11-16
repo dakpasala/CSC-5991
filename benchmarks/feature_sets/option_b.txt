@@ -1,0 +1,56 @@
+# Option B: no buffers, most accurate (no_total_streaming)
+# 51 features, 9 distribution families, 0 full buffers
+# ablation model: val 0.9815, test 0.9810, macro F1 0.9836
+# Source: benchmarks/xgb_ablation_10s_no_applayer.csv. Train with:
+#   python src/train_xgboost_ablation.py --final benchmarks/feature_sets/option_b.txt
+num_flows
+num_new_flows
+num_continuing_flows
+frac_udp
+up_packet_count
+up_byte_count
+up_throughput_bps
+up_retransmission_count
+up_out_of_order_count
+up_syn_count
+up_ack_count
+up_rst_count
+up_psh_count
+up_urg_count
+up_payload_size_min
+up_payload_size_max
+up_payload_size_mean
+up_packet_size_min
+up_packet_size_max
+up_packet_size_mean
+up_recv_window_min
+up_recv_window_max
+up_recv_window_mean
+up_interarrival_time_min
+up_interarrival_time_max
+up_interarrival_time_mean
+down_packet_count
+down_byte_count
+down_throughput_bps
+down_retransmission_count
+down_out_of_order_count
+down_syn_count
+down_ack_count
+down_rst_count
+down_psh_count
+down_urg_count
+down_payload_size_min
+down_payload_size_max
+down_payload_size_mean
+down_packet_size_min
+down_packet_size_max
+down_packet_size_mean
+down_recv_window_min
+down_recv_window_max
+down_recv_window_mean
+down_interarrival_time_min
+down_interarrival_time_max
+down_interarrival_time_mean
+rtt_ms_min
+rtt_ms_max
+rtt_ms_mean

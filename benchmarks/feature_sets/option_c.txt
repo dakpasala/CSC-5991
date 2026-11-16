@@ -1,0 +1,27 @@
+# Option C: no buffers, recommended (RFE from no_total_streaming, step 4)
+# 22 features, 9 distribution families, 0 full buffers
+# ablation model: val 0.9808, test 0.9799, macro F1 0.9824
+# Source: benchmarks/xgb_ablation_10s_no_applayer.csv. Train with:
+#   python src/train_xgboost_ablation.py --final benchmarks/feature_sets/option_c.txt
+frac_udp
+up_byte_count
+up_psh_count
+up_payload_size_max
+up_packet_size_max
+up_packet_size_mean
+up_recv_window_min
+up_recv_window_max
+up_interarrival_time_min
+up_interarrival_time_max
+down_byte_count
+down_ack_count
+down_psh_count
+down_payload_size_mean
+down_packet_size_min
+down_packet_size_mean
+down_recv_window_min
+down_recv_window_max
+down_recv_window_mean
+down_interarrival_time_min
+rtt_ms_min
+rtt_ms_max
