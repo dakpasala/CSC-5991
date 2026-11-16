@@ -16,7 +16,8 @@ One run = one service:
      forced if autoplay is blocked), logging playback state every few
      seconds to live_runs/eval_<tag>_timeline.csv here;
   3. after --minutes, close the browser, stop live-router with SIGINT (it
-     flushes its last window), and copy the predictions back;
+     flushes its last window), and copy the predictions back, plus the raw
+     per-window stats (live_runs/eval_<tag>_stats.csv) for diagnosis;
   4. score them: expected label vs. predicted label for every window that
      started after playback began (plus --warmup-windows more, since the
      first windows are partial and join connections mid-stream), printed and
@@ -85,6 +86,7 @@ def ssh(target, command, check=True):
 
 def start_live_router(target, model, interface, remote_predictions):
     log = remote_predictions.replace(".csv", ".log")
+    stats = remote_predictions.replace(".csv", "_stats.csv")
     # nohup if BusyBox has it; stdin from /dev/null so ssh returns at once.
     # Go re-enables SIGINT even though a background job starts with it
     # ignored (os/signal.Notify), so stop_live_router's kill -INT still gets
@@ -92,7 +94,8 @@ def start_live_router(target, model, interface, remote_predictions):
     cmd = (
         f"cd {REMOTE_DIR} && N=$(command -v nohup || true); "
         f"$N ./live-router -interface {shlex.quote(interface)} -model-dir {shlex.quote(model)} "
-        f"-predictions-output {shlex.quote(remote_predictions)} > {shlex.quote(log)} 2>&1 < /dev/null & echo $!"
+        f"-predictions-output {shlex.quote(remote_predictions)} -output {shlex.quote(stats)} "
+        f"> {shlex.quote(log)} 2>&1 < /dev/null & echo $!"
     )
     pid = ssh(target, cmd).strip().splitlines()[-1]
     time.sleep(3)
@@ -297,6 +300,12 @@ def main():
     with open(local_predictions, "w") as f:
         f.write(ssh(args.router, f"cat {REMOTE_DIR}/{remote_predictions}"))
     print(f"predictions -> {local_predictions} (copied from {args.router}:{REMOTE_DIR}/{remote_predictions})")
+    # Raw per-window feature rows too (same ~130 columns as the training CSVs),
+    # so a bad run can be diagnosed from the numbers, not just the labels.
+    stats_name = remote_predictions.replace(".csv", "_stats.csv")
+    with open(stats_name, "w") as f:
+        f.write(ssh(args.router, f"cat {REMOTE_DIR}/{stats_name}"))
+    print(f"window stats -> {stats_name}")
 
     summary = score(local_predictions, expected, play_started - router_started, args.warmup_windows)
     print_summary(summary)
