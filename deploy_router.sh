@@ -3,7 +3,13 @@
 # the model, in one step. Run from the repo root on the Mac:
 #
 #   ./deploy_router.sh
-#   MODEL=XGBoostModels/10s_no_applayer/final_option_d.json ./deploy_router.sh
+#   MODEL=XGBoostModels/10s_no_applayer/all.json ./deploy_router.sh
+#   MODEL=XGBoostModels/10s_no_applayer/rfe_feature_from_no_total_streaming_step06.json ./deploy_router.sh
+#
+# Any XGBoost .json from train_xgboost_ablation.py works: --final models and
+# every ablation model (their early-stopping best_iteration is honored by the
+# Go evaluator). Each model lands under its own name in model/, so several
+# can sit on the router at once; redeploying just recopies the binary.
 #
 # The router (OpenWrt 25.12, MediaTek Filogic, aarch64 Cortex-A53, ~1GB RAM,
 # no Python/gcc/git) gets a single static binary: CGO_ENABLED=0 makes the
@@ -25,16 +31,19 @@ INTERFACE=${INTERFACE:-lan2}
 
 model_dir=$(dirname "$MODEL")
 model_name=$(basename "$MODEL" .json)
-for f in "$MODEL" "$model_dir/$model_name.features.json" "$model_dir/classes.json"; do
-  [[ -f $f ]] || { echo "missing $f (train it with: python src/train_xgboost_ablation.py --final ...)" >&2; exit 1; }
+for f in "$MODEL" "$model_dir/classes.json"; do
+  [[ -f $f ]] || { echo "missing $f (train a model with: python src/train_xgboost_ablation.py --final ...)" >&2; exit 1; }
 done
+# Only --final models have a .features.json; ablation models carry their
+# feature names inside the model JSON, which is all the Go evaluator needs.
+features_json="$model_dir/$model_name.features.json"
 
 echo "building live tool for linux/arm64 (static, no cgo)..."
 mkdir -p build
 (cd src && CGO_ENABLED=0 GOOS=linux GOARCH=arm64 go build -trimpath -ldflags="-s -w" -o ../build/live-router ./live_capture_go/live)
 ls -lh build/live-router | awk '{print "  build/live-router:", $5}'
 
-control=$(mktemp -u "${TMPDIR:-/tmp}/csc5991-router.XXXXXX")
+control=$(mktemp -u /tmp/csc5991-router.XXXXXX)   # short path: unix socket paths max out around 104 chars
 ssh_opts=(-o ControlMaster=auto -o "ControlPath=$control" -o ControlPersist=120)
 trap 'ssh "${ssh_opts[@]}" -O exit "$ROUTER" 2>/dev/null || true' EXIT
 
@@ -46,7 +55,7 @@ echo "copying to $ROUTER:$REMOTE_DIR ..."
 ssh "${ssh_opts[@]}" "$ROUTER" "mkdir -p '$REMOTE_DIR/model' '$REMOTE_DIR/live_runs'"
 copy build/live-router "$REMOTE_DIR/live-router"
 copy "$MODEL" "$REMOTE_DIR/model/$model_name.json"
-copy "$model_dir/$model_name.features.json" "$REMOTE_DIR/model/$model_name.features.json"
+[[ -f $features_json ]] && copy "$features_json" "$REMOTE_DIR/model/$model_name.features.json"
 copy "$model_dir/classes.json" "$REMOTE_DIR/model/classes.json"
 ssh "${ssh_opts[@]}" "$ROUTER" "chmod +x '$REMOTE_DIR/live-router' && ls -l '$REMOTE_DIR' '$REMOTE_DIR/model'"
 
