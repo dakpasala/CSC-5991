@@ -131,6 +131,14 @@ def open_browser(disable_quic, chromium, chromedriver):
         "--window-size=1920,1080",  # a real-looking viewport, so players pick normal quality
         "--no-first-run",
         "--disable-dev-shm-usage",
+        # A fresh headless profile otherwise spends the first minutes
+        # downloading components, safe-browsing lists and field trials --
+        # megabytes of non-video TCP traffic in the same windows as the video.
+        "--disable-background-networking",
+        "--disable-component-update",
+        "--disable-sync",
+        "--disable-default-apps",
+        "--disable-domain-reliability",
     ):
         opts.add_argument(arg)
     if disable_quic:
@@ -181,8 +189,18 @@ def wait_for_playback(driver, timeout_s=60):
 # --- scoring ------------------------------------------------------------------
 
 
-def score(predictions_path, expected, skip_before_s, warmup_windows):
+def score(predictions_path, expected, skip_before_s, warmup_windows, stats_path=None, min_packets=100):
+    """Window accuracy over every window after playback started, and -- when
+    the raw stats are available -- over just the active windows (at least
+    min_packets packets). Once its buffer is full, YouTube fetches in bursts,
+    so many 10s windows hold little but background traffic; 22-29% of the
+    training set's YouTube windows have under 100 packets too. Active-window
+    accuracy is how a deployed classifier would be judged: it should label
+    the streaming, not the silence between bursts."""
     df = pd.read_csv(predictions_path)
+    if stats_path and os.path.isfile(stats_path):
+        stats = pd.read_csv(stats_path, usecols=["window_index", "total_packet_count", "frac_udp", "down_packet_size_max"])
+        df = df.merge(stats, on="window_index", how="left")
     if df.empty:
         raise SystemExit(f"{predictions_path} has no predictions")
     usable = df[df.window_start_s >= skip_before_s].iloc[warmup_windows:]
@@ -206,6 +224,21 @@ def score(predictions_path, expected, skip_before_s, warmup_windows):
         summary["mean_confidence_wrong"] = round(usable.confidence[~correct].mean(), 4) if (~correct).any() else None
         if expected.startswith("youtube"):
             summary["any_youtube_accuracy"] = round(usable.predicted_label.str.startswith("youtube").mean(), 4)
+    if "total_packet_count" in usable.columns:
+        active = usable[usable.total_packet_count >= min_packets]
+        summary["active_windows"] = f"{len(active)} of {len(usable)} (>= {min_packets} packets)"
+        if not active.empty:
+            summary["active_label_counts"] = "; ".join(f"{k}={v}" for k, v in active.predicted_label.value_counts().items())
+            if expected is not None:
+                summary["active_window_accuracy"] = round((active.predicted_label == expected).mean(), 4)
+                if expected.startswith("youtube"):
+                    summary["active_any_youtube_accuracy"] = round(active.predicted_label.str.startswith("youtube").mean(), 4)
+        # Sanity check for router-side packet merging (GRO/GSO): wire frames
+        # are at most 1514 bytes, and so is everything in the training data.
+        oversized = (usable.down_packet_size_max > 1514).sum()
+        summary["windows_with_packets_over_1514B"] = int(oversized)
+        if oversized:
+            summary["warning"] = "packets larger than an Ethernet frame were captured: GRO/GSO is on at the router; see ethtool -K ... gro off"
     return summary
 
 
@@ -233,6 +266,8 @@ def main():
     parser.add_argument("--model", default="model/final_option_c.json", help="model path on the router, relative to /root/csc5991")
     parser.add_argument("--interface", default="lan2")
     parser.add_argument("--warmup-windows", type=int, default=1, help="extra windows skipped after playback starts")
+    parser.add_argument("--min-packets", type=int, default=100, help="packets a window needs to count as active")
+    parser.add_argument("--stats", metavar="STATS_CSV", help="with --score: the matching raw window stats, for active-window accuracy")
     parser.add_argument("--chromium", default="/usr/bin/chromium")
     parser.add_argument("--chromedriver", default="/usr/bin/chromedriver")
     parser.add_argument("--score", metavar="PREDICTIONS_CSV", help="only score an existing predictions file (no browser, no router)")
@@ -243,7 +278,7 @@ def main():
         expected = "youtube_tcp"
 
     if args.score:
-        print_summary(score(args.score, expected, 0, args.warmup_windows))
+        print_summary(score(args.score, expected, 0, args.warmup_windows, args.stats, args.min_packets))
         return
     if args.service != "idle" and not args.url:
         parser.error("--url is required unless --service idle")
@@ -307,7 +342,7 @@ def main():
         f.write(ssh(args.router, f"cat {REMOTE_DIR}/{stats_name}"))
     print(f"window stats -> {stats_name}")
 
-    summary = score(local_predictions, expected, play_started - router_started, args.warmup_windows)
+    summary = score(local_predictions, expected, play_started - router_started, args.warmup_windows, stats_name, args.min_packets)
     print_summary(summary)
     append_summary(
         "live_runs/eval_summary.csv",
