@@ -5,9 +5,9 @@ Why a single XGBoost model and not AutoGluon: the deployed model is already
 a single XGBoost (XGBoost_r22_BAG_L1 from the no_applayer run, val 0.984536
 vs. the full 70GB stack's 0.985771), and one XGBoost fit takes minutes
 instead of the ~2 weeks a best_quality AutoGluon run takes, so many feature
-sets can be compared. XGBoost also saves to a JSON format a Go library
-(leaves) can load, so the winning model can go straight to the pure-Go
-router pipeline.
+sets can be compared. XGBoost also saves to a JSON format that the Go
+evaluator (src/live_capture_go/xgbmodel) loads directly, so the winning model
+can go straight to the pure-Go router pipeline.
 
 Splits (all session-aware, by session_id -- see train_autogluon.py):
   - test: the exact same held-out sessions train_autogluon.py uses
@@ -93,7 +93,7 @@ Outputs (repo-root-relative, like train_autogluon.py):
       appended misaligned.
   XGBoostModels/<window>s_<variant>/<experiment>[_step<k>].json -- every
       trained model, in XGBoost's native JSON format (load in Go with
-      leaves, or in Python with xgb.XGBClassifier().load_model)
+      src/live_capture_go/xgbmodel, or in Python with xgb.XGBClassifier().load_model)
 
 Usage (from the repo root, on the box that has the CSV):
     python src/train_xgboost_ablation.py

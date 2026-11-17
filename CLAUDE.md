@@ -12,9 +12,18 @@ window traffic-statistics CSV from real per-session capture directories (raw `.p
 browser-level telemetry), for four streaming services (YouTube split into
 `youtube_tcp`/`youtube_quic`, Netflix, Twitch, Amazon). As of November 2026 a full
 AutoGluon training run on that data has finished (`no_applayer` variant, 19,468 sessions,
-0.98 test accuracy), a single 333MB XGBoost model from it is deployed locally, and the Go
-live-capture/replay tools can label every window in real time through a Python inference
-sidecar — see "Inference" below. Thesis writing has started in `thesis/` (gitignored, local only).
+0.98 test accuracy). Single-XGBoost feature ablation then cut the feature set: option C has
+22 features and 0 buffers, at 0.980 test accuracy.
+
+The classifier now runs **live on the professor's OpenWrt router** as one static Go binary: Go-native
+XGBoost, and selective feature extraction that computes only the model's features. It is evaluated with
+known ground truth (headless Chromium on the Linux box behind the router).
+
+The headline finding is drift. **Fingerprint features** (TCP receive window, RTT, TCP flags,
+retransmission/out-of-order) changed since the 2018–19 data. Models that use them fail on live Twitch
+(0.06–0.38). `final_shape_streaming` (28 traffic-shape features, 0.964 offline) is the most accurate model
+live (Twitch 0.88, YouTube QUIC 1.00) and among the cheapest: no per-flow state, ~37 MB, <2 % CPU.
+See "Router deployment" below and AGENTS.md. Thesis writing has started in `thesis/` (gitignored, local only).
 
 Two earlier phases are archived, not active. Both directories were removed from the working
 tree in commit `e6953ec`; recover them from git history (`git show e6953ec^:<path>`) if needed:
@@ -177,6 +186,55 @@ Live on the Mac's `en0` with YouTube playing: 11 of 13 windows labeled YouTube (
 nothing streaming gets ~0.5 confidence: the model is closed-world and always picks one of the 5
 classes. Ctrl+C shutdown loses no predictions and leaves no `predict.py` process behind.
 
+## XGBoost feature ablation (`src/train_xgboost_ablation.py`)
+
+Trains plain single XGBoost models in minutes. The test sessions are the same as AutoGluon's.
+**Every decision is made on a session-aware validation split**; test is reported only.
+
+- Fixed sets, RFE by feature or by distribution family, and router-cost columns (`dist_families`,
+  `buffered_families`).
+- Router cost is per **family**: min/max/mean are O(1), while median/p25/p75 need a full buffer.
+- `--final <feature list>` trains one deployable model:
+  - fit with early stopping, then refit on fit + validation;
+  - writes `XGBoostModels/10s_no_applayer/final_<name>.json` + `.features.json` + `classes.json`.
+- Feature lists live in `benchmarks/feature_sets/`, and results in
+  `benchmarks/xgb_ablation_10s_no_applayer.csv` and `benchmarks/feature_selection_results.md`.
+- The Linux box is shared, so cap threads with `--n-jobs` and pin with `taskset -c <cores>` (~10 cores).
+- A low-information feature set can run to 2,000 rounds. Use `--learning-rate 0.3 --max-rounds 600`.
+
+## Router deployment and live evaluation
+
+- **Router.** OpenWrt aarch64, ~1 GB RAM, no swap, no Python/gcc. Reached as `root@192.168.1.1` from the
+  Linux box, or `prs-router` from the Mac. Captures on `lan2`. **GRO must be off and reverts on reboot**:
+  `ethtool -K eth1 gro off; ethtool -K lan2 gro off`.
+- **`./deploy_router.sh`** (Mac, repo root):
+  - cross-compiles `live-router` (`CGO_ENABLED=0`, pure-Go AF_PACKET capture, 3.6 MB static);
+  - copies it plus the model to `/root/csc5991/`;
+  - `MODEL=<json>` picks the model.
+- **`live-router`.** A `.json` `-model-dir` is scored by the Go evaluator (`live_capture_go/xgbmodel`,
+  identical to xgboost). Only the model's features are computed (`core_go/selective.go`;
+  `-all-features` overrides). Other flags:
+  - `-port-direction`: flow direction by service port; default on live, off in replay, for training
+    parity;
+  - `-perf-output`: per-window CPU/memory/timing;
+  - `-max-duration`: safety stop.
+- **`src/live_capture/stream_and_check.py`** (Linux box) runs one ground-truth test:
+  1. start `live-router` over ssh;
+  2. play a video in headless Chromium (quiet flags, bot detection masked, stall
+     screenshots/reloads);
+  3. stop and score it.
+
+  The number that measures the classifier is **playing-window accuracy**. Results go to
+  `live_runs/eval_*`; summaries are kept in `live_runs/tests/*.md`, and raw runs are deleted after
+  summarizing.
+- **Results.**
+  - Option C: 1.00 on YouTube QUIC (3 runs), but 0.19 on Twitch.
+  - The all-features model was the worst live: the QUIC ACK ratio dropped from 0.505 to 0.176
+    upload/download packets since 2018–19.
+  - Without fingerprint features: `final_shape_streaming` Twitch 0.88, YouTube QUIC 1.00;
+    `final_option_c_no_fingerprint` YouTube TCP 0.88.
+  - Single runs except option C/YouTube.
+
 ## Output folder conventions: `benchmarks/` and `live_runs/`
 
 Every benchmarking/feature-importance output (`benchmark_feature_costs.py`,
@@ -246,7 +304,18 @@ from `src/`: `go run ./benchmarking -source-dir /mnt/NAS/salmo-trutta/traces -nu
   QUIC did *not* turn out to be the trivially easy class AGENTS.md predicted: Amazon and
   Twitch score 1.00, while `youtube_quic` sits at 0.98 with the TCP-based classes.
 - Session-aware splitting (train/test by `session_id`, not by row) still applies once
-  this feeds a model, same reasoning as the earlier phase.
+  this feeds a model, same reasoning as the earlier phase. AutoGluon's *internal* bagging
+  splits by row, so its `score_val` is optimistic; pass session IDs as `groups` next time.
+- **Choose on validation, report test.** Picking a model, feature set or step by test
+  accuracy and then reporting that test accuracy is data snooping.
+- **Offline accuracy does not predict live accuracy here.** Prefer traffic-shape features
+  over fingerprint features: TCP receive window, RTT, TCP flag counts, retransmission/
+  out-of-order. They encode the servers, client OS and capture point, all of which changed
+  since 2018–19. RTT/retransmission also need per-flow sequence state, the main memory cost
+  on the router.
+- **Live capture must measure what training measured.** GRO off at the router (≤1,514 B
+  packets), and flow direction checked: upload bytes ≪ download bytes for video.
+- **Router cost is counted in distribution buffers and per-flow state, not feature count.**
 
 ## Maintenance expectations
 

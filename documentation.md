@@ -400,32 +400,282 @@ professor.
 
 ---
 
+## Step 11: Feature importance, then choosing features with single XGBoost models
+
+The permutation feature importance for the `no_applayer` run finished after
+about 52 hours. It was computed for the whole `WeightedEnsemble_L3` stack on
+the test set. Only **8 of 110 features** were clearly important on their own:
+`rtt_ms_min`, four `down_recv_window_*` stats, `frac_udp`, `rtt_ms_max` and
+`num_continuing_flows`. The other 102 were within noise of zero. That doesn't
+mean they're useless. One-at-a-time shuffling can't see redundancy: if six
+stats of the same distribution carry the same information, shuffling any one
+of them costs nothing. The top features pointed to something important,
+though: receive window, RTT and `frac_udp` describe *which servers and network
+path* produced the traffic, more than the traffic's shape. That flagged a
+possible shortcut early.
+
+To decide what to drop, AutoGluon was the wrong tool (two weeks per run). A
+new script, `src/train_xgboost_ablation.py`, trains single XGBoost models in
+minutes:
+
+- **Same test sessions** as the AutoGluon run (session-aware split, seed 0),
+  so the numbers are directly comparable.
+- **A separate validation split** carved out of the training sessions. Every
+  decision is made on it: early stopping, importance ranking, which features to
+  drop, and the recommendation. Test accuracy is recorded but never used to
+  choose anything.
+- **Recursive feature elimination (RFE)**: train, rank by permutation
+  importance on validation, drop the weakest 20 %, repeat. Ranking again after
+  every drop handles the redundancy problem.
+
+Three rounds of runs (70 models in total, results in
+`benchmarks/xgb_ablation_10s_no_applayer.csv`):
+
+1. **Feature-by-feature RFE from all 112 features.** Accuracy stayed flat from
+   112 down to about 31 features (0.9827 → 0.9820) and collapsed below 4. The
+   recommended 47-feature set lost only 0.05 points, **but it still needed all
+   13 distribution buffers**. Counting features is the wrong measure of router
+   cost.
+2. **Counting router cost properly.** Cost is per distribution *family*, not
+   per column. min/max/mean can be updated one packet at a time. median, p25 and
+   p75 need every value in the window kept in a buffer, and one buffer serves all
+   six stats of its family. With that measure:
+   - Dropping every `total_*` column cost nothing (0.9824).
+   - **Dropping every median/p25/p75 (no buffers at all) cost only 0.17 points
+     (0.9810).**
+   - Family-by-family RFE reached 6 buffers at 0.9818.
+3. **RFE inside the no-buffer set.** It recommended **22 features with 0
+   buffers at 0.9799**: "option C". Below 10 features accuracy fell off
+   (8 features: 0.9705, "option D").
+
+`benchmarks/feature_selection_results.md` documents all of this, with candidate
+options A–D and their feature lists in `benchmarks/feature_sets/`. The script's
+`--final <feature list>` mode trains one deployable model on any list (fit on
+the training split with early stopping, then refit on training + validation).
+`final_option_c` scored **0.9801** test accuracy.
+
+Two corrections from this step:
+
+- **`XGBoost_r22` was not the cheapest model.** Among the top 15 single models
+  it was 3rd by accuracy and 4th by speed. The best balance, not the fastest.
+  The docs were corrected. The full 218-model leaderboard, with accuracy and
+  speed ranks, is in `benchmarks/model_leaderboard_10s_19468sessions_no_applayer.csv`.
+- **AutoGluon's validation scores are optimistic.** Its internal 8-fold bagging
+  splits by row, not by session, so windows from the same session land on both
+  sides of a fold. The 0.98 test result is still valid, since test sessions were
+  fully held out. Future AutoGluon runs should pass the session IDs as `groups`.
+
+## Step 12: The router, and a Python-free pipeline
+
+The professor provided a real deployment target: an OpenWrt 25.12 router
+(MediaTek Filogic, aarch64 Cortex-A53, about 1 GB RAM, no swap, no Python or
+gcc), reachable as `root@192.168.1.1` from the Linux box, capturing on `lan2`.
+The Linux box's default route goes through it.
+
+The router can't run Python or AutoGluon, so the whole pipeline moved into one
+Go binary:
+
+- **A Go XGBoost evaluator** (`src/live_capture_go/xgbmodel`) reads XGBoost's
+  JSON model format directly. It agrees with xgboost's own `predict_proba` on
+  **every label across 28,463 windows**, with a largest probability difference
+  of 2.4e-7, including rows with missing values. It also honors an ablation
+  model's early-stopping point.
+- **The live and replay tools score in-process** when `-model-dir` points at a
+  `.json` model. An AutoGluon directory still uses the Python sidecar. On three
+  replayed sessions, Go and Python wrote byte-identical prediction files.
+- **Packet capture without libpcap.** Builds with `CGO_ENABLED=0` use a pure-Go
+  Linux raw socket (`pcapgo.EthernetHandle`), with the same 200-byte capture
+  limit and the true packet length. That makes the router build a single
+  **3.6 MB static ARM64 binary**.
+- **`deploy_router.sh`** builds that binary on the Mac and copies it and a model
+  to the router (`/root/csc5991/`) with one password prompt. Any model works
+  (`MODEL=... ./deploy_router.sh`). It copies to a temp file and renames, so a
+  running instance can't block a redeploy.
+
+## Step 13: Testing live on the router with known ground truth
+
+`src/live_capture/stream_and_check.py` runs on the Linux box. One command:
+
+1. starts `live-router` on the router over ssh;
+2. plays a known video in headless Chromium;
+3. logs playback every 5 s;
+4. stops the router process and copies its predictions back;
+5. scores every window against what was actually playing.
+
+It reports accuracy three ways:
+
+- *all windows*;
+- *active windows*: at least 100 packets;
+- *playing windows*: the video position actually advanced.
+
+Playing windows is the honest measure of the classifier.
+
+The first runs scored **0.19**. None of the causes was the model:
+
+1. **The router merged packets (GRO).** The kernel combined packets into
+   super-packets of up to 49 KB before capture. The training data never exceeds
+   1,514 bytes. Fixed, with the professor's approval: `ethtool -K eth1 gro off`
+   and `ethtool -K lan2 gro off`. These revert on reboot, so check them before
+   every round of tests.
+2. **Headless Chromium downloaded its own components**: megabytes of non-video
+   traffic. Fixed with flags.
+3. **YouTube stopped playback after about 30 s**, every run, because it detected
+   the automated browser. Fixed by presenting as normal Chrome. The script now
+   saves a screenshot when playback stalls or never starts, reloads, and
+   excludes stalled windows from scoring.
+
+With those fixed, option C labeled live YouTube correctly in **14 of 14**
+playing windows. Write-up: `live_runs/tests/live_eval_results.md`.
+
+## Step 14: Measuring router cost, and making extraction cheap
+
+`live-router -perf-output` records, per window:
+
+- CPU %;
+- packet-handling, window-close and scoring time;
+- heap and resident memory;
+- retained per-flow state.
+
+The eval script summarizes all of it next to the accuracy.
+
+That immediately showed a memory problem. The Go accumulator (a port of the
+Python one) **kept every packet of every flow for the whole run** and re-analyzed
+each flow's full history at every window close. An orphaned `live-router` left
+over from an interrupted test ran for 5.8 hours and **peaked at 462 MB** on a
+router with about 1 GB and no swap. Since then, `live-router` has
+`-max-duration`, and the eval script always sets it.
+
+The fix is **selective feature extraction** (`core_go/selective.go`), now the
+default with a Go-native model:
+
+- The router computes **only the features the loaded model uses**.
+- Distributions it needs only the min/max/mean of are kept as running values,
+  with no buffer.
+- RTT and retransmission state is updated incrementally, or skipped entirely
+  when the model doesn't use it.
+- Results are **identical** to the old accumulator: every value and label
+  matched across 4 models × 7 sessions.
+- It costs **5–23x less CPU per packet**, and holds **0.02–0.06 MB instead of
+  25–57 MB** for a model with no RTT features.
+
+One live run also showed **swapped upload/download directions**: 47.5 MB
+"uploaded". For UDP, the pipeline takes whoever sent a flow's first seen packet
+to be the client, and once at the router the server's packet was seen first.
+`live-router` now has `-port-direction` (on by default): a flow first seen
+*from* a service port (below 1024) is assigned server-to-client. `replay` keeps
+it off by default, because the training data was computed with the original
+rule. Turning it on for recorded sessions changes some flows and lowers option C
+slightly on them (0.878 → 0.816 on one session). The fully consistent fix is to
+apply the rule in `flow_tracker.py`, regenerate the dataset, and retrain.
+
+## Step 15: Fewer features, live (YouTube)
+
+Four models were run on the same live YouTube video: 112, 22, 15 and 8 features.
+
+- **Option C: 1.00 again.** Three separate runs at 1.00.
+- **15 and 8 features: perfect on active windows**, with 2 misses each on quiet
+  windows.
+- **The 112-feature model scored lowest (0.31)**, even with directions correct.
+
+The cause is **drift in YouTube's QUIC traffic**. Today's client sends about
+one acknowledgment per 6 data packets (0.176 per download packet), against one
+per 2 (0.505) in the 2018–19 data. The full model relies on mixed-direction
+percentile features (`total_packet_size_p25`: 1,292 B live vs. 81 B in
+training) that encode exactly that ratio. The selected models had dropped those
+features.
+
+Cost:
+
+- Window close went from 0.87 ms with all 112 features to **about 0.07 ms**
+  with 8–22.
+- Option C's per-flow state went from 18,299 kept packets (old binary) to 129
+  entries.
+- CPU stayed at about 0.35 % of one core.
+- **Scoring time follows tree count, not feature count**: about 1.1–1.2 µs per
+  tree on the router's CPU.
+- The startup memory peak (110–204 MB) is parsing the model's JSON, about 4x
+  the file size.
+
+## Step 16: Twitch, fingerprint features, and the leading model
+
+On live Twitch (`twitch.tv/tfue`) **every model failed (0.06–0.38)**, despite
+clean capture and playback. Comparing live and training Twitch windows showed
+why. The models rely on **fingerprint features**, and those changed:
+
+| Feature | Live | Training | Cause |
+|---|---:|---:|---|
+| `rtt_ms_min` | 0.058 ms | 0.006 ms | capture point (router vs. client) |
+| `down_psh_count` | 787 | 21 | server stack |
+| `down_recv_window_mean` | 618 | 363 | server stack (now close to training *Amazon*) |
+| `up_recv_window_max` | 32,245 | 10,091 | client OS |
+
+YouTube had escaped this because QUIC is UDP: no TCP receive window, RTT or
+flags, so the model had to use traffic shape.
+
+Two models were trained without any receive-window, RTT, TCP-flag,
+retransmission or out-of-order feature
+(`benchmarks/feature_sets/{option_c_no_fingerprint,shape_streaming}.txt`,
+`--learning-rate 0.3 --max-rounds 600`, on 10 cores pinned with `taskset`):
+
+| Model | Features | Offline test | Live Twitch | Live YouTube (QUIC) | Live YouTube (TCP) |
+|---|---:|:---:|:---:|:---:|:---:|
+| `final_option_c` (reference) | 22 | 0.980 | 0.19 | 1.00 | – |
+| `final_option_c_no_fingerprint` | 12 | 0.953 | 0.69 | 1.00 | 0.88 |
+| **`final_shape_streaming`** | 28 | 0.964 | **0.88** | **1.00** | – |
+
+`final_shape_streaming` is **the most accurate model live and among the
+cheapest**. On Twitch, the heaviest traffic tested:
+
+- 1.9 % CPU (about 190 ms of processor time per 10 s window);
+- 2.0 µs per packet;
+- 37 MB steady-state RAM;
+- 2 ms scoring per window;
+- a 111 MB startup peak;
+- **no per-flow state**.
+
+The fingerprint models used 4.4 µs per packet and 52–61 MB with growing state.
+That isn't a coincidence. RTT and retransmission features are both the
+expensive ones (they need per-flow sequence tracking) and among the fragile
+ones. Receive window and flag counts were cheap, but had drifted too.
+
+The thesis result: **the model that scored best offline failed live**. A
+28-feature, traffic-shape-only model gave up about 1.6 points of offline
+accuracy and was both the most accurate on today's traffic and the cheapest to
+run on the router. Full tables: `live_runs/tests/live_eval_feature_varying.md`.
+These are single runs.
+
+---
+
 ## Current status
 
-- **`no_applayer` training: done** (Step 8). The model directory is on the
-  Linux box; the deployed `XGBoost_r22_BAG_L1` copy (333MB) is on the Mac
-  and runs live (Step 9).
-- **Feature importance: still running** in the `train_no_applayer` tmux
-  session on the Linux box (estimate ~52h from 2026-11-14), output
-  `benchmarks/feature_importance_10s_19468sessions_no_applayer.csv`.
-  Progress is visible in `~/train_no_applayer.log`. No new training runs
-  until it finishes, since they would compete for CPU.
-- **Thesis:** related work drafted, citations unverified (Step 10).
+- **Router pipeline: working.** It is a single Go binary with the Go-native
+  model and selective extraction. `-port-direction`, `-perf-output` and
+  `-max-duration` are set by the eval script.
+- **Leading model:** `final_shape_streaming` (28 traffic-shape features,
+  0 buffers, no per-flow state).
+  - Offline test: 0.964.
+  - Live: Twitch 0.88, YouTube QUIC 1.00 (single runs).
+- **Write-ups:** `live_runs/tests/live_eval_results.md` (debugging the live
+  setup) and `live_runs/tests/live_eval_feature_varying.md` (accuracy and cost
+  by model). Raw eval files were deleted after summarizing; they are in git
+  history.
+- **Router settings to recheck after any reboot:** GRO off on `eth1` and `lan2`.
 
 ## Next up
 
-1. **Once feature importance lands:** review it together with the
-   per-class results and decide which features to drop.
-2. **Then either** train the other window sizes (8, 4, 2, 1 seconds), or
-   retrain at 10s with the trimmed feature set, to measure what the
-   simpler model costs in accuracy.
-3. **Pure-Go inference:** export the deployed XGBoost model (8 bagged
-   fold models, or one `refit_full` model) and load it in Go with the
-   `leaves` library, so the router pipeline needs no Python at all. Best
-   done after the feature decision, since dropping features changes the
-   model.
-4. **Strengthen the Go-vs-Python equivalence claim:** it currently rests on
-   one session (6,499/6,500 values identical); rerun the comparison on all 7
-   local sessions, including the QUIC one.
-5. **Thesis:** verify the related-work citations, and confirm the dataset's
-   origin with the professor.
+1. **Repeat runs:** 3 or more per model per traffic type, for means and spreads.
+2. **`final_shape_streaming` on YouTube over TCP** (`--disable-quic`), the one
+   missing cell for the leading model.
+3. **Idle baseline** (`--service idle`). It supports a confidence or activity
+   threshold, since the model always picks one of its 5 classes.
+4. **Training data from today:** collect labeled windows at the router with the
+   eval script (YouTube TCP/QUIC, Twitch) and retrain alongside the 2018–19
+   data. This addresses the remaining drift (Twitch's bitrate and flow count
+   doubled). Netflix and Amazon need logins and DRM, so they can't be collected
+   this way.
+5. **Consistent flow direction:** port the service-port rule into
+   `flow_tracker.py`, regenerate the dataset, and retrain.
+6. **Smaller startup footprint:** a compact binary model format, removing the
+   ~4x JSON-parsing peak, and/or smaller trees.
+7. **Thesis:** turn the two live write-ups into the results chapter. Verify the
+   related-work citations and confirm the dataset's origin with the professor.
