@@ -35,6 +35,13 @@ One run = one service:
      live_runs/eval_summary.csv, and written per window to
      live_runs/eval_<tag>_scored.csv.
 
+While it runs, the router's predictions are fetched every --live-every
+seconds and printed one line per 10s window, next to what the browser was
+doing during that window (video position, playing or not, resolution) and
+the window's packet count and frac_udp -- also saved to
+live_runs/eval_<tag>_live.log. A video that ends before --minutes is up is
+reloaded from the start, so a run can be longer than its video.
+
 Expected label: youtube -> youtube_quic (Chromium streams YouTube over QUIC
 by default), or youtube_tcp with --disable-quic; twitch -> twitch.
 --service idle plays nothing: a baseline of what this box's background
@@ -83,8 +90,12 @@ REMOTE_DIR = "/root/csc5991"
 def ssh(target, command, check=True):
     """Run one command on the router. BatchMode: fail instead of prompting
     for a password nobody is there to type."""
+    # One shared connection (ControlMaster) instead of a new ssh handshake per
+    # call: the live per-window printout polls the router every few seconds.
     result = subprocess.run(
-        ["ssh", "-o", "BatchMode=yes", "-o", "ConnectTimeout=10", target, command],
+        ["ssh", "-o", "BatchMode=yes", "-o", "ConnectTimeout=10",
+         "-o", "ControlMaster=auto", "-o", "ControlPath=/tmp/sac-ssh-%C", "-o", "ControlPersist=60",
+         target, command],
         capture_output=True,
         text=True,
     )
@@ -112,6 +123,11 @@ def start_live_router(target, model, interface, remote_predictions, max_seconds)
         # dies or the terminal closes. An orphaned instance once ran for ~6h
         # and peaked at 462MB of the router's ~1GB (no swap).
         f"-max-duration {int(max_seconds)}s "
+        # The router's own traffic on lan2 -- e.g. this script's ssh polling
+        # for the live printout -- isn't client traffic, and leaves the
+        # router as GSO super-packets (1,750-2,150 B seen) that tripped the
+        # >1,514 B check and added stray TCP packets to every window.
+        f"-exclude-own-traffic "
         f"> {shlex.quote(log)} 2>&1 < /dev/null & echo $!"
     )
     pid = ssh(target, cmd).strip().splitlines()[-1]
@@ -194,7 +210,7 @@ VIDEO_STATE_JS = """
 const v = document.querySelector('video');
 if (!v) return null;
 if (v.paused) { v.muted = true; v.play().catch(() => {}); }
-return {t: v.currentTime, paused: v.paused, w: v.videoWidth, h: v.videoHeight};
+return {t: v.currentTime, paused: v.paused, ended: v.ended, w: v.videoWidth, h: v.videoHeight};
 """
 
 
@@ -223,6 +239,88 @@ def wait_for_playback(driver, timeout_s=60):
         last_t = state["t"] if state else None
         time.sleep(2)
     raise SystemExit(f"video never started playing within {timeout_s}s (last state: {last_t})")
+
+
+def same_page(url):
+    """URL identity for "is the browser still on our video": YouTube keeps
+    the video id in the first query parameter and may append others (&t=,
+    &pp=); trailing slashes vary."""
+    return url.split("&")[0].rstrip("/")
+
+
+# --- live per-window printout ---------------------------------------------------
+
+
+class LivePrinter:
+    """Fetches the router's new prediction and stats rows and prints one line
+    per closed window, joined with what the browser was doing during it."""
+
+    def __init__(self, target, remote_predictions, expected, log_path):
+        self.target = target
+        self.pred = f"{REMOTE_DIR}/{remote_predictions}"
+        self.stats = f"{REMOTE_DIR}/{remote_predictions.replace('.csv', '_stats.csv')}"
+        self.expected = expected
+        self.log = open(log_path, "w")
+        self.timeline = []  # (seconds_since_router_start, video_time, playing, width, height)
+        self.n_pred = self.n_stats = 0
+        self.pred_header = self.stats_header = None
+        self.stats_rows = {}
+        self.correct = self.scored = 0
+
+    def record(self, sec, t, playing, w, h):
+        self.timeline.append((sec, t, playing, w, h))
+
+    def _fetch(self, path, header, n):
+        # header + every row after the n already seen
+        out = ssh(self.target, f"[ -f {path} ] && {{ head -1 {path}; tail -n +{n + 2} {path}; }} || true", check=False)
+        rows = list(csv.reader(out.splitlines()))
+        if not rows:
+            return header, []
+        return rows[0], rows[1:]
+
+    def poll(self):
+        self.stats_header, new_stats = self._fetch(self.stats, self.stats_header, self.n_stats)
+        self.n_stats += len(new_stats)
+        if self.stats_header:
+            for r in new_stats:
+                row = dict(zip(self.stats_header, r))
+                self.stats_rows[row.get("window_index")] = row
+        self.pred_header, new_pred = self._fetch(self.pred, self.pred_header, self.n_pred)
+        self.n_pred += len(new_pred)
+        for r in new_pred:
+            self._print(dict(zip(self.pred_header, r)))
+
+    def _print(self, p):
+        idx = p["window_index"]
+        start, end = float(p["window_start_s"]), float(p["window_end_s"])
+        polls = [x for x in self.timeline if start <= x[0] < end]
+        playing = any(x[2] for x in polls)
+        last = polls[-1] if polls else None
+        if last and last[1] is not None:
+            m, sec = divmod(int(last[1]), 60)
+            video = f"video {m}:{sec:02d}, {'playing' if playing else 'NOT playing'}, {last[3]}x{last[4]}"
+        else:
+            video = "no video" if self.expected is None else "video not loaded"
+        st = self.stats_rows.get(idx, {})
+        pkts = st.get("total_packet_count", "?")
+        udp = st.get("frac_udp", "")
+        udp = f"{float(udp):.2f}" if udp not in ("", None) else "-"
+        mark = ""
+        if self.expected is not None:
+            ok = p["predicted_label"] == self.expected
+            mark = "✓" if ok else "✗"
+            if playing:
+                self.scored += 1
+                self.correct += ok
+        running = f" | running {self.correct}/{self.scored} playing windows correct" if self.scored else ""
+        line = (f"[window {int(idx):3d} | {start:5.0f}-{end:5.0f}s] {p['predicted_label']:13s} {float(p['confidence']):.2f} {mark} "
+                f"| {pkts:>6} pkts, udp {udp} | {video}{running}")
+        print(line)
+        self.log.write(line + "\n")
+        self.log.flush()
+
+    def close(self):
+        self.log.close()
 
 
 # --- scoring ------------------------------------------------------------------
@@ -409,6 +507,7 @@ def main():
     parser.add_argument("--interface", default="lan2")
     parser.add_argument("--warmup-windows", type=int, default=1, help="extra windows skipped after playback starts")
     parser.add_argument("--min-packets", type=int, default=100, help="packets a window needs to count as active")
+    parser.add_argument("--live-every", type=float, default=10, help="with --router: seconds between live per-window printouts (0 = off)")
     parser.add_argument("--stats", metavar="STATS_CSV", help="with --score: the matching raw window stats, for active-window accuracy")
     parser.add_argument("--timeline", metavar="TIMELINE_CSV", help="with --score: the matching playback timeline, for playing-window accuracy")
     parser.add_argument("--chromium", default="/usr/bin/chromium")
@@ -453,6 +552,10 @@ def main():
 
     driver = None
     play_started = router_started
+    printer = None
+    if args.router and args.live_every > 0:
+        printer = LivePrinter(args.router, remote_predictions, expected, f"live_runs/eval_{tag}_live.log")
+        print("live per-window predictions below (✓/✗ = matches the expected label; running count is over playing windows)")
     try:
         with open(timeline_path, "w", newline="") as f:
             timeline = csv.writer(f, lineterminator="\n")
@@ -472,6 +575,7 @@ def main():
                 print(f"playing at {state['w']}x{state['h']}, {play_started - router_started:.0f}s after live-router started")
             end = time.time() + args.minutes * 60
             last_t, last_advance, stalls, reloads, diagnosed = None, time.time(), 0, 0, False
+            restarts, last_poll = 0, 0.0
             while time.time() < end:
                 now = time.time()
                 state = driver.execute_script(VIDEO_STATE_JS) if driver else None
@@ -482,8 +586,22 @@ def main():
                                        f"{t:.1f}" if t is not None else "", state["paused"] if state else "",
                                        state["w"] if state else "", state["h"] if state else "", playing])
                     f.flush()
+                    if printer:
+                        printer.record(now - router_started, t, playing, state["w"] if state else 0, state["h"] if state else 0)
                     last_t = t
-                    if playing:
+                    if (state and state.get("ended")) or same_page(driver.current_url) != same_page(args.url):
+                        # The video finished (or YouTube autoplay moved on to
+                        # another one): start it again so long runs keep
+                        # measuring the same, known content.
+                        restarts += 1
+                        print(f"  video ended at {now - router_started:.0f}s; restarting it (restart {restarts})")
+                        driver.get(args.url)
+                        try:
+                            wait_for_playback(driver, timeout_s=45)
+                        except SystemExit as exc:
+                            print(f"  {exc}")
+                        last_t, last_advance, diagnosed = None, time.time(), False
+                    elif playing:
                         last_advance, diagnosed = now, False
                     elif now - last_advance >= 15:
                         if not diagnosed:
@@ -502,6 +620,9 @@ def main():
                             except SystemExit as exc:
                                 print(f"  {exc}")
                             last_t, last_advance, diagnosed = None, time.time(), False
+                if printer and time.time() - last_poll >= args.live_every:
+                    printer.poll()
+                    last_poll = time.time()
                 time.sleep(5)
     finally:
         if driver:
@@ -510,6 +631,10 @@ def main():
             print("stopping live-router ...")
             stop_live_router(args.router, pid)
 
+    if printer:
+        printer.poll()  # the windows that closed while stopping, incl. the final partial one
+        printer.close()
+        print(f"live per-window log -> live_runs/eval_{tag}_live.log")
     print(f"timeline -> {timeline_path}")
     if not args.router:
         print("no --router: score the router's predictions afterwards with --score <file> --service", args.service)

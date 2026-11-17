@@ -51,6 +51,7 @@ import (
 	"encoding/csv"
 	"flag"
 	"fmt"
+	"net"
 	"os"
 	"os/signal"
 	"syscall"
@@ -70,6 +71,7 @@ func main() {
 	inferenceFlags := inference.RegisterFlags()
 	perfOutput := flag.String("perf-output", "", "also write per-window CPU/timing/memory measurements to this CSV (see perf.go)")
 	portDirection := flag.Bool("port-direction", true, "assign a flow first seen from a service port (<1024) as server->client (core.DirectionByServicePort); false = exact flow_tracker.py rule")
+	excludeOwn := flag.Bool("exclude-own-traffic", false, "drop packets to/from this machine's own IP addresses. Use on a router capturing for its clients: its own ssh/management traffic isn't client traffic (and leaves with GSO, as oversized packets). Leave off when capturing on the client itself, where that traffic IS the client's")
 	maxDuration := flag.Duration("max-duration", 0, "stop by itself after this long (e.g. 10m), exactly as on Ctrl+C; 0 = run until stopped. A safety net for unattended runs: the router has no swap, and the accumulator's flow history only grows")
 	flag.Parse()
 
@@ -135,8 +137,14 @@ func main() {
 		fmt.Fprintf(os.Stderr, "computing only the model's %d features (-all-features to compute all %d columns)\n", len(extract), len(core.CSVHeader())-5)
 	}
 
+	var own map[string]bool
+	if *excludeOwn {
+		own = ownAddresses()
+		fmt.Fprintf(os.Stderr, "excluding this machine's own traffic (%d local addresses)\n", len(own))
+	}
+
 	pktChan := make(chan *core.Packet, 1024)
-	go captureLoop(handle, pktChan)
+	go captureLoop(handle, pktChan, own)
 
 	sigChan := make(chan os.Signal, 1)
 	signal.Notify(sigChan, os.Interrupt, syscall.SIGTERM)
@@ -216,7 +224,7 @@ func (s *sinks) describe() string {
 // -- this goroutine never blocks on window computation, matching the
 // Python version's "tcpdump never pauses" guarantee, just without needing
 // an external process to get it.
-func captureLoop(handle captureHandle, out chan<- *core.Packet) {
+func captureLoop(handle captureHandle, out chan<- *core.Packet, own map[string]bool) {
 	for {
 		data, ci, err := handle.ReadPacketData()
 		if err != nil {
@@ -224,10 +232,29 @@ func captureLoop(handle captureHandle, out chan<- *core.Packet) {
 			return
 		}
 		ts := float64(ci.Timestamp.UnixNano()) / 1e9
-		if p := core.ParsePacket(data, ts, ci.Length); p != nil {
-			out <- p
+		p := core.ParsePacket(data, ts, ci.Length)
+		if p == nil || own[p.SrcIP] || own[p.DstIP] {
+			continue
+		}
+		out <- p
+	}
+}
+
+// ownAddresses is every IP address on this machine's interfaces, in the
+// same string form core.ParsePacket produces (net.IP.String()).
+func ownAddresses() map[string]bool {
+	own := map[string]bool{}
+	addrs, err := net.InterfaceAddrs()
+	if err != nil {
+		fmt.Fprintln(os.Stderr, "warning: can't list local addresses, not excluding own traffic:", err)
+		return own
+	}
+	for _, a := range addrs {
+		if ipnet, ok := a.(*net.IPNet); ok {
+			own[ipnet.IP.String()] = true
 		}
 	}
+	return own
 }
 
 // finish writes the final partial window, then (if inference is on) waits
