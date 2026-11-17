@@ -131,3 +131,57 @@ cheaper. This rests on one run per model and needs repeat runs before it can be 
 4. Use smaller trees (`--max-depth 4–6`), so scoring time and the startup peak shrink.
 5. Convert the model to a compact binary format, which removes the 4x JSON-parsing peak at startup.
 6. Run one long test (`-max-duration 1h`) to see whether steady-state RAM levels off.
+
+---
+
+# Twitch (2026-11-16, same four models)
+
+`https://www.twitch.tv/tfue` (a live stream), 3 minutes per model, with the same binary and router
+settings as the YouTube runs above. The expected label is `twitch`. All 16 scored windows in every
+run were playing and active, and no packet exceeded 1,514 B, so capture and playback were clean.
+
+| Features | Model | Playing-window accuracy | Labels given | Mean confidence | CPU (mean) | Seq-tracking entries at end |
+|---:|---|:---:|---|:---:|---:|---:|
+| 112 | `all.json` | 0.25 (4/16) | youtube_tcp 11, twitch 4, youtube_quic 1 | 0.79 | 2.90 % | 265,902 |
+| 22 | `final_option_c.json` | 0.19 (3/16) | youtube_tcp 10, amazon 3, twitch 3 | 0.73 | 1.92 % | 188,870 |
+| 15 | `..._step06.json` | 0.06 (1/16) | youtube_tcp 8, amazon 7, twitch 1 | 0.78 | 2.17 % | 204,964 |
+| 8 | `..._step09.json` | 0.38 (6/16) | amazon 8, twitch 6, youtube_tcp 2 | 0.83 | 2.23 % | 0 |
+
+## Why every model fails on Twitch
+
+Live Twitch windows compared with the training data's Twitch windows (medians over active windows,
+112-feature run):
+
+| Feature | Live Twitch | Training Twitch | Cause |
+|---|---:|---:|---|
+| `rtt_ms_min` | 0.058 ms | 0.006 ms | **Capture point.** At the client, the dataset's "RTT" is the client's ACK delay. At the router it also includes the LAN round trip. Every live window is outside the training range. |
+| `down_psh_count` | 787 | 21 | **Server stack.** Twitch's servers set PSH on about 37x more packets than in 2018–19. |
+| `down_recv_window_mean` (option C's top feature, 24 % of gain) | 618 | 363 | **Server stack.** Training Amazon is 575, hence the `amazon` labels. |
+| `up_recv_window_max` | 32,245 | 10,091 | **Client OS.** Debian 2026 vs. the 2018 lab machines. |
+| `down_byte_count`, `num_flows` | 7.3 MB, 17 | 3.7 MB, 8 | **Service.** Higher bitrate (1080p) and more connections per window. |
+
+The models rely on **fingerprint features**: TCP receive windows, RTT and flag counts. These identify
+the servers, client OS and capture point more than the kind of traffic. They were consistent inside
+the 2018–19 dataset and have since changed. This is the shortcut-learning risk the feature-importance
+analysis pointed to.
+
+YouTube escaped it because it streamed over **QUIC**. On UDP there is no TCP receive window, RTT or
+flag, so those features were absent and the models fell back on traffic shape. Twitch runs over TCP,
+so every fingerprint feature was present, and each one had shifted.
+
+The heavier TCP traffic also shows in cost: CPU rose to about 2–3 % and sequence-tracking state to
+189k–266k entries for every model that uses RTT/retransmission features. The 8-feature model stayed
+at 0.
+
+## Next: models without fingerprint features
+
+Two feature lists in `benchmarks/feature_sets/`, both with no buffers and no sequence tracking:
+
+- **`option_c_no_fingerprint.txt` (12 features)**: option C minus receive window, RTT and PSH counts.
+- **`shape_streaming.txt` (28 features)**: sizes, counts, bytes, throughput, timing, `frac_udp` and
+  flow counts only.
+
+Train each with `--final`, then test live on Twitch and YouTube. The test checks whether removing
+fingerprints fixes Twitch without losing YouTube or much offline accuracy. The ablation's
+`shape_only` set reached 0.975 offline. The longer-term fix is to collect labeled training windows at
+the router itself with today's traffic; the eval script already produces them.

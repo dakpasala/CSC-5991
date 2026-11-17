@@ -1,0 +1,33 @@
+# No-buffer (streaming) features minus fingerprints: traffic shape only -- sizes, counts, bytes, timing, frac_udp, flows
+# 28 features, 0 full buffers, no TCP sequence/RTT tracking.
+# Why: live Twitch on the router failed (0.06-0.38) because receive window, RTT and PSH counts
+# describe the servers/client OS/capture point, which changed since 2018-19; see live_runs/tests.
+#   python src/train_xgboost_ablation.py --final benchmarks/feature_sets/shape_streaming.txt
+num_flows
+num_new_flows
+num_continuing_flows
+frac_udp
+up_packet_count
+up_byte_count
+up_throughput_bps
+up_payload_size_min
+up_payload_size_max
+up_payload_size_mean
+up_packet_size_min
+up_packet_size_max
+up_packet_size_mean
+up_interarrival_time_min
+up_interarrival_time_max
+up_interarrival_time_mean
+down_packet_count
+down_byte_count
+down_throughput_bps
+down_payload_size_min
+down_payload_size_max
+down_payload_size_mean
+down_packet_size_min
+down_packet_size_max
+down_packet_size_mean
+down_interarrival_time_min
+down_interarrival_time_max
+down_interarrival_time_mean

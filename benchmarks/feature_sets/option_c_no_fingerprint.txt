@@ -1,0 +1,17 @@
+# Option C minus fingerprint features (TCP receive window, RTT, TCP flag counts)
+# 12 features, 0 full buffers, no TCP sequence/RTT tracking.
+# Why: live Twitch on the router failed (0.06-0.38) because receive window, RTT and PSH counts
+# describe the servers/client OS/capture point, which changed since 2018-19; see live_runs/tests.
+#   python src/train_xgboost_ablation.py --final benchmarks/feature_sets/option_c_no_fingerprint.txt
+frac_udp
+up_byte_count
+up_payload_size_max
+up_packet_size_max
+up_packet_size_mean
+up_interarrival_time_min
+up_interarrival_time_max
+down_byte_count
+down_payload_size_mean
+down_packet_size_min
+down_packet_size_mean
+down_interarrival_time_min
