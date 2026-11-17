@@ -76,6 +76,20 @@ func StartNative(modelPath, outputPath string, header []string) (*Native, error)
 	return n, nil
 }
 
+// Features is the model's input columns, in order.
+func (n *Native) Features() []string { return n.clf.Features }
+
+// ExtractionFeatures is the feature list the accumulator should compute
+// for this labeler: the Go-native model's inputs, or nil (compute every
+// column) for the Python sidecar, whose AutoGluon model's inputs aren't
+// known here -- or when allFeatures forces the full set.
+func ExtractionFeatures(l Labeler, allFeatures bool) []string {
+	if n, ok := l.(*Native); ok && !allFeatures {
+		return n.Features()
+	}
+	return nil
+}
+
 // LastScore is how long the most recent Send spent in the model itself
 // (feature lookup + tree walk + softmax), excluding file/terminal output.
 func (n *Native) LastScore() time.Duration { return n.lastScore }

@@ -95,5 +95,17 @@ func (row WindowRow) Values() []string {
 	v = append(v, formatInt(row.RequestCount))
 	v = append(v, distributionValues(row.SegmentSizeBytes)...)
 	v = append(v, distributionValues(row.RequestDurationMs)...)
+	if row.only != nil {
+		for i, h := range CSVHeader() {
+			if i >= identityColumns && !row.only[h] {
+				v[i] = ""
+			}
+		}
+	}
 	return v
 }
+
+// identityColumns is how many leading CSVHeader() columns (label,
+// session_id, window_index, window_start_s, window_end_s) identify the
+// window rather than describe it; they're always kept.
+const identityColumns = 5

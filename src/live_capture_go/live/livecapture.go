@@ -127,7 +127,11 @@ func main() {
 	}
 
 	sessionID := "live_" + runStartedAt
-	var acc *core.WindowAccumulator // created once the first packet's timestamp gives us t0
+	var acc core.Accumulator // created once the first packet's timestamp gives us t0
+	extract := inference.ExtractionFeatures(out.labeler, *inferenceFlags.AllFeatures)
+	if extract != nil {
+		fmt.Fprintf(os.Stderr, "computing only the model's %d features (-all-features to compute all %d columns)\n", len(extract), len(core.CSVHeader())-5)
+	}
 
 	pktChan := make(chan *core.Packet, 1024)
 	go captureLoop(handle, pktChan)
@@ -150,7 +154,11 @@ func main() {
 				return
 			}
 			if acc == nil {
-				acc = core.NewWindowAccumulator(p.Timestamp, *windowSeconds, sessionID, labelPlaceholder)
+				acc, err = core.NewAccumulatorFor(extract, p.Timestamp, *windowSeconds, sessionID, labelPlaceholder)
+				if err != nil {
+					fmt.Fprintln(os.Stderr, "error:", err)
+					os.Exit(1)
+				}
 				out.acc = acc
 			}
 			start := time.Now()
@@ -188,7 +196,7 @@ type sinks struct {
 	predictionsPath string
 	rowsWritten     int
 	perf            *perfRecorder
-	acc             *core.WindowAccumulator
+	acc             core.Accumulator
 }
 
 func (s *sinks) describe() string {
@@ -223,7 +231,7 @@ func captureLoop(handle captureHandle, out chan<- *core.Packet) {
 // finish writes the final partial window, then (if inference is on) waits
 // for predict.py to score everything still queued before exiting, so no
 // window's prediction is lost on Ctrl+C.
-func (s *sinks) finish(acc *core.WindowAccumulator) {
+func (s *sinks) finish(acc core.Accumulator) {
 	if acc != nil { // nil means we never saw a single parseable packet
 		start := time.Now()
 		row := acc.Flush()

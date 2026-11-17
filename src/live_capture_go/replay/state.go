@@ -17,7 +17,7 @@ const labelPlaceholder = "live_unlabeled"
 // close, and reporting whether each window's computation stayed within its
 // real-time budget. csvWriter is nil when no stats CSV was requested.
 type replayWriter struct {
-	acc              *core.WindowAccumulator
+	acc              core.Accumulator
 	windowSeconds    float64
 	speed            float64
 	csvWriter        *csv.Writer
@@ -26,9 +26,14 @@ type replayWriter struct {
 	totalRowsWritten int
 }
 
-func newReplayWriter(t0, windowSeconds float64, sessionID, outputPath string, speed float64, labeler inference.Labeler) *replayWriter {
+func newReplayWriter(t0, windowSeconds float64, sessionID, outputPath string, speed float64, labeler inference.Labeler, extract []string) *replayWriter {
+	acc, err := core.NewAccumulatorFor(extract, t0, windowSeconds, sessionID, labelPlaceholder)
+	if err != nil {
+		fmt.Fprintln(os.Stderr, "error:", err)
+		os.Exit(1)
+	}
 	rw := &replayWriter{
-		acc:           core.NewWindowAccumulator(t0, windowSeconds, sessionID, labelPlaceholder),
+		acc:           acc,
 		windowSeconds: windowSeconds,
 		speed:         speed,
 		labeler:       labeler,

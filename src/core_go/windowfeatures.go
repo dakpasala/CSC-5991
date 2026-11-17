@@ -64,6 +64,11 @@ type WindowRow struct {
 	RequestCount           int
 	SegmentSizeBytes       Distribution
 	RequestDurationMs      Distribution
+
+	// only, when non-nil, lists the columns that were actually computed
+	// (SelectiveAccumulator); Values() leaves every other feature column
+	// empty rather than emitting a misleading zero/NaN for it.
+	only map[string]bool
 }
 
 type DirectionStats struct {

@@ -249,6 +249,8 @@ def score(predictions_path, expected, skip_before_s, warmup_windows, stats_path=
     the streaming, not the silence between bursts."""
     df = pd.read_csv(predictions_path)
     if stats_path and os.path.isfile(stats_path):
+        # Always present: live-router computes these even when the model's
+        # selective extraction skips the rest (core_go diagnosticColumns).
         stats = pd.read_csv(stats_path, usecols=["window_index", "total_packet_count", "frac_udp", "down_packet_size_max"])
         df = df.merge(stats, on="window_index", how="left")
     if df.empty:

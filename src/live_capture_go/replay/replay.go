@@ -136,7 +136,11 @@ func main() {
 		predictionsPath = cfg.OutputPath
 	}
 
-	rw := newReplayWriter(t0, *windowSeconds, sessionID, outputPath, *speed, labeler)
+	extract := inference.ExtractionFeatures(labeler, *inferenceFlags.AllFeatures)
+	if extract != nil {
+		fmt.Printf("computing only the model's %d features (-all-features to compute all of them)\n", len(extract))
+	}
+	rw := newReplayWriter(t0, *windowSeconds, sessionID, outputPath, *speed, labeler, extract)
 
 	for p := range pktChan {
 		rw.handlePacket(p)

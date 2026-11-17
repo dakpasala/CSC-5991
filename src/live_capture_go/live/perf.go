@@ -34,8 +34,11 @@ import (
 //	heap_sys_mb            heap memory obtained from the OS
 //	rss_mb                 resident set size right now (Linux /proc; blank elsewhere)
 //	max_rss_mb             peak resident set size so far (getrusage)
-//	flows_retained         flows the accumulator holds history for
-//	packets_retained       packets stored across them (never pruned)
+//	flows_retained         flows the accumulator is tracking
+//	packets_retained       per-flow entries kept across windows, never pruned:
+//	                       stored packets (all-features accumulator) or seen
+//	                       sequence numbers + unacked segments (selective;
+//	                       0 when the model uses no RTT/retransmission feature)
 type perfRecorder struct {
 	f        *os.File
 	w        *csv.Writer
@@ -65,7 +68,7 @@ func (p *perfRecorder) packetHandled(d time.Duration) {
 	p.handling += d
 }
 
-func (p *perfRecorder) windowClosed(row core.WindowRow, closeDur, inferDur time.Duration, haveInfer bool, acc *core.WindowAccumulator) {
+func (p *perfRecorder) windowClosed(row core.WindowRow, closeDur, inferDur time.Duration, haveInfer bool, acc core.Accumulator) {
 	now, cpu := time.Now(), processCPU()
 	cpuPct := 0.0
 	if wall := now.Sub(p.lastWall); wall > 0 {
