@@ -8,6 +8,7 @@ import (
 	"runtime/debug"
 	"strconv"
 	"strings"
+	"time"
 
 	"csc5991/live_capture_go/xgbmodel"
 )
@@ -37,10 +38,11 @@ func StartLabeler(cfg Config, header []string) (Labeler, error) {
 // microseconds of tree walking, so it runs synchronously inside Send rather
 // than through a channel/goroutine like Sidecar needs.
 type Native struct {
-	clf    *xgbmodel.Classifier
-	idx    []int
-	winIdx [3]int // positions of window_index, window_start_s, window_end_s in the header
-	writer *PredictionsWriter
+	clf       *xgbmodel.Classifier
+	idx       []int
+	winIdx    [3]int // positions of window_index, window_start_s, window_end_s in the header
+	writer    *PredictionsWriter
+	lastScore time.Duration
 }
 
 // StartNative loads the model and opens the predictions CSV. header is the
@@ -74,8 +76,14 @@ func StartNative(modelPath, outputPath string, header []string) (*Native, error)
 	return n, nil
 }
 
+// LastScore is how long the most recent Send spent in the model itself
+// (feature lookup + tree walk + softmax), excluding file/terminal output.
+func (n *Native) LastScore() time.Duration { return n.lastScore }
+
 func (n *Native) Send(values []string) {
+	start := time.Now()
 	p := n.clf.ScoreRow(values, n.idx)
+	n.lastScore = time.Since(start)
 	var win [3]string
 	for j, i := range n.winIdx {
 		if i >= 0 {

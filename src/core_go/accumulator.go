@@ -29,11 +29,11 @@ type WindowAccumulator struct {
 	SessionID     string
 	Label         string
 
-	tracker             *FlowTracker
-	flowPacketLists     map[FlowKey][]FlowPacket
-	flowCursor          map[FlowKey]int
-	windowTagged        []taggedEntry
-	currentWindowIndex  int
+	tracker            *FlowTracker
+	flowPacketLists    map[FlowKey][]FlowPacket
+	flowCursor         map[FlowKey]int
+	windowTagged       []taggedEntry
+	currentWindowIndex int
 }
 
 func NewWindowAccumulator(t0, windowSeconds float64, sessionID, label string) *WindowAccumulator {
@@ -97,6 +97,18 @@ func (a *WindowAccumulator) Flush() WindowRow {
 // logging), not used in any stat computation.
 func (a *WindowAccumulator) PacketCount() int {
 	return len(a.windowTagged)
+}
+
+// RetainedState reports how much per-flow history the accumulator is
+// holding: flows seen so far and packets stored across all of them. Neither
+// is ever pruned (every window close recomputes retransmission/RTT state on
+// each touched flow's full history), so both grow for as long as a capture
+// runs -- what a long-running router deployment has to watch.
+func (a *WindowAccumulator) RetainedState() (flows, packets int) {
+	for _, list := range a.flowPacketLists {
+		packets += len(list)
+	}
+	return len(a.flowPacketLists), packets
 }
 
 func (a *WindowAccumulator) closeWindow(targetWindowIndex int) WindowRow {

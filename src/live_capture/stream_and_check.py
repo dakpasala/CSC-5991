@@ -22,7 +22,9 @@ One run = one service:
      most of their windows unscoreable;
   3. after --minutes, close the browser, stop live-router with SIGINT (it
      flushes its last window), and copy the predictions back, plus the raw
-     per-window stats (live_runs/eval_<tag>_stats.csv) for diagnosis;
+     per-window stats (live_runs/eval_<tag>_stats.csv) for diagnosis and
+     live-router's per-window CPU/timing/memory measurements
+     (live_runs/eval_<tag>_perf.csv, summarized next to the accuracy);
   4. score them: expected label vs. predicted label for every window that
      started after playback began (plus --warmup-windows more, since the
      first windows are partial and join connections mid-stream), and
@@ -97,6 +99,7 @@ def ssh(target, command, check=True):
 def start_live_router(target, model, interface, remote_predictions):
     log = remote_predictions.replace(".csv", ".log")
     stats = remote_predictions.replace(".csv", "_stats.csv")
+    perf = remote_predictions.replace(".csv", "_perf.csv")
     # nohup if BusyBox has it; stdin from /dev/null so ssh returns at once.
     # Go re-enables SIGINT even though a background job starts with it
     # ignored (os/signal.Notify), so stop_live_router's kill -INT still gets
@@ -104,7 +107,7 @@ def start_live_router(target, model, interface, remote_predictions):
     cmd = (
         f"cd {REMOTE_DIR} && N=$(command -v nohup || true); "
         f"$N ./live-router -interface {shlex.quote(interface)} -model-dir {shlex.quote(model)} "
-        f"-predictions-output {shlex.quote(remote_predictions)} -output {shlex.quote(stats)} "
+        f"-predictions-output {shlex.quote(remote_predictions)} -output {shlex.quote(stats)} -perf-output {shlex.quote(perf)} "
         f"> {shlex.quote(log)} 2>&1 < /dev/null & echo $!"
     )
     pid = ssh(target, cmd).strip().splitlines()[-1]
@@ -299,6 +302,32 @@ def score(predictions_path, expected, skip_before_s, warmup_windows, stats_path=
     return summary
 
 
+def perf_summary(perf_path):
+    """Resource use on the router over the run, from live-router's
+    -perf-output: what the classifier costs, next to how accurate it was."""
+    p = pd.read_csv(perf_path)
+    if p.empty:
+        return {}
+    steady = p.iloc[1:] if len(p) > 1 else p  # window 0 includes startup warm-up
+    out = {
+        "cpu_percent_mean": round(steady.cpu_percent.mean(), 2),
+        "cpu_percent_max": round(steady.cpu_percent.max(), 2),
+        "window_close_ms_mean": round(steady.window_close_ms.mean(), 3),
+        "window_close_ms_max": round(steady.window_close_ms.max(), 3),
+        "packet_handling_us_per_packet": round(steady.packet_handling_us.sum() / max(steady.packets_in_window.sum(), 1), 3),
+        "heap_alloc_mb_max": round(p.heap_alloc_mb.max(), 2),
+        "max_rss_mb": round(p.max_rss_mb.max(), 2),
+        "packets_retained_end": int(p.packets_retained.iloc[-1]),
+        "flows_retained_end": int(p.flows_retained.iloc[-1]),
+    }
+    if "rss_mb" in p and p.rss_mb.notna().any():
+        out["rss_mb_end"] = round(p.rss_mb.dropna().iloc[-1], 2)
+    if p.inference_us.notna().any():
+        out["inference_us_mean"] = round(steady.inference_us.mean(), 1)
+        out["inference_us_max"] = round(steady.inference_us.max(), 1)
+    return out
+
+
 def print_summary(summary):
     print("\nresult:")
     for k, v in summary.items():
@@ -306,7 +335,57 @@ def print_summary(summary):
 
 
 def append_summary(path, row):
-    pd.DataFrame([row]).to_csv(path, mode="a", header=not os.path.isfile(path), index=False)
+    """Add one run's row, rewriting the file with the union of columns when
+    the new row has fields the file doesn't (the summary gained fields as
+    this script grew; a plain append would misalign every later row)."""
+    new = pd.DataFrame([row])
+    if os.path.isfile(path):
+        try:
+            existing = pd.read_csv(path)
+        except pd.errors.ParserError:
+            raise SystemExit(f"{path} is malformed (written by an older version of this script); "
+                             "rebuild it with --rebuild-summary")
+        if list(existing.columns) != list(new.columns):
+            pd.concat([existing, new], ignore_index=True).to_csv(path, index=False)
+            return
+    new.to_csv(path, mode="a", header=not os.path.isfile(path), index=False)
+
+
+def rebuild_summary(path, warmup_windows, min_packets):
+    """Recreate the summary from every run's own files in live_runs/, e.g.
+    after an older version of this script left it malformed. Each run is
+    re-scored with the current scoring (playing/active windows where its
+    timeline/stats exist); the playback offset is taken from the timeline's
+    first poll, so it can differ by a few seconds from the original run."""
+    import glob, re
+
+    rows = []
+    for pred in sorted(glob.glob("live_runs/eval_*.csv")):
+        m = re.fullmatch(r"live_runs/eval_((idle|youtube|twitch)(_tcp)?_\d{8}_\d{6})\.csv", pred)
+        if not m:
+            continue  # _stats/_timeline/_scored/_perf companions, and the summary itself
+        tag, service, tcp = m.group(1), m.group(2), bool(m.group(3))
+        expected = "youtube_tcp" if (service == "youtube" and tcp) else EXPECTED[service]
+        timeline, stats, perf = (pred.replace(".csv", suffix) for suffix in ("_timeline.csv", "_stats.csv", "_perf.csv"))
+        offset = 0.0
+        if os.path.isfile(timeline):
+            t = pd.read_csv(timeline)
+            if not t.empty:
+                offset = float(t.seconds_since_router_start.iloc[0])
+        try:
+            summary = score(pred, expected, offset, warmup_windows, stats, min_packets, timeline)
+        except SystemExit as exc:
+            print(f"  skipping {tag}: {exc}")
+            continue
+        if os.path.isfile(perf):
+            summary.update(perf_summary(perf))
+        rows.append({"tag": tag, "service": service, "disable_quic": tcp, **summary})
+        print(f"  {tag}: playing_window_accuracy={summary.get('playing_window_accuracy', '-')}, window_accuracy={summary.get('window_accuracy', '-')}")
+    if os.path.isfile(path):
+        os.replace(path, path + ".bak")
+        print(f"old file kept as {path}.bak")
+    pd.DataFrame(rows).to_csv(path, index=False)
+    print(f"rebuilt {path} from {len(rows)} runs")
 
 
 # --- main ---------------------------------------------------------------------
@@ -315,7 +394,7 @@ def append_summary(path, row):
 def main():
     sys.stdout.reconfigure(line_buffering=True)
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("--service", choices=sorted(EXPECTED), required=True)
+    parser.add_argument("--service", choices=sorted(EXPECTED))
     parser.add_argument("--url", help="video/stream URL (not needed for --service idle)")
     parser.add_argument("--minutes", type=float, default=3.0)
     parser.add_argument("--disable-quic", action="store_true", help="force YouTube over TCP; expected label becomes youtube_tcp")
@@ -328,9 +407,15 @@ def main():
     parser.add_argument("--timeline", metavar="TIMELINE_CSV", help="with --score: the matching playback timeline, for playing-window accuracy")
     parser.add_argument("--chromium", default="/usr/bin/chromium")
     parser.add_argument("--chromedriver", default="/usr/bin/chromedriver")
+    parser.add_argument("--rebuild-summary", action="store_true", help="recreate live_runs/eval_summary.csv from every run's saved files, then exit")
     parser.add_argument("--score", metavar="PREDICTIONS_CSV", help="only score an existing predictions file (no browser, no router)")
     args = parser.parse_args()
 
+    if args.rebuild_summary:
+        rebuild_summary("live_runs/eval_summary.csv", args.warmup_windows, args.min_packets)
+        return
+    if not args.service:
+        parser.error("--service is required")
     expected = EXPECTED[args.service]
     if args.service == "youtube" and args.disable_quic:
         expected = "youtube_tcp"
@@ -425,11 +510,20 @@ def main():
     with open(stats_name, "w") as f:
         f.write(ssh(args.router, f"cat {REMOTE_DIR}/{stats_name}"))
     print(f"window stats -> {stats_name}")
+    perf_name = remote_predictions.replace(".csv", "_perf.csv")
+    with open(perf_name, "w") as f:
+        f.write(ssh(args.router, f"cat {REMOTE_DIR}/{perf_name}"))
+    print(f"router resource use -> {perf_name}")
 
     scored_path = local_predictions.replace(".csv", "_scored.csv")
     summary = score(local_predictions, expected, play_started - router_started, args.warmup_windows, stats_name,
                     args.min_packets, timeline_path, scored_path)
+    perf = perf_summary(perf_name)
     print_summary(summary)
+    print("\nrouter resource use (live-router process):")
+    for k, v in perf.items():
+        print(f"  {k}: {v}")
+    summary = {**summary, **perf}
     append_summary(
         "live_runs/eval_summary.csv",
         {"tag": tag, "service": args.service, "url": args.url or "", "disable_quic": args.disable_quic,

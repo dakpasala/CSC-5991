@@ -68,6 +68,7 @@ func main() {
 	windowSeconds := flag.Float64("window-seconds", 10, "window size in seconds")
 	output := flag.String("output", "", "stats CSV path (default: timestamped live_statistics_<N>_second_window file; skipped with -model-dir unless given)")
 	inferenceFlags := inference.RegisterFlags()
+	perfOutput := flag.String("perf-output", "", "also write per-window CPU/timing/memory measurements to this CSV (see perf.go)")
 	flag.Parse()
 
 	if *iface == "" {
@@ -113,6 +114,15 @@ func main() {
 			os.Exit(1)
 		}
 		out.predictionsPath = cfg.OutputPath
+		fmt.Fprintln(os.Stderr, "memory after model load:", memorySummary())
+	}
+	if *perfOutput != "" {
+		out.perf, err = newPerfRecorder(*perfOutput)
+		if err != nil {
+			fmt.Fprintln(os.Stderr, "error opening perf output:", err)
+			os.Exit(1)
+		}
+		defer out.perf.Close()
 	}
 
 	sessionID := "live_" + runStartedAt
@@ -136,9 +146,21 @@ func main() {
 			}
 			if acc == nil {
 				acc = core.NewWindowAccumulator(p.Timestamp, *windowSeconds, sessionID, labelPlaceholder)
+				out.acc = acc
 			}
-			for _, row := range acc.HandlePacket(p) {
-				out.writeRow(row)
+			start := time.Now()
+			rows := acc.HandlePacket(p)
+			took := time.Since(start)
+			if len(rows) == 0 {
+				if out.perf != nil {
+					out.perf.packetHandled(took)
+				}
+				continue
+			}
+			// A window-closing call's time is (almost all) the close itself;
+			// split it if a traffic gap closed several windows at once.
+			for _, row := range rows {
+				out.writeRow(row, took/time.Duration(len(rows)))
 			}
 		case <-sigChan:
 			fmt.Println("\nstopping capture...")
@@ -156,6 +178,8 @@ type sinks struct {
 	labeler         inference.Labeler
 	predictionsPath string
 	rowsWritten     int
+	perf            *perfRecorder
+	acc             *core.WindowAccumulator
 }
 
 func (s *sinks) describe() string {
@@ -192,7 +216,9 @@ func captureLoop(handle captureHandle, out chan<- *core.Packet) {
 // window's prediction is lost on Ctrl+C.
 func (s *sinks) finish(acc *core.WindowAccumulator) {
 	if acc != nil { // nil means we never saw a single parseable packet
-		s.writeRow(acc.Flush())
+		start := time.Now()
+		row := acc.Flush()
+		s.writeRow(row, time.Since(start))
 	}
 	if s.labeler != nil {
 		fmt.Println("waiting for remaining predictions...")
@@ -203,7 +229,7 @@ func (s *sinks) finish(acc *core.WindowAccumulator) {
 	fmt.Printf("%d windows -> %s\n", s.rowsWritten, s.describe())
 }
 
-func (s *sinks) writeRow(row core.WindowRow) {
+func (s *sinks) writeRow(row core.WindowRow, closeDur time.Duration) {
 	values := row.Values()
 	if s.stats != nil {
 		if err := s.stats.Write(values); err != nil {
@@ -212,8 +238,16 @@ func (s *sinks) writeRow(row core.WindowRow) {
 		}
 		s.stats.Flush()
 	}
+	var infer time.Duration
+	haveInfer := false
 	if s.labeler != nil {
 		s.labeler.Send(values)
+		if n, ok := s.labeler.(*inference.Native); ok {
+			infer, haveInfer = n.LastScore(), true
+		}
+	}
+	if s.perf != nil {
+		s.perf.windowClosed(row, closeDur, infer, haveInfer, s.acc)
 	}
 	s.rowsWritten++
 	fmt.Printf("window %d closed\n", row.WindowIndex)
