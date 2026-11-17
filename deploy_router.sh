@@ -48,11 +48,18 @@ ssh_opts=(-o ControlMaster=auto -o "ControlPath=$control" -o ControlPersist=120)
 trap 'ssh "${ssh_opts[@]}" -O exit "$ROUTER" 2>/dev/null || true' EXIT
 
 copy() { # copy <local file> <remote path>
-  ssh "${ssh_opts[@]}" "$ROUTER" "cat > '$2'" < "$1"
+  # Write to a temp file and rename it into place: overwriting live-router
+  # directly fails with "Text file busy" while an instance is running, but a
+  # rename is allowed (the running process keeps the old binary until it exits).
+  ssh "${ssh_opts[@]}" "$ROUTER" "cat > '$2.new' && mv -f '$2.new' '$2'" < "$1"
 }
 
 echo "copying to $ROUTER:$REMOTE_DIR ..."
 ssh "${ssh_opts[@]}" "$ROUTER" "mkdir -p '$REMOTE_DIR/model' '$REMOTE_DIR/live_runs'"
+running=$(ssh "${ssh_opts[@]}" "$ROUTER" "pidof live-router || true")
+if [[ -n $running ]]; then
+  echo "  note: live-router is running on the router (pid $running); it keeps the old binary until restarted"
+fi
 copy build/live-router "$REMOTE_DIR/live-router"
 copy "$MODEL" "$REMOTE_DIR/model/$model_name.json"
 [[ -f $features_json ]] && copy "$features_json" "$REMOTE_DIR/model/$model_name.features.json"

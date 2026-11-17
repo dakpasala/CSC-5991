@@ -96,7 +96,7 @@ def ssh(target, command, check=True):
     return result.stdout
 
 
-def start_live_router(target, model, interface, remote_predictions):
+def start_live_router(target, model, interface, remote_predictions, max_seconds):
     log = remote_predictions.replace(".csv", ".log")
     stats = remote_predictions.replace(".csv", "_stats.csv")
     perf = remote_predictions.replace(".csv", "_perf.csv")
@@ -108,6 +108,10 @@ def start_live_router(target, model, interface, remote_predictions):
         f"cd {REMOTE_DIR} && N=$(command -v nohup || true); "
         f"$N ./live-router -interface {shlex.quote(interface)} -model-dir {shlex.quote(model)} "
         f"-predictions-output {shlex.quote(remote_predictions)} -output {shlex.quote(stats)} -perf-output {shlex.quote(perf)} "
+        # Router-side safety net: live-router stops itself even if this script
+        # dies or the terminal closes. An orphaned instance once ran for ~6h
+        # and peaked at 462MB of the router's ~1GB (no swap).
+        f"-max-duration {int(max_seconds)}s "
         f"> {shlex.quote(log)} 2>&1 < /dev/null & echo $!"
     )
     pid = ssh(target, cmd).strip().splitlines()[-1]
@@ -441,7 +445,9 @@ def main():
     if args.router:
         print(f"starting live-router on {args.router} ({args.model}, {args.interface}) ...")
         router_started = time.time()
-        pid = start_live_router(args.router, args.model, args.interface, remote_predictions)
+        # Playback can take up to ~60s to start and stalls can add reloads,
+        # so leave generous slack beyond --minutes before the safety net fires.
+        pid = start_live_router(args.router, args.model, args.interface, remote_predictions, args.minutes * 60 + 300)
 
     driver = None
     play_started = router_started

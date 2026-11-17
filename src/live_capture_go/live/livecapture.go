@@ -69,6 +69,7 @@ func main() {
 	output := flag.String("output", "", "stats CSV path (default: timestamped live_statistics_<N>_second_window file; skipped with -model-dir unless given)")
 	inferenceFlags := inference.RegisterFlags()
 	perfOutput := flag.String("perf-output", "", "also write per-window CPU/timing/memory measurements to this CSV (see perf.go)")
+	maxDuration := flag.Duration("max-duration", 0, "stop by itself after this long (e.g. 10m), exactly as on Ctrl+C; 0 = run until stopped. A safety net for unattended runs: the router has no swap, and the accumulator's flow history only grows")
 	flag.Parse()
 
 	if *iface == "" {
@@ -133,6 +134,10 @@ func main() {
 
 	sigChan := make(chan os.Signal, 1)
 	signal.Notify(sigChan, os.Interrupt, syscall.SIGTERM)
+	var deadline <-chan time.Time // nil (never fires) unless -max-duration is set
+	if *maxDuration > 0 {
+		deadline = time.After(*maxDuration)
+	}
 
 	fmt.Printf("capturing on %s, %gs windows -> %s (Ctrl+C to stop)\n", *iface, *windowSeconds, out.describe())
 
@@ -164,6 +169,10 @@ func main() {
 			}
 		case <-sigChan:
 			fmt.Println("\nstopping capture...")
+			out.finish(acc)
+			return
+		case <-deadline:
+			fmt.Printf("\n-max-duration %s reached, stopping capture...\n", *maxDuration)
 			out.finish(acc)
 			return
 		}
