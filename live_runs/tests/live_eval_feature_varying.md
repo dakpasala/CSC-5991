@@ -231,3 +231,64 @@ and 2x the flows per window), which no feature selection can undo. Closing that 
 from today's traffic, e.g. labeled windows collected at the router with the eval script.
 
 Each of these is a single run. Repeat runs are needed before the 0.69 is a firm number.
+
+## Update: Twitch rerun and YouTube over TCP
+
+| Run | Model | Playing-window accuracy | Labels | Confidence when correct |
+|---|---|:---:|---|:---:|
+| Twitch (rerun, played normally) | `final_shape_streaming` (28) | **0.88 (14/16)** | twitch 14, amazon 1, youtube_tcp 1 | 0.91 |
+| YouTube over TCP (`--disable-quic`) | `final_option_c_no_fingerprint` (12) | **0.88 (14/16)** | youtube_tcp 14, netflix 2 | 0.86 |
+
+- The TCP run really was TCP: `frac_udp` had a median of 0.005 over active windows.
+- Its 2 misses were `netflix`, the youtube_tcp/Netflix confusion that is also the weakest pair in the
+  offline test report.
+- Neither run had packets over 1,514 B or any per-flow state.
+- Steady-state RAM was about 36–37 MB. The fingerprint models on Twitch were at 52–61 MB, because
+  they hold sequence state.
+
+### Live accuracy so far (playing windows, single runs)
+
+| Model | Features | Offline test | Twitch | YouTube (QUIC) | YouTube (TCP) |
+|---|---:|:---:|:---:|:---:|:---:|
+| `all.json` | 112 | 0.983 | 0.25 | 0.31 | – |
+| `final_option_c.json` | 22 | 0.980 | 0.19 | 1.00 (×3 runs) | – |
+| `final_option_c_no_fingerprint.json` | 12 | 0.953 | 0.69 | 1.00 | 0.88 |
+| **`final_shape_streaming.json`** | **28** | 0.964 | **0.88** | **1.00** | – |
+
+**`final_shape_streaming` is the leading candidate.** It is the best model on Twitch, perfect on
+YouTube over QUIC, and needs no buffers and no per-flow state. To confirm it: run it on YouTube over
+TCP, then repeat runs for every model.
+
+## Router cost on the heaviest traffic (live Twitch, all six models)
+
+The same Twitch stream for every model, at about 6,000–10,000 packets per 10 s window. Values come
+from each run's `_perf.csv`, with window 0 (startup) excluded.
+
+| Model | Features | Trees | CPU mean / max | CPU time per 10 s window | Per packet | Window close | Scoring | RAM at end | Peak RAM | Per-flow seq entries | Twitch accuracy |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|:---:|
+| `all` | 112 | 1,965 | 2.90 % / 15.4 % | 290 ms | 5.24 µs | 10.48 ms | 2.6 ms | 52.9 MB | 116 MB | 265,902 | 0.25 |
+| `final_option_c` | 22 | 3,625 | 1.92 % / 2.6 % | 192 ms | 4.39 µs | 0.076 ms | 4.3 ms | 61.4 MB | 204 MB | 188,870 | 0.19 |
+| `step06` | 15 | 2,965 | 2.17 % / 2.7 % | 217 ms | 4.44 µs | 0.066 ms | 3.5 ms | 55.3 MB | 190 MB | 204,964 | 0.06 |
+| `step09` (D) | 8 | 3,065 | 2.23 % / 2.6 % | 223 ms | 1.88 µs | 0.056 ms | 3.7 ms | 54.3 MB | 200 MB | 0 | 0.38 |
+| `final_option_c_no_fingerprint` | 12 | 1,485 | **1.67 %** / 2.3 % | **167 ms** | 1.98 µs | 0.064 ms | 2.0 ms | **37.2 MB** | **110 MB** | **0** | 0.69 |
+| **`final_shape_streaming`** | 28 | 1,605 | 1.92 % / 2.5 % | 192 ms | 2.01 µs | 0.062 ms | 2.0 ms | **37.2 MB** | **111 MB** | **0** | **0.88** |
+
+- *CPU time per window* is CPU % × 10 s: the processor time `live-router` used per 10 s window.
+- On YouTube (about 900–1,000 packets/window), both models without fingerprints used 0.30–0.35 %
+  CPU (30–35 ms per window), 34–36 MB of steady-state RAM, and 0 seq entries.
+
+What this shows:
+
+- **No RTT or retransmission features means no sequence tracking.** Per-packet cost halves (4.4 → 2.0 µs),
+  steady-state RAM drops from 52–61 MB to 37 MB, and per-flow state goes from growing (189k–266k entries
+  after 3 min) to none.
+- **CPU stays under 2 % of one core on average for every current model**, at about 680 packets/s. Once
+  per-flow state is gone, what remains is mostly packet capture, so the models differ little on CPU.
+- **Scoring time and peak RAM follow tree count**, which comes from the model file's size. About 1,500
+  trees gives 2.0 ms scoring and a 110 MB peak, versus 3.5–4.3 ms and 190–204 MB for the 3,000+-tree
+  models.
+- The all-features model was the only one with CPU spikes (15 % max, 10.5 ms window closes), because it
+  computes every column on heavy TCP traffic.
+
+`final_shape_streaming` is the most accurate model live and is tied for the lowest memory: no buffers,
+no per-flow state, under 2 % CPU on Twitch, and 2 ms of scoring per window.
