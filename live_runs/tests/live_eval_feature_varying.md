@@ -185,3 +185,49 @@ Train each with `--final`, then test live on Twitch and YouTube. The test checks
 fingerprints fixes Twitch without losing YouTube or much offline accuracy. The ablation's
 `shape_only` set reached 0.975 offline. The longer-term fix is to collect labeled training windows at
 the router itself with today's traffic; the eval script already produces them.
+
+---
+
+# Models without fingerprint features (2026-11-16)
+
+Two models trained with `train_xgboost_ablation.py --final` on the same 2018–19 dataset, without any
+receive-window, RTT, TCP-flag, retransmission or out-of-order feature. Each was trained on 10 cores
+with `--learning-rate 0.3 --max-rounds 600`. Both were then tested live with the same setup as above.
+
+| Features | Model | Offline test accuracy | Trees | **Live Twitch** (playing windows) | **Live YouTube** (playing windows) |
+|---:|---|:---:|---:|:---:|:---:|
+| 112 | `all.json` (reference) | 0.983 | 1,965 | 0.25 (4/16) | 0.31 (4/13) |
+| 22 | `final_option_c.json` (reference) | 0.980 | 3,625 | 0.19 (3/16) | 1.00 (13/13) |
+| **12** | **`final_option_c_no_fingerprint.json`** | 0.953 | 1,490 | **0.69 (11/16)** | **1.00 (12/12)** |
+| 28 | `final_shape_streaming.json` | 0.964 | 1,610 | — (playback never started) | **1.00 (14/14)** |
+
+- **Twitch went from 0.19 to 0.69** when option C lost its fingerprint features: 11 of 16 windows
+  labeled `twitch`, with 0.90 mean confidence on the correct ones. The misses were `youtube_tcp` (4)
+  and `amazon` (1).
+- **YouTube stayed perfect** for both models.
+- **The cost is offline accuracy**: 0.980 → 0.953 (12 features) or 0.964 (28). The fingerprint
+  features scored well on 2018–19 data, and that advantage doesn't carry over to today's traffic.
+- The `shape_streaming` Twitch run never started playing: its timeline is empty, and the script gave up
+  after 60 s. The script now saves a screenshot and the page text in that case too (`_nostart.png/.txt`).
+  Rerun it.
+
+| Model | Window close (mean) | Scoring time / window | CPU (Twitch / YouTube) | Peak RAM | RAM at end | Seq-tracking entries |
+|---|---:|---:|---:|---:|---:|---:|
+| `final_option_c_no_fingerprint` | 0.064–0.067 ms | 1.8–2.0 ms | 1.67 % / 0.30 % | 110 MB | 34–37 MB | **0** |
+| `final_shape_streaming` | 0.071 ms | 1.9 ms | – / 0.31 % | 112 MB | 34 MB | **0** |
+
+Dropping the fingerprints also makes the models cheaper:
+
+- **No per-flow state**: no RTT or retransmission features, so no sequence tracking.
+- **About half the trees**, so scoring takes about 2 ms instead of 4.1 ms.
+- **A smaller model file**, so the startup peak is about 110 MB instead of 203 MB.
+
+## What this shows
+
+Removing the features that identify *where and from which servers* the traffic was captured turned a
+model that failed on today's Twitch into one that mostly works, while YouTube stayed perfect and cost
+went down. The remaining Twitch errors are consistent with Twitch's own changes (about 2x the bitrate
+and 2x the flows per window), which no feature selection can undo. Closing that gap needs training data
+from today's traffic, e.g. labeled windows collected at the router with the eval script.
+
+Each of these is a single run. Repeat runs are needed before the 0.69 is a firm number.

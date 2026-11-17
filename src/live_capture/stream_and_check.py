@@ -461,7 +461,13 @@ def main():
                 print(f"opening {args.url} in headless Chromium{' (QUIC disabled)' if args.disable_quic else ''} ...")
                 driver = open_browser(args.disable_quic, args.chromium, args.chromedriver)
                 driver.get(args.url)
-                state = wait_for_playback(driver)
+                try:
+                    state = wait_for_playback(driver)
+                except SystemExit:
+                    # Same diagnostics as a mid-run stall, so a run that never
+                    # starts (ad, raid, gate, stream offline) shows why.
+                    save_stall_diagnostics(driver, f"live_runs/eval_{tag}_nostart")
+                    raise
                 play_started = time.time()
                 print(f"playing at {state['w']}x{state['h']}, {play_started - router_started:.0f}s after live-router started")
             end = time.time() + args.minutes * 60
