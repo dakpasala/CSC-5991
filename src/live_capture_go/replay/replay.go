@@ -96,7 +96,9 @@ func main() {
 	speed := flag.Float64("speed", 1.0, "replay speed multiplier (1.0 = real-time)")
 	output := flag.String("output", "", "stats CSV path (default: replay_statistics_<N>_second_window.csv; skipped with -model-dir unless given)")
 	inferenceFlags := inference.RegisterFlags()
+	portDirection := flag.Bool("port-direction", false, "assign a flow first seen from a service port (<1024) as server->client (core.DirectionByServicePort); default false = exact flow_tracker.py rule, matching the training data")
 	flag.Parse()
+	core.DirectionByServicePort = *portDirection
 
 	if *pcapPath == "" {
 		fmt.Fprintln(os.Stderr, "usage: replay -pcap <path to dump.pcap> [-window-seconds 10] [-speed 1.0] [-output path.csv]")

@@ -29,7 +29,8 @@ import (
 //	inference_us           time the model spent scoring the window (Go-native
 //	                       XGBoost only; blank for the Python sidecar)
 //	cpu_percent            process CPU time / wall time since the last window
-//	                       (100 = one core fully busy)
+//	                       (100 = one core fully busy); blank for windows
+//	                       closed together after a traffic gap
 //	heap_alloc_mb          Go heap in use by live objects
 //	heap_sys_mb            heap memory obtained from the OS
 //	rss_mb                 resident set size right now (Linux /proc; blank elsewhere)
@@ -69,12 +70,16 @@ func (p *perfRecorder) packetHandled(d time.Duration) {
 }
 
 func (p *perfRecorder) windowClosed(row core.WindowRow, closeDur, inferDur time.Duration, haveInfer bool, acc core.Accumulator) {
+	// CPU% needs a real interval: when a traffic gap closes several windows
+	// in one call they close microseconds apart, and dividing by that would
+	// report a meaningless spike (a 109% "peak" in an early router run). Leave
+	// those blank and let the next window's interval cover the whole span.
 	now, cpu := time.Now(), processCPU()
-	cpuPct := 0.0
-	if wall := now.Sub(p.lastWall); wall > 0 {
-		cpuPct = 100 * float64(cpu-p.lastCPU) / float64(wall)
+	cpuPct := ""
+	if wall := now.Sub(p.lastWall); wall >= time.Second {
+		cpuPct = strconv.FormatFloat(100*float64(cpu-p.lastCPU)/float64(wall), 'f', 2, 64)
+		p.lastWall, p.lastCPU = now, cpu
 	}
-	p.lastWall, p.lastCPU = now, cpu
 
 	var ms runtime.MemStats
 	runtime.ReadMemStats(&ms)
@@ -96,7 +101,7 @@ func (p *perfRecorder) windowClosed(row core.WindowRow, closeDur, inferDur time.
 		strconv.FormatFloat(float64(p.handling.Nanoseconds())/1e3, 'f', 1, 64),
 		strconv.FormatFloat(float64(closeDur.Nanoseconds())/1e6, 'f', 3, 64),
 		infer,
-		strconv.FormatFloat(cpuPct, 'f', 2, 64),
+		cpuPct,
 		mb(ms.HeapAlloc), mb(ms.HeapSys), rss, mb(peakRSSBytes()),
 		strconv.Itoa(flows), strconv.Itoa(stored),
 	})

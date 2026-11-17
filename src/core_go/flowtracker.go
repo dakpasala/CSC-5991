@@ -1,7 +1,26 @@
-// Mirrors src/core/flow_tracker.py exactly: 5-tuple flow identification,
-// client/server determination (authoritative via a pure SYN for TCP,
-// first-packet-sender assumption for UDP).
+// Mirrors src/core/flow_tracker.py exactly by default: 5-tuple flow
+// identification, client/server determination (authoritative via a pure
+// SYN for TCP, first-packet-sender assumption otherwise). With
+// DirectionByServicePort set, one rule is added; see there.
 package core
+
+// DirectionByServicePort, when true, assigns a flow whose first seen packet
+// goes FROM a service port (<1024: 443, 80, ...) TO an ephemeral port the
+// other way round -- that first packet is the server's, so the client is
+// the other end. A pure SYN still overrides it.
+//
+// Off by default, for exact parity with flow_tracker.py and therefore with
+// the training data: the dataset's client-side captures sometimes start
+// mid-connection, so the first-packet rule mis-assigned some flows there
+// too, and the models learned those features as computed (turning the rule
+// on drops option C from 0.878 to 0.816 on one local session, from 1.0 to
+// 0.984 on another). The live tool turns it on: a live capture starts before
+// the traffic it measures, so the rule only fires on genuinely reversed
+// flows -- and one early router run had its QUIC video flow reversed (46MB
+// "uploaded", every up/down feature mirrored, accuracy 0.42). Fixing it in
+// flow_tracker.py too, then regenerating the dataset and retraining, would
+// make training and deployment agree on the corrected rule.
+var DirectionByServicePort = false
 
 // FlowKey mirrors the Python tuple (ip_a, port_a, ip_b, port_b, protocol).
 type FlowKey struct {
@@ -73,6 +92,9 @@ func (t *FlowTracker) Process(p *Packet) (FlowKey, string, bool) {
 			ServerIP:   p.DstIP,
 			ServerPort: p.DstPort,
 		}
+		if DirectionByServicePort && !isPureSYN && isServicePort(p.SrcPort) && !isServicePort(p.DstPort) {
+			state.ClientIP, state.ClientPort, state.ServerIP, state.ServerPort = p.DstIP, p.DstPort, p.SrcIP, p.SrcPort
+		}
 		t.flows[key] = state
 		isNewFlow = true
 	} else if isPureSYN {
@@ -86,4 +108,11 @@ func (t *FlowTracker) Process(p *Packet) (FlowKey, string, bool) {
 		direction = "up"
 	}
 	return key, direction, isNewFlow
+}
+
+// isServicePort reports a well-known/system port (below 1024: 443 for
+// HTTPS/QUIC, 80, 53, ...), which servers listen on and client operating
+// systems never pick as an ephemeral source port.
+func isServicePort(port int) bool {
+	return port > 0 && port < 1024
 }

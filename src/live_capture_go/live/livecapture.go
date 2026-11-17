@@ -69,6 +69,7 @@ func main() {
 	output := flag.String("output", "", "stats CSV path (default: timestamped live_statistics_<N>_second_window file; skipped with -model-dir unless given)")
 	inferenceFlags := inference.RegisterFlags()
 	perfOutput := flag.String("perf-output", "", "also write per-window CPU/timing/memory measurements to this CSV (see perf.go)")
+	portDirection := flag.Bool("port-direction", true, "assign a flow first seen from a service port (<1024) as server->client (core.DirectionByServicePort); false = exact flow_tracker.py rule")
 	maxDuration := flag.Duration("max-duration", 0, "stop by itself after this long (e.g. 10m), exactly as on Ctrl+C; 0 = run until stopped. A safety net for unattended runs: the router has no swap, and the accumulator's flow history only grows")
 	flag.Parse()
 
@@ -77,6 +78,7 @@ func main() {
 		os.Exit(1)
 	}
 
+	core.DirectionByServicePort = *portDirection
 	runStartedAt := time.Now().Format("20060102_150405")
 
 	handle, err := openCapture(*iface, snaplen)
