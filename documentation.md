@@ -646,36 +646,193 @@ These are single runs.
 
 ---
 
+## Step 17: The final model, long live runs, and dry-run priority (2026-11-17)
+
+This step settles on a deployable model, measures it over 20-minute live runs on the router, and
+adds the first piece of the QoS application: deciding which connections to prioritize.
+
+### The model: `final_shape_streaming`
+
+A single XGBoost model with **28 traffic-shape statistics**, computed per 10-second window. It has
+no TCP receive-window, RTT, TCP-flag, retransmission or out-of-order features: the "fingerprint"
+features that broke on live Twitch (Step 16).
+
+| Property | Value |
+|---|---|
+| Features | 28 (26 used: the two throughput columns duplicate the byte counts) |
+| Trees | 1,605 (321 boosting rounds × 5 classes) |
+| Model file | 25.9 MB JSON |
+| Offline test accuracy (2018–19 held-out sessions, 212,184 windows) | **0.964** (macro F1 0.966) |
+| Buffers on the router | **0**: every statistic is a running min, max, mean or count |
+| Per-flow state on the router | **None**: no RTT or retransmission tracking |
+
+### The 28 statistics
+
+"Up" is client → server (requests and acknowledgments); "down" is server → client (the video).
+*Share* is the statistic's share of the model's total split gain.
+
+**Flows and protocol**
+
+| Statistic | Meaning | Share |
+|---|---|---:|
+| `frac_udp` | Share of packets that are UDP (QUIC) rather than TCP | 17.7 % |
+| `num_flows` | Connections active in the window | 1.3 % |
+| `num_continuing_flows` | Connections already open in the previous window | 1.3 % |
+| `num_new_flows` | Connections that started in this window | 0.7 % |
+
+**Upload (client → server)**
+
+| Statistic | Meaning | Share |
+|---|---|---:|
+| `up_packet_size_max` | Largest packet the client sent | 20.0 % |
+| `up_payload_size_max` | Largest data payload the client sent | 9.5 % |
+| `up_interarrival_time_max` | Longest gap between client packets | 6.2 % |
+| `up_byte_count` | Total bytes the client sent | 6.0 % |
+| `up_interarrival_time_min` | Shortest gap between client packets | 4.1 % |
+| `up_payload_size_mean` | Average client payload | 2.5 % |
+| `up_packet_size_mean` | Average client packet size | 1.9 % |
+| `up_packet_size_min` | Smallest client packet | 0.9 % |
+| `up_interarrival_time_mean` | Average gap between client packets | 0.6 % |
+| `up_packet_count` | Number of client packets | 0.4 % |
+| `up_payload_size_min` | Smallest client payload | 0.1 % |
+| `up_throughput_bps` | Client bits per second (duplicates `up_byte_count`) | 0 % |
+
+**Download (server → client)**
+
+| Statistic | Meaning | Share |
+|---|---|---:|
+| `down_packet_size_mean` | Average video packet size | 7.9 % |
+| `down_interarrival_time_max` | Longest gap between server packets (pauses between bursts) | 5.7 % |
+| `down_byte_count` | Total bytes received | 2.8 % |
+| `down_interarrival_time_min` | Shortest gap between server packets | 2.2 % |
+| `down_payload_size_max` | Largest payload received | 2.0 % |
+| `down_packet_count` | Number of packets received | 1.7 % |
+| `down_packet_size_min` | Smallest packet received | 1.4 % |
+| `down_payload_size_mean` | Average payload received | 1.2 % |
+| `down_interarrival_time_mean` | Average gap between server packets | 1.1 % |
+| `down_packet_size_max` | Largest packet received | 0.7 % |
+| `down_payload_size_min` | Smallest payload received | 0.3 % |
+| `down_throughput_bps` | Bits per second received (duplicates `down_byte_count`) | 0 % |
+
+The two strongest signals:
+
+- **The client's largest request packet** (`up_packet_size_max`). It reflects how each service's
+  player asks for video, so it identifies the app rather than the network.
+- **`frac_udp`**, which separates QUIC from TCP.
+
+The inter-arrival extremes capture each service's rhythm: YouTube's bursts and silences against
+Twitch's steady segment fetches.
+
+### Live accuracy on the router
+
+Ground truth comes from `stream_and_check.py`: headless Chromium on the Linux box behind the router
+plays a known stream while `live-router` classifies every 10-second window. *Active* windows carry
+≥ 100 packets, i.e. real video traffic, as opposed to the quiet gaps between download bursts.
+
+| Traffic | Run | Windows | Accuracy, active windows | Accuracy, all windows |
+|---|---|---:|:---:|:---:|
+| YouTube over QUIC | 20 min, 113-min video | 119 | **1.000 (116/116)** | 0.975 |
+| YouTube over QUIC | 3 min | 14 | **1.000 (14/14)** | 1.000 |
+| Twitch, TCP-only windows | 20 min, live stream | 102 | **0.912 (93/102)** | – |
+| Twitch, all windows | 20 min, live stream | 119 | 0.807 | 0.807 |
+| Twitch | 3 min | 16 | 0.875 (14/16) | 0.875 |
+
+- **YouTube over QUIC:** every window with real traffic over 20 minutes was correct.
+- **Twitch:** the misses come almost entirely from UDP that today's Twitch mixes in. Windows with
+  5–50 % UDP scored 0.20.
+  - That UDP comes in bursts about every 4–5 minutes, consistent with mid-roll ads delivered over QUIC.
+  - The 2018–19 training data has no Twitch traffic with any UDP.
+  - The remaining TCP misses came at the stream's start (likely a pre-roll ad) and after it dropped to
+    480p.
+- YouTube over TCP has been tested live only with the 12-feature sibling model
+  (`final_option_c_no_fingerprint`): 0.88. It hasn't been tested with this model yet.
+
+**Compared with the earlier models** (live, single runs):
+
+| Model | Features | Offline test | Live Twitch | Live YouTube (QUIC) |
+|---|---:|:---:|:---:|:---:|
+| All features | 112 | 0.983 | 0.25 | 0.31 |
+| Option C (with fingerprint features) | 22 | 0.980 | 0.19 | 1.00 |
+| Option C without fingerprints | 12 | 0.953 | 0.69 | 1.00 |
+| **`final_shape_streaming`** | **28** | 0.964 | **0.88–0.91** | **1.00** |
+
+The model that was best offline was the worst live. The fingerprint features it relied on (TCP
+receive window, RTT, flags) changed since the dataset was recorded.
+
+### Resource use on the router
+
+Measured by `live-router -perf-output` on the router: OpenWrt, aarch64 Cortex-A53, about 1 GB RAM,
+no swap. "Steady RAM" is resident memory after the first 2–3 minutes.
+
+| Run | Traffic load | CPU, mean / max (one core) | Steady RAM | Per packet | Feature calc per window | Scoring per window | Per-flow state |
+|---|---|---:|---:|---:|---:|---:|---:|
+| YouTube, 20 min | 162.7 MB total | 0.37 % / 0.94 % | **37.2 MB, flat** | 1.71 µs | 0.075 ms | 1.93 ms | 0 |
+| Twitch, 20 min | 1,074.5 MB total | 1.99 % / 4.28 % | **38.1 MB, flat** | 2.11 µs | 0.065 ms | 2.10 ms | 0 |
+
+| Summary | Value |
+|---|---|
+| Average steady-state RAM | **~37–38 MB**, flat for 20 minutes, with no growth |
+| Peak RAM | ~112 MB, at startup only, while parsing the 25.9 MB model JSON |
+| CPU | under 2 % of one core on average, even on 1080p Twitch |
+| Binary | one static 3.6 MB Go program; nothing else installed on the router |
+
+For comparison, the original all-features build peaked at **462 MB** in a long run. It kept every
+packet of every flow and analyzed them again at every window.
+
+### Dry-run priority (the first step toward QoS)
+
+`live-router -priority` decides which connections a router *would* prioritize, and prints and logs
+those decisions. It doesn't change anything on the router.
+
+| Rule | Setting |
+|---|---|
+| Start priority | A window with ≥ 100 packets and ≥ 0.9 confidence. Tag its heaviest connections, but only ones that could be the service: server port 443 or 80, UDP for QUIC labels, TCP otherwise. |
+| Keep priority | Through quiet windows. An idle tagged connection uses no bandwidth, and YouTube's next burst reuses the connection. |
+| End priority | The connection closes, or it is idle for 2 minutes. |
+
+Results:
+
+- **YouTube, 20 min:** one QUIC connection, tagged in window 1 and kept for all 20 minutes.
+- **Twitch, 20 min:** all 6 events were on TCP/443. Priority followed the stream as Twitch rotated
+  connections.
+- The port/transport filter was added after an SSH transfer on the Linux box got tagged in an earlier
+  run.
+
+### Problems found and fixed today
+
+| Problem | Effect | Fix |
+|---|---|---|
+| The router's own SSH traffic left as GSO super-packets | Packets of 1,750–2,150 B, plus stray TCP in every window | `live-router -exclude-own-traffic` |
+| Restarting a 10.5-min video mid-run | The box received ~0 MB for 9 min while "playing", so windows had nothing to classify | Use a video longer than the run (113-min video) |
+| Priority picked an SSH transfer as the heaviest flow | Wrong connection tagged | Only tag 443/80 flows with the label's transport |
+| Ctrl+C right after start | An orphaned `live-router` ran for 25 min | The script stops it on early Ctrl+C; `-max-duration` as a backstop |
+| Browser crash or interruption mid-run | Result files never copied back | The browser restarts itself; router files are always collected |
+
+---
+
 ## Current status
 
-- **Router pipeline: working.** It is a single Go binary with the Go-native
-  model and selective extraction. `-port-direction`, `-perf-output` and
-  `-max-duration` are set by the eval script.
-- **Leading model:** `final_shape_streaming` (28 traffic-shape features,
-  0 buffers, no per-flow state).
-  - Offline test: 0.964.
-  - Live: Twitch 0.88, YouTube QUIC 1.00 (single runs).
-- **Write-ups:** `live_runs/tests/live_eval_results.md` (debugging the live
-  setup) and `live_runs/tests/live_eval_feature_varying.md` (accuracy and cost
-  by model). Raw eval files were deleted after summarizing; they are in git
-  history.
-- **Router settings to recheck after any reboot:** GRO off on `eth1` and `lan2`.
+- **Final model:** `final_shape_streaming`. 28 traffic-shape statistics, 0 buffers, no per-flow
+  state, offline test 0.964.
+- **Live on the router (20-minute runs):**
+  - YouTube over QUIC: **1.000** on every active window.
+  - Twitch: **0.91** on TCP windows, and 0.81 overall (lowered by UDP bursts that look like ads).
+- **Router cost:** about 37–38 MB of steady RAM, flat; under 2 % CPU; 2 ms scoring per window.
+- **Priority:** the dry-run layer works and follows the right connections. Enforcement (nftables +
+  `cake`) needs the professor's approval.
+- **Write-ups:** `live_runs/tests/live_eval_results.md` and `live_runs/tests/live_eval_feature_varying.md`.
+  Raw run files were deleted after summarizing.
 
 ## Next up
 
-1. **Repeat runs:** 3 or more per model per traffic type, for means and spreads.
-2. **`final_shape_streaming` on YouTube over TCP** (`--disable-quic`), the one
-   missing cell for the leading model.
-3. **Idle baseline** (`--service idle`). It supports a confidence or activity
-   threshold, since the model always picks one of its 5 classes.
-4. **Training data from today:** collect labeled windows at the router with the
-   eval script (YouTube TCP/QUIC, Twitch) and retrain alongside the 2018–19
-   data. This addresses the remaining drift (Twitch's bitrate and flow count
-   doubled). Netflix and Amazon need logins and DRM, so they can't be collected
-   this way.
-5. **Consistent flow direction:** port the service-port rule into
-   `flow_tracker.py`, regenerate the dataset, and retrain.
-6. **Smaller startup footprint:** a compact binary model format, removing the
-   ~4x JSON-parsing peak, and/or smaller trees.
-7. **Thesis:** turn the two live write-ups into the results chapter. Verify the
-   related-work citations and confirm the dataset's origin with the professor.
+1. **Repeat runs:** 2–3 more 20-minute runs each for YouTube and Twitch, so the numbers have a spread.
+2. **YouTube over TCP** (`--disable-quic`) with `final_shape_streaming`.
+3. **Enforce priority**, with the professor's OK. Mark tagged connections with nftables and DSCP, then
+   shape with `cake`. Measure video resolution and stalls with and without priority, under a competing
+   download.
+4. **Smaller startup footprint:** a compact binary model format or fewer trees. This removes the
+   ~112 MB startup peak.
+5. **Thesis:** results chapter from the live write-ups. A "pitfalls of live evaluation" methods section
+   (GRO, bot detection, flow direction, the router's own traffic, cached playback). Limitations: Twitch's
+   UDP/ads and the 2018–19 training data. Verify the related-work citations.
+6. **Future work** (out of scope for now): retrain with traffic captured at the router today.
