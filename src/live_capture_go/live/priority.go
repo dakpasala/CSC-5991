@@ -22,7 +22,12 @@ import (
 //     minPackets packets (real video data, not a quiet gap between YouTube's
 //     download bursts), tag the connections carrying most of that window's
 //     bytes -- the heaviest flows until they cover 80% of the bytes, at most 3,
-//     each with at least 10%.
+//     each with at least 10% -- among only the connections that could be the
+//     labeled service: server port 443 or 80 (every one of these services
+//     streams over HTTPS/HTTP), and UDP for youtube_quic, TCP for the rest.
+//     Without that filter, a 22 MB SSH transfer (git/rsync on the Linux box)
+//     sharing a window with the video was tagged as "youtube_quic", having
+//     outweighed the video in bytes.
 //   - Keep the tag while the connection exists, through quiet windows too: a
 //     quiet tagged connection uses no bandwidth, and YouTube usually sends its
 //     next burst on the same connection, so the tag is already in place for it
@@ -103,6 +108,9 @@ func (m *priorityManager) windowClosed(window, packets int, label string, conf f
 	}
 	var flows []fb
 	for k, b := range flowBytes {
+		if !couldBeService(k, label) {
+			continue
+		}
 		flows = append(flows, fb{k, b})
 		total += b
 	}
@@ -160,6 +168,19 @@ func (m *priorityManager) close() {
 		m.log.Flush()
 		m.logF.Close()
 	}
+}
+
+// couldBeService reports whether a flow can carry the labeled service:
+// HTTPS/HTTP server port, and the label's transport (QUIC is UDP).
+func couldBeService(k core.FlowKey, label string) bool {
+	_, port := serverSide(k)
+	if port != 443 && port != 80 {
+		return false
+	}
+	if label == "youtube_quic" {
+		return k.Protocol == "udp"
+	}
+	return k.Protocol == "tcp"
 }
 
 // serverSide guesses which end is the server: the one on a service port

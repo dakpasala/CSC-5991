@@ -196,6 +196,9 @@ def open_browser(disable_quic, chromium, chromedriver):
     # traffic that didn't exist.
     driver.execute_cdp_cmd("Network.enable", {})
     driver.execute_cdp_cmd("Network.setCacheDisabled", {"cacheDisabled": True})
+    # A site's service worker can also answer requests from its own Cache
+    # Storage, which the HTTP-cache switch doesn't cover; bypass it too.
+    driver.execute_cdp_cmd("Network.setBypassServiceWorker", {"bypass": True})
     return driver
 
 
