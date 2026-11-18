@@ -256,6 +256,26 @@ def wait_for_playback(driver, timeout_s=60):
     raise SystemExit(f"video never started playing within {timeout_s}s (last state: {last_t})")
 
 
+def host_rx_bytes():
+    """Bytes received so far on this machine's default-route interface
+    (Linux /proc), or None. Logged next to what the router captured, so a
+    window where the client received data the router didn't see stands out.
+    (After a video restart at ~10.5 min, two 20-minute runs played 9+ min of
+    720p while the router captured ~3 MB in total; a fresh browser on its
+    own downloads 1-4 MB every 10 s.)"""
+    try:
+        with open("/proc/net/route") as f:
+            iface = next(l.split()[0] for l in f.readlines()[1:] if l.split()[1] == "00000000")
+        with open("/proc/net/dev") as f:
+            for line in f:
+                name, _, rest = line.partition(":")
+                if name.strip() == iface:
+                    return int(rest.split()[0])
+    except (OSError, StopIteration, ValueError, IndexError):
+        pass
+    return None
+
+
 def same_page(url):
     """URL identity for "is the browser still on our video": YouTube keeps
     the video id in the first query parameter and may append others (&t=,
@@ -278,14 +298,14 @@ class LivePrinter:
         self.prio_header, self.n_prio = None, 0
         self.expected = expected
         self.log = open(log_path, "w")
-        self.timeline = []  # (seconds_since_router_start, video_time, playing, width, height)
+        self.timeline = []  # (seconds_since_router_start, video_time, playing, width, height, host_rx_bytes)
         self.n_pred = self.n_stats = 0
         self.pred_header = self.stats_header = None
         self.stats_rows = {}
         self.correct = self.scored = 0
 
-    def record(self, sec, t, playing, w, h):
-        self.timeline.append((sec, t, playing, w, h))
+    def record(self, sec, t, playing, w, h, rx=None):
+        self.timeline.append((sec, t, playing, w, h, rx))
 
     def _fetch(self, path, header, n):
         # header + every row after the n already seen
@@ -332,6 +352,13 @@ class LivePrinter:
             video = f"video {m}:{sec:02d}, {'playing' if playing else 'NOT playing'}, {last[3]}x{last[4]}"
         else:
             video = "no video" if self.expected is None else "video not loaded"
+        # What this machine received during the window, from the polls that
+        # bracket it (the last poll before it and the last one inside it).
+        host = ""
+        before = [x for x in self.timeline if x[0] < start and x[5] is not None]
+        inside = [x for x in polls if x[5] is not None]
+        if before and inside:
+            host = f" | host rx {(inside[-1][5] - before[-1][5]) / 1e6:.1f} MB"
         st = self.stats_rows.get(idx, {})
         pkts = st.get("total_packet_count", "?")
         udp = st.get("frac_udp", "")
@@ -345,7 +372,7 @@ class LivePrinter:
                 self.correct += ok
         running = f" | running {self.correct}/{self.scored} playing windows correct" if self.scored else ""
         line = (f"[window {int(idx):3d} | {start:5.0f}-{end:5.0f}s] {p['predicted_label']:13s} {float(p['confidence']):.2f} {mark} "
-                f"| {pkts:>6} pkts, udp {udp} | {video}{running}")
+                f"| {pkts:>6} pkts, udp {udp}{host} | {video}{running}")
         print(line)
         self.log.write(line + "\n")
         self.log.flush()
@@ -605,7 +632,7 @@ def main():
     try:
         with open(timeline_path, "w", newline="") as f:
             timeline = csv.writer(f, lineterminator="\n")
-            timeline.writerow(["unix_time", "seconds_since_router_start", "video_time_s", "paused", "width", "height", "playing"])
+            timeline.writerow(["unix_time", "seconds_since_router_start", "video_time_s", "paused", "width", "height", "playing", "host_rx_bytes"])
             if args.service != "idle":
                 print(f"opening {args.url} in headless Chromium{' (QUIC disabled)' if args.disable_quic else ''} ...")
                 driver = open_browser(args.disable_quic, args.chromium, args.chromedriver)
@@ -648,12 +675,14 @@ def main():
                 if driver:
                     t = state["t"] if state else None
                     playing = bool(state) and not state["paused"] and last_t is not None and t > last_t
+                    rx = host_rx_bytes()
                     timeline.writerow([f"{now:.3f}", f"{now - router_started:.1f}",
                                        f"{t:.1f}" if t is not None else "", state["paused"] if state else "",
-                                       state["w"] if state else "", state["h"] if state else "", playing])
+                                       state["w"] if state else "", state["h"] if state else "", playing,
+                                       rx if rx is not None else ""])
                     f.flush()
                     if printer:
-                        printer.record(now - router_started, t, playing, state["w"] if state else 0, state["h"] if state else 0)
+                        printer.record(now - router_started, t, playing, state["w"] if state else 0, state["h"] if state else 0, rx)
                     last_t = t
                     if (state and state.get("ended")) or same_page(driver.current_url) != same_page(args.url):
                         # The video finished (or YouTube autoplay moved on to
