@@ -1,0 +1,3 @@
+unix_time,seconds_since_router_start,video_time_s,paused,width,height,playing
+1794958995.275,7.6,2.8,False,640,360,False
+1794959000.277,12.6,7.8,False,640,360,True
