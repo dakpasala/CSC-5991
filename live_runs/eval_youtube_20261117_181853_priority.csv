@@ -1,0 +1,11 @@
+time_s,window_index,event,label,confidence,flow_id,protocol,server_port,window_bytes,reason
+11.1,0,on,youtube_quic,0.9990,22b0f40b,udp,443,995700,active confident window
+241.4,23,on,netflix,0.9801,7c438327,tcp,22,21971278,active confident window
+310.9,30,on,youtube_tcp,0.9931,ce955f5f,tcp,22,29966,active confident window
+310.9,30,on,youtube_tcp,0.9931,eb5a1343,tcp,22,16874,active confident window
+376.5,36,off,netflix,,7c438327,tcp,22,0,idle 135s
+376.5,36,on,youtube_quic,0.9999,fac2affb,tcp,22,11204598,active confident window
+481.2,47,off,youtube_tcp,,ce955f5f,tcp,22,0,idle 124s
+501.5,49,off,youtube_quic,,fac2affb,tcp,22,0,idle 125s
+556.5,54,on,youtube_tcp,0.9681,40d605d7,udp,22000,11898,active confident window
+556.5,54,on,youtube_tcp,0.9681,8d458909,udp,22000,11898,active confident window
