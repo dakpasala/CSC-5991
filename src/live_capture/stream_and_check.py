@@ -135,7 +135,14 @@ def start_live_router(target, model, interface, remote_predictions, max_seconds,
         f"> {shlex.quote(log)} 2>&1 < /dev/null & echo $!"
     )
     pid = ssh(target, cmd).strip().splitlines()[-1]
-    time.sleep(3)
+    try:
+        time.sleep(3)
+    except KeyboardInterrupt:
+        # Ctrl+C before main() has the pid would otherwise orphan this
+        # live-router until -max-duration (it happened: one ran 25 min
+        # alongside the next run).
+        stop_live_router(target, pid)
+        raise
     if ssh(target, f"kill -0 {pid} 2>/dev/null && echo alive", check=False).strip() != "alive":
         print(ssh(target, f"cat {REMOTE_DIR}/{log}", check=False), file=sys.stderr)
         raise SystemExit("live-router exited right after starting (its log is above)")
