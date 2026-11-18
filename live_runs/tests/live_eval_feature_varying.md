@@ -292,3 +292,41 @@ What this shows:
 
 `final_shape_streaming` is the most accurate model live and is tied for the lowest memory: no buffers,
 no per-flow state, under 2 % CPU on Twitch, and 2 ms of scoring per window.
+
+---
+
+# Longer run: `final_shape_streaming`, 5 minutes, live per-window output (2026-11-17)
+
+Big Buck Bunny (`youtube.com/watch?v=aqz-KE-bpKQ`, YouTube over QUIC) for 5 minutes. This is the first
+run with the per-window live printout and `-exclude-own-traffic`. With that flag, the router ignores its
+own traffic, such as the printout's ssh polling. Before it, that traffic left the router as GSO packets of
+1,750–2,150 B and tripped the 1,514 B check. Playback was smooth the whole time, at 1280x720 with no
+stalls. Raw files: `live_runs/eval_youtube_20261117_154335*`, including the per-window `_live.log`.
+
+| Windows (playing) | Accuracy, all playing windows | Windows with ≥ 50 packets | Windows with ≥ 100 packets |
+|:---:|:---:|:---:|:---:|
+| 28 | 0.71 (20/28) | **0.95 (19/20)** | **1.00 (16/16)** |
+
+- **Every window that carried real video traffic was labeled `youtube_quic`**, almost all at confidence
+  1.00. Mean confidence was 0.97 on correct windows and 0.74 on wrong ones.
+- **All 8 misses were near-empty windows**, with 2 to 68 packets. Once its buffer is full, YouTube fetches
+  in bursts. 12 of the 28 playing windows held under 100 packets: almost only background traffic, with
+  nothing for the model to recognize. The model is closed-world, so it still has to name one of its 5
+  classes, and it guesses (`twitch`, `youtube_tcp`, `netflix`).
+- **A deployment rule follows from this:** report "no streaming activity" for windows below about 100
+  packets instead of a service label. On this run, that turns 0.71 into 1.00 on the windows it labels,
+  and it describes the quiet windows honestly. A confidence threshold would catch most of the same
+  misses (mean 0.74 when wrong).
+
+| Router cost | Value |
+|---|---|
+| CPU, mean / max | 0.43 % / 1.23 % of one core |
+| Per packet / window close / scoring | 1.78 µs / 0.069 ms / 1.95 ms |
+| RSS | 23 MB at start, 36 MB by 1 min, **37.8 MB at 5 min (flat)** |
+| Per-flow seq entries | 0 (flows tracked: 72) |
+| Packets over 1,514 B | 0 |
+
+**Memory levels off.** RSS rose during the first minute, as the Go runtime grew its heap, and then stayed
+at about 36–38 MB through minute 5. The live heap oscillated between 10 and 21 MB with garbage collection.
+The only state that keeps growing is the flow tracker's table (72 flows at about 74 B each), which is
+negligible. A 20-minute or hour-long run would confirm the plateau over longer timescales.
