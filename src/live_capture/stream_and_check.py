@@ -107,10 +107,14 @@ def ssh(target, command, check=True):
     return result.stdout
 
 
-def start_live_router(target, model, interface, remote_predictions, max_seconds):
+def start_live_router(target, model, interface, remote_predictions, max_seconds, priority):
     log = remote_predictions.replace(".csv", ".log")
     stats = remote_predictions.replace(".csv", "_stats.csv")
     perf = remote_predictions.replace(".csv", "_perf.csv")
+    # Dry-run QoS decisions (nothing on the router changes), logged as events
+    # the live printout shows next to the window predictions.
+    prio = remote_predictions.replace(".csv", "_priority.csv")
+    priority_flags = f"-priority -priority-log {shlex.quote(prio)} " if priority else ""
     # nohup if BusyBox has it; stdin from /dev/null so ssh returns at once.
     # Go re-enables SIGINT even though a background job starts with it
     # ignored (os/signal.Notify), so stop_live_router's kill -INT still gets
@@ -127,7 +131,7 @@ def start_live_router(target, model, interface, remote_predictions, max_seconds)
         # for the live printout -- isn't client traffic, and leaves the
         # router as GSO super-packets (1,750-2,150 B seen) that tripped the
         # >1,514 B check and added stray TCP packets to every window.
-        f"-exclude-own-traffic "
+        f"-exclude-own-traffic {priority_flags}"
         f"> {shlex.quote(log)} 2>&1 < /dev/null & echo $!"
     )
     pid = ssh(target, cmd).strip().splitlines()[-1]
@@ -259,6 +263,8 @@ class LivePrinter:
         self.target = target
         self.pred = f"{REMOTE_DIR}/{remote_predictions}"
         self.stats = f"{REMOTE_DIR}/{remote_predictions.replace('.csv', '_stats.csv')}"
+        self.prio = f"{REMOTE_DIR}/{remote_predictions.replace('.csv', '_priority.csv')}"
+        self.prio_header, self.n_prio = None, 0
         self.expected = expected
         self.log = open(log_path, "w")
         self.timeline = []  # (seconds_since_router_start, video_time, playing, width, height)
@@ -289,6 +295,20 @@ class LivePrinter:
         self.n_pred += len(new_pred)
         for r in new_pred:
             self._print(dict(zip(self.pred_header, r)))
+        self.prio_header, new_prio = self._fetch(self.prio, self.prio_header, self.n_prio)
+        self.n_prio += len(new_prio)
+        for r in new_prio:
+            self._print_priority(dict(zip(self.prio_header, r)))
+
+    def _print_priority(self, e):
+        if e.get("event") == "on":
+            line = (f"    ▶ PRIORITY ON  [{e['label']}] {e['protocol']} flow {e['flow_id']} (server port {e['server_port']}), "
+                    f"{int(e['window_bytes']) / 1e6:.1f} MB in window {e['window_index']}, confidence {float(e['confidence']):.2f}")
+        else:
+            line = f"    ■ PRIORITY OFF [{e['label']}] {e['protocol']} flow {e['flow_id']} (server port {e['server_port']}): {e['reason']}"
+        print(line)
+        self.log.write(line + "\n")
+        self.log.flush()
 
     def _print(self, p):
         idx = p["window_index"]
@@ -507,6 +527,8 @@ def main():
     parser.add_argument("--interface", default="lan2")
     parser.add_argument("--warmup-windows", type=int, default=1, help="extra windows skipped after playback starts")
     parser.add_argument("--min-packets", type=int, default=100, help="packets a window needs to count as active")
+    parser.add_argument("--no-priority", dest="priority", action="store_false",
+                        help="with --router: don't run live-router's dry-run priority decisions (-priority)")
     parser.add_argument("--live-every", type=float, default=10, help="with --router: seconds between live per-window printouts (0 = off)")
     parser.add_argument("--stats", metavar="STATS_CSV", help="with --score: the matching raw window stats, for active-window accuracy")
     parser.add_argument("--timeline", metavar="TIMELINE_CSV", help="with --score: the matching playback timeline, for playing-window accuracy")
@@ -548,7 +570,7 @@ def main():
         router_started = time.time()
         # Playback can take up to ~60s to start and stalls can add reloads,
         # so leave generous slack beyond --minutes before the safety net fires.
-        pid = start_live_router(args.router, args.model, args.interface, remote_predictions, args.minutes * 60 + 300)
+        pid = start_live_router(args.router, args.model, args.interface, remote_predictions, args.minutes * 60 + 300, args.priority)
 
     driver = None
     play_started = router_started
@@ -653,6 +675,11 @@ def main():
     with open(perf_name, "w") as f:
         f.write(ssh(args.router, f"cat {REMOTE_DIR}/{perf_name}"))
     print(f"router resource use -> {perf_name}")
+    if args.priority:
+        prio_name = remote_predictions.replace(".csv", "_priority.csv")
+        with open(prio_name, "w") as f:
+            f.write(ssh(args.router, f"cat {REMOTE_DIR}/{prio_name} 2>/dev/null", check=False))
+        print(f"priority decisions (dry run) -> {prio_name}")
 
     scored_path = local_predictions.replace(".csv", "_scored.csv")
     summary = score(local_predictions, expected, play_started - router_started, args.warmup_windows, stats_name,

@@ -63,6 +63,10 @@ func endpointLess(ipA string, portA int, ipB string, portB int) bool {
 	return portA <= portB
 }
 
+// FlowKeyOf is the direction-independent flow key for a packet (both
+// directions of a connection map to the same key).
+func FlowKeyOf(p *Packet) FlowKey { return canonicalKey(p) }
+
 func canonicalKey(p *Packet) FlowKey {
 	var loIP, hiIP string
 	var loPort, hiPort int

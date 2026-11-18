@@ -72,6 +72,11 @@ func main() {
 	perfOutput := flag.String("perf-output", "", "also write per-window CPU/timing/memory measurements to this CSV (see perf.go)")
 	portDirection := flag.Bool("port-direction", true, "assign a flow first seen from a service port (<1024) as server->client (core.DirectionByServicePort); false = exact flow_tracker.py rule")
 	excludeOwn := flag.Bool("exclude-own-traffic", false, "drop packets to/from this machine's own IP addresses. Use on a router capturing for its clients: its own ssh/management traffic isn't client traffic (and leaves with GSO, as oversized packets). Leave off when capturing on the client itself, where that traffic IS the client's")
+	priority := flag.Bool("priority", false, "dry-run QoS: print/log which connections a router would prioritize from the labels (needs a Go-native .json -model-dir; changes nothing on the router)")
+	prioMinPackets := flag.Int("priority-min-packets", 100, "-priority: packets a window needs before its label can start priority")
+	prioMinConf := flag.Float64("priority-min-confidence", 0.9, "-priority: confidence a window's label needs before it can start priority")
+	prioIdle := flag.Duration("priority-idle", 2*time.Minute, "-priority: drop a connection's priority after this long with no packets on it")
+	prioLog := flag.String("priority-log", "", "-priority: also write on/off events to this CSV (no IP addresses: flow hash, protocol, server port)")
 	maxDuration := flag.Duration("max-duration", 0, "stop by itself after this long (e.g. 10m), exactly as on Ctrl+C; 0 = run until stopped. A safety net for unattended runs: the router has no swap, and the accumulator's flow history only grows")
 	flag.Parse()
 
@@ -137,6 +142,21 @@ func main() {
 		fmt.Fprintf(os.Stderr, "computing only the model's %d features (-all-features to compute all %d columns)\n", len(extract), len(core.CSVHeader())-5)
 	}
 
+	if *priority {
+		if _, ok := out.labeler.(*inference.Native); !ok {
+			fmt.Fprintln(os.Stderr, "error: -priority needs a Go-native XGBoost .json -model-dir")
+			os.Exit(1)
+		}
+		out.prio, err = newPriorityManager(*prioMinPackets, *prioMinConf, *prioIdle, *prioLog)
+		if err != nil {
+			fmt.Fprintln(os.Stderr, "error opening priority log:", err)
+			os.Exit(1)
+		}
+		out.winBytes = map[core.FlowKey]int64{}
+		fmt.Fprintf(os.Stderr, "priority (dry run): tag after a window with >= %d packets at confidence >= %.2f; release after %s idle or on close\n",
+			*prioMinPackets, *prioMinConf, *prioIdle)
+	}
+
 	var own map[string]bool
 	if *excludeOwn {
 		own = ownAddresses()
@@ -174,16 +194,22 @@ func main() {
 			start := time.Now()
 			rows := acc.HandlePacket(p)
 			took := time.Since(start)
+			out.now = p.Timestamp
 			if len(rows) == 0 {
 				if out.perf != nil {
 					out.perf.packetHandled(took)
 				}
-				continue
 			}
 			// A window-closing call's time is (almost all) the close itself;
 			// split it if a traffic gap closed several windows at once.
 			for _, row := range rows {
 				out.writeRow(row, took/time.Duration(len(rows)))
+			}
+			// This packet belongs to the window now open (after any closes above).
+			if out.prio != nil {
+				key := core.FlowKeyOf(p)
+				out.winBytes[key] += int64(p.WireLen)
+				out.prio.observe(p, key)
 			}
 		case <-sigChan:
 			fmt.Println("\nstopping capture...")
@@ -207,6 +233,9 @@ type sinks struct {
 	rowsWritten     int
 	perf            *perfRecorder
 	acc             core.Accumulator
+	prio            *priorityManager
+	winBytes        map[core.FlowKey]int64 // bytes per flow in the open window, for -priority
+	now             float64                // capture time of the latest packet
 }
 
 func (s *sinks) describe() string {
@@ -266,6 +295,9 @@ func (s *sinks) finish(acc core.Accumulator) {
 		row := acc.Flush()
 		s.writeRow(row, time.Since(start))
 	}
+	if s.prio != nil {
+		s.prio.close()
+	}
 	if s.labeler != nil {
 		fmt.Println("waiting for remaining predictions...")
 		if err := s.labeler.Close(); err != nil {
@@ -294,6 +326,11 @@ func (s *sinks) writeRow(row core.WindowRow, closeDur time.Duration) {
 	}
 	if s.perf != nil {
 		s.perf.windowClosed(row, closeDur, infer, haveInfer, s.acc)
+	}
+	if s.prio != nil {
+		pred := s.labeler.(*inference.Native).LastPrediction()
+		s.prio.windowClosed(row.WindowIndex, row.Total.PacketCount, pred.Label, pred.Confidence, s.winBytes, s.now)
+		s.winBytes = map[core.FlowKey]int64{}
 	}
 	s.rowsWritten++
 	fmt.Printf("window %d closed\n", row.WindowIndex)

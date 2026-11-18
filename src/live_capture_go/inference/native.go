@@ -43,6 +43,7 @@ type Native struct {
 	winIdx    [3]int // positions of window_index, window_start_s, window_end_s in the header
 	writer    *PredictionsWriter
 	lastScore time.Duration
+	last      xgbmodel.Prediction
 }
 
 // StartNative loads the model and opens the predictions CSV. header is the
@@ -90,6 +91,9 @@ func ExtractionFeatures(l Labeler, allFeatures bool) []string {
 	return nil
 }
 
+// LastPrediction is the label/confidence Send produced for the most recent window.
+func (n *Native) LastPrediction() xgbmodel.Prediction { return n.last }
+
 // LastScore is how long the most recent Send spent in the model itself
 // (feature lookup + tree walk + softmax), excluding file/terminal output.
 func (n *Native) LastScore() time.Duration { return n.lastScore }
@@ -98,6 +102,7 @@ func (n *Native) Send(values []string) {
 	start := time.Now()
 	p := n.clf.ScoreRow(values, n.idx)
 	n.lastScore = time.Since(start)
+	n.last = p
 	var win [3]string
 	for j, i := range n.winIdx {
 		if i >= 0 {
