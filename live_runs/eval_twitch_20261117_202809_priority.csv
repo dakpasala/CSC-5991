@@ -1,0 +1,7 @@
+time_s,window_index,event,label,confidence,flow_id,protocol,server_port,window_bytes,reason
+10.0,0,on,netflix,0.9837,aa21ced8,tcp,443,201624,active confident window
+200.0,19,on,twitch,0.9861,a63d701d,tcp,443,3332371,active confident window
+440.0,,off,netflix,,a63d701d,tcp,443,0,connection closed
+1150.1,114,on,twitch,0.9654,f5b90b82,tcp,443,557926,active confident window
+1211.3,,off,youtube_tcp,,aa21ced8,tcp,443,0,connection closed
+1211.4,121,on,youtube_tcp,0.9638,aa21ced8,tcp,443,288155,active confident window
