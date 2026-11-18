@@ -660,7 +660,18 @@ def main():
                         # another one): start it again so long runs keep
                         # measuring the same, known content.
                         restarts += 1
-                        print(f"  video ended at {now - router_started:.0f}s; restarting it (restart {restarts})")
+                        print(f"  video ended at {now - router_started:.0f}s; restarting it in a fresh browser (restart {restarts})")
+                        # A fresh browser, not a reload: each chromedriver
+                        # session gets a new, empty temporary profile, so no
+                        # cache of any kind (HTTP, service worker, site storage)
+                        # survives. With only a reload, the second play still
+                        # arrived with almost no network traffic (median 27
+                        # packets/window, even after disabling the HTTP cache).
+                        try:
+                            driver.quit()
+                        except Exception:
+                            pass
+                        driver = open_browser(args.disable_quic, args.chromium, args.chromedriver)
                         driver.get(args.url)
                         try:
                             wait_for_playback(driver, timeout_s=45)
