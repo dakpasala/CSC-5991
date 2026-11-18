@@ -376,3 +376,57 @@ copied back by hand.
 - **The browser restarts itself** after a crash or hang, up to 3 times, instead of ending the run.
 - **The router's files are collected even if the run is interrupted.** They are copied in the cleanup
   path, not only after a clean finish.
+
+---
+
+# Clean 20-minute run: `final_shape_streaming` on a 113-minute video (2026-11-17)
+
+*Europe 4K – Scenic Relaxation Film* (`youtube.com/watch?v=0xhzwDXfLds`, 113 min), YouTube over
+QUIC, 20 minutes, with every fix in place:
+
+- GRO off;
+- the router's own traffic excluded;
+- the 443/80 + transport filter on priority tags;
+- browser cache off;
+- crash recovery;
+- the Linux box's received bytes logged per window.
+
+The video is longer than the run, so there was **no restart**: every window is real, network-fed
+playback. It played at 1280x720 for the whole run, and the Linux box received 162.7 MB.
+Raw files: `live_runs/eval_youtube_20261117_195313*`.
+
+| Playing windows | Accuracy, all windows | Accuracy, ≥ 50 packets | Accuracy, ≥ 100 packets |
+|:---:|:---:|:---:|:---:|
+| 119 | 0.975 (116/119) | **1.000 (116/116)** | **1.000 (116/116)** |
+
+- **Every one of the 116 windows with real traffic was labeled `youtube_quic`.** Over 20 minutes,
+  that's no misses on active traffic.
+- The only 3 misses were nearly empty windows. This video streams more continuously than Big Buck
+  Bunny, so only 3 of 119 windows were quiet, against about 40 % for Big Buck Bunny.
+- No packet exceeded 1,514 B.
+
+**Priority (dry run): one connection, the whole run.** The QUIC video connection (`be70f1f5`, UDP/443)
+was tagged in window 1 (2.2 MB) and kept priority for all 20 minutes. There were no other tags, no
+released tags, and no SSH or other stray connections. That's the intended behavior.
+
+| Router cost (20 min) | Value |
+|---|---|
+| CPU, mean / max | 0.37 % / 0.94 % of one core |
+| Per packet / window close / scoring | 1.71 µs / 0.075 ms / 1.93 ms |
+| RSS | 21.8 MB at start, then **37.2 MB from minute 3 to minute 20 (flat)** |
+| Peak RSS | 111.6 MB (startup model parsing) |
+| Per-flow seq entries | 0 (flows tracked: 98) |
+
+**Memory is flat for 20 minutes.** After the first few minutes, RSS sits at 37.2 MB, with no
+growth. This is the steady-state answer: the router deployment uses a constant ~37 MB on a router
+with about 1 GB.
+
+## Earlier long runs, explained
+
+In the three earlier 20-minute runs on Big Buck Bunny (10.5 min long), almost no traffic reached the
+**Linux box itself** after the video restarted: `host rx` was 0.0 MB per window while the video
+"played" at 720p. The router wasn't missing anything; there was nothing to capture. That happened even
+with the HTTP cache off and with a fresh browser. A fresh browser started on its own downloads normally
+(1–4 MB per 10 s), so the post-restart "playback" wasn't a real stream. The cause is still unexplained.
+Using a video longer than the run avoids the problem entirely. Priority handled those periods
+correctly: with no traffic, the tags were released after about 2 minutes idle.
