@@ -188,6 +188,14 @@ def open_browser(disable_quic, chromium, chromedriver):
     driver = webdriver.Chrome(service=Service(chromedriver), options=opts)
     ua = driver.execute_script("return navigator.userAgent").replace("HeadlessChrome", "Chrome")
     driver.execute_cdp_cmd("Emulation.setUserAgentOverride", {"userAgent": ua})
+    # No HTTP cache: a video restarted mid-run (or a reload after a stall)
+    # must download again. With the cache on, a 20-minute run's second play
+    # of Big Buck Bunny came from Chromium's disk cache -- the video "played"
+    # for 5+ minutes while the router saw almost no traffic (median 27
+    # packets/window), so every one of those windows was scored against
+    # traffic that didn't exist.
+    driver.execute_cdp_cmd("Network.enable", {})
+    driver.execute_cdp_cmd("Network.setCacheDisabled", {"cacheDisabled": True})
     return driver
 
 
@@ -426,6 +434,19 @@ def score(predictions_path, expected, skip_before_s, warmup_windows, stats_path=
     return summary
 
 
+def collect_router_files(target, remote_predictions, priority):
+    """Copy the run's files back from the router. Never raises: it also runs
+    while a failed run is unwinding."""
+    names = [remote_predictions] + [remote_predictions.replace(".csv", f"_{x}.csv") for x in ("stats", "perf")]
+    if priority:
+        names.append(remote_predictions.replace(".csv", "_priority.csv"))
+    for name in names:
+        out = ssh(target, f"cat {REMOTE_DIR}/{name} 2>/dev/null", check=False)
+        with open(name, "w") as f:
+            f.write(out)
+        print(f"{'copied' if out else 'MISSING on router:'} {name}")
+
+
 def perf_summary(perf_path):
     """Resource use on the router over the run, from live-router's
     -perf-output: what the classifier costs, next to how accurate it was."""
@@ -597,10 +618,30 @@ def main():
                 print(f"playing at {state['w']}x{state['h']}, {play_started - router_started:.0f}s after live-router started")
             end = time.time() + args.minutes * 60
             last_t, last_advance, stalls, reloads, diagnosed = None, time.time(), 0, 0, False
-            restarts, last_poll = 0, 0.0
+            restarts, last_poll, browser_errors = 0, 0.0, 0
             while time.time() < end:
                 now = time.time()
-                state = driver.execute_script(VIDEO_STATE_JS) if driver else None
+                try:
+                    state = driver.execute_script(VIDEO_STATE_JS) if driver else None
+                except Exception as exc:  # the browser crashed or hung (WebDriverException)
+                    browser_errors += 1
+                    print(f"  browser error at {now - router_started:.0f}s ({type(exc).__name__}: {str(exc).splitlines()[0][:120]})")
+                    if browser_errors > 3:
+                        print("  too many browser errors; ending the run early (the router's files are still collected)")
+                        break
+                    try:
+                        driver.quit()
+                    except Exception:
+                        pass
+                    print(f"  restarting the browser ({browser_errors}/3) ...")
+                    driver = open_browser(args.disable_quic, args.chromium, args.chromedriver)
+                    driver.get(args.url)
+                    try:
+                        wait_for_playback(driver, timeout_s=60)
+                    except SystemExit as e:
+                        print(f"  {e}")
+                    last_t, last_advance, diagnosed = None, time.time(), False
+                    continue
                 if driver:
                     t = state["t"] if state else None
                     playing = bool(state) and not state["paused"] and last_t is not None and t > last_t
@@ -648,38 +689,29 @@ def main():
                 time.sleep(5)
     finally:
         if driver:
-            driver.quit()
+            try:
+                driver.quit()
+            except Exception:
+                pass
         if pid:
             print("stopping live-router ...")
             stop_live_router(args.router, pid)
+            # Collected here, not after a clean finish only: a run that dies
+            # mid-way (a browser crash once ended one at ~16 of 20 minutes)
+            # still keeps everything the router recorded.
+            if printer:
+                printer.poll()  # the windows that closed while stopping, incl. the final partial one
+                printer.close()
+                print(f"live per-window log -> live_runs/eval_{tag}_live.log")
+            collect_router_files(args.router, remote_predictions, args.priority)
+            print(f"timeline -> {timeline_path}")
 
-    if printer:
-        printer.poll()  # the windows that closed while stopping, incl. the final partial one
-        printer.close()
-        print(f"live per-window log -> live_runs/eval_{tag}_live.log")
-    print(f"timeline -> {timeline_path}")
     if not args.router:
+        print(f"timeline -> {timeline_path}")
         print("no --router: score the router's predictions afterwards with --score <file> --service", args.service)
         return
-
-    with open(local_predictions, "w") as f:
-        f.write(ssh(args.router, f"cat {REMOTE_DIR}/{remote_predictions}"))
-    print(f"predictions -> {local_predictions} (copied from {args.router}:{REMOTE_DIR}/{remote_predictions})")
-    # Raw per-window feature rows too (same ~130 columns as the training CSVs),
-    # so a bad run can be diagnosed from the numbers, not just the labels.
     stats_name = remote_predictions.replace(".csv", "_stats.csv")
-    with open(stats_name, "w") as f:
-        f.write(ssh(args.router, f"cat {REMOTE_DIR}/{stats_name}"))
-    print(f"window stats -> {stats_name}")
     perf_name = remote_predictions.replace(".csv", "_perf.csv")
-    with open(perf_name, "w") as f:
-        f.write(ssh(args.router, f"cat {REMOTE_DIR}/{perf_name}"))
-    print(f"router resource use -> {perf_name}")
-    if args.priority:
-        prio_name = remote_predictions.replace(".csv", "_priority.csv")
-        with open(prio_name, "w") as f:
-            f.write(ssh(args.router, f"cat {REMOTE_DIR}/{prio_name} 2>/dev/null", check=False))
-        print(f"priority decisions (dry run) -> {prio_name}")
 
     scored_path = local_predictions.replace(".csv", "_scored.csv")
     summary = score(local_predictions, expected, play_started - router_started, args.warmup_windows, stats_name,

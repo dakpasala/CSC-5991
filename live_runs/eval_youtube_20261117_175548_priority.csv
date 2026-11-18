@@ -1,0 +1,7 @@
+time_s,window_index,event,label,confidence,flow_id,protocol,server_port,window_bytes,reason
+21.4,1,on,youtube_quic,1.0000,d8def81c,udp,443,1702462,active confident window
+651.0,64,on,youtube_quic,1.0000,0cfa2b94,udp,443,555373,active confident window
+651.0,64,on,youtube_quic,1.0000,ac9052ef,udp,443,124725,active confident window
+681.3,67,off,youtube_quic,,d8def81c,udp,443,0,idle 122s
+785.3,77,off,youtube_quic,,0cfa2b94,udp,443,0,idle 133s
+785.3,77,off,youtube_quic,,ac9052ef,udp,443,0,idle 134s

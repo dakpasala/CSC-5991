@@ -330,3 +330,49 @@ stalls. Raw files: `live_runs/eval_youtube_20261117_154335*`, including the per-
 at about 36–38 MB through minute 5. The live heap oscillated between 10 and 21 MB with garbage collection.
 The only state that keeps growing is the flow tracker's table (72 flows at about 74 B each), which is
 negligible. A 20-minute or hour-long run would confirm the plateau over longer timescales.
+
+---
+
+# 16-minute run with dry-run priority decisions (2026-11-17)
+
+`final_shape_streaming`, Big Buck Bunny, `-priority` on. The run was planned for 20 minutes and ended
+at about 16. The Linux-box side was interrupted, and the router side shut down cleanly with all
+98 windows. Raw files are in `live_runs/eval_youtube_20261117_175548*`; the router's files were
+copied back by hand.
+
+| Part of the run | Windows | Median packets/window | Active windows (≥ 100 pkts) | Accuracy on active windows |
+|---|---:|---:|---:|:---:|
+| Before the restart (network playback) | 63 | 64 | 29 | **1.00 (29/29)** |
+| After the restart (replay from **browser cache**) | 34 | 27 | 3 | 0.67 (2/3) |
+| Whole run | 97 | – | 32 | **0.97 (31/32)** |
+
+- **After the video restarted (about 10.5 min), Chromium replayed it from its disk cache.** It
+  "played" at 720p for 5+ minutes while the router saw almost no traffic, so those windows held
+  nothing to classify.
+- The eval script now disables Chromium's HTTP cache (`Network.setCacheDisabled`), so a restarted
+  video downloads again.
+- The single active miss (window 94, 455 packets, all TCP) was labeled `youtube_tcp`: a TCP fetch by
+  YouTube during the cached replay. Right service, other transport.
+- **Memory: no growth over 16 minutes.** RSS held at 36.8–37.5 MB for 10 minutes, then *fell* to about
+  25 MB when traffic dropped, as Go returned memory. CPU averaged 0.27 %, scoring 1.93 ms, and window
+  close 0.079 ms.
+
+## Priority decisions (dry run)
+
+| Time | Event | Connection | Why |
+|---:|---|---|---|
+| 21 s | ON | `d8def81c` (udp/443) | first active, confident window (1.7 MB) |
+| 651 s | ON | `0cfa2b94`, `ac9052ef` (udp/443) | the restarted video's new connections |
+| 681 s | OFF | `d8def81c` | idle 122 s (the old connection after the restart) |
+| 785 s | OFF | `0cfa2b94`, `ac9052ef` | idle 133–134 s (cached replay, nothing downloading) |
+
+- The first connection kept priority for about 11 minutes through YouTube's quiet gaps, with no
+  flapping on and off.
+- Each tag was released only when its connection had truly stopped carrying traffic.
+
+## Script fixes from this run
+
+- **Chromium's cache is disabled**, so a restarted video downloads again.
+- **The browser restarts itself** after a crash or hang, up to 3 times, instead of ending the run.
+- **The router's files are collected even if the run is interrupted.** They are copied in the cleanup
+  path, not only after a clean finish.
