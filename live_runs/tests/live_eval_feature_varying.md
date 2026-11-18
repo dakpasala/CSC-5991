@@ -430,3 +430,68 @@ with the HTTP cache off and with a fresh browser. A fresh browser started on its
 (1–4 MB per 10 s), so the post-restart "playback" wasn't a real stream. The cause is still unexplained.
 Using a video longer than the run avoids the problem entirely. Priority handled those periods
 correctly: with no traffic, the tags were released after about 2 minutes idle.
+
+---
+
+# 20-minute Twitch run: `final_shape_streaming` (2026-11-17)
+
+`twitch.tv/tfue` (live) for 20 minutes, with the same fixes as the clean YouTube run. Twitch had
+almost no quiet windows: 119 of 119 playing windows had ≥ 100 packets, with a median of 7,959 packets
+per window. The Linux box received 1,074.5 MB. Video ran at 1920x1080 until about 14 min, then
+1280x720, then 852x480 from about 15 min. Raw files: `live_runs/eval_twitch_20261117_202809*`.
+
+| Window type (all active) | Windows | Accuracy | Labels |
+|---|---:|:---:|---|
+| **TCP-only (< 5 % UDP)** | 102 | **0.91** | twitch 93, youtube_tcp 7, amazon 1, netflix 1 |
+| Mixed (5–50 % UDP) | 15 | 0.20 | netflix 8, youtube_quic 4, twitch 3 |
+| Mostly UDP (> 50 %) | 2 | 0.00 | youtube_quic 2 |
+| **All** | 119 | 0.81 | |
+
+## The UDP windows
+
+Almost all of the misses are in windows where UDP appears. Twitch is TCP in the training data (median
+`frac_udp` 0.00), so the model has never seen Twitch traffic with a UDP share and reads it as
+QUIC-based YouTube or as Netflix.
+
+- **The UDP comes in regular bursts**: windows 20–24, 44–48, 74–78 and 104–109. That is about every
+  4–5 minutes, for about 50 s each time.
+- During those bursts the Linux box received 20–29 MB per 10 s, about 2–3x the stream's normal 6–9 MB.
+- The regular timing fits Twitch's **mid-roll ad breaks**, with ads delivered over QUIC by a different
+  CDN alongside the stream. A screenshot during one of those windows would confirm it.
+- Either way, it's a drift case: today's Twitch sometimes uses UDP, and the 2018–19 training data has
+  no example of that.
+
+## The TCP misses
+
+- **Windows 2–3, the start of the stream**, were labeled amazon/youtube_tcp. This is likely a pre-roll
+  ad; window 0 was also labeled netflix.
+- **Windows 90–94, 117 and 120** fall after the stream dropped to 852x480 (about 2 MB per 10 s instead
+  of 7–9 MB) and were labeled youtube_tcp at low confidence (0.50–0.56). Lower-bitrate Twitch looks
+  more like YouTube over TCP.
+
+## Priority (dry run)
+
+All 6 events were on TCP/443 connections, so the filter held: no SSH and no UDP.
+
+- Connection `aa21ced8` was tagged in window 0 and kept priority for the whole run, until it closed at
+  the end.
+- Connection `a63d701d` was tagged at 200 s and released when its connection closed at 440 s.
+- Connection `f5b90b82` was tagged at 1,150 s.
+
+Twitch rotates connections more than YouTube does, and the tags followed.
+
+## Router cost (20 min, Twitch: the heaviest load tested)
+
+| | |
+|---|---|
+| CPU, mean / max | 1.99 % / 4.28 % of one core |
+| Per packet / window close / scoring | 2.11 µs / 0.065 ms / 2.10 ms |
+| RSS | **38.1 MB, flat from minute 3 to minute 20** |
+| Per-flow seq entries | 0 (flows tracked: 180) |
+
+## Takeaway
+
+On Twitch's normal TCP traffic, the model is right **91 %** of the time over 20 minutes. Almost all of
+the remaining errors come from **UDP that Twitch now mixes in**, in regular bursts that look like ad
+breaks, and from a low-bitrate stretch at 480p. Neither existed in the 2018–19 training data. That is
+the strongest case so far for adding router-captured training data from today's traffic.
