@@ -1,0 +1,39 @@
+[window   0 |     0-   10s] youtube_quic  1.00 ✓ |   3992 pkts, udp 0.67 | video 0:03, NOT playing, 640x360
+    ▶ PRIORITY ON  [youtube_quic] udp flow 5553798f (server port 443), 1.6 MB in window 0, confidence 1.00
+    ▶ PRIORITY ON  [youtube_quic] udp flow 9ebb9dca (server port 443), 0.4 MB in window 0, confidence 1.00
+[window   1 |    10-   20s] youtube_quic  1.00 ✓ |   1993 pkts, udp 0.98 | host rx 2.2 MB | video 0:13, playing, 640x360 | running 1/1 playing windows correct
+[window   2 |    20-   30s] youtube_quic  1.00 ✓ |   2861 pkts, udp 1.00 | host rx 3.2 MB | video 0:23, playing, 1280x720 | running 2/2 playing windows correct
+[window   3 |    30-   40s] youtube_quic  1.00 ✓ |     61 pkts, udp 0.89 | host rx 0.0 MB | video 0:33, playing, 1280x720 | running 3/3 playing windows correct
+[window   4 |    40-   50s] youtube_quic  0.98 ✓ |    100 pkts, udp 0.65 | host rx 0.0 MB | video 0:00, playing, 0x0 | running 4/4 playing windows correct
+[window   5 |    50-   60s] youtube_tcp   0.71 ✗ |     28 pkts, udp 0.00 | host rx 0.0 MB | video 0:00, NOT playing, 0x0 | running 4/4 playing windows correct
+[window   6 |    60-   70s] netflix       1.00 ✗ |  20228 pkts, udp 0.00 | host rx 0.0 MB | video 0:00, NOT playing, 0x0 | running 4/4 playing windows correct
+[window   7 |    70-   80s] youtube_quic  0.96 ✓ | 101745 pkts, udp 0.05 | host rx 56.9 MB | video 0:00, NOT playing, 0x0 | running 4/4 playing windows correct
+    ▶ PRIORITY ON  [netflix] tcp flow dbe5a164 (server port 443), 11.8 MB in window 6, confidence 1.00
+    ▶ PRIORITY ON  [netflix] tcp flow 96548333 (server port 443), 8.4 MB in window 6, confidence 1.00
+    ▶ PRIORITY ON  [youtube_quic] udp flow db2532ac (server port 443), 0.7 MB in window 7, confidence 0.96
+[window   8 |    80-   90s] youtube_quic  0.48 ✓ | 110611 pkts, udp 0.01 | host rx 140.7 MB | video 0:13, playing, 640x360 | running 5/5 playing windows correct
+[window   9 |    90-  100s] youtube_quic  0.64 ✓ |  91722 pkts, udp 0.02 | host rx 98.4 MB | video 0:07, playing, 1280x720 | running 6/6 playing windows correct
+[window  10 |   100-  110s] youtube_tcp   0.88 ✗ |  88202 pkts, udp 0.01 | host rx 80.4 MB | video 0:02, playing, 1280x720 | running 6/7 playing windows correct
+[window  11 |   110-  120s] youtube_quic  0.88 ✓ |  91715 pkts, udp 0.03 | host rx 93.4 MB | video 0:12, playing, 1280x720 | running 7/8 playing windows correct
+[window  12 |   120-  130s] youtube_quic  0.84 ✓ | 102725 pkts, udp 0.03 | host rx 95.1 MB | video 0:22, playing, 1280x720 | running 8/9 playing windows correct
+[window  13 |   130-  140s] youtube_quic  0.63 ✓ | 109535 pkts, udp 0.02 | host rx 109.8 MB | video 0:33, playing, 1280x720 | running 9/10 playing windows correct
+[window  14 |   140-  150s] youtube_quic  0.92 ✓ |  85574 pkts, udp 0.03 | host rx 87.6 MB | video 0:43, playing, 1280x720 | running 10/11 playing windows correct
+[window  15 |   150-  160s] youtube_quic  0.53 ✓ |  93797 pkts, udp 0.03 | host rx 85.3 MB | video 0:53, playing, 1280x720 | running 11/12 playing windows correct
+[window  16 |   160-  170s] youtube_quic  0.47 ✓ | 114167 pkts, udp 0.01 | host rx 109.0 MB | video 1:03, playing, 1280x720 | running 12/13 playing windows correct
+[window  17 |   170-  180s] youtube_tcp   0.52 ✗ |  96968 pkts, udp 0.03 | host rx 97.3 MB | video 1:13, playing, 1280x720 | running 12/14 playing windows correct
+[window  18 |   180-  190s] netflix       0.55 ✗ | 102200 pkts, udp 0.02 | host rx 95.6 MB | video 1:23, playing, 1280x720 | running 12/15 playing windows correct
+[window  19 |   190-  200s] youtube_quic  0.95 ✓ | 102580 pkts, udp 0.04 | host rx 105.2 MB | video 1:33, playing, 1280x720 | running 13/16 playing windows correct
+[window  20 |   200-  210s] youtube_quic  0.71 ✓ |  90171 pkts, udp 0.03 | host rx 84.8 MB | video 1:43, playing, 1280x720 | running 14/17 playing windows correct
+    ■ PRIORITY OFF [youtube_quic] udp flow db2532ac (server port 443): idle 130s
+[window  21 |   210-  220s] netflix       0.55 ✗ | 109445 pkts, udp 0.01 | host rx 111.4 MB | video 1:53, playing, 1280x720 | running 14/18 playing windows correct
+[window  22 |   220-  230s] netflix       0.52 ✗ | 104307 pkts, udp 0.01 | host rx 98.6 MB | video 2:03, playing, 1280x720 | running 14/19 playing windows correct
+[window  23 |   230-  240s] youtube_tcp   0.83 ✗ | 118757 pkts, udp 0.00 | host rx 117.9 MB | video 2:13, playing, 1280x720 | running 14/20 playing windows correct
+[window  24 |   240-  250s] youtube_tcp   0.64 ✗ |  95799 pkts, udp 0.01 | host rx 99.1 MB | video 2:23, playing, 1280x720 | running 14/21 playing windows correct
+[window  25 |   250-  260s] youtube_tcp   0.56 ✗ |  91053 pkts, udp 0.01 | host rx 90.1 MB | video 2:33, playing, 1280x720 | running 14/22 playing windows correct
+[window  26 |   260-  270s] youtube_tcp   0.84 ✗ | 114314 pkts, udp 0.01 | host rx 107.5 MB | video 2:43, playing, 1280x720 | running 14/23 playing windows correct
+[window  27 |   270-  280s] youtube_tcp   0.94 ✗ | 112888 pkts, udp 0.01 | host rx 111.1 MB | video 2:53, playing, 1280x720 | running 14/24 playing windows correct
+[window  28 |   280-  290s] youtube_tcp   0.50 ✗ | 112788 pkts, udp 0.01 | host rx 113.3 MB | video 3:03, playing, 1280x720 | running 14/25 playing windows correct
+[window  29 |   290-  300s] youtube_tcp   0.78 ✗ | 115272 pkts, udp 0.01 | host rx 117.6 MB | video 3:13, playing, 1280x720 | running 14/26 playing windows correct
+[window  30 |   300-  310s] youtube_tcp   0.84 ✗ |  98492 pkts, udp 0.00 | host rx 55.9 MB | video 3:19, playing, 1280x720 | running 14/27 playing windows correct
+    ■ PRIORITY OFF [youtube_tcp] tcp flow 96548333 (server port 443): connection closed
+    ■ PRIORITY OFF [youtube_tcp] tcp flow dbe5a164 (server port 443): connection closed
