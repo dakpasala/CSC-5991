@@ -8,8 +8,11 @@
 #   sh /root/csc5991/qos.sh status
 #
 # What "up" does:
-#   1. Installs kmod-sched-cake + tc-full from the official OpenWrt repo
-#      (first time only).
+#   1. Installs kmod-sched-cake from the official OpenWrt repo (first time
+#      only). For the tc command it uses whatever is installed: OpenWrt ships
+#      tc-tiny (/usr/libexec/tc-tiny, not linked as `tc`), which conflicts
+#      with tc-full, so tc-full is never installed automatically; if tc-tiny
+#      can't set up cake, the script stops and prints the swap command.
 #   2. Puts cake on lan2's egress -- traffic from the router toward the
 #      Linux box -- at 100 Mbit, diffserv4, flowblind:
 #        - lan2 egress, not WAN ingress: ingress shaping runs before the
@@ -37,12 +40,25 @@ set -e
 IFACE=${IFACE:-lan2}
 RATE=${RATE:-100Mbit}
 
+TC=$(command -v tc || true)
+[ -z "$TC" ] && [ -x /usr/libexec/tc-tiny ] && TC=/usr/libexec/tc-tiny
+[ -z "$TC" ] && [ -x /usr/libexec/tc-full ] && TC=/usr/libexec/tc-full
+
 up() {
-    if ! apk info -e kmod-sched-cake >/dev/null 2>&1 || ! apk info -e tc-full >/dev/null 2>&1; then
+    if ! apk info -e kmod-sched-cake >/dev/null 2>&1; then
         apk update >/dev/null
-        apk add kmod-sched-cake tc-full
+        apk add kmod-sched-cake
     fi
-    tc qdisc replace dev "$IFACE" root cake bandwidth "$RATE" diffserv4 flowblind
+    if [ -z "$TC" ]; then
+        echo "no tc command found; install one with: apk add tc-tiny" >&2
+        exit 1
+    fi
+    if ! "$TC" qdisc replace dev "$IFACE" root cake bandwidth "$RATE" diffserv4 flowblind; then
+        echo "" >&2
+        echo "$TC could not set up cake. tc-full can; it replaces tc-tiny (nothing depends on it):" >&2
+        echo "  apk del tc-tiny && apk add tc-full && sh $0 up" >&2
+        exit 1
+    fi
     nft delete table inet csc5991 2>/dev/null || true
     nft -f - <<'EOF'
 table inet csc5991 {
@@ -63,7 +79,7 @@ EOF
 }
 
 down() {
-    tc qdisc del dev "$IFACE" root 2>/dev/null || true
+    [ -n "$TC" ] && "$TC" qdisc del dev "$IFACE" root 2>/dev/null || true
     nft delete table inet csc5991 2>/dev/null || true
     echo "removed: cake on $IFACE and table inet csc5991"
     status
@@ -71,7 +87,7 @@ down() {
 
 status() {
     echo "--- qdisc on $IFACE"
-    tc qdisc show dev "$IFACE"
+    if [ -n "$TC" ]; then "$TC" qdisc show dev "$IFACE"; else echo "(no tc command)"; fi
     echo "--- priority set / marking rule"
     nft list table inet csc5991 2>/dev/null || echo "(table inet csc5991 not present)"
 }
