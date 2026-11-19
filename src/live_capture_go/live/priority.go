@@ -145,6 +145,37 @@ func (m *priorityManager) windowClosed(window, packets int, label string, conf f
 	}
 }
 
+// flowsClosed is the per-connection rule (-priority-by flow, the default):
+// each connection that carried >= minPackets packets in the window has
+// already been labeled on its own (flowScorer); tag the ones whose OWN label
+// is a streaming service at >= minConf, on a port/transport that service
+// could use. Unlike windowClosed, a connection can't be tagged because the
+// window as a whole looked like a service -- in the first QoS test, the
+// moment 16 downloads started, the window was labeled netflix at 0.999 and
+// two of the downloads were prioritized.
+func (m *priorityManager) flowsClosed(window int, flows []flowResult, now float64) {
+	for key, tag := range m.tagged {
+		if now-tag.lastSeen > m.idle {
+			m.off(key, tag, now, window, fmt.Sprintf("idle %.0fs", now-tag.lastSeen))
+		}
+	}
+	for _, f := range flows {
+		if f.conf < m.minConf || f.packets < m.minPackets || !couldBeService(f.key, f.label) {
+			continue
+		}
+		if tag, ok := m.tagged[f.key]; ok {
+			tag.label = f.label
+			continue
+		}
+		m.tagged[f.key] = &priorityTag{label: f.label, since: now, lastSeen: now}
+		m.ons++
+		m.apply(fmt.Sprintf("add element inet csc5991 video_flows { %s timeout 3m }", nftElement(f.key)))
+		fmt.Printf("  ▶ PRIORITY ON  [%s] %s (its own label, %.2f; %d pkts, %.1f MB in window %d) — %d connection(s) prioritized\n",
+			f.label, describeFlow(f.key), f.conf, f.packets, float64(f.bytes)/1e6, window, len(m.tagged))
+		m.event(now, window, "on", f.label, f.conf, f.key, f.bytes, "connection's own label")
+	}
+}
+
 // refresh restarts the 3-minute nftables timeout of every tagged connection,
 // once per window, so an enforced mark lasts as long as its tag does.
 func (m *priorityManager) refresh() {

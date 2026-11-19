@@ -91,6 +91,10 @@ func ExtractionFeatures(l Labeler, allFeatures bool) []string {
 	return nil
 }
 
+// Score labels a row without recording it -- used for per-connection rows,
+// which are not written to the predictions CSV.
+func (n *Native) Score(values []string) xgbmodel.Prediction { return n.clf.ScoreRow(values, n.idx) }
+
 // LastPrediction is the label/confidence Send produced for the most recent window.
 func (n *Native) LastPrediction() xgbmodel.Prediction { return n.last }
 

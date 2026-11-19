@@ -77,6 +77,8 @@ func main() {
 	prioMinConf := flag.Float64("priority-min-confidence", 0.9, "-priority: confidence a window's label needs before it can start priority")
 	prioIdle := flag.Duration("priority-idle", 2*time.Minute, "-priority: drop a connection's priority after this long with no packets on it")
 	prioEnforce := flag.Bool("priority-enforce", false, "-priority: apply decisions, adding tagged connections to nftables set inet csc5991 video_flows (create it first with router/qos.sh up); without it -priority is a dry run")
+	prioBy := flag.String("priority-by", "flow", `-priority: "flow" tags connections by their own label (each connection scored on its own packets); "window" tags the heaviest connections of a window by the window's label`)
+	flowLog := flag.String("flow-log", "", "-priority-by flow: also write every scored connection's own label per window to this CSV (no IP addresses)")
 	prioLog := flag.String("priority-log", "", "-priority: also write on/off events to this CSV (no IP addresses: flow hash, protocol, server port)")
 	maxDuration := flag.Duration("max-duration", 0, "stop by itself after this long (e.g. 10m), exactly as on Ctrl+C; 0 = run until stopped. A safety net for unattended runs: the router has no swap, and the accumulator's flow history only grows")
 	flag.Parse()
@@ -154,6 +156,18 @@ func main() {
 			os.Exit(1)
 		}
 		out.winBytes = map[core.FlowKey]int64{}
+		switch *prioBy {
+		case "flow":
+			out.flows, err = newFlowScorer(out.labeler.(*inference.Native), *windowSeconds, *prioMinPackets, prioIdle.Seconds(), *flowLog)
+			if err != nil {
+				fmt.Fprintln(os.Stderr, "error opening flow log:", err)
+				os.Exit(1)
+			}
+		case "window":
+		default:
+			fmt.Fprintln(os.Stderr, `error: -priority-by must be "flow" or "window"`)
+			os.Exit(1)
+		}
 		if *prioEnforce {
 			if err := runNft("list set inet csc5991 video_flows"); err != nil {
 				fmt.Fprintln(os.Stderr, "error: -priority-enforce needs the QoS setup on this router (sh qos.sh up):", err)
@@ -162,8 +176,12 @@ func main() {
 			out.prio.enforce, out.prio.nft = true, runNft
 			fmt.Fprintln(os.Stderr, "priority ENFORCED: tagged connections are marked for cake's Video tin")
 		}
-		fmt.Fprintf(os.Stderr, "priority (dry run unless enforced): tag after a window with >= %d packets at confidence >= %.2f; release after %s idle or on close\n",
-			*prioMinPackets, *prioMinConf, *prioIdle)
+		rule := "a window"
+		if *prioBy == "flow" {
+			rule = "a connection's OWN window"
+		}
+		fmt.Fprintf(os.Stderr, "priority (dry run unless enforced): tag after %s with >= %d packets at confidence >= %.2f; release after %s idle or on close\n",
+			rule, *prioMinPackets, *prioMinConf, *prioIdle)
 	}
 
 	var own map[string]bool
@@ -199,6 +217,7 @@ func main() {
 					os.Exit(1)
 				}
 				out.acc = acc
+				out.t0 = p.Timestamp
 			}
 			start := time.Now()
 			rows := acc.HandlePacket(p)
@@ -219,6 +238,9 @@ func main() {
 				key := core.FlowKeyOf(p)
 				out.winBytes[key] += int64(p.WireLen)
 				out.prio.observe(p, key)
+				if out.flows != nil {
+					out.flows.observe(p, key, out.t0)
+				}
 			}
 		case <-sigChan:
 			fmt.Println("\nstopping capture...")
@@ -244,6 +266,8 @@ type sinks struct {
 	acc             core.Accumulator
 	prio            *priorityManager
 	winBytes        map[core.FlowKey]int64 // bytes per flow in the open window, for -priority
+	flows           *flowScorer            // -priority-by flow: per-connection labels
+	t0              float64                // first packet's capture time (the window clock's origin)
 	now             float64                // capture time of the latest packet
 }
 
@@ -307,6 +331,9 @@ func (s *sinks) finish(acc core.Accumulator) {
 	if s.prio != nil {
 		s.prio.close()
 	}
+	if s.flows != nil {
+		s.flows.close()
+	}
 	if s.labeler != nil {
 		fmt.Println("waiting for remaining predictions...")
 		if err := s.labeler.Close(); err != nil {
@@ -337,8 +364,12 @@ func (s *sinks) writeRow(row core.WindowRow, closeDur time.Duration) {
 		s.perf.windowClosed(row, closeDur, infer, haveInfer, s.acc)
 	}
 	if s.prio != nil {
-		pred := s.labeler.(*inference.Native).LastPrediction()
-		s.prio.windowClosed(row.WindowIndex, row.Total.PacketCount, pred.Label, pred.Confidence, s.winBytes, s.now)
+		if s.flows != nil {
+			s.prio.flowsClosed(row.WindowIndex, s.flows.windowClosed(row.WindowIndex, s.now), s.now)
+		} else {
+			pred := s.labeler.(*inference.Native).LastPrediction()
+			s.prio.windowClosed(row.WindowIndex, row.Total.PacketCount, pred.Label, pred.Confidence, s.winBytes, s.now)
+		}
 		s.prio.refresh()
 		s.winBytes = map[core.FlowKey]int64{}
 	}

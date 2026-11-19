@@ -116,14 +116,17 @@ def ssh(target, command, check=True):
     return result.stdout
 
 
-def start_live_router(target, model, interface, remote_predictions, max_seconds, priority, enforce=False):
+def start_live_router(target, model, interface, remote_predictions, max_seconds, priority, enforce=False, priority_by="flow"):
     log = remote_predictions.replace(".csv", ".log")
     stats = remote_predictions.replace(".csv", "_stats.csv")
     perf = remote_predictions.replace(".csv", "_perf.csv")
     # Dry-run QoS decisions (nothing on the router changes), logged as events
     # the live printout shows next to the window predictions.
     prio = remote_predictions.replace(".csv", "_priority.csv")
-    priority_flags = f"-priority -priority-log {shlex.quote(prio)} " if priority else ""
+    priority_flags = f"-priority -priority-log {shlex.quote(prio)} -priority-by {priority_by} " if priority else ""
+    if priority and priority_by == "flow":
+        # Every scored connection's own label per window (no IPs).
+        priority_flags += f"-flow-log {shlex.quote(remote_predictions.replace('.csv', '_flows.csv'))} "
     if priority and enforce:
         priority_flags += "-priority-enforce "
     # nohup if BusyBox has it; stdin from /dev/null so ssh returns at once.
@@ -318,6 +321,8 @@ class LivePrinter:
         self.stats = f"{REMOTE_DIR}/{remote_predictions.replace('.csv', '_stats.csv')}"
         self.prio = f"{REMOTE_DIR}/{remote_predictions.replace('.csv', '_priority.csv')}"
         self.prio_header, self.n_prio = None, 0
+        self.flows = f"{REMOTE_DIR}/{remote_predictions.replace('.csv', '_flows.csv')}"
+        self.flows_header, self.n_flows = None, 0
         self.expected = expected
         self.log = open(log_path, "w")
         self.timeline = []  # (seconds_since_router_start, video_time, playing, width, height, host_rx_bytes)
@@ -352,6 +357,26 @@ class LivePrinter:
         self.n_prio += len(new_prio)
         for r in new_prio:
             self._print_priority(dict(zip(self.prio_header, r)))
+        self.flows_header, new_flows = self._fetch(self.flows, self.flows_header, self.n_flows)
+        self.n_flows += len(new_flows)
+        by_window = {}
+        for r in new_flows:
+            f = dict(zip(self.flows_header, r))
+            by_window.setdefault(f["window_index"], []).append(f)
+        for w, fl in by_window.items():
+            self._print_flows(w, fl)
+
+    def _print_flows(self, window, flows):
+        """Each busy connection's OWN label for the window (what per-connection
+        priority decides on), heaviest first."""
+        shown = flows[:6]
+        parts = [f"{f['protocol']}/{f['server_port']} {int(f['bytes']) / 1e6:.1f}MB {f['predicted_label']} {float(f['confidence']):.2f}"
+                 for f in shown]
+        more = f" (+{len(flows) - len(shown)} more)" if len(flows) > len(shown) else ""
+        line = f"      connections in window {window}: " + " | ".join(parts) + more
+        print(line)
+        self.log.write(line + "\n")
+        self.log.flush()
 
     def _print_priority(self, e):
         if e.get("event") == "on":
@@ -492,6 +517,7 @@ def collect_router_files(target, remote_predictions, priority):
     names = [remote_predictions] + [remote_predictions.replace(".csv", f"_{x}.csv") for x in ("stats", "perf")]
     if priority:
         names.append(remote_predictions.replace(".csv", "_priority.csv"))
+        names.append(remote_predictions.replace(".csv", "_flows.csv"))
     for name in names:
         out = ssh(target, f"cat {REMOTE_DIR}/{name} 2>/dev/null", check=False)
         with open(name, "w") as f:
@@ -630,6 +656,8 @@ def main():
                         help="with --router: don't run live-router's dry-run priority decisions (-priority)")
     parser.add_argument("--enforce", action="store_true",
                         help="with --router: live-router applies its priority decisions (needs router/qos.sh up)")
+    parser.add_argument("--priority-by", choices=["flow", "window"], default="flow",
+                        help="flow: tag connections by their own label (default); window: by the whole window's label")
     parser.add_argument("--competing-downloads", type=int, default=0, metavar="N",
                         help="start N parallel large downloads on this machine to congest the link")
     parser.add_argument("--competing-after", type=float, default=60, metavar="SECONDS",
@@ -678,7 +706,7 @@ def main():
         # Playback can take up to ~60s to start and stalls can add reloads,
         # so leave generous slack beyond --minutes before the safety net fires.
         pid = start_live_router(args.router, args.model, args.interface, remote_predictions, args.minutes * 60 + 300,
-                                args.priority, args.enforce)
+                                args.priority, args.enforce, args.priority_by)
 
     driver = None
     play_started = router_started

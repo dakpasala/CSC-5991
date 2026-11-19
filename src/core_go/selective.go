@@ -350,6 +350,28 @@ func (a *SelectiveAccumulator) advanceSeq(key FlowKey, packet *Packet, direction
 	return isRetransmission, isOutOfOrder
 }
 
+// AdvanceTo closes every window before windowIndex and returns them, so
+// several accumulators (e.g. one per connection) can be driven off one
+// clock: when the main accumulator closes window N, each per-connection
+// accumulator is advanced to N+1 to get its own row for window N.
+func (a *SelectiveAccumulator) AdvanceTo(windowIndex int) []WindowRow {
+	var closed []WindowRow
+	for a.currentWindowIndex < windowIndex {
+		closed = append(closed, a.closeWindow())
+		a.currentWindowIndex++
+	}
+	return closed
+}
+
+// StartAt moves a still-empty accumulator's open window to windowIndex
+// without emitting the empty windows before it, so a connection first seen
+// an hour in doesn't close 360 empty windows on its first packet.
+func (a *SelectiveAccumulator) StartAt(windowIndex int) {
+	if a.packets == 0 && windowIndex > a.currentWindowIndex {
+		a.currentWindowIndex = windowIndex
+	}
+}
+
 func (a *SelectiveAccumulator) Flush() WindowRow {
 	return a.closeWindow()
 }
