@@ -810,29 +810,96 @@ Results:
 
 ---
 
+## Step 18: Enforcing priority, and classifying each connection on its own (2026-11-18)
+
+The professor approved real QoS on the router for test runs only. Full write-up, with every run:
+`live_runs/tests/qos_priority_results.md`.
+
+### How it's enforced
+
+| Piece | Role |
+|---|---|
+| `router/qos.sh up` / `down` / `status` | `cake` on `lan2` egress at `RATE` (default 100 Mbit), `diffserv4 flowblind`; nftables table `inet csc5991` with set `video_flows` and one rule marking a tagged connection's download packets DSCP AF41 (cake's Video tier). `down` removes both and nothing else. |
+| `live-router -priority-enforce` | Adds tagged connections to the set, refreshes them every window, removes them on release, flushes the set on exit. |
+| `stream_and_check.py --enforce` | Passes `-priority-enforce`. |
+| `--competing-downloads N`, `--light-traffic N`, `--competing-after S` | Background load: N bulk downloads, or N loops of small requests (web pages, 100–300 KB, 1–5 s apart). |
+| Video-quality summary | Resolution, seconds of video buffered ahead, time not playing, during the background load. |
+
+`flowblind` turns off `cake`'s per-connection fairness, which would protect a light video flow by itself.
+That leaves the classifier's priority as the only protection.
+
+### Per-connection classification
+
+The first enforced test exposed the problem: the moment 16 downloads started, the whole **window** was
+labeled `netflix` at 0.999, and two downloads were prioritized. So each connection now keeps its own
+copy of the 28 statistics, on the same 10 s clock, and is scored on its own
+(`src/live_capture_go/live/flows.go`).
+
+| Offline check, 7 recorded sessions | Whole windows | Main connection alone |
+|---|---:|---:|
+| YouTube (QUIC, TCP ×2), Netflix ×2 | 1.00 | **1.00** each |
+| Twitch | 0.98 | 0.94 |
+| Amazon | 1.00 | 0.84 |
+
+Live, with light background traffic, the difference is large:
+
+| Same run, 8 light-traffic loops | Accuracy |
+|---|---:|
+| Whole-window label | **0.22** |
+| The video connection's own label | **1.00** (54/54) |
+
+### The tagging rule (current default)
+
+| | |
+|---|---|
+| Who is scored | Every connection with ≥100 packets of its own in the window |
+| Tag | Its **own** label is the same streaming service at **≥0.93, 5 windows in a row**, on 443/80 with the label's transport. An unconfident or different label resets the count; a quiet window doesn't. |
+| Release | Connection closes, or idle for 2 minutes |
+| Flags | `-priority-by flow` (default; `window` = the old rule), `-priority-streak 5`, `-priority-min-confidence 0.93`, `-flow-log` |
+
+### Results
+
+| Test | Outcome |
+|---|---|
+| Light traffic (8 loops) | **0 of 317** light connections tagged, though half had a confident streaming label: each lasted one window. Only the video was tagged. |
+| Bulk downloads, 20 Mbit (3 windows at 0.9) | Video tagged in ~40 s; downloads tagged after ~4 min (own label ≥0.9 in 31–40 % of their windows). |
+| Bulk downloads, 5 Mbit (5 windows at 0.93) | Rate-limited downloads labeled `youtube_tcp` at 0.98–1.00 and tagged. The enforced run was worse, mostly from a YouTube error before any tag. |
+| Video quality | No measured benefit yet: the link was either uncongested, or the comparison was spoiled. |
+| Cost | RSS 38 → 41 MB with hundreds of short connections; CPU 1.7–2.3 % (light), 3.6–7.8 % (5–20 Mbit downloads), ~25 % (100 Mbit). |
+
+**Takeaways:** per-connection scoring is what makes classification work beside other traffic; the
+streak keeps short-lived traffic out; long bulk HTTPS downloads remain the one false positive, because
+the model is closed-world (no "other" class), and they are exactly the traffic that competes with video.
+
+---
+
 ## Current status
 
 - **Final model:** `final_shape_streaming`. 28 traffic-shape statistics, 0 buffers, no per-flow
   state, offline test 0.964.
-- **Live on the router (20-minute runs):**
+- **Live on the router (20-minute runs, quiet network):**
   - YouTube over QUIC: **1.000** on every active window.
   - Twitch: **0.91** on TCP windows, and 0.81 overall (lowered by UDP bursts that look like ads).
-- **Router cost:** about 37–38 MB of steady RAM, flat; under 2 % CPU; 2 ms scoring per window.
-- **Priority:** the dry-run layer works and follows the right connections. Enforcement (nftables +
-  `cake`) needs the professor's approval.
-- **Write-ups:** `live_runs/tests/live_eval_results.md` and `live_runs/tests/live_eval_feature_varying.md`.
-  Raw run files were deleted after summarizing.
+- **With background traffic:** the whole-window label drops (0.22 with light traffic), but each
+  connection's own label holds (the video: 1.00).
+- **Router cost:** about 38–41 MB of steady RAM; CPU tracks the packet rate (under 2 % for video alone);
+  2 ms scoring per window.
+- **Priority:** enforced with nftables + `cake` (test runs only), tagging by each connection's own label,
+  5 windows at ≥0.93. Light traffic is never tagged; long bulk downloads can be. No measured
+  video-quality benefit yet.
+- **Write-ups:** `live_runs/tests/live_eval_results.md`, `live_eval_feature_varying.md`,
+  `qos_priority_results.md`. Raw run files were deleted after summarizing.
 
 ## Next up
 
-1. **Repeat runs:** 2–3 more 20-minute runs each for YouTube and Twitch, so the numbers have a spread.
-2. **YouTube over TCP** (`--disable-quic`) with `final_shape_streaming`.
-3. **Enforce priority**, with the professor's OK. Mark tagged connections with nftables and DSCP, then
-   shape with `cake`. Measure video resolution and stalls with and without priority, under a competing
-   download.
-4. **Smaller startup footprint:** a compact binary model format or fewer trees. This removes the
-   ~112 MB startup peak.
-5. **Thesis:** results chapter from the live write-ups. A "pitfalls of live evaluation" methods section
-   (GRO, bot detection, flow direction, the router's own traffic, cached playback). Limitations: Twitch's
-   UDP/ads and the 2018–19 training data. Verify the related-work citations.
-6. **Future work** (out of scope for now): retrain with traffic captured at the router today.
+1. **Professor's call on bulk-download false positives:** accept as a limitation, add a heuristic
+   ("one stream per device"), or an "other/bulk" class as future work.
+2. **A clean QoS demonstration:** light traffic at `RATE=2Mbit`, with and without `--enforce`, 2–3 runs
+   each. Optionally, faster priority for a device's reconnections.
+3. **Repeat runs** for YouTube and Twitch, and **YouTube over TCP** with `final_shape_streaming`.
+4. **Smaller startup footprint:** a compact binary model format or fewer trees (~112 MB startup peak).
+5. **Thesis:** results chapter from the live write-ups; a "pitfalls of live evaluation" methods section;
+   limitations (closed-world model, Twitch UDP/ads, 2018–19 training data); verify the related-work
+   citations.
+6. **Future work:** retrain with router-vantage traffic, per-connection training data, and an "other"
+   class.

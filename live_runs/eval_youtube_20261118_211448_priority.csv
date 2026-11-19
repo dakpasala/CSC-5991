@@ -1,4 +1,0 @@
-time_s,window_index,event,label,confidence,flow_id,protocol,server_port,window_bytes,reason
-44.1,3,on,youtube_quic,1.0000,f347a821,udp,443,2715728,"connection's own label, 3 windows in a row"
-250.0,24,on,netflix,0.9506,b02df00d,tcp,443,8964820,"connection's own label, 3 windows in a row"
-311.6,,off,netflix,,b02df00d,tcp,443,0,connection closed

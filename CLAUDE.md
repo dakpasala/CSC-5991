@@ -23,7 +23,8 @@ The headline finding is drift. **Fingerprint features** (TCP receive window, RTT
 retransmission/out-of-order) changed since the 2018–19 data. Models that use them fail on live Twitch
 (0.06–0.38). `final_shape_streaming` (28 traffic-shape features, 0.964 offline) is the most accurate model
 live (Twitch 0.88, YouTube QUIC 1.00) and among the cheapest: no per-flow state, ~37 MB, <2 % CPU.
-See "Router deployment" below and AGENTS.md. Thesis writing has started in `thesis/` (gitignored, local only).
+Priority is enforced on the router (nftables + `cake`, test runs only) by classifying each
+connection on its own; long bulk downloads remain the one false positive. See "Router deployment" below and AGENTS.md. Thesis writing has started in `thesis/` (gitignored, local only).
 
 Two earlier phases are archived, not active. Both directories were removed from the working
 tree in commit `e6953ec`; recover them from git history (`git show e6953ec^:<path>`) if needed:
@@ -209,7 +210,7 @@ Trains plain single XGBoost models in minutes. The test sessions are the same as
   `ethtool -K eth1 gro off; ethtool -K lan2 gro off`.
 - **`./deploy_router.sh`** (Mac, repo root):
   - cross-compiles `live-router` (`CGO_ENABLED=0`, pure-Go AF_PACKET capture, 3.6 MB static);
-  - copies it plus the model to `/root/csc5991/`;
+  - copies it, the model and `router/qos.sh` to `/root/csc5991/`;
   - `MODEL=<json>` picks the model.
 - **`live-router`.** A `.json` `-model-dir` is scored by the Go evaluator (`live_capture_go/xgbmodel`,
   identical to xgboost). Only the model's features are computed (`core_go/selective.go`;
@@ -217,7 +218,13 @@ Trains plain single XGBoost models in minutes. The test sessions are the same as
   - `-port-direction`: flow direction by service port; default on live, off in replay, for training
     parity;
   - `-perf-output`: per-window CPU/memory/timing;
-  - `-max-duration`: safety stop.
+  - `-max-duration`: safety stop;
+  - `-priority` (dry run) / `-priority-enforce`: tag connections by their **own** label (each
+    connection scored on its own packets, `live/flows.go`), same service at ≥0.93 for 5 windows in a
+    row, 443/80 with the label's transport. Full flag list in AGENTS.md.
+- **QoS (`router/qos.sh up|down|status`, test runs only, professor-approved).** `cake` on `lan2` egress
+  (`RATE`, default 100 Mbit, `diffserv4 flowblind`) plus nftables set `inet csc5991 video_flows`, whose
+  connections' download packets get DSCP AF41. **Run `qos.sh down` after every test session.**
 - **`src/live_capture/stream_and_check.py`** (Linux box) runs one ground-truth test:
   1. start `live-router` over ssh;
   2. play a video in headless Chromium (quiet flags, bot detection masked, stall
@@ -234,6 +241,9 @@ Trains plain single XGBoost models in minutes. The test sessions are the same as
   - Without fingerprint features: `final_shape_streaming` Twitch 0.88, YouTube QUIC 1.00;
     `final_option_c_no_fingerprint` YouTube TCP 0.88.
   - Single runs except option C/YouTube.
+  - QoS (`live_runs/tests/qos_priority_results.md`): with background traffic the whole-window label
+    collapses (0.22) but the video connection's own label holds (1.00). Light traffic is never tagged;
+    long bulk HTTPS downloads still are (closed-world model). No measured video-quality benefit yet.
 
 ## Output folder conventions: `benchmarks/` and `live_runs/`
 

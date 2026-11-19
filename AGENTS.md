@@ -373,6 +373,37 @@ the counting moved to buffers.
 - `-max-duration <dur>`: stop as if on Ctrl+C. The router has no `timeout` command. An orphaned
   instance once ran for 5.8 h and peaked at **462 MB** RSS.
 - `-output <stats csv>` and `-predictions-output`.
+- `-exclude-own-traffic`: drop the router's own packets (its SSH sessions leave as GSO super-packets).
+- **Priority** (`live/priority.go`, `live/flows.go`):
+  - `-priority`: decide which connections to prioritize, print `▶ PRIORITY ON` / `■ PRIORITY OFF`,
+    log events to `-priority-log` (no IPs). A dry run unless `-priority-enforce`.
+  - `-priority-by flow` (default): each connection keeps its own accumulator on the main window clock
+    (`SelectiveAccumulator.AdvanceTo`/`StartAt`) and is scored on its own packets. `window` = the old
+    rule (tag the heaviest connections by the window's label).
+  - Tag when a connection's **own** label is the same service at ≥ `-priority-min-confidence` (0.93),
+    `-priority-streak` (5) windows in a row, with ≥ `-priority-min-packets` (100) per window, on server
+    port 443/80 with the label's transport (UDP for `youtube_quic`, TCP otherwise). An unconfident or
+    different label resets the streak; a quiet window doesn't. Release on FIN/RST or `-priority-idle`
+    (2 min).
+  - `-flow-log <csv>`: every scored connection's own label per window (flow hash, protocol, server
+    port, packets, bytes; no IPs).
+  - `-priority-enforce`: `nft add element inet csc5991 video_flows {...}` on ON, refresh every window,
+    `destroy element` on OFF, `flush set` on exit. Exits at startup if `router/qos.sh up` hasn't been
+    run.
+
+### QoS setup: `router/qos.sh` (runs on the router; test runs only, professor-approved)
+
+- `sh /root/csc5991/qos.sh up|down|status`; `deploy_router.sh` copies it. `RATE` (default `100Mbit`)
+  and `IFACE` (default `lan2`) override.
+- `up`: installs `kmod-sched-cake` if missing, uses the router's `tc-tiny` (`/usr/libexec/tc-tiny`;
+  `tc-full` conflicts with it, so it is never installed automatically), puts `cake bandwidth $RATE
+  diffserv4 flowblind` on `lan2` egress, and creates table `inet csc5991` (set `video_flows`: client
+  IP . proto . client port . server IP . server port, 3-min timeout; a forward/mangle rule setting
+  DSCP AF41 on server→client packets in the set). Rerunning `up` with a new `RATE` replaces the qdisc
+  in place.
+- `down`: removes the qdisc and the table, nothing else. Run it after every test session.
+- Why lan2 egress: ingress shaping runs before netfilter and would never see the marks. Why
+  `flowblind`: per-connection fairness alone would protect a light video flow.
 
 ### Selective feature extraction: `core_go/selective.go`
 
@@ -447,6 +478,13 @@ the counting moved to buffers.
   - *active* windows: ≥ `--min-packets` 100;
   - *playing* windows: the timeline shows the video advancing, **the number that measures the classifier**;
   - a flag on any packet over 1,514 B (the GRO check).
+- **QoS experiment flags:** `--enforce` (passes `-priority-enforce`), `--priority-by flow|window`,
+  `--competing-downloads N` (bulk `curl` downloads of `--competing-url`, default Hetzner Ashburn's
+  10 GB speed-test file; only 2 of 16 actually ran, likely a per-client limit), `--light-traffic N`
+  (N loops of small requests, 1–5 s apart), `--competing-after S` (seconds after playback start,
+  default 60). The timeline adds `buffer_ahead_s` and `competing`; the summary adds `qoe_*` columns
+  (not-playing seconds, buffer ahead mean/min, resolution) over the load period. Per-window
+  `connections in window N` lines show each busy connection's own label, from `_flows.csv`.
 - Expected labels: youtube → `youtube_quic`, or `youtube_tcp` with `--disable-quic`; twitch → `twitch`.
   `--service idle` gives a baseline. Netflix and Amazon need logins and DRM, so they can't be tested
   live.
@@ -481,6 +519,18 @@ the counting moved to buffers.
   - RTT/retransmission are both the expensive features (they need per-flow sequence tracking) and among
     the fragile ones. Receive window and flags are cheap but drifted.
 - **All live numbers are single runs** except option C on YouTube over QUIC.
+- **QoS / priority (2026-11-18, `live_runs/tests/qos_priority_results.md`):**
+  - Whole-window tagging prioritized 2 bulk downloads the moment they started (window labeled
+    `netflix` 0.999), which led to per-connection scoring.
+  - Per connection, offline on the 7 local sessions: the main connection alone scored 1.00 for YouTube
+    and Netflix, 0.94 Twitch, 0.84 Amazon. Live with light background traffic: whole-window accuracy
+    0.22, the video connection's own label 1.00 (54/54).
+  - Light traffic: 0 of 317 connections tagged, though 52 % had an own label ≥0.93 — each lasted one
+    window, so the streak stopped them.
+  - Long bulk HTTPS downloads are still tagged eventually: their own label is ≥0.9 in 31–40 % of
+    windows at 20 Mbit, and `youtube_tcp` at 0.98–1.00 when rate-limited at 5 Mbit. 5-at-0.93 was tuned
+    on the 20 Mbit runs and failed at 5 Mbit. The model is closed-world.
+  - No measured video-quality benefit yet (links uncongested, or a run spoiled before priority acted).
 
 ## Go memory benchmark: a Python-measurement-artifact catch
 
