@@ -74,6 +74,7 @@ func main() {
 	excludeOwn := flag.Bool("exclude-own-traffic", false, "drop packets to/from this machine's own IP addresses. Use on a router capturing for its clients: its own ssh/management traffic isn't client traffic (and leaves with GSO, as oversized packets). Leave off when capturing on the client itself, where that traffic IS the client's")
 	priority := flag.Bool("priority", false, "dry-run QoS: print/log which connections a router would prioritize from the labels (needs a Go-native .json -model-dir; changes nothing on the router)")
 	prioMinPackets := flag.Int("priority-min-packets", 100, "-priority: packets a window needs before its label can start priority")
+	prioStreak := flag.Int("priority-streak", 3, "-priority-by flow: windows in a row a connection's own label must be the same service at -priority-min-confidence before it is tagged (quiet windows don't break the streak)")
 	prioMinConf := flag.Float64("priority-min-confidence", 0.9, "-priority: confidence a window's label needs before it can start priority")
 	prioIdle := flag.Duration("priority-idle", 2*time.Minute, "-priority: drop a connection's priority after this long with no packets on it")
 	prioEnforce := flag.Bool("priority-enforce", false, "-priority: apply decisions, adding tagged connections to nftables set inet csc5991 video_flows (create it first with router/qos.sh up); without it -priority is a dry run")
@@ -151,6 +152,9 @@ func main() {
 			os.Exit(1)
 		}
 		out.prio, err = newPriorityManager(*prioMinPackets, *prioMinConf, *prioIdle, *prioLog)
+		if err == nil && *prioBy == "flow" && *prioStreak > 1 {
+			out.prio.streakNeed = *prioStreak
+		}
 		if err != nil {
 			fmt.Fprintln(os.Stderr, "error opening priority log:", err)
 			os.Exit(1)
@@ -178,7 +182,7 @@ func main() {
 		}
 		rule := "a window"
 		if *prioBy == "flow" {
-			rule = "a connection's OWN window"
+			rule = fmt.Sprintf("%d windows in a row of a connection's OWN label", *prioStreak)
 		}
 		fmt.Fprintf(os.Stderr, "priority (dry run unless enforced): tag after %s with >= %d packets at confidence >= %.2f; release after %s idle or on close\n",
 			rule, *prioMinPackets, *prioMinConf, *prioIdle)

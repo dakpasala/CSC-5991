@@ -34,6 +34,35 @@ func TestPriorityByFlowOwnLabel(t *testing.T) {
 	}
 }
 
+// With a 3-window streak: one confident window doesn't tag; an unconfident
+// window resets the count; a quiet (unscored) window doesn't; the third
+// confident window in a row tags.
+func TestPriorityByFlowStreak(t *testing.T) {
+	m, _ := newPriorityManager(100, 0.9, time.Minute, "")
+	m.streakNeed = 3
+	dl := core.FlowKeyOf(pkt(0, 443, 50002, 0, 1500))
+	win := func(i int, conf float64) {
+		var fl []flowResult
+		if conf > 0 {
+			fl = []flowResult{{dl, "netflix", conf, 5000, 7e6}}
+		}
+		m.flowsClosed(i, fl, float64(i+1)*10)
+	}
+	win(0, 0.99)
+	win(1, 0.99)
+	win(2, 0.60) // unconfident: reset
+	win(3, 0.99)
+	win(4, 0.99)
+	if len(m.tagged) != 0 {
+		t.Fatalf("tagged before 3 confident windows in a row")
+	}
+	win(5, 0) // quiet: neither counts nor resets
+	win(6, 0.99)
+	if len(m.tagged) != 1 {
+		t.Fatalf("3rd confident window in a row (around a quiet one) didn't tag")
+	}
+}
+
 // End to end on a recorded session (skipped if it isn't present): drive the
 // main window accumulator and the flowScorer exactly as live-router does,
 // and check the session's main connection gets its own correct label.

@@ -57,6 +57,18 @@ type priorityManager struct {
 
 	enforce bool
 	nft     func(script string) error // runs an nft script (nft -f -); swappable in tests
+
+	// -priority-by flow: windows in a row a connection's own label must be
+	// the same service at >= minConf before it is tagged (-priority-streak).
+	streakNeed int
+	streaks    map[core.FlowKey]*streak
+}
+
+// streak counts a connection's confident windows toward streakNeed.
+type streak struct {
+	label      string
+	n          int
+	lastWindow int
 }
 
 type priorityTag struct {
@@ -68,7 +80,7 @@ type priorityTag struct {
 func newPriorityManager(minPackets int, minConf float64, idle time.Duration, logPath string) (*priorityManager, error) {
 	m := &priorityManager{
 		minPackets: minPackets, minConf: minConf, idle: idle.Seconds(),
-		tagged: map[core.FlowKey]*priorityTag{},
+		tagged: map[core.FlowKey]*priorityTag{}, streakNeed: 1, streaks: map[core.FlowKey]*streak{},
 	}
 	if logPath != "" {
 		f, err := os.Create(logPath)
@@ -160,19 +172,51 @@ func (m *priorityManager) flowsClosed(window int, flows []flowResult, now float6
 		}
 	}
 	for _, f := range flows {
-		if f.conf < m.minConf || f.packets < m.minPackets || !couldBeService(f.key, f.label) {
+		if f.packets < m.minPackets || !couldBeService(f.key, f.label) {
 			continue
 		}
 		if tag, ok := m.tagged[f.key]; ok {
-			tag.label = f.label
+			if f.conf >= m.minConf {
+				tag.label = f.label
+			}
 			continue
 		}
+		// Streak: a scored window that is unconfident or names a different
+		// service resets it; windows where the connection is too quiet to be
+		// scored neither count nor reset (a video fetches in bursts).
+		st := m.streaks[f.key]
+		if f.conf < m.minConf {
+			delete(m.streaks, f.key)
+			continue
+		}
+		if st == nil || st.label != f.label {
+			st = &streak{label: f.label}
+			m.streaks[f.key] = st
+		}
+		st.n++
+		st.lastWindow = window
+		if st.n < m.streakNeed {
+			fmt.Printf("    · candidate [%s] %s (its own label, %.2f): %d/%d confident windows\n",
+				f.label, describeFlow(f.key), f.conf, st.n, m.streakNeed)
+			continue
+		}
+		delete(m.streaks, f.key)
 		m.tagged[f.key] = &priorityTag{label: f.label, since: now, lastSeen: now}
 		m.ons++
 		m.apply(fmt.Sprintf("add element inet csc5991 video_flows { %s timeout 3m }", nftElement(f.key)))
 		fmt.Printf("  ▶ PRIORITY ON  [%s] %s (its own label, %.2f; %d pkts, %.1f MB in window %d) — %d connection(s) prioritized\n",
 			f.label, describeFlow(f.key), f.conf, f.packets, float64(f.bytes)/1e6, window, len(m.tagged))
-		m.event(now, window, "on", f.label, f.conf, f.key, f.bytes, "connection's own label")
+		reason := "connection's own label"
+		if m.streakNeed > 1 {
+			reason = fmt.Sprintf("connection's own label, %d windows in a row", m.streakNeed)
+		}
+		m.event(now, window, "on", f.label, f.conf, f.key, f.bytes, reason)
+	}
+	// Forget streaks of connections that went quiet for the idle timeout.
+	for key, st := range m.streaks {
+		if float64(window-st.lastWindow)*10 > m.idle {
+			delete(m.streaks, key)
+		}
 	}
 }
 
