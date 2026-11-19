@@ -74,8 +74,12 @@ func main() {
 	excludeOwn := flag.Bool("exclude-own-traffic", false, "drop packets to/from this machine's own IP addresses. Use on a router capturing for its clients: its own ssh/management traffic isn't client traffic (and leaves with GSO, as oversized packets). Leave off when capturing on the client itself, where that traffic IS the client's")
 	priority := flag.Bool("priority", false, "dry-run QoS: print/log which connections a router would prioritize from the labels (needs a Go-native .json -model-dir; changes nothing on the router)")
 	prioMinPackets := flag.Int("priority-min-packets", 100, "-priority: packets a window needs before its label can start priority")
-	prioStreak := flag.Int("priority-streak", 3, "-priority-by flow: windows in a row a connection's own label must be the same service at -priority-min-confidence before it is tagged (quiet windows don't break the streak)")
-	prioMinConf := flag.Float64("priority-min-confidence", 0.9, "-priority: confidence a window's label needs before it can start priority")
+	// 5 windows at >= 0.93: on the 2026-11-18 QoS runs (2 bulk HTTPS downloads
+	// beside a QUIC video), 3 at 0.9 tagged a download in both runs within ~4
+	// minutes (a download's own label was >= 0.9 in 31-40% of its windows);
+	// 5 at 0.93, replayed on the same per-connection logs, tagged only the video.
+	prioStreak := flag.Int("priority-streak", 5, "-priority-by flow: windows in a row a connection's own label must be the same service at -priority-min-confidence before it is tagged (quiet windows don't break the streak)")
+	prioMinConf := flag.Float64("priority-min-confidence", 0.93, "-priority: confidence a window's label needs before it can start priority")
 	prioIdle := flag.Duration("priority-idle", 2*time.Minute, "-priority: drop a connection's priority after this long with no packets on it")
 	prioEnforce := flag.Bool("priority-enforce", false, "-priority: apply decisions, adding tagged connections to nftables set inet csc5991 video_flows (create it first with router/qos.sh up); without it -priority is a dry run")
 	prioBy := flag.String("priority-by", "flow", `-priority: "flow" tags connections by their own label (each connection scored on its own packets); "window" tags the heaviest connections of a window by the window's label`)
