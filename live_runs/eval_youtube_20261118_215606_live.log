@@ -1,0 +1,125 @@
+[window   0 |     0-   10s] netflix       0.99 ✗ |    579 pkts, udp 0.03 | video 0:02, NOT playing, 854x480
+      connections in window 0: tcp/443 0.2MB netflix 0.98 | tcp/443 0.2MB youtube_tcp 0.81
+[window   1 |    10-   20s] netflix       0.45 ✗ |   4311 pkts, udp 0.26 | host rx 5.8 MB | video 0:12, playing, 854x480 | running 0/1 playing windows correct
+      connections in window 1: udp/443 1.3MB youtube_quic 1.00 | tcp/443 0.3MB youtube_tcp 0.97 | tcp/443 0.2MB youtube_tcp 0.92 | tcp/443 0.2MB netflix 0.98 | tcp/443 0.2MB netflix 0.99 | tcp/443 0.2MB netflix 0.99 (+4 more)
+[window   2 |    20-   30s] netflix       0.97 ✗ |   2696 pkts, udp 0.07 | host rx 3.5 MB | video 0:22, playing, 854x480 | running 0/2 playing windows correct
+      connections in window 2: tcp/443 0.3MB netflix 0.95 | tcp/443 0.2MB youtube_tcp 0.97 | udp/443 0.2MB youtube_quic 1.00 | tcp/443 0.2MB netflix 0.99 | tcp/443 0.2MB netflix 0.98 | tcp/443 0.2MB netflix 0.99 (+4 more)
+[window   3 |    30-   40s] netflix       0.82 ✗ |   2780 pkts, udp 0.03 | host rx 2.5 MB | video 0:32, playing, 854x480 | running 0/3 playing windows correct
+      connections in window 3: tcp/443 0.4MB youtube_tcp 0.96 | tcp/443 0.3MB netflix 0.96 | tcp/443 0.3MB netflix 0.99 | tcp/443 0.2MB youtube_tcp 0.97 | tcp/443 0.1MB youtube_tcp 0.88 | tcp/443 0.1MB youtube_tcp 0.79
+[window   4 |    40-   50s] netflix       0.83 ✗ |   2900 pkts, udp 0.02 | host rx 2.0 MB | video 0:00, playing, 0x0 | running 0/4 playing windows correct
+      connections in window 4: tcp/443 0.3MB youtube_tcp 0.98 | tcp/443 0.3MB youtube_tcp 0.99 | tcp/443 0.3MB netflix 0.97 | tcp/443 0.2MB netflix 0.99 | tcp/443 0.1MB youtube_tcp 0.90 | tcp/443 0.1MB youtube_tcp 0.73 (+2 more)
+[window   5 |    50-   60s] youtube_tcp   0.73 ✗ |   2513 pkts, udp 0.00 | host rx 1.9 MB | video 0:00, NOT playing, 0x0 | running 0/4 playing windows correct
+      connections in window 5: tcp/443 0.3MB netflix 0.99 | tcp/443 0.3MB youtube_tcp 0.98 | tcp/443 0.2MB netflix 0.99 | tcp/443 0.2MB netflix 0.99 | tcp/443 0.2MB youtube_tcp 0.90 | tcp/443 0.2MB netflix 0.99 (+1 more)
+[window   6 |    60-   70s] netflix       0.92 ✗ |   2368 pkts, udp 0.02 | host rx 2.4 MB | video 0:00, NOT playing, 0x0 | running 0/4 playing windows correct
+[window   7 |    70-   80s] youtube_quic  0.92 ✓ |   8114 pkts, udp 0.65 | host rx 0.6 MB | video 0:00, NOT playing, 0x0 | running 0/4 playing windows correct
+      connections in window 6: tcp/443 0.3MB netflix 0.93 | tcp/443 0.2MB youtube_tcp 0.93 | tcp/443 0.2MB netflix 0.99 | tcp/443 0.2MB youtube_tcp 0.78 | tcp/443 0.1MB netflix 0.99 | tcp/443 0.1MB youtube_tcp 0.90 (+1 more)
+      connections in window 7: udp/443 3.9MB youtube_quic 1.00 | udp/443 1.0MB youtube_quic 1.00 | tcp/443 0.3MB netflix 0.98 | tcp/443 0.3MB youtube_tcp 0.94 | tcp/443 0.2MB netflix 1.00 | tcp/443 0.2MB netflix 1.00 (+7 more)
+[window   8 |    80-   90s] twitch        0.83 ✗ |   3899 pkts, udp 0.26 | host rx 9.2 MB | video 0:12, playing, 1280x720 | running 0/5 playing windows correct
+      connections in window 8: udp/443 0.9MB youtube_quic 1.00 | tcp/443 0.3MB youtube_tcp 0.93 | tcp/443 0.2MB netflix 0.98 | tcp/443 0.2MB netflix 0.99 | tcp/443 0.2MB netflix 0.99 | tcp/443 0.2MB netflix 0.99 (+5 more)
+[window   9 |    90-  100s] twitch        0.65 ✗ |   2296 pkts, udp 0.30 | host rx 2.6 MB | video 0:07, playing, 1280x720 | running 0/6 playing windows correct
+      connections in window 9: udp/443 0.7MB youtube_quic 1.00 | tcp/443 0.2MB netflix 0.99 | tcp/443 0.1MB netflix 0.99 | tcp/443 0.1MB youtube_tcp 0.85
+[window  10 |   100-  110s] twitch        0.78 ✗ |   2733 pkts, udp 0.26 | host rx 4.3 MB | video 0:02, playing, 1280x720 | running 0/7 playing windows correct
+      connections in window 10: udp/443 0.5MB youtube_quic 1.00 | tcp/443 0.4MB youtube_tcp 0.98 | tcp/443 0.2MB youtube_tcp 0.70 | tcp/443 0.2MB netflix 1.00 | udp/443 0.1MB youtube_quic 1.00 | tcp/443 0.1MB youtube_tcp 0.75
+[window  11 |   110-  120s] youtube_quic  0.81 ✓ |   4499 pkts, udp 0.51 | host rx 4.5 MB | video 0:12, playing, 1280x720 | running 1/8 playing windows correct
+      connections in window 11: udp/443 2.6MB youtube_quic 1.00 | tcp/443 0.3MB netflix 0.99 | tcp/443 0.2MB youtube_tcp 0.87 | tcp/443 0.1MB youtube_tcp 0.90 | tcp/443 0.1MB youtube_tcp 0.85 | tcp/443 0.1MB youtube_tcp 0.74 (+1 more)
+[window  12 |   120-  130s] youtube_quic  0.88 ✓ |   4786 pkts, udp 0.57 | host rx 4.1 MB | video 0:22, playing, 1280x720 | running 2/9 playing windows correct
+    ▶ PRIORITY ON  [youtube_quic] udp flow f3896488 (server port 443), 3.1 MB in window 12, confidence 1.00
+      connections in window 12: udp/443 3.1MB youtube_quic 1.00 | tcp/443 0.3MB netflix 0.95 | tcp/443 0.2MB youtube_tcp 0.85 | tcp/443 0.1MB youtube_tcp 0.89 | tcp/443 0.1MB netflix 0.98
+[window  13 |   130-  140s] twitch        0.52 ✗ |   1893 pkts, udp 0.03 | host rx 1.5 MB | video 0:32, playing, 1280x720 | running 2/10 playing windows correct
+      connections in window 13: tcp/443 0.3MB netflix 0.96 | tcp/443 0.2MB youtube_tcp 0.84 | tcp/443 0.1MB netflix 0.99
+[window  14 |   140-  150s] twitch        0.49 ✗ |   2080 pkts, udp 0.03 | host rx 1.3 MB | video 0:42, playing, 1280x720 | running 2/11 playing windows correct
+      connections in window 14: tcp/443 0.3MB netflix 0.95 | tcp/443 0.2MB youtube_tcp 0.88 | tcp/443 0.2MB netflix 0.99 | tcp/443 0.2MB youtube_tcp 0.94 | tcp/443 0.2MB youtube_tcp 0.80 | tcp/443 0.1MB youtube_tcp 0.81
+[window  15 |   150-  160s] youtube_tcp   0.62 ✗ |   1848 pkts, udp 0.00 | host rx 1.6 MB | video 0:00, NOT playing, 0x0 | running 2/11 playing windows correct
+      connections in window 15: tcp/443 0.2MB netflix 0.99 | tcp/443 0.2MB youtube_tcp 0.95 | tcp/443 0.1MB youtube_tcp 0.80 | tcp/443 0.1MB youtube_tcp 0.77
+[window  16 |   160-  170s] youtube_tcp   0.50 ✗ |   1974 pkts, udp 0.01 | host rx 1.6 MB | video 0:00, NOT playing, 0x0 | running 2/11 playing windows correct
+      connections in window 16: tcp/443 0.2MB netflix 0.98 | tcp/443 0.2MB netflix 0.98 | tcp/443 0.2MB youtube_tcp 0.80 | tcp/443 0.1MB youtube_tcp 0.97 | tcp/443 0.1MB youtube_tcp 0.94
+[window  17 |   170-  180s] youtube_quic  0.99 ✓ |   9117 pkts, udp 0.76 | host rx 1.1 MB | video 0:00, NOT playing, 0x0 | running 2/11 playing windows correct
+      connections in window 17: udp/443 3.9MB youtube_quic 1.00 | udp/443 2.5MB youtube_quic 1.00 | udp/443 0.7MB youtube_quic 1.00 | tcp/443 0.3MB netflix 0.99 | tcp/443 0.2MB netflix 0.99 | tcp/443 0.1MB youtube_tcp 0.92 (+2 more)
+[window  18 |   180-  190s] youtube_quic  0.55 ✓ |   3977 pkts, udp 0.50 | host rx 8.8 MB | video 0:07, NOT playing, 1280x720 | running 2/11 playing windows correct
+      connections in window 18: udp/443 2.2MB youtube_quic 1.00 | tcp/443 0.2MB youtube_tcp 0.74 | tcp/443 0.2MB netflix 0.99 | tcp/443 0.2MB youtube_tcp 0.89 | tcp/443 0.1MB youtube_tcp 0.82 | tcp/443 0.1MB youtube_tcp 0.79
+[window  19 |   190-  200s] youtube_quic  0.93 ✓ |   5513 pkts, udp 0.55 | host rx 5.8 MB | video 0:17, playing, 1280x720 | running 3/12 playing windows correct
+      connections in window 19: udp/443 3.4MB youtube_quic 1.00 | tcp/443 0.4MB youtube_tcp 0.97 | tcp/443 0.3MB netflix 0.98 | tcp/443 0.2MB netflix 0.99 | tcp/443 0.2MB youtube_tcp 0.90 | tcp/443 0.1MB youtube_tcp 0.86
+[window  20 |   200-  210s] netflix       0.63 ✗ |   3147 pkts, udp 0.38 | host rx 4.4 MB | video 0:27, playing, 1280x720 | running 3/13 playing windows correct
+      connections in window 20: udp/443 1.3MB youtube_quic 1.00 | tcp/443 0.2MB netflix 0.99 | tcp/443 0.2MB netflix 0.96 | tcp/443 0.2MB youtube_tcp 0.91 | tcp/443 0.1MB youtube_tcp 0.87 | tcp/443 0.1MB youtube_tcp 0.86
+[window  21 |   210-  220s] twitch        0.66 ✗ |   4898 pkts, udp 0.65 | host rx 3.6 MB | video 0:37, playing, 1280x720 | running 3/14 playing windows correct
+    ▶ PRIORITY ON  [youtube_quic] udp flow 4c9bfb38 (server port 443), 3.6 MB in window 21, confidence 1.00
+      connections in window 21: udp/443 3.6MB youtube_quic 1.00 | tcp/443 0.2MB netflix 0.93 | tcp/443 0.2MB youtube_tcp 0.89 | tcp/443 0.1MB youtube_tcp 0.83 | tcp/443 0.1MB youtube_tcp 0.73
+[window  22 |   220-  230s] twitch        0.48 ✗ |   3460 pkts, udp 0.31 | host rx 4.5 MB | video 0:48, playing, 1280x720 | running 3/15 playing windows correct
+      connections in window 22: udp/443 1.2MB youtube_quic 1.00 | tcp/443 0.3MB youtube_tcp 0.99 | tcp/443 0.2MB netflix 0.99 | tcp/443 0.2MB youtube_tcp 0.75 | tcp/443 0.1MB youtube_tcp 0.91 | tcp/443 0.1MB youtube_tcp 0.87 (+1 more)
+[window  23 |   230-  240s] youtube_quic  0.86 ✓ |   4651 pkts, udp 0.57 | host rx 3.0 MB | video 0:58, playing, 1280x720 | running 4/16 playing windows correct
+      connections in window 23: udp/443 3.0MB youtube_quic 1.00 | tcp/443 0.4MB youtube_tcp 1.00 | tcp/443 0.2MB netflix 0.99 | tcp/443 0.1MB youtube_tcp 0.84 | tcp/443 0.1MB youtube_tcp 0.83
+[window  24 |   240-  250s] youtube_quic  0.76 ✓ |   5201 pkts, udp 0.49 | host rx 4.5 MB | video 1:08, playing, 1280x720 | running 5/17 playing windows correct
+      connections in window 24: udp/443 2.9MB youtube_quic 1.00 | tcp/443 0.4MB youtube_tcp 0.98 | tcp/443 0.3MB netflix 0.96 | tcp/443 0.2MB netflix 0.99 | tcp/443 0.2MB netflix 0.99 | tcp/443 0.1MB netflix 0.54 (+1 more)
+[window  25 |   250-  260s] youtube_quic  0.76 ✓ |   4741 pkts, udp 0.62 | host rx 4.6 MB | video 1:18, playing, 1280x720 | running 6/18 playing windows correct
+      connections in window 25: udp/443 3.3MB youtube_quic 1.00 | tcp/443 0.2MB youtube_tcp 0.92 | tcp/443 0.2MB youtube_tcp 0.85 | tcp/443 0.1MB netflix 0.99
+[window  26 |   260-  270s] netflix       0.40 ✗ |   3807 pkts, udp 0.46 | host rx 5.5 MB | video 1:28, playing, 1280x720 | running 6/19 playing windows correct
+    ■ PRIORITY OFF [youtube_quic] udp flow f3896488 (server port 443): idle 122s
+      connections in window 26: udp/443 2.0MB youtube_quic 1.00 | tcp/443 0.4MB youtube_tcp 0.98 | tcp/443 0.3MB netflix 0.97 | tcp/443 0.1MB youtube_tcp 0.91 | tcp/443 0.1MB youtube_tcp 0.94 | tcp/443 0.1MB netflix 0.96 (+1 more)
+[window  27 |   270-  280s] youtube_quic  0.93 ✓ |   5216 pkts, udp 0.61 | host rx 4.0 MB | video 1:38, playing, 1280x720 | running 7/20 playing windows correct
+      connections in window 27: udp/443 3.6MB youtube_quic 1.00 | tcp/443 0.2MB youtube_tcp 0.93 | tcp/443 0.2MB netflix 0.97 | tcp/443 0.1MB youtube_tcp 0.81 | tcp/443 0.1MB youtube_tcp 0.88 | tcp/443 0.1MB youtube_tcp 0.89 (+2 more)
+[window  28 |   280-  290s] netflix       0.75 ✗ |   2680 pkts, udp 0.39 | host rx 3.7 MB | video 1:48, playing, 1280x720 | running 7/21 playing windows correct
+      connections in window 28: udp/443 1.2MB youtube_quic 1.00 | tcp/443 0.2MB netflix 0.99 | tcp/443 0.1MB netflix 0.99 | tcp/443 0.1MB youtube_tcp 0.81
+[window  29 |   290-  300s] netflix       0.58 ✗ |   2905 pkts, udp 0.39 | host rx 2.3 MB | video 1:58, playing, 1280x720 | running 7/22 playing windows correct
+      connections in window 29: udp/443 1.2MB youtube_quic 1.00 | tcp/443 0.2MB netflix 0.99 | tcp/443 0.1MB netflix 0.99 | tcp/443 0.1MB youtube_tcp 0.74 | tcp/443 0.1MB youtube_tcp 0.70 | tcp/443 0.1MB youtube_tcp 0.86
+[window  30 |   300-  310s] twitch        0.91 ✗ |   3152 pkts, udp 0.42 | host rx 2.2 MB | video 2:08, playing, 1280x720 | running 7/23 playing windows correct
+      connections in window 30: udp/443 1.5MB youtube_quic 1.00 | tcp/443 0.1MB netflix 0.99 | tcp/443 0.1MB youtube_tcp 0.95 | tcp/443 0.1MB youtube_tcp 0.82 | tcp/443 0.1MB youtube_tcp 0.84
+[window  31 |   310-  320s] twitch        0.85 ✗ |   2925 pkts, udp 0.35 | host rx 3.1 MB | video 2:18, playing, 1280x720 | running 7/24 playing windows correct
+      connections in window 31: udp/443 1.2MB youtube_quic 1.00 | tcp/443 0.2MB netflix 0.95 | tcp/443 0.1MB youtube_tcp 0.86 | tcp/443 0.1MB netflix 0.99 | tcp/443 0.1MB youtube_tcp 0.84 | tcp/443 0.1MB youtube_tcp 0.87 (+1 more)
+[window  32 |   320-  330s] netflix       0.76 ✗ |   3324 pkts, udp 0.35 | host rx 2.3 MB | video 2:28, playing, 1280x720 | running 7/25 playing windows correct
+      connections in window 32: udp/443 1.3MB youtube_quic 1.00 | tcp/443 0.3MB netflix 0.96 | tcp/443 0.3MB youtube_tcp 0.95 | tcp/443 0.2MB netflix 0.99 | tcp/443 0.1MB youtube_tcp 0.85
+[window  33 |   330-  340s] twitch        0.67 ✗ |   3504 pkts, udp 0.32 | host rx 3.4 MB | video 2:38, playing, 1280x720 | running 7/26 playing windows correct
+      connections in window 33: udp/443 1.3MB youtube_quic 1.00 | tcp/443 0.3MB youtube_tcp 0.95 | tcp/443 0.2MB netflix 0.99 | tcp/443 0.2MB youtube_tcp 0.84 | tcp/443 0.1MB youtube_tcp 0.72 | tcp/443 0.1MB youtube_tcp 0.74 (+2 more)
+[window  34 |   340-  350s] twitch        0.45 ✗ |   3446 pkts, udp 0.42 | host rx 3.3 MB | video 2:48, playing, 1280x720 | running 7/27 playing windows correct
+      connections in window 34: udp/443 1.7MB youtube_quic 1.00 | tcp/443 0.3MB netflix 0.95 | tcp/443 0.2MB youtube_tcp 0.95 | tcp/443 0.1MB youtube_tcp 0.78
+[window  35 |   350-  360s] netflix       0.63 ✗ |   3721 pkts, udp 0.30 | host rx 3.1 MB | video 2:58, playing, 1280x720 | running 7/28 playing windows correct
+      connections in window 35: udp/443 1.3MB youtube_quic 1.00 | tcp/443 0.5MB youtube_tcp 1.00 | tcp/443 0.3MB netflix 0.98 | tcp/443 0.3MB youtube_tcp 0.94 | tcp/443 0.1MB netflix 0.98
+[window  36 |   360-  370s] netflix       0.88 ✗ |   2124 pkts, udp 0.29 | host rx 2.1 MB | video 3:08, playing, 1280x720 | running 7/29 playing windows correct
+      connections in window 36: udp/443 0.7MB youtube_quic 1.00 | tcp/443 0.3MB youtube_tcp 0.97 | tcp/443 0.2MB netflix 0.99 | tcp/443 0.1MB youtube_tcp 0.64
+[window  37 |   370-  380s] youtube_quic  0.63 ✓ |   3302 pkts, udp 0.34 | host rx 2.4 MB | video 3:18, playing, 1280x720 | running 8/30 playing windows correct
+      connections in window 37: udp/443 1.3MB youtube_quic 1.00 | tcp/443 0.3MB netflix 0.96 | tcp/443 0.2MB netflix 0.99 | tcp/443 0.2MB youtube_tcp 0.88 | tcp/443 0.1MB youtube_tcp 0.89
+[window  38 |   380-  390s] netflix       0.62 ✗ |   3738 pkts, udp 0.38 | host rx 4.0 MB | video 3:28, playing, 1280x720 | running 8/31 playing windows correct
+      connections in window 38: udp/443 1.6MB youtube_quic 1.00 | tcp/443 0.7MB youtube_tcp 0.99 | tcp/443 0.4MB netflix 0.98 | tcp/443 0.2MB netflix 0.98 | tcp/443 0.2MB youtube_tcp 0.93 | tcp/443 0.2MB youtube_tcp 0.95
+[window  39 |   390-  400s] netflix       0.76 ✗ |   2841 pkts, udp 0.26 | host rx 2.5 MB | video 3:39, playing, 1280x720 | running 8/32 playing windows correct
+      connections in window 39: udp/443 0.8MB youtube_quic 1.00 | tcp/443 0.2MB youtube_tcp 0.89 | tcp/443 0.2MB youtube_tcp 0.91 | tcp/443 0.2MB netflix 0.99 | tcp/443 0.1MB youtube_tcp 0.86 | tcp/443 0.1MB youtube_tcp 0.53 (+2 more)
+[window  40 |   400-  410s] netflix       0.76 ✗ |   2734 pkts, udp 0.36 | host rx 2.5 MB | video 3:49, playing, 1280x720 | running 8/33 playing windows correct
+      connections in window 40: udp/443 1.1MB youtube_quic 1.00 | tcp/443 0.3MB netflix 0.99 | tcp/443 0.2MB youtube_tcp 0.96 | tcp/443 0.2MB youtube_tcp 0.89 | tcp/443 0.2MB netflix 1.00 | tcp/443 0.1MB youtube_tcp 0.80
+[window  41 |   410-  420s] youtube_quic  0.55 ✓ |   3941 pkts, udp 0.48 | host rx 3.4 MB | video 3:59, playing, 1280x720 | running 9/34 playing windows correct
+      connections in window 41: udp/443 2.1MB youtube_quic 1.00 | tcp/443 0.3MB netflix 0.98 | tcp/443 0.1MB youtube_tcp 0.77
+[window  42 |   420-  430s] netflix       0.59 ✗ |   3405 pkts, udp 0.34 | host rx 1.9 MB | video 4:09, playing, 1280x720 | running 9/35 playing windows correct
+      connections in window 42: udp/443 1.3MB youtube_quic 1.00 | tcp/443 0.3MB youtube_tcp 0.99 | tcp/443 0.2MB youtube_tcp 0.96 | tcp/443 0.2MB netflix 0.99 | tcp/443 0.2MB youtube_tcp 0.90 | tcp/443 0.1MB netflix 0.99
+[window  43 |   430-  440s] netflix       0.87 ✗ |   2908 pkts, udp 0.20 | host rx 3.5 MB | video 4:19, playing, 1280x720 | running 9/36 playing windows correct
+      connections in window 43: udp/443 0.7MB youtube_quic 1.00 | tcp/443 0.2MB netflix 0.99 | tcp/443 0.2MB netflix 1.00 | tcp/443 0.2MB youtube_tcp 0.77 | tcp/443 0.1MB youtube_tcp 0.78 | tcp/443 0.1MB youtube_tcp 0.87
+[window  44 |   440-  450s] netflix       0.83 ✗ |   3725 pkts, udp 0.23 | host rx 3.4 MB | video 4:29, playing, 1280x720 | running 9/37 playing windows correct
+      connections in window 44: udp/443 1.0MB youtube_quic 1.00 | tcp/443 0.6MB youtube_tcp 0.99 | tcp/443 0.3MB netflix 0.99 | tcp/443 0.3MB youtube_tcp 0.93 | tcp/443 0.3MB youtube_tcp 0.97 | tcp/443 0.2MB youtube_tcp 0.92 (+2 more)
+[window  45 |   450-  460s] twitch        0.45 ✗ |   2943 pkts, udp 0.38 | host rx 2.0 MB | video 4:39, playing, 1280x720 | running 9/38 playing windows correct
+      connections in window 45: udp/443 1.3MB youtube_quic 1.00 | tcp/443 0.4MB youtube_tcp 1.00 | tcp/443 0.1MB youtube_tcp 0.76 | tcp/443 0.1MB netflix 1.00 | tcp/443 0.1MB youtube_tcp 0.88 | tcp/443 0.1MB youtube_tcp 0.82
+[window  46 |   460-  470s] netflix       0.86 ✗ |   2383 pkts, udp 0.36 | host rx 2.8 MB | video 4:49, playing, 1280x720 | running 9/39 playing windows correct
+      connections in window 46: udp/443 1.0MB youtube_quic 1.00 | tcp/443 0.2MB netflix 0.99 | tcp/443 0.1MB netflix 0.99 | tcp/443 0.1MB youtube_tcp 0.82 | tcp/443 0.1MB youtube_tcp 0.82 | tcp/443 0.1MB youtube_tcp 0.76
+[window  47 |   470-  480s] youtube_quic  0.80 ✓ |   4681 pkts, udp 0.26 | host rx 4.1 MB | video 4:59, playing, 1280x720 | running 10/40 playing windows correct
+      connections in window 47: udp/443 1.4MB youtube_quic 1.00 | tcp/443 1.3MB youtube_tcp 0.98 | tcp/443 0.3MB netflix 0.99 | tcp/443 0.2MB netflix 0.99 | tcp/443 0.2MB youtube_tcp 0.83 | tcp/443 0.2MB youtube_tcp 0.68 (+2 more)
+[window  48 |   480-  490s] netflix       0.53 ✗ |   2955 pkts, udp 0.47 | host rx 2.9 MB | video 5:09, playing, 1280x720 | running 10/41 playing windows correct
+      connections in window 48: udp/443 1.6MB youtube_quic 1.00 | tcp/443 0.2MB netflix 0.99 | tcp/443 0.1MB youtube_tcp 0.93 | tcp/443 0.1MB youtube_tcp 0.79
+[window  49 |   490-  500s] youtube_quic  0.58 ✓ |   4116 pkts, udp 0.36 | host rx 3.4 MB | video 5:19, playing, 1280x720 | running 11/42 playing windows correct
+      connections in window 49: udp/443 1.7MB youtube_quic 1.00 | tcp/443 0.4MB youtube_tcp 0.98 | tcp/443 0.3MB netflix 0.99 | tcp/443 0.3MB youtube_tcp 0.91 | tcp/443 0.2MB youtube_tcp 0.70 | tcp/443 0.2MB youtube_tcp 0.68
+[window  50 |   500-  510s] netflix       0.84 ✗ |   3255 pkts, udp 0.34 | host rx 3.1 MB | video 5:29, playing, 1280x720 | running 11/43 playing windows correct
+      connections in window 50: udp/443 1.3MB youtube_quic 1.00 | tcp/443 0.3MB netflix 0.96 | tcp/443 0.2MB youtube_tcp 0.93 | tcp/443 0.2MB youtube_tcp 0.91 | tcp/443 0.2MB netflix 0.99 | tcp/443 0.1MB youtube_tcp 0.74 (+1 more)
+[window  51 |   510-  520s] netflix       0.93 ✗ |   2651 pkts, udp 0.24 | host rx 2.3 MB | video 5:39, playing, 1280x720 | running 11/44 playing windows correct
+      connections in window 51: udp/443 0.7MB youtube_quic 1.00 | tcp/443 0.3MB netflix 0.97 | tcp/443 0.1MB youtube_tcp 0.93 | tcp/443 0.1MB youtube_tcp 0.89
+[window  52 |   520-  530s] netflix       0.65 ✗ |   3606 pkts, udp 0.40 | host rx 3.2 MB | video 5:49, playing, 1280x720 | running 11/45 playing windows correct
+      connections in window 52: udp/443 1.6MB youtube_quic 1.00 | tcp/443 0.3MB netflix 0.98 | tcp/443 0.2MB youtube_tcp 0.73 | tcp/443 0.1MB youtube_tcp 0.90 | tcp/443 0.1MB youtube_tcp 0.89 | tcp/443 0.1MB youtube_tcp 0.81
+[window  53 |   530-  540s] netflix       0.85 ✗ |   3127 pkts, udp 0.21 | host rx 2.9 MB | video 5:59, playing, 1280x720 | running 11/46 playing windows correct
+      connections in window 53: udp/443 0.7MB youtube_quic 1.00 | tcp/443 0.4MB youtube_tcp 0.96 | tcp/443 0.3MB netflix 0.99 | tcp/443 0.3MB youtube_tcp 0.93 | tcp/443 0.1MB netflix 0.99 | tcp/443 0.1MB youtube_tcp 0.95 (+2 more)
+[window  54 |   540-  550s] netflix       0.75 ✗ |   3620 pkts, udp 0.42 | host rx 2.6 MB | video 6:09, playing, 1280x720 | running 11/47 playing windows correct
+      connections in window 54: udp/443 1.7MB youtube_quic 1.00 | tcp/443 0.3MB youtube_tcp 1.00 | tcp/443 0.3MB netflix 0.98 | tcp/443 0.2MB netflix 1.00 | tcp/443 0.1MB youtube_tcp 0.52 | tcp/443 0.1MB youtube_tcp 0.77
+[window  55 |   550-  560s] netflix       0.56 ✗ |   3127 pkts, udp 0.24 | host rx 3.5 MB | video 6:20, playing, 1280x720 | running 11/48 playing windows correct
+      connections in window 55: udp/443 0.8MB youtube_quic 1.00 | tcp/443 0.3MB netflix 0.98 | tcp/443 0.3MB youtube_tcp 0.96 | tcp/443 0.2MB youtube_tcp 0.92 | tcp/443 0.2MB netflix 0.96 | tcp/443 0.2MB youtube_tcp 0.74 (+2 more)
+[window  56 |   560-  570s] netflix       0.65 ✗ |   3239 pkts, udp 0.32 | host rx 2.7 MB | video 6:30, playing, 1280x720 | running 11/49 playing windows correct
+      connections in window 56: udp/443 1.2MB youtube_quic 1.00 | tcp/443 0.3MB netflix 0.96 | tcp/443 0.2MB netflix 0.99 | tcp/443 0.1MB youtube_tcp 0.90 | tcp/443 0.1MB youtube_tcp 0.84 | tcp/443 0.1MB youtube_tcp 0.80
+[window  57 |   570-  580s] netflix       0.78 ✗ |   2657 pkts, udp 0.32 | host rx 2.3 MB | video 6:40, playing, 1280x720 | running 11/50 playing windows correct
+      connections in window 57: udp/443 1.0MB youtube_quic 1.00 | tcp/443 0.2MB youtube_tcp 0.96 | tcp/443 0.2MB youtube_tcp 0.82 | tcp/443 0.2MB netflix 1.00 | tcp/443 0.1MB youtube_tcp 0.89
+[window  58 |   580-  590s] twitch        0.46 ✗ |   3309 pkts, udp 0.34 | host rx 2.9 MB | video 6:50, playing, 1280x720 | running 11/51 playing windows correct
+      connections in window 58: udp/443 1.3MB youtube_quic 1.00 | tcp/443 0.3MB netflix 0.97 | tcp/443 0.2MB netflix 0.99 | tcp/443 0.2MB youtube_tcp 0.93 | tcp/443 0.1MB youtube_tcp 0.72 | tcp/443 0.1MB youtube_tcp 0.89 (+1 more)
+[window  59 |   590-  600s] netflix       0.68 ✗ |   2970 pkts, udp 0.43 | host rx 2.7 MB | video 7:00, playing, 1280x720 | running 11/52 playing windows correct
+[window  60 |   600-  610s] netflix       0.63 ✗ |   3268 pkts, udp 0.40 | host rx 2.4 MB | video 7:05, playing, 1280x720 | running 11/53 playing windows correct
+      connections in window 59: udp/443 1.4MB youtube_quic 1.00 | tcp/443 0.2MB netflix 0.99 | tcp/443 0.1MB youtube_tcp 0.91 | tcp/443 0.1MB youtube_tcp 0.93
+      connections in window 60: udp/443 1.5MB youtube_quic 1.00 | tcp/443 0.3MB netflix 0.98 | tcp/443 0.2MB youtube_tcp 0.91 | tcp/443 0.1MB youtube_tcp 0.59 | tcp/443 0.1MB netflix 0.98 | tcp/443 0.1MB youtube_tcp 0.91 (+1 more)
