@@ -82,9 +82,11 @@ import argparse
 import csv
 import datetime
 import os
+import random
 import shlex
 import subprocess
 import sys
+import threading
 import time
 
 import pandas as pd
@@ -525,6 +527,29 @@ def collect_router_files(target, remote_predictions, priority):
         print(f"{'copied' if out else 'MISSING on router:'} {name}")
 
 
+# Small, everyday requests for --light-traffic: web pages and 100-300 KB
+# chunks of a file -- what browsing, email or app sync looks like on the wire.
+LIGHT_URLS = [
+    "https://en.wikipedia.org/wiki/Special:Random",
+    "https://www.kernel.org/",
+    "https://www.debian.org/",
+    "https://www.python.org/",
+    "https://ash-speed.hetzner.com/10GB.bin",  # fetched as a small byte range
+]
+
+
+def light_traffic_loop(stop, counter):
+    """One background 'user': fetch something small, pause 1-5 s, repeat."""
+    while not stop.is_set():
+        url = random.choice(LIGHT_URLS)
+        cmd = ["curl", "-s", "-L", "-o", "/dev/null", "--max-time", "10", url]
+        if url.endswith(".bin"):
+            cmd[1:1] = ["-r", f"0-{random.randint(100, 300) * 1000}"]
+        subprocess.run(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        counter[0] += 1
+        stop.wait(random.uniform(1, 5))
+
+
 def qoe_summary(timeline_path):
     """Video quality while the competing downloads ran (or over the whole
     run without them): what the viewer experienced, for comparing runs
@@ -660,6 +685,9 @@ def main():
                         help="flow: tag connections by their own label (default); window: by the whole window's label")
     parser.add_argument("--competing-downloads", type=int, default=0, metavar="N",
                         help="start N parallel large downloads on this machine to congest the link")
+    parser.add_argument("--light-traffic", type=int, default=0, metavar="N",
+                        help="N background loops of small requests (web pages, 100-300 KB), each pausing 1-5 s "
+                             "between requests; starts --competing-after seconds into playback")
     parser.add_argument("--competing-after", type=float, default=60, metavar="SECONDS",
                         help="seconds after playback starts before the competing downloads begin")
     parser.add_argument("--competing-url", default="https://ash-speed.hetzner.com/10GB.bin",
@@ -712,6 +740,7 @@ def main():
     play_started = router_started
     printer = None
     competitors = []
+    light_stop, light_count = threading.Event(), [0]
     if args.router and args.live_every > 0:
         printer = LivePrinter(args.router, remote_predictions, expected, f"live_runs/eval_{tag}_live.log")
         print("live per-window predictions below (✓/✗ = matches the expected label; running count is over playing windows)")
@@ -739,6 +768,12 @@ def main():
             competing_at = play_started + args.competing_after
             while time.time() < end:
                 now = time.time()
+                if args.light_traffic and not light_stop.is_set() and not getattr(light_stop, "started", False) \
+                        and now >= competing_at:
+                    light_stop.started = True
+                    print(f"  starting {args.light_traffic} light background traffic loops at {now - router_started:.0f}s")
+                    for _ in range(args.light_traffic):
+                        threading.Thread(target=light_traffic_loop, args=(light_stop, light_count), daemon=True).start()
                 if args.competing_downloads and not competitors and now >= competing_at:
                     print(f"  starting {args.competing_downloads} competing downloads at {now - router_started:.0f}s "
                           f"({'priority ENFORCED' if args.enforce else 'no enforcement'})")
@@ -775,7 +810,8 @@ def main():
                                        f"{t:.1f}" if t is not None else "", state["paused"] if state else "",
                                        state["w"] if state else "", state["h"] if state else "", playing,
                                        rx if rx is not None else "",
-                                       f"{state.get('buf', 0):.1f}" if state else "", bool(competitors)])
+                                       f"{state.get('buf', 0):.1f}" if state else "",
+                                       bool(competitors) or getattr(light_stop, "started", False)])
                     f.flush()
                     if printer:
                         printer.record(now - router_started, t, playing, state["w"] if state else 0, state["h"] if state else 0, rx)
@@ -827,6 +863,9 @@ def main():
                     last_poll = time.time()
                 time.sleep(5)
     finally:
+        if getattr(light_stop, "started", False):
+            light_stop.set()
+            print(f"  stopped light background traffic ({light_count[0]} small requests made)")
         for c in competitors:
             c.terminate()
         if competitors:
@@ -869,7 +908,8 @@ def main():
     print("\nrouter resource use (live-router process):")
     for k, v in perf.items():
         print(f"  {k}: {v}")
-    summary = {**summary, **perf, **qoe, "enforce": args.enforce, "competing_downloads": args.competing_downloads}
+    summary = {**summary, **perf, **qoe, "enforce": args.enforce, "competing_downloads": args.competing_downloads,
+               "light_traffic": args.light_traffic}
     append_summary(
         "live_runs/eval_summary.csv",
         {"tag": tag, "service": args.service, "url": args.url or "", "disable_quic": args.disable_quic,
