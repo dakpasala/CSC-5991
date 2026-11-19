@@ -42,6 +42,15 @@ the window's packet count and frac_udp -- also saved to
 live_runs/eval_<tag>_live.log. A video that ends before --minutes is up is
 reloaded from the start, so a run can be longer than its video.
 
+QoS experiment (needs router/qos.sh up on the router first):
+--competing-downloads N starts N parallel downloads of a large speed-test
+file on this machine --competing-after seconds into playback, to congest
+the router's shaped lan2 link (100 Mbit); --enforce makes live-router apply
+its priority decisions (-priority-enforce: tagged connections are marked
+for cake's Video tin). Run once with and once without --enforce and compare
+the video-quality summary: resolution, seconds of video buffered ahead, and
+time not playing, all measured from when the downloads start.
+
 Expected label: youtube -> youtube_quic (Chromium streams YouTube over QUIC
 by default), or youtube_tcp with --disable-quic; twitch -> twitch.
 --service idle plays nothing: a baseline of what this box's background
@@ -107,7 +116,7 @@ def ssh(target, command, check=True):
     return result.stdout
 
 
-def start_live_router(target, model, interface, remote_predictions, max_seconds, priority):
+def start_live_router(target, model, interface, remote_predictions, max_seconds, priority, enforce=False):
     log = remote_predictions.replace(".csv", ".log")
     stats = remote_predictions.replace(".csv", "_stats.csv")
     perf = remote_predictions.replace(".csv", "_perf.csv")
@@ -115,6 +124,8 @@ def start_live_router(target, model, interface, remote_predictions, max_seconds,
     # the live printout shows next to the window predictions.
     prio = remote_predictions.replace(".csv", "_priority.csv")
     priority_flags = f"-priority -priority-log {shlex.quote(prio)} " if priority else ""
+    if priority and enforce:
+        priority_flags += "-priority-enforce "
     # nohup if BusyBox has it; stdin from /dev/null so ssh returns at once.
     # Go re-enables SIGINT even though a background job starts with it
     # ignored (os/signal.Notify), so stop_live_router's kill -INT still gets
@@ -232,7 +243,11 @@ VIDEO_STATE_JS = """
 const v = document.querySelector('video');
 if (!v) return null;
 if (v.paused) { v.muted = true; v.play().catch(() => {}); }
-return {t: v.currentTime, paused: v.paused, ended: v.ended, w: v.videoWidth, h: v.videoHeight};
+let buf = 0;
+for (let i = 0; i < v.buffered.length; i++) {
+  if (v.buffered.start(i) <= v.currentTime && v.currentTime <= v.buffered.end(i)) buf = v.buffered.end(i) - v.currentTime;
+}
+return {t: v.currentTime, paused: v.paused, ended: v.ended, w: v.videoWidth, h: v.videoHeight, buf: buf};
 """
 
 
@@ -484,6 +499,32 @@ def collect_router_files(target, remote_predictions, priority):
         print(f"{'copied' if out else 'MISSING on router:'} {name}")
 
 
+def qoe_summary(timeline_path):
+    """Video quality while the competing downloads ran (or over the whole
+    run without them): what the viewer experienced, for comparing runs
+    with and without --enforce."""
+    t = pd.read_csv(timeline_path)
+    if "buffer_ahead_s" not in t.columns or t.empty:
+        return {}
+    if "competing" in t.columns and t.competing.astype(str).eq("True").any():
+        t = t[t.competing.astype(str) == "True"]
+    t = t[pd.to_numeric(t.video_time_s, errors="coerce").notna()]
+    if t.empty:
+        return {}
+    playing = t.playing.astype(str) == "True"
+    buf = pd.to_numeric(t.buffer_ahead_s, errors="coerce")
+    h = pd.to_numeric(t.height, errors="coerce")
+    poll = t.unix_time.diff().median() if len(t) > 1 else 5.0
+    return {
+        "qoe_polls": len(t),
+        "qoe_not_playing_s": round(float((~playing).sum() * poll), 1),
+        "qoe_buffer_ahead_mean_s": round(float(buf.mean()), 1),
+        "qoe_buffer_ahead_min_s": round(float(buf.min()), 1),
+        "qoe_height_mean": round(float(h.mean()), 0),
+        "qoe_height_counts": "; ".join(f"{int(k)}p={v}" for k, v in h.value_counts().sort_index().items()),
+    }
+
+
 def perf_summary(perf_path):
     """Resource use on the router over the run, from live-router's
     -perf-output: what the classifier costs, next to how accurate it was."""
@@ -587,6 +628,14 @@ def main():
     parser.add_argument("--min-packets", type=int, default=100, help="packets a window needs to count as active")
     parser.add_argument("--no-priority", dest="priority", action="store_false",
                         help="with --router: don't run live-router's dry-run priority decisions (-priority)")
+    parser.add_argument("--enforce", action="store_true",
+                        help="with --router: live-router applies its priority decisions (needs router/qos.sh up)")
+    parser.add_argument("--competing-downloads", type=int, default=0, metavar="N",
+                        help="start N parallel large downloads on this machine to congest the link")
+    parser.add_argument("--competing-after", type=float, default=60, metavar="SECONDS",
+                        help="seconds after playback starts before the competing downloads begin")
+    parser.add_argument("--competing-url", default="https://ash-speed.hetzner.com/10GB.bin",
+                        help="large file for the competing downloads (a speed-test server)")
     parser.add_argument("--live-every", type=float, default=10, help="with --router: seconds between live per-window printouts (0 = off)")
     parser.add_argument("--stats", metavar="STATS_CSV", help="with --score: the matching raw window stats, for active-window accuracy")
     parser.add_argument("--timeline", metavar="TIMELINE_CSV", help="with --score: the matching playback timeline, for playing-window accuracy")
@@ -628,18 +677,21 @@ def main():
         router_started = time.time()
         # Playback can take up to ~60s to start and stalls can add reloads,
         # so leave generous slack beyond --minutes before the safety net fires.
-        pid = start_live_router(args.router, args.model, args.interface, remote_predictions, args.minutes * 60 + 300, args.priority)
+        pid = start_live_router(args.router, args.model, args.interface, remote_predictions, args.minutes * 60 + 300,
+                                args.priority, args.enforce)
 
     driver = None
     play_started = router_started
     printer = None
+    competitors = []
     if args.router and args.live_every > 0:
         printer = LivePrinter(args.router, remote_predictions, expected, f"live_runs/eval_{tag}_live.log")
         print("live per-window predictions below (✓/✗ = matches the expected label; running count is over playing windows)")
     try:
         with open(timeline_path, "w", newline="") as f:
             timeline = csv.writer(f, lineterminator="\n")
-            timeline.writerow(["unix_time", "seconds_since_router_start", "video_time_s", "paused", "width", "height", "playing", "host_rx_bytes"])
+            timeline.writerow(["unix_time", "seconds_since_router_start", "video_time_s", "paused", "width", "height", "playing",
+                               "host_rx_bytes", "buffer_ahead_s", "competing"])
             if args.service != "idle":
                 print(f"opening {args.url} in headless Chromium{' (QUIC disabled)' if args.disable_quic else ''} ...")
                 driver = open_browser(args.disable_quic, args.chromium, args.chromedriver)
@@ -656,8 +708,16 @@ def main():
             end = time.time() + args.minutes * 60
             last_t, last_advance, stalls, reloads, diagnosed = None, time.time(), 0, 0, False
             restarts, last_poll, browser_errors = 0, 0.0, 0
+            competing_at = play_started + args.competing_after
             while time.time() < end:
                 now = time.time()
+                if args.competing_downloads and not competitors and now >= competing_at:
+                    print(f"  starting {args.competing_downloads} competing downloads at {now - router_started:.0f}s "
+                          f"({'priority ENFORCED' if args.enforce else 'no enforcement'})")
+                    competitors.extend(
+                        subprocess.Popen(["curl", "-s", "-o", "/dev/null", args.competing_url],
+                                         stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+                        for _ in range(args.competing_downloads))
                 try:
                     state = driver.execute_script(VIDEO_STATE_JS) if driver else None
                 except Exception as exc:  # the browser crashed or hung (WebDriverException)
@@ -686,7 +746,8 @@ def main():
                     timeline.writerow([f"{now:.3f}", f"{now - router_started:.1f}",
                                        f"{t:.1f}" if t is not None else "", state["paused"] if state else "",
                                        state["w"] if state else "", state["h"] if state else "", playing,
-                                       rx if rx is not None else ""])
+                                       rx if rx is not None else "",
+                                       f"{state.get('buf', 0):.1f}" if state else "", bool(competitors)])
                     f.flush()
                     if printer:
                         printer.record(now - router_started, t, playing, state["w"] if state else 0, state["h"] if state else 0, rx)
@@ -738,6 +799,10 @@ def main():
                     last_poll = time.time()
                 time.sleep(5)
     finally:
+        for c in competitors:
+            c.terminate()
+        if competitors:
+            print(f"  stopped {len(competitors)} competing downloads")
         if driver:
             try:
                 driver.quit()
@@ -767,11 +832,16 @@ def main():
     summary = score(local_predictions, expected, play_started - router_started, args.warmup_windows, stats_name,
                     args.min_packets, timeline_path, scored_path)
     perf = perf_summary(perf_name)
+    qoe = qoe_summary(timeline_path)
     print_summary(summary)
+    if qoe:
+        print("\nvideo quality" + (" while the competing downloads ran" if args.competing_downloads else "") + ":")
+        for k, v in qoe.items():
+            print(f"  {k}: {v}")
     print("\nrouter resource use (live-router process):")
     for k, v in perf.items():
         print(f"  {k}: {v}")
-    summary = {**summary, **perf}
+    summary = {**summary, **perf, **qoe, "enforce": args.enforce, "competing_downloads": args.competing_downloads}
     append_summary(
         "live_runs/eval_summary.csv",
         {"tag": tag, "service": args.service, "url": args.url or "", "disable_quic": args.disable_quic,

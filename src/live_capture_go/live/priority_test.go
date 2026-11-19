@@ -133,3 +133,43 @@ func TestPriorityIgnoresNonServiceFlows(t *testing.T) {
 		t.Fatalf("an SSH-only window tagged %d flows", len(m2.tagged))
 	}
 }
+
+// With enforcement on, ON adds the connection to the nftables set (client .
+// proto . client port . server . server port), every window refreshes its
+// timeout, OFF removes it, and close flushes the set.
+func TestPriorityEnforceNftCommands(t *testing.T) {
+	var scripts []string
+	m, _ := newPriorityManager(100, 0.9, 30*time.Second, "")
+	m.enforce = true
+	m.nft = func(s string) error { scripts = append(scripts, s); return nil }
+
+	m.windowClosed(0, 500, "netflix", 0.99, feed(m, 0, 500, 443, 0), 10)
+	m.refresh()
+	m.windowClosed(1, 0, "", 0, map[core.FlowKey]int64{}, 60) // idle past 30s: released
+	m.close()
+
+	el := "192.168.1.188 . tcp . 50000 . 203.0.113.5 . 443"
+	want := []string{
+		"add element inet csc5991 video_flows { " + el + " timeout 3m }",
+		"destroy element inet csc5991 video_flows { " + el + " }\nadd element inet csc5991 video_flows { " + el + " timeout 3m }\n",
+		"destroy element inet csc5991 video_flows { " + el + " }",
+		"flush set inet csc5991 video_flows",
+	}
+	if len(scripts) != len(want) {
+		t.Fatalf("want %d nft scripts, got %d: %q", len(want), len(scripts), scripts)
+	}
+	for i := range want {
+		if scripts[i] != want[i] {
+			t.Fatalf("nft script %d:\n got %q\nwant %q", i, scripts[i], want[i])
+		}
+	}
+}
+
+// Without enforcement nothing is sent to nft.
+func TestPriorityDryRunTouchesNothing(t *testing.T) {
+	m, _ := newPriorityManager(100, 0.9, time.Minute, "")
+	m.nft = func(s string) error { t.Fatalf("dry run ran nft: %q", s); return nil }
+	m.windowClosed(0, 500, "netflix", 0.99, feed(m, 0, 500, 443, 0), 10)
+	m.refresh()
+	m.close()
+}

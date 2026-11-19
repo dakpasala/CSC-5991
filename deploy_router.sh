@@ -64,6 +64,7 @@ copy build/live-router "$REMOTE_DIR/live-router"
 copy "$MODEL" "$REMOTE_DIR/model/$model_name.json"
 [[ -f $features_json ]] && copy "$features_json" "$REMOTE_DIR/model/$model_name.features.json"
 copy "$model_dir/classes.json" "$REMOTE_DIR/model/classes.json"
+copy router/qos.sh "$REMOTE_DIR/qos.sh"   # QoS test setup: sh qos.sh up|down|status
 ssh "${ssh_opts[@]}" "$ROUTER" "chmod +x '$REMOTE_DIR/live-router' && ls -l '$REMOTE_DIR' '$REMOTE_DIR/model'"
 
 cat <<EOF

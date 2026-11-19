@@ -76,6 +76,7 @@ func main() {
 	prioMinPackets := flag.Int("priority-min-packets", 100, "-priority: packets a window needs before its label can start priority")
 	prioMinConf := flag.Float64("priority-min-confidence", 0.9, "-priority: confidence a window's label needs before it can start priority")
 	prioIdle := flag.Duration("priority-idle", 2*time.Minute, "-priority: drop a connection's priority after this long with no packets on it")
+	prioEnforce := flag.Bool("priority-enforce", false, "-priority: apply decisions, adding tagged connections to nftables set inet csc5991 video_flows (create it first with router/qos.sh up); without it -priority is a dry run")
 	prioLog := flag.String("priority-log", "", "-priority: also write on/off events to this CSV (no IP addresses: flow hash, protocol, server port)")
 	maxDuration := flag.Duration("max-duration", 0, "stop by itself after this long (e.g. 10m), exactly as on Ctrl+C; 0 = run until stopped. A safety net for unattended runs: the router has no swap, and the accumulator's flow history only grows")
 	flag.Parse()
@@ -153,7 +154,15 @@ func main() {
 			os.Exit(1)
 		}
 		out.winBytes = map[core.FlowKey]int64{}
-		fmt.Fprintf(os.Stderr, "priority (dry run): tag after a window with >= %d packets at confidence >= %.2f; release after %s idle or on close\n",
+		if *prioEnforce {
+			if err := runNft("list set inet csc5991 video_flows"); err != nil {
+				fmt.Fprintln(os.Stderr, "error: -priority-enforce needs the QoS setup on this router (sh qos.sh up):", err)
+				os.Exit(1)
+			}
+			out.prio.enforce, out.prio.nft = true, runNft
+			fmt.Fprintln(os.Stderr, "priority ENFORCED: tagged connections are marked for cake's Video tin")
+		}
+		fmt.Fprintf(os.Stderr, "priority (dry run unless enforced): tag after a window with >= %d packets at confidence >= %.2f; release after %s idle or on close\n",
 			*prioMinPackets, *prioMinConf, *prioIdle)
 	}
 
@@ -330,6 +339,7 @@ func (s *sinks) writeRow(row core.WindowRow, closeDur time.Duration) {
 	if s.prio != nil {
 		pred := s.labeler.(*inference.Native).LastPrediction()
 		s.prio.windowClosed(row.WindowIndex, row.Total.PacketCount, pred.Label, pred.Confidence, s.winBytes, s.now)
+		s.prio.refresh()
 		s.winBytes = map[core.FlowKey]int64{}
 	}
 	s.rowsWritten++

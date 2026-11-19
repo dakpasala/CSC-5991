@@ -5,17 +5,24 @@ import (
 	"fmt"
 	"hash/fnv"
 	"os"
+	"os/exec"
 	"sort"
 	"strconv"
+	"strings"
 	"time"
 
 	core "csc5991/core_go"
 )
 
 // priorityManager decides which connections a router would prioritize,
-// from the classifier's per-window labels. It is a dry run: it prints and
-// logs its decisions but changes nothing on the router. Enforcing them
-// (nftables set + DSCP mark + cake's video tin) is a separate, opt-in step.
+// from the classifier's per-window labels. By default it is a dry run: it
+// prints and logs its decisions but changes nothing on the router. With
+// enforce (-priority-enforce), each decision is also applied: a tagged
+// connection is added to the nftables set router/qos.sh creates (table inet
+// csc5991, set video_flows), whose rule marks the connection's download
+// packets DSCP AF41 -- cake's Video tin on lan2. Entries carry a 3-minute
+// timeout and are refreshed every window while tagged, so marks lapse on
+// their own if live-router stops; the set is flushed on a clean exit.
 //
 // The rule:
 //   - Tag: in a window labeled with confidence >= minConf that carried >=
@@ -47,6 +54,9 @@ type priorityManager struct {
 	logF   *os.File
 	ons    int
 	offs   int
+
+	enforce bool
+	nft     func(script string) error // runs an nft script (nft -f -); swappable in tests
 }
 
 type priorityTag struct {
@@ -128,14 +138,60 @@ func (m *priorityManager) windowClosed(window, packets int, label string, conf f
 		tag := &priorityTag{label: label, since: now, lastSeen: now}
 		m.tagged[f.key] = tag
 		m.ons++
+		m.apply(fmt.Sprintf("add element inet csc5991 video_flows { %s timeout 3m }", nftElement(f.key)))
 		fmt.Printf("  ▶ PRIORITY ON  [%s] %s (%.1f MB in window %d, confidence %.2f) — %d connection(s) prioritized\n",
 			label, describeFlow(f.key), float64(f.bytes)/1e6, window, conf, len(m.tagged))
 		m.event(now, window, "on", label, conf, f.key, f.bytes, "active confident window")
 	}
 }
 
+// refresh restarts the 3-minute nftables timeout of every tagged connection,
+// once per window, so an enforced mark lasts as long as its tag does.
+func (m *priorityManager) refresh() {
+	if !m.enforce || len(m.tagged) == 0 {
+		return
+	}
+	var b strings.Builder
+	for key := range m.tagged {
+		el := nftElement(key)
+		fmt.Fprintf(&b, "destroy element inet csc5991 video_flows { %s }\nadd element inet csc5991 video_flows { %s timeout 3m }\n", el, el)
+	}
+	m.apply(b.String())
+}
+
+func (m *priorityManager) apply(script string) {
+	if !m.enforce {
+		return
+	}
+	if err := m.nft(script); err != nil {
+		fmt.Fprintf(os.Stderr, "  priority enforce: nft failed: %v\n", err)
+	}
+}
+
+// nftElement is a connection as video_flows stores it: client ip . protocol
+// . client port . server ip . server port.
+func nftElement(k core.FlowKey) string {
+	sIP, sPort := serverSide(k)
+	cIP, cPort := k.IPB, k.PortB
+	if sIP == k.IPB && sPort == k.PortB {
+		cIP, cPort = k.IPA, k.PortA
+	}
+	return fmt.Sprintf("%s . %s . %d . %s . %d", cIP, k.Protocol, cPort, sIP, sPort)
+}
+
+// runNft feeds a script to nft on stdin.
+func runNft(script string) error {
+	cmd := exec.Command("nft", "-f", "-")
+	cmd.Stdin = strings.NewReader(script)
+	if out, err := cmd.CombinedOutput(); err != nil {
+		return fmt.Errorf("%v: %s", err, strings.TrimSpace(string(out)))
+	}
+	return nil
+}
+
 func (m *priorityManager) off(key core.FlowKey, tag *priorityTag, now float64, window int, reason string) {
 	delete(m.tagged, key)
+	m.apply(fmt.Sprintf("destroy element inet csc5991 video_flows { %s }", nftElement(key)))
 	m.offs++
 	fmt.Printf("  ■ PRIORITY OFF [%s] %s — %s, after %.0fs — %d connection(s) still prioritized\n",
 		tag.label, describeFlow(key), reason, now-tag.since, len(m.tagged))
@@ -163,7 +219,12 @@ func (m *priorityManager) event(now float64, window int, ev, label string, conf 
 }
 
 func (m *priorityManager) close() {
-	fmt.Printf("priority (dry run): %d tagged, %d released, %d still tagged at exit\n", m.ons, m.offs, len(m.tagged))
+	mode := "dry run"
+	if m.enforce {
+		mode = "enforced"
+		m.apply("flush set inet csc5991 video_flows")
+	}
+	fmt.Printf("priority (%s): %d tagged, %d released, %d still tagged at exit\n", mode, m.ons, m.offs, len(m.tagged))
 	if m.logF != nil {
 		m.log.Flush()
 		m.logF.Close()
