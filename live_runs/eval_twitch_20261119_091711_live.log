@@ -1,0 +1,7 @@
+[window   0 |     0-   10s] youtube_tcp   0.95 ✗ |     49 pkts, udp 0.00 | video not loaded
+[window   1 |    10-   20s] youtube_tcp   0.96 ✗ |     35 pkts, udp 0.00 | video not loaded
+[window   2 |    20-   30s] netflix       0.80 ✗ |      9 pkts, udp 0.67 | video not loaded
+[window   3 |    30-   40s] youtube_tcp   0.88 ✗ |      4 pkts, udp 1.00 | video not loaded
+[window   4 |    40-   50s] netflix       0.54 ✗ |     14 pkts, udp 0.00 | video not loaded
+[window   5 |    50-   60s] netflix       0.84 ✗ |     17 pkts, udp 0.06 | video not loaded
+[window   6 |    60-   70s] netflix       0.66 ✗ |    110 pkts, udp 0.35 | video not loaded
