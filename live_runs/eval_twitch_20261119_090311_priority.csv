@@ -1,3 +1,0 @@
-time_s,window_index,event,label,confidence,flow_id,protocol,server_port,window_bytes,reason
-50.1,4,on,youtube_tcp,0.9986,7691ca5b,tcp,443,7468588,"connection's own label, 5 windows in a row"
-308.6,,off,twitch,,7691ca5b,tcp,443,0,connection closed

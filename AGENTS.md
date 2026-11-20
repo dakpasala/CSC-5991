@@ -531,6 +531,12 @@ the counting moved to buffers.
     windows at 20 Mbit, and `youtube_tcp` at 0.98–1.00 when rate-limited at 5 Mbit. 5-at-0.93 was tuned
     on the 20 Mbit runs and failed at 5 Mbit. The model is closed-world.
   - No measured video-quality benefit yet (links uncongested, or a run spoiled before priority acted).
+  - Twitch (2026-11-19): tagged correctly unshaped and at 500 Mbit shaping. **Heavy shaping (12 Mbit)
+    flips Twitch's own label to `youtube_tcp`:** `cake` spaces packets out, so the client ACKs ~5× more
+    often (up/down packets 0.74 vs. 0.19 unshaped, 0.24 at 500 Mbit), and upload features carry 52 % of
+    the model's gain. Force congestion with load, not a low `RATE`. Side connections of the Twitch page
+    can be tagged (tiny packets reach 100; quiet windows don't reset the streak). Memory 58–61 MB under
+    heavy connection churn (stats kept 2 min after idle).
 
 ## Go memory benchmark: a Python-measurement-artifact catch
 

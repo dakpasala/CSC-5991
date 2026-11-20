@@ -244,6 +244,8 @@ Trains plain single XGBoost models in minutes. The test sessions are the same as
   - QoS (`live_runs/tests/qos_priority_results.md`): with background traffic the whole-window label
     collapses (0.22) but the video connection's own label holds (1.00). Light traffic is never tagged;
     long bulk HTTPS downloads still are (closed-world model). No measured video-quality benefit yet.
+  - Twitch: correct unshaped and at 500 Mbit shaping, but heavy shaping (12 Mbit) flips its label to
+    `youtube_tcp` by changing the client's ACK pattern. Force congestion with load, not a low `RATE`.
 
 ## Output folder conventions: `benchmarks/` and `live_runs/`
 

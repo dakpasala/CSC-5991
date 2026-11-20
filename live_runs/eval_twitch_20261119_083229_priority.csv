@@ -1,8 +1,0 @@
-time_s,window_index,event,label,confidence,flow_id,protocol,server_port,window_bytes,reason
-50.0,4,on,youtube_tcp,0.9557,ab64a080,tcp,443,7596818,"connection's own label, 5 windows in a row"
-170.0,16,on,youtube_tcp,0.9910,9e956c5c,tcp,443,276375,"connection's own label, 5 windows in a row"
-250.0,24,on,youtube_quic,0.9996,39dc945f,udp,443,47527,"connection's own label, 5 windows in a row"
-510.0,50,on,netflix,0.9747,aea7dfae,tcp,443,200138,"connection's own label, 5 windows in a row"
-610.8,,off,twitch,,ab64a080,tcp,443,0,connection closed
-610.8,,off,netflix,,aea7dfae,tcp,443,0,connection closed
-610.8,,off,youtube_tcp,,9e956c5c,tcp,443,0,connection closed

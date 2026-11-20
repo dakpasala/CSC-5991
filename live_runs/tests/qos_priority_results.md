@@ -6,8 +6,9 @@ the Linux box behind the router, on the 113-minute video `https://www.youtube.co
 The professor approved installing `cake` and adding nftables rules **for test runs only**. The setup is
 removed after each session (`qos.sh down`).
 
-Raw run files were deleted after this summary. They are in git history at commit `74203fd`
-(`live_runs/eval_youtube_20261118_*`).
+Raw run files were deleted after this summary. They are in git history: the YouTube runs at commit
+`74203fd` (`live_runs/eval_youtube_20261118_*`), the Twitch runs at `50a7aac`
+(`live_runs/eval_twitch_20261119_*`).
 
 ## How priority is enforced
 
@@ -171,6 +172,87 @@ The link was never congested, so priority had nothing to decide. There is no dry
    5), or the comparison was spoiled by luck before priority acted, plus a tagged download (run 3).
    Single runs throughout.
 
+## Twitch (2026-11-19): priority, and how shaping changes the traffic
+
+All runs are dry runs (no `--enforce`) on `https://www.twitch.tv/kaicenat`, a live channel at 1080p
+(about 8.5 Mbit/s on **one** TCP connection for the whole run; no rotation). Background traffic is
+`--light-traffic 60`, starting 60 s in. Shaping is `router/qos.sh` at the given `RATE`.
+
+### 10 minutes, no shaping, no background traffic
+
+| | Result |
+|---|---:|
+| Window accuracy (playing) | 0.85 (`twitch` 50/59) |
+| Video | 1080p throughout, 5 s not playing (startup) |
+| The video connection's own label | `youtube_tcp` 1.00 at startup and when it carried 2–6 MB per window; `twitch` 0.97–1.00 at full rate (~10 MB per window) |
+| Tags | The video connection at 50 s (as `youtube_tcp`), kept all run. Plus 3 small side connections of the page (0.05–2 MB per window, likely chat/ads/analytics), tagged at 170, 250 and 510 s. |
+| CPU / RSS | 2.3 % / 38.9 MB |
+
+- **Wrong service, right decision.** The video was tagged under `youtube_tcp`, but priority only needs
+  "this is streaming", which is easier than telling the services apart.
+- **Two gaps the side connections expose:** a connection of mostly tiny packets reaches 100 packets
+  without carrying data; and since quiet windows don't reset the streak, an intermittent connection
+  can collect 5 confident windows over many minutes (one did over 47 windows). Possible fixes, not
+  built: a minimum volume per window (e.g., 0.5 MB) to count toward the streak, and "5 of the last 8
+  windows" instead of "5 in a row, skipping quiet windows".
+
+### 5 minutes each: shaping × background traffic
+
+The shaping can be read from the data itself: the upload/download packet ratio (the client's ACKs per
+download packet) and the smallest download packet gap.
+
+| Shaping | Background | Up/down packets | Video connection's own label | Window accuracy | Video tagged? | CPU / RSS |
+|---|---|---:|---|---:|---|---|
+| None | none | 0.19 | `twitch` 26/31 (26 at ≥0.93) | **0.93** | yes | 2.7 % / 38 MB |
+| None | 60 loops | 0.13 | `twitch` 26/31 (12 at ≥0.93) | 0.86 | yes | 5.0 % / 61 MB |
+| **500 Mbit** | none | **0.24** | **`twitch` 26/31** (14 at ≥0.93) | **0.93** | yes | 2.2 % / 38 MB |
+| 12 Mbit | none (2 runs) | 0.74 | `youtube_tcp` 32/32, 31/31 | 0.86, 0.57 | yes | 5.1–5.4 % / 38 MB |
+| 12 Mbit | 60 loops | 0.52 | `youtube_tcp` 26/32, unconfident | 0.29 | **no** | 9.7 % / 58 MB |
+
+Three more attempts produced nothing: one was stopped about 50 s in, and in two Twitch never loaded.
+
+**What changes under heavy shaping** (Twitch alone, same 8.6 Mbit/s download, median of windows):
+
+| Feature | Unshaped | 12 Mbit `cake` | Change |
+|---|---:|---:|---:|
+| Upload packets per window | 1,099 | 3,918 | 3.6× |
+| Upload packet gap, mean | 9.1 ms | 2.5 ms | 0.28× |
+| Upload payload, mean | 24 B | 7.6 B | 0.31× |
+| Download packet gap, min | 0.009 ms | 0.021 ms | 2.3× |
+| Download bytes | 10.84 MB | 10.82 MB | same |
+
+**Why:** `cake` spreads Twitch's bursts out to the shaped rate, so packets reach the client spaced
+apart, and the client ACKs far more often (about 1 per 2 download packets instead of 1 per 7). The
+ACK pattern comes from the client, so moving the capture point wouldn't help.
+
+**The model depends on upload features** (52 % of its total split gain; download 27 %, flow counts and
+UDP share 21 %), but of two kinds:
+- **request size** (`up_packet_size_max`, the top feature at 20 %; `up_payload_size_max`): the client's
+  HTTP requests for segments, barely changed by shaping (1.07×);
+- **ACK pattern** (`up_byte_count`, `up_packet_count`, `up_throughput_bps`, `up_payload_size_mean`,
+  `up_packet_size_mean`, `up_interarrival_*`): changed 0.28–3.6×.
+
+### Findings
+
+1. **Heavy shaping flips Twitch's label** from `twitch` to `youtube_tcp`, in every window. Shaping
+   alone still leaves a confident streaming label, so priority still tags the video. Shaping plus
+   heavy background traffic made the label unconfident, and nothing was tagged.
+2. **At a realistic rate, it doesn't.** A QoS router shapes at about 90–95 % of the line, so the queue
+   forms in the router instead of at the ISP. At 500 Mbit (on a ~570 Mbit line), the ACK ratio was
+   0.24 (vs. 0.19 unshaped), the label `twitch`, and window accuracy 0.93, the same as unshaped. The
+   12 Mbit flip is an artifact of forcing congestion with a low rate. Single run, and fewer windows
+   reached ≥0.93 (14 vs. 26).
+3. **Background traffic doesn't change the video connection's own label** (unshaped: `twitch` either
+   way), only the whole-window label and, somewhat, the confidence.
+4. **Twitch didn't need priority against light traffic:** at 12 Mbit with 60 loops it held 8.6 Mbit/s
+   and 1080p, without priority. The light requests absorbed the shortfall.
+5. **Memory grows with connection churn:** 58–61 MB with 60 loops (~200 connections per window) vs.
+   38 MB without. Each connection's statistics are kept for 2 minutes after going idle; dropping them
+   when the connection closes would fix it (not built).
+6. **For the thesis:** the upload ACK pattern is a fingerprint of the client and the network's timing,
+   like the receive window and the QUIC ACK ratio. Future work: a model without the ACK-pattern
+   features (keeping request sizes), or training on traffic captured under shaping.
+
 ## Open questions (for the professor)
 
 - **False positives on bulk downloads:** (a) accept and state as a limitation, (b) add a heuristic such
@@ -181,6 +263,9 @@ The link was never congested, so priority had nothing to decide. There is no dry
   device already has a tagged connection with the same label and transport.
 - **A clean demonstration:** light traffic at `RATE=2Mbit` (below video + light demand, so priority has
   to decide), with and without `--enforce`, repeated 2–3 times.
+- **Shaping rate in experiments:** congestion forced with a low rate (12 Mbit) changes the TCP
+  traffic the classifier sees. Realistic rates (~90–95 % of the line) don't. Forcing congestion with
+  load instead of a low rate avoids the artifact.
 - Fair queuing (normal `cake`, `fq_codel`) also protects a light video flow without any classifier; a
   reviewer may ask about it.
 
@@ -199,5 +284,6 @@ python src/live_capture/stream_and_check.py --service youtube --url 'https://www
   --light-traffic 8 --competing-after 0            # or: --competing-downloads 16
 
 ssh root@192.168.1.1 'nft list chain inet csc5991 forward_mark'   # bytes marked AF41 after B
+                                                                  # (counts since the last qos.sh up)
 ssh root@192.168.1.1 'sh /root/csc5991/qos.sh down'
 ```

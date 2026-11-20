@@ -871,6 +871,28 @@ Live, with light background traffic, the difference is large:
 streak keeps short-lived traffic out; long bulk HTTPS downloads remain the one false positive, because
 the model is closed-world (no "other" class), and they are exactly the traffic that competes with video.
 
+### Twitch, and what shaping does to the traffic (2026-11-19)
+
+All dry runs on a live 1080p Twitch channel (~8.5 Mbit/s on one TCP connection).
+
+| Shaping | Background | Twitch connection's own label | Window accuracy | Video tagged? |
+|---|---|---|---:|---|
+| None | none | `twitch` | 0.93 | yes |
+| None | 60 light loops | `twitch` (less confident) | 0.86 | yes |
+| **500 Mbit** | none | **`twitch`** | **0.93** | yes |
+| 12 Mbit | none (2 runs) | `youtube_tcp`, every window | 0.86, 0.57 | yes |
+| 12 Mbit | 60 light loops | `youtube_tcp`, unconfident | 0.29 | no |
+
+- **Heavy shaping changes the traffic the classifier reads.** `cake` at 12 Mbit spaces Twitch's bursts
+  out, so the client ACKs ~5× more often (upload/download packets 0.74 vs. 0.19), and the upload
+  features (52 % of the model's split gain) shift.
+- **A realistic shaper doesn't.** Routers shape at ~90–95 % of the line; at 500 Mbit the ACK ratio was
+  0.24 and the results matched unshaped. The 12 Mbit flip is an artifact of forcing congestion with a
+  low rate.
+- In a 10-minute unshaped run, the video was tagged at 50 s (labeled `youtube_tcp` at startup: wrong
+  service, right decision), plus 3 small side connections of the Twitch page.
+- Memory reaches 58–61 MB with 60 background loops (connection churn), vs. 38 MB.
+
 ---
 
 ## Current status
@@ -887,6 +909,8 @@ the model is closed-world (no "other" class), and they are exactly the traffic t
 - **Priority:** enforced with nftables + `cake` (test runs only), tagging by each connection's own label,
   5 windows at ≥0.93. Light traffic is never tagged; long bulk downloads can be. No measured
   video-quality benefit yet.
+- **Twitch:** tagged correctly unshaped and at a realistic 500 Mbit shaping rate. Heavy shaping (12 Mbit)
+  flips its label to `youtube_tcp` by changing the client's ACK pattern.
 - **Write-ups:** `live_runs/tests/live_eval_results.md`, `live_eval_feature_varying.md`,
   `qos_priority_results.md`. Raw run files were deleted after summarizing.
 
@@ -897,9 +921,13 @@ the model is closed-world (no "other" class), and they are exactly the traffic t
 2. **A clean QoS demonstration:** light traffic at `RATE=2Mbit`, with and without `--enforce`, 2–3 runs
    each. Optionally, faster priority for a device's reconnections.
 3. **Repeat runs** for YouTube and Twitch, and **YouTube over TCP** with `final_shape_streaming`.
-4. **Smaller startup footprint:** a compact binary model format or fewer trees (~112 MB startup peak).
-5. **Thesis:** results chapter from the live write-ups; a "pitfalls of live evaluation" methods section;
+   Use realistic shaping rates, and create congestion with load rather than a low `RATE`.
+4. **Small fixes, not built yet:** a minimum volume per window to count toward the streak; "5 of the
+   last 8 windows"; drop a connection's statistics when it closes (memory under churn). Offline: a model
+   without the upload ACK-pattern features.
+5. **Smaller startup footprint:** a compact binary model format or fewer trees (~112 MB startup peak).
+6. **Thesis:** results chapter from the live write-ups; a "pitfalls of live evaluation" methods section;
    limitations (closed-world model, Twitch UDP/ads, 2018–19 training data); verify the related-work
    citations.
-6. **Future work:** retrain with router-vantage traffic, per-connection training data, and an "other"
-   class.
+7. **Future work:** retrain with router-vantage traffic (including shaped traffic), per-connection
+   training data, and an "other" class.
