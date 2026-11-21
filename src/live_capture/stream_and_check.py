@@ -84,6 +84,7 @@ import datetime
 import os
 import random
 import shlex
+import socket
 import subprocess
 import sys
 import threading
@@ -538,6 +539,73 @@ LIGHT_URLS = [
 ]
 
 
+# Large speed-test files for --competing-downloads, used round-robin. Each
+# server limits parallel connections per client (one server alone ran only
+# 2 of 16 downloads), so the load is spread across several. ash/nbg1/ovh were
+# checked reachable from the Linux box; hil/fsn1/hel1 are the same Hetzner
+# service in other regions (unverified -- the status line shows if any fail).
+COMPETING_URLS = [
+    "https://ash-speed.hetzner.com/10GB.bin",
+    "https://hil-speed.hetzner.com/10GB.bin",
+    "https://nbg1-speed.hetzner.com/10GB.bin",
+    "https://fsn1-speed.hetzner.com/10GB.bin",
+    "https://hel1-speed.hetzner.com/10GB.bin",
+    "https://proof.ovh.net/files/10Gb.dat",
+]
+
+
+class Download(threading.Thread):
+    """One competing download that keeps going: if the server refuses or drops
+    it (or it stalls for 15 s), it is restarted 2 s later."""
+
+    def __init__(self, url, stop):
+        super().__init__(daemon=True)
+        self.url, self.stop = url, stop
+        self.host = url.split("/")[2]
+        self.proc, self.starts, self.bytes, self.codes = None, 0, 0, {}
+
+    def run(self):
+        while not self.stop.is_set():
+            self.starts += 1
+            self.proc = subprocess.Popen(
+                ["curl", "-s", "-o", "/dev/null", "--speed-limit", "1", "--speed-time", "15",
+                 "-w", "%{http_code} %{size_download}", self.url],
+                stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, text=True)
+            out = self.proc.communicate()[0].split()
+            if len(out) == 2:
+                self.codes[out[0]] = self.codes.get(out[0], 0) + 1
+                self.bytes += int(float(out[1]))
+            self.stop.wait(2)
+
+    def kill(self):
+        if self.proc and self.proc.poll() is None:
+            self.proc.terminate()
+
+
+def connected_downloads(downloads):
+    """Established TCP connections from this machine to each download server
+    (via ss), i.e. how many downloads are really running, per server."""
+    ips = {}
+    for d in downloads:
+        try:
+            for ai in socket.getaddrinfo(d.host, 443, proto=socket.IPPROTO_TCP):
+                ips[ai[4][0]] = d.host
+        except OSError:
+            pass
+    try:
+        out = subprocess.run(["ss", "-tnH", "state", "established"], capture_output=True, text=True).stdout
+    except OSError:
+        return {}
+    per = {}
+    for line in out.splitlines():
+        cols = line.split()
+        if len(cols) >= 4:
+            peer = cols[3].rsplit(":", 1)[0].strip("[]")
+            if peer in ips:
+                per[ips[peer]] = per.get(ips[peer], 0) + 1
+    return per
+
+
 def light_traffic_loop(stop, counter):
     """One background 'user': fetch something small, pause 1-5 s, repeat."""
     while not stop.is_set():
@@ -690,8 +758,9 @@ def main():
                              "between requests; starts --competing-after seconds into playback")
     parser.add_argument("--competing-after", type=float, default=60, metavar="SECONDS",
                         help="seconds after playback starts before the competing downloads begin")
-    parser.add_argument("--competing-url", default="https://ash-speed.hetzner.com/10GB.bin",
-                        help="large file for the competing downloads (a speed-test server)")
+    parser.add_argument("--competing-url", default=",".join(COMPETING_URLS),
+                        help="comma-separated large files for the competing downloads, used round-robin "
+                             "(default: 6 speed-test servers)")
     parser.add_argument("--live-every", type=float, default=10, help="with --router: seconds between live per-window printouts (0 = off)")
     parser.add_argument("--stats", metavar="STATS_CSV", help="with --score: the matching raw window stats, for active-window accuracy")
     parser.add_argument("--timeline", metavar="TIMELINE_CSV", help="with --score: the matching playback timeline, for playing-window accuracy")
@@ -739,7 +808,7 @@ def main():
     driver = None
     play_started = router_started
     printer = None
-    competitors = []
+    competitors, dl_stop, last_dl_status = [], threading.Event(), 0.0
     light_stop, light_count = threading.Event(), [0]
     if args.router and args.live_every > 0:
         printer = LivePrinter(args.router, remote_predictions, expected, f"live_runs/eval_{tag}_live.log")
@@ -777,10 +846,17 @@ def main():
                 if args.competing_downloads and not competitors and now >= competing_at:
                     print(f"  starting {args.competing_downloads} competing downloads at {now - router_started:.0f}s "
                           f"({'priority ENFORCED' if args.enforce else 'no enforcement'})")
-                    competitors.extend(
-                        subprocess.Popen(["curl", "-s", "-o", "/dev/null", args.competing_url],
-                                         stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-                        for _ in range(args.competing_downloads))
+                    urls = [u for u in args.competing_url.split(",") if u]
+                    competitors.extend(Download(urls[i % len(urls)], dl_stop) for i in range(args.competing_downloads))
+                    for d in competitors:
+                        d.start()
+                    last_dl_status = now
+                if competitors and now - last_dl_status >= 30:
+                    last_dl_status = now
+                    per = connected_downloads(competitors)
+                    restarts = sum(d.starts - 1 for d in competitors)
+                    print(f"  downloads: {sum(per.values())} of {len(competitors)} connected ("
+                          + ", ".join(f"{h.split('.')[0]} {n}" for h, n in sorted(per.items())) + f"); {restarts} restarts so far")
                 try:
                     state = driver.execute_script(VIDEO_STATE_JS) if driver else None
                 except Exception as exc:  # the browser crashed or hung (WebDriverException)
@@ -866,10 +942,19 @@ def main():
         if getattr(light_stop, "started", False):
             light_stop.set()
             print(f"  stopped light background traffic ({light_count[0]} small requests made)")
+        dl_stop.set()
         for c in competitors:
-            c.terminate()
+            c.kill()
         if competitors:
             print(f"  stopped {len(competitors)} competing downloads")
+            by_host = {}
+            for d in competitors:
+                h = by_host.setdefault(d.host, [0, 0, 0, {}])
+                h[0] += 1; h[1] += d.starts; h[2] += d.bytes
+                for k, v in d.codes.items():
+                    h[3][k] = h[3].get(k, 0) + v
+            for host, (n, starts, nbytes, codes) in sorted(by_host.items()):
+                print(f"    {host}: {n} downloads, {starts} starts, {nbytes / 1e6:.0f} MB in finished attempts, http codes {codes}")
         if driver:
             try:
                 driver.quit()
