@@ -1,0 +1,4 @@
+time_s,window_index,event,label,confidence,flow_id,protocol,server_port,window_bytes,reason
+60.1,5,on,youtube_quic,1.0000,4a500175,udp,443,2652661,"connection's own label, 5 windows in a row"
+150.0,14,on,youtube_tcp,0.9898,4c579fd9,tcp,443,1165808,"connection's own label, 5 windows in a row"
+610.4,,off,youtube_tcp,,4c579fd9,tcp,443,0,connection closed
