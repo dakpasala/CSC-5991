@@ -1,0 +1,3 @@
+time_s,window_index,event,label,confidence,flow_id,protocol,server_port,window_bytes,reason
+140.0,13,on,twitch,0.9682,62971981,tcp,443,11137163,"connection's own label, 5 windows in a row"
+309.5,,off,twitch,,62971981,tcp,443,0,connection closed
