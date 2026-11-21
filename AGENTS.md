@@ -385,6 +385,8 @@ the counting moved to buffers.
     port 443/80 with the label's transport (UDP for `youtube_quic`, TCP otherwise). An unconfident or
     different label resets the streak; a quiet window doesn't. Release on FIN/RST or `-priority-idle`
     (2 min).
+  - `-priority-max-mbps` (25): a window above this rate resets a connection's streak (bulk downloads
+    on fast lines; 0 = off). Only gates tagging; a tagged connection isn't released for speeding up.
   - `-flow-log <csv>`: every scored connection's own label per window (flow hash, protocol, server
     port, packets, bytes; no IPs).
   - `-priority-enforce`: `nft add element inet csc5991 video_flows {...}` on ON, refresh every window,
@@ -479,8 +481,10 @@ the counting moved to buffers.
   - *playing* windows: the timeline shows the video advancing, **the number that measures the classifier**;
   - a flag on any packet over 1,514 B (the GRO check).
 - **QoS experiment flags:** `--enforce` (passes `-priority-enforce`), `--priority-by flow|window`,
-  `--competing-downloads N` (bulk `curl` downloads of `--competing-url`, default Hetzner Ashburn's
-  10 GB speed-test file; only 2 of 16 actually ran, likely a per-client limit), `--light-traffic N`
+  `--competing-downloads N` (bulk `curl` downloads, round-robin over `--competing-url`'s
+  comma-separated list, default 6 speed-test servers: one server allowed only 2 parallel downloads;
+  each download restarts if dropped or stalled 15 s; a `downloads: X of N connected` line every 30 s
+  via `ss`, and a per-server summary at the end; 16 downloads fill the ~570 Mbit line), `--light-traffic N`
   (N loops of small requests, 1–5 s apart), `--competing-after S` (seconds after playback start,
   default 60). The timeline adds `buffer_ahead_s` and `competing`; the summary adds `qoe_*` columns
   (not-playing seconds, buffer ahead mean/min, resolution) over the load period. Per-window
@@ -537,6 +541,11 @@ the counting moved to buffers.
     the model's gain. Force congestion with load, not a low `RATE`. Side connections of the Twitch page
     can be tagged (tiny packets reach 100; quiet windows don't reset the streak). Memory 58–61 MB under
     heavy connection churn (stats kept 2 min after idle).
+  - 2026-11-21 (Twitch `hasanabi` and YouTube QUIC vs. multi-server downloads): **97 % of the bytes marked
+    for the Video tier were downloads** at 540 Mbit (16.3 GB counter, Twitch ~0.5 GB); the 25 Mbit/s cap
+    cut download tags 5 → 1 there, but 16 were tagged at 25 Mbit (slow downloads look like video). No
+    measured video-quality benefit: the video was never short of bandwidth. 100 Mbit shaping kept
+    Twitch's label below 0.93 (up/down 0.52). CPU: ~70 % at ~410 Mbit/s, >100 % at the full line.
 
 ## Go memory benchmark: a Python-measurement-artifact catch
 

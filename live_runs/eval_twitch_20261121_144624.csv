@@ -1,8 +1,0 @@
-window_index,window_start_s,window_end_s,predicted_label,confidence,prob_amazon,prob_netflix,prob_twitch,prob_youtube_quic,prob_youtube_tcp
-0,0.0,10.0,youtube_tcp,0.9639,0.0011,0.0347,0.0001,0.0002,0.9639
-1,10.0,20.0,youtube_tcp,0.9079,0.0001,0.0914,0.0006,0.0001,0.9079
-2,20.0,30.0,youtube_tcp,0.7967,0.0008,0.1220,0.0030,0.0775,0.7967
-3,30.0,40.0,youtube_tcp,0.8398,0.0001,0.1532,0.0044,0.0025,0.8398
-4,40.0,50.0,youtube_tcp,0.5098,0.0000,0.4840,0.0046,0.0016,0.5098
-5,50.0,60.0,youtube_tcp,0.6728,0.0002,0.2325,0.0938,0.0006,0.6728
-6,60.0,70.0,youtube_tcp,0.6911,0.0001,0.0612,0.0250,0.2225,0.6911

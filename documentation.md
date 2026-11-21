@@ -893,6 +893,28 @@ All dry runs on a live 1080p Twitch channel (~8.5 Mbit/s on one TCP connection).
   service, right decision), plus 3 small side connections of the Twitch page.
 - Memory reaches 58–61 MB with 60 background loops (connection churn), vs. 38 MB.
 
+### Congestion at realistic rates, and a rate cap (2026-11-21)
+
+Twitch (`hasanabi`, ~9 Mbit/s) and YouTube QUIC against bulk downloads, now spread over 6 speed-test
+servers (one server allowed only 2 parallel downloads).
+
+| Run | Setup | Tagged | Video during load | Quality |
+|---|---|---|---:|---|
+| Twitch A / B | 540 Mbit, 16 downloads (~400 Mbit/s) | video + 6 / video + **5 downloads** | 7.9 / 8.2 Mbit/s | 1080p, no stalls |
+| Twitch B + cap | same, 25 Mbit/s cap | video (at 50 s) + **1 download** | 7.9 Mbit/s | 1080p, no stalls |
+| YouTube A / B | 25 Mbit, 32 downloads (~1.6 Mbit/s each) | video + 7 / video + **16 downloads** | 1.35 / 1.34 Mbit/s | 720p, buffer full |
+
+- **97 % of the prioritized bytes were downloads** in the enforced 540 Mbit run (16.3 GB marked; Twitch
+  ~0.5 GB). Downloads look like `youtube_tcp` at 0.94–0.99.
+- **The 25 Mbit/s cap** (`-priority-max-mbps`, now the default) cut download tags from 5 to 1 on the fast
+  line. On a slow link, downloads run at video-like rates and still pass.
+- **No measurable benefit:** the video was never short of bandwidth. With ~16 flows on a fast line, each
+  gets far more than a stream needs; at 25 Mbit, YouTube's 720p needed ~1.3 Mbit/s and got it.
+- **Shaping rate again:** Twitch's upload/download ratio was 0.16 unshaped, 0.21 at 540 Mbit, 0.52 at
+  100 Mbit, where its label never reached 0.93.
+- **CPU scales with packet rate:** 14 % at 25 Mbit, ~70 % at ~410 Mbit/s, over one core at the full
+  ~570 Mbit/s line.
+
 ---
 
 ## Current status
@@ -911,11 +933,17 @@ All dry runs on a live 1080p Twitch channel (~8.5 Mbit/s on one TCP connection).
   video-quality benefit yet.
 - **Twitch:** tagged correctly unshaped and at a realistic 500 Mbit shaping rate. Heavy shaping (12 Mbit)
   flips its label to `youtube_tcp` by changing the client's ACK pattern.
+- **Under heavy load:** bulk downloads take most of the Video tier (97 % of marked bytes) unless the
+  25 Mbit/s cap blocks them (fast lines only). Priority made no measurable difference to video quality:
+  the video was never short of bandwidth. CPU exceeds one core at full line rate.
 - **Write-ups:** `live_runs/tests/live_eval_results.md`, `live_eval_feature_varying.md`,
   `qos_priority_results.md`. Raw run files were deleted after summarizing.
 
 ## Next up
 
+0. **Meet the professor** before more QoS experiments: is "no benefit needed on fast lines, downloads
+   indistinguishable on slow ones" the conclusion, or should a visible-benefit setup be tried? Netflix
+   and Amazon need a login and DRM.
 1. **Professor's call on bulk-download false positives:** accept as a limitation, add a heuristic
    ("one stream per device"), or an "other/bulk" class as future work.
 2. **A clean QoS demonstration:** light traffic at `RATE=2Mbit`, with and without `--enforce`, 2–3 runs

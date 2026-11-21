@@ -221,7 +221,7 @@ Trains plain single XGBoost models in minutes. The test sessions are the same as
   - `-max-duration`: safety stop;
   - `-priority` (dry run) / `-priority-enforce`: tag connections by their **own** label (each
     connection scored on its own packets, `live/flows.go`), same service at ≥0.93 for 5 windows in a
-    row, 443/80 with the label's transport. Full flag list in AGENTS.md.
+    row, 443/80 with the label's transport, at most 25 Mbit/s. Full flag list in AGENTS.md.
 - **QoS (`router/qos.sh up|down|status`, test runs only, professor-approved).** `cake` on `lan2` egress
   (`RATE`, default 100 Mbit, `diffserv4 flowblind`) plus nftables set `inet csc5991 video_flows`, whose
   connections' download packets get DSCP AF41. **Run `qos.sh down` after every test session.**
@@ -246,6 +246,10 @@ Trains plain single XGBoost models in minutes. The test sessions are the same as
     long bulk HTTPS downloads still are (closed-world model). No measured video-quality benefit yet.
   - Twitch: correct unshaped and at 500 Mbit shaping, but heavy shaping (12 Mbit) flips its label to
     `youtube_tcp` by changing the client's ACK pattern. Force congestion with load, not a low `RATE`.
+  - Under heavy load, downloads took 97 % of the Video tier's bytes; a 25 Mbit/s cap
+    (`-priority-max-mbps`, default) blocks them on fast lines only. No measured video-quality benefit
+    yet (the video was never short of bandwidth). CPU exceeds one core at full line rate. Next QoS steps
+    wait on the professor.
 
 ## Output folder conventions: `benchmarks/` and `live_runs/`
 

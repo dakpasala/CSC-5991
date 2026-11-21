@@ -8,7 +8,8 @@ removed after each session (`qos.sh down`).
 
 Raw run files were deleted after this summary. They are in git history: the YouTube runs at commit
 `74203fd` (`live_runs/eval_youtube_20261118_*`), the Twitch runs at `50a7aac`
-(`live_runs/eval_twitch_20261119_*`).
+(`live_runs/eval_twitch_20261119_*`), and the 2026-11-21 runs at `c7ac56a`
+(`live_runs/eval_{twitch,youtube}_20261121_*`).
 
 ## How priority is enforced
 
@@ -34,15 +35,16 @@ Design choices:
 - **The Video tier is capped at about half the link**, so a wrongly tagged connection can never starve
   everything else.
 
-## The tagging rule went through three versions
+## The tagging rule went through four versions
 
 | Version | Rule | What broke it |
 |---|---|---|
 | 1. Window label | A window with ≥100 packets and ≥0.9 confidence; tag its heaviest connections on 443/80 with the label's transport. | The moment 16 downloads started, the *window* was labeled `netflix` at 0.999, and two downloads were tagged. |
 | 2. Own label, 3 windows | Each connection is scored on **its own** packets (its own 28 statistics). Tag after its own label is the same service at ≥0.9, 3 windows in a row. | Downloads still got tagged after ~4 min: a download's own label was ≥0.9 in 31–40 % of its windows. |
-| 3. Own label, **5 windows at ≥0.93** (current default) | The same, stricter. Chosen by replaying version 2's runs, where it tagged only the video. | At 5 Mbit, rate-limited downloads were labeled `youtube_tcp` at 0.98–1.00 window after window, and were tagged again. |
+| 3. Own label, **5 windows at ≥0.93** | The same, stricter. Chosen by replaying version 2's runs, where it tagged only the video. | At 5 Mbit, rate-limited downloads were labeled `youtube_tcp` at 0.98–1.00 window after window, and were tagged again. On a fast line (2026-11-21), 97 % of the bytes marked for the Video tier were downloads. |
+| 4. Version 3 + **a 25 Mbit/s rate cap** (current default) | A window in which the connection carries more than 25 Mbit/s resets its streak (`-priority-max-mbps`). Players fetch at bounded rates; downloads on a fast line don't. | Download tags fell from 5 to 1 on a fast line. On a slow link, downloads slow to video-like rates and pass the cap (16 tagged at 25 Mbit). |
 
-In versions 2 and 3, a scored window that is unconfident or names a different service resets the
+In versions 2–4, a scored window that is unconfident or names a different service resets the
 streak, and a quiet window (the connection has <100 packets) neither counts nor resets it.
 
 ### Offline check before building per-connection scoring
@@ -253,6 +255,63 @@ UDP share 21 %), but of two kinds:
    like the receive window and the QUIC ACK ratio. Future work: a model without the ACK-pattern
    features (keeping request sizes), or training on traffic captured under shaping.
 
+## 2026-11-21: congestion at realistic rates, multi-server downloads, and the rate cap
+
+Twitch runs use `https://www.twitch.tv/hasanabi` (1080p, about 9 Mbit/s on one TCP connection). The
+competing downloads were changed during the day: at first all 16 used one speed-test server, which let
+only **2** run; from run 4 on they are spread round-robin over 6 servers (Hetzner Ashburn, Hillsboro,
+Nuremberg, Falkenstein, Helsinki; OVH), restart if dropped, and report how many are connected. One
+further attempt (Twitch never loaded) is excluded.
+
+### Runs
+
+| # | Setup | Video's own label | What was tagged | Video Mbit/s (before → during load) | Quality during load | CPU mean / peak |
+|---|---|---|---|---|---|---|
+| 1 | 100 Mbit, no load, 5 min | `netflix`/`twitch`, never ≥0.93 (up/down 0.52) | nothing | 9.2 | 1080p | 5 % |
+| 2A | 100 Mbit, 16 downloads (only 2 ran, ~83 Mbit/s), dry run | not confident | **2 downloads** (`youtube_tcp` 0.98) | 9.2 → 9.2 | 1080p, 0 s stalled | 42 % / 48 % |
+| 2B | same, **enforced** | not confident | **2 downloads** | 9.2 → 9.2 | 1080p, 0 s | 35 % / 41 % |
+| 3 | Unshaped, no load, 5 min | `twitch` 30/31 (up/down 0.16) | the video at 140 s | 8.9 | 1080p | 3 % |
+| 4 | Unshaped, 16 multi-server downloads (~565 Mbit/s, the full line) | `twitch`, but only 12/32 ≥0.93 | **4 downloads** (19–156 Mbit/s), not the video | 9.0 → 7.4–8.0 | 1080p, 0 s | **102 % / 131 %** |
+| 5A | 540 Mbit, 16 downloads from 188 s (~405 Mbit/s), dry run | `twitch`; more confident under load | video at 230 s + **6 downloads** | 9.0 → 7.9 | 1080p, 0 s | 73 % / 116 % |
+| 5B | same, **enforced** | `twitch` | video at 140 s + **5 downloads** | 9.0 → 8.2 | 1080p, 0 s | 71 % / 106 % |
+| 6 | 5B + **25 Mbit/s cap**, enforced | `twitch` | video at **50 s** + **1 download** (16 Mbit/s) | 9.0 → 7.9 | 1080p, 0 s | 73 % / 110 % |
+| 7A | YouTube QUIC, 25 Mbit, 32 downloads from 69 s (~24 Mbit/s, ~15 busy), dry run | `youtube_quic` | 4 video conns + **7 downloads** | 2.2 → 1.35 | 720p, buffer ~110 s | 14 % |
+| 7B | same, **enforced** | `youtube_quic` | 5 video conns + **16 downloads** (0.1–12.5 Mbit/s) | 1.6 → 1.34 | 720p, buffer ~110 s | 14 % |
+
+Both YouTube runs had one stall at startup (YouTube's player error, before the load began), not
+congestion. Memory stayed at 38–42 MB for Twitch and 46–49 MB for YouTube with 32 downloads.
+
+**Where the Video tier's bandwidth went (5B).** The marking counter after the run read **16.3 GB**
+(10.9 M packets). Twitch carried about 0.5 GB after its tag; the 5 tagged downloads, about 330 Mbit/s
+for ~380 s, account for ~15.8 GB. So **~97 % of the prioritized bytes were bulk downloads.** (The
+counter wasn't recorded for run 6; from its tags, about 1.3 GB would be expected.)
+
+**Replaying runs 4, 5A and 5B with the cap** reproduced their live tags exactly without it, and with it:
+download tags 4 → 0, 6 → 0 (one tiny side connection remained), 5 → 1. The cap was checked on the runs it
+was designed for; run 6 is its independent test, and it held (1 download, at 16 Mbit/s).
+
+### Findings
+
+1. **The shaping-rate effect holds for this channel too.** Up/down packets: 0.16 unshaped, 0.21–0.22 at
+   540 Mbit, 0.52 at 100 Mbit. At 100 Mbit the video's own label never reached 0.93, so it was never
+   tagged, while two downloads were.
+2. **Congestion upstream of the router hurts the label too.** Unshaped with the full line busy (run 4),
+   the queue builds at the ISP, and the video's confidence dropped (12/32 windows ≥0.93). With the queue
+   in the router at 540 Mbit (run 5), its confidence went *up* (0.95–1.00), and it was tagged.
+3. **Bulk downloads look like `youtube_tcp` at every load level** (0.94–0.99), and fill the Video tier:
+   97 % of the marked bytes in 5B.
+4. **The rate cap fixes it on fast lines** (5 download tags → 1), and makes the video's tag earlier, but
+   **not on slow links**, where a download's fair share is a video-like rate (16 tagged in 7B).
+5. **No measurable benefit from priority, because the video was never short of bandwidth.** On the fast
+   line, 16 downloads at ~400 Mbit/s leave each flow ~25 Mbit/s, above Twitch's 9. At 25 Mbit, YouTube
+   at 720p needed ~1.3 Mbit/s and got it (buffer full in both runs). Priority only matters when a
+   stream's fair share falls below its bitrate.
+6. **The strict streak delays Twitch.** Its confidence in quiet conditions hovers around 0.77–0.99, so
+   dips below 0.93 kept resetting the streak: tagged at 50–230 s across runs.
+7. **CPU scales with the packet rate:** ~3 % at 9 Mbit/s, 14 % at 25 Mbit, 35–42 % at ~95 Mbit/s,
+   70–73 % at ~410 Mbit/s, and **over one core (102 % mean, 131 % peak) at the full ~570 Mbit/s line**.
+   At line rate, capture may drop packets, which would itself skew the features.
+
 ## Open questions (for the professor)
 
 - **False positives on bulk downloads:** (a) accept and state as a limitation, (b) add a heuristic such
@@ -261,8 +320,11 @@ UDP share 21 %), but of two kinds:
   it is tuned on run 3), or (c) future work: an "other/bulk" class (open-set classification).
 - **Reconnections:** let a new connection inherit priority faster (e.g., 1 confident window) when the
   device already has a tagged connection with the same label and transport.
-- **A clean demonstration:** light traffic at `RATE=2Mbit` (below video + light demand, so priority has
-  to decide), with and without `--enforce`, repeated 2–3 times.
+- **A visible benefit** needs a stream's fair share below its bitrate (e.g., YouTube 720p at ~1.3 Mbit/s
+  against 32 downloads at `RATE=8Mbit`, ~0.5 Mbit/s per flow). But there, downloads are slow enough to
+  pass the rate cap and get tagged too. Is "priority wasn't needed on a fast line, and can't separate
+  video from downloads on a slow one" an acceptable conclusion?
+- **Netflix and Amazon:** need a login and DRM (Widevine), which the headless Chromium likely lacks.
 - **Shaping rate in experiments:** congestion forced with a low rate (12 Mbit) changes the TCP
   traffic the classifier sees. Realistic rates (~90–95 % of the line) don't. Forcing congestion with
   load instead of a low rate avoids the artifact.
@@ -281,7 +343,7 @@ ssh root@192.168.1.1 'RATE=5Mbit sh /root/csc5991/qos.sh up'
 # Linux box, ~/CSC-5991: A (dry run), then B (add --enforce)
 python src/live_capture/stream_and_check.py --service youtube --url 'https://www.youtube.com/watch?v=0xhzwDXfLds' \
   --minutes 10 --router root@192.168.1.1 --model model/final_shape_streaming.json \
-  --light-traffic 8 --competing-after 0            # or: --competing-downloads 16
+  --light-traffic 8 --competing-after 0            # or: --competing-downloads 16 [--competing-after 180]
 
 ssh root@192.168.1.1 'nft list chain inet csc5991 forward_mark'   # bytes marked AF41 after B
                                                                   # (counts since the last qos.sh up)
