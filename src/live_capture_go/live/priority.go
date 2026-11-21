@@ -62,6 +62,14 @@ type priorityManager struct {
 	// the same service at >= minConf before it is tagged (-priority-streak).
 	streakNeed int
 	streaks    map[core.FlowKey]*streak
+
+	// -priority-max-mbps: a window in which the connection carried more than
+	// this (bytes per window, i.e. Mbit/s x window seconds / 8) disqualifies
+	// it, resetting its streak. Streaming players fetch at bounded rates
+	// (Twitch 1080p ~9 Mbit/s); bulk downloads on a fast line run far above
+	// that, and were labeled youtube_tcp at >= 0.93 -- on 2026-11-21, 97 % of
+	// the bytes marked for the Video tier were downloads. 0 = no cap.
+	maxWindowBytes int64
 }
 
 // streak counts a connection's confident windows toward streakNeed.
@@ -173,6 +181,10 @@ func (m *priorityManager) flowsClosed(window int, flows []flowResult, now float6
 	}
 	for _, f := range flows {
 		if f.packets < m.minPackets || !couldBeService(f.key, f.label) {
+			continue
+		}
+		if _, tagged := m.tagged[f.key]; !tagged && m.maxWindowBytes > 0 && f.bytes > m.maxWindowBytes {
+			delete(m.streaks, f.key) // too fast to be a video player: start over
 			continue
 		}
 		if tag, ok := m.tagged[f.key]; ok {

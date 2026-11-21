@@ -78,6 +78,7 @@ func main() {
 	// beside a QUIC video), 3 at 0.9 tagged a download in both runs within ~4
 	// minutes (a download's own label was >= 0.9 in 31-40% of its windows);
 	// 5 at 0.93, replayed on the same per-connection logs, tagged only the video.
+	prioMaxMbps := flag.Float64("priority-max-mbps", 25, "-priority-by flow: a connection faster than this in a window (Mbit/s) can't build a streak there -- bulk downloads, not video players (0 = no cap)")
 	prioStreak := flag.Int("priority-streak", 5, "-priority-by flow: windows in a row a connection's own label must be the same service at -priority-min-confidence before it is tagged (quiet windows don't break the streak)")
 	prioMinConf := flag.Float64("priority-min-confidence", 0.93, "-priority: confidence a window's label needs before it can start priority")
 	prioIdle := flag.Duration("priority-idle", 2*time.Minute, "-priority: drop a connection's priority after this long with no packets on it")
@@ -159,6 +160,9 @@ func main() {
 		if err == nil && *prioBy == "flow" && *prioStreak > 1 {
 			out.prio.streakNeed = *prioStreak
 		}
+		if err == nil && *prioBy == "flow" && *prioMaxMbps > 0 {
+			out.prio.maxWindowBytes = int64(*prioMaxMbps * 1e6 / 8 * *windowSeconds)
+		}
 		if err != nil {
 			fmt.Fprintln(os.Stderr, "error opening priority log:", err)
 			os.Exit(1)
@@ -186,7 +190,7 @@ func main() {
 		}
 		rule := "a window"
 		if *prioBy == "flow" {
-			rule = fmt.Sprintf("%d windows in a row of a connection's OWN label", *prioStreak)
+			rule = fmt.Sprintf("%d windows in a row of a connection's OWN label, at most %.0f Mbit/s", *prioStreak, *prioMaxMbps)
 		}
 		fmt.Fprintf(os.Stderr, "priority (dry run unless enforced): tag after %s with >= %d packets at confidence >= %.2f; release after %s idle or on close\n",
 			rule, *prioMinPackets, *prioMinConf, *prioIdle)

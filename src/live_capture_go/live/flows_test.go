@@ -63,6 +63,27 @@ func TestPriorityByFlowStreak(t *testing.T) {
 	}
 }
 
+// The rate cap: a connection faster than the cap in a window can't build a
+// streak (a bulk download), while one under it is tagged as usual.
+func TestPriorityByFlowRateCap(t *testing.T) {
+	m, _ := newPriorityManager(100, 0.93, time.Minute, "")
+	m.streakNeed, m.maxWindowBytes = 3, 25e6/8*10 // 25 Mbit/s over 10 s windows
+	download := core.FlowKeyOf(pkt(0, 443, 50002, 0, 1500))
+	video := core.FlowKeyOf(pkt(0, 443, 50003, 0, 1500))
+	for i := 0; i < 5; i++ {
+		m.flowsClosed(i, []flowResult{
+			{download, "youtube_tcp", 0.98, 40000, 56e6}, // ~45 Mbit/s
+			{video, "twitch", 0.99, 8000, 11e6},          // ~9 Mbit/s
+		}, float64(i+1)*10)
+	}
+	if m.tagged[download] != nil {
+		t.Fatalf("a 45 Mbit/s download was tagged despite the 25 Mbit/s cap")
+	}
+	if m.tagged[video] == nil {
+		t.Fatalf("a 9 Mbit/s video wasn't tagged")
+	}
+}
+
 // End to end on a recorded session (skipped if it isn't present): drive the
 // main window accumulator and the flowScorer exactly as live-router does,
 // and check the session's main connection gets its own correct label.
