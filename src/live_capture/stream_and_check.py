@@ -606,6 +606,113 @@ def connected_downloads(downloads):
     return per
 
 
+class SecondPlayer(threading.Thread):
+    """--second-url: a second video in its own headless browser (e.g. YouTube
+    over TCP beside the main one over QUIC), started once the main video
+    plays. Logs its own timeline (_timeline2.csv); reloads after 30 s without
+    progress (at most 3 times) and reopens the browser if it crashes (at most
+    3 times)."""
+
+    def __init__(self, url, disable_quic, chromium, chromedriver, path, t0):
+        super().__init__(daemon=True)
+        self.url, self.disable_quic, self.chromium, self.chromedriver = url, disable_quic, chromium, chromedriver
+        self.path, self.t0 = path, t0
+        self.stop, self.driver = threading.Event(), None
+        self.polls = self.playing_polls = self.reloads = self.crashes = 0
+        self.heights = {}
+
+    def _open(self):
+        self.driver = open_browser(self.disable_quic, self.chromium, self.chromedriver)
+        self.driver.get(self.url)
+        wait_for_playback(self.driver, timeout_s=60)
+
+    def run(self):
+        with open(self.path, "w", newline="") as f:
+            w = csv.writer(f, lineterminator="\n")
+            w.writerow(["unix_time", "seconds_since_router_start", "video_time_s", "paused", "width", "height",
+                        "playing", "buffer_ahead_s"])
+            try:
+                self._open()
+                print(f"  second video playing{' (QUIC disabled)' if self.disable_quic else ''} at {time.time() - self.t0:.0f}s")
+            except (Exception, SystemExit) as exc:
+                print(f"  second video didn't start: {str(exc).splitlines()[0][:120]}")
+            last_t, last_advance = None, time.time()
+            while not self.stop.wait(5):
+                now = time.time()
+                try:
+                    state = self.driver.execute_script(VIDEO_STATE_JS) if self.driver else None
+                except Exception:
+                    self.crashes += 1
+                    if self.crashes > 3:
+                        print("  second video: too many browser errors, giving up")
+                        return
+                    try:
+                        self.driver.quit()
+                    except Exception:
+                        pass
+                    try:
+                        self._open()
+                    except (Exception, SystemExit):
+                        pass
+                    last_t, last_advance = None, time.time()
+                    continue
+                t = state["t"] if state else None
+                playing = bool(state) and not state["paused"] and last_t is not None and t > last_t
+                w.writerow([f"{now:.3f}", f"{now - self.t0:.1f}", f"{t:.1f}" if t is not None else "",
+                            state["paused"] if state else "", state["w"] if state else "", state["h"] if state else "",
+                            playing, f"{state.get('buf', 0):.1f}" if state else ""])
+                f.flush()
+                self.polls += 1
+                if playing:
+                    self.playing_polls += 1
+                    last_advance = now
+                    self.heights[state["h"]] = self.heights.get(state["h"], 0) + 1
+                elif now - last_advance >= 30 and self.reloads < 3:
+                    self.reloads += 1
+                    print(f"  second video stalled; reloading ({self.reloads}/3)")
+                    try:
+                        self.driver.get(self.url)
+                        wait_for_playback(self.driver, timeout_s=45)
+                    except (Exception, SystemExit):
+                        pass
+                    last_t, last_advance = None, time.time()
+                    continue
+                last_t = t
+
+    def close(self):
+        self.stop.set()
+        self.join(15)
+        if self.driver:
+            try:
+                self.driver.quit()
+            except Exception:
+                pass
+
+
+def connection_scores(flows_path, expected_by_protocol, min_bytes=500_000):
+    """Per-connection accuracy: each busy connection-window (>= min_bytes in
+    the window) scored against the label expected for its transport, e.g.
+    {"udp": "youtube_quic", "tcp": "youtube_tcp"} when one video runs over
+    QUIC and another over TCP. The whole-window label can't be scored against
+    one expected label then; each connection's own label can."""
+    try:
+        f = pd.read_csv(flows_path)
+    except (OSError, pd.errors.EmptyDataError):
+        return {}
+    out = {}
+    for proto, want in expected_by_protocol.items():
+        g = f[(f.protocol == proto) & (f.bytes >= min_bytes)]
+        if g.empty:
+            out[f"conn_{proto}_windows"] = 0
+            continue
+        out[f"conn_{proto}_windows"] = len(g)
+        out[f"conn_{proto}_expected"] = want
+        out[f"conn_{proto}_accuracy"] = round(float((g.predicted_label == want).mean()), 4)
+        out[f"conn_{proto}_confident_93"] = round(float(((g.predicted_label == want) & (g.confidence >= 0.93)).mean()), 4)
+        out[f"conn_{proto}_labels"] = "; ".join(f"{k}={v}" for k, v in g.predicted_label.value_counts().items())
+    return out
+
+
 def light_traffic_loop(stop, counter):
     """One background 'user': fetch something small, pause 1-5 s, repeat."""
     while not stop.is_set():
@@ -753,6 +860,11 @@ def main():
                         help="flow: tag connections by their own label (default); window: by the whole window's label")
     parser.add_argument("--competing-downloads", type=int, default=0, metavar="N",
                         help="start N parallel large downloads on this machine to congest the link")
+    parser.add_argument("--second-url", help="play a second video at the same time, in its own browser "
+                        "(e.g. the same YouTube video with --second-disable-quic)")
+    parser.add_argument("--second-disable-quic", action="store_true",
+                        help="the second video over TCP: with a QUIC main video, one stream per transport, so each "
+                             "connection can be scored against its own expected label")
     parser.add_argument("--light-traffic", type=int, default=0, metavar="N",
                         help="N background loops of small requests (web pages, 100-300 KB), each pausing 1-5 s "
                              "between requests; starts --competing-after seconds into playback")
@@ -806,6 +918,7 @@ def main():
                                 args.priority, args.enforce, args.priority_by)
 
     driver = None
+    second = None
     play_started = router_started
     printer = None
     competitors, dl_stop, last_dl_status = [], threading.Event(), 0.0
@@ -831,6 +944,11 @@ def main():
                     raise
                 play_started = time.time()
                 print(f"playing at {state['w']}x{state['h']}, {play_started - router_started:.0f}s after live-router started")
+                if args.second_url:
+                    print(f"opening the second video {args.second_url}{' (QUIC disabled)' if args.second_disable_quic else ''} ...")
+                    second = SecondPlayer(args.second_url, args.second_disable_quic, args.chromium, args.chromedriver,
+                                          timeline_path.replace("_timeline.csv", "_timeline2.csv"), router_started)
+                    second.start()
             end = time.time() + args.minutes * 60
             last_t, last_advance, stalls, reloads, diagnosed = None, time.time(), 0, 0, False
             restarts, last_poll, browser_errors = 0, 0.0, 0
@@ -955,6 +1073,10 @@ def main():
                     h[3][k] = h[3].get(k, 0) + v
             for host, (n, starts, nbytes, codes) in sorted(by_host.items()):
                 print(f"    {host}: {n} downloads, {starts} starts, {nbytes / 1e6:.0f} MB in finished attempts, http codes {codes}")
+        if second:
+            second.close()
+            print(f"second video: playing in {second.playing_polls}/{second.polls} polls, heights {second.heights}, "
+                  f"{second.reloads} reloads, {second.crashes} browser restarts")
         if driver:
             try:
                 driver.quit()
@@ -985,15 +1107,34 @@ def main():
                     args.min_packets, timeline_path, scored_path)
     perf = perf_summary(perf_name)
     qoe = qoe_summary(timeline_path)
+    conn = {}
+    if args.priority:
+        by_proto = {}
+        main_label = expected
+        if args.service == "youtube":
+            by_proto["tcp" if args.disable_quic else "udp"] = main_label
+            if args.second_url and "youtube" in args.second_url:
+                by_proto.setdefault("tcp" if args.second_disable_quic else "udp", "youtube_tcp" if args.second_disable_quic else "youtube_quic")
+        elif args.service == "twitch":
+            by_proto["tcp"] = "twitch"
+        conn = connection_scores(remote_predictions.replace(".csv", "_flows.csv"), by_proto)
     print_summary(summary)
     if qoe:
         print("\nvideo quality" + (" while the competing downloads ran" if args.competing_downloads else "") + ":")
         for k, v in qoe.items():
             print(f"  {k}: {v}")
+    if conn:
+        print("\neach busy connection's OWN label (connection-windows with >= 0.5 MB):")
+        for k, v in conn.items():
+            print(f"  {k}: {v}")
+    if second:
+        conn.update({"second_url": args.second_url, "second_disable_quic": args.second_disable_quic,
+                     "second_playing_polls": f"{second.playing_polls}/{second.polls}",
+                     "second_heights": "; ".join(f"{h}p={n}" for h, n in sorted(second.heights.items()))})
     print("\nrouter resource use (live-router process):")
     for k, v in perf.items():
         print(f"  {k}: {v}")
-    summary = {**summary, **perf, **qoe, "enforce": args.enforce, "competing_downloads": args.competing_downloads,
+    summary = {**summary, **perf, **qoe, **conn, "enforce": args.enforce, "competing_downloads": args.competing_downloads,
                "light_traffic": args.light_traffic}
     append_summary(
         "live_runs/eval_summary.csv",
