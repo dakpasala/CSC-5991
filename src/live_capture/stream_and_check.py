@@ -1115,6 +1115,9 @@ def main():
             by_proto["tcp" if args.disable_quic else "udp"] = main_label
             if args.second_url and "youtube" in args.second_url:
                 by_proto.setdefault("tcp" if args.second_disable_quic else "udp", "youtube_tcp" if args.second_disable_quic else "youtube_quic")
+            elif args.second_url and "twitch" in args.second_url:
+                # Twitch is TCP; scoreable per transport only beside YouTube over QUIC.
+                by_proto.setdefault("tcp", "twitch")
         elif args.service == "twitch":
             by_proto["tcp"] = "twitch"
         conn = connection_scores(remote_predictions.replace(".csv", "_flows.csv"), by_proto)
