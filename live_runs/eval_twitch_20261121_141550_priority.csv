@@ -1,0 +1,15 @@
+time_s,window_index,event,label,confidence,flow_id,protocol,server_port,window_bytes,reason
+230.0,22,on,twitch,0.9880,7130c07e,tcp,443,9930614,"connection's own label, 5 windows in a row"
+240.0,23,on,youtube_tcp,0.9755,b439bf81,tcp,443,45832246,"connection's own label, 5 windows in a row"
+240.0,23,on,youtube_tcp,0.9762,28a7aa21,tcp,443,44586354,"connection's own label, 5 windows in a row"
+280.0,27,on,youtube_tcp,0.9795,78c1b2f6,tcp,443,170896333,"connection's own label, 5 windows in a row"
+360.0,35,on,youtube_tcp,0.9580,2c61f7da,tcp,443,19277698,"connection's own label, 5 windows in a row"
+570.0,56,on,youtube_tcp,0.9768,33f960fd,tcp,443,333358,"connection's own label, 5 windows in a row"
+610.0,60,on,youtube_tcp,0.9567,103c6093,tcp,443,170829965,"connection's own label, 5 windows in a row"
+611.0,,off,youtube_tcp,,78c1b2f6,tcp,443,0,connection closed
+611.0,,off,youtube_tcp,,2c61f7da,tcp,443,0,connection closed
+611.0,,off,youtube_tcp,,b439bf81,tcp,443,0,connection closed
+611.0,,off,youtube_tcp,,28a7aa21,tcp,443,0,connection closed
+611.0,,off,youtube_tcp,,103c6093,tcp,443,0,connection closed
+611.0,,off,twitch,,7130c07e,tcp,443,0,connection closed
+611.0,,off,youtube_tcp,,33f960fd,tcp,443,0,connection closed
