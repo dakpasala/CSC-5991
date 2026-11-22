@@ -489,6 +489,12 @@ the counting moved to buffers.
   default 60). The timeline adds `buffer_ahead_s` and `competing`; the summary adds `qoe_*` columns
   (not-playing seconds, buffer ahead mean/min, resolution) over the load period. Per-window
   `connections in window N` lines show each busy connection's own label, from `_flows.csv`.
+- **Several streams:** `--second-url` / `--third-url` (each in its own headless browser, started once
+  the main video plays; `--second-disable-quic` / `--third-disable-quic` force TCP), logged to
+  `_timeline2.csv` / `_timeline3.csv`. With `--priority` the summary adds per-connection scores
+  (`conn_udp_*`, `conn_tcp_*`: busy connection-windows ≥0.5 MB against the label(s) expected for that
+  transport; with two TCP streams, either TCP label counts). Logs have no IPs, so matching a connection
+  to its stream is by transport and rate.
 - Expected labels: youtube → `youtube_quic`, or `youtube_tcp` with `--disable-quic`; twitch → `twitch`.
   `--service idle` gives a baseline. Netflix and Amazon need logins and DRM, so they can't be tested
   live.
@@ -538,7 +544,10 @@ the counting moved to buffers.
   - Twitch (2026-11-19): tagged correctly unshaped and at 500 Mbit shaping. **Heavy shaping (12 Mbit)
     flips Twitch's own label to `youtube_tcp`:** `cake` spaces packets out, so the client ACKs ~5× more
     often (up/down packets 0.74 vs. 0.19 unshaped, 0.24 at 500 Mbit), and upload features carry 52 % of
-    the model's gain. Force congestion with load, not a low `RATE`. Side connections of the Twitch page
+    the model's gain. Force congestion with load, not a low `RATE`.
+  - Multi-stream (2026-11-21, unshaped): YouTube QUIC + TCP, YouTube + Twitch (± light traffic), and all
+    three at once — every video connection's own label 0.88–1.00, exactly one tag per stream, nothing
+    else tagged (0 of 146 light connections). YouTube TCP live: 1.00. Tagging took 50–250 s. Side connections of the Twitch page
     can be tagged (tiny packets reach 100; quiet windows don't reset the streak). Memory 58–61 MB under
     heavy connection churn (stats kept 2 min after idle).
   - 2026-11-21 (Twitch `hasanabi` and YouTube QUIC vs. multi-server downloads): **97 % of the bytes marked

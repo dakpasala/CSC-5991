@@ -915,6 +915,23 @@ servers (one server allowed only 2 parallel downloads).
 - **CPU scales with packet rate:** 14 % at 25 Mbit, ~70 % at ~410 Mbit/s, over one core at the full
   ~570 Mbit/s line.
 
+### Several streams at once (2026-11-21)
+
+Each video in its own headless browser (`--second-url`, `--third-url`), unshaped, dry runs. Each busy
+connection is scored against the label for its transport.
+
+| Streams | Each video connection's own label | Tagged |
+|---|---|---|
+| YouTube QUIC + YouTube TCP | 1.00, **1.00** (first live YouTube-TCP result for this model) | the 2 videos |
+| YouTube QUIC + Twitch | 1.00, 0.97 | the 2 videos |
+| YouTube QUIC + Twitch + light traffic | 1.00, 1.00 (0 of 146 other connections tagged) | the 2 videos |
+| YouTube QUIC + YouTube TCP + Twitch | 1.00, 0.88, 0.97 | the 3 videos, each under its own label |
+
+- The whole-window label named the heavier service (Twitch) or, for two YouTubes, still YouTube (0.93).
+  It can't describe a mix; the per-connection labels can.
+- Tagging took 50–250 s per stream (streak, reconnects, confidence dips around 0.93).
+- Under 5 % CPU and ~40 MB for three streams.
+
 ---
 
 ## Current status
@@ -933,6 +950,9 @@ servers (one server allowed only 2 parallel downloads).
   video-quality benefit yet.
 - **Twitch:** tagged correctly unshaped and at a realistic 500 Mbit shaping rate. Heavy shaping (12 Mbit)
   flips its label to `youtube_tcp` by changing the client's ACK pattern.
+- **Several streams at once:** two or three simultaneous streams (YouTube QUIC/TCP, Twitch), with or
+  without light background traffic, each got its own correct label and exactly one tag. YouTube over TCP
+  scored 1.00 live on its own connection.
 - **Under heavy load:** bulk downloads take most of the Video tier (97 % of marked bytes) unless the
   25 Mbit/s cap blocks them (fast lines only). Priority made no measurable difference to video quality:
   the video was never short of bandwidth. CPU exceeds one core at full line rate.

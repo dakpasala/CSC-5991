@@ -246,6 +246,9 @@ Trains plain single XGBoost models in minutes. The test sessions are the same as
     long bulk HTTPS downloads still are (closed-world model). No measured video-quality benefit yet.
   - Twitch: correct unshaped and at 500 Mbit shaping, but heavy shaping (12 Mbit) flips its label to
     `youtube_tcp` by changing the client's ACK pattern. Force congestion with load, not a low `RATE`.
+  - Several streams at once (`--second-url`, `--third-url`): each video connection got its own correct
+    label (0.88–1.00) and exactly one tag, even YouTube TCP + Twitch side by side; the whole-window label
+    can't describe the mix.
   - Under heavy load, downloads took 97 % of the Video tier's bytes; a 25 Mbit/s cap
     (`-priority-max-mbps`, default) blocks them on fast lines only. No measured video-quality benefit
     yet (the video was never short of bandwidth). CPU exceeds one core at full line rate. Next QoS steps

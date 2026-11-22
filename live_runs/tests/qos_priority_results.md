@@ -8,8 +8,9 @@ removed after each session (`qos.sh down`).
 
 Raw run files were deleted after this summary. They are in git history: the YouTube runs at commit
 `74203fd` (`live_runs/eval_youtube_20261118_*`), the Twitch runs at `50a7aac`
-(`live_runs/eval_twitch_20261119_*`), and the 2026-11-21 runs at `c7ac56a`
-(`live_runs/eval_{twitch,youtube}_20261121_*`).
+(`live_runs/eval_twitch_20261119_*`), the 2026-11-21 QoS runs at `c7ac56a`
+(`live_runs/eval_{twitch,youtube}_20261121_*`), and the multi-stream runs at `7c9db80`
+(`live_runs/eval_youtube_20261121_{154340,155843,164600,175102}*`).
 
 ## How priority is enforced
 
@@ -312,6 +313,49 @@ was designed for; run 6 is its independent test, and it held (1 download, at 16 
    70–73 % at ~410 Mbit/s, and **over one core (102 % mean, 131 % peak) at the full ~570 Mbit/s line**.
    At line rate, capture may drop packets, which would itself skew the features.
 
+## 2026-11-21: several streams at once (per-connection classification)
+
+Each video plays in its own headless browser on the Linux box (`--second-url`, `--third-url`, with
+`--second-disable-quic` / `--third-disable-quic` to force TCP). All dry runs, no shaping. YouTube is the
+113-minute video; Twitch is `hasanabi` (1080p, ~9 Mbit/s).
+
+**Scoring.** A whole window can only carry one label, so each **busy connection-window** (≥0.5 MB) is
+scored instead, against the label expected for its transport (`conn_udp_*`, `conn_tcp_*` in the
+summary). With two TCP streams, a TCP connection counts as correct if it carries either TCP label, and
+the connections are matched to streams by rate (Twitch ~9 Mbit/s, YouTube ~1.2–1.4). The logs hold no
+IPs, so this match is inferred; an owner log built from `ss -tunp` on the Linux box (mapping `flow_id` to
+its browser) would make it exact (not built).
+
+| Run | Streams | Each video connection's own label | Tags | Whole-window label | Playback | CPU / RSS |
+|---|---|---|---|---|---|---|
+| 1 (10 min) | YouTube QUIC + YouTube TCP | QUIC `youtube_quic` **58/58**; TCP `youtube_tcp` **60/60** | the 2 videos (60 s, 150 s) | `youtube_quic` 0.93 (0.98 any YouTube), at `frac_udp` 0.50 | both 720p; 5 s startup | 0.9 % / 38 MB |
+| 2 (5 min) | YouTube QUIC + Twitch | QUIC **31/31**; Twitch's main **30/31** | the 2 videos (both 60 s) | mostly `twitch` (20/28) | 720p / 1080p | 3.4 % / 39 MB |
+| 3 (5 min) | YouTube QUIC + Twitch + 8 light-traffic loops | QUIC **32/32**; Twitch's main **30/30** | the 2 videos (50 s, 110 s) | mostly `twitch` (21/28) | 720p / 1080p, no stalls | 4.2 % / 41 MB |
+| 4 (5 min) | YouTube QUIC + YouTube TCP + Twitch | QUIC **16/16**; YouTube TCP **21/24** (3 × `netflix`); Twitch **30/31** | the 3 videos (190 s, 250 s, 150 s), each under its own label | mostly `twitch` (23/28) | QUIC stalled once and reloaded (50 s); TCP 49/58 polls playing; Twitch 58/59 | 3.9 % / 40 MB |
+
+- **Run 1 is the first live result for YouTube over TCP with `final_shape_streaming`:** 1.00 on its own
+  connection, next to another stream.
+- **Run 3:** 146 other connections (203 connection-windows) were scored, 87 of them at ≥0.93 with a
+  streaming label; **0 were tagged** (most lasted a window or two; one lasted the whole run but never
+  held ≥0.93 for 5 windows in a row).
+- **Run 4:** the two TCP streams kept their own labels side by side (`twitch` at 8.9 Mbit/s,
+  `youtube_tcp` at 1.4). Two long-lived small TCP connections (0.05 and 0.24 Mbit/s, likely page
+  connections) were mostly labeled `youtube_tcp`, rarely ≥0.93, and were never tagged. The playback
+  stalls are most likely YouTube's player or three browsers on one box: the line was unshaped and carried
+  only ~12 Mbit/s.
+
+### Findings
+
+1. **Per-connection classification tells simultaneous streams apart**, across transports and across
+   services, including two TCP services at once. Every video connection got its own correct label
+   (0.88–1.00), and every stream got exactly one priority tag, with nothing else tagged.
+2. **The whole-window label can't describe a mix.** It named the heavier service (Twitch) or, for two
+   streams of the same service, still the right one (0.93 at half UDP). It is no basis for priority in a
+   multi-stream household.
+3. **The cost is delay.** The 5-window streak plus reconnects (a reload opens a new connection, which
+   starts over) and confidence dips around 0.93 meant 50–250 s before a stream was tagged.
+4. **Cost on the router stays small:** under 5 % CPU and ~40 MB for three streams.
+
 ## Open questions (for the professor)
 
 - **False positives on bulk downloads:** (a) accept and state as a limitation, (b) add a heuristic such
@@ -324,6 +368,9 @@ was designed for; run 6 is its independent test, and it held (1 download, at 16 
   against 32 downloads at `RATE=8Mbit`, ~0.5 Mbit/s per flow). But there, downloads are slow enough to
   pass the rate cap and get tagged too. Is "priority wasn't needed on a fast line, and can't separate
   video from downloads on a slow one" an acceptable conclusion?
+- **Faster tagging for real streams:** the streak is tuned to keep downloads out, and takes 1–4 minutes
+  on reloads and confidence dips. A shorter streak once a device already has a tagged stream, or
+  "5 of the last 8 windows", would trade some of that safety back.
 - **Netflix and Amazon:** need a login and DRM (Widevine), which the headless Chromium likely lacks.
 - **Shaping rate in experiments:** congestion forced with a low rate (12 Mbit) changes the TCP
   traffic the classifier sees. Realistic rates (~90–95 % of the line) don't. Forcing congestion with
