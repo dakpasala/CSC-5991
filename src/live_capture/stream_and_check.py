@@ -613,8 +613,9 @@ class SecondPlayer(threading.Thread):
     progress (at most 3 times) and reopens the browser if it crashes (at most
     3 times)."""
 
-    def __init__(self, url, disable_quic, chromium, chromedriver, path, t0):
+    def __init__(self, url, disable_quic, chromium, chromedriver, path, t0, name="second video"):
         super().__init__(daemon=True)
+        self.name = name
         self.url, self.disable_quic, self.chromium, self.chromedriver = url, disable_quic, chromium, chromedriver
         self.path, self.t0 = path, t0
         self.stop, self.driver = threading.Event(), None
@@ -633,9 +634,9 @@ class SecondPlayer(threading.Thread):
                         "playing", "buffer_ahead_s"])
             try:
                 self._open()
-                print(f"  second video playing{' (QUIC disabled)' if self.disable_quic else ''} at {time.time() - self.t0:.0f}s")
+                print(f"  {self.name} playing{' (QUIC disabled)' if self.disable_quic else ''} at {time.time() - self.t0:.0f}s")
             except (Exception, SystemExit) as exc:
-                print(f"  second video didn't start: {str(exc).splitlines()[0][:120]}")
+                print(f"  {self.name} didn't start: {str(exc).splitlines()[0][:120]}")
             last_t, last_advance = None, time.time()
             while not self.stop.wait(5):
                 now = time.time()
@@ -644,7 +645,7 @@ class SecondPlayer(threading.Thread):
                 except Exception:
                     self.crashes += 1
                     if self.crashes > 3:
-                        print("  second video: too many browser errors, giving up")
+                        print(f"  {self.name}: too many browser errors, giving up")
                         return
                     try:
                         self.driver.quit()
@@ -669,7 +670,7 @@ class SecondPlayer(threading.Thread):
                     self.heights[state["h"]] = self.heights.get(state["h"], 0) + 1
                 elif now - last_advance >= 30 and self.reloads < 3:
                     self.reloads += 1
-                    print(f"  second video stalled; reloading ({self.reloads}/3)")
+                    print(f"  {self.name} stalled; reloading ({self.reloads}/3)")
                     try:
                         self.driver.get(self.url)
                         wait_for_playback(self.driver, timeout_s=45)
@@ -701,14 +702,17 @@ def connection_scores(flows_path, expected_by_protocol, min_bytes=500_000):
         return {}
     out = {}
     for proto, want in expected_by_protocol.items():
+        wants = set(want) if isinstance(want, (set, tuple, list)) else {want}
+        want = "|".join(sorted(wants))
         g = f[(f.protocol == proto) & (f.bytes >= min_bytes)]
         if g.empty:
             out[f"conn_{proto}_windows"] = 0
             continue
         out[f"conn_{proto}_windows"] = len(g)
         out[f"conn_{proto}_expected"] = want
-        out[f"conn_{proto}_accuracy"] = round(float((g.predicted_label == want).mean()), 4)
-        out[f"conn_{proto}_confident_93"] = round(float(((g.predicted_label == want) & (g.confidence >= 0.93)).mean()), 4)
+        ok = g.predicted_label.isin(wants)
+        out[f"conn_{proto}_accuracy"] = round(float(ok.mean()), 4)
+        out[f"conn_{proto}_confident_93"] = round(float((ok & (g.confidence >= 0.93)).mean()), 4)
         out[f"conn_{proto}_labels"] = "; ".join(f"{k}={v}" for k, v in g.predicted_label.value_counts().items())
     return out
 
@@ -865,6 +869,8 @@ def main():
     parser.add_argument("--second-disable-quic", action="store_true",
                         help="the second video over TCP: with a QUIC main video, one stream per transport, so each "
                              "connection can be scored against its own expected label")
+    parser.add_argument("--third-url", help="a third simultaneous video, in its own browser (needs --second-url)")
+    parser.add_argument("--third-disable-quic", action="store_true", help="the third video over TCP")
     parser.add_argument("--light-traffic", type=int, default=0, metavar="N",
                         help="N background loops of small requests (web pages, 100-300 KB), each pausing 1-5 s "
                              "between requests; starts --competing-after seconds into playback")
@@ -918,7 +924,7 @@ def main():
                                 args.priority, args.enforce, args.priority_by)
 
     driver = None
-    second = None
+    extras = []  # SecondPlayer per --second-url / --third-url
     play_started = router_started
     printer = None
     competitors, dl_stop, last_dl_status = [], threading.Event(), 0.0
@@ -944,11 +950,15 @@ def main():
                     raise
                 play_started = time.time()
                 print(f"playing at {state['w']}x{state['h']}, {play_started - router_started:.0f}s after live-router started")
-                if args.second_url:
-                    print(f"opening the second video {args.second_url}{' (QUIC disabled)' if args.second_disable_quic else ''} ...")
-                    second = SecondPlayer(args.second_url, args.second_disable_quic, args.chromium, args.chromedriver,
-                                          timeline_path.replace("_timeline.csv", "_timeline2.csv"), router_started)
-                    second.start()
+                for n, (url, tcp) in enumerate([(args.second_url, args.second_disable_quic),
+                                                (args.third_url, args.third_disable_quic)], start=2):
+                    if not url:
+                        continue
+                    print(f"opening video {n} {url}{' (QUIC disabled)' if tcp else ''} ...")
+                    player = SecondPlayer(url, tcp, args.chromium, args.chromedriver,
+                                          timeline_path.replace("_timeline.csv", f"_timeline{n}.csv"), router_started, f"video {n}")
+                    player.start()
+                    extras.append((n, url, tcp, player))
             end = time.time() + args.minutes * 60
             last_t, last_advance, stalls, reloads, diagnosed = None, time.time(), 0, 0, False
             restarts, last_poll, browser_errors = 0, 0.0, 0
@@ -1073,10 +1083,10 @@ def main():
                     h[3][k] = h[3].get(k, 0) + v
             for host, (n, starts, nbytes, codes) in sorted(by_host.items()):
                 print(f"    {host}: {n} downloads, {starts} starts, {nbytes / 1e6:.0f} MB in finished attempts, http codes {codes}")
-        if second:
-            second.close()
-            print(f"second video: playing in {second.playing_polls}/{second.polls} polls, heights {second.heights}, "
-                  f"{second.reloads} reloads, {second.crashes} browser restarts")
+        for n, _, _, player in extras:
+            player.close()
+            print(f"video {n}: playing in {player.playing_polls}/{player.polls} polls, heights {player.heights}, "
+                  f"{player.reloads} reloads, {player.crashes} browser restarts")
         if driver:
             try:
                 driver.quit()
@@ -1110,16 +1120,19 @@ def main():
     conn = {}
     if args.priority:
         by_proto = {}
-        main_label = expected
-        if args.service == "youtube":
-            by_proto["tcp" if args.disable_quic else "udp"] = main_label
-            if args.second_url and "youtube" in args.second_url:
-                by_proto.setdefault("tcp" if args.second_disable_quic else "udp", "youtube_tcp" if args.second_disable_quic else "youtube_quic")
-            elif args.second_url and "twitch" in args.second_url:
-                # Twitch is TCP; scoreable per transport only beside YouTube over QUIC.
-                by_proto.setdefault("tcp", "twitch")
-        elif args.service == "twitch":
-            by_proto["tcp"] = "twitch"
+        # Labels each transport's busy connections may correctly carry. With two
+        # TCP streams (YouTube over TCP + Twitch), a TCP connection is right if
+        # it is labeled either; which is which shows in its rate (_flows.csv).
+        streams = [(args.service, args.url or "", args.disable_quic)] + \
+                  [("youtube" if "youtube" in u else "twitch" if "twitch" in u else "", u, tcp) for _, u, tcp, _ in extras]
+        for service, _, tcp in streams:
+            if service == "youtube":
+                proto, label = ("tcp", "youtube_tcp") if tcp else ("udp", "youtube_quic")
+            elif service == "twitch":
+                proto, label = "tcp", "twitch"
+            else:
+                continue
+            by_proto.setdefault(proto, set()).add(label)
         conn = connection_scores(remote_predictions.replace(".csv", "_flows.csv"), by_proto)
     print_summary(summary)
     if qoe:
@@ -1130,10 +1143,11 @@ def main():
         print("\neach busy connection's OWN label (connection-windows with >= 0.5 MB):")
         for k, v in conn.items():
             print(f"  {k}: {v}")
-    if second:
-        conn.update({"second_url": args.second_url, "second_disable_quic": args.second_disable_quic,
-                     "second_playing_polls": f"{second.playing_polls}/{second.polls}",
-                     "second_heights": "; ".join(f"{h}p={n}" for h, n in sorted(second.heights.items()))})
+    for n, url, tcp, player in extras:
+        key = {2: "second", 3: "third"}[n]
+        conn.update({f"{key}_url": url, f"{key}_disable_quic": tcp,
+                     f"{key}_playing_polls": f"{player.playing_polls}/{player.polls}",
+                     f"{key}_heights": "; ".join(f"{h}p={c}" for h, c in sorted(player.heights.items()))})
     print("\nrouter resource use (live-router process):")
     for k, v in perf.items():
         print(f"  {k}: {v}")
