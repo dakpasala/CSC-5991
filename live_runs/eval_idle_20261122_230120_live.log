@@ -1,0 +1,64 @@
+[window   0 |     0-   10s] netflix       0.63  | 216716 pkts, udp 0.00 | no video
+      connections in window 0: tcp/443 77.3MB youtube_tcp 0.98 | tcp/443 72.1MB youtube_tcp 0.95 | tcp/443 39.3MB youtube_tcp 0.97 | tcp/443 24.7MB youtube_tcp 0.93 | tcp/443 20.9MB youtube_tcp 0.97 | tcp/443 18.1MB youtube_tcp 0.96 (+6 more)
+[window   1 |    10-   20s] netflix       0.87  | 560195 pkts, udp 0.00 | no video
+      connections in window 1: tcp/443 186.4MB youtube_tcp 0.98 | tcp/443 182.1MB youtube_tcp 0.88 | tcp/443 91.1MB youtube_tcp 0.99 | tcp/443 72.4MB youtube_tcp 0.98 | tcp/443 47.5MB youtube_tcp 0.98 | tcp/443 35.1MB youtube_tcp 0.96 (+6 more)
+[window   2 |    20-   30s] netflix       0.96  | 565811 pkts, udp 0.00 | no video
+      connections in window 2: tcp/443 193.3MB youtube_tcp 0.94 | tcp/443 189.4MB youtube_tcp 0.94 | tcp/443 84.8MB youtube_tcp 0.98 | tcp/443 78.3MB youtube_tcp 0.98 | tcp/443 44.1MB youtube_tcp 0.98 | tcp/443 23.3MB youtube_tcp 0.96 (+6 more)
+[window   3 |    30-   40s] netflix       1.00  | 602825 pkts, udp 0.00 | no video
+      connections in window 3: tcp/443 221.5MB youtube_tcp 0.72 | tcp/443 211.6MB youtube_tcp 0.96 | tcp/443 85.1MB youtube_tcp 0.98 | tcp/443 79.8MB youtube_tcp 0.98 | tcp/443 24.2MB youtube_tcp 0.94 | tcp/443 21.8MB youtube_tcp 0.93 (+6 more)
+[window   4 |    40-   50s] twitch        0.60  | 574329 pkts, udp 0.00 | no video
+      connections in window 4: tcp/443 194.6MB youtube_tcp 0.97 | tcp/443 184.8MB youtube_tcp 0.97 | tcp/443 88.0MB youtube_tcp 0.98 | tcp/443 75.7MB youtube_tcp 0.98 | tcp/443 48.6MB youtube_tcp 0.97 | tcp/443 26.7MB youtube_tcp 0.92 (+6 more)
+[window   5 |    50-   60s] netflix       0.95  | 570909 pkts, udp 0.00 | no video
+      connections in window 5: tcp/443 202.6MB youtube_tcp 0.84 | tcp/443 186.9MB youtube_tcp 0.98 | tcp/443 79.2MB youtube_tcp 0.98 | tcp/443 70.4MB youtube_tcp 0.98 | tcp/443 36.7MB youtube_tcp 0.97 | tcp/443 25.2MB youtube_tcp 0.95 (+6 more)
+[window   6 |    60-   70s] netflix       0.97  | 567701 pkts, udp 0.00 | no video
+      connections in window 6: tcp/443 193.2MB youtube_tcp 0.79 | tcp/443 192.1MB youtube_tcp 0.93 | tcp/443 96.8MB youtube_tcp 0.98 | tcp/443 75.0MB youtube_tcp 0.98 | tcp/443 26.8MB youtube_tcp 0.92 | tcp/443 23.1MB youtube_tcp 0.95 (+6 more)
+[window   7 |    70-   80s] netflix       0.96  | 573440 pkts, udp 0.00 | no video
+      connections in window 7: tcp/443 188.9MB youtube_tcp 0.92 | tcp/443 187.4MB youtube_tcp 0.75 | tcp/443 105.1MB youtube_tcp 0.99 | tcp/443 92.7MB youtube_tcp 0.99 | tcp/443 21.4MB youtube_tcp 0.93 | tcp/443 18.5MB youtube_tcp 0.91 (+6 more)
+[window   8 |    80-   90s] netflix       0.87  | 562543 pkts, udp 0.00 | no video
+      connections in window 8: tcp/443 191.9MB youtube_tcp 0.83 | tcp/443 180.9MB youtube_tcp 0.97 | tcp/443 111.0MB youtube_tcp 0.99 | tcp/443 68.5MB youtube_tcp 0.98 | tcp/443 29.0MB youtube_tcp 0.93 | tcp/443 27.7MB youtube_tcp 0.94 (+6 more)
+[window   9 |    90-  100s] netflix       0.94  | 571145 pkts, udp 0.00 | no video
+      connections in window 9: tcp/443 197.6MB youtube_tcp 0.94 | tcp/443 197.4MB youtube_tcp 0.92 | tcp/443 86.8MB youtube_tcp 0.98 | tcp/443 72.2MB youtube_tcp 0.98 | tcp/443 36.0MB youtube_tcp 0.97 | tcp/443 19.5MB youtube_tcp 0.91 (+6 more)
+[window  10 |   100-  110s] netflix       0.96  | 607541 pkts, udp 0.00 | no video
+      connections in window 10: tcp/443 202.0MB youtube_tcp 0.93 | tcp/443 200.7MB youtube_tcp 0.81 | tcp/443 99.8MB youtube_tcp 0.98 | tcp/443 73.0MB youtube_tcp 0.98 | tcp/443 45.0MB youtube_tcp 0.97 | tcp/443 41.5MB youtube_tcp 0.97 (+6 more)
+[window  11 |   110-  120s] netflix       0.93  | 568794 pkts, udp 0.00 | no video
+      connections in window 11: tcp/443 194.6MB youtube_tcp 0.93 | tcp/443 178.5MB youtube_tcp 0.78 | tcp/443 86.5MB youtube_tcp 0.98 | tcp/443 84.2MB youtube_tcp 0.98 | tcp/443 44.3MB youtube_tcp 0.95 | tcp/443 42.1MB youtube_tcp 0.97 (+6 more)
+[window  12 |   120-  130s] netflix       0.97  | 604357 pkts, udp 0.00 | no video
+      connections in window 12: tcp/443 204.8MB youtube_tcp 0.94 | tcp/443 203.7MB youtube_tcp 0.79 | tcp/443 106.1MB youtube_tcp 0.98 | tcp/443 77.6MB youtube_tcp 0.98 | tcp/443 45.4MB youtube_tcp 0.97 | tcp/443 26.2MB youtube_tcp 0.91 (+6 more)
+[window  13 |   130-  140s] netflix       0.95  | 580536 pkts, udp 0.00 | no video
+      connections in window 13: tcp/443 196.3MB youtube_tcp 0.98 | tcp/443 193.7MB youtube_tcp 0.92 | tcp/443 99.4MB youtube_tcp 0.99 | tcp/443 87.1MB youtube_tcp 0.98 | tcp/443 33.5MB youtube_tcp 0.97 | tcp/443 23.4MB youtube_tcp 0.95 (+6 more)
+[window  14 |   140-  150s] netflix       0.96  | 583379 pkts, udp 0.00 | no video
+      connections in window 14: tcp/443 201.1MB youtube_tcp 0.95 | tcp/443 200.6MB youtube_tcp 0.79 | tcp/443 104.1MB youtube_tcp 0.98 | tcp/443 73.1MB youtube_tcp 0.98 | tcp/443 29.1MB youtube_tcp 0.94 | tcp/443 23.2MB youtube_tcp 0.92 (+6 more)
+[window  15 |   150-  160s] netflix       0.81  | 559556 pkts, udp 0.00 | no video
+      connections in window 15: tcp/443 178.4MB youtube_tcp 0.86 | tcp/443 177.8MB youtube_tcp 0.92 | tcp/443 82.4MB youtube_tcp 0.99 | tcp/443 72.3MB youtube_tcp 0.99 | tcp/443 35.2MB youtube_tcp 0.97 | tcp/443 33.6MB youtube_tcp 0.97 (+6 more)
+[window  16 |   160-  170s] netflix       0.97  | 590412 pkts, udp 0.00 | no video
+      connections in window 16: tcp/443 203.7MB youtube_tcp 0.92 | tcp/443 191.5MB youtube_tcp 0.93 | tcp/443 108.4MB youtube_tcp 0.98 | tcp/443 78.7MB youtube_tcp 0.98 | tcp/443 19.5MB youtube_tcp 0.96 | tcp/443 19.3MB youtube_tcp 0.92 (+6 more)
+[window  17 |   170-  180s] netflix       0.94  | 571296 pkts, udp 0.00 | no video
+      connections in window 17: tcp/443 194.6MB youtube_tcp 0.85 | tcp/443 190.2MB youtube_tcp 0.93 | tcp/443 101.1MB youtube_tcp 0.99 | tcp/443 82.3MB youtube_tcp 0.99 | tcp/443 31.0MB youtube_tcp 0.98 | tcp/443 19.7MB youtube_tcp 0.97 (+6 more)
+[window  18 |   180-  190s] netflix       0.94  | 578249 pkts, udp 0.00 | no video
+      connections in window 18: tcp/443 190.1MB youtube_tcp 0.94 | tcp/443 188.4MB youtube_tcp 0.98 | tcp/443 111.3MB youtube_tcp 0.98 | tcp/443 78.9MB youtube_tcp 0.97 | tcp/443 28.7MB youtube_tcp 0.92 | tcp/443 27.6MB youtube_tcp 0.94 (+6 more)
+[window  19 |   190-  200s] netflix       0.80  | 556603 pkts, udp 0.00 | no video
+      connections in window 19: tcp/443 194.9MB youtube_tcp 0.81 | tcp/443 178.9MB youtube_tcp 0.94 | tcp/443 102.1MB youtube_tcp 0.99 | tcp/443 71.0MB youtube_tcp 0.98 | tcp/443 27.6MB youtube_tcp 0.95 | tcp/443 23.4MB youtube_tcp 0.95 (+6 more)
+[window  20 |   200-  210s] netflix       0.98  | 576662 pkts, udp 0.00 | no video
+    ▶ PRIORITY ON  [youtube_tcp] tcp flow 86b5f913 (server port 443), 19.7 MB in window 20, confidence 0.96
+      connections in window 20: tcp/443 201.2MB youtube_tcp 0.95 | tcp/443 196.9MB youtube_tcp 0.82 | tcp/443 109.4MB youtube_tcp 0.99 | tcp/443 79.5MB youtube_tcp 0.98 | tcp/443 31.4MB youtube_tcp 0.96 | tcp/443 19.7MB youtube_tcp 0.96 (+6 more)
+[window  21 |   210-  220s] netflix       0.99  | 583393 pkts, udp 0.00 | no video
+      connections in window 21: tcp/443 191.0MB youtube_tcp 0.90 | tcp/443 188.9MB youtube_tcp 0.82 | tcp/443 100.1MB youtube_tcp 0.99 | tcp/443 78.4MB youtube_tcp 0.98 | tcp/443 36.2MB youtube_tcp 0.98 | tcp/443 22.1MB youtube_tcp 0.92 (+6 more)
+[window  22 |   220-  230s] netflix       0.96  | 587788 pkts, udp 0.00 | no video
+      connections in window 22: tcp/443 194.6MB youtube_tcp 0.93 | tcp/443 194.3MB youtube_tcp 0.74 | tcp/443 93.3MB youtube_tcp 0.99 | tcp/443 88.8MB youtube_tcp 0.99 | tcp/443 34.0MB youtube_tcp 0.97 | tcp/443 29.8MB youtube_tcp 0.92 (+6 more)
+[window  23 |   230-  240s] netflix       0.98  | 602483 pkts, udp 0.00 | no video
+      connections in window 23: tcp/443 201.5MB youtube_tcp 0.79 | tcp/443 191.8MB youtube_tcp 0.95 | tcp/443 111.4MB youtube_tcp 0.98 | tcp/443 98.9MB youtube_tcp 0.98 | tcp/443 29.9MB youtube_tcp 0.94 | tcp/443 26.5MB youtube_tcp 0.93 (+6 more)
+[window  24 |   240-  250s] netflix       0.98  | 578859 pkts, udp 0.00 | no video
+      connections in window 24: tcp/443 192.3MB youtube_tcp 0.81 | tcp/443 190.8MB youtube_tcp 0.92 | tcp/443 112.2MB youtube_tcp 0.99 | tcp/443 100.1MB youtube_tcp 0.99 | tcp/443 21.9MB youtube_tcp 0.94 | tcp/443 19.4MB youtube_tcp 0.94 (+6 more)
+[window  25 |   250-  260s] netflix       0.99  | 587289 pkts, udp 0.00 | no video
+      connections in window 25: tcp/443 210.9MB youtube_tcp 0.78 | tcp/443 208.3MB youtube_tcp 0.95 | tcp/443 90.4MB youtube_tcp 0.98 | tcp/443 88.0MB youtube_tcp 0.98 | tcp/443 18.7MB youtube_tcp 0.93 | tcp/443 17.0MB youtube_tcp 0.86 (+6 more)
+[window  26 |   260-  270s] netflix       0.98  | 580310 pkts, udp 0.00 | no video
+      connections in window 26: tcp/443 204.6MB youtube_tcp 0.94 | tcp/443 195.8MB youtube_tcp 0.65 | tcp/443 104.4MB youtube_tcp 0.98 | tcp/443 92.7MB youtube_tcp 0.99 | tcp/443 18.6MB youtube_tcp 0.92 | tcp/443 17.3MB youtube_tcp 0.82 (+6 more)
+[window  27 |   270-  280s] netflix       0.97  | 594071 pkts, udp 0.00 | no video
+      connections in window 27: tcp/443 199.1MB youtube_tcp 0.76 | tcp/443 192.8MB youtube_tcp 0.98 | tcp/443 121.0MB youtube_tcp 0.98 | tcp/443 81.5MB youtube_tcp 0.98 | tcp/443 28.1MB youtube_tcp 0.93 | tcp/443 21.1MB youtube_tcp 0.95 (+6 more)
+[window  28 |   280-  290s] netflix       0.99  | 572843 pkts, udp 0.00 | no video
+      connections in window 28: tcp/443 196.8MB youtube_tcp 0.82 | tcp/443 196.4MB youtube_tcp 0.90 | tcp/443 103.6MB youtube_tcp 0.99 | tcp/443 71.8MB youtube_tcp 0.98 | tcp/443 26.8MB youtube_tcp 0.96 | tcp/443 21.0MB youtube_tcp 0.97 (+6 more)
+[window  29 |   290-  300s] netflix       0.98  | 570614 pkts, udp 0.00 | no video
+[window  30 |   300-  310s] netflix       1.00  | 431552 pkts, udp 0.00 | no video
+    ■ PRIORITY OFF [youtube_tcp] tcp flow 86b5f913 (server port 443): connection closed
+      connections in window 29: tcp/443 199.1MB youtube_tcp 0.74 | tcp/443 187.6MB youtube_tcp 0.94 | tcp/443 99.8MB youtube_tcp 0.98 | tcp/443 65.3MB youtube_tcp 0.93 | tcp/443 24.2MB youtube_tcp 0.95 | tcp/443 22.2MB youtube_tcp 0.92 (+6 more)
+      connections in window 30: tcp/443 152.7MB youtube_tcp 0.90 | tcp/443 140.8MB youtube_tcp 0.97 | tcp/443 79.5MB youtube_tcp 0.97 | tcp/443 49.5MB youtube_tcp 0.96 | tcp/443 20.4MB youtube_tcp 0.95 | tcp/443 14.4MB youtube_tcp 0.93 (+6 more)
