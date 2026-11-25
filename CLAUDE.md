@@ -249,6 +249,8 @@ Trains plain single XGBoost models in minutes. The test sessions are the same as
   - Several streams at once (`--second-url`, `--third-url`): each video connection got its own correct
     label (0.88–1.00) and exactly one tag, even YouTube TCP + Twitch side by side; the whole-window label
     can't describe the mix.
+  - Without video: idle, light browsing and low-rate radio are never tagged; 16 downloads alone with
+    the cap gave 1 false tag in 5 min (a download slowed to ~16 Mbit/s).
   - Under heavy load, downloads took 97 % of the Video tier's bytes; a 25 Mbit/s cap
     (`-priority-max-mbps`, default) blocks them on fast lines only. No measured video-quality benefit
     yet (the video was never short of bandwidth). CPU exceeds one core at full line rate. Next QoS steps

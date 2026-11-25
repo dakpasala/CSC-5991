@@ -547,7 +547,10 @@ the counting moved to buffers.
     the model's gain. Force congestion with load, not a low `RATE`.
   - Multi-stream (2026-11-21, unshaped): YouTube QUIC + TCP, YouTube + Twitch (± light traffic), and all
     three at once — every video connection's own label 0.88–1.00, exactly one tag per stream, nothing
-    else tagged (0 of 146 light connections). YouTube TCP live: 1.00. Tagging took 50–250 s. Side connections of the Twitch page
+    else tagged (0 of 146 light connections). YouTube TCP live: 1.00. Tagging took 50–250 s.
+  - No-video baselines (`--service idle`, 2026-11-22/23): idle 0 tags; 16 downloads alone (full line,
+    cap on) 1 tag, a download at 15.7 Mbit/s; SomaFM radio via `--competing-url` 0 tags, but no audio
+    connection reached 100 packets (only ~0.10 MB/window arrived — verify each stream connects). Side connections of the Twitch page
     can be tagged (tiny packets reach 100; quiet windows don't reset the streak). Memory 58–61 MB under
     heavy connection churn (stats kept 2 min after idle).
   - 2026-11-21 (Twitch `hasanabi` and YouTube QUIC vs. multi-server downloads): **97 % of the bytes marked

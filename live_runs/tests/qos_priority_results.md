@@ -10,7 +10,8 @@ Raw run files were deleted after this summary. They are in git history: the YouT
 `74203fd` (`live_runs/eval_youtube_20261118_*`), the Twitch runs at `50a7aac`
 (`live_runs/eval_twitch_20261119_*`), the 2026-11-21 QoS runs at `c7ac56a`
 (`live_runs/eval_{twitch,youtube}_20261121_*`), and the multi-stream runs at `7c9db80`
-(`live_runs/eval_youtube_20261121_{154340,155843,164600,175102}*`).
+(`live_runs/eval_youtube_20261121_{154340,155843,164600,175102}*`), and the false-positive baselines
+at `9e6d61d` (`live_runs/eval_idle_2026112{2,3}_*`).
 
 ## How priority is enforced
 
@@ -355,6 +356,43 @@ its browser) would make it exact (not built).
 3. **The cost is delay.** The 5-window streak plus reconnects (a reload opens a new connection, which
    starts over) and confidence dips around 0.93 meant 50–250 s before a stream was tagged.
 4. **Cost on the router stays small:** under 5 % CPU and ~40 MB for three streams.
+
+## 2026-11-22/23: false-positive baselines (no video)
+
+`--service idle` plays nothing; any tag is a false positive. Dry runs, no shaping.
+
+| Run | Traffic | Per window | Connections scored (≥100 packets) | Tags | CPU / RSS |
+|---|---|---|---|---|---|
+| Idle, 10 min | the Linux box's own background traffic | ~9 packets, 3 flows | 0 | **0** | 0.1 % / 25 MB |
+| Downloads alone, 5 min | 16 multi-server downloads, from 0 s | ~560 Mbit/s (the full line), 12 busy connections | 12 (372 connection-windows; 185 at ≥0.93, all `youtube_tcp`) | **1**: a download at 15.7 Mbit/s, under the cap | **125 %** / 41 MB |
+| Internet radio ×2, 10 min | 3 SomaFM 128 kbit/s MP3 streams (`--competing-url`) | ~0.10 MB, ~400 packets, 17 flows | 0 | **0** | 0.4 % / 38–39 MB |
+
+- **Idle:** too little traffic for any connection to be scored, so nothing can be tagged. The window
+  labels were arbitrary (`youtube_tcp`, `netflix`, `twitch` at 0.72 mean confidence): the closed-world
+  model always names a class, which is harmless here.
+- **Downloads alone:** every download's own label was `youtube_tcp`. The cap blocked the fast ones
+  (63–156 Mbit/s each), but with 16 sharing the line, four ran at only ~10–12 Mbit/s, under the cap. One
+  of those held ≥0.93 for 5 windows and was tagged (at 210 s). Without the cap, comparable runs tagged
+  4–6.
+- **Radio:** no audio connection reached 100 packets in a window, so none was scored. Only ~0.10 MB per
+  window arrived in total, less than one 128 kbit/s stream (~0.16 MB): not all streams may have
+  connected (the per-download status lines aren't in the saved log). A low-rate audio stream stays under
+  the packet threshold either way. Whether the model treats audio like video is still untested; it
+  needs a higher-rate source (e.g., 256 kbit/s streams, or several in parallel) and a check that each
+  stream connects.
+
+### The false-positive picture
+
+| Traffic | Connections tagged |
+|---|---|
+| Idle | 0 |
+| Light browsing (8 and 60 loops) | 0 |
+| Side connections of video pages | 0–3 per run (tiny; harmless) |
+| Low-rate audio | 0 (under the 100-packet threshold) |
+| Bulk downloads, with the 25 Mbit/s cap | 1 per 5 min (a download at ~16 Mbit/s) |
+| Bulk downloads, without the cap | 4–6 per run |
+
+The one false positive left is a download running at a video-like rate.
 
 ## Open questions (for the professor)
 

@@ -932,6 +932,18 @@ connection is scored against the label for its transport.
 - Tagging took 50–250 s per stream (streak, reconnects, confidence dips around 0.93).
 - Under 5 % CPU and ~40 MB for three streams.
 
+### False-positive baselines, no video (2026-11-22/23)
+
+| Traffic | Connections tagged |
+|---|---|
+| Idle (10 min) | 0 (nothing reaches 100 packets) |
+| Light browsing | 0 |
+| Low-rate internet radio (10 min ×2) | 0 (under the 100-packet threshold; the audio-vs-video question is untested) |
+| 16 downloads alone, full line, 25 Mbit/s cap (5 min) | **1** (a download slowed to 15.7 Mbit/s); 4–6 per run without the cap |
+
+Every download's own label was `youtube_tcp`. With 16 sharing the line, some run at ~10–16 Mbit/s,
+under the cap. CPU reached 125 % at the full ~560 Mbit/s.
+
 ---
 
 ## Current status
@@ -950,6 +962,8 @@ connection is scored against the label for its transport.
   video-quality benefit yet.
 - **Twitch:** tagged correctly unshaped and at a realistic 500 Mbit shaping rate. Heavy shaping (12 Mbit)
   flips its label to `youtube_tcp` by changing the client's ACK pattern.
+- **False positives without video:** idle, light browsing and low-rate audio are never tagged; 16 bulk
+  downloads alone gave 1 tag in 5 min with the cap (a download at a video-like ~16 Mbit/s).
 - **Several streams at once:** two or three simultaneous streams (YouTube QUIC/TCP, Twitch), with or
   without light background traffic, each got its own correct label and exactly one tag. YouTube over TCP
   scored 1.00 live on its own connection.
