@@ -1152,7 +1152,10 @@ def main():
     for k, v in perf.items():
         print(f"  {k}: {v}")
     summary = {**summary, **perf, **qoe, **conn, "enforce": args.enforce, "competing_downloads": args.competing_downloads,
-               "light_traffic": args.light_traffic}
+               "light_traffic": args.light_traffic,
+               # How much the background traffic got done: with priority on a full link it
+               # should be lower (the video's packets go first).
+               "light_requests_completed": light_count[0] if args.light_traffic else ""}
     append_summary(
         "live_runs/eval_summary.csv",
         {"tag": tag, "service": args.service, "url": args.url or "", "disable_quic": args.disable_quic,
